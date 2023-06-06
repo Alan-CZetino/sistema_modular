@@ -89,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\LoginController.cs" />
     <Compile Include="model\Connection\ConnectionDB.cs" />
     <Compile Include="model\UserData\Persona.cs" />
     <Compile Include="model\UserData\Usuario.cs" />

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using sistema_modular_cafe_majada.model.UserData;
 
 
 namespace sistema_modular_cafe_majada
@@ -18,6 +19,9 @@ namespace sistema_modular_cafe_majada
         {
             InitializeComponent();
         }
+
+        //variable de tipo global para manejo de intentos fallidos en el login
+        public static int contador = 0;
 
         //Codigo para mover el formulario en cualquier lugar de la pantalla
 
@@ -87,10 +91,43 @@ namespace sistema_modular_cafe_majada
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            form_main formPrin = new form_main();
-            formPrin.Show();
+            var login = new controller.LoginController();
+            //var log = new controller.SecurityData.LogController();
+            //var userDao = new model.DAO.UserDAO();
 
-            this.Hide();
+            string user = txb_username.Text;
+            string password = txb_password.Text;
+
+            bool loginSuccessful = login.AutenticarUsuario(user, password);
+            //var usuario = userDao.ObtenerUsuario(user); // Asignar el resultado de ObtenerUsuario
+
+            contador++;
+            if (loginSuccessful)
+            {
+                try
+                {
+                    //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                    //log.RegistrarLog(usuario.IdUsuario, "Inicio seccion satisfactoriamente", usuario.DeptoUsuario, "Inicio de Seccion", "Intentos realizados " + contador);
+                    contador = 0;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                }
+
+                // Inicio de sesión exitoso, realiza las acciones necesarias
+                // Navega a otra ventana, muestra un mensaje, etc.
+                // MessageBox.Show("Inicio de sesión exitoso");
+                form_main formPrin = new form_main();
+                formPrin.Show();
+
+                this.Hide();
+            }
+            else
+            {
+                // Las credenciales son inválidas, muestra un mensaje de error
+                MessageBox.Show("Credenciales inválidas");
+            }
         }
     }
 }
