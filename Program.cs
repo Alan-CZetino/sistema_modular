@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sistema_modular_cafe_majada.model.Connection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +14,14 @@ namespace sistema_modular_cafe_majada
         [STAThread]
         static void Main()
         {
+            /*
+            //el siguiente bloque es una Prueba de conexion
+            ConnectionDB conexionBD = new ConnectionDB();
+            conexionBD.Conectar();
+            // Aquí puedes realizar las operaciones que necesites en la base de datos
+            conexionBD.Desconectar();*/
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new form_login());
