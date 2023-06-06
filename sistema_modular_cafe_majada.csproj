@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B14872F3-47EA-4C56-8695-768D00F0429A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>sistema_modular_cafe_majada</RootNamespace>
+    <AssemblyName>sistema_modular_cafe_majada</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="views\form_activos_cafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_activos_cafe.Designer.cs">
+      <DependentUpon>form_activos_cafe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_administracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_administracion.Designer.cs">
+      <DependentUpon>form_administracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_cosecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_cosecha.Designer.cs">
+      <DependentUpon>form_cosecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_login.Designer.cs">
+      <DependentUpon>form_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_main.Designer.cs">
+      <DependentUpon>form_main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_panel_principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_panel_principal.Designer.cs">
+      <DependentUpon>form_panel_principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="views\form_personas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_personas.Designer.cs">
+      <DependentUpon>form_personas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_reportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_reportes.Designer.cs">
+      <DependentUpon>form_reportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_rol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_rol.Designer.cs">
+      <DependentUpon>form_rol.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="views\form_activos_cafe.resx">
+      <DependentUpon>form_activos_cafe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_administracion.resx">
+      <DependentUpon>form_administracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_cosecha.resx">
+      <DependentUpon>form_cosecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_login.resx">
+      <DependentUpon>form_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_main.resx">
+      <DependentUpon>form_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_panel_principal.resx">
+      <DependentUpon>form_panel_principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="views\form_reportes.resx">
+      <DependentUpon>form_reportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="controller\" />
+    <Folder Include="model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuadrado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuadrado %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cuadrado %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x %281%29 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo oficial majada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar-sesion 24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\activos24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tablero 24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario 24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password 24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admin 2 24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admin 1 24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\almacen 24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios 32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios 512px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios 128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios 64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuarios 45px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cosecha 45px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tablas 45px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\servicio-al-cliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\servicio-al-cliente 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disquete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boton-eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\impresora.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
