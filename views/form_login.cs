@@ -92,14 +92,14 @@ namespace sistema_modular_cafe_majada
         private void btn_login_Click(object sender, EventArgs e)
         {
             var login = new controller.LoginController();
-            //var log = new controller.SecurityData.LogController();
-            //var userDao = new model.DAO.UserDAO();
+            var log = new controller.SecurityData.LogController();
+            var userDao = new model.DAO.UserDAO();
 
             string user = txb_username.Text;
             string password = txb_password.Text;
 
             bool loginSuccessful = login.AutenticarUsuario(user, password);
-            //var usuario = userDao.ObtenerUsuario(user); // Asignar el resultado de ObtenerUsuario
+            var usuario = userDao.ObtenerUsuario(user); // Asignar el resultado de ObtenerUsuario
 
             contador++;
             if (loginSuccessful)
@@ -107,7 +107,7 @@ namespace sistema_modular_cafe_majada
                 try
                 {
                     //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                    //log.RegistrarLog(usuario.IdUsuario, "Inicio seccion satisfactoriamente", usuario.DeptoUsuario, "Inicio de Seccion", "Intentos realizados " + contador);
+                    log.RegistrarLog(usuario.IdUsuario, "Inicio seccion satisfactoriamente", usuario.DeptoUsuario, "Inicio de Seccion", "Intentos realizados " + contador);
                     contador = 0;
                 }
                 catch (Exception ex)

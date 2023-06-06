@@ -90,7 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\LoginController.cs" />
+    <Compile Include="controller\SecurityData\LogController.cs" />
     <Compile Include="model\Connection\ConnectionDB.cs" />
+    <Compile Include="model\DAO\UserDAO.cs" />
     <Compile Include="model\UserData\Persona.cs" />
     <Compile Include="model\UserData\Usuario.cs" />
     <Compile Include="views\form_activos_cafe.cs">
@@ -194,10 +196,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="controller\SecurityData\" />
-    <Folder Include="model\DAO\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\eliminar.png" />
   </ItemGroup>
