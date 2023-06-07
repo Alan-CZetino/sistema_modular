@@ -133,8 +133,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="views\form_personas.resx">
+      <DependentUpon>form_personas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_reportes.resx">
       <DependentUpon>form_reportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_rol.resx">
+      <DependentUpon>form_rol.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
