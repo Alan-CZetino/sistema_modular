@@ -98,5 +98,13 @@ namespace sistema_modular_cafe_majada
             form_reportes frepor = new form_reportes();
             AddFormulario(frepor);
         }
+
+        private void btn_CloseSection_Click(object sender, EventArgs e)
+        {
+            form_login form_Login = new form_login();
+            form_Login.Show();
+
+            this.Close();
+        }
     }
 }

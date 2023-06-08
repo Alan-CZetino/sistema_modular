@@ -1,0 +1,177 @@
+﻿using MySql.Data.MySqlClient;
+using sistema_modular_cafe_majada.model.Connection;
+using sistema_modular_cafe_majada.model.UserData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sistema_modular_cafe_majada.controller.UserDataController
+{
+    class PersonController
+    {
+        private ConnectionDB conexion;
+
+        public PersonController()
+        {
+            // Inicializa la instancia de la clase ConexionBD
+            conexion = new ConnectionDB();
+        }
+
+        public bool InsertarPersona(Persona persona)
+        {
+            try
+            {
+                // Abre la conexión
+                conexion.Conectar();
+
+                // Crea la consulta para insertar la persona en la base de datos
+                string consulta = "INSERT INTO Persona (id_persona, nombres_persona, apellidos_persona, direccion_persona, fecha_nac_persona, nit_persona, dui_persona, tel1_persona, tel2_persona) " +
+                                    "VALUES (@IdPersona, @NombresPersona, @ApellidosPersona, @DireccionPersona, @FechaNacimientoPersona, @NitPersona, @DuiPersona, @Telefono1Persona, @Telefono2Persona)";
+
+                conexion.CrearComando(consulta);
+
+                conexion.AgregarParametro("@IdPersona", persona.IdPersona);
+                conexion.AgregarParametro("@NombresPersona", persona.NombresPersona);
+                conexion.AgregarParametro("@ApellidosPersona", persona.ApellidosPersona);
+                conexion.AgregarParametro("@DireccionPersona", persona.DireccionPersona);
+                conexion.AgregarParametro("@FechaNacimientoPersona", persona.FechaNacimientoPersona);
+                conexion.AgregarParametro("@NitPersona", persona.NitPersona);
+                conexion.AgregarParametro("@DuiPersona", persona.DuiPersona);
+                conexion.AgregarParametro("@Telefono1Persona", persona.Telefono1Persona);
+                conexion.AgregarParametro("@Telefono2Persona", persona.Telefono2Persona);
+
+                int filasAfectadas = conexion.EjecutarInstruccion();
+
+                if (filasAfectadas > 0)
+                {
+                    return true; // Inserción exitosa
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la inserción de persona en la base de datos: " + ex.Message);
+            }
+
+            return false; // Error durante la inserción
+        }
+
+        public List<Persona> ObtenerPersonas()
+        {
+            List<Persona> personas = new List<Persona>();
+
+            try
+            {
+                // Abre la conexión a la base de datos
+                conexion.Conectar();
+
+                string consulta = "SELECT * FROM Persona";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Persona persona = new Persona()
+                        {
+                            IdPersona = Convert.ToInt32(reader["id_persona"]),
+                            NombresPersona = Convert.ToString(reader["nombres_persona"]),
+                            ApellidosPersona = Convert.ToString(reader["apellidos_persona"]),
+                            DireccionPersona = Convert.ToString(reader["direccion_persona"]),
+                            FechaNacimientoPersona = Convert.ToDateTime(reader["fecha_nac_persona"]),
+                            DuiPersona = Convert.ToString(reader["dui_persona"]),
+                            Telefono1Persona = Convert.ToString(reader["tel1_persona"])
+                        };
+
+                        // Verifica si el campo es nulo antes de asignarlo
+                        if (!Convert.IsDBNull(reader["nit_persona"]))
+                        {
+                            persona.NitPersona = Convert.ToString(reader["nit_persona"]);
+                        }
+
+                        if (!Convert.IsDBNull(reader["tel2_persona"]))
+                        {
+                            persona.Telefono2Persona = Convert.ToString(reader["tel2_persona"]);
+                        }
+
+                        personas.Add(persona);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir al obtener los usuarios de la base de datos
+                Console.WriteLine("Error al obtener la lista personas: " + ex.Message);
+            }
+            finally
+            {
+                // Cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return personas;
+        }
+
+        public Persona ObtenerPersona(string nombrePersona)
+        {
+            Persona persona = null;
+            try
+            {
+
+                // Abre la conexión a la base de datos
+                conexion.Conectar();
+                string consulta = "SELECT * FROM Usuario WHERE nombre_usuario = @NombreUsuario";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@NombreUsuario", nombrePersona);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            persona = new Persona()
+                            {
+
+                                IdPersona = Convert.ToInt32(reader["id_persona"]),
+                                NombresPersona = Convert.ToString(reader["nombres_persona"]),
+                                ApellidosPersona = Convert.ToString(reader["apellidos_persona"]),
+                                DireccionPersona = Convert.ToString(reader["direccion_persona"]),
+                                FechaNacimientoPersona = Convert.ToDateTime(reader["fecha_nac_persona"]),
+                                DuiPersona = Convert.ToString(reader["dui_persona"]),
+                                Telefono1Persona = Convert.ToString(reader["tel1_persona"])
+                            };
+
+                            // Verifica si el campo es nulo antes de asignarlo
+                            if (!Convert.IsDBNull(reader["nit_persona"]))
+                            {
+                                persona.NitPersona = Convert.ToString(reader["nit_persona"]);
+                            }
+
+                            if (!Convert.IsDBNull(reader["tel2_persona"]))
+                            {
+                                persona.Telefono2Persona = Convert.ToString(reader["tel2_persona"]);
+                            }
+                            //Console.WriteLine("La persona obtenida es " + persona.NombresPersona);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir al obtener los usuarios de la base de datos
+                Console.WriteLine("Error al obtener la persona: " + ex.Message);
+            }
+            finally
+            {
+                // Cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return persona;
+        }
+
+    }
+}
