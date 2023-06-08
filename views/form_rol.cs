@@ -16,5 +16,6 @@ namespace sistema_modular_cafe_majada.views
         {
             InitializeComponent();
         }
+
     }
 }
