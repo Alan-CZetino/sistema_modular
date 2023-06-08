@@ -18,7 +18,28 @@ namespace sistema_modular_cafe_majada.views
         {
             InitializeComponent();
 
-            
+            // Llamar al método para obtener los datos de la base de datos
+            var personController = new PersonController();
+            List<Persona> datos = personController.ObtenerPersonas();
+
+            //auto ajustar el contenido de los datos al area establecido para el datagrid
+            dataGrid_PersonView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Establece el ancho deseado para la primera columna
+            if (dataGrid_PersonView.Columns.Count > 0)
+            {
+                // Establece el ancho deseado para la primera columna
+                dataGrid_PersonView.Columns[0].Width = 10;
+            }
+            // Establece el modo de ajuste automático para las demás columnas
+            for (int i = 1; i < dataGrid_PersonView.Columns.Count; i++)
+            {
+                dataGrid_PersonView.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
+            // Asignar los datos al DataGridView
+            dataGrid_PersonView.DataSource = datos;
+
         }
 
         private void SavePerson_Click(object sender, EventArgs e)
@@ -56,6 +77,13 @@ namespace sistema_modular_cafe_majada.views
             if (exito)
             {
                 MessageBox.Show("Persona guardada exitosamente");
+
+                // Llamar al método para obtener los datos de la base de datos
+                var personController = new PersonController();
+                List<Persona> datos = personController.ObtenerPersonas();
+
+                // Asignar los nuevos datos al DataGridView
+                dataGrid_PersonView.DataSource = datos;
 
                 ClearDataTxb();
             }
@@ -114,6 +142,31 @@ namespace sistema_modular_cafe_majada.views
                     textBox.Text = result;
                 }
             }
+        }
+
+        private void dataGrid_PersonView_SelectionChanged(object sender, EventArgs e)
+        {
+            /*if (dataGrid_PersonView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow filaSeleccionada = dataGrid_PersonView.SelectedRows[0];
+
+                //int id = Convert.ToInt32(filaSeleccionada.Cells["id_persona"].Value);
+                string nombres = filaSeleccionada.Cells["nombres_persona"].Value.ToString();
+                string apellidos = filaSeleccionada.Cells["apellidos_persona"].Value.ToString();
+                string direccion = filaSeleccionada.Cells["direccion_persona"].Value.ToString();
+                DateTime fechaNacimiento = Convert.ToDateTime(filaSeleccionada.Cells["fecha_nac_persona"].Value);
+                string dui = filaSeleccionada.Cells["dui_persona"].Value.ToString();
+                string nit = filaSeleccionada.Cells["nit_persona"].Value != null ? filaSeleccionada.Cells["nit_persona"].Value.ToString() : null;
+                string tel1 = filaSeleccionada.Cells["tel1_persona"].Value.ToString();
+                string tel2 = filaSeleccionada.Cells["tel2_persona"].Value != null ? filaSeleccionada.Cells["tel2_persona"].Value.ToString() : null;
+
+                txb_Nombre.Text = nombres;
+                txb_Apellido.Text = apellidos;
+                //ActualizarPersona(id, nombres, apellidos, direccion, fechaNacimiento, dui, nit, tel1, tel2);
+            }
+
+            */
+
         }
     }
 }

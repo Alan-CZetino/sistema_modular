@@ -17,5 +17,29 @@ namespace sistema_modular_cafe_majada.views
             InitializeComponent();
         }
 
+        private void btn_SaveRol_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            ClearDataTxb();
+        }
+        public void ClearDataTxb()
+        {
+            List<TextBox> txb = new List<TextBox> { txb_NameRol, txb_Description, txb_license};
+
+            foreach (TextBox textBox in txb)
+            {
+                textBox.Text = "";
+            }
+
+            cbx_LevelAcces.Items.Clear(); // Eliminar todos los elementos del ComboBox
+            cbx_LevelAcces.SelectedIndex = -1; // Deseleccionar cualquier elemento seleccionado previamente
+
+            dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now;
+        }
     }
 }

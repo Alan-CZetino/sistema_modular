@@ -173,5 +173,52 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
             return persona;
         }
 
+        public void ActualizarPersona(int id, string nombres, string apellidos, string direccion, DateTime fechaNacimiento, string nit, string dui, string tel1, string tel2)
+        {
+            try
+            {
+                // Abre la conexión a la base de datos
+                conexion.Conectar();
+
+                string consulta = "UPDATE Persona SET nombres_persona = @nombres, apellidos_persona = @apellidos, direccion_persona = @direccion, fecha_nac_persona = @fechaNacimiento, " +
+                    "nit_persona = @nit, dui_persona = @dui, tel1_persona = @tel1, tel2_persona = @tel2 WHERE id_persona = @id";
+
+                conexion.CrearComando(consulta);
+
+                conexion.AgregarParametro("@nombres", nombres);
+                conexion.AgregarParametro("@apellidos", apellidos);
+                conexion.AgregarParametro("@direccion", direccion);
+                conexion.AgregarParametro("@fechaNacimiento", fechaNacimiento);
+                conexion.AgregarParametro("@nit", string.IsNullOrEmpty(nit) ? DBNull.Value : (object)nit);
+                conexion.AgregarParametro("@dui", dui);
+                conexion.AgregarParametro("@tel1", tel1);
+                conexion.AgregarParametro("@tel2", string.IsNullOrEmpty(tel2) ? DBNull.Value : (object)tel2);
+                conexion.AgregarParametro("@id", id);
+
+                int filasAfectadas = conexion.EjecutarInstruccion();
+
+                // Puedes realizar alguna acción adicional en función del resultado de la actualización
+                if (filasAfectadas > 0)
+                {
+                    Console.WriteLine("La actualización se realizó correctamente.");
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo realizar la actualización.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir al obtener los usuarios de la base de datos
+                Console.WriteLine("Error al actualizar la persona: " + ex.Message);
+            }
+            finally
+            {
+                // Cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+        }
+
     }
 }
