@@ -39,18 +39,32 @@ namespace sistema_modular_cafe_majada.views
             this.btn_delete_rol = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btn_cancelar_rol = new System.Windows.Forms.Button();
-            this.btn_guardar_rol = new System.Windows.Forms.Button();
-            this.txb_nrol = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.dtgv_roles = new System.Windows.Forms.DataGridView();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_mod_rol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_delete_rol)).BeginInit();
-            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_roles)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -158,79 +172,10 @@ namespace sistema_modular_cafe_majada.views
             this.label1.TabIndex = 0;
             this.label1.Text = "Formulario de Roles de Usuarios";
             // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.btn_cancelar_rol);
-            this.panel6.Controls.Add(this.btn_guardar_rol);
-            this.panel6.Controls.Add(this.txb_nrol);
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(5, 75);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(296, 363);
-            this.panel6.TabIndex = 13;
-            // 
-            // btn_cancelar_rol
-            // 
-            this.btn_cancelar_rol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btn_cancelar_rol.FlatAppearance.BorderSize = 0;
-            this.btn_cancelar_rol.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
-            this.btn_cancelar_rol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancelar_rol.Font = new System.Drawing.Font("Oswald Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancelar_rol.ForeColor = System.Drawing.Color.White;
-            this.btn_cancelar_rol.Image = global::sistema_modular_cafe_majada.Properties.Resources.eliminar__2_;
-            this.btn_cancelar_rol.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_cancelar_rol.Location = new System.Drawing.Point(16, 148);
-            this.btn_cancelar_rol.Name = "btn_cancelar_rol";
-            this.btn_cancelar_rol.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.btn_cancelar_rol.Size = new System.Drawing.Size(274, 40);
-            this.btn_cancelar_rol.TabIndex = 3;
-            this.btn_cancelar_rol.Text = "Cancelar";
-            this.btn_cancelar_rol.UseVisualStyleBackColor = false;
-            // 
-            // btn_guardar_rol
-            // 
-            this.btn_guardar_rol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
-            this.btn_guardar_rol.FlatAppearance.BorderSize = 0;
-            this.btn_guardar_rol.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
-            this.btn_guardar_rol.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
-            this.btn_guardar_rol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_guardar_rol.Font = new System.Drawing.Font("Oswald Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar_rol.ForeColor = System.Drawing.Color.White;
-            this.btn_guardar_rol.Image = global::sistema_modular_cafe_majada.Properties.Resources.disquete;
-            this.btn_guardar_rol.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_guardar_rol.Location = new System.Drawing.Point(16, 105);
-            this.btn_guardar_rol.Name = "btn_guardar_rol";
-            this.btn_guardar_rol.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.btn_guardar_rol.Size = new System.Drawing.Size(274, 40);
-            this.btn_guardar_rol.TabIndex = 2;
-            this.btn_guardar_rol.Text = "Guardar";
-            this.btn_guardar_rol.UseVisualStyleBackColor = false;
-            // 
-            // txb_nrol
-            // 
-            this.txb_nrol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_nrol.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_nrol.Location = new System.Drawing.Point(16, 60);
-            this.txb_nrol.Name = "txb_nrol";
-            this.txb_nrol.Size = new System.Drawing.Size(274, 33);
-            this.txb_nrol.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 26);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Nombre del Rol";
-            // 
             // dtgv_roles
             // 
-            this.dtgv_roles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dtgv_roles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgv_roles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv_roles.Location = new System.Drawing.Point(307, 81);
@@ -239,6 +184,203 @@ namespace sistema_modular_cafe_majada.views
             this.dtgv_roles.RowTemplate.Height = 24;
             this.dtgv_roles.Size = new System.Drawing.Size(670, 350);
             this.dtgv_roles.TabIndex = 14;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel6.Location = new System.Drawing.Point(5, 75);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(296, 363);
+            this.panel6.TabIndex = 13;
+            // 
+            // panel8
+            // 
+            this.panel8.AutoScroll = true;
+            this.panel8.Controls.Add(this.dateTimePicker2);
+            this.panel8.Controls.Add(this.dateTimePicker1);
+            this.panel8.Controls.Add(this.comboBox1);
+            this.panel8.Controls.Add(this.label3);
+            this.panel8.Controls.Add(this.label4);
+            this.panel8.Controls.Add(this.textBox1);
+            this.panel8.Controls.Add(this.textBox2);
+            this.panel8.Controls.Add(this.label5);
+            this.panel8.Controls.Add(this.label7);
+            this.panel8.Controls.Add(this.label6);
+            this.panel8.Controls.Add(this.label8);
+            this.panel8.Controls.Add(this.textBox4);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(296, 316);
+            this.panel8.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(8, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 26);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Nombre del Rol";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 69);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 26);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Descripción";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(13, 35);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(212, 33);
+            this.textBox1.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(13, 98);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(212, 33);
+            this.textBox2.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(10, 135);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 26);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Nivel de Acceso";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(10, 264);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 26);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Fecha de creación";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(10, 201);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 26);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Permisos ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 332);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(143, 26);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Fecha de Modificación";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(15, 230);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(210, 33);
+            this.textBox4.TabIndex = 9;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.button1);
+            this.panel7.Controls.Add(this.button2);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(0, 316);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(296, 47);
+            this.panel7.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(19, 3);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(110, 40);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Guardar";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(161, 3);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(110, 40);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Cancelar";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(15, 165);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(210, 37);
+            this.comboBox1.TabIndex = 20;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(19, 360);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(206, 33);
+            this.dateTimePicker1.TabIndex = 21;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(15, 296);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(210, 33);
+            this.dateTimePicker2.TabIndex = 22;
             // 
             // form_rol
             // 
@@ -260,9 +402,11 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btn_mod_rol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_delete_rol)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_roles)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -279,11 +423,23 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.PictureBox btn_delete_rol;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button btn_cancelar_rol;
-        private System.Windows.Forms.Button btn_guardar_rol;
-        private System.Windows.Forms.TextBox txb_nrol;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dtgv_roles;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
