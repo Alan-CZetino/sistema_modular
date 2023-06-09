@@ -39,6 +39,7 @@ namespace sistema_modular_cafe_majada.views
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -61,7 +62,6 @@ namespace sistema_modular_cafe_majada.views
             this.button2 = new System.Windows.Forms.Button();
             this.btn_mod_cosecha = new System.Windows.Forms.PictureBox();
             this.btn_delete_cosecha = new System.Windows.Forms.PictureBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -191,6 +191,15 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(296, 363);
             this.panel8.TabIndex = 5;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(15, 230);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(233, 33);
+            this.dateTimePicker1.TabIndex = 20;
             // 
             // textBox9
             // 
@@ -436,15 +445,6 @@ namespace sistema_modular_cafe_majada.views
             this.btn_delete_cosecha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_delete_cosecha.TabIndex = 2;
             this.btn_delete_cosecha.TabStop = false;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(15, 230);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(233, 33);
-            this.dateTimePicker1.TabIndex = 20;
             // 
             // form_personas
             // 

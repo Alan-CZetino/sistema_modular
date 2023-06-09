@@ -50,5 +50,11 @@ namespace sistema_modular_cafe_majada
             form_personas fper = new form_personas();
             AddFormulario(fper);
         }
+
+        private void btn_usuarios_Click(object sender, EventArgs e)
+        {
+            form_usuarios fusers = new form_usuarios();
+            AddFormulario(fusers);
+        }
     }
 }

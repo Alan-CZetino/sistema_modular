@@ -43,22 +43,22 @@ namespace sistema_modular_cafe_majada
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_cosecha = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_usuarios = new System.Windows.Forms.Button();
-            this.panel_container_admin = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btn_rol = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btn_persona = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_rol = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_usuarios = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_cosecha = new System.Windows.Forms.Button();
+            this.panel_container_admin = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -259,85 +259,35 @@ namespace sistema_modular_cafe_majada
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1002, 100);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // panel3
+            // panel5
             // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(803, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(196, 94);
-            this.panel3.TabIndex = 4;
+            this.panel5.Controls.Add(this.btn_persona);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(403, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(194, 94);
+            this.panel5.TabIndex = 7;
             // 
-            // panel1
+            // btn_persona
             // 
-            this.panel1.Controls.Add(this.btn_cosecha);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(194, 94);
-            this.panel1.TabIndex = 5;
-            // 
-            // btn_cosecha
-            // 
-            this.btn_cosecha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_persona.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cosecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.btn_cosecha.FlatAppearance.BorderSize = 0;
-            this.btn_cosecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cosecha.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cosecha.ForeColor = System.Drawing.Color.White;
-            this.btn_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
-            this.btn_cosecha.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_cosecha.Location = new System.Drawing.Point(47, 1);
-            this.btn_cosecha.Name = "btn_cosecha";
-            this.btn_cosecha.Size = new System.Drawing.Size(90, 90);
-            this.btn_cosecha.TabIndex = 0;
-            this.btn_cosecha.Text = "Cosechas";
-            this.btn_cosecha.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_cosecha.UseVisualStyleBackColor = false;
-            this.btn_cosecha.Click += new System.EventHandler(this.btn_cosecha_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btn_usuarios);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(603, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(194, 94);
-            this.panel2.TabIndex = 3;
-            // 
-            // btn_usuarios
-            // 
-            this.btn_usuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_usuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.btn_usuarios.FlatAppearance.BorderSize = 0;
-            this.btn_usuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_usuarios.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_usuarios.ForeColor = System.Drawing.Color.White;
-            this.btn_usuarios.Image = global::sistema_modular_cafe_majada.Properties.Resources.usuarios_45px;
-            this.btn_usuarios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_usuarios.Location = new System.Drawing.Point(47, 1);
-            this.btn_usuarios.Name = "btn_usuarios";
-            this.btn_usuarios.Size = new System.Drawing.Size(90, 90);
-            this.btn_usuarios.TabIndex = 0;
-            this.btn_usuarios.Text = "Usuarios";
-            this.btn_usuarios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_usuarios.UseVisualStyleBackColor = false;
-            // 
-            // panel_container_admin
-            // 
-            this.panel_container_admin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_container_admin.BackColor = System.Drawing.Color.White;
-            this.panel_container_admin.BackgroundImage = global::sistema_modular_cafe_majada.Properties.Resources.servicio_al_cliente_1;
-            this.panel_container_admin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel_container_admin.Location = new System.Drawing.Point(13, 218);
-            this.panel_container_admin.Name = "panel_container_admin";
-            this.panel_container_admin.Size = new System.Drawing.Size(1006, 490);
-            this.panel_container_admin.TabIndex = 3;
+            this.btn_persona.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.btn_persona.FlatAppearance.BorderSize = 0;
+            this.btn_persona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_persona.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_persona.ForeColor = System.Drawing.Color.White;
+            this.btn_persona.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
+            this.btn_persona.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_persona.Location = new System.Drawing.Point(47, 1);
+            this.btn_persona.Name = "btn_persona";
+            this.btn_persona.Size = new System.Drawing.Size(90, 90);
+            this.btn_persona.TabIndex = 0;
+            this.btn_persona.Text = "Personas";
+            this.btn_persona.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_persona.UseVisualStyleBackColor = false;
+            this.btn_persona.Click += new System.EventHandler(this.btn_persona_Click);
             // 
             // panel4
             // 
@@ -369,35 +319,86 @@ namespace sistema_modular_cafe_majada
             this.btn_rol.UseVisualStyleBackColor = false;
             this.btn_rol.Click += new System.EventHandler(this.btn_rol_Click);
             // 
-            // panel5
+            // panel3
             // 
-            this.panel5.Controls.Add(this.btn_persona);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(403, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(194, 94);
-            this.panel5.TabIndex = 7;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(803, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(196, 94);
+            this.panel3.TabIndex = 4;
             // 
-            // btn_persona
+            // panel2
             // 
-            this.btn_persona.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel2.Controls.Add(this.btn_usuarios);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(603, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(194, 94);
+            this.panel2.TabIndex = 3;
+            // 
+            // btn_usuarios
+            // 
+            this.btn_usuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_persona.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.btn_persona.FlatAppearance.BorderSize = 0;
-            this.btn_persona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_persona.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_persona.ForeColor = System.Drawing.Color.White;
-            this.btn_persona.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
-            this.btn_persona.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_persona.Location = new System.Drawing.Point(47, 1);
-            this.btn_persona.Name = "btn_persona";
-            this.btn_persona.Size = new System.Drawing.Size(90, 90);
-            this.btn_persona.TabIndex = 0;
-            this.btn_persona.Text = "Personas";
-            this.btn_persona.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_persona.UseVisualStyleBackColor = false;
-            this.btn_persona.Click += new System.EventHandler(this.btn_persona_Click);
+            this.btn_usuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.btn_usuarios.FlatAppearance.BorderSize = 0;
+            this.btn_usuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_usuarios.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_usuarios.ForeColor = System.Drawing.Color.White;
+            this.btn_usuarios.Image = global::sistema_modular_cafe_majada.Properties.Resources.usuarios_45px;
+            this.btn_usuarios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_usuarios.Location = new System.Drawing.Point(47, 1);
+            this.btn_usuarios.Name = "btn_usuarios";
+            this.btn_usuarios.Size = new System.Drawing.Size(90, 90);
+            this.btn_usuarios.TabIndex = 0;
+            this.btn_usuarios.Text = "Usuarios";
+            this.btn_usuarios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_usuarios.UseVisualStyleBackColor = false;
+            this.btn_usuarios.Click += new System.EventHandler(this.btn_usuarios_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btn_cosecha);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(194, 94);
+            this.panel1.TabIndex = 5;
+            // 
+            // btn_cosecha
+            // 
+            this.btn_cosecha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_cosecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.btn_cosecha.FlatAppearance.BorderSize = 0;
+            this.btn_cosecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cosecha.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cosecha.ForeColor = System.Drawing.Color.White;
+            this.btn_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
+            this.btn_cosecha.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_cosecha.Location = new System.Drawing.Point(47, 1);
+            this.btn_cosecha.Name = "btn_cosecha";
+            this.btn_cosecha.Size = new System.Drawing.Size(90, 90);
+            this.btn_cosecha.TabIndex = 0;
+            this.btn_cosecha.Text = "Cosechas";
+            this.btn_cosecha.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_cosecha.UseVisualStyleBackColor = false;
+            this.btn_cosecha.Click += new System.EventHandler(this.btn_cosecha_Click);
+            // 
+            // panel_container_admin
+            // 
+            this.panel_container_admin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_container_admin.BackColor = System.Drawing.Color.White;
+            this.panel_container_admin.BackgroundImage = global::sistema_modular_cafe_majada.Properties.Resources.servicio_al_cliente_1;
+            this.panel_container_admin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel_container_admin.Location = new System.Drawing.Point(13, 218);
+            this.panel_container_admin.Name = "panel_container_admin";
+            this.panel_container_admin.Size = new System.Drawing.Size(1006, 490);
+            this.panel_container_admin.TabIndex = 3;
             // 
             // form_administracion
             // 
@@ -415,10 +416,10 @@ namespace sistema_modular_cafe_majada
             this.Text = "form_administracion";
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

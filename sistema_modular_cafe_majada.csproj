@@ -105,6 +105,12 @@
     <Compile Include="views\form_rol.Designer.cs">
       <DependentUpon>form_rol.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_usuarios.Designer.cs">
+      <DependentUpon>form_usuarios.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="views\form_activos_cafe.resx">
       <DependentUpon>form_activos_cafe.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_rol.resx">
       <DependentUpon>form_rol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_usuarios.resx">
+      <DependentUpon>form_usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
