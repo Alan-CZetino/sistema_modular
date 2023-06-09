@@ -1,4 +1,4 @@
-﻿
+
 namespace sistema_modular_cafe_majada.views
 {
     partial class form_personas
@@ -41,8 +41,8 @@ namespace sistema_modular_cafe_majada.views
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.txb_FechaNac = new System.Windows.Forms.DateTimePicker();
-            this.txb_Tel2 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,7 +61,11 @@ namespace sistema_modular_cafe_majada.views
             this.SavePerson = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.dataGrid_PersonView = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btn_mod_cosecha = new System.Windows.Forms.PictureBox();
+            this.btn_delete_cosecha = new System.Windows.Forms.PictureBox();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_mod_cosecha)).BeginInit();
@@ -226,7 +230,16 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Size = new System.Drawing.Size(222, 295);
             this.panel8.TabIndex = 5;
             // 
-            // txb_FechaNac
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(15, 230);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(233, 33);
+            this.dateTimePicker1.TabIndex = 20;
+            // 
+            // textBox9
             // 
             this.txb_FechaNac.CustomFormat = "";
             this.txb_FechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -485,6 +498,69 @@ namespace sistema_modular_cafe_majada.views
             this.dataGrid_PersonView.Size = new System.Drawing.Size(501, 323);
             this.dataGrid_PersonView.TabIndex = 0;
             this.dataGrid_PersonView.SelectionChanged += new System.EventHandler(this.dataGrid_PersonView_SelectionChanged);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(19, 3);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(110, 40);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Guardar";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(161, 3);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(110, 40);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Cancelar";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btn_mod_cosecha
+            // 
+            this.btn_mod_cosecha.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_mod_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.editar;
+            this.btn_mod_cosecha.Location = new System.Drawing.Point(3, 3);
+            this.btn_mod_cosecha.Name = "btn_mod_cosecha";
+            this.btn_mod_cosecha.Size = new System.Drawing.Size(57, 49);
+            this.btn_mod_cosecha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_mod_cosecha.TabIndex = 1;
+            this.btn_mod_cosecha.TabStop = false;
+            // 
+            // btn_delete_cosecha
+            // 
+            this.btn_delete_cosecha.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_delete_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.boton_eliminar;
+            this.btn_delete_cosecha.Location = new System.Drawing.Point(66, 3);
+            this.btn_delete_cosecha.Name = "btn_delete_cosecha";
+            this.btn_delete_cosecha.Size = new System.Drawing.Size(58, 49);
+            this.btn_delete_cosecha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_delete_cosecha.TabIndex = 2;
+            this.btn_delete_cosecha.TabStop = false;
             // 
             // form_personas
             // 
