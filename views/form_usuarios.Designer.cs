@@ -42,6 +42,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -56,8 +57,9 @@ namespace sistema_modular_cafe_majada.views
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_mod_cosecha)).BeginInit();
@@ -187,6 +189,8 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
+            this.panel8.Controls.Add(this.textBox4);
+            this.panel8.Controls.Add(this.label9);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.comboBox1);
             this.panel8.Controls.Add(this.label4);
@@ -214,6 +218,15 @@ namespace sistema_modular_cafe_majada.views
             this.label3.Size = new System.Drawing.Size(126, 26);
             this.label3.TabIndex = 0;
             this.label3.Text = "Nombre de Usuario";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(15, 359);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(210, 37);
+            this.comboBox1.TabIndex = 20;
             // 
             // label4
             // 
@@ -250,7 +263,7 @@ namespace sistema_modular_cafe_majada.views
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(15, 368);
+            this.textBox7.Location = new System.Drawing.Point(15, 433);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(210, 33);
             this.textBox7.TabIndex = 15;
@@ -279,7 +292,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(10, 337);
+            this.label7.Location = new System.Drawing.Point(10, 402);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 26);
             this.label7.TabIndex = 10;
@@ -299,7 +312,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(10, 266);
+            this.label6.Location = new System.Drawing.Point(10, 331);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(154, 26);
             this.label6.TabIndex = 8;
@@ -311,9 +324,9 @@ namespace sistema_modular_cafe_majada.views
             this.label8.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(8, 6);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(118, 26);
+            this.label8.Size = new System.Drawing.Size(62, 26);
             this.label8.TabIndex = 12;
-            this.label8.Text = "Nombre Completo";
+            this.label8.Text = "Nombre ";
             // 
             // panel7
             // 
@@ -375,15 +388,6 @@ namespace sistema_modular_cafe_majada.views
             this.panel9.Size = new System.Drawing.Size(664, 363);
             this.panel9.TabIndex = 14;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 294);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(210, 37);
-            this.comboBox1.TabIndex = 20;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -396,6 +400,26 @@ namespace sistema_modular_cafe_majada.views
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(651, 350);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(15, 295);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(210, 33);
+            this.textBox4.TabIndex = 22;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(10, 266);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(143, 26);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Confirmar Contraseña";
             // 
             // form_usuarios
             // 
@@ -458,5 +482,7 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label9;
     }
 }
