@@ -199,6 +199,13 @@
     <EmbeddedResource Include="views\form_usuarios.resx">
       <DependentUpon>form_usuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Fonts\Oswald-Bold.ttf" />
+    <None Include="Fonts\Oswald-ExtraLight.ttf" />
+    <None Include="Fonts\Oswald-Light.ttf" />
+    <None Include="Fonts\Oswald-Medium.ttf" />
+    <None Include="Fonts\Oswald-Regular.ttf" />
+    <None Include="Fonts\Oswald-SemiBold.ttf" />
+    <None Include="Fonts\Oswald-VariableFont_wght.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

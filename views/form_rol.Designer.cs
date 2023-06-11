@@ -223,12 +223,11 @@ namespace sistema_modular_cafe_majada.views
             // 
             // cbx_access
             // 
-            this.cbx_access.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_access.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_access.FormattingEnabled = true;
-            this.cbx_access.Location = new System.Drawing.Point(11, 134);
-            this.cbx_access.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbx_access.Location = new System.Drawing.Point(15, 165);
             this.cbx_access.Name = "cbx_access";
-            this.cbx_access.Size = new System.Drawing.Size(158, 25);
+            this.cbx_access.Size = new System.Drawing.Size(210, 37);
             this.cbx_access.TabIndex = 20;
             // 
             // label3
@@ -255,24 +254,22 @@ namespace sistema_modular_cafe_majada.views
             // 
             // txb_NameRol
             // 
-            this.txb_NameRol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txb_Nombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_NameRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_NameRol.Location = new System.Drawing.Point(10, 28);
-            this.txb_NameRol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txb_NameRol.Name = "txb_NameRol";
-            this.txb_NameRol.Size = new System.Drawing.Size(176, 23);
-            this.txb_NameRol.TabIndex = 1;
+            this.txb_Nombre.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Nombre.Location = new System.Drawing.Point(13, 35);
+            this.txb_Nombre.Name = "txb_Nombre";
+            this.txb_Nombre.Size = new System.Drawing.Size(233, 33);
+            this.txb_Nombre.TabIndex = 1;
             // 
             // txb_Description
             // 
             this.txb_Description.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Description.Location = new System.Drawing.Point(10, 80);
-            this.txb_Description.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_Description.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Description.Location = new System.Drawing.Point(13, 98);
             this.txb_Description.Name = "txb_Description";
-            this.txb_Description.Size = new System.Drawing.Size(176, 23);
+            this.txb_Description.Size = new System.Drawing.Size(233, 33);
             this.txb_Description.TabIndex = 5;
             // 
             // label5
@@ -301,11 +298,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_permits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_permits.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_permits.Location = new System.Drawing.Point(11, 187);
-            this.txb_permits.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_permits.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_permits.Location = new System.Drawing.Point(15, 230);
             this.txb_permits.Name = "txb_permits";
-            this.txb_permits.Size = new System.Drawing.Size(174, 23);
+            this.txb_permits.Size = new System.Drawing.Size(231, 33);
             this.txb_permits.TabIndex = 9;
             // 
             // panel7
@@ -327,20 +323,18 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SaveRol.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
             this.btn_SaveRol.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
             this.btn_SaveRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SaveRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SaveRol.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SaveRol.ForeColor = System.Drawing.Color.White;
             this.btn_SaveRol.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_SaveRol.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_SaveRol.Location = new System.Drawing.Point(14, 2);
-            this.btn_SaveRol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_SaveRol.Location = new System.Drawing.Point(19, 3);
             this.btn_SaveRol.Name = "btn_SaveRol";
             this.btn_SaveRol.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btn_SaveRol.Size = new System.Drawing.Size(82, 32);
+            this.btn_SaveRol.Size = new System.Drawing.Size(110, 40);
             this.btn_SaveRol.TabIndex = 2;
             this.btn_SaveRol.Text = "Guardar";
             this.btn_SaveRol.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SaveRol.UseVisualStyleBackColor = false;
-            this.btn_SaveRol.Click += new System.EventHandler(this.btn_SaveRol_Click);
             // 
             // btn_Cancel
             // 
@@ -349,20 +343,18 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.FlatAppearance.BorderSize = 0;
             this.btn_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
             this.btn_Cancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
             this.btn_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Cancel.Location = new System.Drawing.Point(121, 2);
-            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Cancel.Location = new System.Drawing.Point(161, 3);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btn_Cancel.Size = new System.Drawing.Size(82, 32);
+            this.btn_Cancel.Size = new System.Drawing.Size(110, 40);
             this.btn_Cancel.TabIndex = 3;
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
-            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // form_rol
             // 

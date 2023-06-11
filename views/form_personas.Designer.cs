@@ -146,10 +146,9 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_mod_cosecha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_mod_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.editar;
-            this.btn_mod_cosecha.Location = new System.Drawing.Point(2, 2);
-            this.btn_mod_cosecha.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_mod_cosecha.Location = new System.Drawing.Point(3, 3);
             this.btn_mod_cosecha.Name = "btn_mod_cosecha";
-            this.btn_mod_cosecha.Size = new System.Drawing.Size(43, 41);
+            this.btn_mod_cosecha.Size = new System.Drawing.Size(57, 49);
             this.btn_mod_cosecha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_mod_cosecha.TabIndex = 1;
             this.btn_mod_cosecha.TabStop = false;
@@ -158,10 +157,9 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_delete_cosecha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_delete_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.boton_eliminar;
-            this.btn_delete_cosecha.Location = new System.Drawing.Point(49, 2);
-            this.btn_delete_cosecha.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_delete_cosecha.Location = new System.Drawing.Point(66, 3);
             this.btn_delete_cosecha.Name = "btn_delete_cosecha";
-            this.btn_delete_cosecha.Size = new System.Drawing.Size(44, 41);
+            this.btn_delete_cosecha.Size = new System.Drawing.Size(58, 49);
             this.btn_delete_cosecha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_delete_cosecha.TabIndex = 2;
             this.btn_delete_cosecha.TabStop = false;
@@ -229,22 +227,20 @@ namespace sistema_modular_cafe_majada.views
             // dtp_FechaNac
             // 
             this.dtp_FechaNac.CustomFormat = "";
-            this.dtp_FechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_FechaNac.Location = new System.Drawing.Point(11, 187);
-            this.dtp_FechaNac.Margin = new System.Windows.Forms.Padding(2);
+            this.dtp_FechaNac.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_FechaNac.Location = new System.Drawing.Point(15, 230);
             this.dtp_FechaNac.Name = "dtp_FechaNac";
-            this.dtp_FechaNac.Size = new System.Drawing.Size(176, 23);
+            this.dtp_FechaNac.Size = new System.Drawing.Size(233, 33);
             this.dtp_FechaNac.TabIndex = 20;
             // 
             // txb_Tel2
             // 
             this.txb_Tel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Tel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Tel2.Location = new System.Drawing.Point(11, 397);
-            this.txb_Tel2.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Tel2.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Tel2.Location = new System.Drawing.Point(15, 489);
             this.txb_Tel2.Name = "txb_Tel2";
-            this.txb_Tel2.Size = new System.Drawing.Size(231, 23);
+            this.txb_Tel2.Size = new System.Drawing.Size(231, 33);
             this.txb_Tel2.TabIndex = 19;
             // 
             // label3
@@ -284,22 +280,20 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_Tel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Tel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Tel1.Location = new System.Drawing.Point(11, 344);
-            this.txb_Tel1.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Tel1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Tel1.Location = new System.Drawing.Point(15, 423);
             this.txb_Tel1.Name = "txb_Tel1";
-            this.txb_Tel1.Size = new System.Drawing.Size(231, 23);
+            this.txb_Tel1.Size = new System.Drawing.Size(231, 33);
             this.txb_Tel1.TabIndex = 17;
             // 
             // txb_Nombre
             // 
             this.txb_Nombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Nombre.Location = new System.Drawing.Point(10, 28);
-            this.txb_Nombre.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Nombre.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Nombre.Location = new System.Drawing.Point(13, 35);
             this.txb_Nombre.Name = "txb_Nombre";
-            this.txb_Nombre.Size = new System.Drawing.Size(233, 23);
+            this.txb_Nombre.Size = new System.Drawing.Size(233, 33);
             this.txb_Nombre.TabIndex = 1;
             // 
             // label10
@@ -317,33 +311,30 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_Dui.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Dui.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Dui.Location = new System.Drawing.Point(11, 238);
-            this.txb_Dui.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Dui.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Dui.Location = new System.Drawing.Point(15, 293);
             this.txb_Dui.Name = "txb_Dui";
-            this.txb_Dui.Size = new System.Drawing.Size(231, 23);
+            this.txb_Dui.Size = new System.Drawing.Size(231, 33);
             this.txb_Dui.TabIndex = 11;
             // 
             // txb_Nit
             // 
             this.txb_Nit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Nit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Nit.Location = new System.Drawing.Point(11, 292);
-            this.txb_Nit.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Nit.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Nit.Location = new System.Drawing.Point(15, 360);
             this.txb_Nit.Name = "txb_Nit";
-            this.txb_Nit.Size = new System.Drawing.Size(231, 23);
+            this.txb_Nit.Size = new System.Drawing.Size(231, 33);
             this.txb_Nit.TabIndex = 15;
             // 
             // txb_Apellido
             // 
             this.txb_Apellido.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Apellido.Location = new System.Drawing.Point(10, 80);
-            this.txb_Apellido.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Apellido.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Apellido.Location = new System.Drawing.Point(13, 98);
             this.txb_Apellido.Name = "txb_Apellido";
-            this.txb_Apellido.Size = new System.Drawing.Size(233, 23);
+            this.txb_Apellido.Size = new System.Drawing.Size(233, 33);
             this.txb_Apellido.TabIndex = 5;
             // 
             // label5
@@ -372,11 +363,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_Direccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Direccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Direccion.Location = new System.Drawing.Point(11, 133);
-            this.txb_Direccion.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Direccion.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Direccion.Location = new System.Drawing.Point(15, 164);
             this.txb_Direccion.Name = "txb_Direccion";
-            this.txb_Direccion.Size = new System.Drawing.Size(231, 23);
+            this.txb_Direccion.Size = new System.Drawing.Size(231, 33);
             this.txb_Direccion.TabIndex = 7;
             // 
             // label6
@@ -420,20 +410,18 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SavePerson.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
             this.btn_SavePerson.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
             this.btn_SavePerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SavePerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SavePerson.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SavePerson.ForeColor = System.Drawing.Color.White;
             this.btn_SavePerson.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_SavePerson.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_SavePerson.Location = new System.Drawing.Point(14, 2);
-            this.btn_SavePerson.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_SavePerson.Location = new System.Drawing.Point(19, 3);
             this.btn_SavePerson.Name = "btn_SavePerson";
             this.btn_SavePerson.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btn_SavePerson.Size = new System.Drawing.Size(82, 32);
+            this.btn_SavePerson.Size = new System.Drawing.Size(110, 40);
             this.btn_SavePerson.TabIndex = 2;
             this.btn_SavePerson.Text = "Guardar";
             this.btn_SavePerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SavePerson.UseVisualStyleBackColor = false;
-            this.btn_SavePerson.Click += new System.EventHandler(this.SavePerson_Click);
             // 
             // btn_Cancel
             // 
@@ -442,20 +430,18 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.FlatAppearance.BorderSize = 0;
             this.btn_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
             this.btn_Cancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
             this.btn_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Cancel.Location = new System.Drawing.Point(121, 2);
-            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Cancel.Location = new System.Drawing.Point(161, 3);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btn_Cancel.Size = new System.Drawing.Size(82, 32);
+            this.btn_Cancel.Size = new System.Drawing.Size(110, 40);
             this.btn_Cancel.TabIndex = 3;
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
-            this.btn_Cancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel9
             // 
