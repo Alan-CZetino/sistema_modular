@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,29 +19,97 @@ namespace sistema_modular_cafe_majada.views
         {
             InitializeComponent();
 
+            List<TextBox> textBoxes = new List<TextBox>
+            {
+                txb_Tel1,
+                txb_Tel2
+            };
+
+            //RestrictToNumericInputWithFormat(textBoxes);
+
             // Llamar al método para obtener los datos de la base de datos
             var personController = new PersonController();
             List<Persona> datos = personController.ObtenerPersonas();
 
-            //auto ajustar el contenido de los datos al area establecido para el datagrid
-            dataGrid_PersonView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            // Limpia las columnas existentes en el DataGridView
+            dataGrid_PersonView.Columns.Clear();
 
-            // Establece el ancho deseado para la primera columna
-            if (dataGrid_PersonView.Columns.Count > 0)
+            // Crea una nueva columna para cada propiedad en la clase mapeada y asigna los nombres deseados
+            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                // Establece el ancho deseado para la primera columna
-                dataGrid_PersonView.Columns[0].Width = 10;
-            }
-            // Establece el modo de ajuste automático para las demás columnas
-            for (int i = 1; i < dataGrid_PersonView.Columns.Count; i++)
+                DataPropertyName = "IdPersona",
+                HeaderText = "ID Persona"
+            });
+            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                dataGrid_PersonView.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
+                DataPropertyName = "NombresPersona",
+                HeaderText = "Nombres"
+            });
+            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "ApellidosPersona",
+                HeaderText = "Apellidos"
+            });
+            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "DireccionPersona",
+                HeaderText = "Dirección"
+            });
+            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "FechaNacimientoPersona",
+                HeaderText = "Fecha de Nacimiento"
+            });
+            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "NitPersona",
+                HeaderText = "NIT"
+            });
+            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "DuiPersona",
+                HeaderText = "DUI"
+            });
+            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "Telefono1Persona",
+                HeaderText = "Teléfono"
+            });
+            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "Telefono2Persona",
+                HeaderText = "Teléfono Secundario"
+            });
+
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dataGrid_PersonView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             // Asignar los datos al DataGridView
             dataGrid_PersonView.DataSource = datos;
 
         }
+
+        //funcion para restringir cual quier caracter y solo acepta unicamente n
+        
+        // Evento CellPainting para personalizar el encabezado del DataGridView
+        private void dataGrid_PersonView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                // Centrar el texto del encabezado
+                e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                // Dibujar el fondo del encabezado
+                e.PaintBackground(e.CellBounds, true);
+
+                // Dibujar el texto del encabezado
+                e.PaintContent(e.CellBounds);
+
+                // Evitar que se dibuje el encabezado predeterminado
+                e.Handled = true;
+            }
+        }
+
 
         private void SavePerson_Click(object sender, EventArgs e)
         {
@@ -55,7 +124,7 @@ namespace sistema_modular_cafe_majada.views
             string nit = txb_Nit.Text;
             string phone1 = txb_Tel1.Text;
             string phone2 = txb_Tel2.Text;
-            DateTime fechaSeleccionada = txb_FechaNac.Value;
+            DateTime fechaSeleccionada = dtp_FechaNac.Value;
 
             // Crear una instancia de la clase Persona con los valores obtenidos
             Persona persona = new Persona()
@@ -108,7 +177,7 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Text = "";
             }
 
-            txb_FechaNac.Value = DateTime.Now;
+            dtp_FechaNac.Value = DateTime.Now;
         }
 
         public void ConvertFirstCharacter(TextBox[] textBoxes)

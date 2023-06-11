@@ -26,20 +26,18 @@ namespace sistema_modular_cafe_majada.views
         {
             ClearDataTxb();
         }
+
         public void ClearDataTxb()
         {
-            List<TextBox> txb = new List<TextBox> { txb_NameRol, txb_Description, txb_license};
+            List<TextBox> txb = new List<TextBox> { txb_NameRol, txb_Description, txb_permits};
 
             foreach (TextBox textBox in txb)
             {
                 textBox.Text = "";
             }
+            cbx_access.Items.Clear(); // Eliminar todos los elementos del ComboBox
+            cbx_access.SelectedIndex = -1; // Deseleccionar cualquier elemento seleccionado previamente
 
-            cbx_LevelAcces.Items.Clear(); // Eliminar todos los elementos del ComboBox
-            cbx_LevelAcces.SelectedIndex = -1; // Deseleccionar cualquier elemento seleccionado previamente
-
-            dateTimePicker1.Value = DateTime.Now;
-            dateTimePicker2.Value = DateTime.Now;
         }
     }
 }

@@ -35,11 +35,13 @@ namespace sistema_modular_cafe_majada.views
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_mod_cosecha = new System.Windows.Forms.PictureBox();
+            this.btn_delete_cosecha = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.txb_FechaNac = new System.Windows.Forms.DateTimePicker();
+            this.dtp_FechaNac = new System.Windows.Forms.DateTimePicker();
             this.txb_Tel2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -56,12 +58,10 @@ namespace sistema_modular_cafe_majada.views
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.SavePerson = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btn_SavePerson = new System.Windows.Forms.Button();
+            this.btn_Cancel = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dataGrid_PersonView = new System.Windows.Forms.DataGridView();
-            this.btn_mod_cosecha = new System.Windows.Forms.PictureBox();
-            this.btn_delete_cosecha = new System.Windows.Forms.PictureBox();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_mod_cosecha)).BeginInit();
@@ -203,7 +203,7 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
-            this.panel8.Controls.Add(this.txb_FechaNac);
+            this.panel8.Controls.Add(this.dtp_FechaNac);
             this.panel8.Controls.Add(this.txb_Tel2);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.label11);
@@ -226,24 +226,15 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Size = new System.Drawing.Size(222, 295);
             this.panel8.TabIndex = 5;
             // 
-            // dateTimePicker1
+            // dtp_FechaNac
             // 
-            this.txb_FechaNac.CustomFormat = "";
-            this.txb_FechaNac.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_FechaNac.Location = new System.Drawing.Point(15, 230);
-            this.txb_FechaNac.Name = "dateTimePicker1";
-            this.txb_FechaNac.Size = new System.Drawing.Size(233, 33);
-            this.txb_FechaNac.TabIndex = 20;
-            // 
-            // textBox9
-            // 
-            this.txb_FechaNac.CustomFormat = "";
-            this.txb_FechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_FechaNac.Location = new System.Drawing.Point(11, 187);
-            this.txb_FechaNac.Margin = new System.Windows.Forms.Padding(2);
-            this.txb_FechaNac.Name = "txb_FechaNac";
-            this.txb_FechaNac.Size = new System.Drawing.Size(176, 23);
-            this.txb_FechaNac.TabIndex = 20;
+            this.dtp_FechaNac.CustomFormat = "";
+            this.dtp_FechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_FechaNac.Location = new System.Drawing.Point(11, 187);
+            this.dtp_FechaNac.Margin = new System.Windows.Forms.Padding(2);
+            this.dtp_FechaNac.Name = "dtp_FechaNac";
+            this.dtp_FechaNac.Size = new System.Drawing.Size(176, 23);
+            this.dtp_FechaNac.TabIndex = 20;
             // 
             // txb_Tel2
             // 
@@ -412,8 +403,8 @@ namespace sistema_modular_cafe_majada.views
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.SavePerson);
-            this.panel7.Controls.Add(this.btnCancel);
+            this.panel7.Controls.Add(this.btn_SavePerson);
+            this.panel7.Controls.Add(this.btn_Cancel);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel7.Location = new System.Drawing.Point(0, 295);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
@@ -421,50 +412,50 @@ namespace sistema_modular_cafe_majada.views
             this.panel7.Size = new System.Drawing.Size(222, 38);
             this.panel7.TabIndex = 4;
             // 
-            // SavePerson
+            // btn_SavePerson
             // 
-            this.SavePerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SavePerson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
-            this.SavePerson.FlatAppearance.BorderSize = 0;
-            this.SavePerson.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
-            this.SavePerson.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
-            this.SavePerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SavePerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SavePerson.ForeColor = System.Drawing.Color.White;
-            this.SavePerson.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
-            this.SavePerson.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SavePerson.Location = new System.Drawing.Point(14, 2);
-            this.SavePerson.Margin = new System.Windows.Forms.Padding(2);
-            this.SavePerson.Name = "SavePerson";
-            this.SavePerson.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.SavePerson.Size = new System.Drawing.Size(82, 32);
-            this.SavePerson.TabIndex = 2;
-            this.SavePerson.Text = "Guardar";
-            this.SavePerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.SavePerson.UseVisualStyleBackColor = false;
-            this.SavePerson.Click += new System.EventHandler(this.SavePerson_Click);
+            this.btn_SavePerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_SavePerson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.btn_SavePerson.FlatAppearance.BorderSize = 0;
+            this.btn_SavePerson.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
+            this.btn_SavePerson.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
+            this.btn_SavePerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SavePerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SavePerson.ForeColor = System.Drawing.Color.White;
+            this.btn_SavePerson.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
+            this.btn_SavePerson.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_SavePerson.Location = new System.Drawing.Point(14, 2);
+            this.btn_SavePerson.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_SavePerson.Name = "btn_SavePerson";
+            this.btn_SavePerson.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.btn_SavePerson.Size = new System.Drawing.Size(82, 32);
+            this.btn_SavePerson.TabIndex = 2;
+            this.btn_SavePerson.Text = "Guardar";
+            this.btn_SavePerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_SavePerson.UseVisualStyleBackColor = false;
+            this.btn_SavePerson.Click += new System.EventHandler(this.SavePerson_Click);
             // 
-            // btnCancel
+            // btn_Cancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(121, 2);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btnCancel.Size = new System.Drawing.Size(82, 32);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancelar";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btn_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btn_Cancel.FlatAppearance.BorderSize = 0;
+            this.btn_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
+            this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.ForeColor = System.Drawing.Color.White;
+            this.btn_Cancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
+            this.btn_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Cancel.Location = new System.Drawing.Point(121, 2);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.btn_Cancel.Size = new System.Drawing.Size(82, 32);
+            this.btn_Cancel.TabIndex = 3;
+            this.btn_Cancel.Text = "Cancelar";
+            this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_Cancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel9
             // 
@@ -493,70 +484,7 @@ namespace sistema_modular_cafe_majada.views
             this.dataGrid_PersonView.RowTemplate.Height = 24;
             this.dataGrid_PersonView.Size = new System.Drawing.Size(501, 323);
             this.dataGrid_PersonView.TabIndex = 0;
-            this.dataGrid_PersonView.SelectionChanged += new System.EventHandler(this.dataGrid_PersonView_SelectionChanged);
-            // 
-            // button1
-            // 
-            this.SavePerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SavePerson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
-            this.SavePerson.FlatAppearance.BorderSize = 0;
-            this.SavePerson.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
-            this.SavePerson.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
-            this.SavePerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SavePerson.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SavePerson.ForeColor = System.Drawing.Color.White;
-            this.SavePerson.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
-            this.SavePerson.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SavePerson.Location = new System.Drawing.Point(19, 3);
-            this.SavePerson.Name = "button1";
-            this.SavePerson.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.SavePerson.Size = new System.Drawing.Size(110, 40);
-            this.SavePerson.TabIndex = 2;
-            this.SavePerson.Text = "Guardar";
-            this.SavePerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.SavePerson.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
-            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(161, 3);
-            this.btnCancel.Name = "button2";
-            this.btnCancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btnCancel.Size = new System.Drawing.Size(110, 40);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancelar";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.UseVisualStyleBackColor = false;
-            // 
-            // btn_mod_cosecha
-            // 
-            this.btn_mod_cosecha.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_mod_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.editar;
-            this.btn_mod_cosecha.Location = new System.Drawing.Point(3, 3);
-            this.btn_mod_cosecha.Name = "btn_mod_cosecha";
-            this.btn_mod_cosecha.Size = new System.Drawing.Size(57, 49);
-            this.btn_mod_cosecha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btn_mod_cosecha.TabIndex = 1;
-            this.btn_mod_cosecha.TabStop = false;
-            // 
-            // btn_delete_cosecha
-            // 
-            this.btn_delete_cosecha.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_delete_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.boton_eliminar;
-            this.btn_delete_cosecha.Location = new System.Drawing.Point(66, 3);
-            this.btn_delete_cosecha.Name = "btn_delete_cosecha";
-            this.btn_delete_cosecha.Size = new System.Drawing.Size(58, 49);
-            this.btn_delete_cosecha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btn_delete_cosecha.TabIndex = 2;
-            this.btn_delete_cosecha.TabStop = false;
+            this.dataGrid_PersonView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGrid_PersonView_CellPainting);
             // 
             // form_personas
             // 
@@ -606,8 +534,8 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txb_Apellido;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button SavePerson;
+        private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.Button btn_SavePerson;
         private System.Windows.Forms.TextBox txb_Nombre;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
@@ -623,6 +551,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.TextBox txb_Nit;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.DataGridView dataGrid_PersonView;
-        private System.Windows.Forms.DateTimePicker txb_FechaNac;
+        private System.Windows.Forms.DateTimePicker dtp_FechaNac;
     }
 }

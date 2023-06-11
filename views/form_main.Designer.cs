@@ -158,6 +158,7 @@ namespace sistema_modular_cafe_majada
             this.btn_CloseSection.TabIndex = 6;
             this.btn_CloseSection.Text = "Cerrar Sesión";
             this.btn_CloseSection.UseVisualStyleBackColor = true;
+            this.btn_CloseSection.Click += new System.EventHandler(this.btn_CloseSection_Click);
             // 
             // btn_admin_panel
             // 

@@ -42,17 +42,17 @@ namespace sistema_modular_cafe_majada.views
             this.dtgv_roles = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbx_access = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txb_NameRol = new System.Windows.Forms.TextBox();
             this.txb_Description = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txb_permits = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_SaveRol = new System.Windows.Forms.Button();
+            this.btn_Cancel = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_mod_rol)).BeginInit();
@@ -206,14 +206,14 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
-            this.panel8.Controls.Add(this.comboBox1);
+            this.panel8.Controls.Add(this.cbx_access);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.txb_NameRol);
             this.panel8.Controls.Add(this.txb_Description);
             this.panel8.Controls.Add(this.label5);
             this.panel8.Controls.Add(this.label6);
-            this.panel8.Controls.Add(this.textBox4);
+            this.panel8.Controls.Add(this.txb_permits);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -221,14 +221,15 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Size = new System.Drawing.Size(222, 257);
             this.panel8.TabIndex = 7;
             // 
-            // comboBox1
+            // cbx_access
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 165);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(210, 37);
-            this.comboBox1.TabIndex = 20;
+            this.cbx_access.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_access.FormattingEnabled = true;
+            this.cbx_access.Location = new System.Drawing.Point(11, 134);
+            this.cbx_access.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbx_access.Name = "cbx_access";
+            this.cbx_access.Size = new System.Drawing.Size(158, 25);
+            this.cbx_access.TabIndex = 20;
             // 
             // label3
             // 
@@ -256,21 +257,23 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_NameRol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(13, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(233, 33);
-            this.textBox1.TabIndex = 1;
+            this.txb_NameRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_NameRol.Location = new System.Drawing.Point(10, 28);
+            this.txb_NameRol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_NameRol.Name = "txb_NameRol";
+            this.txb_NameRol.Size = new System.Drawing.Size(176, 23);
+            this.txb_NameRol.TabIndex = 1;
             // 
             // txb_Description
             // 
             this.txb_Description.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(13, 98);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(233, 33);
-            this.textBox2.TabIndex = 5;
+            this.txb_Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Description.Location = new System.Drawing.Point(10, 80);
+            this.txb_Description.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_Description.Name = "txb_Description";
+            this.txb_Description.Size = new System.Drawing.Size(176, 23);
+            this.txb_Description.TabIndex = 5;
             // 
             // label5
             // 
@@ -294,15 +297,16 @@ namespace sistema_modular_cafe_majada.views
             this.label6.TabIndex = 8;
             this.label6.Text = "Permisos ";
             // 
-            // textBox4
+            // txb_permits
             // 
-            this.txb_license.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txb_permits.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(15, 230);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(231, 33);
-            this.textBox4.TabIndex = 9;
+            this.txb_permits.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_permits.Location = new System.Drawing.Point(11, 187);
+            this.txb_permits.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_permits.Name = "txb_permits";
+            this.txb_permits.Size = new System.Drawing.Size(174, 23);
+            this.txb_permits.TabIndex = 9;
             // 
             // panel7
             // 
@@ -411,10 +415,10 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.TextBox txb_Description;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txb_permits;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btn_SaveRol;
+        private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.ComboBox cbx_access;
     }
 }
