@@ -28,8 +28,8 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
 
                 // Crea la consulta para insertar la persona en la base de datos
                 string consulta = "INSERT INTO Persona (id_persona, nombres_persona, apellidos_persona, direccion_persona, fecha_nac_persona, nit_persona, dui_persona, tel1_persona, tel2_persona)" +
-                                   "VALUES(@IdPersona AS Id, @NombresPersona AS Nombres, @ApellidosPersona AS Apellidos, @DireccionPersona AS Direccion, @FechaNacimientoPersona AS Fecha Nacimiento, " +
-                                   "@NitPersona AS NIT, @DuiPersona AS DUI, @Telefono1Persona AS Telefono, @Telefono2Persona AS Telefono Secundario)";
+                                   "VALUES(@IdPersona , @NombresPersona , @ApellidosPersona, @DireccionPersona, @FechaNacimientoPersona, " +
+                                   "@NitPersona, @DuiPersona , @Telefono1Persona, @Telefono2Persona)";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@IdPersona", persona.IdPersona);

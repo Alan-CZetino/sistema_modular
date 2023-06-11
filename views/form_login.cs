@@ -106,6 +106,10 @@ namespace sistema_modular_cafe_majada
             {
                 try
                 {
+                    /*
+                    form_main form_Main = new form_main();
+                    form_Main.NombreUsuario = txb_username.Text;*/
+
                     //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
                     log.RegistrarLog(usuario.IdUsuario, "Inicio seccion satisfactoriamente", usuario.DeptoUsuario, "Inicio de Seccion", "Intentos realizados " + contador);
                     contador = 0;

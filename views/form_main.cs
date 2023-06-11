@@ -9,17 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using sistema_modular_cafe_majada.views;
+using sistema_modular_cafe_majada.model.UserData;
 
 namespace sistema_modular_cafe_majada
 {
     public partial class form_main : Form
     {
+        //public string NombreUsuario { get; set; }
+
         public form_main()
         {
             InitializeComponent();
 
             //codigo para maximizar a pantalla completa solamente en area de trabajo
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
+            /*Console.WriteLine("Nombre usuario " + NombreUsuario);
+            lbl_User.Text = NombreUsuario;*/
         }
 
         private void form_main_Load(object sender, EventArgs e)

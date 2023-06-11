@@ -15,17 +15,20 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_personas : Form
     {
+        
         public form_personas()
         {
             InitializeComponent();
 
-            List<TextBox> textBoxes = new List<TextBox>
-            {
-                txb_Tel1,
-                txb_Tel2
-            };
+            //funcion que restringe el uso de caracteres en los textbox necesarios
+            List<TextBox> textBoxListN = new List<TextBox> { txb_Tel1, txb_Tel2, txb_Nit, txb_Dui };
+            List<TextBox> textBoxListC = new List<TextBox> { txb_Nombre, txb_Apellido};
+            RestrictTextBoxTel(textBoxListN);
+            RestrictTextBoxCharacter(textBoxListC);
 
-            //RestrictToNumericInputWithFormat(textBoxes);
+            LimitDigits(txb_Tel1, 8);
+            LimitDigits(txb_Tel2, 8);
+            LimitDigits(txb_Dui, 9);
 
             // Llamar al método para obtener los datos de la base de datos
             var personController = new PersonController();
@@ -90,7 +93,8 @@ namespace sistema_modular_cafe_majada.views
         }
 
         //funcion para restringir cual quier caracter y solo acepta unicamente n
-        
+
+
         // Evento CellPainting para personalizar el encabezado del DataGridView
         private void dataGrid_PersonView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -213,29 +217,112 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
-        private void dataGrid_PersonView_SelectionChanged(object sender, EventArgs e)
+        private void txb_Tel1_Leave(object sender, EventArgs e)
         {
-            /*if (dataGrid_PersonView.SelectedRows.Count > 0)
+            FormatPhoneNumber(txb_Tel1);
+        }
+
+        private void FormatPhoneNumber(TextBox textBox)
+        {
+            
+            string input = textBox.Text;
+
+            // Verificar si hay suficientes dígitos para el número de teléfono
+            if (input.Length >= 8)
             {
-                DataGridViewRow filaSeleccionada = dataGrid_PersonView.SelectedRows[0];
+                string codigoPais = "(+503)";
+                string prefijo = input.Substring(0, 4);
+                string sufijo = input.Substring(4);
 
-                //int id = Convert.ToInt32(filaSeleccionada.Cells["id_persona"].Value);
-                string nombres = filaSeleccionada.Cells["nombres_persona"].Value.ToString();
-                string apellidos = filaSeleccionada.Cells["apellidos_persona"].Value.ToString();
-                string direccion = filaSeleccionada.Cells["direccion_persona"].Value.ToString();
-                DateTime fechaNacimiento = Convert.ToDateTime(filaSeleccionada.Cells["fecha_nac_persona"].Value);
-                string dui = filaSeleccionada.Cells["dui_persona"].Value.ToString();
-                string nit = filaSeleccionada.Cells["nit_persona"].Value != null ? filaSeleccionada.Cells["nit_persona"].Value.ToString() : null;
-                string tel1 = filaSeleccionada.Cells["tel1_persona"].Value.ToString();
-                string tel2 = filaSeleccionada.Cells["tel2_persona"].Value != null ? filaSeleccionada.Cells["tel2_persona"].Value.ToString() : null;
+                // Formatear el número de teléfono completo
+                string numeroTelefono = $"{codigoPais} {prefijo} - {sufijo}";
 
-                txb_Nombre.Text = nombres;
-                txb_Apellido.Text = apellidos;
-                //ActualizarPersona(id, nombres, apellidos, direccion, fechaNacimiento, dui, nit, tel1, tel2);
+                // Establecer el texto formateado en el TextBox
+                textBox.Text = numeroTelefono;
             }
+            else
+            {
+                // Si no hay suficientes dígitos, establecer el texto ingresado sin formato
+                textBox.Text = input;
+            }
+        }
 
-            */
+        private void FormatDui(TextBox textBox)
+        {
 
+            string input = textBox.Text;
+
+            // Verificar si hay suficientes dígitos para el número de teléfono
+            if (input.Length >= 9)
+            {
+                string prefijo = input.Substring(0, 8);
+                string sufijo = input.Substring(8);
+
+                // Formatear el número de teléfono completo
+                string numeroTelefono = $"{prefijo} - {sufijo}";
+
+                // Establecer el texto formateado en el TextBox
+                textBox.Text = numeroTelefono;
+            }
+            else
+            {
+                // Si no hay suficientes dígitos, establecer el texto ingresado sin formato
+                textBox.Text = input;
+            }
+        }
+
+        public void LimitDigits(TextBox textBox, int maxLength)
+        {
+            textBox.KeyPress += (sender, e) =>
+            {
+                // Verificar si el carácter ingresado es un dígito y si la longitud máxima se ha alcanzado
+                if (char.IsDigit(e.KeyChar) && textBox.Text.Length >= maxLength)
+                {
+                    e.Handled = true; // Cancela el evento KeyPress para evitar que se ingrese el dígito
+                }
+            };
+        }
+
+        public void RestrictTextBoxTel(List<TextBox> textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.KeyPress += (sender, e) =>
+                {
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                    {
+                        e.Handled = true; // Cancela el evento KeyPress si no es un dígito o una tecla de control
+                    }
+                };
+            }
+        }
+
+        public void RestrictTextBoxCharacter(List<TextBox> textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.TextChanged += (sender, e) =>
+                {
+                    TextBox currentTextBox = (TextBox)sender;
+                    string text = currentTextBox.Text;
+
+                    // Eliminar caracteres no alfabéticos (letras)
+                    string alphabeticText = new string(text.Where(char.IsLetter).ToArray());
+
+                    // Actualizar el texto en el TextBox
+                    currentTextBox.Text = alphabeticText;
+                };
+            }
+        }
+
+        private void txb_Tel2_Leave(object sender, EventArgs e)
+        {
+            FormatPhoneNumber(txb_Tel2);
+        }
+
+        private void txb_Dui_Leave(object sender, EventArgs e)
+        {
+            FormatDui(txb_Dui);
         }
     }
 }
