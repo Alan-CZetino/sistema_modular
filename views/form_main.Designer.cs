@@ -284,6 +284,7 @@ namespace sistema_modular_cafe_majada
             this.Text = "form_main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.form_main_Load);
+            this.Shown += new System.EventHandler(this.form_main_Shown);
             this.barra_controles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btn_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_max)).EndInit();

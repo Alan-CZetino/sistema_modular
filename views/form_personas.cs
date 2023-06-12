@@ -1,4 +1,5 @@
-﻿using sistema_modular_cafe_majada.controller.UserDataController;
+﻿using sistema_modular_cafe_majada.controller.SecurityData;
+using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.UserData;
 using System;
 using System.Collections.Generic;
@@ -15,15 +16,19 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_personas : Form
     {
-        
         public form_personas()
         {
             InitializeComponent();
 
+            // Mensaje de depuración
+            Console.WriteLine("Constructor - Nombre de usuario: " + UsuarioActual.NombreUsuario);
+
             //funcion que restringe el uso de caracteres en los textbox necesarios
             List<TextBox> textBoxListN = new List<TextBox> { txb_Tel1, txb_Tel2, txb_Nit, txb_Dui };
             List<TextBox> textBoxListC = new List<TextBox> { txb_Nombre, txb_Apellido};
-            RestrictTextBoxTel(textBoxListN);
+
+            //funcion para restringir cual quier caracter y solo acepta unicamente num
+            RestrictTextBoxNum(textBoxListN);
             RestrictTextBoxCharacter(textBoxListC);
 
             LimitDigits(txb_Tel1, 8);
@@ -92,9 +97,6 @@ namespace sistema_modular_cafe_majada.views
 
         }
 
-        //funcion para restringir cual quier caracter y solo acepta unicamente n
-
-
         // Evento CellPainting para personalizar el encabezado del DataGridView
         private void dataGrid_PersonView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -117,6 +119,10 @@ namespace sistema_modular_cafe_majada.views
 
         private void SavePerson_Click(object sender, EventArgs e)
         {
+            LogController log = new LogController();
+            var userDao = new model.DAO.UserDAO();
+            var usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+            
             TextBox[] textBoxes = { txb_Nombre, txb_Apellido, txb_Direccion };
             ConvertFirstCharacter(textBoxes);
 
@@ -150,7 +156,16 @@ namespace sistema_modular_cafe_majada.views
             if (exito)
             {
                 MessageBox.Show("Persona guardada exitosamente");
-
+                try
+                {
+                    //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                    log.RegistrarLog(usuario.IdUsuario, "Registro dato Persona", usuario.DeptoUsuario, "Insercion", "Inserto una nueva persona a la base de datos");
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                }
                 // Llamar al método para obtener los datos de la base de datos
                 var personController = new PersonController();
                 List<Persona> datos = personController.ObtenerPersonas();
@@ -283,7 +298,7 @@ namespace sistema_modular_cafe_majada.views
             };
         }
 
-        public void RestrictTextBoxTel(List<TextBox> textBoxes)
+        public void RestrictTextBoxNum(List<TextBox> textBoxes)
         {
             foreach (TextBox textBox in textBoxes)
             {
@@ -306,11 +321,11 @@ namespace sistema_modular_cafe_majada.views
                     TextBox currentTextBox = (TextBox)sender;
                     string text = currentTextBox.Text;
 
-                    // Eliminar caracteres no alfabéticos (letras)
-                    string alphabeticText = new string(text.Where(char.IsLetter).ToArray());
+                    // Eliminar caracteres no alfabéticos, espacios y tildes
+                    string filteredText = new string(text.Where(c => char.IsLetter(c) || c == ' ' || c.ToString() == "á" || c.ToString() == "é" || c.ToString() == "í" || c.ToString() == "ó" || c.ToString() == "ú").ToArray());
 
                     // Actualizar el texto en el TextBox
-                    currentTextBox.Text = alphabeticText;
+                    currentTextBox.Text = filteredText;
                 };
             }
         }

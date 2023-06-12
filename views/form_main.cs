@@ -15,7 +15,18 @@ namespace sistema_modular_cafe_majada
 {
     public partial class form_main : Form
     {
-        //public string NombreUsuario { get; set; }
+        private string _nombreUsuario;
+
+        public string NombreUsuario
+        {
+            get { return _nombreUsuario; }
+            set
+            {
+                _nombreUsuario = value;
+                lbl_User.Text = _nombreUsuario;
+                //Console.WriteLine("mapeo - Nombre de usuario: " + NombreUsuario);
+            }
+        }
 
         public form_main()
         {
@@ -24,8 +35,11 @@ namespace sistema_modular_cafe_majada
             //codigo para maximizar a pantalla completa solamente en area de trabajo
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
-            /*Console.WriteLine("Nombre usuario " + NombreUsuario);
-            lbl_User.Text = NombreUsuario;*/
+            // Código 
+            this.Shown += form_main_Shown;
+            // Mensaje de depuración
+            //Console.WriteLine("Constructor - Nombre de usuario: " + NombreUsuario);
+
         }
 
         private void form_main_Load(object sender, EventArgs e)
@@ -48,7 +62,6 @@ namespace sistema_modular_cafe_majada
             {
                 this.panel_container.Controls.RemoveAt(0);
             }
-
 
             fp.TopLevel = false;
             this.panel_container.Controls.Add(fp);
@@ -111,6 +124,11 @@ namespace sistema_modular_cafe_majada
             form_Login.Show();
 
             this.Close();
+        }
+
+        private void form_main_Shown(object sender, EventArgs e)
+        {
+            lbl_User.Text = NombreUsuario;
         }
     }
 }
