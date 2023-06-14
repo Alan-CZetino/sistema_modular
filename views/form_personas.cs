@@ -1,5 +1,6 @@
 ﻿using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
+using sistema_modular_cafe_majada.model.DAO;
 using sistema_modular_cafe_majada.model.UserData;
 using System;
 using System.Collections.Generic;
@@ -16,111 +17,131 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_personas : Form
     {
+        //variable global para verificar el estado del boton actualizar
+        private bool imagenClickeada = false;
+        //instancia de la clase mapeo persona para capturar los datos seleccionado por el usuario
+        private Persona personaSeleccionada;
+
         public form_personas()
         {
             InitializeComponent();
 
-            // Mensaje de depuración
-            Console.WriteLine("Constructor - Nombre de usuario: " + UsuarioActual.NombreUsuario);
-
             //funcion que restringe el uso de caracteres en los textbox necesarios
             List<TextBox> textBoxListN = new List<TextBox> { txb_Tel1, txb_Tel2, txb_Nit, txb_Dui };
-            List<TextBox> textBoxListC = new List<TextBox> { txb_Nombre, txb_Apellido};
+            List<TextBox> textBoxListC = new List<TextBox> { txb_Nombre, txb_Apellido };
 
             //funcion para restringir cual quier caracter y solo acepta unicamente num
             RestrictTextBoxNum(textBoxListN);
             RestrictTextBoxCharacter(textBoxListC);
 
-            LimitDigits(txb_Tel1, 8);
-            LimitDigits(txb_Tel2, 8);
+            
             LimitDigits(txb_Dui, 9);
-
-            // Llamar al método para obtener los datos de la base de datos
-            var personController = new PersonController();
-            List<Persona> datos = personController.ObtenerPersonas();
-
-            // Limpia las columnas existentes en el DataGridView
-            dataGrid_PersonView.Columns.Clear();
-
-            // Crea una nueva columna para cada propiedad en la clase mapeada y asigna los nombres deseados
-            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                DataPropertyName = "IdPersona",
-                HeaderText = "ID Persona"
-            });
-            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                DataPropertyName = "NombresPersona",
-                HeaderText = "Nombres"
-            });
-            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                DataPropertyName = "ApellidosPersona",
-                HeaderText = "Apellidos"
-            });
-            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                DataPropertyName = "DireccionPersona",
-                HeaderText = "Dirección"
-            });
-            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                DataPropertyName = "FechaNacimientoPersona",
-                HeaderText = "Fecha de Nacimiento"
-            });
-            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                DataPropertyName = "NitPersona",
-                HeaderText = "NIT"
-            });
-            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                DataPropertyName = "DuiPersona",
-                HeaderText = "DUI"
-            });
-            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                DataPropertyName = "Telefono1Persona",
-                HeaderText = "Teléfono"
-            });
-            dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                DataPropertyName = "Telefono2Persona",
-                HeaderText = "Teléfono Secundario"
-            });
 
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dataGrid_PersonView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Asignar los datos al DataGridView
-            dataGrid_PersonView.DataSource = datos;
+            //funcion para mostrar de inicio los datos en el dataGrid
+            ShowPersonGrid();
 
+            dataGrid_PersonView.CellPainting += dataGrid_PersonView_CellPainting;
+        }
+
+        // Función para verificar si un TextBox está vacío
+        private bool IsTextBoxEmpty(TextBox textBox)
+        {
+            return string.IsNullOrEmpty(textBox.Text);
+        }
+
+        private void form_personas_Load(object sender, EventArgs e)
+        {
+            // Verificar si ya se agregaron las columnas al DataGridView
+            if (dataGrid_PersonView.Columns.Count == 0)
+            {
+                // Crea una nueva columna para cada propiedad en la clase mapeada y asigna los nombres deseados
+                dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "ID",
+                    HeaderText = "ID Persona",
+                    DisplayIndex = 0
+                });
+                
+                dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "Nombres",
+                    HeaderText = "Nombres",
+                    DisplayIndex = 1
+                });
+                dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "Apellidos",
+                    HeaderText = "Apellidos",
+                    DisplayIndex = 2
+                });
+                dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "Dirección",
+                    HeaderText = "Dirección",
+                    DisplayIndex = 3
+                });
+                dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "Fecha_Nacimiento",
+                    HeaderText = "Fecha de Nacimiento",
+                    DisplayIndex = 4
+                });
+                dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "NIT",
+                    HeaderText = "NIT",
+                    DisplayIndex = 5
+                });
+                dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "DUI",
+                    HeaderText = "DUI",
+                    DisplayIndex = 6
+                });
+                dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "Teléfono",
+                    HeaderText = "Teléfono",
+                    DisplayIndex = 7
+                });
+                dataGrid_PersonView.Columns.Add(new DataGridViewTextBoxColumn()
+                {
+                    DataPropertyName = "Teléfono_Secundario",
+                    HeaderText = "Teléfono Secundario",
+                    DisplayIndex = 8
+                });
+            }
         }
 
         // Evento CellPainting para personalizar el encabezado del DataGridView
         private void dataGrid_PersonView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            string headerColorHex = "#D7D7D7"; // Color hexadecimal deseado
+
+            Color headerColor = ColorTranslator.FromHtml(headerColorHex);
+
+            if (e.RowIndex == -1)
             {
-                // Centrar el texto del encabezado
-                e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-                // Dibujar el fondo del encabezado
-                e.PaintBackground(e.CellBounds, true);
-
-                // Dibujar el texto del encabezado
-                e.PaintContent(e.CellBounds);
-
-                // Evitar que se dibuje el encabezado predeterminado
-                e.Handled = true;
+                using (SolidBrush brush = new SolidBrush(headerColor))
+                {
+                    e.Graphics.FillRectangle(brush, e.CellBounds);
+                    // Centrar el texto del encabezado
+                    e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    // Dibujar el fondo del encabezado
+                    e.PaintContent(e.CellBounds);
+                    e.Handled = true;
+                }
             }
         }
 
-
         private void SavePerson_Click(object sender, EventArgs e)
         {
+            PersonController personaController = new PersonController();
             LogController log = new LogController();
-            var userDao = new model.DAO.UserDAO();
+            var userDao = new UserDAO();
             var usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
             
             TextBox[] textBoxes = { txb_Nombre, txb_Apellido, txb_Direccion };
@@ -149,41 +170,72 @@ namespace sistema_modular_cafe_majada.views
                 FechaNacimientoPersona = fechaSeleccionada
             };
 
-            // Llamar al controlador para insertar la persona en la base de datos
-            PersonController personaController = new PersonController();
-            bool exito = personaController.InsertarPersona(persona);
-
-            if (exito)
+            if (!imagenClickeada)
             {
-                MessageBox.Show("Persona guardada exitosamente");
-                try
-                {
-                    //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                    log.RegistrarLog(usuario.IdUsuario, "Registro dato Persona", usuario.DeptoUsuario, "Insercion", "Inserto una nueva persona a la base de datos");
-                    
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al obtener el usuario: " + ex.Message);
-                }
-                // Llamar al método para obtener los datos de la base de datos
-                var personController = new PersonController();
-                List<Persona> datos = personController.ObtenerPersonas();
+                // Código que se ejecutará si no se ha hecho clic en la imagen update
+                // Llamar al controlador para insertar la persona en la base de datos
+                bool exito = personaController.InsertarPersona(persona);
 
-                // Asignar los nuevos datos al DataGridView
-                dataGrid_PersonView.DataSource = datos;
+                if (exito)
+                {
+                    MessageBox.Show("Persona agregada correctamente.");
+                    try
+                    {
+                        //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                        log.RegistrarLog(usuario.IdUsuario, "Registro dato Persona", usuario.DeptoUsuario, "Insercion", "Inserto una nueva persona a la base de datos");
 
-                ClearDataTxb();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                    }
+
+                    //funcion para actualizar los datos en el dataGrid
+                    ShowPersonGrid();
+
+                    //borrar datos de los textbox
+                    ClearDataTxb();
+                }
+                else
+                {
+                    MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.");
+                }
             }
             else
             {
-                MessageBox.Show("Error al guardar la persona");
+                // Código que se ejecutará si se ha hecho clic en la imagen update
+                bool exito = personaController.ActualizarPersona(personaSeleccionada.IdPersona, namePerson, lastNamePerson, location, fechaSeleccionada, nit, dui, phone1, phone2);
+
+                if (exito)
+                {
+                    MessageBox.Show("Persona actualizada correctamente.");
+                    try
+                    {
+                        log.RegistrarLog(usuario.IdUsuario, "Actualizacion de dato Persona", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos de la persona con ID " + personaSeleccionada.IdPersona + " en la base de datos");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                    }
+
+                    //funcion para actualizar los datos en el dataGrid
+                    ShowPersonGrid();
+
+                    ClearDataTxb();
+                }
+                else
+                {
+                    MessageBox.Show("Error al actualizar la persona. Verifica los datos e intenta nuevamente.");
+                }
+                imagenClickeada = false;
             }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
+            imagenClickeada = false;
         }
 
         public void ClearDataTxb()
@@ -193,10 +245,34 @@ namespace sistema_modular_cafe_majada.views
 
             foreach (TextBox textBox in txb)
             {
-                textBox.Text = "";
+                textBox.Clear();
             }
 
             dtp_FechaNac.Value = DateTime.Now;
+        }
+
+        public void ShowPersonGrid()
+        {
+            // Llamar al método para obtener los datos de la base de datos
+            var personController = new PersonController();
+            List<Persona> datos = personController.ObtenerPersonas();
+
+            var datosPersonalizados = datos.Select(persona => new
+            {
+                ID = persona.IdPersona,
+                Nombres = persona.NombresPersona,
+                Apellidos = persona.ApellidosPersona,
+                Dirección = persona.DireccionPersona,
+                Fecha_Nacimiento = persona.FechaNacimientoPersona,
+                NIT = persona.NitPersona,
+                DUI = persona.DuiPersona,
+                Teléfono = persona.Telefono1Persona,
+                Teléfono_Secundario = persona.Telefono2Persona
+            }).ToList();
+
+            // Asignar los datos al DataGridView
+            dataGrid_PersonView.DataSource = datosPersonalizados;
+
         }
 
         public void ConvertFirstCharacter(TextBox[] textBoxes)
@@ -234,12 +310,15 @@ namespace sistema_modular_cafe_majada.views
 
         private void txb_Tel1_Leave(object sender, EventArgs e)
         {
-            FormatPhoneNumber(txb_Tel1);
+            int cantidaDigitos = txb_Tel1.Text.Length;
+            if (cantidaDigitos == 8)
+            {
+                FormatPhoneNumber(txb_Tel1);
+            }
         }
 
         private void FormatPhoneNumber(TextBox textBox)
         {
-            
             string input = textBox.Text;
 
             // Verificar si hay suficientes dígitos para el número de teléfono
@@ -264,7 +343,6 @@ namespace sistema_modular_cafe_majada.views
 
         private void FormatDui(TextBox textBox)
         {
-
             string input = textBox.Text;
 
             // Verificar si hay suficientes dígitos para el número de teléfono
@@ -332,12 +410,100 @@ namespace sistema_modular_cafe_majada.views
 
         private void txb_Tel2_Leave(object sender, EventArgs e)
         {
-            FormatPhoneNumber(txb_Tel2);
+            int cantidaDigitos = txb_Tel2.Text.Length;
+            if (cantidaDigitos == 8)
+            {
+                FormatPhoneNumber(txb_Tel2);
+            }
         }
 
         private void txb_Dui_Leave(object sender, EventArgs e)
         {
             FormatDui(txb_Dui);
+        }
+
+        private void dataGrid_PersonView_SelectionChanged(object sender, EventArgs e)
+        {
+            /*
+            //recorre todos los nombres de la columna del dataGrid y los muestra en consola
+            foreach (DataGridViewColumn column in dataGrid_PersonView.Columns)
+            {
+                Console.WriteLine(column.Name);
+            }*/
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // El usuario seleccionó "Sí"
+                imagenClickeada = true;
+
+                // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
+                txb_Nombre.Text = personaSeleccionada.NombresPersona;
+                txb_Apellido.Text = personaSeleccionada.ApellidosPersona;
+                txb_Direccion.Text = personaSeleccionada.DireccionPersona;
+                dtp_FechaNac.Value = personaSeleccionada.FechaNacimientoPersona;
+                txb_Dui.Text = personaSeleccionada.DuiPersona;
+                txb_Nit.Text = personaSeleccionada.NitPersona ?? ""; // Asignar cadena vacía si nit es nulo
+                txb_Tel1.Text = personaSeleccionada.Telefono1Persona;
+                txb_Tel2.Text = personaSeleccionada.Telefono2Persona ?? ""; // Asignar cadena vacía si tel2 es nulo
+
+            }
+            else
+            {
+                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+            }
+
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            LogController log = new LogController();
+            UserDAO userDao = new UserDAO();
+            Usuario usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro de la persona: " + personaSeleccionada.NombresPersona + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                //se llama la funcion delete del controlador para eliminar el registro
+                PersonController controller = new PersonController();
+                controller.EliminarPersona(personaSeleccionada.IdPersona);
+
+                log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Persona", usuario.DeptoUsuario, "Eliminacion", "Elimino los datos de la persona " + personaSeleccionada.NombresPersona + " en la base de datos");
+
+                MessageBox.Show("Persona Eliminada correctamente.");
+
+                //se actualiza la tabla
+                ShowPersonGrid();
+            }
+            else
+            {
+                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+            }
+        }
+
+        private void dataGrid_PersonView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine("depurador - evento click img update: " + imagenClickeada);
+            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+            DataGridViewRow filaSeleccionada = dataGrid_PersonView.Rows[e.RowIndex];
+            personaSeleccionada = new Persona();
+
+            // Obtener los valores de las celdas de la fila seleccionada
+            personaSeleccionada.IdPersona = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+            personaSeleccionada.NombresPersona = filaSeleccionada.Cells["Nombres"].Value.ToString();
+            personaSeleccionada.ApellidosPersona = filaSeleccionada.Cells["Apellidos"].Value.ToString();
+            personaSeleccionada.DireccionPersona = filaSeleccionada.Cells["Dirección"].Value.ToString();
+            personaSeleccionada.FechaNacimientoPersona = Convert.ToDateTime(filaSeleccionada.Cells["Fecha_Nacimiento"].Value);
+            personaSeleccionada.DuiPersona = filaSeleccionada.Cells["DUI"].Value.ToString();
+            personaSeleccionada.NitPersona = filaSeleccionada.Cells["NIT"].Value != null ? filaSeleccionada.Cells["NIT"].Value.ToString() : null;
+            personaSeleccionada.Telefono1Persona = filaSeleccionada.Cells["Teléfono"].Value.ToString();
+            personaSeleccionada.Telefono2Persona = filaSeleccionada.Cells["Teléfono_Secundario"].Value != null ? filaSeleccionada.Cells["Teléfono_Secundario"].Value.ToString() : null;
+
+            Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + personaSeleccionada.NombresPersona);
         }
     }
 }

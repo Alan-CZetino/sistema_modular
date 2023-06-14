@@ -128,7 +128,8 @@ namespace sistema_modular_cafe_majada
 
         private void form_main_Shown(object sender, EventArgs e)
         {
-            lbl_User.Text = NombreUsuario;
+            string name = "Usuario: " + NombreUsuario;
+            lbl_User.Text = name;
         }
     }
 }

@@ -173,8 +173,9 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
             return persona;
         }
 
-        public void ActualizarPersona(int id, string nombres, string apellidos, string direccion, DateTime fechaNacimiento, string nit, string dui, string tel1, string tel2)
+        public bool ActualizarPersona(int id, string nombres, string apellidos, string direccion, DateTime fechaNacimiento, string nit, string dui, string tel1, string tel2)
         {
+            bool exito = false;
             try
             {
                 // Abre la conexión a la base de datos
@@ -201,12 +202,14 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
                 if (filasAfectadas > 0)
                 {
                     Console.WriteLine("La actualización se realizó correctamente.");
+                    exito = true;
                 }
                 else
                 {
                     Console.WriteLine("No se pudo realizar la actualización.");
+                    exito = false;
                 }
-
+                
             }
             catch (Exception ex)
             {
@@ -216,6 +219,43 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
             finally
             {
                 // Cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return exito;
+        }
+
+        public void EliminarPersona(int idPersona)
+        {
+            // Crear la conexión a la base de datos
+            ConnectionDB conexion = new ConnectionDB();
+            conexion.Conectar();
+
+            try
+            {
+                // Crear el comando SQL para eliminar el registro
+                string consulta = "DELETE FROM Persona WHERE id_persona = @idPersona";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@idPersona", idPersona);
+
+                // Ejecutar la instrucción de eliminación
+                int filasAfectadas = conexion.EjecutarInstruccion();
+
+                if (filasAfectadas > 0)
+                {
+                    Console.WriteLine("El registro se eliminó correctamente");
+                }
+                else
+                {
+                    Console.WriteLine("No se encontró el registro a eliminar");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al eliminar el registro: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
                 conexion.Desconectar();
             }
         }
