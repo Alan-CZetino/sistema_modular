@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
@@ -91,7 +94,9 @@
   <ItemGroup>
     <Compile Include="controller\LoginController.cs" />
     <Compile Include="controller\SecurityData\LogController.cs" />
+    <Compile Include="controller\SecurityData\PasswordManager.cs" />
     <Compile Include="controller\UserDataController\PersonController.cs" />
+    <Compile Include="controller\UserDataController\UserController.cs" />
     <Compile Include="model\Connection\ConnectionDB.cs" />
     <Compile Include="model\DAO\UserDAO.cs" />
     <Compile Include="model\UserData\Persona.cs" />
@@ -219,7 +224,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\circle-info-solid.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\eliminar.png" />
   </ItemGroup>
