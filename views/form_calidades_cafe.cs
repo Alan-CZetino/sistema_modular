@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace sistema_modular_cafe_majada.views
 {
-    public partial class form_usuarios : Form
+    public partial class form_calidades_cafe : Form
     {
-        public form_usuarios()
+        public form_calidades_cafe()
         {
             InitializeComponent();
-        }
-
-        private void btn_table_person_Click(object sender, EventArgs e)
-        {
-            form_tableperson ftperson = new form_tableperson();
-            ftperson.ShowDialog();
         }
     }
 }

@@ -56,5 +56,17 @@ namespace sistema_modular_cafe_majada
             form_usuarios fusers = new form_usuarios();
             AddFormulario(fusers);
         }
+
+        private void btn_calidades_cafe_Click(object sender, EventArgs e)
+        {
+            form_calidades_cafe fcal_cafe = new form_calidades_cafe();
+            AddFormulario(fcal_cafe);
+        }
+
+        private void btn_subprod_cafe_Click(object sender, EventArgs e)
+        {
+            form_subprod_cafe fsubprod_cafe = new form_subprod_cafe();
+            AddFormulario(fsubprod_cafe);
+        }
     }
 }

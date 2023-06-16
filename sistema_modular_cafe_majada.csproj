@@ -61,6 +61,12 @@
     <Compile Include="views\form_administracion.Designer.cs">
       <DependentUpon>form_administracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_calidades_cafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_calidades_cafe.Designer.cs">
+      <DependentUpon>form_calidades_cafe.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_cosecha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,18 @@
     <Compile Include="views\form_rol.Designer.cs">
       <DependentUpon>form_rol.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_subprod_cafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_subprod_cafe.Designer.cs">
+      <DependentUpon>form_subprod_cafe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_tableperson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_tableperson.Designer.cs">
+      <DependentUpon>form_tableperson.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_administracion.resx">
       <DependentUpon>form_administracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_calidades_cafe.resx">
+      <DependentUpon>form_calidades_cafe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_cosecha.resx">
       <DependentUpon>form_cosecha.cs</DependentUpon>
@@ -147,6 +168,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_rol.resx">
       <DependentUpon>form_rol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_subprod_cafe.resx">
+      <DependentUpon>form_subprod_cafe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_tableperson.resx">
+      <DependentUpon>form_tableperson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_usuarios.resx">
       <DependentUpon>form_usuarios.cs</DependentUpon>
@@ -270,6 +297,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\impresora.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tablas 24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

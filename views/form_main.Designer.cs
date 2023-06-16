@@ -34,6 +34,8 @@ namespace sistema_modular_cafe_majada
             this.btn_max = new System.Windows.Forms.PictureBox();
             this.btn_close = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.btn_admin_panel = new System.Windows.Forms.Button();
             this.btn_reportes = new System.Windows.Forms.Button();
@@ -42,8 +44,6 @@ namespace sistema_modular_cafe_majada
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_container = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.barra_controles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_max)).BeginInit();
@@ -118,6 +118,27 @@ namespace sistema_modular_cafe_majada
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 696);
             this.panel2.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(0, 599);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label1.Size = new System.Drawing.Size(91, 32);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "username";
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 631);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(250, 20);
+            this.panel1.TabIndex = 7;
             // 
             // button5
             // 
@@ -236,27 +257,6 @@ namespace sistema_modular_cafe_majada
             this.panel_container.Name = "panel_container";
             this.panel_container.Size = new System.Drawing.Size(1030, 696);
             this.panel_container.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 631);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 20);
-            this.panel1.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 599);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(91, 32);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "username";
             // 
             // form_main
             // 
