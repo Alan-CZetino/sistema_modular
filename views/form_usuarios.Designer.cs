@@ -1,4 +1,4 @@
-﻿
+
 namespace sistema_modular_cafe_majada.views
 {
     partial class form_usuarios
@@ -56,7 +56,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dataGrid_UserView = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn_table_person = new System.Windows.Forms.Button();
             this.btn_SaveUser = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.PictureBox();
@@ -68,7 +68,6 @@ namespace sistema_modular_cafe_majada.views
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_UserView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_update)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_delete)).BeginInit();
             this.SuspendLayout();
@@ -131,11 +130,10 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btn_update, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_delete, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(620, 6);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(826, 7);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -178,7 +176,7 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
-            this.panel8.Controls.Add(this.pictureBox1);
+            this.panel8.Controls.Add(this.btn_table_person);
             this.panel8.Controls.Add(this.txb_PassConfirm);
             this.panel8.Controls.Add(this.label9);
             this.panel8.Controls.Add(this.label3);
@@ -204,21 +202,19 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_PassConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_PassConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_PassConfirm.Location = new System.Drawing.Point(11, 240);
-            this.txb_PassConfirm.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_PassConfirm.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_PassConfirm.Location = new System.Drawing.Point(15, 295);
             this.txb_PassConfirm.Name = "txb_PassConfirm";
-            this.txb_PassConfirm.Size = new System.Drawing.Size(158, 23);
+            this.txb_PassConfirm.Size = new System.Drawing.Size(210, 33);
             this.txb_PassConfirm.TabIndex = 22;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(8, 216);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(10, 266);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(147, 15);
+            this.label9.Size = new System.Drawing.Size(143, 26);
             this.label9.TabIndex = 21;
             this.label9.Text = "Confirmar Contraseña";
             // 
@@ -235,12 +231,11 @@ namespace sistema_modular_cafe_majada.views
             // 
             // txb_Depto
             // 
-            this.txb_Depto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Depto.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_Depto.FormattingEnabled = true;
-            this.txb_Depto.Location = new System.Drawing.Point(11, 292);
-            this.txb_Depto.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Depto.Location = new System.Drawing.Point(15, 359);
             this.txb_Depto.Name = "txb_Depto";
-            this.txb_Depto.Size = new System.Drawing.Size(158, 25);
+            this.txb_Depto.Size = new System.Drawing.Size(210, 37);
             this.txb_Depto.TabIndex = 20;
             // 
             // label4
@@ -258,44 +253,40 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_Name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Name.Location = new System.Drawing.Point(10, 28);
-            this.txb_Name.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Name.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Name.Location = new System.Drawing.Point(13, 35);
             this.txb_Name.Name = "txb_Name";
-            this.txb_Name.Size = new System.Drawing.Size(160, 23);
+            this.txb_Name.Size = new System.Drawing.Size(212, 33);
             this.txb_Name.TabIndex = 1;
             // 
             // txb_Password
             // 
             this.txb_Password.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Password.Location = new System.Drawing.Point(11, 187);
-            this.txb_Password.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Password.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Password.Location = new System.Drawing.Point(15, 230);
             this.txb_Password.Name = "txb_Password";
-            this.txb_Password.Size = new System.Drawing.Size(158, 23);
+            this.txb_Password.Size = new System.Drawing.Size(210, 33);
             this.txb_Password.TabIndex = 11;
             // 
             // txb_Role
             // 
             this.txb_Role.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Role.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Role.Location = new System.Drawing.Point(11, 352);
-            this.txb_Role.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Role.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Role.Location = new System.Drawing.Point(15, 433);
             this.txb_Role.Name = "txb_Role";
-            this.txb_Role.Size = new System.Drawing.Size(158, 23);
+            this.txb_Role.Size = new System.Drawing.Size(210, 33);
             this.txb_Role.TabIndex = 15;
             // 
             // txb_NameUser
             // 
             this.txb_NameUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_NameUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_NameUser.Location = new System.Drawing.Point(10, 80);
-            this.txb_NameUser.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_NameUser.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_NameUser.Location = new System.Drawing.Point(13, 98);
             this.txb_NameUser.Name = "txb_NameUser";
-            this.txb_NameUser.Size = new System.Drawing.Size(160, 23);
+            this.txb_NameUser.Size = new System.Drawing.Size(212, 33);
             this.txb_NameUser.TabIndex = 5;
             // 
             // label5
@@ -324,11 +315,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_Email.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Email.Location = new System.Drawing.Point(11, 133);
-            this.txb_Email.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_Email.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Email.Location = new System.Drawing.Point(15, 164);
             this.txb_Email.Name = "txb_Email";
-            this.txb_Email.Size = new System.Drawing.Size(158, 23);
+            this.txb_Email.Size = new System.Drawing.Size(210, 33);
             this.txb_Email.TabIndex = 7;
             // 
             // label6
@@ -383,26 +373,24 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGrid_UserView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_UserView.Location = new System.Drawing.Point(5, 5);
-            this.dataGrid_UserView.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGrid_UserView.Location = new System.Drawing.Point(7, 6);
             this.dataGrid_UserView.Name = "dataGrid_UserView";
-            this.dataGrid_UserView.ReadOnly = true;
             this.dataGrid_UserView.RowHeadersWidth = 51;
             this.dataGrid_UserView.RowTemplate.Height = 24;
-            this.dataGrid_UserView.Size = new System.Drawing.Size(488, 284);
+            this.dataGrid_UserView.Size = new System.Drawing.Size(651, 350);
             this.dataGrid_UserView.TabIndex = 0;
-            this.dataGrid_UserView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_UserView_CellDoubleClick);
             // 
-            // pictureBox1
+            // btn_table_person
             // 
-            this.pictureBox1.Image = global::sistema_modular_cafe_majada.Properties.Resources.circle_info_solid;
-            this.pictureBox1.Location = new System.Drawing.Point(172, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(22, 23);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 23;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.btn_table_person.FlatAppearance.BorderSize = 0;
+            this.btn_table_person.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_table_person.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_table_person.Location = new System.Drawing.Point(231, 35);
+            this.btn_table_person.Name = "btn_table_person";
+            this.btn_table_person.Size = new System.Drawing.Size(37, 33);
+            this.btn_table_person.TabIndex = 23;
+            this.btn_table_person.UseVisualStyleBackColor = true;
+            this.btn_table_person.Click += new System.EventHandler(this.btn_table_person_Click);
             // 
             // btn_SaveUser
             // 
@@ -412,20 +400,18 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SaveUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
             this.btn_SaveUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
             this.btn_SaveUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SaveUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SaveUser.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SaveUser.ForeColor = System.Drawing.Color.White;
             this.btn_SaveUser.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_SaveUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_SaveUser.Location = new System.Drawing.Point(14, 2);
-            this.btn_SaveUser.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_SaveUser.Location = new System.Drawing.Point(19, 3);
             this.btn_SaveUser.Name = "btn_SaveUser";
             this.btn_SaveUser.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btn_SaveUser.Size = new System.Drawing.Size(82, 32);
+            this.btn_SaveUser.Size = new System.Drawing.Size(110, 40);
             this.btn_SaveUser.TabIndex = 2;
             this.btn_SaveUser.Text = "Guardar";
             this.btn_SaveUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SaveUser.UseVisualStyleBackColor = false;
-            this.btn_SaveUser.Click += new System.EventHandler(this.btn_SaveUser_Click);
             // 
             // btn_Cancel
             // 
@@ -434,15 +420,14 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.FlatAppearance.BorderSize = 0;
             this.btn_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
             this.btn_Cancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
             this.btn_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Cancel.Location = new System.Drawing.Point(121, 2);
-            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Cancel.Location = new System.Drawing.Point(161, 3);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btn_Cancel.Size = new System.Drawing.Size(82, 32);
+            this.btn_Cancel.Size = new System.Drawing.Size(110, 40);
             this.btn_Cancel.TabIndex = 3;
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -452,27 +437,23 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_update.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_update.Image = global::sistema_modular_cafe_majada.Properties.Resources.editar;
-            this.btn_update.Location = new System.Drawing.Point(2, 2);
-            this.btn_update.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_update.Location = new System.Drawing.Point(3, 3);
             this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(43, 41);
+            this.btn_update.Size = new System.Drawing.Size(57, 49);
             this.btn_update.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_update.TabIndex = 1;
             this.btn_update.TabStop = false;
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // btn_delete
             // 
             this.btn_delete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_delete.Image = global::sistema_modular_cafe_majada.Properties.Resources.boton_eliminar;
-            this.btn_delete.Location = new System.Drawing.Point(49, 2);
-            this.btn_delete.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_delete.Location = new System.Drawing.Point(66, 3);
             this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(44, 41);
+            this.btn_delete.Size = new System.Drawing.Size(58, 49);
             this.btn_delete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_delete.TabIndex = 2;
             this.btn_delete.TabStop = false;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // form_usuarios
             // 
@@ -499,7 +480,6 @@ namespace sistema_modular_cafe_majada.views
             this.panel7.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_UserView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_update)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_delete)).EndInit();
             this.ResumeLayout(false);
@@ -539,6 +519,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.DataGridView dataGrid_UserView;
         private System.Windows.Forms.TextBox txb_PassConfirm;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btn_table_person;
     }
 }

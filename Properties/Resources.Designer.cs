@@ -263,6 +263,16 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tablas_24px {
+            get {
+                object obj = ResourceManager.GetObject("tablas_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tablas_45px {
             get {
                 object obj = ResourceManager.GetObject("tablas_45px", resourceCulture);

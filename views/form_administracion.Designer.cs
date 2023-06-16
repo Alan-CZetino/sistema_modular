@@ -30,18 +30,18 @@ namespace sistema_modular_cafe_majada
         private void InitializeComponent()
         {
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_medidores_agua = new System.Windows.Forms.Button();
+            this.btn_clase_cafeuva = new System.Windows.Forms.Button();
+            this.btn_nom_punteros = new System.Windows.Forms.Button();
+            this.btn_ubicacion = new System.Windows.Forms.Button();
+            this.btn_secadoras = new System.Windows.Forms.Button();
+            this.btn_per_desp = new System.Windows.Forms.Button();
+            this.btn_fincas = new System.Windows.Forms.Button();
+            this.btn_nom_pesadores = new System.Windows.Forms.Button();
+            this.btn_dest_cafe = new System.Windows.Forms.Button();
+            this.btn_proce_cafe = new System.Windows.Forms.Button();
+            this.btn_calidades_cafe = new System.Windows.Forms.Button();
+            this.btn_subprod_cafe = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btn_persona = new System.Windows.Forms.Button();
@@ -72,18 +72,18 @@ namespace sistema_modular_cafe_majada
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel2.Controls.Add(this.button12, 5, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button11, 4, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button10, 5, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button9, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button8, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button7, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button6, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button5, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button4, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button3, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_medidores_agua, 5, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_clase_cafeuva, 4, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_nom_punteros, 5, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_ubicacion, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_secadoras, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_per_desp, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_fincas, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_nom_pesadores, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_dest_cafe, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_proce_cafe, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_calidades_cafe, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_subprod_cafe, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(13, 119);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -92,149 +92,151 @@ namespace sistema_modular_cafe_majada
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1006, 92);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // button12
+            // btn_medidores_agua
             // 
-            this.button12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(838, 49);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(165, 40);
-            this.button12.TabIndex = 23;
-            this.button12.Text = "Medidores de Agua";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btn_medidores_agua.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_medidores_agua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_medidores_agua.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_medidores_agua.Location = new System.Drawing.Point(838, 49);
+            this.btn_medidores_agua.Name = "btn_medidores_agua";
+            this.btn_medidores_agua.Size = new System.Drawing.Size(165, 40);
+            this.btn_medidores_agua.TabIndex = 23;
+            this.btn_medidores_agua.Text = "Medidores de Agua";
+            this.btn_medidores_agua.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // btn_clase_cafeuva
             // 
-            this.button11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(671, 49);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(161, 40);
-            this.button11.TabIndex = 22;
-            this.button11.Text = "Clases de Café en Uva";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btn_clase_cafeuva.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_clase_cafeuva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_clase_cafeuva.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clase_cafeuva.Location = new System.Drawing.Point(671, 49);
+            this.btn_clase_cafeuva.Name = "btn_clase_cafeuva";
+            this.btn_clase_cafeuva.Size = new System.Drawing.Size(161, 40);
+            this.btn_clase_cafeuva.TabIndex = 22;
+            this.btn_clase_cafeuva.Text = "Clases de Café en Uva";
+            this.btn_clase_cafeuva.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btn_nom_punteros
             // 
-            this.button10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(838, 3);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(165, 40);
-            this.button10.TabIndex = 21;
-            this.button10.Text = "Nombre de los Punteros";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btn_nom_punteros.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_nom_punteros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_nom_punteros.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_nom_punteros.Location = new System.Drawing.Point(838, 3);
+            this.btn_nom_punteros.Name = "btn_nom_punteros";
+            this.btn_nom_punteros.Size = new System.Drawing.Size(165, 40);
+            this.btn_nom_punteros.TabIndex = 21;
+            this.btn_nom_punteros.Text = "Nombre de los Punteros";
+            this.btn_nom_punteros.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btn_ubicacion
             // 
-            this.button9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(671, 3);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(161, 40);
-            this.button9.TabIndex = 20;
-            this.button9.Text = "Ubicación Silo/Piña";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btn_ubicacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_ubicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ubicacion.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ubicacion.Location = new System.Drawing.Point(671, 3);
+            this.btn_ubicacion.Name = "btn_ubicacion";
+            this.btn_ubicacion.Size = new System.Drawing.Size(161, 40);
+            this.btn_ubicacion.TabIndex = 20;
+            this.btn_ubicacion.Text = "Ubicación Silo/Piña";
+            this.btn_ubicacion.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // btn_secadoras
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(504, 49);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(161, 40);
-            this.button8.TabIndex = 19;
-            this.button8.Text = "Secadoras y otras maquinas";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btn_secadoras.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_secadoras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_secadoras.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_secadoras.Location = new System.Drawing.Point(504, 49);
+            this.btn_secadoras.Name = "btn_secadoras";
+            this.btn_secadoras.Size = new System.Drawing.Size(161, 40);
+            this.btn_secadoras.TabIndex = 19;
+            this.btn_secadoras.Text = "Secadoras y otras maquinas";
+            this.btn_secadoras.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btn_per_desp
             // 
-            this.button7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(337, 49);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(161, 40);
-            this.button7.TabIndex = 18;
-            this.button7.Text = "Personal Despulpa/Lavada";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btn_per_desp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_per_desp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_per_desp.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_per_desp.Location = new System.Drawing.Point(337, 49);
+            this.btn_per_desp.Name = "btn_per_desp";
+            this.btn_per_desp.Size = new System.Drawing.Size(161, 40);
+            this.btn_per_desp.TabIndex = 18;
+            this.btn_per_desp.Text = "Personal Despulpa/Lavada";
+            this.btn_per_desp.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btn_fincas
             // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(170, 49);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(161, 40);
-            this.button6.TabIndex = 17;
-            this.button6.Text = "Fincas de Café de Socios";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btn_fincas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_fincas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_fincas.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_fincas.Location = new System.Drawing.Point(170, 49);
+            this.btn_fincas.Name = "btn_fincas";
+            this.btn_fincas.Size = new System.Drawing.Size(161, 40);
+            this.btn_fincas.TabIndex = 17;
+            this.btn_fincas.Text = "Fincas de Café de Socios";
+            this.btn_fincas.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btn_nom_pesadores
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(3, 49);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(161, 40);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "Nombre de los Pesadores";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_nom_pesadores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_nom_pesadores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_nom_pesadores.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_nom_pesadores.Location = new System.Drawing.Point(3, 49);
+            this.btn_nom_pesadores.Name = "btn_nom_pesadores";
+            this.btn_nom_pesadores.Size = new System.Drawing.Size(161, 40);
+            this.btn_nom_pesadores.TabIndex = 16;
+            this.btn_nom_pesadores.Text = "Nombre de los Pesadores";
+            this.btn_nom_pesadores.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_dest_cafe
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(504, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(161, 40);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Destino del Café (Bodegas)";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_dest_cafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_dest_cafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_dest_cafe.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_dest_cafe.Location = new System.Drawing.Point(504, 3);
+            this.btn_dest_cafe.Name = "btn_dest_cafe";
+            this.btn_dest_cafe.Size = new System.Drawing.Size(161, 40);
+            this.btn_dest_cafe.TabIndex = 15;
+            this.btn_dest_cafe.Text = "Destino del Café (Bodegas)";
+            this.btn_dest_cafe.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btn_proce_cafe
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(337, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(161, 40);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Procedencias del Café";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_proce_cafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_proce_cafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_proce_cafe.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_proce_cafe.Location = new System.Drawing.Point(337, 3);
+            this.btn_proce_cafe.Name = "btn_proce_cafe";
+            this.btn_proce_cafe.Size = new System.Drawing.Size(161, 40);
+            this.btn_proce_cafe.TabIndex = 14;
+            this.btn_proce_cafe.Text = "Procedencias del Café";
+            this.btn_proce_cafe.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_calidades_cafe
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 40);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Calidades de Café";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_calidades_cafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_calidades_cafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_calidades_cafe.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_calidades_cafe.Location = new System.Drawing.Point(3, 3);
+            this.btn_calidades_cafe.Name = "btn_calidades_cafe";
+            this.btn_calidades_cafe.Size = new System.Drawing.Size(161, 40);
+            this.btn_calidades_cafe.TabIndex = 12;
+            this.btn_calidades_cafe.Text = "Calidades de Café";
+            this.btn_calidades_cafe.UseVisualStyleBackColor = true;
+            this.btn_calidades_cafe.Click += new System.EventHandler(this.btn_calidades_cafe_Click);
             // 
-            // button2
+            // btn_subprod_cafe
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(170, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(161, 40);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Sub Productos de Café";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_subprod_cafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_subprod_cafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_subprod_cafe.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_subprod_cafe.Location = new System.Drawing.Point(170, 3);
+            this.btn_subprod_cafe.Name = "btn_subprod_cafe";
+            this.btn_subprod_cafe.Size = new System.Drawing.Size(161, 40);
+            this.btn_subprod_cafe.TabIndex = 13;
+            this.btn_subprod_cafe.Text = "Sub Productos de Café";
+            this.btn_subprod_cafe.UseVisualStyleBackColor = true;
+            this.btn_subprod_cafe.Click += new System.EventHandler(this.btn_subprod_cafe_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -426,18 +428,18 @@ namespace sistema_modular_cafe_majada
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btn_calidades_cafe;
+        private System.Windows.Forms.Button btn_secadoras;
+        private System.Windows.Forms.Button btn_per_desp;
+        private System.Windows.Forms.Button btn_fincas;
+        private System.Windows.Forms.Button btn_nom_pesadores;
+        private System.Windows.Forms.Button btn_dest_cafe;
+        private System.Windows.Forms.Button btn_proce_cafe;
+        private System.Windows.Forms.Button btn_subprod_cafe;
+        private System.Windows.Forms.Button btn_medidores_agua;
+        private System.Windows.Forms.Button btn_clase_cafeuva;
+        private System.Windows.Forms.Button btn_nom_punteros;
+        private System.Windows.Forms.Button btn_ubicacion;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;

@@ -274,5 +274,11 @@ namespace sistema_modular_cafe_majada.views
         {
             
         }
+
+        private void btn_table_person_Click(object sender, EventArgs e)
+        {
+            form_tableperson ftperson = new form_tableperson();
+            ftperson.ShowDialog();
+        }
     }
 }
