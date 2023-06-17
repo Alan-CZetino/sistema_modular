@@ -86,6 +86,7 @@ namespace sistema_modular_cafe_majada.views
             
             Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + PersonSelect.IdPerson);
 
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

@@ -152,6 +152,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_update.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_update.TabIndex = 1;
             this.btn_update.TabStop = false;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // btn_delete
             // 
@@ -164,6 +165,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_delete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_delete.TabIndex = 2;
             this.btn_delete.TabStop = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // label2
             // 
@@ -300,8 +302,6 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Name.Name = "txb_Name";
             this.txb_Name.Size = new System.Drawing.Size(160, 23);
             this.txb_Name.TabIndex = 1;
-            this.txb_Name.TextChanged += new System.EventHandler(this.txb_Name_TextChanged);
-            this.txb_Name.Leave += new System.EventHandler(this.txb_Name_Leave);
             // 
             // txb_Password
             // 

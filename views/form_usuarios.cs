@@ -19,7 +19,7 @@ namespace sistema_modular_cafe_majada.views
         //variable global para verificar el estado del boton actualizar
         private bool imagenClickeada = false;
         //instancia de la clase mapeo persona para capturar los datos seleccionado por el usuario
-        private Usuario usuarioSeleccionada;
+        private Usuario usuarioSeleccionado;
 
         public form_usuarios()
         {
@@ -33,8 +33,7 @@ namespace sistema_modular_cafe_majada.views
 
             dataGrid_UserView.CellPainting += dataGrid_UserView_CellPainting;
 
-            TextChanged += txb_Name_TextChanged;
-            txb_Name.Text = PersonSelect.NamePerson ?? "";
+            txb_Name.ReadOnly = true;
         }
 
         private void dataGrid_UserView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -87,77 +86,91 @@ namespace sistema_modular_cafe_majada.views
             Console.WriteLine("depurador - evento click img update: " + imagenClickeada);
             // Obtener la fila correspondiente a la celda en la que se hizo doble clic
             DataGridViewRow filaSeleccionada = dataGrid_UserView.Rows[e.RowIndex];
-            usuarioSeleccionada = new Usuario();
+            usuarioSeleccionado = new Usuario();
 
             // Obtener los valores de las celdas de la fila seleccionada
-            usuarioSeleccionada.IdUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            usuarioSeleccionada.NombreUsuario = filaSeleccionada.Cells["Usuario"].Value.ToString();
-            usuarioSeleccionada.EmailUsuario = filaSeleccionada.Cells["Email"].Value.ToString();
-            usuarioSeleccionada.ClaveUsuario = filaSeleccionada.Cells["Clave_Usuario"].Value.ToString();
-            usuarioSeleccionada.EstadoUsuario = filaSeleccionada.Cells["Estado"].Value.ToString();
-            usuarioSeleccionada.FechaCreacionUsuario = Convert.ToDateTime(filaSeleccionada.Cells["Fecha_Creacion"].Value);
+            usuarioSeleccionado.IdUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+            usuarioSeleccionado.NombreUsuario = filaSeleccionada.Cells["Usuario"].Value.ToString();
+            usuarioSeleccionado.EmailUsuario = filaSeleccionada.Cells["Email"].Value.ToString();
+            usuarioSeleccionado.ClaveUsuario = filaSeleccionada.Cells["Clave_Usuario"].Value.ToString();
+            usuarioSeleccionado.EstadoUsuario = filaSeleccionada.Cells["Estado"].Value.ToString();
+            usuarioSeleccionado.FechaCreacionUsuario = Convert.ToDateTime(filaSeleccionada.Cells["Fecha_Creacion"].Value);
             // Obtener el valor de la celda
             object valorCelda = filaSeleccionada.Cells["Fecha_Baja"].Value;
             // Verificar si el valor de la celda es nulo y asignar el valor correspondiente a la propiedad
-            usuarioSeleccionada.FechaBajaUsuario = valorCelda != null ? Convert.ToDateTime(valorCelda) : (DateTime?)null;
-            usuarioSeleccionada.DeptoUsuario = filaSeleccionada.Cells["Departamento"].Value.ToString();
-            usuarioSeleccionada.IdRolUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID_Rol"].Value);
-            usuarioSeleccionada.IdPersonaUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID_Persona"].Value);
+            usuarioSeleccionado.FechaBajaUsuario = valorCelda != null ? Convert.ToDateTime(valorCelda) : (DateTime?)null;
+            usuarioSeleccionado.DeptoUsuario = filaSeleccionada.Cells["Departamento"].Value.ToString();
+            usuarioSeleccionado.IdRolUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID_Rol"].Value);
+            usuarioSeleccionado.IdPersonaUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID_Persona"].Value);
 
-            Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + usuarioSeleccionada.NombreUsuario);
+            Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + usuarioSeleccionado.NombreUsuario);
         }
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            /*
-            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (usuarioSeleccionado != null)
             {
-                // El usuario seleccionó "Sí"
-                imagenClickeada = true;
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                txb_Nombre.Text = personaSeleccionada.NombresPersona;
-                txb_Apellido.Text = personaSeleccionada.ApellidosPersona;
-                txb_Direccion.Text = personaSeleccionada.DireccionPersona;
-                dtp_FechaNac.Value = personaSeleccionada.FechaNacimientoPersona;
-                txb_Dui.Text = personaSeleccionada.DuiPersona;
-                txb_Nit.Text = personaSeleccionada.NitPersona ?? ""; // Asignar cadena vacía si nit es nulo
-                txb_Tel1.Text = personaSeleccionada.Telefono1Persona;
-                txb_Tel2.Text = personaSeleccionada.Telefono2Persona ?? ""; // Asignar cadena vacía si tel2 es nulo
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario seleccionó "Sí"
+                    imagenClickeada = true;
 
+                    // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
+                    txb_Name.Text = Convert.ToString(usuarioSeleccionado.IdPersonaUsuario);
+                    txb_NameUser.Text = usuarioSeleccionado.NombreUsuario;
+                    txb_Email.Text = usuarioSeleccionado.EmailUsuario;
+                    txb_Password.Text = usuarioSeleccionado.ClaveUsuario;
+                    txb_PassConfirm.Text = "";
+                    txb_Depto.Text = usuarioSeleccionado.DeptoUsuario;
+                    /*
+                    cbx_userStatus.Items.Add("Activo");
+                    cbx_userStatus.Items.Add("Inactivo");
+                    cbx_userStatus.Items.Add("Suspendido");
+                    cbx_userStatus.Items.Add("Pendiente de activación");
+                    cbx_userStatus.Items.Add("Eliminado");*/
+                    //txb_Role.Text = usuarioSeleccionado.NitPersona;
+                    
+                    usuarioSeleccionado = null;
+                }
             }
             else
             {
-                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato");
             }
-             */
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            LogController log = new LogController();
-            UserDAO userDao = new UserDAO();
-            Usuario usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
-            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro del usuario: " + usuarioSeleccionada.NombreUsuario + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (usuarioSeleccionado != null)
             {
-                //se llama la funcion delete del controlador para eliminar el registro
-                UserController controller = new UserController();
-                controller.EliminarUsuario(usuarioSeleccionada.IdUsuario);
+                LogController log = new LogController();
+                UserDAO userDao = new UserDAO();
+                Usuario usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro del usuario: " + usuarioSeleccionado.NombreUsuario + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Usuario", usuario.DeptoUsuario, "Eliminacion", "Elimino los datos del usuario " + usuarioSeleccionada.NombreUsuario + " en la base de datos");
+                if (result == DialogResult.Yes)
+                {
+                    //se llama la funcion delete del controlador para eliminar el registro
+                    UserController controller = new UserController();
+                    controller.EliminarUsuario(usuarioSeleccionado.IdUsuario);
 
-                MessageBox.Show("Persona Eliminada correctamente.");
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Usuario", usuario.DeptoUsuario, "Eliminacion", "Elimino los datos del usuario " + usuarioSeleccionado.NombreUsuario + " en la base de datos");
 
-                //se actualiza la tabla
-                ShowUserGrid();
+                    MessageBox.Show("Persona Eliminada correctamente.");
+
+                    //se actualiza la tabla
+                    ShowUserGrid();
+                }
             }
             else
             {
-                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato");
             }
         }
 
@@ -172,12 +185,49 @@ namespace sistema_modular_cafe_majada.views
 
         }
 
+        //Funcion para colocar mayusculas en la primera letra de la palabra y verificar que no vayan mayusculas intercaladas
+        public void ConvertFirstCharacter(ComboBox[] comboBoxes)
+        {
+            foreach (ComboBox comboBox in comboBoxes)
+            {
+                string input = comboBox.Text; // Obtener el valor seleccionado por el usuario desde el ComboBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a minúsculas
+                    string lowerCaseInput = input.ToLower();
+
+                    // Dividir la cadena en palabras utilizando espacios como delimitadores
+                    string[] words = lowerCaseInput.Split(' ');
+
+                    // Recorrer cada palabra y convertir el primer carácter a mayúscula
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        if (!string.IsNullOrEmpty(words[i]))
+                        {
+                            words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1);
+                        }
+                    }
+
+                    // Unir las palabras nuevamente en una sola cadena
+                    string result = string.Join(" ", words);
+
+                    // Asignar el valor modificado de vuelta al ComboBox
+                    comboBox.Text = result;
+                }
+            }
+        }
+
         private void btn_SaveUser_Click(object sender, EventArgs e)
         {
             UserController userController = new UserController();
             LogController log = new LogController();
             var userDao = new UserDAO();
             var usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+
+            ComboBox[] comBoxes = { txb_Depto };
+            ConvertFirstCharacter(comBoxes);
 
             // Obtener los valores ingresados por el usuario
             string namePerson = txb_Name.Text;
@@ -289,7 +339,11 @@ namespace sistema_modular_cafe_majada.views
         private void btn_table_person_Click(object sender, EventArgs e)
         {
             form_tableperson ftperson = new form_tableperson();
-            ftperson.ShowDialog();
+            if (ftperson.ShowDialog() == DialogResult.OK)
+            {
+                txb_Name.Text = PersonSelect.NamePerson;
+            }
+            //ftperson.ShowDialog();
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -297,15 +351,5 @@ namespace sistema_modular_cafe_majada.views
             ClearDataTxb();
         }
 
-        private void txb_Name_TextChanged(object sender, EventArgs e)
-        {
-            ColocarDato(txb_Name.Text);
-            Console.WriteLine("depuracion - obteniendo datos en tiemporeal " + txb_Name);
-        }
-
-        private void txb_Name_Leave(object sender, EventArgs e)
-        {
-            ColocarDato(txb_Name.Text);
-        }
     }
 }

@@ -410,7 +410,7 @@ namespace sistema_modular_cafe_majada.views
                     TextBox currentTextBox = (TextBox)sender;
                     string text = currentTextBox.Text;
 
-                    // Eliminar caracteres no alfabéticos, espacios y tildes
+                    // Eliminar caracteres no alfabéticos, manteniendo espacios y tildes
                     string filteredText = new string(text.Where(c => char.IsLetter(c) || c == ' ' || c.ToString() == "á" || c.ToString() == "é" || c.ToString() == "í" || c.ToString() == "ó" || c.ToString() == "ú").ToArray());
 
                     // Actualizar el texto en el TextBox
@@ -445,54 +445,65 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (personaSeleccionada != null)
             {
-                // El usuario seleccionó "Sí"
-                imagenClickeada = true;
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                txb_Nombre.Text = personaSeleccionada.NombresPersona;
-                txb_Apellido.Text = personaSeleccionada.ApellidosPersona;
-                txb_Direccion.Text = personaSeleccionada.DireccionPersona;
-                dtp_FechaNac.Value = personaSeleccionada.FechaNacimientoPersona;
-                txb_Dui.Text = personaSeleccionada.DuiPersona;
-                txb_Nit.Text = personaSeleccionada.NitPersona ?? ""; // Asignar cadena vacía si nit es nulo
-                txb_Tel1.Text = personaSeleccionada.Telefono1Persona;
-                txb_Tel2.Text = personaSeleccionada.Telefono2Persona ?? ""; // Asignar cadena vacía si tel2 es nulo
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario seleccionó "Sí"
+                    imagenClickeada = true;
 
+                    // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
+                    txb_Nombre.Text = personaSeleccionada.NombresPersona;
+                    txb_Apellido.Text = personaSeleccionada.ApellidosPersona;
+                    txb_Direccion.Text = personaSeleccionada.DireccionPersona;
+                    dtp_FechaNac.Value = personaSeleccionada.FechaNacimientoPersona;
+                    txb_Dui.Text = personaSeleccionada.DuiPersona;
+                    txb_Nit.Text = personaSeleccionada.NitPersona ?? ""; // Asignar cadena vacía si nit es nulo
+                    txb_Tel1.Text = personaSeleccionada.Telefono1Persona;
+                    txb_Tel2.Text = personaSeleccionada.Telefono2Persona ?? ""; // Asignar cadena vacía si tel2 es nulo
+
+                    personaSeleccionada = null;
+                }
             }
             else
             {
-                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato");
             }
-
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            LogController log = new LogController();
-            UserDAO userDao = new UserDAO();
-            Usuario usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
-            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro de la persona: " + personaSeleccionada.NombresPersona + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (personaSeleccionada != null)
             {
-                //se llama la funcion delete del controlador para eliminar el registro
-                PersonController controller = new PersonController();
-                controller.EliminarPersona(personaSeleccionada.IdPersona);
+                LogController log = new LogController();
+                UserDAO userDao = new UserDAO();
+                Usuario usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro de la persona: " + personaSeleccionada.NombresPersona + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Persona", usuario.DeptoUsuario, "Eliminacion", "Elimino los datos de la persona " + personaSeleccionada.NombresPersona + " en la base de datos");
+                if (result == DialogResult.Yes)
+                {
+                    //se llama la funcion delete del controlador para eliminar el registro
+                    PersonController controller = new PersonController();
+                    controller.EliminarPersona(personaSeleccionada.IdPersona);
 
-                MessageBox.Show("Persona Eliminada correctamente.");
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Persona", usuario.DeptoUsuario, "Eliminacion", "Elimino los datos de la persona " + personaSeleccionada.NombresPersona + " en la base de datos");
 
-                //se actualiza la tabla
-                ShowPersonGrid();
+                    MessageBox.Show("Persona Eliminada correctamente.");
+
+                    //se actualiza la tabla
+                    ShowPersonGrid();
+                    personaSeleccionada = null;
+                }
             }
             else
             {
-                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato");
             }
         }
 
