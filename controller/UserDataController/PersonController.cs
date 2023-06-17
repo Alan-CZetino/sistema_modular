@@ -113,6 +113,7 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
             return personas;
         }
 
+        //verificar la consulta sql
         public Persona ObtenerPersona(string nombrePersona)
         {
             Persona persona = null;
@@ -121,10 +122,10 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
 
                 // Abre la conexión a la base de datos
                 conexion.Conectar();
-                string consulta = "SELECT * FROM Usuario WHERE nombre_usuario = @NombreUsuario";
+                string consulta = "SELECT * FROM Persona WHERE nombres_persona = @NombrePersona";
 
                 conexion.CrearComando(consulta);
-                conexion.AgregarParametro("@NombreUsuario", nombrePersona);
+                conexion.AgregarParametro("@NombrePersona", nombrePersona);
 
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {

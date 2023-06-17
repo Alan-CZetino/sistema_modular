@@ -32,6 +32,9 @@ namespace sistema_modular_cafe_majada.views
             ShowUserGrid();
 
             dataGrid_UserView.CellPainting += dataGrid_UserView_CellPainting;
+
+            TextChanged += txb_Name_TextChanged;
+            txb_Name.Text = PersonSelect.NamePerson ?? "";
         }
 
         private void dataGrid_UserView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -158,6 +161,17 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        public void ColocarDato(string dataSelect)
+        {
+            // Aquí puedes realizar el procesamiento de los datos en tiempo real
+            // Puedes actualizar otros controles en el formulario según sea necesario
+            // Por ejemplo, si tienes otro TextBox, puedes actualizarlo así:
+            // Obtener los valores ingresados por el usuario
+            dataSelect = PersonSelect.NamePerson;
+            txb_Name.Text = dataSelect;
+
+        }
+
         private void btn_SaveUser_Click(object sender, EventArgs e)
         {
             UserController userController = new UserController();
@@ -185,9 +199,9 @@ namespace sistema_modular_cafe_majada.views
                     NombreUsuario = nameUser,
                     EmailUsuario = email,
                     ClaveUsuario = passConfirm,
-                    //IdRolUsuario = role,
+                    IdRolUsuario = Convert.ToInt32(role),
                     DeptoUsuario = depto,
-                    //IdPersonaUsuario = namePerson;
+                    IdPersonaUsuario = PersonSelect.IdPerson
                 };
 
                 if (!imagenClickeada)
@@ -259,6 +273,8 @@ namespace sistema_modular_cafe_majada.views
 
         public void ClearDataTxb()
         {
+
+            PersonSelect.NamePerson = "";
             List<TextBox> txb = new List<TextBox> { txb_Name, txb_NameUser, txb_Password, txb_PassConfirm, txb_Email,
                                     txb_Role};
 
@@ -270,15 +286,26 @@ namespace sistema_modular_cafe_majada.views
             txb_Depto.Items.Clear();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btn_table_person_Click(object sender, EventArgs e)
         {
             form_tableperson ftperson = new form_tableperson();
             ftperson.ShowDialog();
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            ClearDataTxb();
+        }
+
+        private void txb_Name_TextChanged(object sender, EventArgs e)
+        {
+            ColocarDato(txb_Name.Text);
+            Console.WriteLine("depuracion - obteniendo datos en tiemporeal " + txb_Name);
+        }
+
+        private void txb_Name_Leave(object sender, EventArgs e)
+        {
+            ColocarDato(txb_Name.Text);
         }
     }
 }

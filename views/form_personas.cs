@@ -36,6 +36,7 @@ namespace sistema_modular_cafe_majada.views
 
             
             LimitDigits(txb_Dui, 9);
+            LimitDigits(txb_Nit, 9);
 
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dataGrid_PersonView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -139,6 +140,16 @@ namespace sistema_modular_cafe_majada.views
 
         private void SavePerson_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txb_Nombre.Text) || 
+                string.IsNullOrWhiteSpace(txb_Apellido.Text) || 
+                string.IsNullOrWhiteSpace(txb_Direccion.Text) ||
+                string.IsNullOrWhiteSpace(txb_Dui.Text) ||
+                string.IsNullOrWhiteSpace(txb_Tel1.Text))
+            {
+                MessageBox.Show("Los campos Nombre, Apellido, Dirección, Dui, Telefono son obligatorios.");
+                return;
+            }
+
             PersonController personaController = new PersonController();
             LogController log = new LogController();
             var userDao = new UserDAO();
@@ -352,7 +363,7 @@ namespace sistema_modular_cafe_majada.views
                 string sufijo = input.Substring(8);
 
                 // Formatear el número de teléfono completo
-                string numeroTelefono = $"{prefijo} - {sufijo}";
+                string numeroTelefono = $"{prefijo}-{sufijo}";
 
                 // Establecer el texto formateado en el TextBox
                 textBox.Text = numeroTelefono;
@@ -504,6 +515,11 @@ namespace sistema_modular_cafe_majada.views
             personaSeleccionada.Telefono2Persona = filaSeleccionada.Cells["Teléfono_Secundario"].Value != null ? filaSeleccionada.Cells["Teléfono_Secundario"].Value.ToString() : null;
 
             Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + personaSeleccionada.NombresPersona);
+        }
+
+        private void txb_Nit_Leave(object sender, EventArgs e)
+        {
+            FormatDui(txb_Nit);
         }
     }
 }

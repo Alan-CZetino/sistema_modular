@@ -75,7 +75,7 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
                 // Abre la conexión
                 conexion.Conectar();
 
-                string query = "INSERT INTO tu_tabla (nombre_usuario, email_usuario, clave_usuario, estado_usuario, fecha_creacion_usuario, fecha_baja_usuario, depto_usuario, id_rol_usuario, id_persona_usuario) " +
+                string query = "INSERT INTO Usuario (nombre_usuario, email_usuario, clave_usuario, estado_usuario, fecha_creacion_usuario, fecha_baja_usuario, depto_usuario, id_rol_usuario, id_persona_usuario) " +
                "VALUES (@NombreUsuario, @EmailUsuario, @ClaveUsuario, @EstadoUsuario, @FechaCreacionUsuario, @FechaBajaUsuario, @DeptoUsuario, @IdRolUsuario, @IdPersonaUsuario)";
 
                 conexion.CrearComando(query);

@@ -18,4 +18,10 @@ namespace sistema_modular_cafe_majada.model.UserData
         public string Telefono1Persona { get; set; }
         public string Telefono2Persona { get; set; }
     }
+
+    public static class PersonSelect
+    {
+        public static int IdPerson { get; set; }
+        public static string NamePerson { get; set; }
+    }
 }

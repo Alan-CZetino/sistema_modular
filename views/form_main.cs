@@ -10,12 +10,16 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using sistema_modular_cafe_majada.views;
 using sistema_modular_cafe_majada.model.UserData;
+using sistema_modular_cafe_majada.controller.SecurityData;
+using sistema_modular_cafe_majada.model.DAO;
 
 namespace sistema_modular_cafe_majada
 {
     public partial class form_main : Form
     {
         private string _nombreUsuario;
+        private Usuario usuario;
+        private LogController log;
 
         public string NombreUsuario
         {
@@ -120,10 +124,23 @@ namespace sistema_modular_cafe_majada
 
         private void btn_CloseSection_Click(object sender, EventArgs e)
         {
-            form_login form_Login = new form_login();
-            form_Login.Show();
+            log = new LogController();
+            UserDAO usuarioDao = new UserDAO();
+            var usuario = usuarioDao.ObtenerUsuario(UsuarioActual.NombreUsuario);
+            
+            DialogResult result = MessageBox.Show("¿Estás seguro de cerrar seccion?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            
+            if (result == DialogResult.Yes)
+            {
+                log.RegistrarLog(usuario.IdUsuario, "Salio del Sistema", usuario.DeptoUsuario, "Cierre de seccion", "El Usuario: " + _nombreUsuario + " salio del sistema");
 
-            this.Close();
+                this.Close();
+
+            }
+            else
+            {
+                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+            }
         }
 
         private void form_main_Shown(object sender, EventArgs e)

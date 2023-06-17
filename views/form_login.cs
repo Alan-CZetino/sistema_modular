@@ -123,6 +123,8 @@ namespace sistema_modular_cafe_majada
                 UsuarioActual.NombreUsuario = user;
                 formPrin.Show();
 
+                //buca en la vista main el evento close del form 
+                formPrin.FormClosed += Logout;
                 this.Hide();
             }
             else
@@ -130,6 +132,19 @@ namespace sistema_modular_cafe_majada
                 // Las credenciales son inválidas, muestra un mensaje de error
                 MessageBox.Show("Credenciales inválidas");
             }
+        }
+
+        //mostrar nuevamente los datos en el login
+        private void Logout(object sender, FormClosedEventArgs e)
+        {
+            txb_username.Text = "Usuario";
+            txb_username.ForeColor = Color.LightGray;
+            txb_password.Text = "Contraseña";
+            txb_password.ForeColor = Color.LightGray;
+            txb_password.UseSystemPasswordChar = false;
+            
+            this.Show();
+
         }
     }
 }

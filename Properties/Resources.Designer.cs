@@ -155,7 +155,7 @@ namespace sistema_modular_cafe_majada.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap cosecha_45px {
             get {
-                object obj = ResourceManager.GetObject("cosecha_45px", resourceCulture);
+                object obj = ResourceManager.GetObject("cosecha 45px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
