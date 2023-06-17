@@ -103,7 +103,7 @@ namespace sistema_modular_cafe_majada
             this.btn_medidores_agua.Name = "btn_medidores_agua";
             this.btn_medidores_agua.Size = new System.Drawing.Size(125, 34);
             this.btn_medidores_agua.TabIndex = 23;
-            this.btn_medidores_agua.Text = "Medidores de Agua";
+            this.btn_medidores_agua.Text = "Beneficio";
             this.btn_medidores_agua.UseVisualStyleBackColor = true;
             // 
             // btn_clase_cafeuva
@@ -181,7 +181,7 @@ namespace sistema_modular_cafe_majada
             this.btn_fincas.Name = "btn_fincas";
             this.btn_fincas.Size = new System.Drawing.Size(121, 34);
             this.btn_fincas.TabIndex = 17;
-            this.btn_fincas.Text = "Fincas de Café de Socios";
+            this.btn_fincas.Text = "Fincas";
             this.btn_fincas.UseVisualStyleBackColor = true;
             // 
             // btn_nom_pesadores

@@ -1,4 +1,5 @@
-﻿using sistema_modular_cafe_majada.model.Connection;
+using sistema_modular_cafe_majada.model.Connection;
+using sistema_modular_cafe_majada.views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace sistema_modular_cafe_majada
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new form_login());
+            Application.Run(new form_splash());
         }
     }
 }

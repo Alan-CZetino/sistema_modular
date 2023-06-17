@@ -18,6 +18,8 @@ namespace sistema_modular_cafe_majada
         public form_login()
         {
             InitializeComponent();
+            
+
         }
 
         //variable de tipo global para manejo de intentos fallidos en el login
@@ -146,5 +148,7 @@ namespace sistema_modular_cafe_majada
             this.Show();
 
         }
+
+        
     }
 }

@@ -41,6 +41,8 @@ namespace sistema_modular_cafe_majada.views
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.cbx_userStatus = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.btn_table_person = new System.Windows.Forms.Button();
             this.txb_PassConfirm = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -203,6 +205,8 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
+            this.panel8.Controls.Add(this.cbx_userStatus);
+            this.panel8.Controls.Add(this.label10);
             this.panel8.Controls.Add(this.btn_table_person);
             this.panel8.Controls.Add(this.txb_PassConfirm);
             this.panel8.Controls.Add(this.label9);
@@ -225,15 +229,33 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Size = new System.Drawing.Size(222, 257);
             this.panel8.TabIndex = 7;
             // 
+            // cbx_userStatus
+            // 
+            this.cbx_userStatus.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_userStatus.FormattingEnabled = true;
+            this.cbx_userStatus.Location = new System.Drawing.Point(19, 507);
+            this.cbx_userStatus.Name = "cbx_userStatus";
+            this.cbx_userStatus.Size = new System.Drawing.Size(210, 37);
+            this.cbx_userStatus.TabIndex = 25;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(14, 479);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(123, 26);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Estado del Usuario";
+            // 
             // btn_table_person
             // 
             this.btn_table_person.FlatAppearance.BorderSize = 0;
             this.btn_table_person.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_table_person.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.btn_table_person.Location = new System.Drawing.Point(173, 28);
-            this.btn_table_person.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_table_person.Location = new System.Drawing.Point(231, 35);
             this.btn_table_person.Name = "btn_table_person";
-            this.btn_table_person.Size = new System.Drawing.Size(28, 27);
+            this.btn_table_person.Size = new System.Drawing.Size(37, 33);
             this.btn_table_person.TabIndex = 23;
             this.btn_table_person.UseVisualStyleBackColor = true;
             this.btn_table_person.Click += new System.EventHandler(this.btn_table_person_Click);
@@ -487,6 +509,7 @@ namespace sistema_modular_cafe_majada.views
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "form_usuarios";
             this.Text = "form_usuarios";
+            this.Load += new System.EventHandler(this.form_usuarios_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -536,5 +559,7 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.TextBox txb_PassConfirm;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btn_table_person;
+        private System.Windows.Forms.ComboBox cbx_userStatus;
+        private System.Windows.Forms.Label label10;
     }
 }

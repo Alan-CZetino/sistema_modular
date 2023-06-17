@@ -1,4 +1,4 @@
-﻿using sistema_modular_cafe_majada.controller.SecurityData;
+using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.DAO;
 using sistema_modular_cafe_majada.model.UserData;
@@ -351,5 +351,17 @@ namespace sistema_modular_cafe_majada.views
             ClearDataTxb();
         }
 
+
+        private void form_usuarios_Load(object sender, EventArgs e)
+        {
+            label10.Visible = false;
+            cbx_userStatus.Visible = false;
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            label10.Visible = true;
+            cbx_userStatus.Visible = true;
+        }
     }
 }
