@@ -231,20 +231,22 @@ namespace sistema_modular_cafe_majada.views
             // 
             // cbx_userStatus
             // 
-            this.cbx_userStatus.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_userStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_userStatus.FormattingEnabled = true;
-            this.cbx_userStatus.Location = new System.Drawing.Point(19, 507);
+            this.cbx_userStatus.Location = new System.Drawing.Point(14, 412);
+            this.cbx_userStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cbx_userStatus.Name = "cbx_userStatus";
-            this.cbx_userStatus.Size = new System.Drawing.Size(210, 37);
+            this.cbx_userStatus.Size = new System.Drawing.Size(158, 25);
             this.cbx_userStatus.TabIndex = 25;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(14, 479);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(10, 389);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(123, 26);
+            this.label10.Size = new System.Drawing.Size(129, 15);
             this.label10.TabIndex = 24;
             this.label10.Text = "Estado del Usuario";
             // 
@@ -253,9 +255,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_table_person.FlatAppearance.BorderSize = 0;
             this.btn_table_person.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_table_person.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.btn_table_person.Location = new System.Drawing.Point(231, 35);
+            this.btn_table_person.Location = new System.Drawing.Point(173, 28);
+            this.btn_table_person.Margin = new System.Windows.Forms.Padding(2);
             this.btn_table_person.Name = "btn_table_person";
-            this.btn_table_person.Size = new System.Drawing.Size(37, 33);
+            this.btn_table_person.Size = new System.Drawing.Size(28, 27);
             this.btn_table_person.TabIndex = 23;
             this.btn_table_person.UseVisualStyleBackColor = true;
             this.btn_table_person.Click += new System.EventHandler(this.btn_table_person_Click);
@@ -481,6 +484,9 @@ namespace sistema_modular_cafe_majada.views
             // 
             // dataGrid_UserView
             // 
+            this.dataGrid_UserView.AllowUserToAddRows = false;
+            this.dataGrid_UserView.AllowUserToDeleteRows = false;
+            this.dataGrid_UserView.AllowUserToOrderColumns = true;
             this.dataGrid_UserView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -488,10 +494,12 @@ namespace sistema_modular_cafe_majada.views
             this.dataGrid_UserView.Location = new System.Drawing.Point(5, 5);
             this.dataGrid_UserView.Margin = new System.Windows.Forms.Padding(2);
             this.dataGrid_UserView.Name = "dataGrid_UserView";
+            this.dataGrid_UserView.ReadOnly = true;
             this.dataGrid_UserView.RowHeadersWidth = 51;
             this.dataGrid_UserView.RowTemplate.Height = 24;
             this.dataGrid_UserView.Size = new System.Drawing.Size(488, 284);
             this.dataGrid_UserView.TabIndex = 0;
+            this.dataGrid_UserView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_UserView_CellDoubleClick);
             // 
             // form_usuarios
             // 

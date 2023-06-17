@@ -125,12 +125,15 @@ namespace sistema_modular_cafe_majada.views
                     txb_Password.Text = usuarioSeleccionado.ClaveUsuario;
                     txb_PassConfirm.Text = "";
                     txb_Depto.Text = usuarioSeleccionado.DeptoUsuario;
-                    /*
+
+                    label10.Visible = true;
+                    cbx_userStatus.Visible = true;
+
                     cbx_userStatus.Items.Add("Activo");
                     cbx_userStatus.Items.Add("Inactivo");
                     cbx_userStatus.Items.Add("Suspendido");
                     cbx_userStatus.Items.Add("Pendiente de activación");
-                    cbx_userStatus.Items.Add("Eliminado");*/
+                    cbx_userStatus.Items.Add("Eliminado");
                     //txb_Role.Text = usuarioSeleccionado.NitPersona;
                     
                     usuarioSeleccionado = null;
@@ -349,6 +352,8 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
+            label10.Visible = false;
+            cbx_userStatus.Visible = false;
         }
 
 
@@ -358,10 +363,5 @@ namespace sistema_modular_cafe_majada.views
             cbx_userStatus.Visible = false;
         }
 
-        private void btn_update_Click(object sender, EventArgs e)
-        {
-            label10.Visible = true;
-            cbx_userStatus.Visible = true;
-        }
     }
 }

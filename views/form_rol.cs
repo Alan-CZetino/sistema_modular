@@ -92,7 +92,7 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Text = "";
             }
             cbx_access.Items.Clear(); // Eliminar todos los elementos del ComboBox
-            cbx_access.SelectedIndex = 0; // Deseleccionar cualquier elemento seleccionado previamente
+            cbx_access.SelectedIndex = -1; // Deseleccionar cualquier elemento seleccionado previamente
 
         }
 
