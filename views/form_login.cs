@@ -17,6 +17,8 @@ namespace sistema_modular_cafe_majada
         public form_login()
         {
             InitializeComponent();
+            
+
         }
 
         //Codigo para mover el formulario en cualquier lugar de la pantalla
@@ -92,5 +94,7 @@ namespace sistema_modular_cafe_majada
 
             this.Hide();
         }
+
+        
     }
 }

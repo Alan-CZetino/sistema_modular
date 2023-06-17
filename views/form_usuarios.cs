@@ -22,5 +22,17 @@ namespace sistema_modular_cafe_majada.views
             form_tableperson ftperson = new form_tableperson();
             ftperson.ShowDialog();
         }
+
+        private void form_usuarios_Load(object sender, EventArgs e)
+        {
+            label10.Visible = false;
+            cbx_userStatus.Visible = false;
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            label10.Visible = true;
+            cbx_userStatus.Visible = true;
+        }
     }
 }

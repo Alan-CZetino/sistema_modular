@@ -35,10 +35,15 @@ namespace sistema_modular_cafe_majada.views
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_update = new System.Windows.Forms.PictureBox();
+            this.btn_delete = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.cbx_userStatus = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btn_table_person = new System.Windows.Forms.Button();
             this.txb_PassConfirm = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,22 +59,19 @@ namespace sistema_modular_cafe_majada.views
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.dataGrid_UserView = new System.Windows.Forms.DataGridView();
-            this.btn_table_person = new System.Windows.Forms.Button();
             this.btn_SaveUser = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_update = new System.Windows.Forms.PictureBox();
-            this.btn_delete = new System.Windows.Forms.PictureBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.dataGrid_UserView = new System.Windows.Forms.DataGridView();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_update)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_delete)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_UserView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_update)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_delete)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -135,6 +137,29 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.Size = new System.Drawing.Size(127, 55);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
+            // btn_update
+            // 
+            this.btn_update.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_update.Image = global::sistema_modular_cafe_majada.Properties.Resources.editar;
+            this.btn_update.Location = new System.Drawing.Point(3, 3);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.Size = new System.Drawing.Size(57, 49);
+            this.btn_update.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_update.TabIndex = 1;
+            this.btn_update.TabStop = false;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_delete.Image = global::sistema_modular_cafe_majada.Properties.Resources.boton_eliminar;
+            this.btn_delete.Location = new System.Drawing.Point(66, 3);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(58, 49);
+            this.btn_delete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_delete.TabIndex = 2;
+            this.btn_delete.TabStop = false;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -168,6 +193,8 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
+            this.panel8.Controls.Add(this.cbx_userStatus);
+            this.panel8.Controls.Add(this.label10);
             this.panel8.Controls.Add(this.btn_table_person);
             this.panel8.Controls.Add(this.txb_PassConfirm);
             this.panel8.Controls.Add(this.label9);
@@ -188,6 +215,37 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(296, 316);
             this.panel8.TabIndex = 7;
+            // 
+            // cbx_userStatus
+            // 
+            this.cbx_userStatus.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_userStatus.FormattingEnabled = true;
+            this.cbx_userStatus.Location = new System.Drawing.Point(19, 507);
+            this.cbx_userStatus.Name = "cbx_userStatus";
+            this.cbx_userStatus.Size = new System.Drawing.Size(210, 37);
+            this.cbx_userStatus.TabIndex = 25;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(14, 479);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(123, 26);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Estado del Usuario";
+            // 
+            // btn_table_person
+            // 
+            this.btn_table_person.FlatAppearance.BorderSize = 0;
+            this.btn_table_person.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_table_person.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_table_person.Location = new System.Drawing.Point(231, 35);
+            this.btn_table_person.Name = "btn_table_person";
+            this.btn_table_person.Size = new System.Drawing.Size(37, 33);
+            this.btn_table_person.TabIndex = 23;
+            this.btn_table_person.UseVisualStyleBackColor = true;
+            this.btn_table_person.Click += new System.EventHandler(this.btn_table_person_Click);
             // 
             // txb_PassConfirm
             // 
@@ -338,40 +396,6 @@ namespace sistema_modular_cafe_majada.views
             this.panel7.Size = new System.Drawing.Size(296, 47);
             this.panel7.TabIndex = 6;
             // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.dataGrid_UserView);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(301, 75);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(664, 363);
-            this.panel9.TabIndex = 14;
-            // 
-            // dataGrid_UserView
-            // 
-            this.dataGrid_UserView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGrid_UserView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_UserView.Location = new System.Drawing.Point(7, 6);
-            this.dataGrid_UserView.Name = "dataGrid_UserView";
-            this.dataGrid_UserView.RowHeadersWidth = 51;
-            this.dataGrid_UserView.RowTemplate.Height = 24;
-            this.dataGrid_UserView.Size = new System.Drawing.Size(651, 350);
-            this.dataGrid_UserView.TabIndex = 0;
-            // 
-            // btn_table_person
-            // 
-            this.btn_table_person.FlatAppearance.BorderSize = 0;
-            this.btn_table_person.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_table_person.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.btn_table_person.Location = new System.Drawing.Point(231, 35);
-            this.btn_table_person.Name = "btn_table_person";
-            this.btn_table_person.Size = new System.Drawing.Size(37, 33);
-            this.btn_table_person.TabIndex = 23;
-            this.btn_table_person.UseVisualStyleBackColor = true;
-            this.btn_table_person.Click += new System.EventHandler(this.btn_table_person_Click);
-            // 
             // btn_SaveUser
             // 
             this.btn_SaveUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -413,27 +437,27 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
             // 
-            // btn_update
+            // panel9
             // 
-            this.btn_update.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_update.Image = global::sistema_modular_cafe_majada.Properties.Resources.editar;
-            this.btn_update.Location = new System.Drawing.Point(3, 3);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(57, 49);
-            this.btn_update.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btn_update.TabIndex = 1;
-            this.btn_update.TabStop = false;
+            this.panel9.Controls.Add(this.dataGrid_UserView);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(301, 75);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(664, 363);
+            this.panel9.TabIndex = 14;
             // 
-            // btn_delete
+            // dataGrid_UserView
             // 
-            this.btn_delete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_delete.Image = global::sistema_modular_cafe_majada.Properties.Resources.boton_eliminar;
-            this.btn_delete.Location = new System.Drawing.Point(66, 3);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(58, 49);
-            this.btn_delete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btn_delete.TabIndex = 2;
-            this.btn_delete.TabStop = false;
+            this.dataGrid_UserView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGrid_UserView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_UserView.Location = new System.Drawing.Point(7, 6);
+            this.dataGrid_UserView.Name = "dataGrid_UserView";
+            this.dataGrid_UserView.RowHeadersWidth = 51;
+            this.dataGrid_UserView.RowTemplate.Height = 24;
+            this.dataGrid_UserView.Size = new System.Drawing.Size(651, 350);
+            this.dataGrid_UserView.TabIndex = 0;
             // 
             // form_usuarios
             // 
@@ -450,17 +474,18 @@ namespace sistema_modular_cafe_majada.views
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "form_usuarios";
             this.Text = "form_usuarios";
+            this.Load += new System.EventHandler(this.form_usuarios_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btn_update)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_delete)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_UserView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_update)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_delete)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -499,5 +524,7 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.TextBox txb_PassConfirm;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btn_table_person;
+        private System.Windows.Forms.ComboBox cbx_userStatus;
+        private System.Windows.Forms.Label label10;
     }
 }

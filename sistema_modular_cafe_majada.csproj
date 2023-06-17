@@ -111,6 +111,12 @@
     <Compile Include="views\form_rol.Designer.cs">
       <DependentUpon>form_rol.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_splash.Designer.cs">
+      <DependentUpon>form_splash.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_subprod_cafe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_rol.resx">
       <DependentUpon>form_rol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_splash.resx">
+      <DependentUpon>form_splash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_subprod_cafe.resx">
       <DependentUpon>form_subprod_cafe.cs</DependentUpon>
@@ -300,6 +309,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\tablas 24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\modulo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
