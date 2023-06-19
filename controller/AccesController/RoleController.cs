@@ -69,7 +69,6 @@ namespace sistema_modular_cafe_majada.controller.AccesController
             return roles;
         }
 
-
         public Role ObtenerRol(string nombreRol)
         {
             Role rol = null;

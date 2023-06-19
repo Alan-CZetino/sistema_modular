@@ -67,6 +67,7 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_tablePerson.RowTemplate.Height = 24;
             this.dtg_tablePerson.Size = new System.Drawing.Size(582, 317);
             this.dtg_tablePerson.TabIndex = 1;
+            this.dtg_tablePerson.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_tablePerson_CellDoubleClick);
             this.dtg_tablePerson.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_tablePerson_CellDoubleClick);
             // 
             // panel1

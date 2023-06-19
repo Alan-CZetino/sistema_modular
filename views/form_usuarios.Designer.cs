@@ -51,7 +51,6 @@ namespace sistema_modular_cafe_majada.views
             this.label4 = new System.Windows.Forms.Label();
             this.txb_Name = new System.Windows.Forms.TextBox();
             this.txb_Password = new System.Windows.Forms.TextBox();
-            this.txb_Role = new System.Windows.Forms.TextBox();
             this.txb_NameUser = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -63,6 +62,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dataGrid_UserView = new System.Windows.Forms.DataGridView();
+            this.cbx_role = new System.Windows.Forms.ComboBox();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_update)).BeginInit();
@@ -205,6 +205,7 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
+            this.panel8.Controls.Add(this.cbx_role);
             this.panel8.Controls.Add(this.cbx_userStatus);
             this.panel8.Controls.Add(this.label10);
             this.panel8.Controls.Add(this.btn_table_person);
@@ -215,7 +216,6 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.txb_Name);
             this.panel8.Controls.Add(this.txb_Password);
-            this.panel8.Controls.Add(this.txb_Role);
             this.panel8.Controls.Add(this.txb_NameUser);
             this.panel8.Controls.Add(this.label5);
             this.panel8.Controls.Add(this.label7);
@@ -338,17 +338,6 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Password.Name = "txb_Password";
             this.txb_Password.Size = new System.Drawing.Size(158, 23);
             this.txb_Password.TabIndex = 11;
-            // 
-            // txb_Role
-            // 
-            this.txb_Role.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_Role.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Role.Location = new System.Drawing.Point(11, 352);
-            this.txb_Role.Margin = new System.Windows.Forms.Padding(2);
-            this.txb_Role.Name = "txb_Role";
-            this.txb_Role.Size = new System.Drawing.Size(158, 23);
-            this.txb_Role.TabIndex = 15;
             // 
             // txb_NameUser
             // 
@@ -501,6 +490,16 @@ namespace sistema_modular_cafe_majada.views
             this.dataGrid_UserView.TabIndex = 0;
             this.dataGrid_UserView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_UserView_CellDoubleClick);
             // 
+            // cbx_role
+            // 
+            this.cbx_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_role.FormattingEnabled = true;
+            this.cbx_role.Location = new System.Drawing.Point(11, 349);
+            this.cbx_role.Margin = new System.Windows.Forms.Padding(2);
+            this.cbx_role.Name = "cbx_role";
+            this.cbx_role.Size = new System.Drawing.Size(158, 25);
+            this.cbx_role.TabIndex = 26;
+            // 
             // form_usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -552,7 +551,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txb_Name;
         private System.Windows.Forms.TextBox txb_Password;
-        private System.Windows.Forms.TextBox txb_Role;
         private System.Windows.Forms.TextBox txb_NameUser;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
@@ -569,5 +567,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Button btn_table_person;
         private System.Windows.Forms.ComboBox cbx_userStatus;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbx_role;
     }
 }

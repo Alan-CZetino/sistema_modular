@@ -1,5 +1,6 @@
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
+using sistema_modular_cafe_majada.model.Acces;
 using sistema_modular_cafe_majada.model.DAO;
 using sistema_modular_cafe_majada.model.UserData;
 using System;
@@ -20,6 +21,8 @@ namespace sistema_modular_cafe_majada.views
         private bool imagenClickeada = false;
         //instancia de la clase mapeo persona para capturar los datos seleccionado por el usuario
         private Usuario usuarioSeleccionado;
+        private int idPerson;
+        public int contador = 0;
 
         public form_usuarios()
         {
@@ -31,6 +34,7 @@ namespace sistema_modular_cafe_majada.views
             //funcion para mostrar de inicio los datos en el dataGrid
             ShowUserGrid();
 
+            CbxRoles();
             dataGrid_UserView.CellPainting += dataGrid_UserView_CellPainting;
 
             txb_Name.ReadOnly = true;
@@ -119,7 +123,12 @@ namespace sistema_modular_cafe_majada.views
                     imagenClickeada = true;
 
                     // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                    txb_Name.Text = Convert.ToString(usuarioSeleccionado.IdPersonaUsuario);
+                    UserController userC = new UserController();
+                    idPerson = usuarioSeleccionado.IdPersonaUsuario;
+                    Console.WriteLine("Depuracion usuario Seleccionado - Id obtenido: " + idPerson);
+                    var name = userC.ObtenerNombrePersona(idPerson);
+
+                    txb_Name.Text = name.NombresPersona;
                     txb_NameUser.Text = usuarioSeleccionado.NombreUsuario;
                     txb_Email.Text = usuarioSeleccionado.EmailUsuario;
                     txb_Password.Text = usuarioSeleccionado.ClaveUsuario;
@@ -129,14 +138,17 @@ namespace sistema_modular_cafe_majada.views
                     label10.Visible = true;
                     cbx_userStatus.Visible = true;
 
+                    cbx_role.Items.Clear();
+                    CbxRoles();
+
+                    cbx_userStatus.Items.Clear();
                     cbx_userStatus.Items.Add("Activo");
                     cbx_userStatus.Items.Add("Inactivo");
                     cbx_userStatus.Items.Add("Suspendido");
                     cbx_userStatus.Items.Add("Pendiente de activación");
                     cbx_userStatus.Items.Add("Eliminado");
-                    //txb_Role.Text = usuarioSeleccionado.NitPersona;
-                    
-                    usuarioSeleccionado = null;
+
+                    //usuarioSeleccionado = null;
                 }
             }
             else
@@ -175,6 +187,24 @@ namespace sistema_modular_cafe_majada.views
                 // Mostrar un mensaje de error o lanzar una excepción
                 MessageBox.Show("No se ha seleccionado correctamente el dato");
             }
+        }
+
+        public void CbxRoles()
+        {
+            UserController roles = new UserController();
+            List<Role> datoRol = roles.ObtenerRolCbx();
+            
+            cbx_role.Items.Clear();
+
+            // Asignar los valores numéricos a los elementos del ComboBox
+            foreach (Role role in datoRol)
+            {
+                int idRol = role.IdRol;
+                string nombreRol = role.NombreRol;
+
+                cbx_role.Items.Add(new KeyValuePair<int, string>(idRol, nombreRol));
+            }
+
         }
 
         public void ColocarDato(string dataSelect)
@@ -233,27 +263,30 @@ namespace sistema_modular_cafe_majada.views
             ConvertFirstCharacter(comBoxes);
 
             // Obtener los valores ingresados por el usuario
-            string namePerson = txb_Name.Text;
+            // Obtener el valor numérico seleccionado
+            KeyValuePair<int, string> selectedStatus = (KeyValuePair<int, string>)cbx_role.SelectedItem;
+            int selectedValue = selectedStatus.Key; // Obtiene el valor seleccionado
+            
             string nameUser = txb_NameUser.Text;
             string pass = txb_Password.Text;
             string passConfirm = txb_PassConfirm.Text;
             string email = txb_Email.Text;
             string depto = txb_Depto.Text;
-            string role = txb_Role.Text;
 
             if (pass == passConfirm)
             {
                 // Las contraseñas coinciden
                 string encryptedPassword = PasswordManager.EncryptPassword(pass);
 
-                // Crear una instancia de la clase Usuario con los valores obtenidos
-                Usuario usuario1 = new Usuario()
+                // Crear una instancia de la clase Persona con los valores obtenidos
+                Usuario usuarioInsert = new Usuario()
                 {
                     NombreUsuario = nameUser,
                     EmailUsuario = email,
-                    ClaveUsuario = passConfirm,
-                    IdRolUsuario = Convert.ToInt32(role),
+                    ClaveUsuario = encryptedPassword,
+                    EstadoUsuario = "Pendiente de Activacion",
                     DeptoUsuario = depto,
+                    IdRolUsuario = selectedValue,
                     IdPersonaUsuario = PersonSelect.IdPerson
                 };
 
@@ -261,7 +294,7 @@ namespace sistema_modular_cafe_majada.views
                 {
                     // Código que se ejecutará si no se ha hecho clic en la imagen update
                     // Llamar al controlador para insertar la persona en la base de datos
-                    bool exito = userController.InsertarUsuario(usuario1);
+                    bool exito = userController.InsertarUsuario(usuarioInsert);
 
                     if (exito)
                     {
@@ -290,15 +323,39 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    // Código que se ejecutará si se ha hecho clic en la imagen update
-                    //bool exito = userController.ActualizarPersona(usuarioSeleccionada.IdUsuario, namePerson, lastNamePerson, location, fechaSeleccionada, nit, dui, phone1, phone2);
-                    /*
+                    // Código que se ejecutará
+                    // si se ha hecho clic en la imagen update
+                    int idRol = usuarioSeleccionado.IdRolUsuario;
+                    bool baja = false;
+                    object selectedItem = cbx_userStatus.SelectedItem; // Obtiene el objeto seleccionado
+
+                    if (selectedItem != null)
+                    {
+                        string valorSeleccionado = selectedItem.ToString(); // Convierte el objeto a string si es necesario
+                        usuario.EstadoUsuario = valorSeleccionado;
+                    }
+
+                    if (selectedItem.Equals("Inactivo") || selectedItem.Equals("Suspendido") || selectedItem.Equals("Eliminado"))
+                    {
+                        baja = true;
+                    }
+
+                    Console.WriteLine("depuracion - estado del usuario: " + baja);
+
+                    DateTime? fechaBaja = null;
+                    if (baja)
+                    {
+                        fechaBaja = DateTime.Today;
+                    }
+
+                    bool exito = userController.ActualizarUsuario(usuarioSeleccionado.IdUsuario, nameUser, email, pass, fechaBaja, usuario.EstadoUsuario, depto, idRol, idPerson);
+
                     if (exito)
                     {
                         MessageBox.Show("Persona actualizada correctamente.");
                         try
                         {
-                            log.RegistrarLog(usuario.IdUsuario, "Actualizacion de dato Persona", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos de la persona con ID " + personaSeleccionada.IdPersona + " en la base de datos");
+                            log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Usuario", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos del usuario con ID " + usuarioSeleccionado.IdUsuario + " en la base de datos");
                         }
                         catch (Exception ex)
                         {
@@ -306,15 +363,21 @@ namespace sistema_modular_cafe_majada.views
                         }
 
                         //funcion para actualizar los datos en el dataGrid
-                        ShowPersonGrid();
+                        ShowUserGrid();
 
+                        label10.Visible = false;
+                        cbx_userStatus.Visible = false;
                         ClearDataTxb();
+                        cbx_role.Items.Clear();
+                        cbx_userStatus.Items.Clear();
+
                     }
                     else
                     {
                         MessageBox.Show("Error al actualizar la persona. Verifica los datos e intenta nuevamente.");
                     }
-                    imagenClickeada = false;*/
+
+                    imagenClickeada = false;
                 }
             }
             else
@@ -328,8 +391,7 @@ namespace sistema_modular_cafe_majada.views
         {
 
             PersonSelect.NamePerson = "";
-            List<TextBox> txb = new List<TextBox> { txb_Name, txb_NameUser, txb_Password, txb_PassConfirm, txb_Email,
-                                    txb_Role};
+            List<TextBox> txb = new List<TextBox> { txb_Name, txb_NameUser, txb_Password, txb_PassConfirm, txb_Email };
 
             foreach (TextBox textBox in txb)
             {
@@ -347,6 +409,7 @@ namespace sistema_modular_cafe_majada.views
                 txb_Name.Text = PersonSelect.NamePerson;
             }
             //ftperson.ShowDialog();
+
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -354,6 +417,7 @@ namespace sistema_modular_cafe_majada.views
             ClearDataTxb();
             label10.Visible = false;
             cbx_userStatus.Visible = false;
+            usuarioSeleccionado = null;
         }
 
 

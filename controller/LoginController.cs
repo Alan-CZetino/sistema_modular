@@ -25,26 +25,28 @@ namespace sistema_modular_cafe_majada.controller
                 // Obtener una conexión a la base de datos
                 conexionBD.Conectar();
 
-                string query = "SELECT COUNT(*) FROM Usuario WHERE nombre_usuario = @nombreUsuario AND clave_usuario = @contraseña";
+                string query = "SELECT clave_usuario FROM Usuario WHERE nombre_usuario = @nombreUsuario";
 
                 // Crear un comando con la consulta y la conexión
                 conexionBD.CrearComando(query);
                 conexionBD.AgregarParametro("@nombreUsuario", nombreUsuario);
-                conexionBD.AgregarParametro("@contraseña", contraseña);
 
-                int count = Convert.ToInt32(conexionBD.EjecutarConsultaEscalar());
+                string hashedPasswordFromDB = conexionBD.EjecutarConsultaEscalar() as string;
 
                 // Cerrar la conexión a la base de datos
                 conexionBD.Desconectar();
 
-                if (count > 0)
+                if (hashedPasswordFromDB != null)
                 {
-                    return true; // Las credenciales son válidas
+                    bool isMatch = SecurityData.PasswordManager.VerifyPassword(contraseña, hashedPasswordFromDB);
+
+                    if (isMatch)
+                    {
+                        return true; // Las credenciales son válidas
+                    }
                 }
-                else
-                {
-                    return false; // Las credenciales son inválidas
-                }
+
+                return false; // Las credenciales son inválidas
             }
             catch (Exception ex)
             {
@@ -52,5 +54,6 @@ namespace sistema_modular_cafe_majada.controller
                 return false;
             }
         }
+
     }
 }

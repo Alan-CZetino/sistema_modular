@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,15 +15,35 @@ namespace sistema_modular_cafe_majada.model.Connection
         private MySqlConnection conexion;
         private MySqlCommand comando;
 
+        //ruta correcta al archivo XML
+        string rutaArchivoConfiguracion = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Settings", "app.config");
+
         public ConnectionDB()
         {
-            string servidor = "localhost";              // Cambiar esto por la dirección del servidor de la base de datos
-            string baseDatos = "Cooperativa_Prueba";    // Cambiar esto por el nombre de la base de datos
-            string usuario = "root";                    // Cambiar esto por tu nombre de usuario
-            string password = "2001";                   // Cambiar esto por tu contraseña
+            // Verificar si el archivo existe
+            if (File.Exists(rutaArchivoConfiguracion))
+            {
+                // Cargar la configuración desde el archivo
+                ExeConfigurationFileMap fileMap = new ExeConfigurationFileMap();
+                fileMap.ExeConfigFilename = rutaArchivoConfiguracion;
+                Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
 
-            string cadenaConexion = $"server={servidor};database={baseDatos};uid={usuario};password={password};";
-            conexion = new MySqlConnection(cadenaConexion);
+                // Acceder a las credenciales de la base de datos
+                string servidor = configuration.AppSettings.Settings["DBServer"].Value;
+                string baseDatos = configuration.AppSettings.Settings["DBName"].Value;
+                string usuario = configuration.AppSettings.Settings["DBUsername"].Value;
+                string password = configuration.AppSettings.Settings["DBPassword1"].Value;
+
+                string cadenaConexion = $"server={servidor};database={baseDatos};uid={usuario};password={password};";
+                conexion = new MySqlConnection(cadenaConexion);
+                
+                // Utilizar las credenciales para establecer la conexión a la base de datos
+                // ...
+            }
+            else
+            {
+                Console.WriteLine("El archivo de configuración no existe en la ruta especificada.");
+            }
         }
 
         public void Conectar()

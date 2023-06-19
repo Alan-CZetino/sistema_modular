@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using sistema_modular_cafe_majada.model.Acces;
 using sistema_modular_cafe_majada.model.Connection;
 using sistema_modular_cafe_majada.model.UserData;
 using System;
@@ -68,41 +69,61 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
             return usuarios;
         }
 
-        public bool InsertarUsuario(Usuario usuario)
+        public bool InsertarUsuario(Usuario user)
         {
+            bool exito = false;
             try
             {
-                // Abre la conexión
+                // Abrir la conexión a la base de datos
                 conexion.Conectar();
 
-                string query = "INSERT INTO Usuario (nombre_usuario, email_usuario, clave_usuario, estado_usuario, fecha_creacion_usuario, fecha_baja_usuario, depto_usuario, id_rol_usuario, id_persona_usuario) " +
-               "VALUES (@NombreUsuario, @EmailUsuario, @ClaveUsuario, @EstadoUsuario, @FechaCreacionUsuario, @FechaBajaUsuario, @DeptoUsuario, @IdRolUsuario, @IdPersonaUsuario)";
+                // Consulta SQL para insertar un nuevo usuario
+                string consulta = "INSERT INTO Usuario (nombre_usuario, email_usuario, clave_usuario, estado_usuario, "
+                    + "fecha_creacion_usuario, depto_usuario, id_rol_usuario, id_persona_usuario) "
+                    + "VALUES (@nombre, @email, @clave, @estado, "
+                    + "@fechaCreacion, @depto, @idRol, @idPersona)";
 
-                conexion.CrearComando(query);
+                // Crear el comando SQL
+                conexion.CrearComando(consulta);
 
-                conexion.AgregarParametro("@NombreUsuario", usuario.NombreUsuario);
-                conexion.AgregarParametro("@EmailUsuario", usuario.EmailUsuario);
-                conexion.AgregarParametro("@ClaveUsuario", usuario.ClaveUsuario);
-                conexion.AgregarParametro("@EstadoUsuario", "Activo");
-                conexion.AgregarParametro("@FechaCreacionUsuario", DateTime.Today);
-                conexion.AgregarParametro("@FechaBajaUsuario", usuario.FechaBajaUsuario ?? (object)DBNull.Value);
-                conexion.AgregarParametro("@DeptoUsuario", usuario.DeptoUsuario);
-                conexion.AgregarParametro("@IdRolUsuario", usuario.IdRolUsuario);
-                conexion.AgregarParametro("@IdPersonaUsuario", usuario.IdPersonaUsuario);
+                // Obtener la fecha actual
+                DateTime fechaCreacion = DateTime.Now;
 
+                // Agregar los parámetros al comando SQL
+                conexion.AgregarParametro("@nombre", user.NombreUsuario);
+                conexion.AgregarParametro("@email", user.EmailUsuario);
+                conexion.AgregarParametro("@clave", user.ClaveUsuario);
+                conexion.AgregarParametro("@estado", user.EstadoUsuario);
+                conexion.AgregarParametro("@fechaCreacion", fechaCreacion);
+                conexion.AgregarParametro("@depto", user.DeptoUsuario);
+                conexion.AgregarParametro("@idRol", user.IdRolUsuario);
+                conexion.AgregarParametro("@idPersona", user.IdPersonaUsuario);
+
+                // Ejecutar la instrucción de inserción
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
+                // Verificar si la inserción fue exitosa
                 if (filasAfectadas > 0)
                 {
-                    return true; // Inserción exitosa
+                    Console.WriteLine("La inserción se realizó correctamente.");
+                    exito = true;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo realizar la inserción.");
+                    exito = false;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error durante la inserción del usuario en la base de datos: " + ex.Message);
+                Console.WriteLine("Error al insertar el usuario: " + ex.Message);
             }
-
-            return false; // Error durante la inserción
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return exito;
         }
 
         public void EliminarUsuario(int idUsuario)
@@ -140,6 +161,137 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
                 conexion.Desconectar();
             }
         }
+        
+        public bool ActualizarUsuario(int id, string nombreUsuario, string email, string clave, DateTime? fechaBaja, string estado, string depto, int idRol, int idPersona)
+        {
+            bool exito = false;
+            try
+            {
+                // Crear una instancia de la clase ConnectionDB
+                ConnectionDB conexion = new ConnectionDB();
 
+                // Abrir la conexión a la base de datos
+                conexion.Conectar();
+
+                // Consulta SQL para actualizar el usuario
+                string consulta = "UPDATE Usuario SET nombre_usuario = @nombre, email_usuario = @email, "
+                    + "clave_usuario = @clave, fecha_baja_usuario = @fechaBaja, estado_usuario = @estado, "
+                    + "depto_usuario = @depto, id_rol_usuario = @idRol, id_persona_usuario = @idPersona "
+                    + "WHERE id_usuario = @id";
+
+                // Crear el comando SQL
+                conexion.CrearComando(consulta);
+
+                // Agregar los parámetros al comando SQL
+                conexion.AgregarParametro("@nombre", nombreUsuario);
+                conexion.AgregarParametro("@email", email);
+                conexion.AgregarParametro("@clave", clave);
+                conexion.AgregarParametro("@fechaBaja", fechaBaja);
+                conexion.AgregarParametro("@estado", estado);
+                conexion.AgregarParametro("@depto", depto);
+                conexion.AgregarParametro("@idRol", idRol);
+                conexion.AgregarParametro("@idPersona", idPersona);
+                conexion.AgregarParametro("@id", id);
+
+                // Ejecutar la instrucción de actualización
+                int filasAfectadas = conexion.EjecutarInstruccion();
+
+                // Verificar si la actualización fue exitosa
+                if (filasAfectadas > 0)
+                {
+                    Console.WriteLine("La actualización se realizó correctamente.");
+                    exito = true;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo realizar la actualización.");
+                    exito = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar el usuario: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return exito;
+        }
+
+        public Persona ObtenerNombrePersona(int idPersona)
+        {
+            Persona persona = new Persona();
+            try
+            {
+                // Abre la conexión a la base de datos
+                conexion.Conectar();
+                string consulta = "SELECT nombres_persona FROM Persona WHERE id_persona = @NombrePersona";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@NombrePersona", idPersona);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            persona.NombresPersona = Convert.ToString(reader["nombres_persona"]);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir al obtener los usuarios de la base de datos
+                Console.WriteLine("Error al obtener la persona: " + ex.Message);
+            }
+            finally
+            {
+                // Cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return persona;
+        }
+
+        public List<Role> ObtenerRolCbx()
+        {
+            List<Role> roles = new List<Role>();
+
+            try
+            {
+                // Abre la conexión a la base de datos
+                conexion.Conectar();
+
+                string consulta = "SELECT id_rol, nombre_rol FROM Rol";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Role role = new Role();
+                        role.IdRol = Convert.ToInt32(reader["id_rol"]);
+                        role.NombreRol = Convert.ToString(reader["nombre_rol"]);
+                        roles.Add(role);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir al obtener los usuarios de la base de datos
+                Console.WriteLine("Error al obtener los roles: " + ex.Message);
+            }
+            finally
+            {
+                // Cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return roles;
+        }
     }
 }
