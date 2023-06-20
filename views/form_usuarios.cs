@@ -154,7 +154,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // Mostrar un mensaje de error o lanzar una excepción
-                MessageBox.Show("No se ha seleccionado correctamente el dato");
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -166,7 +166,7 @@ namespace sistema_modular_cafe_majada.views
                 LogController log = new LogController();
                 UserDAO userDao = new UserDAO();
                 Usuario usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro del usuario: " + usuarioSeleccionado.NombreUsuario + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro del usuario: " + usuarioSeleccionado.NombreUsuario + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
@@ -185,7 +185,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // Mostrar un mensaje de error o lanzar una excepción
-                MessageBox.Show("No se ha seleccionado correctamente el dato");
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -263,127 +263,150 @@ namespace sistema_modular_cafe_majada.views
             ConvertFirstCharacter(comBoxes);
 
             // Obtener los valores ingresados por el usuario
-            // Obtener el valor numérico seleccionado
-            KeyValuePair<int, string> selectedStatus = (KeyValuePair<int, string>)cbx_role.SelectedItem;
-            int selectedValue = selectedStatus.Key; // Obtiene el valor seleccionado
-            
-            string nameUser = txb_NameUser.Text;
-            string pass = txb_Password.Text;
-            string passConfirm = txb_PassConfirm.Text;
-            string email = txb_Email.Text;
-            string depto = txb_Depto.Text;
-
-            if (pass == passConfirm)
+            try
             {
-                // Las contraseñas coinciden
-                string encryptedPassword = PasswordManager.EncryptPassword(pass);
+                string nameUser = txb_NameUser.Text;
+                string pass = txb_Password.Text;
+                string passConfirm = txb_PassConfirm.Text;
+                string email = txb_Email.Text;
+                string depto = txb_Depto.Text;
 
-                // Crear una instancia de la clase Persona con los valores obtenidos
-                Usuario usuarioInsert = new Usuario()
+                // Verificar si se ha seleccionado un rol de usuario
+                if (cbx_role.SelectedItem == null)
                 {
-                    NombreUsuario = nameUser,
-                    EmailUsuario = email,
-                    ClaveUsuario = encryptedPassword,
-                    EstadoUsuario = "Pendiente de Activacion",
-                    DeptoUsuario = depto,
-                    IdRolUsuario = selectedValue,
-                    IdPersonaUsuario = PersonSelect.IdPerson
-                };
+                    MessageBox.Show("Debe seleccionar un rol de usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Salir de la función para evitar excepciones adicionales
+                }
 
-                if (!imagenClickeada)
+                // Obtener el valor numérico seleccionado
+                KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
+                if (cbx_role.SelectedItem is KeyValuePair<int, string> keyValue)
                 {
-                    // Código que se ejecutará si no se ha hecho clic en la imagen update
-                    // Llamar al controlador para insertar la persona en la base de datos
-                    bool exito = userController.InsertarUsuario(usuarioInsert);
+                    selectedStatus = keyValue;
+                }
+                else if (cbx_role.SelectedItem != null)
+                {
+                    selectedStatus = (KeyValuePair<int, string>)cbx_role.SelectedItem;
+                }
 
-                    if (exito)
+                int selectedValue = selectedStatus.Key;
+
+
+                if (pass == passConfirm)
+                {
+                    // Las contraseñas coinciden
+                    string encryptedPassword = PasswordManager.EncryptPassword(pass);
+
+                    // Crear una instancia de la clase Persona con los valores obtenidos
+                    Usuario usuarioInsert = new Usuario()
                     {
-                        MessageBox.Show("Usuario agregada correctamente.");
-                        try
+                        NombreUsuario = nameUser,
+                        EmailUsuario = email,
+                        ClaveUsuario = encryptedPassword,
+                        EstadoUsuario = "Pendiente de Activacion",
+                        DeptoUsuario = depto,
+                        IdRolUsuario = selectedValue,
+                        IdPersonaUsuario = PersonSelect.IdPerson
+                    };
+
+                    if (!imagenClickeada)
+                    {
+                        // Código que se ejecutará si no se ha hecho clic en la imagen update
+                        // Llamar al controlador para insertar la persona en la base de datos
+                        bool exito = userController.InsertarUsuario(usuarioInsert);
+
+                        if (exito)
                         {
-                            //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                            log.RegistrarLog(usuario.IdUsuario, "Registro dato Usuario", usuario.DeptoUsuario, "Insercion", "Inserto un nuevo usuario a la base de datos");
+                            MessageBox.Show("Usuario agregada correctamente.");
+                            try
+                            {
+                                //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                                log.RegistrarLog(usuario.IdUsuario, "Registro dato Usuario", usuario.DeptoUsuario, "Insercion", "Inserto un nuevo usuario a la base de datos");
 
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                            }
+
+                            //funcion para actualizar los datos en el dataGrid
+                            ShowUserGrid();
+
+                            //borrar datos de los textbox
+                            ClearDataTxb();
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                            MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.");
                         }
-
-                        //funcion para actualizar los datos en el dataGrid
-                        ShowUserGrid();
-
-                        //borrar datos de los textbox
-                        ClearDataTxb();
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.");
+                        // Código que se ejecutará
+                        // si se ha hecho clic en la imagen update
+                        int idRol = usuarioSeleccionado.IdRolUsuario;
+                        bool baja = false;
+                        object selectedItem = cbx_userStatus.SelectedItem; // Obtiene el objeto seleccionado
+
+                        if (selectedItem != null)
+                        {
+                            string valorSeleccionado = selectedItem.ToString(); // Convierte el objeto a string si es necesario
+                            usuario.EstadoUsuario = valorSeleccionado;
+
+                            if (selectedItem.Equals("Inactivo") || selectedItem.Equals("Suspendido") || selectedItem.Equals("Eliminado"))
+                            {
+                                baja = true;
+                            }
+                            DateTime? fechaBaja = null;
+                            if (baja)
+                            {
+                                fechaBaja = DateTime.Today;
+                            }
+
+                            bool exito = userController.ActualizarUsuario(usuarioSeleccionado.IdUsuario, nameUser, email, pass, fechaBaja, usuario.EstadoUsuario, depto, idRol, idPerson);
+
+                            if (exito)
+                            {
+                                MessageBox.Show("Persona actualizada correctamente.");
+                                try
+                                {
+                                    log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Usuario", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos del usuario con ID " + usuarioSeleccionado.IdUsuario + " en la base de datos");
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                                }
+
+                                //funcion para actualizar los datos en el dataGrid
+                                ShowUserGrid();
+
+                                label10.Visible = false;
+                                cbx_userStatus.Visible = false;
+                                ClearDataTxb();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al actualizar la persona. Verifica los datos e intenta nuevamente.", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                            imagenClickeada = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Asigne el dato de estado de usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
                     }
                 }
                 else
                 {
-                    // Código que se ejecutará
-                    // si se ha hecho clic en la imagen update
-                    int idRol = usuarioSeleccionado.IdRolUsuario;
-                    bool baja = false;
-                    object selectedItem = cbx_userStatus.SelectedItem; // Obtiene el objeto seleccionado
-
-                    if (selectedItem != null)
-                    {
-                        string valorSeleccionado = selectedItem.ToString(); // Convierte el objeto a string si es necesario
-                        usuario.EstadoUsuario = valorSeleccionado;
-                    }
-
-                    if (selectedItem.Equals("Inactivo") || selectedItem.Equals("Suspendido") || selectedItem.Equals("Eliminado"))
-                    {
-                        baja = true;
-                    }
-
-                    Console.WriteLine("depuracion - estado del usuario: " + baja);
-
-                    DateTime? fechaBaja = null;
-                    if (baja)
-                    {
-                        fechaBaja = DateTime.Today;
-                    }
-
-                    bool exito = userController.ActualizarUsuario(usuarioSeleccionado.IdUsuario, nameUser, email, pass, fechaBaja, usuario.EstadoUsuario, depto, idRol, idPerson);
-
-                    if (exito)
-                    {
-                        MessageBox.Show("Persona actualizada correctamente.");
-                        try
-                        {
-                            log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Usuario", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos del usuario con ID " + usuarioSeleccionado.IdUsuario + " en la base de datos");
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Error al obtener el usuario: " + ex.Message);
-                        }
-
-                        //funcion para actualizar los datos en el dataGrid
-                        ShowUserGrid();
-
-                        label10.Visible = false;
-                        cbx_userStatus.Visible = false;
-                        ClearDataTxb();
-                        cbx_role.Items.Clear();
-                        cbx_userStatus.Items.Clear();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al actualizar la persona. Verifica los datos e intenta nuevamente.");
-                    }
-
-                    imagenClickeada = false;
+                    // Las contraseñas no coinciden, mostrar un mensaje de error
+                    MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                // Las contraseñas no coinciden, mostrar un mensaje de error
-                MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+                MessageBox.Show("Debe seleccionar un rol de usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -398,7 +421,12 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
+            cbx_role.Items.Clear();
+            cbx_userStatus.Items.Clear();
             txb_Depto.Items.Clear();
+            txb_Depto.SelectedIndex = -1;
+            cbx_role.SelectedIndex = -1;
+            cbx_userStatus.SelectedIndex = -1;
         }
 
         private void btn_table_person_Click(object sender, EventArgs e)
