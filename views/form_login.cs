@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using sistema_modular_cafe_majada.model.UserData;
-
+using sistema_modular_cafe_majada.controller;
 
 namespace sistema_modular_cafe_majada
 {
@@ -18,8 +18,8 @@ namespace sistema_modular_cafe_majada
         public form_login()
         {
             InitializeComponent();
-            
 
+            txb_username.TextChanged += txb_username_TextChanged;
         }
 
         //variable de tipo global para manejo de intentos fallidos en el login
@@ -46,8 +46,11 @@ namespace sistema_modular_cafe_majada
         //Evento para cuando el curso del mouse sale del TextBox
         private void txb_username_Leave(object sender, EventArgs e)
         {
+            string nombreUsuario = txb_username.Text;
+            CbxDepartamento(nombreUsuario);
             if (txb_username.Text == "")
             {
+                LimpiarComboBox();
                 txb_username.Text = "Usuario";
                 txb_username.ForeColor = Color.DimGray;
             }
@@ -123,6 +126,8 @@ namespace sistema_modular_cafe_majada
                 form_main formPrin = new form_main();
                 formPrin.NombreUsuario = user;
                 UsuarioActual.NombreUsuario = user;
+
+                LimpiarComboBox();
                 formPrin.Show();
 
                 //buca en la vista main el evento close del form 
@@ -149,6 +154,41 @@ namespace sistema_modular_cafe_majada
 
         }
 
-        
+        public void CbxDepartamento(string nombre)
+        {
+            LoginController deptoControl = new LoginController();
+            List<Usuario> datoDepto = deptoControl.ObtenerDepartamentoCbx(nombre);
+
+            cb_modulos.Items.Clear();
+
+            if (datoDepto.Count > 0)
+            {
+                int i = 1;
+                // Asignar los valores numéricos a los elementos del ComboBox
+                foreach (Usuario dept in datoDepto)
+                {
+                    string nombreDepto = dept.DeptoUsuario;
+                    cb_modulos.Items.Add(new KeyValuePair<int, string>(i, nombreDepto));
+                    i++;
+                }
+                cb_modulos.SelectedIndex = 0;
+            }
+            else
+            {
+                // No hay elementos en el departamento, puedes mostrar un mensaje o tomar una acción apropiada
+            }
+        }
+
+        public void LimpiarComboBox()
+        {
+            cb_modulos.Items.Clear();
+            cb_modulos.Text = ""; // Establece el texto del ComboBox en vacío
+        }
+
+        private void txb_username_TextChanged(object sender, EventArgs e)
+        {
+            string nombreUsuario = txb_username.Text;
+            CbxDepartamento(nombreUsuario);
+        }
     }
 }

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 using sistema_modular_cafe_majada.model;            // Importa los modelos correspondientes
 using sistema_modular_cafe_majada.model.Connection; // Importa el contexto de la base de datos
+using sistema_modular_cafe_majada.model.UserData;
 
 namespace sistema_modular_cafe_majada.controller
 {
@@ -53,6 +55,43 @@ namespace sistema_modular_cafe_majada.controller
                 Console.WriteLine("Error al autenticar al usuario: " + ex.Message);
                 return false;
             }
+        }
+
+        public List<Usuario> ObtenerDepartamentoCbx(string nombre)
+        {
+            List<Usuario> depto = new List<Usuario>();
+
+            try
+            {
+                // Abre la conexión a la base de datos
+                conexionBD.Conectar();
+
+                string consulta = "SELECT DISTINCT depto_usuario FROM Usuario WHERE nombre_usuario = @nombreUsuario";
+                conexionBD.CrearComando(consulta);
+                conexionBD.AgregarParametro("@nombreUsuario", nombre);
+
+                using (MySqlDataReader reader = conexionBD.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Usuario user = new Usuario();
+                        user.DeptoUsuario = Convert.ToString(reader["depto_usuario"]);
+                        depto.Add(user);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir al obtener los usuarios de la base de datos
+                Console.WriteLine("Error al obtener los roles: " + ex.Message);
+            }
+            finally
+            {
+                // Cierra la conexión a la base de datos
+                conexionBD.Desconectar();
+            }
+
+            return depto;
         }
 
     }
