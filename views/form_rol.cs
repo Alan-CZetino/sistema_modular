@@ -1,5 +1,8 @@
 ﻿using sistema_modular_cafe_majada.controller.AccesController;
+using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.model.Acces;
+using sistema_modular_cafe_majada.model.DAO;
+using sistema_modular_cafe_majada.model.UserData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,8 +30,10 @@ namespace sistema_modular_cafe_majada.views
             dtgv_roles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             ShowRolGrid();
+            ShowLevelRole();
 
             dtgv_roles.CellPainting += dtgv_roles_CellPainting;
+
         }
 
         private void dtgv_roles_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -75,12 +80,126 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_SaveRol_Click(object sender, EventArgs e)
         {
+            RoleController rolController = new RoleController();
+            LogController log = new LogController();
+            var userDao = new UserDAO();
+            var usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
 
+            ComboBox[] comBoxes = { cbx_access };
+            ConvertFirstCharacter(comBoxes);
+
+            try
+            {
+                string nameRol = txb_NameRol.Text;
+                string description = txb_Description.Text;
+                string permits = txb_permits.Text;
+
+                // Verificar si se ha seleccionado un nivel del rol
+                
+                object selectedItem = cbx_access.SelectedItem; // Obtiene el objeto seleccionado
+
+                if (selectedItem != null)
+                {
+                    string valorSeleccionado = selectedItem.ToString(); // Convierte el objeto a string si es necesario
+                    
+                    // Crear una instancia de la clase Rol con los valores obtenidos
+                    Role rolInsert = new Role()
+                    {
+                        NombreRol = nameRol,
+                        DescripcionRol = description,
+                        PermisosRol = permits,
+                        NivelAccesoRol = valorSeleccionado
+                    };
+
+                    if (!imagenClickeada)
+                    {
+                        // Código que se ejecutará si no se ha hecho clic en la imagen update
+                        // Llamar al controlador para insertar la persona en la base de datos
+                        bool exito = rolController.InsertarRol(rolInsert);
+
+                        if (exito)
+                        {
+                            MessageBox.Show("Rol agregado correctamente." , "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            try
+                            {
+                                //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                                log.RegistrarLog(usuario.IdUsuario, "Registro de caracteristicas del Rol", usuario.DeptoUsuario, "Insercion", "Inserto un nuevo Rol a la base de datos");
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                            }
+
+                            //funcion para actualizar los datos en el dataGrid
+                            ShowRolGrid();
+
+                            //borrar datos de los textbox
+                            ClearDataTxb();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.");
+                        }
+                    }
+                    else
+                    {
+                        // Código que se ejecutará si se ha hecho clic en la imagen update
+                        bool exito = rolController.ActualizarRol(rolSeleccionado.IdRol, nameRol, description, valorSeleccionado, permits);
+
+                        if (exito)
+                        {
+                            MessageBox.Show("Rol actualizada correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            try
+                            {
+                                log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Rol", usuario.DeptoUsuario, "Actualizacion", "Actualizo las caracteristicas del Rol con ID " + rolSeleccionado.IdRol + " en la base de datos");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                            }
+
+                            //funcion para actualizar los datos en el dataGrid
+                            ShowRolGrid();
+
+                            ClearDataTxb();
+
+                            imagenClickeada = false;
+                            rolSeleccionado = null;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al actualizar las caracteristicas del rol. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar el nivel del rol ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Salir de la función para evitar excepciones adicionales
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error - seleccion de nivel de rol; no seleccionado " + ex.Message);
+                MessageBox.Show("Debe seleccionar un nivel de acceso al rol", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
+            rolSeleccionado = null;
+        }
+
+        public void ShowLevelRole()
+        {
+            cbx_access.Items.Clear();
+            cbx_access.Items.Add("1");
+            cbx_access.Items.Add("2");
+            cbx_access.Items.Add("3");
+            cbx_access.Items.Add("4");
+            cbx_access.Items.Add("5");
         }
 
         public void ClearDataTxb()
@@ -92,8 +211,41 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Text = "";
             }
             cbx_access.Items.Clear(); // Eliminar todos los elementos del ComboBox
-            cbx_access.SelectedIndex = -1; // Deseleccionar cualquier elemento seleccionado previamente
+            cbx_access.Text = ""; // Deseleccionar cualquier elemento seleccionado previamente
 
+        }
+
+        public void ConvertFirstCharacter(ComboBox[] comboBoxes)
+        {
+            foreach (ComboBox comboBox in comboBoxes)
+            {
+                string input = comboBox.Text; // Obtener el valor seleccionado por el usuario desde el ComboBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a minúsculas
+                    string lowerCaseInput = input.ToLower();
+
+                    // Dividir la cadena en palabras utilizando espacios como delimitadores
+                    string[] words = lowerCaseInput.Split(' ');
+
+                    // Recorrer cada palabra y convertir el primer carácter a mayúscula
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        if (!string.IsNullOrEmpty(words[i]))
+                        {
+                            words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1);
+                        }
+                    }
+
+                    // Unir las palabras nuevamente en una sola cadena
+                    string result = string.Join(" ", words);
+
+                    // Asignar el valor modificado de vuelta al ComboBox
+                    comboBox.Text = result;
+                }
+            }
         }
 
         private void btn_mod_rol_Click(object sender, EventArgs e)
@@ -110,9 +262,7 @@ namespace sistema_modular_cafe_majada.views
                 txb_Description.Text = rolSeleccionado.DescripcionRol;
                 txb_permits.Text = rolSeleccionado.PermisosRol;
 
-                cbx_access.Items.Add("Tier 1");
-                cbx_access.Items.Add("Tier 2");
-                cbx_access.Items.Add("Tier 3");
+                ShowLevelRole();
 
             }
             else
@@ -123,6 +273,34 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_delete_rol_Click(object sender, EventArgs e)
         {
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (rolSeleccionado != null)
+            {
+                LogController log = new LogController();
+                UserDAO userDao = new UserDAO();
+                Usuario usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar las caracyeristicas registrada del Rol: " + rolSeleccionado.NombreRol + "?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    //se llama la funcion delete del controlador para eliminar el registro
+                    RoleController controller = new RoleController();
+                    controller.EliminarRol(rolSeleccionado.IdRol);
+
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de las caracteristicas Rol", usuario.DeptoUsuario, "Eliminacion", "Elimino las caracteristicas del Rol " + rolSeleccionado.NombreRol + " en la base de datos");
+
+                    MessageBox.Show("Rol Eliminada correctamente.", "Eliminacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //se actualiza la tabla
+                    ShowRolGrid();
+                    rolSeleccionado = null;
+                }
+            }
+            else
+            {
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente las caracteristicas del Rol", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -138,7 +316,11 @@ namespace sistema_modular_cafe_majada.views
             rolSeleccionado.DescripcionRol = filaSeleccionada.Cells["Descripcion"].Value.ToString();
             rolSeleccionado.PermisosRol = filaSeleccionada.Cells["Permiso"].Value.ToString();
 
-            Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + rolSeleccionado.NombreRol);
+        }
+
+        private void txb_NameRol_Leave(object sender, EventArgs e)
+        {
+            ShowLevelRole();
         }
     }
 }

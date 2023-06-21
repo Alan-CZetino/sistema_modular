@@ -246,8 +246,9 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Tel2.Location = new System.Drawing.Point(11, 397);
             this.txb_Tel2.Margin = new System.Windows.Forms.Padding(2);
             this.txb_Tel2.Name = "txb_Tel2";
-            this.txb_Tel2.Size = new System.Drawing.Size(331, 23);
+            this.txb_Tel2.Size = new System.Drawing.Size(351, 23);
             this.txb_Tel2.TabIndex = 19;
+            this.txb_Tel2.Enter += new System.EventHandler(this.txb_Tel2_Enter);
             this.txb_Tel2.Leave += new System.EventHandler(this.txb_Tel2_Leave);
             // 
             // label3
@@ -291,8 +292,9 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Tel1.Location = new System.Drawing.Point(11, 344);
             this.txb_Tel1.Margin = new System.Windows.Forms.Padding(2);
             this.txb_Tel1.Name = "txb_Tel1";
-            this.txb_Tel1.Size = new System.Drawing.Size(331, 23);
+            this.txb_Tel1.Size = new System.Drawing.Size(351, 23);
             this.txb_Tel1.TabIndex = 17;
+            this.txb_Tel1.Enter += new System.EventHandler(this.txb_Tel1_Enter);
             this.txb_Tel1.Leave += new System.EventHandler(this.txb_Tel1_Leave);
             // 
             // txb_Nombre
@@ -303,7 +305,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Nombre.Location = new System.Drawing.Point(10, 28);
             this.txb_Nombre.Margin = new System.Windows.Forms.Padding(2);
             this.txb_Nombre.Name = "txb_Nombre";
-            this.txb_Nombre.Size = new System.Drawing.Size(333, 23);
+            this.txb_Nombre.Size = new System.Drawing.Size(353, 23);
             this.txb_Nombre.TabIndex = 1;
             // 
             // label10
@@ -325,7 +327,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Dui.Location = new System.Drawing.Point(11, 238);
             this.txb_Dui.Margin = new System.Windows.Forms.Padding(2);
             this.txb_Dui.Name = "txb_Dui";
-            this.txb_Dui.Size = new System.Drawing.Size(331, 23);
+            this.txb_Dui.Size = new System.Drawing.Size(351, 23);
             this.txb_Dui.TabIndex = 11;
             this.txb_Dui.Leave += new System.EventHandler(this.txb_Dui_Leave);
             // 
@@ -337,7 +339,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Nit.Location = new System.Drawing.Point(11, 292);
             this.txb_Nit.Margin = new System.Windows.Forms.Padding(2);
             this.txb_Nit.Name = "txb_Nit";
-            this.txb_Nit.Size = new System.Drawing.Size(331, 23);
+            this.txb_Nit.Size = new System.Drawing.Size(351, 23);
             this.txb_Nit.TabIndex = 15;
             this.txb_Nit.Leave += new System.EventHandler(this.txb_Nit_Leave);
             // 
@@ -349,7 +351,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Apellido.Location = new System.Drawing.Point(10, 80);
             this.txb_Apellido.Margin = new System.Windows.Forms.Padding(2);
             this.txb_Apellido.Name = "txb_Apellido";
-            this.txb_Apellido.Size = new System.Drawing.Size(333, 23);
+            this.txb_Apellido.Size = new System.Drawing.Size(353, 23);
             this.txb_Apellido.TabIndex = 5;
             // 
             // label5
@@ -382,7 +384,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Direccion.Location = new System.Drawing.Point(11, 133);
             this.txb_Direccion.Margin = new System.Windows.Forms.Padding(2);
             this.txb_Direccion.Name = "txb_Direccion";
-            this.txb_Direccion.Size = new System.Drawing.Size(331, 23);
+            this.txb_Direccion.Size = new System.Drawing.Size(351, 23);
             this.txb_Direccion.TabIndex = 7;
             // 
             // label6

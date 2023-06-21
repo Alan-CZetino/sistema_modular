@@ -10,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,6 +36,8 @@ namespace sistema_modular_cafe_majada.views
             ShowUserGrid();
 
             CbxRoles();
+            CbxDepartamento();
+
             dataGrid_UserView.CellPainting += dataGrid_UserView_CellPainting;
 
             txb_Name.ReadOnly = true;
@@ -140,6 +143,7 @@ namespace sistema_modular_cafe_majada.views
 
                     cbx_role.Items.Clear();
                     CbxRoles();
+                    CbxDepartamento();
 
                     cbx_userStatus.Items.Clear();
                     cbx_userStatus.Items.Add("Activo");
@@ -207,6 +211,18 @@ namespace sistema_modular_cafe_majada.views
 
         }
 
+        public void CbxDepartamento()
+        {
+            txb_Depto.Items.Clear();
+
+            txb_Depto.Items.Add(new KeyValuePair<int, string>(1, "Modulo Activos de Cafe"));
+            txb_Depto.Items.Add(new KeyValuePair<int, string>(2, "Modulo Administracion"));
+            txb_Depto.Items.Add(new KeyValuePair<int, string>(3, "Modulo Contabilidad"));
+            txb_Depto.Items.Add(new KeyValuePair<int, string>(4, "Modulo Negocios Exteriores"));
+            txb_Depto.Items.Add(new KeyValuePair<int, string>(5, "Otros"));
+
+        }
+
         public void ColocarDato(string dataSelect)
         {
             // Aquí puedes realizar el procesamiento de los datos en tiempo real
@@ -268,109 +284,67 @@ namespace sistema_modular_cafe_majada.views
                 string nameUser = txb_NameUser.Text;
                 string pass = txb_Password.Text;
                 string passConfirm = txb_PassConfirm.Text;
-                string email = txb_Email.Text;
-                string depto = txb_Depto.Text;
+                string email = FormatearCorreoElectronico(txb_Email.Text);
+                string depto;
 
-                // Verificar si se ha seleccionado un rol de usuario
-                if (cbx_role.SelectedItem == null)
+                KeyValuePair<int, string>? departamentoSeleccionado = txb_Depto.SelectedItem as KeyValuePair<int, string>?;
+
+                if (departamentoSeleccionado != null)
                 {
-                    MessageBox.Show("Debe seleccionar un rol de usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; // Salir de la función para evitar excepciones adicionales
-                }
-
-                // Obtener el valor numérico seleccionado
-                KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
-                if (cbx_role.SelectedItem is KeyValuePair<int, string> keyValue)
-                {
-                    selectedStatus = keyValue;
-                }
-                else if (cbx_role.SelectedItem != null)
-                {
-                    selectedStatus = (KeyValuePair<int, string>)cbx_role.SelectedItem;
-                }
-
-                int selectedValue = selectedStatus.Key;
-
-
-                if (pass == passConfirm)
-                {
-                    // Las contraseñas coinciden
-                    string encryptedPassword = PasswordManager.EncryptPassword(pass);
-
-                    // Crear una instancia de la clase Persona con los valores obtenidos
-                    Usuario usuarioInsert = new Usuario()
+                    depto = departamentoSeleccionado.Value.Value;
+                
+                    // Verificar si se ha seleccionado un rol de usuario
+                    if (cbx_role.SelectedItem == null)
                     {
-                        NombreUsuario = nameUser,
-                        EmailUsuario = email,
-                        ClaveUsuario = encryptedPassword,
-                        EstadoUsuario = "Pendiente de Activacion",
-                        DeptoUsuario = depto,
-                        IdRolUsuario = selectedValue,
-                        IdPersonaUsuario = PersonSelect.IdPerson
-                    };
-
-                    if (!imagenClickeada)
-                    {
-                        // Código que se ejecutará si no se ha hecho clic en la imagen update
-                        // Llamar al controlador para insertar la persona en la base de datos
-                        bool exito = userController.InsertarUsuario(usuarioInsert);
-
-                        if (exito)
-                        {
-                            MessageBox.Show("Usuario agregada correctamente.");
-                            try
-                            {
-                                //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                                log.RegistrarLog(usuario.IdUsuario, "Registro dato Usuario", usuario.DeptoUsuario, "Insercion", "Inserto un nuevo usuario a la base de datos");
-
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
-                            }
-
-                            //funcion para actualizar los datos en el dataGrid
-                            ShowUserGrid();
-
-                            //borrar datos de los textbox
-                            ClearDataTxb();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.");
-                        }
+                        MessageBox.Show("Debe seleccionar un rol de usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return; // Salir de la función para evitar excepciones adicionales
                     }
-                    else
+
+                    // Obtener el valor numérico seleccionado
+                    KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
+                    if (cbx_role.SelectedItem is KeyValuePair<int, string> keyValue)
                     {
-                        // Código que se ejecutará
-                        // si se ha hecho clic en la imagen update
-                        int idRol = usuarioSeleccionado.IdRolUsuario;
-                        bool baja = false;
-                        object selectedItem = cbx_userStatus.SelectedItem; // Obtiene el objeto seleccionado
+                        selectedStatus = keyValue;
+                    }
+                    else if (cbx_role.SelectedItem != null)
+                    {
+                        selectedStatus = (KeyValuePair<int, string>)cbx_role.SelectedItem;
+                    }
 
-                        if (selectedItem != null)
+                    int selectedValue = selectedStatus.Key;
+
+
+                    if (pass == passConfirm)
+                    {
+                        // Las contraseñas coinciden
+                        string encryptedPassword = PasswordManager.EncryptPassword(pass);
+
+                        // Crear una instancia de la clase Usuario con los valores obtenidos
+                        Usuario usuarioInsert = new Usuario()
                         {
-                            string valorSeleccionado = selectedItem.ToString(); // Convierte el objeto a string si es necesario
-                            usuario.EstadoUsuario = valorSeleccionado;
+                            NombreUsuario = nameUser,
+                            EmailUsuario = email,
+                            ClaveUsuario = encryptedPassword,
+                            EstadoUsuario = "Pendiente de Activacion",
+                            DeptoUsuario = depto,
+                            IdRolUsuario = selectedValue,
+                            IdPersonaUsuario = PersonSelect.IdPerson
+                        };
 
-                            if (selectedItem.Equals("Inactivo") || selectedItem.Equals("Suspendido") || selectedItem.Equals("Eliminado"))
-                            {
-                                baja = true;
-                            }
-                            DateTime? fechaBaja = null;
-                            if (baja)
-                            {
-                                fechaBaja = DateTime.Today;
-                            }
-
-                            bool exito = userController.ActualizarUsuario(usuarioSeleccionado.IdUsuario, nameUser, email, pass, fechaBaja, usuario.EstadoUsuario, depto, idRol, idPerson);
+                        if (!imagenClickeada)
+                        {
+                            // Código que se ejecutará si no se ha hecho clic en la imagen update
+                            // Llamar al controlador para insertar la persona en la base de datos
+                            bool exito = userController.InsertarUsuario(usuarioInsert);
 
                             if (exito)
                             {
-                                MessageBox.Show("Persona actualizada correctamente.");
+                                MessageBox.Show("Usuario agregada correctamente.");
                                 try
                                 {
-                                    log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Usuario", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos del usuario con ID " + usuarioSeleccionado.IdUsuario + " en la base de datos");
+                                    //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                                    log.RegistrarLog(usuario.IdUsuario, "Registro dato Usuario", usuario.DeptoUsuario, "Insercion", "Inserto un nuevo usuario a la base de datos");
+
                                 }
                                 catch (Exception ex)
                                 {
@@ -380,32 +354,86 @@ namespace sistema_modular_cafe_majada.views
                                 //funcion para actualizar los datos en el dataGrid
                                 ShowUserGrid();
 
-                                label10.Visible = false;
-                                cbx_userStatus.Visible = false;
+                                //borrar datos de los textbox
                                 ClearDataTxb();
                             }
                             else
                             {
-                                MessageBox.Show("Error al actualizar la persona. Verifica los datos e intenta nuevamente.", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.");
                             }
-
-                            imagenClickeada = false;
                         }
                         else
                         {
-                            MessageBox.Show("Asigne el dato de estado de usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                            // Código que se ejecutará
+                            // si se ha hecho clic en la imagen update
+                            int idRol = usuarioSeleccionado.IdRolUsuario;
+                            bool baja = false;
+                            object selectedItem = cbx_userStatus.SelectedItem; // Obtiene el objeto seleccionado
 
+                            if (selectedItem != null)
+                            {
+                                string valorSeleccionado = selectedItem.ToString(); // Convierte el objeto a string si es necesario
+                                usuario.EstadoUsuario = valorSeleccionado;
+
+                                if (selectedItem.Equals("Inactivo") || selectedItem.Equals("Suspendido") || selectedItem.Equals("Eliminado"))
+                                {
+                                    baja = true;
+                                }
+                                DateTime? fechaBaja = null;
+                                if (baja)
+                                {
+                                    fechaBaja = DateTime.Today;
+                                }
+
+                                bool exito = userController.ActualizarUsuario(usuarioSeleccionado.IdUsuario, nameUser, email, pass, fechaBaja, usuario.EstadoUsuario, depto, idRol, idPerson);
+
+                                if (exito)
+                                {
+                                    MessageBox.Show("Persona actualizada correctamente.");
+                                    try
+                                    {
+                                        log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Usuario", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos del usuario con ID " + usuarioSeleccionado.IdUsuario + " en la base de datos");
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                                    }
+
+                                    //funcion para actualizar los datos en el dataGrid
+                                    ShowUserGrid();
+
+                                    label10.Visible = false;
+                                    cbx_userStatus.Visible = false;
+                                    ClearDataTxb();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error al actualizar la persona. Verifica los datos e intenta nuevamente.", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+                                imagenClickeada = false;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Asigne el dato de estado de usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        // Las contraseñas no coinciden, mostrar un mensaje de error
+                        MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
                     }
                 }
                 else
                 {
-                    // Las contraseñas no coinciden, mostrar un mensaje de error
-                    MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+                    MessageBox.Show("Debe seleccionar un Departamento para el usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Error - seleccion de rol; no seleccionado " + ex.Message);
                 MessageBox.Show("Debe seleccionar un rol de usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -424,9 +452,9 @@ namespace sistema_modular_cafe_majada.views
             cbx_role.Items.Clear();
             cbx_userStatus.Items.Clear();
             txb_Depto.Items.Clear();
-            txb_Depto.SelectedIndex = -1;
-            cbx_role.SelectedIndex = -1;
-            cbx_userStatus.SelectedIndex = -1;
+            txb_Depto.Text = "";
+            cbx_role.Text = "";
+            cbx_userStatus.Text = "";
         }
 
         private void btn_table_person_Click(object sender, EventArgs e)
@@ -448,11 +476,37 @@ namespace sistema_modular_cafe_majada.views
             usuarioSeleccionado = null;
         }
 
-
         private void form_usuarios_Load(object sender, EventArgs e)
         {
             label10.Visible = false;
             cbx_userStatus.Visible = false;
+        }
+
+        public string FormatearCorreoElectronico(string correo)
+        {
+            // Verificar si el texto cumple con el formato de un correo electrónico válido
+            bool esValido = ValidarFormatoCorreoElectronico(correo);
+
+            if (!esValido)
+            {
+                // Mostrar un mensaje de error al usuario
+                MessageBox.Show("El correo electrónico ingresado no es válido. Verifique el formato.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("El correo electrónico ingresado no es válido. Verifique el formato.");
+
+                // Puedes lanzar una excepción si deseas manejar el error en otro lugar
+                // throw new Exception("El correo electrónico ingresado no es válido. Verifique el formato.");
+            }
+
+            return correo;
+        }
+
+        public bool ValidarFormatoCorreoElectronico(string correo)
+        {
+            // Expresión regular para verificar el formato del correo electrónico
+            string patron = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+            Regex regex = new Regex(patron);
+
+            return regex.IsMatch(correo);
         }
 
     }

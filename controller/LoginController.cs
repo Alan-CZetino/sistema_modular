@@ -57,6 +57,35 @@ namespace sistema_modular_cafe_majada.controller
             }
         }
 
+        public bool VerificarUsuarioDepartamento(string nombreUsuario, string departamento)
+        {
+            try
+            {
+                // Obtener una conexión a la base de datos
+                conexionBD.Conectar();
+
+                string query = "SELECT COUNT(*) FROM Usuario WHERE nombre_usuario = @nombreUsuario AND depto_usuario = @departamento";
+
+                // Crear un comando con la consulta y la conexión
+                conexionBD.CrearComando(query);
+                conexionBD.AgregarParametro("@nombreUsuario", nombreUsuario);
+                conexionBD.AgregarParametro("@departamento", departamento);
+
+                int count = Convert.ToInt32(conexionBD.EjecutarConsultaEscalar());
+
+                // Cerrar la conexión a la base de datos
+                conexionBD.Desconectar();
+
+                return count > 0; // Si count es mayor a 0, el usuario pertenece al departamento; de lo contrario, no pertenece
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al autenticar al usuario: " + ex.Message);
+                return false;
+            }
+        }
+
+
         public List<Usuario> ObtenerDepartamentoCbx(string nombre)
         {
             List<Usuario> depto = new List<Usuario>();
@@ -92,6 +121,43 @@ namespace sistema_modular_cafe_majada.controller
             }
 
             return depto;
+        }
+
+        public Usuario ObtenerEstadoUsuario(string nombreUsuario)
+        {
+            Usuario estado = new Usuario();
+            try
+            {
+                // Abre la conexión a la base de datos
+                conexionBD.Conectar();
+                string consulta = "SELECT estado_usuario FROM Usuario WHERE nombre_usuario = @NombreUsuario";
+
+                conexionBD.CrearComando(consulta);
+                conexionBD.AgregarParametro("@NombreUsuario", nombreUsuario);
+
+                using (MySqlDataReader reader = conexionBD.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            estado.EstadoUsuario = Convert.ToString(reader["estado_usuario"]);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir al obtener los usuarios de la base de datos
+                Console.WriteLine("Error al obtener la persona: " + ex.Message);
+            }
+            finally
+            {
+                // Cierra la conexión a la base de datos
+                conexionBD.Desconectar();
+            }
+
+            return estado;
         }
 
     }

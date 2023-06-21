@@ -132,16 +132,15 @@ namespace sistema_modular_cafe_majada.controller.AccesController
                 conexion.Conectar();
 
                 // Crea la consulta para insertar la persona en la base de datos
-                string consulta = "INSERT INTO Rol (id_rol, nombre_rol, descripcion_rol, nivel_acceso_rol, permisos_rol, fecha_creacion_rol)" +
-                                   "VALUES(@IdRol , @NombreRol , @DescripcionRol, @NivelRol, @PermisoRol, @FechaCreacion)";
+                string consulta = "INSERT INTO Rol (nombre_rol, descripcion_rol, nivel_acceso_rol, permisos_rol, fecha_creacion_rol)" +
+                                   "VALUES( @NombreRol , @DescripcionRol, @NivelRol, @PermisoRol, @FechaCreacion)";
                 conexion.CrearComando(consulta);
 
-                conexion.AgregarParametro("@IdRol", rol.IdRol);
                 conexion.AgregarParametro("@NombreRol", rol.NombreRol);
                 conexion.AgregarParametro("@DescripcionRol", rol.DescripcionRol);
-                conexion.AgregarParametro("@NivelRol", rol.NivelAccesoRol);
+                conexion.AgregarParametro("@NivelRol", Convert.ToInt32(rol.NivelAccesoRol));
                 conexion.AgregarParametro("@PermisoRol", rol.PermisosRol);
-                conexion.AgregarParametro("@FechaCreacion", rol.FechaCreacionRol);
+                conexion.AgregarParametro("@FechaCreacion", DateTime.Today);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -158,7 +157,7 @@ namespace sistema_modular_cafe_majada.controller.AccesController
             return false; // Error durante la inserción
         }
 
-        public bool ActualizarPersona(int id, string nombre, string descripcion, string nivel, string permisos)
+        public bool ActualizarRol(int id, string nombre, string descripcion, string nivel, string permisos)
         {
             
             bool exito = false;
@@ -174,7 +173,7 @@ namespace sistema_modular_cafe_majada.controller.AccesController
 
                 conexion.AgregarParametro("@nombres", nombre);
                 conexion.AgregarParametro("@descripcion", descripcion);
-                conexion.AgregarParametro("@nivel", nivel);
+                conexion.AgregarParametro("@nivel", Convert.ToInt32(nivel));
                 conexion.AgregarParametro("@permisos", permisos);
                 conexion.AgregarParametro("@fechaModificacion", DateTime.Today);
                 conexion.AgregarParametro("@id", id);

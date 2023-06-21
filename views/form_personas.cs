@@ -27,7 +27,7 @@ namespace sistema_modular_cafe_majada.views
             InitializeComponent();
 
             //funcion que restringe el uso de caracteres en los textbox necesarios
-            List<TextBox> textBoxListN = new List<TextBox> { txb_Tel1, txb_Tel2, txb_Nit, txb_Dui };
+            List<TextBox> textBoxListN = new List<TextBox> { txb_Tel2, txb_Nit, txb_Dui };
             List<TextBox> textBoxListC = new List<TextBox> { txb_Nombre, txb_Apellido };
 
             //funcion para restringir cual quier caracter y solo acepta unicamente num
@@ -331,25 +331,43 @@ namespace sistema_modular_cafe_majada.views
         private void FormatPhoneNumber(TextBox textBox)
         {
             string input = textBox.Text;
+            string codigoPais = "(+503)";
+            string prefijo = input.Substring(0, 4);
+            string sufijo = input.Substring(4);
+            bool isNumber = VerificNumber(input);
 
-            // Verificar si hay suficientes dígitos para el número de teléfono
-            if (input.Length >= 8)
+            if(isNumber)
             {
-                string codigoPais = "(+503)";
-                string prefijo = input.Substring(0, 4);
-                string sufijo = input.Substring(4);
+                // Verificar si hay suficientes dígitos para el número de teléfono
+                if (input.Length == 8)
+                {
+                    // Formatear el número de teléfono completo
+                    string numeroTelefono = $"{codigoPais} {prefijo} - {sufijo}";
 
+                    // Establecer el texto formateado en el TextBox
+                    textBox.Text = numeroTelefono;
+                }
+                else if(input.Length != 0 && input.Length <8)
+                {
+                    // Si no hay suficientes dígitos, establecer el texto ingresado sin formato y lanzar un mensaje
+                    MessageBox.Show("Verifique el campo Telefono, no tiene la longitud recomendada", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBox.Text = input;
+                }
+                else
+                {
+                    // Si no hay suficientes dígitos, establecer el texto ingresado sin formato 
+                    textBox.Text = input;
+                }
+            }
+            else
+            {
                 // Formatear el número de teléfono completo
-                string numeroTelefono = $"{codigoPais} {prefijo} - {sufijo}";
+                string numeroTelefono = $"{prefijo} - {sufijo}";
 
                 // Establecer el texto formateado en el TextBox
                 textBox.Text = numeroTelefono;
             }
-            else
-            {
-                // Si no hay suficientes dígitos, establecer el texto ingresado sin formato
-                textBox.Text = input;
-            }
+            
         }
 
         private void FormatDui(TextBox textBox)
@@ -385,6 +403,19 @@ namespace sistema_modular_cafe_majada.views
                     e.Handled = true; // Cancela el evento KeyPress para evitar que se ingrese el dígito
                 }
             };
+        }
+
+        private bool VerificNumber(string text)
+        {
+            foreach (char caracter in text)
+            {
+                if (!char.IsDigit(caracter))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public void RestrictTextBoxNum(List<TextBox> textBoxes)
@@ -531,6 +562,38 @@ namespace sistema_modular_cafe_majada.views
         private void txb_Nit_Leave(object sender, EventArgs e)
         {
             FormatDui(txb_Nit);
+        }
+
+        private void txb_Tel1_Enter(object sender, EventArgs e)
+        {
+            VerificRestrict(txb_Tel1);
+        }
+
+        private void txb_Tel2_Enter(object sender, EventArgs e)
+        {
+            VerificRestrict(txb_Tel2);
+        }
+
+        public void VerificRestrict(TextBox txb)
+        {
+            int tamañoActual = txb.Text.Length;
+            List<TextBox> txbL = new List<TextBox> { txb };
+            bool isNumber = VerificNumber(txb.Text);
+
+            if (isNumber)
+            {
+                Console.WriteLine("Es numero");
+                if (tamañoActual == 0)
+                {
+                    RestrictTextBoxNum(txbL);
+                    LimitDigits(txb, 8);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No es numero");
+                LimitDigits(txb, 18);
+            }
         }
     }
 }
