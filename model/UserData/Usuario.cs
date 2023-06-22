@@ -15,7 +15,6 @@ namespace sistema_modular_cafe_majada.model.UserData
         public string EstadoUsuario { get; set; }
         public DateTime FechaCreacionUsuario { get; set; }
         public DateTime? FechaBajaUsuario { get; set; }
-        public string DeptoUsuario { get; set; }
         public int IdRolUsuario { get; set; }
         public int IdPersonaUsuario { get; set; }
     }

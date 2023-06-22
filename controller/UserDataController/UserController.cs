@@ -46,7 +46,6 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
                             EstadoUsuario = Convert.ToString(reader["estado_usuario"]),
                             FechaCreacionUsuario = Convert.ToDateTime(reader["fecha_creacion_usuario"]),
                             FechaBajaUsuario = reader.IsDBNull(reader.GetOrdinal("fecha_baja_usuario")) ? null : (DateTime?)reader["fecha_baja_usuario"],
-                            DeptoUsuario = Convert.ToString(reader["depto_usuario"]),
                             IdRolUsuario = Convert.ToInt32(reader["id_rol_usuario"]),
                             IdPersonaUsuario = Convert.ToInt32(reader["id_persona_usuario"])
                         };
@@ -79,9 +78,9 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
 
                 // Consulta SQL para insertar un nuevo usuario
                 string consulta = "INSERT INTO Usuario (nombre_usuario, email_usuario, clave_usuario, estado_usuario, "
-                    + "fecha_creacion_usuario, depto_usuario, id_rol_usuario, id_persona_usuario) "
+                    + "fecha_creacion_usuario, id_rol_usuario, id_persona_usuario) "
                     + "VALUES (@nombre, @email, @clave, @estado, "
-                    + "@fechaCreacion, @depto, @idRol, @idPersona)";
+                    + "@fechaCreacion, @idRol, @idPersona)";
 
                 // Crear el comando SQL
                 conexion.CrearComando(consulta);
@@ -95,7 +94,6 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
                 conexion.AgregarParametro("@clave", user.ClaveUsuario);
                 conexion.AgregarParametro("@estado", user.EstadoUsuario);
                 conexion.AgregarParametro("@fechaCreacion", fechaCreacion);
-                conexion.AgregarParametro("@depto", user.DeptoUsuario);
                 conexion.AgregarParametro("@idRol", user.IdRolUsuario);
                 conexion.AgregarParametro("@idPersona", user.IdPersonaUsuario);
 
@@ -162,7 +160,7 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
             }
         }
         
-        public bool ActualizarUsuario(int id, string nombreUsuario, string email, string clave, DateTime? fechaBaja, string estado, string depto, int idRol, int idPersona)
+        public bool ActualizarUsuario(int id, string nombreUsuario, string email, string clave, DateTime? fechaBaja, string estado, int idRol, int idPersona)
         {
             bool exito = false;
             try
@@ -176,7 +174,7 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
                 // Consulta SQL para actualizar el usuario
                 string consulta = "UPDATE Usuario SET nombre_usuario = @nombre, email_usuario = @email, "
                     + "clave_usuario = @clave, fecha_baja_usuario = @fechaBaja, estado_usuario = @estado, "
-                    + "depto_usuario = @depto, id_rol_usuario = @idRol, id_persona_usuario = @idPersona "
+                    + "id_rol_usuario = @idRol, id_persona_usuario = @idPersona "
                     + "WHERE id_usuario = @id";
 
                 // Crear el comando SQL
@@ -188,7 +186,6 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
                 conexion.AgregarParametro("@clave", clave);
                 conexion.AgregarParametro("@fechaBaja", fechaBaja);
                 conexion.AgregarParametro("@estado", estado);
-                conexion.AgregarParametro("@depto", depto);
                 conexion.AgregarParametro("@idRol", idRol);
                 conexion.AgregarParametro("@idPersona", idPersona);
                 conexion.AgregarParametro("@id", id);
@@ -220,6 +217,7 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
             return exito;
         }
 
+        //verificar si vale la pena mantener esta funcion aqui o pasarla a el controlador persona
         public Persona ObtenerNombrePersona(int idPersona)
         {
             Persona persona = new Persona();
@@ -257,6 +255,7 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
             return persona;
         }
 
+        //verificar si vale la pena mantener esta funcion aqui o pasarla a el controlador rol
         public List<Role> ObtenerRolCbx()
         {
             List<Role> roles = new List<Role>();

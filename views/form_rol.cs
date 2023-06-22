@@ -123,7 +123,8 @@ namespace sistema_modular_cafe_majada.views
                             try
                             {
                                 //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                                log.RegistrarLog(usuario.IdUsuario, "Registro de caracteristicas del Rol", usuario.DeptoUsuario, "Insercion", "Inserto un nuevo Rol a la base de datos");
+                                //verificar el departamento
+                                log.RegistrarLog(usuario.IdUsuario, "Registro de caracteristicas del Rol", ModuloActual.NombreModulo, "Insercion", "Inserto un nuevo Rol a la base de datos");
 
                             }
                             catch (Exception ex)
@@ -152,7 +153,8 @@ namespace sistema_modular_cafe_majada.views
                             MessageBox.Show("Rol actualizada correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             try
                             {
-                                log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Rol", usuario.DeptoUsuario, "Actualizacion", "Actualizo las caracteristicas del Rol con ID " + rolSeleccionado.IdRol + " en la base de datos");
+                                //verificar el departamento 
+                                log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Rol", ModuloActual.NombreModulo, "Actualizacion", "Actualizo las caracteristicas del Rol con ID " + rolSeleccionado.IdRol + " en la base de datos");
                             }
                             catch (Exception ex)
                             {
@@ -287,7 +289,8 @@ namespace sistema_modular_cafe_majada.views
                     RoleController controller = new RoleController();
                     controller.EliminarRol(rolSeleccionado.IdRol);
 
-                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de las caracteristicas Rol", usuario.DeptoUsuario, "Eliminacion", "Elimino las caracteristicas del Rol " + rolSeleccionado.NombreRol + " en la base de datos");
+                    //verificar el departamento del log
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de las caracteristicas Rol", ModuloActual.NombreModulo, "Eliminacion", "Elimino las caracteristicas del Rol " + rolSeleccionado.NombreRol + " en la base de datos");
 
                     MessageBox.Show("Rol Eliminada correctamente.", "Eliminacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

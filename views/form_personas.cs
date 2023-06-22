@@ -1,5 +1,6 @@
 ﻿using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
+using sistema_modular_cafe_majada.model.Acces;
 using sistema_modular_cafe_majada.model.DAO;
 using sistema_modular_cafe_majada.model.UserData;
 using System;
@@ -194,7 +195,8 @@ namespace sistema_modular_cafe_majada.views
                     try
                     {
                         //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                        log.RegistrarLog(usuario.IdUsuario, "Registro dato Persona", usuario.DeptoUsuario, "Insercion", "Inserto una nueva persona a la base de datos");
+                        //verificar el departamento
+                        log.RegistrarLog(usuario.IdUsuario, "Registro dato Persona", ModuloActual.NombreModulo, "Insercion", "Inserto una nueva persona a la base de datos");
 
                     }
                     catch (Exception ex)
@@ -223,7 +225,8 @@ namespace sistema_modular_cafe_majada.views
                     MessageBox.Show("Persona actualizada correctamente.");
                     try
                     {
-                        log.RegistrarLog(usuario.IdUsuario, "Actualizacion de dato Persona", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos de la persona con ID " + personaSeleccionada.IdPersona + " en la base de datos");
+                        //verificar el departamento
+                        log.RegistrarLog(usuario.IdUsuario, "Actualizacion de dato Persona", ModuloActual.NombreModulo, "Actualizacion", "Actualizo los datos de la persona con ID " + personaSeleccionada.IdPersona + " en la base de datos");
                     }
                     catch (Exception ex)
                     {
@@ -523,7 +526,8 @@ namespace sistema_modular_cafe_majada.views
                     PersonController controller = new PersonController();
                     controller.EliminarPersona(personaSeleccionada.IdPersona);
 
-                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Persona", usuario.DeptoUsuario, "Eliminacion", "Elimino los datos de la persona " + personaSeleccionada.NombresPersona + " en la base de datos");
+                    //verificar el departamento del log
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Persona", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la persona " + personaSeleccionada.NombresPersona + " en la base de datos");
 
                     MessageBox.Show("Persona Eliminada correctamente.");
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using sistema_modular_cafe_majada.model;            // Importa los modelos correspondientes
+using sistema_modular_cafe_majada.model.Acces;
 using sistema_modular_cafe_majada.model.Connection; // Importa el contexto de la base de datos
 using sistema_modular_cafe_majada.model.UserData;
 
@@ -20,63 +21,36 @@ namespace sistema_modular_cafe_majada.controller
             conexionBD = new ConnectionDB();
         }
 
+        //autentifica si el usuario que desea ingresar cumple con sus credenciales si cumple accede y guarda su id
         public bool AutenticarUsuario(string nombreUsuario, string contraseña)
         {
             try
             {
-                // Obtener una conexión a la base de datos
+                // Crear una instancia de la clase ConnectionDB
+                ConnectionDB conexionBD = new ConnectionDB();
+
+                // Conectar a la base de datos
                 conexionBD.Conectar();
 
                 string query = "SELECT clave_usuario FROM Usuario WHERE nombre_usuario = @nombreUsuario";
 
-                // Crear un comando con la consulta y la conexión
+                // Crear un comando con la consulta
                 conexionBD.CrearComando(query);
                 conexionBD.AgregarParametro("@nombreUsuario", nombreUsuario);
 
                 string hashedPasswordFromDB = conexionBD.EjecutarConsultaEscalar() as string;
 
-                // Cerrar la conexión a la base de datos
-                conexionBD.Desconectar();
+                bool isMatch = false;
 
                 if (hashedPasswordFromDB != null)
                 {
-                    bool isMatch = SecurityData.PasswordManager.VerifyPassword(contraseña, hashedPasswordFromDB);
-
-                    if (isMatch)
-                    {
-                        return true; // Las credenciales son válidas
-                    }
+                    isMatch = SecurityData.PasswordManager.VerifyPassword(contraseña, hashedPasswordFromDB);
                 }
-
-                return false; // Las credenciales son inválidas
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al autenticar al usuario: " + ex.Message);
-                return false;
-            }
-        }
-
-        public bool VerificarUsuarioDepartamento(string nombreUsuario, string departamento)
-        {
-            try
-            {
-                // Obtener una conexión a la base de datos
-                conexionBD.Conectar();
-
-                string query = "SELECT COUNT(*) FROM Usuario WHERE nombre_usuario = @nombreUsuario AND depto_usuario = @departamento";
-
-                // Crear un comando con la consulta y la conexión
-                conexionBD.CrearComando(query);
-                conexionBD.AgregarParametro("@nombreUsuario", nombreUsuario);
-                conexionBD.AgregarParametro("@departamento", departamento);
-
-                int count = Convert.ToInt32(conexionBD.EjecutarConsultaEscalar());
 
                 // Cerrar la conexión a la base de datos
                 conexionBD.Desconectar();
 
-                return count > 0; // Si count es mayor a 0, el usuario pertenece al departamento; de lo contrario, no pertenece
+                return isMatch; // Devolver true si las credenciales son válidas, false en caso contrario
             }
             catch (Exception ex)
             {
@@ -85,44 +59,7 @@ namespace sistema_modular_cafe_majada.controller
             }
         }
 
-
-        public List<Usuario> ObtenerDepartamentoCbx(string nombre)
-        {
-            List<Usuario> depto = new List<Usuario>();
-
-            try
-            {
-                // Abre la conexión a la base de datos
-                conexionBD.Conectar();
-
-                string consulta = "SELECT DISTINCT depto_usuario FROM Usuario WHERE nombre_usuario = @nombreUsuario";
-                conexionBD.CrearComando(consulta);
-                conexionBD.AgregarParametro("@nombreUsuario", nombre);
-
-                using (MySqlDataReader reader = conexionBD.EjecutarConsultaReader(consulta))
-                {
-                    while (reader.Read())
-                    {
-                        Usuario user = new Usuario();
-                        user.DeptoUsuario = Convert.ToString(reader["depto_usuario"]);
-                        depto.Add(user);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Manejar cualquier excepción que pueda ocurrir al obtener los usuarios de la base de datos
-                Console.WriteLine("Error al obtener los roles: " + ex.Message);
-            }
-            finally
-            {
-                // Cierra la conexión a la base de datos
-                conexionBD.Desconectar();
-            }
-
-            return depto;
-        }
-
+        //funcion para obtener el tipo de estado del usuario
         public Usuario ObtenerEstadoUsuario(string nombreUsuario)
         {
             Usuario estado = new Usuario();
@@ -160,5 +97,128 @@ namespace sistema_modular_cafe_majada.controller
             return estado;
         }
 
+        //funcion para obtner los modulos de la bd
+        public List<Module> ObtenerModulosCbx()
+        {
+            List<Module> depto = new List<Module>();
+
+            try
+            {
+                // Abre la conexión a la base de datos
+                conexionBD.Conectar();
+
+                string consulta = "SELECT DISTINCT id_modulo, nombre_modulo FROM Modulo";
+                conexionBD.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexionBD.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Module modulo = new Module();
+                        modulo.IdModule = Convert.ToInt32(reader["id_modulo"]);
+                        modulo.NombreModulo = Convert.ToString(reader["nombre_modulo"]);
+                        depto.Add(modulo);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir al obtener los usuarios de la base de datos
+                Console.WriteLine("Error al obtener los modulos: " + ex.Message);
+            }
+            finally
+            {
+                // Cierra la conexión a la base de datos
+                conexionBD.Desconectar();
+            }
+
+            return depto;
+        }
+
+        //obtener los modulos al cual pertenece el usuario
+        public List<Module> ObtenerModulosDeUsuario(int idUsuario)
+        {
+            try
+            {
+                // Crear una instancia de la clase ConnectionDB
+                ConnectionDB conexionBD = new ConnectionDB();
+
+                // Conectar a la base de datos
+                conexionBD.Conectar();
+
+                string query = @"SELECT m.id_modulo m.nombre_modulo
+                        FROM Modulo m
+                        INNER JOIN Usuario_Modulo um ON um.id_modulo = m.id_modulo
+                        WHERE um.id_usuario = @idUsuario";
+
+                // Crear un comando con la consulta
+                conexionBD.CrearComando(query);
+                conexionBD.AgregarParametro("@idUsuario", idUsuario);
+
+                List<Module> modulos = new List<Module>();
+
+                using (var reader = conexionBD.EjecutarConsultaReader(query))
+                {
+                    while (reader.Read())
+                    {
+                        Module modulo = new Module();
+                        modulo.IdModule = Convert.ToInt32(reader["id_modulo"]);
+                        modulo.NombreModulo = Convert.ToString(reader["nombre_modulo"]);
+                        modulos.Add(modulo);
+                    }
+                }
+
+                // Cerrar la conexión a la base de datos
+                conexionBD.Desconectar();
+
+                return modulos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener los módulos del usuario: " + ex.Message);
+                return null;
+            }
+        }
+
+        //verificar el modulo al que pertenece el usuario
+        public bool VerificarUsuarioDepartamento(string nombreUsuario, string nombreDepartamento)
+        {
+            try
+            {
+                // Crear una instancia de la clase ConnectionDB
+                ConnectionDB conexionBD = new ConnectionDB();
+
+                // Conectar a la base de datos
+                conexionBD.Conectar();
+
+                // Consulta para obtener el ID del usuario
+                string usuarioQuery = "SELECT id_usuario FROM Usuario WHERE nombre_usuario = @nombreUsuario";
+                conexionBD.CrearComando(usuarioQuery);
+                conexionBD.AgregarParametro("@nombreUsuario", nombreUsuario);
+
+                int idUsuario = Convert.ToInt32(conexionBD.EjecutarConsultaEscalar());
+
+                // Consulta para verificar la existencia del usuario en el departamento seleccionado
+                string verificacionQuery = @"SELECT COUNT(*) FROM Usuario_Modulo um
+                                    INNER JOIN Modulo m ON um.id_modulo = m.id_modulo
+                                    WHERE um.id_usuario = @idUsuario AND m.nombre_modulo = @nombreDepartamento";
+                conexionBD.CrearComando(verificacionQuery);
+                conexionBD.AgregarParametro("@idUsuario", idUsuario);
+                conexionBD.AgregarParametro("@nombreDepartamento", nombreDepartamento);
+
+                int count = Convert.ToInt32(conexionBD.EjecutarConsultaEscalar());
+
+                // Cerrar la conexión a la base de datos
+                conexionBD.Desconectar();
+
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al verificar el usuario en el departamento: " + ex.Message);
+                return false;
+            }
+        }
+        
     }
 }

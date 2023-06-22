@@ -12,6 +12,7 @@ using sistema_modular_cafe_majada.views;
 using sistema_modular_cafe_majada.model.UserData;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.model.DAO;
+using sistema_modular_cafe_majada.model.Acces;
 
 namespace sistema_modular_cafe_majada
 {
@@ -28,7 +29,6 @@ namespace sistema_modular_cafe_majada
             {
                 _nombreUsuario = value;
                 lbl_User.Text = _nombreUsuario;
-                //Console.WriteLine("mapeo - Nombre de usuario: " + NombreUsuario);
             }
         }
 
@@ -132,7 +132,8 @@ namespace sistema_modular_cafe_majada
             
             if (result == DialogResult.Yes)
             {
-                log.RegistrarLog(usuario.IdUsuario, "Salio del Sistema", usuario.DeptoUsuario, "Cierre de seccion", "El Usuario: " + _nombreUsuario + " salio del sistema");
+                //verificar el departamento
+                log.RegistrarLog(usuario.IdUsuario, "Salio del Sistema", ModuloActual.NombreModulo, "Cierre de seccion", "El Usuario: " + _nombreUsuario + " salio del sistema");
 
                 this.Close();
 

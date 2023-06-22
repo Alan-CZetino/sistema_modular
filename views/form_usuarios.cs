@@ -1,3 +1,4 @@
+using sistema_modular_cafe_majada.controller;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
@@ -36,7 +37,6 @@ namespace sistema_modular_cafe_majada.views
             ShowUserGrid();
 
             CbxRoles();
-            CbxDepartamento();
 
             dataGrid_UserView.CellPainting += dataGrid_UserView_CellPainting;
 
@@ -78,7 +78,6 @@ namespace sistema_modular_cafe_majada.views
                 Estado = usuario.EstadoUsuario,
                 Fecha_Creacion = usuario.FechaCreacionUsuario,
                 Fecha_Baja = usuario.FechaBajaUsuario,
-                Departamento = usuario.DeptoUsuario,
                 ID_Rol = usuario.IdRolUsuario,
                 ID_Persona = usuario.IdPersonaUsuario
             }).ToList();
@@ -90,7 +89,6 @@ namespace sistema_modular_cafe_majada.views
 
         private void dataGrid_UserView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("depurador - evento click img update: " + imagenClickeada);
             // Obtener la fila correspondiente a la celda en la que se hizo doble clic
             DataGridViewRow filaSeleccionada = dataGrid_UserView.Rows[e.RowIndex];
             usuarioSeleccionado = new Usuario();
@@ -106,11 +104,9 @@ namespace sistema_modular_cafe_majada.views
             object valorCelda = filaSeleccionada.Cells["Fecha_Baja"].Value;
             // Verificar si el valor de la celda es nulo y asignar el valor correspondiente a la propiedad
             usuarioSeleccionado.FechaBajaUsuario = valorCelda != null ? Convert.ToDateTime(valorCelda) : (DateTime?)null;
-            usuarioSeleccionado.DeptoUsuario = filaSeleccionada.Cells["Departamento"].Value.ToString();
             usuarioSeleccionado.IdRolUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID_Rol"].Value);
             usuarioSeleccionado.IdPersonaUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID_Persona"].Value);
 
-            Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + usuarioSeleccionado.NombreUsuario);
         }
 
         private void btn_update_Click(object sender, EventArgs e)
@@ -128,7 +124,6 @@ namespace sistema_modular_cafe_majada.views
                     // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
                     UserController userC = new UserController();
                     idPerson = usuarioSeleccionado.IdPersonaUsuario;
-                    Console.WriteLine("Depuracion usuario Seleccionado - Id obtenido: " + idPerson);
                     var name = userC.ObtenerNombrePersona(idPerson);
 
                     txb_Name.Text = name.NombresPersona;
@@ -136,14 +131,12 @@ namespace sistema_modular_cafe_majada.views
                     txb_Email.Text = usuarioSeleccionado.EmailUsuario;
                     txb_Password.Text = usuarioSeleccionado.ClaveUsuario;
                     txb_PassConfirm.Text = "";
-                    txb_Depto.Text = usuarioSeleccionado.DeptoUsuario;
 
                     label10.Visible = true;
                     cbx_userStatus.Visible = true;
 
                     cbx_role.Items.Clear();
                     CbxRoles();
-                    CbxDepartamento();
 
                     cbx_userStatus.Items.Clear();
                     cbx_userStatus.Items.Add("Activo");
@@ -152,7 +145,6 @@ namespace sistema_modular_cafe_majada.views
                     cbx_userStatus.Items.Add("Pendiente de activación");
                     cbx_userStatus.Items.Add("Eliminado");
 
-                    //usuarioSeleccionado = null;
                 }
             }
             else
@@ -178,7 +170,8 @@ namespace sistema_modular_cafe_majada.views
                     UserController controller = new UserController();
                     controller.EliminarUsuario(usuarioSeleccionado.IdUsuario);
 
-                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Usuario", usuario.DeptoUsuario, "Eliminacion", "Elimino los datos del usuario " + usuarioSeleccionado.NombreUsuario + " en la base de datos");
+                    //verificar el departamento del log
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Usuario", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos del usuario " + usuarioSeleccionado.NombreUsuario + " en la base de datos");
 
                     MessageBox.Show("Persona Eliminada correctamente.");
 
@@ -208,29 +201,6 @@ namespace sistema_modular_cafe_majada.views
 
                 cbx_role.Items.Add(new KeyValuePair<int, string>(idRol, nombreRol));
             }
-
-        }
-
-        public void CbxDepartamento()
-        {
-            txb_Depto.Items.Clear();
-
-            txb_Depto.Items.Add(new KeyValuePair<int, string>(1, "Modulo Activos de Cafe"));
-            txb_Depto.Items.Add(new KeyValuePair<int, string>(2, "Modulo Administracion"));
-            txb_Depto.Items.Add(new KeyValuePair<int, string>(3, "Modulo Contabilidad"));
-            txb_Depto.Items.Add(new KeyValuePair<int, string>(4, "Modulo Negocios Exteriores"));
-            txb_Depto.Items.Add(new KeyValuePair<int, string>(5, "Otros"));
-
-        }
-
-        public void ColocarDato(string dataSelect)
-        {
-            // Aquí puedes realizar el procesamiento de los datos en tiempo real
-            // Puedes actualizar otros controles en el formulario según sea necesario
-            // Por ejemplo, si tienes otro TextBox, puedes actualizarlo así:
-            // Obtener los valores ingresados por el usuario
-            dataSelect = PersonSelect.NamePerson;
-            txb_Name.Text = dataSelect;
 
         }
 
@@ -282,7 +252,6 @@ namespace sistema_modular_cafe_majada.views
             string pass = txb_Password.Text;
             string passConfirm = txb_PassConfirm.Text;
             string email = txb_Email.Text;
-            string depto;
 
             // Las contraseñas se cifra
             string encryptedPassword = PasswordManager.EncryptPassword(pass);
@@ -290,20 +259,10 @@ namespace sistema_modular_cafe_majada.views
             // Obtener los valores ingresados por el usuario
             try
             {
-                KeyValuePair<int, string>? departamentoSeleccionado = txb_Depto.SelectedItem as KeyValuePair<int, string>?;
-
-                if (departamentoSeleccionado != null)
+                // Verificar si se ha seleccionado un rol de usuario
+                if (cbx_role.SelectedItem != null)
                 {
-                    depto = departamentoSeleccionado.Value.Value;
-                
-                    // Verificar si se ha seleccionado un rol de usuario
-                    if (cbx_role.SelectedItem == null)
-                    {
-                        MessageBox.Show("Debe seleccionar un rol de usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Console.WriteLine("Depuracion - rol seleccionado " + cbx_role.Text);
-                        return; // Salir de la función para evitar excepciones adicionales
-                    }
-
+                    
                     // Obtener el valor numérico seleccionado
                     KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
                     if (cbx_role.SelectedItem is KeyValuePair<int, string> keyValue)
@@ -358,7 +317,6 @@ namespace sistema_modular_cafe_majada.views
                                     EmailUsuario = email,
                                     ClaveUsuario = encryptedPassword,
                                     EstadoUsuario = estado,
-                                    DeptoUsuario = depto,
                                     IdRolUsuario = selectedValue,
                                     IdPersonaUsuario = PersonSelect.IdPerson
                                 };
@@ -371,7 +329,8 @@ namespace sistema_modular_cafe_majada.views
                                     try
                                     {
                                         //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                                        log.RegistrarLog(usuario.IdUsuario, "Registro dato Usuario", usuario.DeptoUsuario, "Insercion", "Inserto un nuevo usuario a la base de datos");
+                                        //verificar el departamento del log
+                                        log.RegistrarLog(usuario.IdUsuario, "Registro dato Usuario", ModuloActual.NombreModulo, "Insercion", "Inserto un nuevo usuario a la base de datos");
 
                                     }
                                     catch (Exception ex)
@@ -437,14 +396,15 @@ namespace sistema_modular_cafe_majada.views
                                 Console.WriteLine("condicion verificar clave " + verificEncrypt);
                                 if (verificEncrypt)
                                 {
-                                    bool exito = userController.ActualizarUsuario(usuarioSeleccionado.IdUsuario, nameUser, email, pass, fechaBaja, usuario.EstadoUsuario, depto, idRol, idPerson);
+                                    bool exito = userController.ActualizarUsuario(usuarioSeleccionado.IdUsuario, nameUser, email, pass, fechaBaja, usuario.EstadoUsuario, idRol, idPerson);
 
                                     if (exito)
                                     {
                                         MessageBox.Show("Persona actualizada correctamente.");
                                         try
                                         {
-                                            log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Usuario", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos del usuario con ID " + usuarioSeleccionado.IdUsuario + " en la base de datos");
+                                            //verificar el departamento del log
+                                            log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Usuario", ModuloActual.NombreModulo, "Actualizacion", "Actualizo los datos del usuario con ID " + usuarioSeleccionado.IdUsuario + " en la base de datos");
                                         }
                                         catch (Exception ex)
                                         {
@@ -480,7 +440,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Debe seleccionar un Departamento para el usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Debe seleccionar un rol de usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -503,8 +463,6 @@ namespace sistema_modular_cafe_majada.views
 
             cbx_role.Items.Clear();
             cbx_userStatus.Items.Clear();
-            txb_Depto.Items.Clear();
-            txb_Depto.Text = "";
             cbx_role.Text = "";
             cbx_userStatus.Text = "";
         }
@@ -526,7 +484,6 @@ namespace sistema_modular_cafe_majada.views
             label10.Visible = false;
             cbx_userStatus.Visible = false;
             usuarioSeleccionado = null;
-            CbxDepartamento();
             CbxRoles();
         }
 
@@ -566,7 +523,6 @@ namespace sistema_modular_cafe_majada.views
         private void txb_NameUser_Enter(object sender, EventArgs e)
         {
             CbxRoles();
-            CbxDepartamento();
         }
     }
 }

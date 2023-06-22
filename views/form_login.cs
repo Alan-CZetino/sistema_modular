@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using sistema_modular_cafe_majada.model.UserData;
 using sistema_modular_cafe_majada.controller;
+using sistema_modular_cafe_majada.model.Acces;
 
 namespace sistema_modular_cafe_majada
 {
@@ -47,8 +48,7 @@ namespace sistema_modular_cafe_majada
         //Evento para cuando el curso del mouse sale del TextBox
         private void txb_username_Leave(object sender, EventArgs e)
         {
-            string nombreUsuario = txb_username.Text;
-            CbxDepartamento(nombreUsuario);
+            CbxDepartamento();
             if (txb_username.Text == "")
             {
                 LimpiarComboBox();
@@ -139,17 +139,18 @@ namespace sistema_modular_cafe_majada
             
             KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
             string depto = departamentoSeleccionado.Value.Value;
-
+            
             bool loginSuccessful = login.AutenticarUsuario(user, password);
             var usuario = userDao.ObtenerUsuario(user); // Asignar el resultado de ObtenerUsuario
 
             contador++;
             if (loginSuccessful)
             {
+                ModuloActual.NombreModulo = depto;
                 try
                 {
                     //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                    log.RegistrarLog(usuario.IdUsuario, "Inicio seccion satisfactoriamente", usuario.DeptoUsuario, "Inicio de Seccion", "Intentos realizados " + contador);
+                    log.RegistrarLog(usuario.IdUsuario, "Inicio seccion satisfactoriamente", ModuloActual.NombreModulo, "Inicio de Seccion", "Intentos realizados " + contador);
                     contador = 0;
                 }
                 catch (Exception ex)
@@ -179,28 +180,22 @@ namespace sistema_modular_cafe_majada
             }
         }
 
-        public void CbxDepartamento(string nombre)
+        public void CbxDepartamento()
         {
             LoginController deptoControl = new LoginController();
-            List<Usuario> datoDepto = deptoControl.ObtenerDepartamentoCbx(nombre);
+            List<Module> datoDepto = deptoControl.ObtenerModulosCbx();
 
             cb_modulos.Items.Clear();
             cb_modulos.ForeColor = Color.WhiteSmoke; // Establece el color de la letra
             if (datoDepto.Count > 0)
             {
-                int i = 1;
                 // Asignar los valores numéricos a los elementos del ComboBox
-                foreach (Usuario dept in datoDepto)
+                foreach (Module dept in datoDepto)
                 {
-                    string nombreDepto = dept.DeptoUsuario;
-                    cb_modulos.Items.Add(new KeyValuePair<int, string>(i, nombreDepto));
-                    i++;
+                    int id = dept.IdModule;
+                    string nombreDepto = dept.NombreModulo;
+                    cb_modulos.Items.Add(new KeyValuePair<int, string>(id, nombreDepto));
                 }
-                cb_modulos.Items.Add(new KeyValuePair<int, string>(1, "Modulo Activos de Cafe"));
-                cb_modulos.Items.Add(new KeyValuePair<int, string>(2, "Modulo Administracion"));
-                cb_modulos.Items.Add(new KeyValuePair<int, string>(3, "Modulo Contabilidad"));
-                cb_modulos.Items.Add(new KeyValuePair<int, string>(4, "Modulo Negocios Exteriores"));
-                cb_modulos.Items.Add(new KeyValuePair<int, string>(5, "Otros"));
                 cb_modulos.SelectedIndex = 0;
             }
             else
@@ -213,6 +208,8 @@ namespace sistema_modular_cafe_majada
         private void VerificUserModule(string nameUser, string depto)
         {
             bool autenticado;
+            bool error = false;         //aqui se manejara el contador para verificar cuantos intentos hace el usuario para acceder al sistema
+            
             LoginController login = new LoginController();
             KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
             
@@ -229,8 +226,6 @@ namespace sistema_modular_cafe_majada
                             bool exito = VerificStatusUserMessages();
                             if (exito)
                             {
-                                Console.WriteLine("El usuario está autenticado correctamente en el departamento especificado.");
-
                                 //OpenFormName(form_Main);
                                 StartSeccionModuleCafe();
                             }
@@ -239,7 +234,7 @@ namespace sistema_modular_cafe_majada
                         else
                         {
                             MessageBox.Show("El usuario no está autenticado en el modulo seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            Console.WriteLine("El usuario no está autenticado en el departamento especificado.");
+                            error = true;      //hubo error en la verificacion del modulo con el usuario
                             // Realizar acciones adicionales para usuarios no autenticados...
                         }
 
@@ -254,19 +249,19 @@ namespace sistema_modular_cafe_majada
                             if (exito)
                             {
                                 MessageBox.Show("Este Modulo se Encuentra en Desarrollo", "Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Console.WriteLine("El usuario está autenticado correctamente en el departamento especificado.");
                                 // Realizar acciones adicionales para usuarios autenticados...
                             }
-                            
+
                         }
                         else
                         {
                             MessageBox.Show("El usuario no está autenticado en el modulo seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            Console.WriteLine("El usuario no está autenticado en el departamento especificado.");
+                            error = true;      //hubo error en la verificacion del modulo con el usuario
                             // Realizar acciones adicionales para usuarios no autenticados...
                         }
 
-                    }break;
+                    }
+                    break;
                 case "Modulo Contabilidad":
                     {
                         autenticado = login.VerificarUsuarioDepartamento(nameUser, depto);
@@ -276,7 +271,6 @@ namespace sistema_modular_cafe_majada
                             if (exito)
                             {
                                 MessageBox.Show("Este Modulo se Encuentra en Desarrollo", "Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Console.WriteLine("El usuario está autenticado correctamente en el departamento especificado.");
                                 // Realizar acciones adicionales para usuarios autenticados...
                             }
 
@@ -284,7 +278,7 @@ namespace sistema_modular_cafe_majada
                         else
                         {
                             MessageBox.Show("El usuario no está autenticado en el modulo seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            Console.WriteLine("El usuario no está autenticado en el departamento especificado.");
+                            error = true;      //hubo error en la verificacion del modulo con el usuario
                             // Realizar acciones adicionales para usuarios no autenticados...
                         }
                     }
@@ -298,7 +292,6 @@ namespace sistema_modular_cafe_majada
                             if (exito)
                             {
                                 MessageBox.Show("Este Modulo se Encuentra en Desarrollo", "Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Console.WriteLine("El usuario está autenticado correctamente en el departamento especificado.");
                                 // Realizar acciones adicionales para usuarios autenticados...
                             }
 
@@ -306,37 +299,19 @@ namespace sistema_modular_cafe_majada
                         else
                         {
                             MessageBox.Show("El usuario no está autenticado en el modulo seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            Console.WriteLine("El usuario no está autenticado en el departamento especificado.");
-                            // Realizar acciones adicionales para usuarios no autenticados...
-                        }
-                    }
-                    break;
-                case "Otros":
-                    {
-                        autenticado = login.VerificarUsuarioDepartamento(nameUser, depto);
-                        if (autenticado)
-                        {
-                            bool exito = VerificStatusUserMessages();
-                            if (exito)
-                            {
-                                MessageBox.Show("Este Modulo se Encuentra en Desarrollo", "Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Console.WriteLine("El usuario está autenticado correctamente en el departamento especificado.");
-                                // Realizar acciones adicionales para usuarios autenticados...
-                            }
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("El usuario no está autenticado en el modulo seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            Console.WriteLine("El usuario no está autenticado en el departamento especificado.");
+                            error = true;      //hubo error en la verificacion del modulo con el usuario
                             // Realizar acciones adicionales para usuarios no autenticados...
                         }
                     }
                     break;
                 default:
                     MessageBox.Show("El modulo seleccionado no se encuentra registrado en el sistema. Porfavor verifique el modulo al que pertenece.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                    error = true;      //hubo error en la verificacion del modulo con el usuario
                     break;
+            }
+            if (error)
+            {
+                contador++;
             }
         }
 
@@ -368,7 +343,6 @@ namespace sistema_modular_cafe_majada
             {
                 case "Activo":
                     {
-                        Console.WriteLine("El usuario esta activo en el sistema.");
                         verific = true;
                     }
                     break;
@@ -408,8 +382,8 @@ namespace sistema_modular_cafe_majada
 
         private void txb_username_TextChanged(object sender, EventArgs e)
         {
-            string nombreUsuario = txb_username.Text;
-            CbxDepartamento(nombreUsuario);
+            //string nombreUsuario = txb_username.Text;
+            CbxDepartamento();
         }
 
         private void txb_password_KeyDown(object sender, KeyEventArgs e)

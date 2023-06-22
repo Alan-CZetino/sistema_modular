@@ -45,7 +45,6 @@ namespace sistema_modular_cafe_majada.model.DAO
                             EstadoUsuario = Convert.ToString(reader["estado_usuario"]),
                             FechaCreacionUsuario = Convert.ToDateTime(reader["fecha_creacion_usuario"]),
                             FechaBajaUsuario = reader.IsDBNull(reader.GetOrdinal("fecha_baja_usuario")) ? null : (DateTime?)reader["fecha_baja_usuario"],
-                            DeptoUsuario = Convert.ToString(reader["depto_usuario"]),
                             IdRolUsuario = Convert.ToInt32(reader["id_rol_usuario"]),
                             IdPersonaUsuario = Convert.ToInt32(reader["id_persona_usuario"])
                         };
@@ -97,8 +96,6 @@ namespace sistema_modular_cafe_majada.model.DAO
                                 ClaveUsuario = Convert.ToString(reader["clave_usuario"]),
                                 EstadoUsuario = Convert.ToString(reader["estado_usuario"]),
                                 FechaCreacionUsuario = Convert.ToDateTime(reader["fecha_creacion_usuario"]),
-
-                                DeptoUsuario = Convert.ToString(reader["depto_usuario"]),
                                 IdRolUsuario = Convert.ToInt32(reader["id_rol_usuario"]),
                                 IdPersonaUsuario = Convert.ToInt32(reader["id_persona_usuario"])
 

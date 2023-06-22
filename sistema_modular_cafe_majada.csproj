@@ -98,6 +98,7 @@
     <Compile Include="controller\SecurityData\PasswordManager.cs" />
     <Compile Include="controller\UserDataController\PersonController.cs" />
     <Compile Include="controller\UserDataController\UserController.cs" />
+    <Compile Include="model\Acces\Module.cs" />
     <Compile Include="model\Acces\Role.cs" />
     <Compile Include="model\Connection\ConnectionDB.cs" />
     <Compile Include="model\DAO\UserDAO.cs" />
