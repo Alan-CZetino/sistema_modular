@@ -41,6 +41,7 @@ namespace sistema_modular_cafe_majada.views
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.cbx_role = new System.Windows.Forms.ComboBox();
             this.cbx_userStatus = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btn_table_person = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dataGrid_UserView = new System.Windows.Forms.DataGridView();
-            this.cbx_role = new System.Windows.Forms.ComboBox();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_update)).BeginInit();
@@ -229,6 +229,16 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Size = new System.Drawing.Size(222, 257);
             this.panel8.TabIndex = 7;
             // 
+            // cbx_role
+            // 
+            this.cbx_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_role.FormattingEnabled = true;
+            this.cbx_role.Location = new System.Drawing.Point(11, 349);
+            this.cbx_role.Margin = new System.Windows.Forms.Padding(2);
+            this.cbx_role.Name = "cbx_role";
+            this.cbx_role.Size = new System.Drawing.Size(158, 25);
+            this.cbx_role.TabIndex = 26;
+            // 
             // cbx_userStatus
             // 
             this.cbx_userStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -271,6 +281,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_PassConfirm.Location = new System.Drawing.Point(11, 240);
             this.txb_PassConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.txb_PassConfirm.Name = "txb_PassConfirm";
+            this.txb_PassConfirm.PasswordChar = '*';
             this.txb_PassConfirm.Size = new System.Drawing.Size(158, 23);
             this.txb_PassConfirm.TabIndex = 22;
             // 
@@ -336,6 +347,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Password.Location = new System.Drawing.Point(11, 187);
             this.txb_Password.Margin = new System.Windows.Forms.Padding(2);
             this.txb_Password.Name = "txb_Password";
+            this.txb_Password.PasswordChar = '*';
             this.txb_Password.Size = new System.Drawing.Size(158, 23);
             this.txb_Password.TabIndex = 11;
             // 
@@ -349,6 +361,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_NameUser.Name = "txb_NameUser";
             this.txb_NameUser.Size = new System.Drawing.Size(160, 23);
             this.txb_NameUser.TabIndex = 5;
+            this.txb_NameUser.Enter += new System.EventHandler(this.txb_NameUser_Enter);
             // 
             // label5
             // 
@@ -489,16 +502,6 @@ namespace sistema_modular_cafe_majada.views
             this.dataGrid_UserView.Size = new System.Drawing.Size(488, 284);
             this.dataGrid_UserView.TabIndex = 0;
             this.dataGrid_UserView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_UserView_CellDoubleClick);
-            // 
-            // cbx_role
-            // 
-            this.cbx_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbx_role.FormattingEnabled = true;
-            this.cbx_role.Location = new System.Drawing.Point(11, 349);
-            this.cbx_role.Margin = new System.Windows.Forms.Padding(2);
-            this.cbx_role.Name = "cbx_role";
-            this.cbx_role.Size = new System.Drawing.Size(158, 25);
-            this.cbx_role.TabIndex = 26;
             // 
             // form_usuarios
             // 

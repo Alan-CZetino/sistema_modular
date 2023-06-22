@@ -34,9 +34,10 @@ namespace sistema_modular_cafe_majada.views
             RestrictTextBoxNum(textBoxListN);
             RestrictTextBoxCharacter(textBoxListC);
 
-            
             LimitDigits(txb_Dui, 9);
             LimitDigits(txb_Nit, 9);
+            LimitDigits(txb_Nombre, 35);
+            LimitDigits(txb_Apellido, 35);
 
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dataGrid_PersonView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

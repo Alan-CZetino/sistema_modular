@@ -278,15 +278,18 @@ namespace sistema_modular_cafe_majada.views
             ComboBox[] comBoxes = { txb_Depto };
             ConvertFirstCharacter(comBoxes);
 
+            string nameUser = txb_NameUser.Text;
+            string pass = txb_Password.Text;
+            string passConfirm = txb_PassConfirm.Text;
+            string email = txb_Email.Text;
+            string depto;
+
+            // Las contraseñas se cifra
+            string encryptedPassword = PasswordManager.EncryptPassword(pass);
+            
             // Obtener los valores ingresados por el usuario
             try
             {
-                string nameUser = txb_NameUser.Text;
-                string pass = txb_Password.Text;
-                string passConfirm = txb_PassConfirm.Text;
-                string email = FormatearCorreoElectronico(txb_Email.Text);
-                string depto;
-
                 KeyValuePair<int, string>? departamentoSeleccionado = txb_Depto.SelectedItem as KeyValuePair<int, string>?;
 
                 if (departamentoSeleccionado != null)
@@ -297,6 +300,7 @@ namespace sistema_modular_cafe_majada.views
                     if (cbx_role.SelectedItem == null)
                     {
                         MessageBox.Show("Debe seleccionar un rol de usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        Console.WriteLine("Depuracion - rol seleccionado " + cbx_role.Text);
                         return; // Salir de la función para evitar excepciones adicionales
                     }
 
@@ -313,86 +317,62 @@ namespace sistema_modular_cafe_majada.views
 
                     int selectedValue = selectedStatus.Key;
 
-
-                    if (pass == passConfirm)
+                    //verifica si han clikeado el icono update
+                    if (!imagenClickeada)
                     {
-                        // Las contraseñas coinciden
-                        string encryptedPassword = PasswordManager.EncryptPassword(pass);
+                        // Código que se ejecutará si no se ha hecho clic en la imagen update
 
-                        // Crear una instancia de la clase Usuario con los valores obtenidos
-                        Usuario usuarioInsert = new Usuario()
+                        // Verificar si el texto cumple con el formato de un correo electrónico válido
+                        bool esValido = ValidarFormatoCorreoElectronico(email);
+                        if (!esValido)
                         {
-                            NombreUsuario = nameUser,
-                            EmailUsuario = email,
-                            ClaveUsuario = encryptedPassword,
-                            EstadoUsuario = "Pendiente de Activacion",
-                            DeptoUsuario = depto,
-                            IdRolUsuario = selectedValue,
-                            IdPersonaUsuario = PersonSelect.IdPerson
-                        };
-
-                        if (!imagenClickeada)
-                        {
-                            // Código que se ejecutará si no se ha hecho clic en la imagen update
-                            // Llamar al controlador para insertar la persona en la base de datos
-                            bool exito = userController.InsertarUsuario(usuarioInsert);
-
-                            if (exito)
-                            {
-                                MessageBox.Show("Usuario agregada correctamente.");
-                                try
-                                {
-                                    //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                                    log.RegistrarLog(usuario.IdUsuario, "Registro dato Usuario", usuario.DeptoUsuario, "Insercion", "Inserto un nuevo usuario a la base de datos");
-
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine("Error al obtener el usuario: " + ex.Message);
-                                }
-
-                                //funcion para actualizar los datos en el dataGrid
-                                ShowUserGrid();
-
-                                //borrar datos de los textbox
-                                ClearDataTxb();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.");
-                            }
+                            // Mostrar un mensaje de error al usuario
+                            MessageBox.Show("El correo electrónico ingresado no es válido. Verifique el formato.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                
+                            // Puedes lanzar una excepción si deseas manejar el error en otro lugar
+                            // throw new Exception("El correo electrónico ingresado no es válido. Verifique el formato.");
+                                
                         }
                         else
                         {
-                            // Código que se ejecutará
-                            // si se ha hecho clic en la imagen update
-                            int idRol = usuarioSeleccionado.IdRolUsuario;
-                            bool baja = false;
-                            object selectedItem = cbx_userStatus.SelectedItem; // Obtiene el objeto seleccionado
-
-                            if (selectedItem != null)
+                            //verifica si la contraseña coinciden
+                            if (pass == passConfirm)
                             {
-                                string valorSeleccionado = selectedItem.ToString(); // Convierte el objeto a string si es necesario
-                                usuario.EstadoUsuario = valorSeleccionado;
+                                string estado;
 
-                                if (selectedItem.Equals("Inactivo") || selectedItem.Equals("Suspendido") || selectedItem.Equals("Eliminado"))
+                                DialogResult result = MessageBox.Show("¿Desea dejar al usuario en estado pendiente de activación? Esto permitirá una revisión adicional antes de otorgarle acceso al sistema.", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                                if (result == DialogResult.Yes)
                                 {
-                                    baja = true;
+                                    estado = "Pendiente de Activacion";
                                 }
-                                DateTime? fechaBaja = null;
-                                if (baja)
+                                else
                                 {
-                                    fechaBaja = DateTime.Today;
+                                    estado = "Activo";
                                 }
 
-                                bool exito = userController.ActualizarUsuario(usuarioSeleccionado.IdUsuario, nameUser, email, pass, fechaBaja, usuario.EstadoUsuario, depto, idRol, idPerson);
+                                // Crear una instancia de la clase Usuario con los valores obtenidos
+                                Usuario usuarioInsert = new Usuario()
+                                {
+                                    NombreUsuario = nameUser,
+                                    EmailUsuario = email,
+                                    ClaveUsuario = encryptedPassword,
+                                    EstadoUsuario = estado,
+                                    DeptoUsuario = depto,
+                                    IdRolUsuario = selectedValue,
+                                    IdPersonaUsuario = PersonSelect.IdPerson
+                                };
 
+                                // Llamar al controlador para insertar la persona en la base de datos
+                                bool exito = userController.InsertarUsuario(usuarioInsert);
                                 if (exito)
                                 {
-                                    MessageBox.Show("Persona actualizada correctamente.");
+                                    MessageBox.Show("Usuario agregada correctamente.");
                                     try
                                     {
-                                        log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Usuario", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos del usuario con ID " + usuarioSeleccionado.IdUsuario + " en la base de datos");
+                                        //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                                        log.RegistrarLog(usuario.IdUsuario, "Registro dato Usuario", usuario.DeptoUsuario, "Insercion", "Inserto un nuevo usuario a la base de datos");
+
                                     }
                                     catch (Exception ex)
                                     {
@@ -402,28 +382,100 @@ namespace sistema_modular_cafe_majada.views
                                     //funcion para actualizar los datos en el dataGrid
                                     ShowUserGrid();
 
-                                    label10.Visible = false;
-                                    cbx_userStatus.Visible = false;
+                                    //borrar datos de los textbox
                                     ClearDataTxb();
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Error al actualizar la persona. Verifica los datos e intenta nuevamente.", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.");
                                 }
-
-                                imagenClickeada = false;
                             }
                             else
                             {
-                                MessageBox.Show("Asigne el dato de estado de usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                // Las contraseñas no coinciden, mostrar un mensaje de error
+                                MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
                             }
-
                         }
                     }
                     else
                     {
-                        // Las contraseñas no coinciden, mostrar un mensaje de error
-                        MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+                        // Código que se ejecutará
+                        // si se ha hecho clic en la imagen update
+                        int idRol = usuarioSeleccionado.IdRolUsuario;
+                        bool baja = false;
+                        object selectedItem = cbx_userStatus.SelectedItem; // Obtiene el objeto seleccionado
+                        bool verificEncrypt = PasswordManager.VerifyPassword(passConfirm, txb_Password.Text);
+
+                        if (selectedItem != null)
+                        {
+                            string valorSeleccionado = selectedItem.ToString(); // Convierte el objeto a string si es necesario
+                            usuario.EstadoUsuario = valorSeleccionado;
+
+                            if (selectedItem.Equals("Inactivo") || selectedItem.Equals("Suspendido") || selectedItem.Equals("Eliminado"))
+                            {
+                                baja = true;
+                            }
+                            DateTime? fechaBaja = null;
+                            if (baja)
+                            {
+                                fechaBaja = DateTime.Today;
+                            }
+                            // Verificar si el texto cumple con el formato de un correo electrónico válido
+                            bool esValido = ValidarFormatoCorreoElectronico(email);
+
+                            if (!esValido)
+                            {
+                                // Mostrar un mensaje de error al usuario
+                                MessageBox.Show("El correo electrónico ingresado no es válido. Verifique el formato.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    
+                                // Puedes lanzar una excepción si deseas manejar el error en otro lugar
+                                // throw new Exception("El correo electrónico ingresado no es válido. Verifique el formato.");
+                            }
+                            else
+                            {
+                                //verifica si la contraseña coinciden
+                                Console.WriteLine("condicion verificar clave " + verificEncrypt);
+                                if (verificEncrypt)
+                                {
+                                    bool exito = userController.ActualizarUsuario(usuarioSeleccionado.IdUsuario, nameUser, email, pass, fechaBaja, usuario.EstadoUsuario, depto, idRol, idPerson);
+
+                                    if (exito)
+                                    {
+                                        MessageBox.Show("Persona actualizada correctamente.");
+                                        try
+                                        {
+                                            log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Usuario", usuario.DeptoUsuario, "Actualizacion", "Actualizo los datos del usuario con ID " + usuarioSeleccionado.IdUsuario + " en la base de datos");
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                                        }
+
+                                        //funcion para actualizar los datos en el dataGrid
+                                        ShowUserGrid();
+
+                                        label10.Visible = false;
+                                        cbx_userStatus.Visible = false;
+                                        ClearDataTxb();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Error al actualizar la persona. Verifica los datos e intenta nuevamente.", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                                else
+                                {
+                                    // Las contraseñas no coinciden, mostrar un mensaje de error
+                                    MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+                                }
+                            }
+                            imagenClickeada = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Asigne el dato de estado de usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
                     }
                 }
                 else
@@ -474,6 +526,8 @@ namespace sistema_modular_cafe_majada.views
             label10.Visible = false;
             cbx_userStatus.Visible = false;
             usuarioSeleccionado = null;
+            CbxDepartamento();
+            CbxRoles();
         }
 
         private void form_usuarios_Load(object sender, EventArgs e)
@@ -509,5 +563,10 @@ namespace sistema_modular_cafe_majada.views
             return regex.IsMatch(correo);
         }
 
+        private void txb_NameUser_Enter(object sender, EventArgs e)
+        {
+            CbxRoles();
+            CbxDepartamento();
+        }
     }
 }
