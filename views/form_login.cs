@@ -98,12 +98,12 @@ namespace sistema_modular_cafe_majada
         private void btn_login_Click(object sender, EventArgs e)
         {
             KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
-            string depto;
+            int depto;
             string name = txb_username.Text;
 
             if (departamentoSeleccionado != null)
             {
-                depto = departamentoSeleccionado.Value.Value;   
+                depto = departamentoSeleccionado.Value.Key;   
 
                 VerificUserModule(name, depto);
             
@@ -150,7 +150,7 @@ namespace sistema_modular_cafe_majada
                 try
                 {
                     //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                    log.RegistrarLog(usuario.IdUsuario, "Inicio seccion satisfactoriamente", ModuloActual.NombreModulo, "Inicio de Seccion", "Intentos realizados " + contador);
+                    log.RegistrarLog(usuario.IdUsuario, "Inicio sesion satisfactoriamente", ModuloActual.NombreModulo, "Inicio de Sesion", "Intentos realizados " + contador);
                     contador = 0;
                 }
                 catch (Exception ex)
@@ -205,7 +205,7 @@ namespace sistema_modular_cafe_majada
         }
 
         //verificar esta funcion para manejar varios modulos 
-        private void VerificUserModule(string nameUser, string depto)
+        private void VerificUserModule(string nameUser, int depto)
         {
             bool autenticado;
             bool error = false;         //aqui se manejara el contador para verificar cuantos intentos hace el usuario para acceder al sistema
@@ -213,11 +213,11 @@ namespace sistema_modular_cafe_majada
             LoginController login = new LoginController();
             KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
             
-            depto = departamentoSeleccionado.Value.Value;
+            depto = departamentoSeleccionado.Value.Key;
 
             switch (depto)
             {
-                case "Modulo Activos de Cafe":
+                case 1:
                     {
                         autenticado = login.VerificarUsuarioDepartamento(nameUser, depto);
 
@@ -240,7 +240,7 @@ namespace sistema_modular_cafe_majada
 
                     }
                     break;
-                case "Modulo Administracion":
+                case 2:
                     {
                         autenticado = login.VerificarUsuarioDepartamento(nameUser, depto);
                         if (autenticado)
@@ -262,7 +262,7 @@ namespace sistema_modular_cafe_majada
 
                     }
                     break;
-                case "Modulo Contabilidad":
+                case 3:
                     {
                         autenticado = login.VerificarUsuarioDepartamento(nameUser, depto);
                         if (autenticado)
@@ -283,7 +283,7 @@ namespace sistema_modular_cafe_majada
                         }
                     }
                     break;
-                case "Modulo Negocios Exteriores":
+                case 4:
                     {
                         autenticado = login.VerificarUsuarioDepartamento(nameUser, depto);
                         if (autenticado)
@@ -392,7 +392,7 @@ namespace sistema_modular_cafe_majada
             {
                 KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
 
-                string depto = departamentoSeleccionado.Value.Value;
+                int depto = departamentoSeleccionado.Value.Key;
                 // Realiza las acciones para iniciar sesión
                 VerificUserModule(txb_username.Text, depto);
             }
@@ -422,7 +422,7 @@ namespace sistema_modular_cafe_majada
             {
                 KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
 
-                string depto = departamentoSeleccionado.Value.Value;
+                int depto = departamentoSeleccionado.Value.Key;
                 // Realiza las acciones para iniciar sesión
                 VerificUserModule(txb_username.Text, depto);
             }
@@ -434,7 +434,7 @@ namespace sistema_modular_cafe_majada
             {
                 KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
 
-                string depto = departamentoSeleccionado.Value.Value;
+                int depto = departamentoSeleccionado.Value.Key;
                 // Realiza las acciones para iniciar sesión
                 VerificUserModule(txb_username.Text, depto);
             }

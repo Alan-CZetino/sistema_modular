@@ -181,7 +181,7 @@ namespace sistema_modular_cafe_majada.controller
         }
 
         //verificar el modulo al que pertenece el usuario
-        public bool VerificarUsuarioDepartamento(string nombreUsuario, string nombreDepartamento)
+        public bool VerificarUsuarioDepartamento(string nombreUsuario, int iDepartamento)
         {
             try
             {
@@ -201,10 +201,10 @@ namespace sistema_modular_cafe_majada.controller
                 // Consulta para verificar la existencia del usuario en el departamento seleccionado
                 string verificacionQuery = @"SELECT COUNT(*) FROM Usuario_Modulo um
                                     INNER JOIN Modulo m ON um.id_modulo = m.id_modulo
-                                    WHERE um.id_usuario = @idUsuario AND m.nombre_modulo = @nombreDepartamento";
+                                    WHERE um.id_usuario = @idUsuario AND m.id_modulo = @iDepartamento";
                 conexionBD.CrearComando(verificacionQuery);
                 conexionBD.AgregarParametro("@idUsuario", idUsuario);
-                conexionBD.AgregarParametro("@nombreDepartamento", nombreDepartamento);
+                conexionBD.AgregarParametro("@iDepartamento", iDepartamento);
 
                 int count = Convert.ToInt32(conexionBD.EjecutarConsultaEscalar());
 
