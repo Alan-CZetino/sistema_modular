@@ -54,12 +54,14 @@ namespace sistema_modular_cafe_majada.views
             // 
             // dtg_tablePerson
             // 
+            this.dtg_tablePerson.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtg_tablePerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_tablePerson.Location = new System.Drawing.Point(12, 41);
+            this.dtg_tablePerson.Location = new System.Drawing.Point(8, 81);
             this.dtg_tablePerson.Name = "dtg_tablePerson";
             this.dtg_tablePerson.RowHeadersWidth = 51;
             this.dtg_tablePerson.RowTemplate.Height = 24;
-            this.dtg_tablePerson.Size = new System.Drawing.Size(776, 390);
+            this.dtg_tablePerson.Size = new System.Drawing.Size(784, 392);
             this.dtg_tablePerson.TabIndex = 1;
             // 
             // panel1
@@ -78,7 +80,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 30);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(2, 413);
+            this.panel2.Size = new System.Drawing.Size(2, 455);
             this.panel2.TabIndex = 3;
             // 
             // panel4
@@ -87,14 +89,14 @@ namespace sistema_modular_cafe_majada.views
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(798, 30);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 413);
+            this.panel4.Size = new System.Drawing.Size(2, 455);
             this.panel4.TabIndex = 5;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(2, 441);
+            this.panel5.Location = new System.Drawing.Point(2, 483);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(796, 2);
             this.panel5.TabIndex = 6;
@@ -104,13 +106,14 @@ namespace sistema_modular_cafe_majada.views
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 443);
+            this.ClientSize = new System.Drawing.Size(800, 485);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtg_tablePerson);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(800, 485);
             this.Name = "form_tableperson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "form_tableperson";

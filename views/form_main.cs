@@ -83,8 +83,8 @@ namespace sistema_modular_cafe_majada
 
         private void btn_activos_Click(object sender, EventArgs e)
         {
-            form_activos act = new form_activos();
-            AddFormulario(act);
+            form_subpatidas fact = new form_subpatidas();
+            AddFormulario(fact);
         }
 
         private void btn_admin_panel_Click(object sender, EventArgs e)
@@ -97,6 +97,12 @@ namespace sistema_modular_cafe_majada
         {
             form_reportes frepor = new form_reportes();
             AddFormulario(frepor);
+        }
+
+        private void lbl_username_Click(object sender, EventArgs e)
+        {
+            form_userData fUserData = new form_userData();
+            AddFormulario(fUserData);
         }
     }
 }
