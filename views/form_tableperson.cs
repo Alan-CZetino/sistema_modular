@@ -1,4 +1,4 @@
-﻿using sistema_modular_cafe_majada.controller.UserDataController;
+using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.UserData;
 using System;
 using System.Collections.Generic;

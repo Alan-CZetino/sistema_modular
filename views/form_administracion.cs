@@ -68,5 +68,59 @@ namespace sistema_modular_cafe_majada
             form_subprod_cafe fsubprod_cafe = new form_subprod_cafe();
             AddFormulario(fsubprod_cafe);
         }
+
+        private void btn_fincas_Click(object sender, EventArgs e)
+        {
+            form_finca fFinca = new form_finca();
+            AddFormulario(fFinca);
+        }
+
+        private void btn_beneficios_Click(object sender, EventArgs e)
+        {
+            form_beneficios fBeneficio = new form_beneficios();
+            AddFormulario(fBeneficio);
+        }
+
+        private void btn_lote_Click(object sender, EventArgs e)
+        {
+            form_lote fLotes = new form_lote();
+            AddFormulario(fLotes);
+        }
+        
+        private void btn_proce_cafe_Click(object sender, EventArgs e)
+        {
+            form_prodCafe fProceCafe = new form_prodCafe();
+            AddFormulario(fProceCafe);
+        }
+
+        private void btn_dest_cafe_Click(object sender, EventArgs e)
+        {
+            form_destCafe fDestCafe = new form_destCafe();
+            AddFormulario(fDestCafe);
+        }
+
+        private void btn_ubicacion_Click(object sender, EventArgs e)
+        {
+            form_ubicacion fDestino = new form_ubicacion();
+             AddFormulario(fDestino);
+        }
+
+        private void btn_maquinas_Click(object sender, EventArgs e)
+        {
+            form_maquinas fMaquinas = new form_maquinas();
+            AddFormulario(fMaquinas);
+        }
+
+        private void btn_clase_cafeuva_Click(object sender, EventArgs e)
+        {
+            form_claseUva fClaseUva = new form_claseUva();
+            AddFormulario(fClaseUva);
+        }
+
+        private void btn_personal_Click(object sender, EventArgs e)
+        {
+            form_personal fPersonal = new form_personal();
+            AddFormulario(fPersonal);
+        }
     }
 }

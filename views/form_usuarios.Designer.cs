@@ -48,7 +48,6 @@ namespace sistema_modular_cafe_majada.views
             this.txb_PassConfirm = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txb_Depto = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txb_Name = new System.Windows.Forms.TextBox();
             this.txb_Password = new System.Windows.Forms.TextBox();
@@ -56,7 +55,6 @@ namespace sistema_modular_cafe_majada.views
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txb_Email = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btn_SaveUser = new System.Windows.Forms.Button();
@@ -212,7 +210,6 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Controls.Add(this.txb_PassConfirm);
             this.panel8.Controls.Add(this.label9);
             this.panel8.Controls.Add(this.label3);
-            this.panel8.Controls.Add(this.txb_Depto);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.txb_Name);
             this.panel8.Controls.Add(this.txb_Password);
@@ -220,7 +217,6 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Controls.Add(this.label5);
             this.panel8.Controls.Add(this.label7);
             this.panel8.Controls.Add(this.txb_Email);
-            this.panel8.Controls.Add(this.label6);
             this.panel8.Controls.Add(this.label8);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 0);
@@ -231,20 +227,18 @@ namespace sistema_modular_cafe_majada.views
             // 
             // cbx_role
             // 
-            this.cbx_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_role.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_role.FormattingEnabled = true;
-            this.cbx_role.Location = new System.Drawing.Point(11, 349);
-            this.cbx_role.Margin = new System.Windows.Forms.Padding(2);
+            this.cbx_role.Location = new System.Drawing.Point(15, 375);
             this.cbx_role.Name = "cbx_role";
-            this.cbx_role.Size = new System.Drawing.Size(158, 25);
+            this.cbx_role.Size = new System.Drawing.Size(210, 37);
             this.cbx_role.TabIndex = 26;
             // 
             // cbx_userStatus
             // 
             this.cbx_userStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_userStatus.FormattingEnabled = true;
-            this.cbx_userStatus.Location = new System.Drawing.Point(14, 412);
-            this.cbx_userStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.cbx_userStatus.Location = new System.Drawing.Point(15, 450);
             this.cbx_userStatus.Name = "cbx_userStatus";
             this.cbx_userStatus.Size = new System.Drawing.Size(158, 25);
             this.cbx_userStatus.TabIndex = 25;
@@ -252,9 +246,8 @@ namespace sistema_modular_cafe_majada.views
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(10, 389);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(14, 421);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(129, 15);
             this.label10.TabIndex = 24;
@@ -306,16 +299,6 @@ namespace sistema_modular_cafe_majada.views
             this.label3.Size = new System.Drawing.Size(132, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "Nombre de Usuario";
-            // 
-            // txb_Depto
-            // 
-            this.txb_Depto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Depto.FormattingEnabled = true;
-            this.txb_Depto.Location = new System.Drawing.Point(11, 292);
-            this.txb_Depto.Margin = new System.Windows.Forms.Padding(2);
-            this.txb_Depto.Name = "txb_Depto";
-            this.txb_Depto.Size = new System.Drawing.Size(158, 25);
-            this.txb_Depto.TabIndex = 20;
             // 
             // label4
             // 
@@ -377,9 +360,8 @@ namespace sistema_modular_cafe_majada.views
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(8, 327);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(10, 338);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 15);
             this.label7.TabIndex = 10;
@@ -395,17 +377,6 @@ namespace sistema_modular_cafe_majada.views
             this.txb_Email.Name = "txb_Email";
             this.txb_Email.Size = new System.Drawing.Size(158, 23);
             this.txb_Email.TabIndex = 7;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 269);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(161, 15);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Departamento Asignado";
             // 
             // label8
             // 
@@ -550,7 +521,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox txb_Depto;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txb_Name;
         private System.Windows.Forms.TextBox txb_Password;
@@ -558,7 +528,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txb_Email;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btn_SaveUser;

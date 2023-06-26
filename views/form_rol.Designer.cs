@@ -235,7 +235,7 @@ namespace sistema_modular_cafe_majada.views
             this.cbx_access.Location = new System.Drawing.Point(11, 134);
             this.cbx_access.Margin = new System.Windows.Forms.Padding(2);
             this.cbx_access.Name = "cbx_access";
-            this.cbx_access.Size = new System.Drawing.Size(158, 25);
+            this.cbx_access.Size = new System.Drawing.Size(231, 37);
             this.cbx_access.TabIndex = 20;
             // 
             // label3

@@ -32,6 +32,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icono-majada.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
@@ -116,11 +123,23 @@
     <Compile Include="views\form_administracion.Designer.cs">
       <DependentUpon>form_administracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_beneficios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_beneficios.Designer.cs">
+      <DependentUpon>form_beneficios.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_calidades_cafe.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\form_calidades_cafe.Designer.cs">
       <DependentUpon>form_calidades_cafe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_claseUva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_claseUva.Designer.cs">
+      <DependentUpon>form_claseUva.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_cosecha.cs">
       <SubType>Form</SubType>
@@ -128,17 +147,41 @@
     <Compile Include="views\form_cosecha.Designer.cs">
       <DependentUpon>form_cosecha.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_destCafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_destCafe.Designer.cs">
+      <DependentUpon>form_destCafe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_finca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_finca.Designer.cs">
+      <DependentUpon>form_finca.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\form_login.Designer.cs">
       <DependentUpon>form_login.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_lote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_lote.Designer.cs">
+      <DependentUpon>form_lote.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\form_main.Designer.cs">
       <DependentUpon>form_main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_maquinas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_maquinas.Designer.cs">
+      <DependentUpon>form_maquinas.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_panel_principal.cs">
       <SubType>Form</SubType>
@@ -148,11 +191,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="views\form_personal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_personal.Designer.cs">
+      <DependentUpon>form_personal.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_personas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\form_personas.Designer.cs">
       <DependentUpon>form_personas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_prodCafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_prodCafe.Designer.cs">
+      <DependentUpon>form_prodCafe.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_reportes.cs">
       <SubType>Form</SubType>
@@ -172,6 +227,12 @@
     <Compile Include="views\form_splash.Designer.cs">
       <DependentUpon>form_splash.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_subpatidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_subpatidas.Designer.cs">
+      <DependentUpon>form_subpatidas.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_subprod_cafe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +244,18 @@
     </Compile>
     <Compile Include="views\form_tableperson.Designer.cs">
       <DependentUpon>form_tableperson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_ubicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_ubicacion.Designer.cs">
+      <DependentUpon>form_ubicacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_userData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_userData.Designer.cs">
+      <DependentUpon>form_userData.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_usuarios.cs">
       <SubType>Form</SubType>
@@ -196,17 +269,35 @@
     <EmbeddedResource Include="views\form_administracion.resx">
       <DependentUpon>form_administracion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\form_beneficios.resx">
+      <DependentUpon>form_beneficios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_calidades_cafe.resx">
       <DependentUpon>form_calidades_cafe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_claseUva.resx">
+      <DependentUpon>form_claseUva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_cosecha.resx">
       <DependentUpon>form_cosecha.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\form_destCafe.resx">
+      <DependentUpon>form_destCafe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_finca.resx">
+      <DependentUpon>form_finca.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_login.resx">
       <DependentUpon>form_login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\form_lote.resx">
+      <DependentUpon>form_lote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_main.resx">
       <DependentUpon>form_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_maquinas.resx">
+      <DependentUpon>form_maquinas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_panel_principal.resx">
       <DependentUpon>form_panel_principal.cs</DependentUpon>
@@ -221,8 +312,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="views\form_personal.resx">
+      <DependentUpon>form_personal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_personas.resx">
       <DependentUpon>form_personas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_prodCafe.resx">
+      <DependentUpon>form_prodCafe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_reportes.resx">
       <DependentUpon>form_reportes.cs</DependentUpon>
@@ -234,11 +331,20 @@
     <EmbeddedResource Include="views\form_splash.resx">
       <DependentUpon>form_splash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\form_subpatidas.resx">
+      <DependentUpon>form_subpatidas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_subprod_cafe.resx">
       <DependentUpon>form_subprod_cafe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_tableperson.resx">
       <DependentUpon>form_tableperson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_ubicacion.resx">
+      <DependentUpon>form_ubicacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_userData.resx">
+      <DependentUpon>form_userData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_usuarios.resx">
       <DependentUpon>form_usuarios.cs</DependentUpon>
@@ -373,6 +479,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\modulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_cafe_majada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono-majada.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icono-majada.ico" />
+    <None Include="Resources\lupa.png" />
+    <None Include="Resources\Barra de busqueda 1.png" />
+    <None Include="Resources\Barra de busqueda.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

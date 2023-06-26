@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -106,8 +106,8 @@ namespace sistema_modular_cafe_majada
 
         private void btn_activos_Click(object sender, EventArgs e)
         {
-            form_activos act = new form_activos();
-            AddFormulario(act);
+            form_subpatidas fact = new form_subpatidas();
+            AddFormulario(fact);
         }
 
         private void btn_admin_panel_Click(object sender, EventArgs e)
@@ -148,6 +148,12 @@ namespace sistema_modular_cafe_majada
         {
             string name = "Usuario: " + NombreUsuario;
             lbl_User.Text = name;
+        }
+
+        private void lbl_username_Click(object sender, EventArgs e)
+        {
+            form_userData fUserData = new form_userData();
+            AddFormulario(fUserData);
         }
     }
 }

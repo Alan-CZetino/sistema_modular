@@ -126,17 +126,17 @@ namespace sistema_modular_cafe_majada
             // 
             // lbl_User
             // 
-            this.lbl_User.AutoSize = true;
-            this.lbl_User.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lbl_User.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_User.ForeColor = System.Drawing.Color.White;
-            this.lbl_User.Location = new System.Drawing.Point(0, 490);
-            this.lbl_User.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_User.Name = "lbl_User";
-            this.lbl_User.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.lbl_User.Size = new System.Drawing.Size(75, 22);
-            this.lbl_User.TabIndex = 8;
-            this.lbl_User.Text = "username";
+            this.lbl_username.AutoSize = true;
+            this.lbl_username.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbl_username.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_username.ForeColor = System.Drawing.Color.White;
+            this.lbl_username.Location = new System.Drawing.Point(0, 599);
+            this.lbl_username.Name = "lbl_username";
+            this.lbl_username.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lbl_username.Size = new System.Drawing.Size(91, 32);
+            this.lbl_username.TabIndex = 8;
+            this.lbl_username.Text = "username";
+            this.lbl_username.Click += new System.EventHandler(this.lbl_username_Click);
             // 
             // panel1
             // 
@@ -254,7 +254,7 @@ namespace sistema_modular_cafe_majada
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::sistema_modular_cafe_majada.Properties.Resources.logo_oficial_majada;
+            this.pictureBox1.Image = global::sistema_modular_cafe_majada.Properties.Resources.logo_cafe_majada;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
