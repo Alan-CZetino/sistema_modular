@@ -262,7 +262,7 @@ namespace sistema_modular_cafe_majada
             this.btn_persona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_persona.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_persona.ForeColor = System.Drawing.Color.White;
-            this.btn_persona.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
+            this.btn_persona.Image = global::sistema_modular_cafe_majada.Properties.Resources.personas_45px;
             this.btn_persona.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_persona.Location = new System.Drawing.Point(47, 1);
             this.btn_persona.Name = "btn_persona";
@@ -292,7 +292,7 @@ namespace sistema_modular_cafe_majada
             this.btn_rol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_rol.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_rol.ForeColor = System.Drawing.Color.White;
-            this.btn_rol.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
+            this.btn_rol.Image = global::sistema_modular_cafe_majada.Properties.Resources.roles_45px;
             this.btn_rol.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_rol.Location = new System.Drawing.Point(47, 1);
             this.btn_rol.Name = "btn_rol";
@@ -352,7 +352,7 @@ namespace sistema_modular_cafe_majada
             this.btn_personal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_personal.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_personal.ForeColor = System.Drawing.Color.White;
-            this.btn_personal.Image = global::sistema_modular_cafe_majada.Properties.Resources.usuarios_45px;
+            this.btn_personal.Image = global::sistema_modular_cafe_majada.Properties.Resources.trabajadores_45px;
             this.btn_personal.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_personal.Location = new System.Drawing.Point(50, 1);
             this.btn_personal.Name = "btn_personal";

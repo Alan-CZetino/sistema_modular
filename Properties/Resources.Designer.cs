@@ -293,6 +293,26 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap personas_45px {
+            get {
+                object obj = ResourceManager.GetObject("personas 45px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap roles_45px {
+            get {
+                object obj = ResourceManager.GetObject("roles 45px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap servicio_al_cliente {
             get {
                 object obj = ResourceManager.GetObject("servicio_al_cliente", resourceCulture);
@@ -353,9 +373,39 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap trabajadores_45px {
+            get {
+                object obj = ResourceManager.GetObject("trabajadores 45px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usuario {
+            get {
+                object obj = ResourceManager.GetObject("usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap usuario_24px {
             get {
                 object obj = ResourceManager.GetObject("usuario_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usuario_512px {
+            get {
+                object obj = ResourceManager.GetObject("usuario 512px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

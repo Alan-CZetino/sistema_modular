@@ -190,6 +190,12 @@
     <Compile Include="views\form_tableperson.Designer.cs">
       <DependentUpon>form_tableperson.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_tableUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_tableUser.Designer.cs">
+      <DependentUpon>form_tableUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_ubicacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_tableperson.resx">
       <DependentUpon>form_tableperson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_tableUser.resx">
+      <DependentUpon>form_tableUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_ubicacion.resx">
       <DependentUpon>form_ubicacion.cs</DependentUpon>
@@ -430,6 +439,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icono-majada.ico" />
+    <None Include="Resources\trabajadores 45px.png" />
+    <None Include="Resources\roles 45px.png" />
+    <None Include="Resources\personas 45px.png" />
+    <None Include="Resources\usuario 512px.png" />
+    <None Include="Resources\usuario.png" />
     <None Include="Resources\lupa.png" />
     <None Include="Resources\Barra de busqueda 1.png" />
     <None Include="Resources\Barra de busqueda.png" />
