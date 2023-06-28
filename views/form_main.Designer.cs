@@ -126,17 +126,17 @@ namespace sistema_modular_cafe_majada
             // 
             // lbl_User
             // 
-            this.lbl_username.AutoSize = true;
-            this.lbl_username.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lbl_username.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_username.ForeColor = System.Drawing.Color.White;
-            this.lbl_username.Location = new System.Drawing.Point(0, 599);
-            this.lbl_username.Name = "lbl_username";
-            this.lbl_username.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lbl_username.Size = new System.Drawing.Size(91, 32);
-            this.lbl_username.TabIndex = 8;
-            this.lbl_username.Text = "username";
-            this.lbl_username.Click += new System.EventHandler(this.lbl_username_Click);
+            this.lbl_User.AutoSize = true;
+            this.lbl_User.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbl_User.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_User.ForeColor = System.Drawing.Color.White;
+            this.lbl_User.Location = new System.Drawing.Point(0, 599);
+            this.lbl_User.Name = "lbl_username";
+            this.lbl_User.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lbl_User.Size = new System.Drawing.Size(91, 32);
+            this.lbl_User.TabIndex = 8;
+            this.lbl_User.Text = "username";
+            this.lbl_User.Click += new System.EventHandler(this.lbl_username_Click);
             // 
             // panel1
             // 

@@ -19,7 +19,7 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_usuarios : Form
     {
-        //variable global para verificar el estado del boton actualizar
+        //variable privada para esta clase para verificar el estado del boton actualizar
         private bool imagenClickeada = false;
         //instancia de la clase mapeo persona para capturar los datos seleccionado por el usuario
         private Usuario usuarioSeleccionado;
@@ -245,8 +245,8 @@ namespace sistema_modular_cafe_majada.views
             var userDao = new UserDAO();
             var usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
 
-            ComboBox[] comBoxes = { txb_Depto };
-            ConvertFirstCharacter(comBoxes);
+            //ComboBox[] comBoxes = { txb_Depto };
+            //ConvertFirstCharacter(comBoxes);
 
             string nameUser = txb_NameUser.Text;
             string pass = txb_Password.Text;
