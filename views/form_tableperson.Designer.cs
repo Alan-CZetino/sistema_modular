@@ -45,24 +45,28 @@ namespace sistema_modular_cafe_majada.views
             this.btn_close.FlatAppearance.BorderSize = 0;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.Image = global::sistema_modular_cafe_majada.Properties.Resources.x__1___1_;
-            this.btn_close.Location = new System.Drawing.Point(771, 0);
+            this.btn_close.Location = new System.Drawing.Point(578, 0);
+            this.btn_close.Margin = new System.Windows.Forms.Padding(2);
             this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(29, 30);
+            this.btn_close.Size = new System.Drawing.Size(22, 24);
             this.btn_close.TabIndex = 0;
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // dtg_tablePerson
             // 
-            this.dtg_tablePerson.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.dtg_tablePerson.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtg_tablePerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_tablePerson.Location = new System.Drawing.Point(8, 81);
             this.dtg_tablePerson.Name = "dtg_tablePerson";
+            this.dtg_tablePerson.ReadOnly = true;
             this.dtg_tablePerson.RowHeadersWidth = 51;
             this.dtg_tablePerson.RowTemplate.Height = 24;
             this.dtg_tablePerson.Size = new System.Drawing.Size(784, 392);
             this.dtg_tablePerson.TabIndex = 1;
+            this.dtg_tablePerson.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_tablePerson_CellDoubleClick);
+            this.dtg_tablePerson.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_tablePerson_CellDoubleClick);
             // 
             // panel1
             // 
@@ -70,15 +74,17 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.Controls.Add(this.btn_close);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 30);
+            this.panel1.Size = new System.Drawing.Size(600, 24);
             this.panel1.TabIndex = 2;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 30);
+            this.panel2.Location = new System.Drawing.Point(0, 24);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 455);
             this.panel2.TabIndex = 3;
@@ -87,7 +93,8 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(798, 30);
+            this.panel4.Location = new System.Drawing.Point(598, 24);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2, 455);
             this.panel4.TabIndex = 5;
@@ -98,12 +105,12 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(2, 483);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(796, 2);
+            this.panel5.Size = new System.Drawing.Size(596, 2);
             this.panel5.TabIndex = 6;
             // 
             // form_tableperson
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 485);

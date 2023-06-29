@@ -163,9 +163,19 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cosecha_45px {
+        internal static System.Drawing.Bitmap circle_info_solid {
             get {
-                object obj = ResourceManager.GetObject("cosecha_45px", resourceCulture);
+                object obj = ResourceManager.GetObject("circle-info-solid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cosecha_45px1 {
+            get {
+                object obj = ResourceManager.GetObject("cosecha 45px1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
