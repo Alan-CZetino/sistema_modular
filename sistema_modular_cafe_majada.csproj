@@ -412,7 +412,9 @@
     <None Include="Resources\cerrar-sesion 24px.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\activos24px.png" />
+    <None Include="Resources\activos24px.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\tablero 24px.png" />

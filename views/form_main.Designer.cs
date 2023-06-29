@@ -36,7 +36,7 @@ namespace sistema_modular_cafe_majada
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_User = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_CloseSection = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.btn_admin_panel = new System.Windows.Forms.Button();
             this.btn_reportes = new System.Windows.Forms.Button();
             this.btn_activos = new System.Windows.Forms.Button();
@@ -110,7 +110,7 @@ namespace sistema_modular_cafe_majada
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.panel2.Controls.Add(this.lbl_User);
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Controls.Add(this.btn_CloseSection);
+            this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.btn_admin_panel);
             this.panel2.Controls.Add(this.btn_reportes);
             this.panel2.Controls.Add(this.btn_activos);
@@ -130,10 +130,11 @@ namespace sistema_modular_cafe_majada
             this.lbl_User.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbl_User.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_User.ForeColor = System.Drawing.Color.White;
-            this.lbl_User.Location = new System.Drawing.Point(0, 599);
-            this.lbl_User.Name = "lbl_username";
-            this.lbl_User.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lbl_User.Size = new System.Drawing.Size(91, 32);
+            this.lbl_User.Location = new System.Drawing.Point(0, 490);
+            this.lbl_User.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_User.Name = "lbl_User";
+            this.lbl_User.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.lbl_User.Size = new System.Drawing.Size(75, 22);
             this.lbl_User.TabIndex = 8;
             this.lbl_User.Text = "username";
             this.lbl_User.Click += new System.EventHandler(this.lbl_username_Click);
@@ -147,24 +148,24 @@ namespace sistema_modular_cafe_majada
             this.panel1.Size = new System.Drawing.Size(188, 16);
             this.panel1.TabIndex = 7;
             // 
-            // btn_CloseSection
+            // button5
             // 
-            this.btn_CloseSection.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_CloseSection.FlatAppearance.BorderSize = 0;
-            this.btn_CloseSection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_CloseSection.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CloseSection.ForeColor = System.Drawing.Color.White;
-            this.btn_CloseSection.Image = global::sistema_modular_cafe_majada.Properties.Resources.cerrar_sesion_24px;
-            this.btn_CloseSection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_CloseSection.Location = new System.Drawing.Point(0, 528);
-            this.btn_CloseSection.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_CloseSection.Name = "btn_CloseSection";
-            this.btn_CloseSection.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btn_CloseSection.Size = new System.Drawing.Size(188, 37);
-            this.btn_CloseSection.TabIndex = 6;
-            this.btn_CloseSection.Text = "Cerrar Sesión";
-            this.btn_CloseSection.UseVisualStyleBackColor = true;
-            this.btn_CloseSection.Click += new System.EventHandler(this.btn_CloseSection_Click);
+            this.button5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Image = global::sistema_modular_cafe_majada.Properties.Resources.cerrar_sesion_24px;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(0, 528);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "button5";
+            this.button5.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.button5.Size = new System.Drawing.Size(188, 37);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "Cerrar Sesión";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.btn_CloseSection_Click);
             // 
             // btn_admin_panel
             // 
@@ -313,7 +314,7 @@ namespace sistema_modular_cafe_majada
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_principal;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btn_CloseSection;
+        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btn_admin_panel;
         private System.Windows.Forms.Button btn_reportes;
         private System.Windows.Forms.Button btn_activos;
