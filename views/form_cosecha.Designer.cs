@@ -201,7 +201,7 @@ namespace sistema_modular_cafe_majada.views
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Oswald Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::sistema_modular_cafe_majada.Properties.Resources.disquete;
+            this.button1.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(16, 105);
             this.button1.Name = "button1";

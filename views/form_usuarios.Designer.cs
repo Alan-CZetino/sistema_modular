@@ -61,6 +61,8 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.dataGrid_UserView = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_update)).BeginInit();
@@ -191,6 +193,8 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
+            this.panel8.Controls.Add(this.checkedListBox1);
+            this.panel8.Controls.Add(this.label6);
             this.panel8.Controls.Add(this.cbx_role);
             this.panel8.Controls.Add(this.cbx_userStatus);
             this.panel8.Controls.Add(this.label10);
@@ -225,7 +229,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.cbx_userStatus.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_userStatus.FormattingEnabled = true;
-            this.cbx_userStatus.Location = new System.Drawing.Point(15, 450);
+            this.cbx_userStatus.Location = new System.Drawing.Point(15, 667);
             this.cbx_userStatus.Name = "cbx_userStatus";
             this.cbx_userStatus.Size = new System.Drawing.Size(210, 37);
             this.cbx_userStatus.TabIndex = 25;
@@ -234,7 +238,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(14, 421);
+            this.label10.Location = new System.Drawing.Point(14, 638);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(123, 26);
             this.label10.TabIndex = 24;
@@ -435,6 +439,24 @@ namespace sistema_modular_cafe_majada.views
             this.dataGrid_UserView.Size = new System.Drawing.Size(651, 350);
             this.dataGrid_UserView.TabIndex = 0;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(10, 415);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(146, 26);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Asignacion de Modulos";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(15, 444);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(210, 191);
+            this.checkedListBox1.TabIndex = 28;
+            // 
             // form_usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -500,5 +522,7 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.ComboBox cbx_userStatus;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbx_role;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Label label6;
     }
 }
