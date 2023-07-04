@@ -90,7 +90,7 @@ namespace sistema_modular_cafe_majada.views
 
             try
             {
-                string nameRol = txb_NameRol.Text;
+                string nameRol = txb_Nombre.Text;
                 string description = txb_Description.Text;
                 string permits = txb_permits.Text;
 
@@ -206,7 +206,7 @@ namespace sistema_modular_cafe_majada.views
 
         public void ClearDataTxb()
         {
-            List<TextBox> txb = new List<TextBox> { txb_NameRol, txb_Description, txb_permits};
+            List<TextBox> txb = new List<TextBox> { txb_Nombre, txb_Description, txb_permits};
 
             foreach (TextBox textBox in txb)
             {
@@ -260,7 +260,7 @@ namespace sistema_modular_cafe_majada.views
                 imagenClickeada = true;
 
                 // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                txb_NameRol.Text = rolSeleccionado.NombreRol;
+                txb_Nombre.Text = rolSeleccionado.NombreRol;
                 txb_Description.Text = rolSeleccionado.DescripcionRol;
                 txb_permits.Text = rolSeleccionado.PermisosRol;
 

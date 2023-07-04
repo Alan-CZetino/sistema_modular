@@ -21,7 +21,7 @@ namespace sistema_modular_cafe_majada
             InitializeComponent();
 
             txb_username.TextChanged += txb_username_TextChanged;
-
+            
         }
 
         //variable de tipo global para manejo de intentos fallidos en el login
@@ -405,6 +405,11 @@ namespace sistema_modular_cafe_majada
                 ComboBox comboBox = (ComboBox)sender;
                 string itemText = comboBox.GetItemText(comboBox.Items[e.Index]);
                 Brush itemBrush = (itemText == comboBox.Text) ? Brushes.WhiteSmoke : Brushes.White;
+
+                // Dibujar fondo negro para el ComboBox
+                e.Graphics.FillRectangle(Brushes.Black, e.Bounds);
+
+                // Dibujar el texto con color blanco
                 e.Graphics.DrawString(itemText, e.Font, itemBrush, e.Bounds);
             }
         }

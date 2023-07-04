@@ -63,16 +63,6 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap activos24px {
-            get {
-                object obj = ResourceManager.GetObject("activos24px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap admin_1_24px {
             get {
                 object obj = ResourceManager.GetObject("admin_1_24px", resourceCulture);
@@ -173,29 +163,31 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap circle_info_solid {
-            get {
-                object obj = ResourceManager.GetObject("circle-info-solid", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cosecha_45px1 {
-            get {
-                object obj = ResourceManager.GetObject("cosecha 45px1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap cuadrado__2_ {
             get {
                 object obj = ResourceManager.GetObject("cuadrado__2_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cosecha_45px
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("cosecha_45px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap disquete {
+            get {
+                object obj = ResourceManager.GetObject("disquete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

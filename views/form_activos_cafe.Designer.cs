@@ -97,7 +97,7 @@ namespace sistema_modular_cafe_majada
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px1;
+            this.button5.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button5.Location = new System.Drawing.Point(17, 2);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
@@ -128,7 +128,7 @@ namespace sistema_modular_cafe_majada
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px1;
+            this.button4.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button4.Location = new System.Drawing.Point(17, 2);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
@@ -159,7 +159,7 @@ namespace sistema_modular_cafe_majada
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px1;
+            this.button3.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button3.Location = new System.Drawing.Point(17, 2);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
@@ -190,7 +190,7 @@ namespace sistema_modular_cafe_majada
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px1;
+            this.button2.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button2.Location = new System.Drawing.Point(17, 2);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
@@ -221,7 +221,7 @@ namespace sistema_modular_cafe_majada
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px1;
+            this.button1.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button1.Location = new System.Drawing.Point(17, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
@@ -252,7 +252,7 @@ namespace sistema_modular_cafe_majada
             this.btn_cosecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cosecha.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cosecha.ForeColor = System.Drawing.Color.White;
-            this.btn_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px1;
+            this.btn_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.cosecha_45px;
             this.btn_cosecha.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_cosecha.Location = new System.Drawing.Point(18, 2);
             this.btn_cosecha.Margin = new System.Windows.Forms.Padding(2);
