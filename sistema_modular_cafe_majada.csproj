@@ -497,6 +497,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icono-majada.ico" />
+    <None Include="Resources\excel 24px.png" />
+    <None Include="Resources\pdf 24px.png" />
+    <None Include="Resources\excel.png" />
+    <None Include="Resources\pdf.png" />
+    <None Include="Resources\cerrar_sesion.png" />
+    <None Include="Resources\administracion.png" />
+    <None Include="Resources\existencias_cafe.png" />
+    <None Include="Resources\panel.png" />
+    <None Include="Resources\analisis.png" />
+    <None Include="Resources\reporte.png" />
+    <None Include="Resources\diseno-de-interfaz-de-usuario.png" />
+    <None Include="Resources\cerrar-sesion.png" />
+    <None Include="Resources\existencias.png" />
     <None Include="Resources\trabajadores 45px.png" />
     <None Include="Resources\roles 45px.png" />
     <None Include="Resources\personas 45px.png" />

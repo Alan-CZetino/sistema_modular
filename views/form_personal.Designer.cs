@@ -35,6 +35,8 @@ namespace sistema_modular_cafe_majada.views
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.txb_cargo = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txb_namePersonal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -47,8 +49,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_tablePerson = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txb_cargo = new System.Windows.Forms.TextBox();
+            this.dtg_personal = new System.Windows.Forms.DataGridView();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -56,6 +57,7 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_modPersonal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_deletePersonal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_personal)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -116,6 +118,24 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(296, 316);
             this.panel8.TabIndex = 7;
+            // 
+            // txb_cargo
+            // 
+            this.txb_cargo.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_cargo.Location = new System.Drawing.Point(13, 100);
+            this.txb_cargo.Name = "txb_cargo";
+            this.txb_cargo.Size = new System.Drawing.Size(231, 33);
+            this.txb_cargo.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 26);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Cargo ";
             // 
             // txb_namePersonal
             // 
@@ -267,29 +287,22 @@ namespace sistema_modular_cafe_majada.views
             this.btn_tablePerson.UseVisualStyleBackColor = true;
             this.btn_tablePerson.Click += new System.EventHandler(this.btn_tablePerson_Click);
             // 
-            // label4
+            // dtg_personal
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 26);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Cargo ";
-            // 
-            // txb_cargo
-            // 
-            this.txb_cargo.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_cargo.Location = new System.Drawing.Point(13, 100);
-            this.txb_cargo.Name = "txb_cargo";
-            this.txb_cargo.Size = new System.Drawing.Size(231, 33);
-            this.txb_cargo.TabIndex = 3;
+            this.dtg_personal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_personal.Location = new System.Drawing.Point(308, 82);
+            this.dtg_personal.Name = "dtg_personal";
+            this.dtg_personal.RowHeadersWidth = 51;
+            this.dtg_personal.RowTemplate.Height = 24;
+            this.dtg_personal.Size = new System.Drawing.Size(668, 349);
+            this.dtg_personal.TabIndex = 23;
             // 
             // form_personal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(988, 443);
+            this.Controls.Add(this.dtg_personal);
             this.Controls.Add(this.btn_tablePerson);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -309,6 +322,7 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btn_modPersonal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_deletePersonal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_personal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -335,5 +349,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Button btn_tablePerson;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txb_cargo;
+        private System.Windows.Forms.DataGridView dtg_personal;
     }
 }
