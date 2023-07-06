@@ -11,8 +11,8 @@ using System.Runtime.InteropServices;
 using sistema_modular_cafe_majada.views;
 using sistema_modular_cafe_majada.model.UserData;
 using sistema_modular_cafe_majada.controller.SecurityData;
-using sistema_modular_cafe_majada.model.DAO;
 using sistema_modular_cafe_majada.model.Acces;
+using sistema_modular_cafe_majada.controller.UserDataController;
 
 namespace sistema_modular_cafe_majada
 {
@@ -43,6 +43,8 @@ namespace sistema_modular_cafe_majada
             this.Shown += form_main_Shown;
             // Mensaje de depuración
             //Console.WriteLine("Constructor - Nombre de usuario: " + NombreUsuario);
+
+            lbl_nameModule.Text = ModuloActual.NombreModulo;
 
         }
 
@@ -125,8 +127,8 @@ namespace sistema_modular_cafe_majada
         private void btn_CloseSection_Click(object sender, EventArgs e)
         {
             log = new LogController();
-            UserDAO usuarioDao = new UserDAO();
-            var usuario = usuarioDao.ObtenerUsuario(UsuarioActual.NombreUsuario);
+            UserController usuarioControl = new UserController();
+            var usuario = usuarioControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
             
             DialogResult result = MessageBox.Show("¿Estás seguro de cerrar seccion?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             

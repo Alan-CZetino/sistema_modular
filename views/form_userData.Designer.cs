@@ -80,7 +80,7 @@ namespace sistema_modular_cafe_majada.views
             this.pnl_userData.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnl_userData.Controls.Add(this.panel3);
             this.pnl_userData.Location = new System.Drawing.Point(9, 10);
-            this.pnl_userData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_userData.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_userData.Name = "pnl_userData";
             this.pnl_userData.Size = new System.Drawing.Size(754, 276);
             this.pnl_userData.TabIndex = 0;
@@ -105,7 +105,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.btn_editPass);
             this.panel3.Location = new System.Drawing.Point(2, 2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(750, 271);
             this.panel3.TabIndex = 5;
@@ -124,7 +124,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_saveperfil.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_saveperfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_saveperfil.Location = new System.Drawing.Point(8, 205);
-            this.btn_saveperfil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_saveperfil.Margin = new System.Windows.Forms.Padding(2);
             this.btn_saveperfil.MaximumSize = new System.Drawing.Size(500, 32);
             this.btn_saveperfil.MinimumSize = new System.Drawing.Size(289, 32);
             this.btn_saveperfil.Name = "btn_saveperfil";
@@ -146,7 +146,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.Controls.Add(this.txb_UDpassNew);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Location = new System.Drawing.Point(327, 21);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(295, 231);
             this.panel1.TabIndex = 17;
@@ -164,7 +164,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_savePass.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_savePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_savePass.Location = new System.Drawing.Point(4, 153);
-            this.btn_savePass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_savePass.Margin = new System.Windows.Forms.Padding(2);
             this.btn_savePass.Name = "btn_savePass";
             this.btn_savePass.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.btn_savePass.Size = new System.Drawing.Size(289, 32);
@@ -189,7 +189,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_UDpassConf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_UDpassConf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDpassConf.Location = new System.Drawing.Point(82, 119);
-            this.txb_UDpassConf.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_UDpassConf.Margin = new System.Windows.Forms.Padding(2);
             this.txb_UDpassConf.MaximumSize = new System.Drawing.Size(414, 30);
             this.txb_UDpassConf.MinimumSize = new System.Drawing.Size(139, 33);
             this.txb_UDpassConf.Name = "txb_UDpassConf";
@@ -225,7 +225,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_UDpassActual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_UDpassActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDpassActual.Location = new System.Drawing.Point(82, 43);
-            this.txb_UDpassActual.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_UDpassActual.Margin = new System.Windows.Forms.Padding(2);
             this.txb_UDpassActual.MaximumSize = new System.Drawing.Size(414, 30);
             this.txb_UDpassActual.MinimumSize = new System.Drawing.Size(139, 33);
             this.txb_UDpassActual.Name = "txb_UDpassActual";
@@ -237,7 +237,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_UDpassNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_UDpassNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDpassNew.Location = new System.Drawing.Point(82, 81);
-            this.txb_UDpassNew.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_UDpassNew.Margin = new System.Windows.Forms.Padding(2);
             this.txb_UDpassNew.MaximumSize = new System.Drawing.Size(414, 30);
             this.txb_UDpassNew.MinimumSize = new System.Drawing.Size(139, 33);
             this.txb_UDpassNew.Name = "txb_UDpassNew";
@@ -267,19 +267,20 @@ namespace sistema_modular_cafe_majada.views
             this.btn_editProfile.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_editProfile.ForeColor = System.Drawing.Color.White;
             this.btn_editProfile.Location = new System.Drawing.Point(626, 2);
-            this.btn_editProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_editProfile.Margin = new System.Windows.Forms.Padding(2);
             this.btn_editProfile.Name = "btn_editProfile";
             this.btn_editProfile.Size = new System.Drawing.Size(122, 32);
             this.btn_editProfile.TabIndex = 3;
             this.btn_editProfile.Text = "Editar perfil";
             this.btn_editProfile.UseVisualStyleBackColor = false;
+            this.btn_editProfile.Click += new System.EventHandler(this.btn_editProfile_Click);
             // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(308, 22);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(3, 238);
             this.panel4.TabIndex = 16;
@@ -301,7 +302,7 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_UDrol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDrol.Location = new System.Drawing.Point(77, 163);
-            this.txb_UDrol.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_UDrol.Margin = new System.Windows.Forms.Padding(2);
             this.txb_UDrol.MaximumSize = new System.Drawing.Size(414, 30);
             this.txb_UDrol.MinimumSize = new System.Drawing.Size(139, 33);
             this.txb_UDrol.Name = "txb_UDrol";
@@ -314,7 +315,7 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_UDemail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDemail.Location = new System.Drawing.Point(77, 126);
-            this.txb_UDemail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_UDemail.Margin = new System.Windows.Forms.Padding(2);
             this.txb_UDemail.MaximumSize = new System.Drawing.Size(414, 30);
             this.txb_UDemail.MinimumSize = new System.Drawing.Size(139, 33);
             this.txb_UDemail.Name = "txb_UDemail";
@@ -327,7 +328,7 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_UDname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDname.Location = new System.Drawing.Point(77, 80);
-            this.txb_UDname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_UDname.Margin = new System.Windows.Forms.Padding(2);
             this.txb_UDname.MaximumSize = new System.Drawing.Size(414, 30);
             this.txb_UDname.MinimumSize = new System.Drawing.Size(139, 33);
             this.txb_UDname.Name = "txb_UDname";
@@ -340,7 +341,7 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_UDnameuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDnameuser.Location = new System.Drawing.Point(77, 41);
-            this.txb_UDnameuser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_UDnameuser.Margin = new System.Windows.Forms.Padding(2);
             this.txb_UDnameuser.MaximumSize = new System.Drawing.Size(414, 30);
             this.txb_UDnameuser.MinimumSize = new System.Drawing.Size(139, 33);
             this.txb_UDnameuser.Name = "txb_UDnameuser";
@@ -402,7 +403,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_editPass.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_editPass.ForeColor = System.Drawing.Color.White;
             this.btn_editPass.Location = new System.Drawing.Point(626, 41);
-            this.btn_editPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_editPass.Margin = new System.Windows.Forms.Padding(2);
             this.btn_editPass.Name = "btn_editPass";
             this.btn_editPass.Size = new System.Drawing.Size(122, 32);
             this.btn_editPass.TabIndex = 4;
@@ -419,7 +420,7 @@ namespace sistema_modular_cafe_majada.views
             this.pnl_permisos.Controls.Add(this.panel6);
             this.pnl_permisos.Controls.Add(this.panel2);
             this.pnl_permisos.Location = new System.Drawing.Point(9, 291);
-            this.pnl_permisos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_permisos.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_permisos.MaximumSize = new System.Drawing.Size(1320, 488);
             this.pnl_permisos.Name = "pnl_permisos";
             this.pnl_permisos.Size = new System.Drawing.Size(754, 265);
@@ -433,7 +434,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel5.Controls.Add(this.clb_permisos);
             this.panel5.Location = new System.Drawing.Point(340, 72);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(410, 191);
             this.panel5.TabIndex = 24;
@@ -445,7 +446,7 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.clb_permisos.FormattingEnabled = true;
             this.clb_permisos.Location = new System.Drawing.Point(2, 2);
-            this.clb_permisos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clb_permisos.Margin = new System.Windows.Forms.Padding(2);
             this.clb_permisos.Name = "clb_permisos";
             this.clb_permisos.Size = new System.Drawing.Size(407, 184);
             this.clb_permisos.TabIndex = 0;
@@ -461,7 +462,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel6.Controls.Add(this.btn_editPer);
             this.panel6.Controls.Add(this.label11);
             this.panel6.Location = new System.Drawing.Point(3, 72);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.MaximumSize = new System.Drawing.Size(562, 191);
             this.panel6.MinimumSize = new System.Drawing.Size(322, 191);
             this.panel6.Name = "panel6";
@@ -482,7 +483,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_savePer.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_savePer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_savePer.Location = new System.Drawing.Point(20, 139);
-            this.btn_savePer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_savePer.Margin = new System.Windows.Forms.Padding(2);
             this.btn_savePer.MaximumSize = new System.Drawing.Size(525, 32);
             this.btn_savePer.MinimumSize = new System.Drawing.Size(289, 32);
             this.btn_savePer.Name = "btn_savePer";
@@ -499,7 +500,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_tableUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_tableUser.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
             this.btn_tableUser.Location = new System.Drawing.Point(279, 91);
-            this.btn_tableUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_tableUser.Margin = new System.Windows.Forms.Padding(2);
             this.btn_tableUser.Name = "btn_tableUser";
             this.btn_tableUser.Size = new System.Drawing.Size(32, 26);
             this.btn_tableUser.TabIndex = 27;
@@ -523,7 +524,7 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_UDuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDuser.Location = new System.Drawing.Point(82, 91);
-            this.txb_UDuser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_UDuser.Margin = new System.Windows.Forms.Padding(2);
             this.txb_UDuser.MaximumSize = new System.Drawing.Size(414, 30);
             this.txb_UDuser.MinimumSize = new System.Drawing.Size(139, 33);
             this.txb_UDuser.Name = "txb_UDuser";
@@ -540,7 +541,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_newPer.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_newPer.ForeColor = System.Drawing.Color.White;
             this.btn_newPer.Location = new System.Drawing.Point(4, 38);
-            this.btn_newPer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_newPer.Margin = new System.Windows.Forms.Padding(2);
             this.btn_newPer.Name = "btn_newPer";
             this.btn_newPer.Size = new System.Drawing.Size(95, 32);
             this.btn_newPer.TabIndex = 25;
@@ -557,7 +558,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_editPer.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_editPer.ForeColor = System.Drawing.Color.White;
             this.btn_editPer.Location = new System.Drawing.Point(104, 38);
-            this.btn_editPer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_editPer.Margin = new System.Windows.Forms.Padding(2);
             this.btn_editPer.Name = "btn_editPer";
             this.btn_editPer.Size = new System.Drawing.Size(95, 32);
             this.btn_editPer.TabIndex = 26;
@@ -579,7 +580,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(754, 67);
             this.panel2.TabIndex = 28;
@@ -593,11 +594,12 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.pnl_permisos);
             this.Controls.Add(this.pnl_userData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1350, 821);
             this.MinimumSize = new System.Drawing.Size(772, 566);
             this.Name = "form_userData";
             this.Text = "form_userData";
+            this.Load += new System.EventHandler(this.form_userData_Load);
             this.pnl_userData.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

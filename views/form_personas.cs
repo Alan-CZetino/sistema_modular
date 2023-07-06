@@ -154,8 +154,8 @@ namespace sistema_modular_cafe_majada.views
 
             PersonController personaController = new PersonController();
             LogController log = new LogController();
-            var userDao = new UserDAO();
-            var usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+            var userControl = new UserController();
+            var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
             
             TextBox[] textBoxes = { txb_Nombre, txb_Apellido, txb_Direccion };
             ConvertFirstCharacter(textBoxes);
@@ -516,8 +516,8 @@ namespace sistema_modular_cafe_majada.views
             if (personaSeleccionada != null)
             {
                 LogController log = new LogController();
-                UserDAO userDao = new UserDAO();
-                Usuario usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                UserController userControl = new UserController();
+                Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
                 DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro de la persona: " + personaSeleccionada.NombresPersona + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)

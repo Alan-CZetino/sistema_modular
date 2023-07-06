@@ -1,8 +1,7 @@
-using sistema_modular_cafe_majada.controller;
+using sistema_modular_cafe_majada.controller.AccesController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
-using sistema_modular_cafe_majada.model.DAO;
 using sistema_modular_cafe_majada.model.UserData;
 using System;
 using System.Collections.Generic;
@@ -122,9 +121,9 @@ namespace sistema_modular_cafe_majada.views
                     imagenClickeada = true;
 
                     // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                    UserController userC = new UserController();
+                    PersonController personC = new PersonController();
                     idPerson = usuarioSeleccionado.IdPersonaUsuario;
-                    var name = userC.ObtenerNombrePersona(idPerson);
+                    var name = personC.ObtenerNombrePersona(idPerson);
 
                     txb_Name.Text = name.NombresPersona;
                     txb_NameUser.Text = usuarioSeleccionado.NombreUsuario;
@@ -137,6 +136,8 @@ namespace sistema_modular_cafe_majada.views
 
                     cbx_role.Items.Clear();
                     CbxRoles();
+                    int irole = usuarioSeleccionado.IdRolUsuario - 1;
+                    cbx_role.SelectedIndex = irole;
 
                     cbx_userStatus.Items.Clear();
                     cbx_userStatus.Items.Add("Activo");
@@ -144,6 +145,7 @@ namespace sistema_modular_cafe_majada.views
                     cbx_userStatus.Items.Add("Suspendido");
                     cbx_userStatus.Items.Add("Pendiente de activación");
                     cbx_userStatus.Items.Add("Eliminado");
+                    cbx_userStatus.SelectedItem = usuarioSeleccionado.EstadoUsuario;
 
                 }
             }
@@ -160,8 +162,8 @@ namespace sistema_modular_cafe_majada.views
             if (usuarioSeleccionado != null)
             {
                 LogController log = new LogController();
-                UserDAO userDao = new UserDAO();
-                Usuario usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                UserController userControl = new UserController();
+                Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
                 DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro del usuario: " + usuarioSeleccionado.NombreUsuario + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
@@ -188,7 +190,7 @@ namespace sistema_modular_cafe_majada.views
 
         public void CbxRoles()
         {
-            UserController roles = new UserController();
+            RoleController roles = new RoleController();
             List<Role> datoRol = roles.ObtenerRolCbx();
             
             cbx_role.Items.Clear();
@@ -242,8 +244,8 @@ namespace sistema_modular_cafe_majada.views
         {
             UserController userController = new UserController();
             LogController log = new LogController();
-            var userDao = new UserDAO();
-            var usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+            var userControl = new UserController();
+            var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
 
             //ComboBox[] comBoxes = { txb_Depto };
             //ConvertFirstCharacter(comBoxes);

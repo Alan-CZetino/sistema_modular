@@ -1,7 +1,7 @@
 ﻿using sistema_modular_cafe_majada.controller.AccesController;
 using sistema_modular_cafe_majada.controller.SecurityData;
+using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
-using sistema_modular_cafe_majada.model.DAO;
 using sistema_modular_cafe_majada.model.UserData;
 using System;
 using System.Collections.Generic;
@@ -82,8 +82,8 @@ namespace sistema_modular_cafe_majada.views
         {
             RoleController rolController = new RoleController();
             LogController log = new LogController();
-            var userDao = new UserDAO();
-            var usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+            var userControl = new UserController();
+            var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
 
             ComboBox[] comBoxes = { cbx_access };
             ConvertFirstCharacter(comBoxes);
@@ -279,8 +279,8 @@ namespace sistema_modular_cafe_majada.views
             if (rolSeleccionado != null)
             {
                 LogController log = new LogController();
-                UserDAO userDao = new UserDAO();
-                Usuario usuario = userDao.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                UserController userControl = new UserController();
+                Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
                 DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar las caracyeristicas registrada del Rol: " + rolSeleccionado.NombreRol + "?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)

@@ -99,18 +99,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\AccesController\ModuleController.cs" />
     <Compile Include="controller\AccesController\RoleController.cs" />
-    <Compile Include="controller\LoginController.cs" />
     <Compile Include="controller\SecurityData\LogController.cs" />
     <Compile Include="controller\SecurityData\PasswordManager.cs" />
     <Compile Include="controller\UserDataController\PersonController.cs" />
     <Compile Include="controller\UserDataController\UserController.cs" />
-    <Compile Include="model\Acces\Module.cs" />
-    <Compile Include="model\Acces\Role.cs" />
+    <Compile Include="model\DAO\ModuleDAO.cs" />
+    <Compile Include="model\DAO\PersonDAO.cs" />
+    <Compile Include="model\DAO\RoleDAO.cs" />
+    <Compile Include="model\DAO\SecurityDAO\LogDAO.cs" />
+    <Compile Include="model\Mapping\Acces\Module.cs" />
+    <Compile Include="model\Mapping\Acces\Role.cs" />
     <Compile Include="model\Connection\ConnectionDB.cs" />
     <Compile Include="model\DAO\UserDAO.cs" />
-    <Compile Include="model\UserData\Persona.cs" />
-    <Compile Include="model\UserData\Usuario.cs" />
+    <Compile Include="model\Mapping\UserData\Persona.cs" />
+    <Compile Include="model\Mapping\UserData\Usuario.cs" />
     <Compile Include="views\form_activos_cafe.cs">
       <SubType>Form</SubType>
     </Compile>

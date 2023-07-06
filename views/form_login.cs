@@ -11,6 +11,8 @@ using System.Runtime.InteropServices;
 using sistema_modular_cafe_majada.model.UserData;
 using sistema_modular_cafe_majada.controller;
 using sistema_modular_cafe_majada.model.Acces;
+using sistema_modular_cafe_majada.controller.AccesController;
+using sistema_modular_cafe_majada.controller.UserDataController;
 
 namespace sistema_modular_cafe_majada
 {
@@ -98,15 +100,10 @@ namespace sistema_modular_cafe_majada
         private void btn_login_Click(object sender, EventArgs e)
         {
             KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
-            int depto;
-            string name = txb_username.Text;
-
+            
             if (departamentoSeleccionado != null)
             {
-                depto = departamentoSeleccionado.Value.Key;   
-
-                VerificUserModule(name, depto);
-            
+                StartSeccionModuleCafe();
             }
             else
             {
@@ -130,59 +127,72 @@ namespace sistema_modular_cafe_majada
 
         public void StartSeccionModuleCafe()
         {
-            var login = new controller.LoginController();
+            var userControl = new UserController();
             var log = new controller.SecurityData.LogController();
-            var userDao = new model.DAO.UserDAO();
 
             string user = txb_username.Text;
             string password = txb_password.Text;
             
             KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
             string depto = departamentoSeleccionado.Value.Value;
-            
-            bool loginSuccessful = login.AutenticarUsuario(user, password);
-            var usuario = userDao.ObtenerUsuario(user); // Asignar el resultado de ObtenerUsuario
+            int idepto = departamentoSeleccionado.Value.Key;
+
+            bool loginSuccessful = userControl.AutenticarUsuario(user, password);
+            var usuario = userControl.ObtenerUsuario(user); // Asignar el resultado de ObtenerUsuario
 
             contador++;
             if (loginSuccessful)
             {
-                ModuloActual.NombreModulo = depto;
-                try
+                //se llama la funcion, la que verifica el estado del usuario
+                bool exito = VerificStatusUserMessages();
+                if (exito)
                 {
-                    //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                    log.RegistrarLog(usuario.IdUsuario, "Inicio sesion satisfactoriamente", ModuloActual.NombreModulo, "Inicio de Sesion", "Intentos realizados " + contador);
-                    contador = 0;
+                    bool verification = VerificUserModule(user, idepto);
+                    if (verification)
+                    {
+                        ModuloActual.NombreModulo = depto;
+                        try
+                        {
+                            //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                            log.RegistrarLog(usuario.IdUsuario, "Inicio sesion satisfactoriamente", ModuloActual.NombreModulo, "Inicio de Sesion", "Intentos realizados " + contador);
+
+                            //funcion para abrir el formulario adecuado
+                            // Inicio de sesión exitoso, realiza las acciones necesarias
+                            // Navega a otra ventana, muestra un mensaje, etc.
+                            // MessageBox.Show("Inicio de sesión exitoso");
+                            form_main formPrin = new form_main();
+                            formPrin.NombreUsuario = user;
+                            UsuarioActual.NombreUsuario = user;
+
+                            LimpiarComboBox();
+                            formPrin.Show();
+
+                            //buca en la vista main el evento close del form 
+                            formPrin.FormClosed += Logout;
+                            this.Hide();
+
+                            contador = 0;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                        }
+
+                    }
+
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al obtener el usuario: " + ex.Message);
-                }
 
-                //funcion para abrir el formulario adecuado
-                // Inicio de sesión exitoso, realiza las acciones necesarias
-                // Navega a otra ventana, muestra un mensaje, etc.
-                // MessageBox.Show("Inicio de sesión exitoso");
-                form_main formPrin = new form_main();
-                formPrin.NombreUsuario = user;
-                UsuarioActual.NombreUsuario = user;
-
-                LimpiarComboBox();
-                formPrin.Show();
-
-                //buca en la vista main el evento close del form 
-                formPrin.FormClosed += Logout;
-                this.Hide();
             }
             else
             {
                 // Las credenciales son inválidas, muestra un mensaje de error
-                MessageBox.Show("Credenciales inválidas");
+                MessageBox.Show("Credenciales incorrectas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public void CbxDepartamento()
         {
-            LoginController deptoControl = new LoginController();
+            ModuleController deptoControl = new ModuleController();
             List<Module> datoDepto = deptoControl.ObtenerModulosCbx();
 
             cb_modulos.Items.Clear();
@@ -205,12 +215,12 @@ namespace sistema_modular_cafe_majada
         }
 
         //verificar esta funcion para manejar varios modulos 
-        private void VerificUserModule(string nameUser, int depto)
+        private bool VerificUserModule(string nameUser, int depto)
         {
             bool autenticado;
-            bool error = false;         //aqui se manejara el contador para verificar cuantos intentos hace el usuario para acceder al sistema
+            bool verific = true;         //aqui se manejara el contador para verificar cuantos intentos hace el usuario para acceder al sistema
             
-            LoginController login = new LoginController();
+            UserController login = new UserController();
             KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
             
             depto = departamentoSeleccionado.Value.Key;
@@ -221,21 +231,11 @@ namespace sistema_modular_cafe_majada
                     {
                         autenticado = login.VerificarUsuarioDepartamento(nameUser, depto);
 
-                        if (autenticado)
-                        {
-                            bool exito = VerificStatusUserMessages();
-                            if (exito)
-                            {
-                                //OpenFormName(form_Main);
-                                StartSeccionModuleCafe();
-                            }
-
-                        }
-                        else
+                        if (!autenticado)
                         {
                             MessageBox.Show("El usuario no está autenticado en el modulo seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            error = true;      //hubo error en la verificacion del modulo con el usuario
                             // Realizar acciones adicionales para usuarios no autenticados...
+                            verific = false;
                         }
 
                     }
@@ -245,19 +245,16 @@ namespace sistema_modular_cafe_majada
                         autenticado = login.VerificarUsuarioDepartamento(nameUser, depto);
                         if (autenticado)
                         {
-                            bool exito = VerificStatusUserMessages();
-                            if (exito)
-                            {
-                                MessageBox.Show("Este Modulo se Encuentra en Desarrollo", "Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                // Realizar acciones adicionales para usuarios autenticados...
-                            }
-
+                            
+                            MessageBox.Show("Este Modulo se Encuentra en Desarrollo", "Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Realizar acciones adicionales para usuarios autenticados...
+                            verific = false;
                         }
                         else
                         {
                             MessageBox.Show("El usuario no está autenticado en el modulo seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            error = true;      //hubo error en la verificacion del modulo con el usuario
                             // Realizar acciones adicionales para usuarios no autenticados...
+                            verific = false;
                         }
 
                     }
@@ -267,19 +264,16 @@ namespace sistema_modular_cafe_majada
                         autenticado = login.VerificarUsuarioDepartamento(nameUser, depto);
                         if (autenticado)
                         {
-                            bool exito = VerificStatusUserMessages();
-                            if (exito)
-                            {
-                                MessageBox.Show("Este Modulo se Encuentra en Desarrollo", "Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                // Realizar acciones adicionales para usuarios autenticados...
-                            }
 
+                            MessageBox.Show("Este Modulo se Encuentra en Desarrollo", "Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Realizar acciones adicionales para usuarios autenticados...
+                            verific = false;
                         }
                         else
                         {
                             MessageBox.Show("El usuario no está autenticado en el modulo seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            error = true;      //hubo error en la verificacion del modulo con el usuario
                             // Realizar acciones adicionales para usuarios no autenticados...
+                            verific = false;
                         }
                     }
                     break;
@@ -288,31 +282,25 @@ namespace sistema_modular_cafe_majada
                         autenticado = login.VerificarUsuarioDepartamento(nameUser, depto);
                         if (autenticado)
                         {
-                            bool exito = VerificStatusUserMessages();
-                            if (exito)
-                            {
-                                MessageBox.Show("Este Modulo se Encuentra en Desarrollo", "Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                // Realizar acciones adicionales para usuarios autenticados...
-                            }
 
+                            MessageBox.Show("Este Modulo se Encuentra en Desarrollo", "Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Realizar acciones adicionales para usuarios autenticados...
+                            verific = false;
                         }
                         else
                         {
                             MessageBox.Show("El usuario no está autenticado en el modulo seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            error = true;      //hubo error en la verificacion del modulo con el usuario
                             // Realizar acciones adicionales para usuarios no autenticados...
+                            verific = false;
                         }
                     }
                     break;
                 default:
                     MessageBox.Show("El modulo seleccionado no se encuentra registrado en el sistema. Porfavor verifique el modulo al que pertenece.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    error = true;      //hubo error en la verificacion del modulo con el usuario
+                    verific = false;
                     break;
             }
-            if (error)
-            {
-                contador++;
-            }
+            return verific;
         }
 
         //funcion general para abrir formularios de cualquier tipo
@@ -335,7 +323,7 @@ namespace sistema_modular_cafe_majada
         public bool VerificStatusUserMessages()
         {
             bool verific = false;
-            LoginController status = new LoginController();
+            UserController status = new UserController();
             var statusUser = status.ObtenerEstadoUsuario(txb_username.Text);
             string estado = statusUser.EstadoUsuario;
 
@@ -390,11 +378,7 @@ namespace sistema_modular_cafe_majada
         {
             if(e.KeyCode == Keys.Enter)
             {
-                KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
-
-                int depto = departamentoSeleccionado.Value.Key;
-                // Realiza las acciones para iniciar sesión
-                VerificUserModule(txb_username.Text, depto);
+                StartSeccionModuleCafe();
             }
         }
 
@@ -425,11 +409,7 @@ namespace sistema_modular_cafe_majada
         {
             if (e.KeyCode == Keys.Enter)
             {
-                KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
-
-                int depto = departamentoSeleccionado.Value.Key;
-                // Realiza las acciones para iniciar sesión
-                VerificUserModule(txb_username.Text, depto);
+                StartSeccionModuleCafe();
             }
         }
 
@@ -437,11 +417,7 @@ namespace sistema_modular_cafe_majada
         {
             if (e.KeyCode == Keys.Enter)
             {
-                KeyValuePair<int, string>? departamentoSeleccionado = cb_modulos.SelectedItem as KeyValuePair<int, string>?;
-
-                int depto = departamentoSeleccionado.Value.Key;
-                // Realiza las acciones para iniciar sesión
-                VerificUserModule(txb_username.Text, depto);
+                StartSeccionModuleCafe();
             }
         }
     }
