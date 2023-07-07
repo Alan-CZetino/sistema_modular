@@ -29,6 +29,7 @@ namespace sistema_modular_cafe_majada.views
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -41,11 +42,13 @@ namespace sistema_modular_cafe_majada.views
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.txb_desCalidad = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txb_nameCalidad = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btn_SaveCalidad = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dtg_calidadCafe = new System.Windows.Forms.DataGridView();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -63,7 +66,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(5, 443);
+            this.panel1.Size = new System.Drawing.Size(5, 490);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -72,25 +75,25 @@ namespace sistema_modular_cafe_majada.views
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(5, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(983, 5);
+            this.panel2.Size = new System.Drawing.Size(1001, 5);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(983, 5);
+            this.panel3.Location = new System.Drawing.Point(1001, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(5, 438);
+            this.panel3.Size = new System.Drawing.Size(5, 485);
             this.panel3.TabIndex = 2;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(5, 438);
+            this.panel4.Location = new System.Drawing.Point(5, 485);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(978, 5);
+            this.panel4.Size = new System.Drawing.Size(996, 5);
             this.panel4.TabIndex = 2;
             // 
             // panel5
@@ -101,7 +104,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(5, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(978, 70);
+            this.panel5.Size = new System.Drawing.Size(996, 70);
             this.panel5.TabIndex = 13;
             // 
             // tableLayoutPanel1
@@ -113,7 +116,7 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btn_modCalidad, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_deleteCalidad, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(844, 7);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(862, 7);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -130,6 +133,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_modCalidad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_modCalidad.TabIndex = 1;
             this.btn_modCalidad.TabStop = false;
+            this.btn_modCalidad.Click += new System.EventHandler(this.btn_modCalidad_Click);
             // 
             // btn_deleteCalidad
             // 
@@ -141,6 +145,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_deleteCalidad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_deleteCalidad.TabIndex = 2;
             this.btn_deleteCalidad.TabStop = false;
+            this.btn_deleteCalidad.Click += new System.EventHandler(this.btn_deleteCalidad_Click);
             // 
             // label2
             // 
@@ -169,19 +174,48 @@ namespace sistema_modular_cafe_majada.views
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(5, 75);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(296, 363);
+            this.panel6.Size = new System.Drawing.Size(296, 410);
             this.panel6.TabIndex = 14;
             // 
             // panel8
             // 
             this.panel8.AutoScroll = true;
-            this.panel8.Controls.Add(this.textBox1);
+            this.panel8.Controls.Add(this.txb_desCalidad);
+            this.panel8.Controls.Add(this.label4);
+            this.panel8.Controls.Add(this.txb_nameCalidad);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(296, 316);
+            this.panel8.Size = new System.Drawing.Size(296, 363);
             this.panel8.TabIndex = 7;
+            // 
+            // txb_desCalidad
+            // 
+            this.txb_desCalidad.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_desCalidad.Location = new System.Drawing.Point(11, 100);
+            this.txb_desCalidad.Multiline = true;
+            this.txb_desCalidad.Name = "txb_desCalidad";
+            this.txb_desCalidad.Size = new System.Drawing.Size(231, 188);
+            this.txb_desCalidad.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 26);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Descripción";
+            // 
+            // txb_nameCalidad
+            // 
+            this.txb_nameCalidad.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_nameCalidad.Location = new System.Drawing.Point(11, 35);
+            this.txb_nameCalidad.Name = "txb_nameCalidad";
+            this.txb_nameCalidad.Size = new System.Drawing.Size(231, 33);
+            this.txb_nameCalidad.TabIndex = 1;
             // 
             // label3
             // 
@@ -198,7 +232,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel7.Controls.Add(this.btn_SaveCalidad);
             this.panel7.Controls.Add(this.btn_Cancel);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 316);
+            this.panel7.Location = new System.Drawing.Point(0, 363);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(296, 47);
             this.panel7.TabIndex = 6;
@@ -223,6 +257,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SaveCalidad.Text = "Guardar";
             this.btn_SaveCalidad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SaveCalidad.UseVisualStyleBackColor = false;
+            this.btn_SaveCalidad.Click += new System.EventHandler(this.btn_SaveCalidad_Click);
             // 
             // btn_Cancel
             // 
@@ -243,33 +278,44 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(11, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(231, 33);
-            this.textBox1.TabIndex = 1;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // dtg_calidadCafe
             // 
-            this.dtg_calidadCafe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dtg_calidadCafe.AllowUserToAddRows = false;
+            this.dtg_calidadCafe.AllowUserToDeleteRows = false;
+            this.dtg_calidadCafe.AllowUserToOrderColumns = true;
+            this.dtg_calidadCafe.AllowUserToResizeColumns = false;
+            this.dtg_calidadCafe.AllowUserToResizeRows = false;
+            this.dtg_calidadCafe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtg_calidadCafe.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtg_calidadCafe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtg_calidadCafe.DefaultCellStyle = dataGridViewCellStyle1;
             this.dtg_calidadCafe.Location = new System.Drawing.Point(308, 82);
             this.dtg_calidadCafe.Name = "dtg_calidadCafe";
+            this.dtg_calidadCafe.ReadOnly = true;
+            this.dtg_calidadCafe.RowHeadersVisible = false;
             this.dtg_calidadCafe.RowHeadersWidth = 51;
             this.dtg_calidadCafe.RowTemplate.Height = 24;
-            this.dtg_calidadCafe.Size = new System.Drawing.Size(668, 349);
+            this.dtg_calidadCafe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtg_calidadCafe.Size = new System.Drawing.Size(686, 396);
             this.dtg_calidadCafe.TabIndex = 15;
+            this.dtg_calidadCafe.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_calidadCafe_CellDoubleClick);
             // 
             // form_calidades_cafe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(988, 443);
+            this.ClientSize = new System.Drawing.Size(1006, 490);
             this.Controls.Add(this.dtg_calidadCafe);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -280,6 +326,7 @@ namespace sistema_modular_cafe_majada.views
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "form_calidades_cafe";
             this.Text = "form_calidades_cafe";
+            this.Load += new System.EventHandler(this.form_calidades_cafe_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -312,7 +359,9 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btn_SaveCalidad;
         private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txb_nameCalidad;
         private System.Windows.Forms.DataGridView dtg_calidadCafe;
+        private System.Windows.Forms.TextBox txb_desCalidad;
+        private System.Windows.Forms.Label label4;
     }
 }

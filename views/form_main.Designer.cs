@@ -64,9 +64,9 @@ namespace sistema_modular_cafe_majada
             this.barra_controles.Controls.Add(this.btn_close);
             this.barra_controles.Dock = System.Windows.Forms.DockStyle.Top;
             this.barra_controles.Location = new System.Drawing.Point(0, 0);
-            this.barra_controles.Margin = new System.Windows.Forms.Padding(2);
+            this.barra_controles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barra_controles.Name = "barra_controles";
-            this.barra_controles.Size = new System.Drawing.Size(960, 37);
+            this.barra_controles.Size = new System.Drawing.Size(1280, 46);
             this.barra_controles.TabIndex = 0;
             this.barra_controles.MouseDown += new System.Windows.Forms.MouseEventHandler(this.barra_controles_MouseDown);
             // 
@@ -76,9 +76,10 @@ namespace sistema_modular_cafe_majada
             this.lbl_nameModule.AutoSize = true;
             this.lbl_nameModule.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nameModule.ForeColor = System.Drawing.Color.White;
-            this.lbl_nameModule.Location = new System.Drawing.Point(550, 9);
+            this.lbl_nameModule.Location = new System.Drawing.Point(733, 11);
+            this.lbl_nameModule.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_nameModule.Name = "lbl_nameModule";
-            this.lbl_nameModule.Size = new System.Drawing.Size(92, 16);
+            this.lbl_nameModule.Size = new System.Drawing.Size(107, 24);
             this.lbl_nameModule.TabIndex = 4;
             this.lbl_nameModule.Text = "Nombre del modulo";
             // 
@@ -88,9 +89,10 @@ namespace sistema_modular_cafe_majada
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(262, 9);
+            this.label1.Location = new System.Drawing.Point(349, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(249, 16);
+            this.label1.Size = new System.Drawing.Size(293, 24);
             this.label1.TabIndex = 3;
             this.label1.Text = "Cooperativa de Cafetaleros de San José La Majada de R.L";
             // 
@@ -98,10 +100,10 @@ namespace sistema_modular_cafe_majada
             // 
             this.btn_min.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_min.Image = global::sistema_modular_cafe_majada.Properties.Resources.eliminar__1_;
-            this.btn_min.Location = new System.Drawing.Point(870, 0);
-            this.btn_min.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_min.Location = new System.Drawing.Point(1160, 0);
+            this.btn_min.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_min.Name = "btn_min";
-            this.btn_min.Size = new System.Drawing.Size(30, 37);
+            this.btn_min.Size = new System.Drawing.Size(40, 46);
             this.btn_min.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btn_min.TabIndex = 2;
             this.btn_min.TabStop = false;
@@ -111,10 +113,10 @@ namespace sistema_modular_cafe_majada
             // 
             this.btn_max.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_max.Image = global::sistema_modular_cafe_majada.Properties.Resources.cuadrado__2_;
-            this.btn_max.Location = new System.Drawing.Point(900, 0);
-            this.btn_max.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_max.Location = new System.Drawing.Point(1200, 0);
+            this.btn_max.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_max.Name = "btn_max";
-            this.btn_max.Size = new System.Drawing.Size(30, 37);
+            this.btn_max.Size = new System.Drawing.Size(40, 46);
             this.btn_max.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btn_max.TabIndex = 1;
             this.btn_max.TabStop = false;
@@ -124,10 +126,10 @@ namespace sistema_modular_cafe_majada
             // 
             this.btn_close.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_close.Image = global::sistema_modular_cafe_majada.Properties.Resources.x__1___1_;
-            this.btn_close.Location = new System.Drawing.Point(930, 0);
-            this.btn_close.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_close.Location = new System.Drawing.Point(1240, 0);
+            this.btn_close.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(30, 37);
+            this.btn_close.Size = new System.Drawing.Size(40, 46);
             this.btn_close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btn_close.TabIndex = 0;
             this.btn_close.TabStop = false;
@@ -146,9 +148,10 @@ namespace sistema_modular_cafe_majada
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 37);
+            this.panel2.Location = new System.Drawing.Point(0, 46);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 548);
+            this.panel2.Size = new System.Drawing.Size(250, 674);
             this.panel2.TabIndex = 1;
             // 
             // lbl_User
@@ -157,10 +160,11 @@ namespace sistema_modular_cafe_majada
             this.lbl_User.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbl_User.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_User.ForeColor = System.Drawing.Color.White;
-            this.lbl_User.Location = new System.Drawing.Point(0, 473);
+            this.lbl_User.Location = new System.Drawing.Point(0, 576);
+            this.lbl_User.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_User.Name = "lbl_User";
-            this.lbl_User.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lbl_User.Size = new System.Drawing.Size(77, 22);
+            this.lbl_User.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.lbl_User.Size = new System.Drawing.Size(94, 32);
             this.lbl_User.TabIndex = 8;
             this.lbl_User.Text = "username";
             this.lbl_User.Click += new System.EventHandler(this.lbl_username_Click);
@@ -168,9 +172,10 @@ namespace sistema_modular_cafe_majada
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 495);
+            this.panel1.Location = new System.Drawing.Point(0, 608);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 16);
+            this.panel1.Size = new System.Drawing.Size(250, 20);
             this.panel1.TabIndex = 7;
             // 
             // btn_CloseSection
@@ -182,11 +187,11 @@ namespace sistema_modular_cafe_majada
             this.btn_CloseSection.ForeColor = System.Drawing.Color.White;
             this.btn_CloseSection.Image = global::sistema_modular_cafe_majada.Properties.Resources.cerrar_sesion1;
             this.btn_CloseSection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_CloseSection.Location = new System.Drawing.Point(0, 511);
-            this.btn_CloseSection.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_CloseSection.Location = new System.Drawing.Point(0, 628);
+            this.btn_CloseSection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_CloseSection.Name = "btn_CloseSection";
-            this.btn_CloseSection.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btn_CloseSection.Size = new System.Drawing.Size(250, 37);
+            this.btn_CloseSection.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btn_CloseSection.Size = new System.Drawing.Size(250, 46);
             this.btn_CloseSection.TabIndex = 6;
             this.btn_CloseSection.Text = "Cerrar Sesión";
             this.btn_CloseSection.UseVisualStyleBackColor = true;
@@ -201,11 +206,11 @@ namespace sistema_modular_cafe_majada
             this.btn_admin_panel.ForeColor = System.Drawing.Color.White;
             this.btn_admin_panel.Image = global::sistema_modular_cafe_majada.Properties.Resources.administracion;
             this.btn_admin_panel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_admin_panel.Location = new System.Drawing.Point(0, 267);
-            this.btn_admin_panel.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_admin_panel.Location = new System.Drawing.Point(0, 330);
+            this.btn_admin_panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_admin_panel.Name = "btn_admin_panel";
-            this.btn_admin_panel.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btn_admin_panel.Size = new System.Drawing.Size(250, 37);
+            this.btn_admin_panel.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btn_admin_panel.Size = new System.Drawing.Size(250, 46);
             this.btn_admin_panel.TabIndex = 4;
             this.btn_admin_panel.Text = "Administración";
             this.btn_admin_panel.UseVisualStyleBackColor = true;
@@ -220,11 +225,11 @@ namespace sistema_modular_cafe_majada
             this.btn_reportes.ForeColor = System.Drawing.Color.White;
             this.btn_reportes.Image = global::sistema_modular_cafe_majada.Properties.Resources.impresora;
             this.btn_reportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_reportes.Location = new System.Drawing.Point(0, 230);
-            this.btn_reportes.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_reportes.Location = new System.Drawing.Point(0, 284);
+            this.btn_reportes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_reportes.Name = "btn_reportes";
-            this.btn_reportes.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btn_reportes.Size = new System.Drawing.Size(250, 37);
+            this.btn_reportes.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btn_reportes.Size = new System.Drawing.Size(250, 46);
             this.btn_reportes.TabIndex = 5;
             this.btn_reportes.Text = "Reportes";
             this.btn_reportes.UseVisualStyleBackColor = true;
@@ -239,11 +244,11 @@ namespace sistema_modular_cafe_majada
             this.btn_activos.ForeColor = System.Drawing.Color.White;
             this.btn_activos.Image = global::sistema_modular_cafe_majada.Properties.Resources.existencias_cafe;
             this.btn_activos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_activos.Location = new System.Drawing.Point(0, 193);
-            this.btn_activos.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_activos.Location = new System.Drawing.Point(0, 238);
+            this.btn_activos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_activos.Name = "btn_activos";
-            this.btn_activos.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btn_activos.Size = new System.Drawing.Size(250, 37);
+            this.btn_activos.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btn_activos.Size = new System.Drawing.Size(250, 46);
             this.btn_activos.TabIndex = 3;
             this.btn_activos.Text = "Existencias de Café";
             this.btn_activos.UseVisualStyleBackColor = true;
@@ -258,11 +263,11 @@ namespace sistema_modular_cafe_majada
             this.btn_principal.ForeColor = System.Drawing.Color.White;
             this.btn_principal.Image = global::sistema_modular_cafe_majada.Properties.Resources.panel;
             this.btn_principal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_principal.Location = new System.Drawing.Point(0, 156);
-            this.btn_principal.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_principal.Location = new System.Drawing.Point(0, 192);
+            this.btn_principal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_principal.Name = "btn_principal";
-            this.btn_principal.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.btn_principal.Size = new System.Drawing.Size(250, 37);
+            this.btn_principal.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btn_principal.Size = new System.Drawing.Size(250, 46);
             this.btn_principal.TabIndex = 2;
             this.btn_principal.Text = "Panel Principal";
             this.btn_principal.UseVisualStyleBackColor = true;
@@ -271,10 +276,10 @@ namespace sistema_modular_cafe_majada
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 102);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Location = new System.Drawing.Point(0, 126);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(250, 54);
+            this.panel3.Size = new System.Drawing.Size(250, 66);
             this.panel3.TabIndex = 1;
             // 
             // pictureBox1
@@ -282,9 +287,9 @@ namespace sistema_modular_cafe_majada
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Image = global::sistema_modular_cafe_majada.Properties.Resources.logo_cafe_majada;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 102);
+            this.pictureBox1.Size = new System.Drawing.Size(250, 126);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -294,24 +299,25 @@ namespace sistema_modular_cafe_majada
             this.panel_container.BackColor = System.Drawing.Color.White;
             this.panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_container.ForeColor = System.Drawing.Color.Black;
-            this.panel_container.Location = new System.Drawing.Point(250, 37);
+            this.panel_container.Location = new System.Drawing.Point(250, 46);
+            this.panel_container.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel_container.Name = "panel_container";
-            this.panel_container.Size = new System.Drawing.Size(710, 548);
+            this.panel_container.Size = new System.Drawing.Size(1030, 674);
             this.panel_container.TabIndex = 2;
             // 
             // form_main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(960, 585);
+            this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.panel_container);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.barra_controles);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(2880, 1755);
-            this.MinimumSize = new System.Drawing.Size(960, 585);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(3840, 2160);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "form_main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "form_main";

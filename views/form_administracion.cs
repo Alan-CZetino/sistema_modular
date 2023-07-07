@@ -122,5 +122,6 @@ namespace sistema_modular_cafe_majada
             form_personal fPersonal = new form_personal();
             AddFormulario(fPersonal);
         }
+
     }
 }

@@ -173,7 +173,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 {
                     if (reader.HasRows)
                     {
-                        if (reader.Read())
+                        if (reader.Read()) 
                         {
                             persona = new Persona()
                             {
