@@ -182,7 +182,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             return usuarios;
         }
 
-        //
+        //funcion para insertar unicamente el usuario
         public bool InsertarUsuario(Usuario user)
         {
             bool exito = false;
@@ -205,7 +205,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@emailUsuario", user.EmailUsuario);
                 conexion.AgregarParametro("@claveUsuario", user.ClaveUsuario);
                 conexion.AgregarParametro("@estadoUsuario", user.EstadoUsuario);
-                conexion.AgregarParametro("@fechaCreacionUsuario", user.FechaCreacionUsuario);
+                conexion.AgregarParametro("@fechaCreacionUsuario", DateTime.Today);
                 conexion.AgregarParametro("@idRolUsuario", user.IdRolUsuario);
                 conexion.AgregarParametro("@idPersonaUsuario", user.IdPersonaUsuario);
 
@@ -241,6 +241,8 @@ namespace sistema_modular_cafe_majada.model.DAO
         {
             try
             {
+                conexion.Conectar();
+
                 // Crear el comando SQL para eliminar el registro
                 string consulta = "DELETE FROM Usuario WHERE id_usuario = @idUsuario";
                 conexion.CrearComando(consulta);
@@ -258,9 +260,19 @@ namespace sistema_modular_cafe_majada.model.DAO
                     Console.WriteLine("No se encontró el registro a eliminar");
                 }
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
-                Console.WriteLine("Error al eliminar el registro: " + ex.Message);
+                // Verificar si la excepción es por restricción de clave externa
+                if (ex.Number == 1451 || ex.Number == 1452)
+                {
+                    Console.WriteLine("No se puede eliminar el registro debido a una restricción de clave externa.");
+                    ActualizarEstadoUsuario(idUsuario, "Eliminado");
+                }
+                else
+                {
+                    // Otra excepción, manejarla de acuerdo a tus necesidades
+                    Console.WriteLine("Error al eliminar el registro: " + ex.Message);
+                }
             }
             finally
             {
@@ -295,6 +307,145 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@estado", estado);
                 conexion.AgregarParametro("@idRol", idRol);
                 conexion.AgregarParametro("@idPersona", idPersona);
+                conexion.AgregarParametro("@id", id);
+
+                // Ejecutar la instrucción de actualización
+                int filasAfectadas = conexion.EjecutarInstruccion();
+
+                // Verificar si la actualización fue exitosa
+                if (filasAfectadas > 0)
+                {
+                    Console.WriteLine("La actualización se realizó correctamente.");
+                    exito = true;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo realizar la actualización.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar el usuario: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return exito;
+        }
+
+        //
+        public bool ActualizarEstadoUsuario(int id, string estado)
+        {
+            bool exito = false;
+            try
+            {
+                // Abrir la conexión a la base de datos
+                conexion.Conectar();
+
+                // Consulta SQL para actualizar el usuario
+                string consulta = @"UPDATE Usuario SET estado_usuario = @estado, fecha_baja_usuario = @fechaBaja WHERE id_usuario = @id";
+
+                // Crear el comando SQL
+                conexion.CrearComando(consulta);
+
+                // Agregar los parámetros al comando SQL
+                conexion.AgregarParametro("@estado", estado);
+                conexion.AgregarParametro("@fechaBaja", DateTime.Today);
+                conexion.AgregarParametro("@id", id);
+
+                // Ejecutar la instrucción de actualización
+                int filasAfectadas = conexion.EjecutarInstruccion();
+
+                // Verificar si la actualización fue exitosa
+                if (filasAfectadas > 0)
+                {
+                    Console.WriteLine("La actualización se realizó correctamente.");
+                    exito = true;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo realizar la actualización.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar el usuario: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return exito;
+        }
+
+        //Actualiza unicamente el nombre de usuario y su email
+        public bool ActualizarNombreEmailUsuario(int id, string nombreUsuario, string email)
+        {
+            bool exito = false;
+            try
+            {
+                // Abrir la conexión a la base de datos
+                conexion.Conectar();
+
+                // Consulta SQL para actualizar el usuario
+                string consulta = @"UPDATE Usuario SET nombre_usuario = @nombre, email_usuario = @email
+                                WHERE id_usuario = @id";
+
+                // Crear el comando SQL
+                conexion.CrearComando(consulta);
+
+                // Agregar los parámetros al comando SQL
+                conexion.AgregarParametro("@nombre", nombreUsuario);
+                conexion.AgregarParametro("@email", email);
+                conexion.AgregarParametro("@id", id);
+
+                // Ejecutar la instrucción de actualización
+                int filasAfectadas = conexion.EjecutarInstruccion();
+
+                // Verificar si la actualización fue exitosa
+                if (filasAfectadas > 0)
+                {
+                    Console.WriteLine("La actualización se realizó correctamente.");
+                    exito = true;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo realizar la actualización.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar el usuario: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return exito;
+        }
+
+        //Actualiza unicamente la clave del usuario
+        public bool ActualizarClaveUsuario(int id, string pass)
+        {
+            bool exito = false;
+            try
+            {
+                // Abrir la conexión a la base de datos
+                conexion.Conectar();
+
+                // Consulta SQL para actualizar el usuario
+                string consulta = @"UPDATE Usuario SET clave_usuario = @clave
+                                WHERE id_usuario = @id";
+
+                // Crear el comando SQL
+                conexion.CrearComando(consulta);
+
+                // Agregar los parámetros al comando SQL
+                conexion.AgregarParametro("@clave", pass);
                 conexion.AgregarParametro("@id", id);
 
                 // Ejecutar la instrucción de actualización
@@ -425,6 +576,7 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return usuarios;
         }
+
 
     }
 }

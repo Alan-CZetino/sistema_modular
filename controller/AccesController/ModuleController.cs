@@ -18,12 +18,12 @@ namespace sistema_modular_cafe_majada.controller.AccesController
         }
 
         //funcion para obtner los modulos del DAO utilizada en el login y
-        public List<Module> ObtenerModulosCbx()
+        public List<Module> ObtenerModulos()
         {
             try
             {
                 // Llamada al método del DAO para obtener los módulos
-                return moduloDAO.ObtenerModulosCbx();
+                return moduloDAO.ObtenerModulos();
             }
             catch (Exception ex)
             {
@@ -47,6 +47,46 @@ namespace sistema_modular_cafe_majada.controller.AccesController
             }
         }
 
+        //
+        public void InsertarUsuarioModulos(int idUsuario, List<int> modulosSeleccionados)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar los módulos asignados al usuario
+                moduloDAO.InsertarUsuarioModulos(idUsuario, modulosSeleccionados);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error al insertar los módulos del usuario: " + ex.Message);
+            }
+        }
+
+        //
+        public void EliminarModulosDelUsuario(int usuarioId, List<int> modulosEliminar)
+        {
+            try
+            {
+                moduloDAO.EliminarModulosDelUsuario(usuarioId, modulosEliminar);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error al eliminar los módulos del usuario: " + ex.Message);
+            }
+        }
+
+        //
+        public List<int> ObtenerModulosActualesDelUsuario(int usuarioId)
+        {
+            try
+            {
+                return moduloDAO.ObtenerModulosActualesDelUsuario(usuarioId);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error al eliminar los módulos del usuario: " + ex.Message);
+                return null;
+            }
+        }
 
     }
 }

@@ -21,7 +21,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para obtner los modulos de la bd utilizada en el login y
-        public List<Module> ObtenerModulosCbx()
+        public List<Module> ObtenerModulos()
         {
             List<Module> modulos = new List<Module>();
 
@@ -30,7 +30,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Abre la conexión a la base de datos
                 conexion.Conectar();
 
-                string consulta = "SELECT DISTINCT id_modulo, nombre_modulo FROM Modulo";
+                string consulta = @"SELECT DISTINCT id_modulo, nombre_modulo FROM Modulo";
                 conexion.CrearComando(consulta);
 
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
@@ -100,5 +100,123 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
         }
+
+        //
+        public void InsertarUsuarioModulos(int idUsuario, List<int> modulosSeleccionados)
+        {
+            try
+            {
+                // Conectar a la base de datos
+                conexion.Conectar();
+
+                foreach (int idModulo in modulosSeleccionados)
+                {
+                    string consulta = @"INSERT INTO Usuario_Modulo (id_usuario, id_modulo) VALUES (@idUsuario, @idModulo)";
+
+                    conexion.CrearComando(consulta);
+
+                    conexion.AgregarParametro("@idUsuario", idUsuario);
+                    conexion.AgregarParametro("@idModulo", idModulo);
+
+                    // Ejecutar la consulta
+                    int filasAfectadas = conexion.EjecutarInstruccion();
+
+                    if (filasAfectadas > 0)
+                    {
+                        Console.WriteLine("La inserción se realizó correctamente.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se pudo realizar la inserción.");
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error al insertar los módulos del usuario: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+
+        }
+
+        // Elimina los módulos asociados a un usuario
+        public void EliminarModulosDelUsuario(int usuarioId, List<int> modulosEliminar)
+        {
+            try
+            {
+                conexion.Conectar();
+
+                // Aquí se crea el comando SQL para eliminar los módulos del usuario
+                string consulta = @"DELETE FROM Usuario_Modulo WHERE id_usuario = @IdUsuario AND id_modulo = @IdModulo";
+                conexion.CrearComando(consulta);
+
+                // Se agrega el parámetro del usuario una sola vez
+                conexion.AgregarParametro("@IdUsuario", usuarioId);
+
+                // Se agrega el parámetro del módulo una sola vez
+                conexion.AgregarParametro("@IdModulo", 0); // Valor temporal
+
+                foreach (int idModulo in modulosEliminar)
+                {
+                    // Se asigna el valor actual del módulo al parámetro
+                    conexion.ObtenerParametro("@IdModulo").Value = idModulo;
+
+                    // Se ejecuta la instrucción de eliminación
+                    int filasAfectadas = conexion.EjecutarInstruccion();
+
+                    // Aquí puedes agregar lógica adicional si lo deseas, por ejemplo, verificar el número de filas afectadas.
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al eliminar los módulos del usuario: " + ex.Message);
+                // Puedes agregar aquí cualquier manejo de excepciones adicional que necesites.
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+        }
+
+        //
+        public List<int> ObtenerModulosActualesDelUsuario(int usuarioId)
+        {
+
+            try
+            {
+                List<int> modulosActuales = new List<int>();
+                
+                conexion.Conectar();
+
+                string query = @"SELECT id_modulo FROM Usuario_Modulo WHERE id_usuario = @UsuarioId";
+
+                conexion.CrearComando(query);
+                conexion.AgregarParametro("@UsuarioId", usuarioId);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(query))
+                {
+                    while (reader.Read())
+                    {
+                        int moduloId = Convert.ToInt32(reader["id_modulo"]);
+                        modulosActuales.Add(moduloId);
+                    }
+                }
+                return modulosActuales;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al Obtener los módulos del usuario: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+        }
+
+
     }
 }

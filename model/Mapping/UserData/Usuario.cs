@@ -24,4 +24,9 @@ namespace sistema_modular_cafe_majada.model.UserData
     {
         public static string NombreUsuario { get; set; }
     }
+
+    public static class UsuarioSeleccionado
+    {
+        public static string Usuario { get; set; }
+    }
 }

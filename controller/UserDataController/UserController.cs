@@ -121,6 +121,36 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
             }
         }
 
+        //Solo se actualiza el nombre de usuario y el email.
+        public bool ActualizarNombreEmailUsuario(int id, string nombreUsuario, string email)
+        {
+            try
+            {
+                // Llamada al método del DAO para actualizar el usuario
+                return usuarioDAO.ActualizarNombreEmailUsuario(id, nombreUsuario, email);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar el usuario: " + ex.Message);
+                return false;
+            }
+        }
+
+        //Solo se actualiza el nombre de usuario y el email.
+        public bool ActualizarClaveUsuario(int id, string pass)
+        {
+            try
+            {
+                // Llamada al método del DAO para actualizar el usuario
+                return usuarioDAO.ActualizarClaveUsuario(id, pass);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar el usuario: " + ex.Message);
+                return false;
+            }
+        }
+
         //
         public Usuario ObtenerUsuario(string nombreUsuario)
         {

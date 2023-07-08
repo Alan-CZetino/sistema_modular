@@ -193,7 +193,7 @@ namespace sistema_modular_cafe_majada
         public void CbxDepartamento()
         {
             ModuleController deptoControl = new ModuleController();
-            List<Module> datoDepto = deptoControl.ObtenerModulosCbx();
+            List<Module> datoDepto = deptoControl.ObtenerModulos();
 
             cb_modulos.Items.Clear();
             cb_modulos.ForeColor = Color.WhiteSmoke; // Establece el color de la letra
