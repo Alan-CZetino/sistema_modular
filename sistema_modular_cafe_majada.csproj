@@ -102,11 +102,13 @@
     <Compile Include="controller\AccesController\ModuleController.cs" />
     <Compile Include="controller\AccesController\RoleController.cs" />
     <Compile Include="controller\CCafeController.cs" />
+    <Compile Include="controller\FincaController.cs" />
     <Compile Include="controller\SecurityData\LogController.cs" />
     <Compile Include="controller\SecurityData\PasswordManager.cs" />
     <Compile Include="controller\UserDataController\PersonController.cs" />
     <Compile Include="controller\UserDataController\UserController.cs" />
     <Compile Include="model\DAO\CalidadCafeDAO.cs" />
+    <Compile Include="model\DAO\FincaDAO.cs" />
     <Compile Include="model\DAO\ModuleDAO.cs" />
     <Compile Include="model\DAO\PersonDAO.cs" />
     <Compile Include="model\DAO\RoleDAO.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="model\Connection\ConnectionDB.cs" />
     <Compile Include="model\DAO\UserDAO.cs" />
     <Compile Include="model\Mapping\CalidadCafe.cs" />
+    <Compile Include="model\Mapping\Finca.cs" />
     <Compile Include="model\Mapping\UserData\Persona.cs" />
     <Compile Include="model\Mapping\UserData\Usuario.cs" />
     <Compile Include="views\form_activos_cafe.cs">

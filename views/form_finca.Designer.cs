@@ -41,6 +41,8 @@ namespace sistema_modular_cafe_majada.views
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txb_ubiFinca = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txb_nombreFinca = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -130,6 +132,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_updateFinca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_updateFinca.TabIndex = 1;
             this.btn_updateFinca.TabStop = false;
+            this.btn_updateFinca.Click += new System.EventHandler(this.btn_updateFinca_Click);
             // 
             // btn_deleteFinca
             // 
@@ -141,6 +144,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_deleteFinca.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_deleteFinca.TabIndex = 2;
             this.btn_deleteFinca.TabStop = false;
+            this.btn_deleteFinca.Click += new System.EventHandler(this.btn_deleteFinca_Click);
             // 
             // label2
             // 
@@ -175,6 +179,8 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
+            this.panel8.Controls.Add(this.label4);
+            this.panel8.Controls.Add(this.txb_ubiFinca);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.txb_nombreFinca);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -182,6 +188,26 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(279, 319);
             this.panel8.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(124, 26);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Ubicación de Finca";
+            // 
+            // txb_ubiFinca
+            // 
+            this.txb_ubiFinca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_ubiFinca.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_ubiFinca.Location = new System.Drawing.Point(13, 100);
+            this.txb_ubiFinca.Name = "txb_ubiFinca";
+            this.txb_ubiFinca.Size = new System.Drawing.Size(216, 33);
+            this.txb_ubiFinca.TabIndex = 3;
             // 
             // label3
             // 
@@ -233,6 +259,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SaveFinca.Text = "Guardar";
             this.btn_SaveFinca.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SaveFinca.UseVisualStyleBackColor = false;
+            this.btn_SaveFinca.Click += new System.EventHandler(this.btn_SaveFinca_Click);
             // 
             // btn_Cancel
             // 
@@ -253,19 +280,25 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // dtg_fincas
             // 
+            this.dtg_fincas.AllowUserToAddRows = false;
+            this.dtg_fincas.AllowUserToDeleteRows = false;
+            this.dtg_fincas.AllowUserToOrderColumns = true;
             this.dtg_fincas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtg_fincas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_fincas.Location = new System.Drawing.Point(290, 78);
             this.dtg_fincas.Name = "dtg_fincas";
+            this.dtg_fincas.ReadOnly = true;
             this.dtg_fincas.RowHeadersWidth = 51;
             this.dtg_fincas.RowTemplate.Height = 24;
             this.dtg_fincas.Size = new System.Drawing.Size(686, 353);
             this.dtg_fincas.TabIndex = 15;
+            this.dtg_fincas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_fincas_CellDoubleClick);
             // 
             // form_finca
             // 
@@ -316,5 +349,7 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Button btn_SaveFinca;
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.DataGridView dtg_fincas;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txb_ubiFinca;
     }
 }
