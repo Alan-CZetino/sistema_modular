@@ -133,6 +133,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_saveperfil.TabIndex = 24;
             this.btn_saveperfil.Text = "Guardar Cambios";
             this.btn_saveperfil.UseVisualStyleBackColor = false;
+            this.btn_saveperfil.Click += new System.EventHandler(this.btn_saveperfil_Click);
             // 
             // panel1
             // 
@@ -171,6 +172,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_savePass.TabIndex = 18;
             this.btn_savePass.Text = "Guardar Contraseña";
             this.btn_savePass.UseVisualStyleBackColor = false;
+            this.btn_savePass.Click += new System.EventHandler(this.btn_savePass_Click);
             // 
             // label10
             // 
@@ -193,6 +195,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_UDpassConf.MaximumSize = new System.Drawing.Size(414, 30);
             this.txb_UDpassConf.MinimumSize = new System.Drawing.Size(139, 33);
             this.txb_UDpassConf.Name = "txb_UDpassConf";
+            this.txb_UDpassConf.PasswordChar = '*';
             this.txb_UDpassConf.Size = new System.Drawing.Size(174, 23);
             this.txb_UDpassConf.TabIndex = 22;
             // 
@@ -241,6 +244,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_UDpassNew.MaximumSize = new System.Drawing.Size(414, 30);
             this.txb_UDpassNew.MinimumSize = new System.Drawing.Size(139, 33);
             this.txb_UDpassNew.Name = "txb_UDpassNew";
+            this.txb_UDpassNew.PasswordChar = '*';
             this.txb_UDpassNew.Size = new System.Drawing.Size(174, 23);
             this.txb_UDpassNew.TabIndex = 21;
             // 
@@ -409,6 +413,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_editPass.TabIndex = 4;
             this.btn_editPass.Text = "Cambiar contraseña";
             this.btn_editPass.UseVisualStyleBackColor = false;
+            this.btn_editPass.Click += new System.EventHandler(this.btn_editPass_Click);
             // 
             // pnl_permisos
             // 

@@ -78,10 +78,13 @@ namespace sistema_modular_cafe_majada.views
             // Obtener la fila correspondiente a la celda en la que se hizo doble clic
             DataGridViewRow filaSeleccionada = dtg_tableUser.Rows[e.RowIndex];
 
-            Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre usuario: " + "");
+            // Obtener los valores de las celdas de la fila seleccionada
+            UsuarioSeleccionado.Usuario = filaSeleccionada.Cells["Usuario"].Value.ToString();
+            Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre usuario: " + UsuarioSeleccionado.Usuario);
 
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
     }
 }

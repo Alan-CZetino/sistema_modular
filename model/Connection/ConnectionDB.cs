@@ -77,6 +77,12 @@ namespace sistema_modular_cafe_majada.model.Connection
             comando.Parameters.AddWithValue(nombreParametro, valorParametro);
         }
 
+        //
+        public MySqlParameter ObtenerParametro(string nombreParametro)
+        {
+            return comando.Parameters[nombreParametro];
+        }
+
         public object EjecutarConsultaEscalar()
         {
             return comando.ExecuteScalar();
