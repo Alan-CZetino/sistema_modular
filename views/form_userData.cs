@@ -113,9 +113,16 @@ namespace sistema_modular_cafe_majada.views
             var userControl = new UserController();
             var personControl = new PersonController();
             var rolControl = new RoleController();
-            Usuario user = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
+            Usuario user = userControl.ObtenerIUsuario(UsuarioActual.IUsuario);
+            UsuarioActual.NombreUsuario = user.NombreUsuario;
             Persona person = personControl.ObtenerNombrePersona(user.IdPersonaUsuario);
             Role role = rolControl.ObtenerIRol(user.IdRolUsuario);
+
+            //Verificar porque no carga el nobre de usuario en el form main
+            form_main form_Main = new form_main();
+            form_Main.NombreUsuario = user.NombreUsuario;
+            form_Main.Refresh();
+            //===============================================================
 
             idUser = user.IdUsuario;
             txb_UDnameuser.Text = user.NombreUsuario;
@@ -212,6 +219,7 @@ namespace sistema_modular_cafe_majada.views
                                 {
                                     Console.WriteLine("Error al obtener el usuario: " + ex.Message);
                                 }
+                                ShowDataUser();
                             }
                             else
                             {

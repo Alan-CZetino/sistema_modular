@@ -163,6 +163,7 @@ namespace sistema_modular_cafe_majada
                             form_main formPrin = new form_main();
                             formPrin.NombreUsuario = user;
                             UsuarioActual.NombreUsuario = user;
+                            UsuarioActual.IUsuario = usuario.IdUsuario;
 
                             LimpiarComboBox();
                             formPrin.Show();
