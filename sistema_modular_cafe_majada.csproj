@@ -102,6 +102,7 @@
     <Compile Include="controller\AccesController\ModuleController.cs" />
     <Compile Include="controller\AccesController\RoleController.cs" />
     <Compile Include="controller\HarvestController\CosechaController.cs" />
+    <Compile Include="controller\OperationsController\PersonalController.cs" />
     <Compile Include="controller\ProductController\CCafeController.cs" />
     <Compile Include="controller\InfrastructureController\BeneficioController.cs" />
     <Compile Include="controller\InfrastructureController\FincaController.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="model\DAO\CosechaDAO.cs" />
     <Compile Include="model\DAO\FincaDAO.cs" />
     <Compile Include="model\DAO\ModuleDAO.cs" />
+    <Compile Include="model\DAO\PersonalDAO.cs" />
     <Compile Include="model\DAO\PersonDAO.cs" />
     <Compile Include="model\DAO\RoleDAO.cs" />
     <Compile Include="model\DAO\BeneficioDAO.cs" />
