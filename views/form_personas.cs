@@ -288,6 +288,9 @@ namespace sistema_modular_cafe_majada.views
             // Asignar los datos al DataGridView
             dataGrid_PersonView.DataSource = datosPersonalizados;
 
+            dataGrid_PersonView.RowHeadersVisible = false;
+            dataGrid_PersonView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         public void ConvertFirstCharacter(TextBox[] textBoxes)
@@ -500,7 +503,6 @@ namespace sistema_modular_cafe_majada.views
                     txb_Tel1.Text = personaSeleccionada.Telefono1Persona;
                     txb_Tel2.Text = personaSeleccionada.Telefono2Persona ?? ""; // Asignar cadena vacía si tel2 es nulo
 
-                    personaSeleccionada = null;
                 }
             }
             else

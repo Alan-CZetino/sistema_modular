@@ -66,6 +66,8 @@ namespace sistema_modular_cafe_majada.views
             // Asignar los datos al DataGridView
             dtg_tableUser.DataSource = datosPersonalizados;
 
+            dtg_tableUser.RowHeadersVisible = false;
+            dtg_tableUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void btn_close_Click(object sender, EventArgs e)

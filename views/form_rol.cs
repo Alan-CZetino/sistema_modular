@@ -76,6 +76,9 @@ namespace sistema_modular_cafe_majada.views
             // Asignar los datos al DataGridView
             dtgv_roles.DataSource = datosPersonalizados;
 
+            dtgv_roles.RowHeadersVisible = false;
+            dtgv_roles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         private void btn_SaveRol_Click(object sender, EventArgs e)
@@ -140,7 +143,7 @@ namespace sistema_modular_cafe_majada.views
                         }
                         else
                         {
-                            MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.");
+                            MessageBox.Show("Error al agregar el Rol. Verifica los datos e intenta nuevamente.");
                         }
                     }
                     else

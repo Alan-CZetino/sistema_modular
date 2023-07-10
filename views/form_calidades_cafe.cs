@@ -15,6 +15,7 @@ using sistema_modular_cafe_majada.model.DAO;
 using sistema_modular_cafe_majada.model.UserData;
 using sistema_modular_cafe_majada.controller;
 using sistema_modular_cafe_majada.model.Mapping;
+using sistema_modular_cafe_majada.controller.Product;
 
 namespace sistema_modular_cafe_majada.views
 {

@@ -28,6 +28,9 @@ namespace sistema_modular_cafe_majada.views
         public form_finca()
         {
             InitializeComponent();
+            
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dtg_fincas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             ShowFincaGrid();
         }
@@ -165,8 +168,6 @@ namespace sistema_modular_cafe_majada.views
                     //se asignanlos registros a los cuadros de texto
                     txb_nombreFinca.Text = fincaSeleccionada.nombreFinca;
                     txb_ubiFinca.Text = fincaSeleccionada.ubicacionFinca;
-
-                    fincaSeleccionada = null;
                 }
             }
             else
@@ -231,8 +232,6 @@ namespace sistema_modular_cafe_majada.views
             fincaSeleccionada.nombreFinca = filaSeleccionada.Cells["nomFinca"].Value.ToString();
             fincaSeleccionada.ubicacionFinca = filaSeleccionada.Cells["ubiFinca"].Value.ToString();
 
-
-            Console.WriteLine("depuracion - capturar datos dobleclick; nombre de Finca: " + fincaSeleccionada.nombreFinca);
         }
     }
 }

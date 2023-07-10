@@ -73,6 +73,9 @@ namespace sistema_modular_cafe_majada.views
             // Asignar los datos al DataGridView
             dtg_tablePerson.DataSource = datosPersonalizados;
 
+            dtg_tablePerson.RowHeadersVisible = false;
+            dtg_tablePerson.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         private void dtg_tablePerson_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
