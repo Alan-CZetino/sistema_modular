@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using sistema_modular_cafe_majada.model.DAO;
 using sistema_modular_cafe_majada.model.Mapping;
 
-namespace sistema_modular_cafe_majada.controller.Product
+namespace sistema_modular_cafe_majada.controller.ProductController
 {
     class CCafeController
     {

@@ -101,7 +101,8 @@
   <ItemGroup>
     <Compile Include="controller\AccesController\ModuleController.cs" />
     <Compile Include="controller\AccesController\RoleController.cs" />
-    <Compile Include="controller\Product\CCafeController.cs" />
+    <Compile Include="controller\HarvestController\CosechaController.cs" />
+    <Compile Include="controller\ProductController\CCafeController.cs" />
     <Compile Include="controller\InfrastructureController\BeneficioController.cs" />
     <Compile Include="controller\InfrastructureController\FincaController.cs" />
     <Compile Include="controller\SecurityData\LogController.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="controller\UserDataController\PersonController.cs" />
     <Compile Include="controller\UserDataController\UserController.cs" />
     <Compile Include="model\DAO\CalidadCafeDAO.cs" />
+    <Compile Include="model\DAO\CosechaDAO.cs" />
     <Compile Include="model\DAO\FincaDAO.cs" />
     <Compile Include="model\DAO\ModuleDAO.cs" />
     <Compile Include="model\DAO\PersonDAO.cs" />
