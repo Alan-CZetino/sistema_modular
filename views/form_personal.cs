@@ -88,7 +88,7 @@ namespace sistema_modular_cafe_majada.views
 
         public void ClearDataTxb()
         {
-            List<TextBox> txb = new List<TextBox> { txb_namePersonal, txb_cargo };
+            List<TextBox> txb = new List<TextBox> { txb_namePersonal,txb_Descrip };
 
             foreach (TextBox textBox in txb)
             {
@@ -194,7 +194,7 @@ namespace sistema_modular_cafe_majada.views
 
                 // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
                 txb_namePersonal.Text = personalSeleccionado.NombrePersonal;
-                txb_cargo.Text = personalSeleccionado.CargoPersonal;
+                //txb_cargo.Text = personalSeleccionado.CargoPersonal;
                 //txb_descripcion.Text = personalSeleccionado.Descripcion;
                 //txb_idPersona.Text = personalSeleccionado.IdPersona;
             }
