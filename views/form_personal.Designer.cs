@@ -197,6 +197,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SavePersonal.Text = "Guardar";
             this.btn_SavePersonal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SavePersonal.UseVisualStyleBackColor = false;
+            this.btn_SavePersonal.Click += new System.EventHandler(this.btn_SavePersonal_Click);
             // 
             // btn_Cancel
             // 

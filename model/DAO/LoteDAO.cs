@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using sistema_modular_cafe_majada.model.Connection;
-using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
+using sistema_modular_cafe_majada.model.Mapping.Harvest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace sistema_modular_cafe_majada.model.DAO
 {
-    class BeneficioDAO
+    class LoteDAO
     {
         private ConnectionDB conexion;
 
-        public BeneficioDAO()
+        public LoteDAO()
         {
             //Se crea la instancia de la clase conexion
             conexion = new ConnectionDB();
         }
 
         //funcion para insertar un nuevo registro en la base de datos
-        public bool InsertarBeneficio(Beneficio beneficio)
+        public bool InsertarLote(Lote lote)
         {
             try
             {
@@ -28,12 +28,17 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Beneficio ( nombre_beneficio, ubicacion_beneficio)
-                                    VALUES ( @nombre, @ubicacion)";
+                string consulta = @"INSERT INTO Lote (nombre_lote, fecha_lote, cantidad_lote, tipo_cafe_lote, id_calidad_lote, id_cosecha_lote, id_finca_lote)
+                                    VALUES ( @nombre, @fecha, @cantidad, @tipo, @idCalida, @idCosecha, @idFinca)";
                 conexion.CrearComando(consulta);
 
-                conexion.AgregarParametro("@nombre", beneficio.NombreBeneficio);
-                conexion.AgregarParametro("@ubicacion", beneficio.UbicacionBeneficio);
+                conexion.AgregarParametro("@nombre", lote.NombreLote);
+                conexion.AgregarParametro("@fecha", DateTime.Now);
+                conexion.AgregarParametro("@cantidad", lote.CantidadLote);
+                conexion.AgregarParametro("@tipo", lote.TipoCafe);
+                conexion.AgregarParametro("@idCalidad", lote.IdCalidadLote);
+                conexion.AgregarParametro("@idCosecha", lote.IdCosechaLote);
+                conexion.AgregarParametro("@idFinca", lote.IdFinca);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -43,7 +48,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrio un error durante la inserción del Beneficio en la base de datos: " + ex.Message);
+                Console.WriteLine("Ocurrio un error durante la inserción del Lote en la base de datos: " + ex.Message);
                 return false;
             }
             finally
@@ -54,30 +59,35 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para mostrar todos los registros
-        public List<Beneficio> ObtenerBeneficios()
+        public List<Lote> ObtenerLotes()
         {
-            List<Beneficio> listaBeneficio = new List<Beneficio>();
+            List<Lote> listaLote = new List<Lote>();
 
             try
             {
                 //Se conecta con la base de datos
                 conexion.Conectar();
 
-                string consulta = @"SELECT * FROM Beneficio";
+                string consulta = @"SELECT * FROM Lote";
                 conexion.CrearComando(consulta);
 
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
                     while (reader.Read())
                     {
-                        Beneficio beneficios = new Beneficio()
+                        Lote lotes = new Lote()
                         {
-                            IdBeneficio = Convert.ToInt32(reader["id_beneficio"]),
-                            NombreBeneficio = Convert.ToString(reader["nombre_beneficio"]),
-                            UbicacionBeneficio = Convert.ToString(reader["ubicacion_beneficio"])
+                            IdLote = Convert.ToInt32(reader["id_lote"]),
+                            NombreLote = Convert.ToString(reader["nombre_lote"]),
+                            FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
+                            CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
+                            TipoCafe = Convert.ToString(reader["tipo_cafe_lote"]),
+                            IdCalidadLote = Convert.ToInt32(reader["id_calidad_lote"]),
+                            IdCosechaLote = Convert.ToInt32(reader["id_cosecha_lote"]),
+                            IdFinca = Convert.ToInt32(reader["id_finca_lote"])
                         };
 
-                        listaBeneficio.Add(beneficios);
+                        listaLote.Add(lotes);
                     }
                 }
             }
@@ -90,13 +100,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 //se cierra la conexion a la base de datos
                 conexion.Desconectar();
             }
-            return listaBeneficio;
+            return listaLote;
         }
 
-        //obtener el beneficio en especifico mediante el id en la BD
-        public Beneficio ObtenerIdBeneficio(int idBen)
+        //obtener el Lote en especifico mediante el id en la BD
+        public Lote ObtenerIdLote(int id)
         {
-            Beneficio beneficio = null;
+            Lote lote = null;
 
             try
             {
@@ -104,21 +114,26 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = "SELECT * FROM Beneficio WHERE id_beneficio = @Id";
-                
+                string consulta = "SELECT * FROM Lote WHERE id_lote = @Id";
+
                 conexion.CrearComando(consulta);
-                conexion.AgregarParametro("@Id", idBen);
+                conexion.AgregarParametro("@Id", id);
 
                 // Ejecutar la consulta y leer el resultado
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
                     if (reader.HasRows && reader.Read())
                     {
-                        beneficio = new Beneficio()
+                        lote = new Lote()
                         {
-                            IdBeneficio = Convert.ToInt32(reader["id_beneficio"]),
-                            NombreBeneficio = Convert.ToString(reader["nombre_beneficio"]),
-                            UbicacionBeneficio = Convert.ToString(reader["ubicacion_beneficio"])
+                            IdLote = Convert.ToInt32(reader["id_lote"]),
+                            NombreLote = Convert.ToString(reader["nombre_lote"]),
+                            FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
+                            CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
+                            TipoCafe = Convert.ToString(reader["tipo_cafe_lote"]),
+                            IdCalidadLote = Convert.ToInt32(reader["id_calidad_lote"]),
+                            IdCosechaLote = Convert.ToInt32(reader["id_cosecha_lote"]),
+                            IdFinca = Convert.ToInt32(reader["id_finca_lote"])
                         };
                     }
                 }
@@ -126,7 +141,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener el Beneficio: " + ex.Message);
+                Console.WriteLine("Error al obtener el Lote: " + ex.Message);
             }
             finally
             {
@@ -134,13 +149,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
 
-            return beneficio;
+            return lote;
         }
 
-        //obtener el beneficio en especifico mediante el id en la BD
-        public Beneficio ObtenerBeneficioNombre(string nombre)
+        //obtener el lote en especifico mediante el id en la BD
+        public Lote ObtenerLoteNombre(string nombre)
         {
-            Beneficio beneficio = null;
+            Lote lote = null;
 
             try
             {
@@ -148,21 +163,26 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = "SELECT * FROM Beneficio WHERE nombre_beneficio = @nombreBen";
+                string consulta = "SELECT * FROM Lote WHERE nombre_lote = @nombreLote";
 
                 conexion.CrearComando(consulta);
-                conexion.AgregarParametro("@nombreBen", nombre);
+                conexion.AgregarParametro("@nombreLote", nombre);
 
                 // Ejecutar la consulta y leer el resultado
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
                     if (reader.HasRows && reader.Read())
                     {
-                        beneficio = new Beneficio()
+                        lote = new Lote()
                         {
-                            IdBeneficio = Convert.ToInt32(reader["id_beneficio"]),
-                            NombreBeneficio = Convert.ToString(reader["nombre_beneficio"]),
-                            UbicacionBeneficio = Convert.ToString(reader["ubicacion_beneficio"])
+                            IdLote = Convert.ToInt32(reader["id_lote"]),
+                            NombreLote = Convert.ToString(reader["nombre_lote"]),
+                            FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
+                            CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
+                            TipoCafe = Convert.ToString(reader["tipo_cafe_lote"]),
+                            IdCalidadLote = Convert.ToInt32(reader["id_calidad_lote"]),
+                            IdCosechaLote = Convert.ToInt32(reader["id_cosecha_lote"]),
+                            IdFinca = Convert.ToInt32(reader["id_finca_lote"])
                         };
                     }
                 }
@@ -170,7 +190,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener el Beneficio: " + ex.Message);
+                Console.WriteLine("Error al obtener el lote: " + ex.Message);
             }
             finally
             {
@@ -178,11 +198,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
 
-            return beneficio;
+            return lote;
         }
 
         //funcion para actualizar un registro en la base de datos
-        public bool ActualizarBeneficio(int idBen, string nombreBen, string ubicacionBen)
+        public bool ActualizarLote(int id, string nombre, double cantidad, string tipo, int idCalidad, int idCosecha, int idFinca)
         {
             bool exito = false;
 
@@ -192,13 +212,19 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Beneficio SET nombre_beneficio = @nombre, ubicacion_beneficio = @ubicacion
-                                    WHERE id_beneficio = @id";
+                string consulta = @"UPDATE Lote SET nombre_lote = @nombre, fecha_lote = @fecha, cantidad_lote = @cantidad, tipo_cafe_lote = @tipo, 
+                                        id_calidad_lote = @calidad, id_cosecha_lote = @idCosecha, id_finca_lote = @idFinca
+                                    WHERE id_lote = @id";
                 conexion.CrearComando(consulta);
 
-                conexion.AgregarParametro("@nombre", nombreBen);
-                conexion.AgregarParametro("@ubicacion", ubicacionBen);
-                conexion.AgregarParametro("@id", idBen);
+                conexion.AgregarParametro("@nombre", nombre);
+                conexion.AgregarParametro("@fecha", DateTime.Today);
+                conexion.AgregarParametro("@cantidad", cantidad);
+                conexion.AgregarParametro("@tipo", tipo);
+                conexion.AgregarParametro("@idCalidad", idCalidad);
+                conexion.AgregarParametro("@idCosecha", idCosecha);
+                conexion.AgregarParametro("@idFinca", idFinca);
+                conexion.AgregarParametro("@id", id);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -227,7 +253,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para eliminar un registro de la base de datos
-        public void EliminarBeneficio(int idBen)
+        public void EliminarLote(int id)
         {
             try
             {
@@ -235,10 +261,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL
-                string consulta = @"DELETE FROM Beneficio WHERE id_beneficio = @id";
-                
+                string consulta = @"DELETE FROM Lote WHERE id_lote = @id";
+
                 conexion.CrearComando(consulta);
-                conexion.AgregarParametro("@id", idBen);
+                conexion.AgregarParametro("@id", id);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -261,6 +287,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
         }
+
 
     }
 }
