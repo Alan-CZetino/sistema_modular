@@ -167,6 +167,21 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
         }
 
         //
+        public Usuario ObtenerIUsuario(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el usuario
+                return usuarioDAO.ObtenerIUsuario(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                return null;
+            }
+        }
+
+        //
         public List<Usuario> ObtenerUsuariosConRol()
         {
             try

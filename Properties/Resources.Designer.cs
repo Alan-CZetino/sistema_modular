@@ -169,19 +169,7 @@ namespace sistema_modular_cafe_majada.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cosecha_45px
-        {
-            get
-            {
-                object obj = ResourceManager.GetObject("cosecha_45px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
+        
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
@@ -248,6 +236,36 @@ namespace sistema_modular_cafe_majada.Properties {
         internal static System.Drawing.Bitmap existencias_cafe {
             get {
                 object obj = ResourceManager.GetObject("existencias_cafe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap grano_de_cafe_24px {
+            get {
+                object obj = ResourceManager.GetObject("grano-de-cafe 24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap grano_de_cafe_512px {
+            get {
+                object obj = ResourceManager.GetObject("grano-de-cafe 512px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap grano_de_cafe_64px {
+            get {
+                object obj = ResourceManager.GetObject("grano-de-cafe 64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

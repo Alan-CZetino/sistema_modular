@@ -406,6 +406,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\circle-info-solid.png" />
+    <None Include="Resources\grano-de-cafe 512px.png" />
+    <None Include="Resources\grano-de-cafe 24px.png" />
+    <None Include="Resources\grano-de-cafe 64px.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\eliminar.png" />

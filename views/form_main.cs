@@ -82,11 +82,11 @@ namespace sistema_modular_cafe_majada
         }
 
         //funcion para maximizar a pantalla completa o minimizar a un tamaño minimo
-        private void btn_max_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal) this.WindowState = FormWindowState.Maximized;
-            else this.WindowState = FormWindowState.Normal;
-        }
+        //private void btn_max_Click(object sender, EventArgs e)
+        //{
+        //    if (this.WindowState == FormWindowState.Normal) this.WindowState = FormWindowState.Maximized;
+        //    else this.WindowState = FormWindowState.Normal;
+        //}
 
         //funcion para minimizar la pantalla (ocultar)
         private void btn_min_Click(object sender, EventArgs e)

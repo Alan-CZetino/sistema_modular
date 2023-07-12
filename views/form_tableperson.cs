@@ -92,5 +92,23 @@ namespace sistema_modular_cafe_majada.views
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void txb_buscarPer_Enter(object sender, EventArgs e)
+        {
+            if (txb_buscarPer.Text == "Buscar...")
+            {
+                txb_buscarPer.Text = "";
+                txb_buscarPer.ForeColor = Color.Black;
+            }
+        }
+
+        private void txb_buscarPer_Leave(object sender, EventArgs e)
+        {
+            if (txb_buscarPer.Text == "")
+            {
+                txb_buscarPer.Text = "Buscar...";
+                txb_buscarPer.ForeColor = Color.DimGray;
+            }
+        }
     }
 }

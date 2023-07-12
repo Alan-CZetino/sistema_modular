@@ -529,6 +529,62 @@ namespace sistema_modular_cafe_majada.model.DAO
             return usuario;
         }
 
+        //
+        public Usuario ObtenerIUsuario(int id)
+        {
+            Usuario usuario = null;
+            try
+            {
+                // Conectar a la base de datos
+                conexion.Conectar();
+
+                string consulta = "SELECT * FROM Usuario WHERE id_usuario = @IUsuario";
+
+                // Crear un comando con la consulta
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@IUsuario", id);
+
+                using (var reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            usuario = new Usuario()
+                            {
+                                IdUsuario = Convert.ToInt32(reader["id_usuario"]),
+                                NombreUsuario = Convert.ToString(reader["nombre_usuario"]),
+                                EmailUsuario = Convert.ToString(reader["email_usuario"]),
+                                ClaveUsuario = Convert.ToString(reader["clave_usuario"]),
+                                EstadoUsuario = Convert.ToString(reader["estado_usuario"]),
+                                FechaCreacionUsuario = Convert.ToDateTime(reader["fecha_creacion_usuario"]),
+                                IdRolUsuario = Convert.ToInt32(reader["id_rol_usuario"]),
+                                IdPersonaUsuario = Convert.ToInt32(reader["id_persona_usuario"])
+                            };
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("fecha_baja_usuario")))
+                            {
+                                usuario.FechaBajaUsuario = reader.GetDateTime("fecha_baja_usuario");
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return usuario;
+        }
+
+
         //obtener todos los usuarios y traer el nombre del rol en vez del id
         public List<Usuario> ObtenerUsuariosConRol()
         {
