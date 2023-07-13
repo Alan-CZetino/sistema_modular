@@ -35,6 +35,24 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
 
             return lotes;
         }
+        
+        //
+        public List<Lote> ObtenerLotesNombreID()
+        {
+            List<Lote> lotes = new List<Lote>();
+
+            try
+            {
+                // Llamada al método del DAO para obtener los roles
+                lotes = loteDAO.ObtenerLotesNombreID();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los roles: " + ex.Message);
+            }
+
+            return lotes;
+        }
 
         //
         public Lote ObtenerLoteNombre(string nombre)

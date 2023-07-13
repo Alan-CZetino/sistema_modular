@@ -103,6 +103,57 @@ namespace sistema_modular_cafe_majada.model.DAO
             return listaLote;
         }
 
+        //funcion para mostrar todos los registros
+        public List<Lote> ObtenerLotesNombreID()
+        {
+            List<Lote> listaLote = new List<Lote>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT l.id_lote, l.nombre_lote, l.fecha_lote, l.cantidad_lote, l.tipo_cafe_lote, cc.nombre_calidad, 
+                                        f.nombre_finca, c.nombre_cosecha
+                                    FROM Lote l
+                                    INNER JOIN Calidad_Cafe cc ON l.id_calidad_lote = cc.id_calidad 
+                                    INNER JOIN Finca f ON l.id_finca_lote = f.id_finca 
+                                    INNER JOIN Cosecha c ON l.id_cosecha_lote = c.id_cosecha";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Lote lotes = new Lote()
+                        {
+                            IdLote = Convert.ToInt32(reader["id_lote"]),
+                            NombreLote = Convert.ToString(reader["nombre_lote"]),
+                            FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
+                            CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
+                            TipoCafe = Convert.ToString(reader["tipo_cafe_lote"]),
+                            NombreCalidadLote = Convert.ToString(reader["nombre_calidad"]),
+                            NombreCosechaLote = Convert.ToString(reader["nombre_cosecha"]),
+                            NombreFinca = Convert.ToString(reader["nombre_finca"])
+                        };
+
+                        listaLote.Add(lotes);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return listaLote;
+        }
+
         //obtener el Lote en especifico mediante el id en la BD
         public Lote ObtenerIdLote(int id)
         {
