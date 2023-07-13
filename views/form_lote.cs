@@ -1,4 +1,4 @@
-﻿using sistema_modular_cafe_majada.controller.HarvestController;
+using sistema_modular_cafe_majada.controller.HarvestController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
@@ -22,6 +22,9 @@ namespace sistema_modular_cafe_majada.views
         private bool imagenClickeada = false;
         //instancia de la clase mapeo Lote para capturar los datos seleccionado por el usuario
         private Lote loteSeleccionado;
+
+
+        form_opcLote form_Opc=new form_opcLote();
 
         public form_lote()
         {
@@ -184,6 +187,26 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
+        }
+
+        private void btn_tFinca_Click(object sender, EventArgs e)
+        {
+            form_Opc.ShowDialog();
+        }
+
+        private void btn_tCafe_Click(object sender, EventArgs e)
+        {
+            form_Opc.ShowDialog();
+        }
+
+        private void btn_tcCafe_Click(object sender, EventArgs e)
+        {
+            form_Opc.ShowDialog();
+        }
+
+        private void btn_tCosecha_Click(object sender, EventArgs e)
+        {
+            form_Opc.ShowDialog();
         }
     }
 }

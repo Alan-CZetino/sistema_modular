@@ -1,4 +1,4 @@
-﻿
+
 namespace sistema_modular_cafe_majada.views
 {
     partial class form_lote
@@ -35,6 +35,11 @@ namespace sistema_modular_cafe_majada.views
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.btn_tCosecha = new System.Windows.Forms.Button();
+            this.btn_tcCafe = new System.Windows.Forms.Button();
+            this.btn_tCafe = new System.Windows.Forms.Button();
+            this.btn_tFinca = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.txb_cosecha = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -44,7 +49,6 @@ namespace sistema_modular_cafe_majada.views
             this.label6 = new System.Windows.Forms.Label();
             this.txb_cantidad = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txb_dateIngreso = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txb_nomFinca = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -123,6 +127,11 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
+            this.panel8.Controls.Add(this.btn_tCosecha);
+            this.panel8.Controls.Add(this.btn_tcCafe);
+            this.panel8.Controls.Add(this.btn_tCafe);
+            this.panel8.Controls.Add(this.btn_tFinca);
+            this.panel8.Controls.Add(this.dateTimePicker1);
             this.panel8.Controls.Add(this.label9);
             this.panel8.Controls.Add(this.txb_cosecha);
             this.panel8.Controls.Add(this.label8);
@@ -132,7 +141,6 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Controls.Add(this.label6);
             this.panel8.Controls.Add(this.txb_cantidad);
             this.panel8.Controls.Add(this.label5);
-            this.panel8.Controls.Add(this.txb_dateIngreso);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.txb_nomFinca);
             this.panel8.Controls.Add(this.label3);
@@ -143,6 +151,61 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(209, 302);
             this.panel8.TabIndex = 9;
+            // 
+            // btn_tCosecha
+            // 
+            this.btn_tCosecha.FlatAppearance.BorderSize = 0;
+            this.btn_tCosecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tCosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tCosecha.Location = new System.Drawing.Point(214, 476);
+            this.btn_tCosecha.Name = "btn_tCosecha";
+            this.btn_tCosecha.Size = new System.Drawing.Size(34, 33);
+            this.btn_tCosecha.TabIndex = 18;
+            this.btn_tCosecha.UseVisualStyleBackColor = true;
+            this.btn_tCosecha.Click += new System.EventHandler(this.btn_tCosecha_Click);
+            // 
+            // btn_tcCafe
+            // 
+            this.btn_tcCafe.FlatAppearance.BorderSize = 0;
+            this.btn_tcCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tcCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tcCafe.Location = new System.Drawing.Point(214, 400);
+            this.btn_tcCafe.Name = "btn_tcCafe";
+            this.btn_tcCafe.Size = new System.Drawing.Size(34, 33);
+            this.btn_tcCafe.TabIndex = 17;
+            this.btn_tcCafe.UseVisualStyleBackColor = true;
+            this.btn_tcCafe.Click += new System.EventHandler(this.btn_tcCafe_Click);
+            // 
+            // btn_tCafe
+            // 
+            this.btn_tCafe.FlatAppearance.BorderSize = 0;
+            this.btn_tCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tCafe.Location = new System.Drawing.Point(214, 325);
+            this.btn_tCafe.Name = "btn_tCafe";
+            this.btn_tCafe.Size = new System.Drawing.Size(34, 33);
+            this.btn_tCafe.TabIndex = 16;
+            this.btn_tCafe.UseVisualStyleBackColor = true;
+            this.btn_tCafe.Click += new System.EventHandler(this.btn_tCafe_Click);
+            // 
+            // btn_tFinca
+            // 
+            this.btn_tFinca.FlatAppearance.BorderSize = 0;
+            this.btn_tFinca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tFinca.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tFinca.Location = new System.Drawing.Point(214, 106);
+            this.btn_tFinca.Name = "btn_tFinca";
+            this.btn_tFinca.Size = new System.Drawing.Size(34, 33);
+            this.btn_tFinca.TabIndex = 15;
+            this.btn_tFinca.UseVisualStyleBackColor = true;
+            this.btn_tFinca.Click += new System.EventHandler(this.btn_tFinca_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(13, 187);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(195, 22);
+            this.dateTimePicker1.TabIndex = 14;
             // 
             // label9
             // 
@@ -242,17 +305,6 @@ namespace sistema_modular_cafe_majada.views
             this.label5.Size = new System.Drawing.Size(118, 15);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha de Ingreso";
-            // 
-            // txb_dateIngreso
-            // 
-            this.txb_dateIngreso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_dateIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_dateIngreso.Location = new System.Drawing.Point(10, 144);
-            this.txb_dateIngreso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txb_dateIngreso.Name = "txb_dateIngreso";
-            this.txb_dateIngreso.Size = new System.Drawing.Size(147, 23);
-            this.txb_dateIngreso.TabIndex = 5;
             // 
             // label4
             // 
@@ -498,7 +550,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txb_cantidad;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txb_dateIngreso;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txb_cosecha;
         private System.Windows.Forms.Label label8;
@@ -506,5 +557,10 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txb_tipoCafe;
         private System.Windows.Forms.DataGridView dtg_lotes;
+        private System.Windows.Forms.Button btn_tCosecha;
+        private System.Windows.Forms.Button btn_tcCafe;
+        private System.Windows.Forms.Button btn_tCafe;
+        private System.Windows.Forms.Button btn_tFinca;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
