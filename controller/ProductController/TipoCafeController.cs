@@ -30,7 +30,25 @@ namespace sistema_modular_cafe_majada.controller.ProductController
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error al obtener los roles: " + ex.Message);
+                Console.WriteLine("Ocurrió un error al obtener los Tipos de Cafe: " + ex.Message);
+            }
+
+            return tipoCafes;
+        }
+        
+        //
+        public List<TipoCafe> BuscadorTipoCafes(string buscar)
+        {
+            List<TipoCafe> tipoCafes = new List<TipoCafe>();
+
+            try
+            {
+                // Llamada al método del DAO para obtener los roles
+                tipoCafes = tipoCafeDAO.BuscadorTipoCafes(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los Tipos de Cafe: " + ex.Message);
             }
 
             return tipoCafes;
@@ -48,7 +66,7 @@ namespace sistema_modular_cafe_majada.controller.ProductController
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error al obtener el rol: " + ex.Message);
+                Console.WriteLine("Ocurrió un error al obtener el Tipo de Cafe: " + ex.Message);
             }
 
             return tipoCafe;
@@ -66,7 +84,7 @@ namespace sistema_modular_cafe_majada.controller.ProductController
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error durante la inserción del rol: " + ex.Message);
+                Console.WriteLine("Ocurrió un error durante la inserción del Tipo de Cafe: " + ex.Message);
             }
 
             return exito;
@@ -100,7 +118,7 @@ namespace sistema_modular_cafe_majada.controller.ProductController
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error al eliminar el rol: " + ex.Message);
+                Console.WriteLine("Ocurrió un error al eliminar el Tipo de Cafe: " + ex.Message);
             }
         }
 
@@ -116,7 +134,7 @@ namespace sistema_modular_cafe_majada.controller.ProductController
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error al obtener el rol: " + ex.Message);
+                Console.WriteLine("Ocurrió un error al obtener el Tipo de Cafe: " + ex.Message);
             }
 
             return tipoCafe;

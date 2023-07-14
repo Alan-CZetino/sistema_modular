@@ -48,6 +48,24 @@ namespace sistema_modular_cafe_majada.controller
         }
 
         //
+        public List<Finca> BuscadorFinca(string buscar)
+        {
+            List<Finca> finca = new List<Finca>();
+
+            try
+            {
+                // Llamada al método del DAO para obtener los roles
+                finca = fincaDao.BuscarFincas(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los Tipos de Cafe: " + ex.Message);
+            }
+
+            return finca;
+        }
+
+        //
         public Finca ObtenerNombreFincas(string nombre)
         {
             try

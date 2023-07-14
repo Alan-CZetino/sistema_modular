@@ -93,6 +93,47 @@ namespace sistema_modular_cafe_majada.model.DAO
             return calidadesCafe;
         }
 
+        //
+        public List<CalidadCafe> BuscarCalidades(string buscar)
+        {
+            List<CalidadCafe> calidadesCafe = new List<CalidadCafe>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT * FROM calidad_cafe WHERE nombre_calidad LIKE CONCAT('%', @search, '%') ";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", "%" + buscar + "%");
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        CalidadCafe calCafe = new CalidadCafe()
+                        {
+                            IdCalidad = Convert.ToInt32(reader["id_calidad"]),
+                            NombreCalidad = Convert.ToString(reader["nombre_calidad"]),
+                            DescripcionCalidad = Convert.ToString(reader["descripcion"])
+                        };
+
+                        calidadesCafe.Add(calCafe);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return calidadesCafe;
+        }
+
         public bool ActualizarCalidades(int id,string cCafe, string descrip)
         {
             bool exito = false;

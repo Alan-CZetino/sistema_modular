@@ -25,12 +25,30 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
 
             try
             {
-                // Llamada al método del DAO para obtener los roles
+                // Llamada al método del DAO para obtener los Cosecha
                 cosechas = cosechaDAO.ObtenerCosecha();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error al obtener los roles: " + ex.Message);
+                Console.WriteLine("Ocurrió un error al obtener los Cosecha: " + ex.Message);
+            }
+
+            return cosechas;
+        }
+
+        //
+        public List<Cosecha> BuscarCosecha(string buscar)
+        {
+            List<Cosecha> cosechas = new List<Cosecha>();
+
+            try
+            {
+                // Llamada al método del DAO para obtener los Cosecha
+                cosechas = cosechaDAO.BuscarCosecha(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los Cosecha: " + ex.Message);
             }
 
             return cosechas;
@@ -43,7 +61,7 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
 
             try
             {
-                // Llamada al método del DAO para obtener el rol
+                // Llamada al método del DAO para obtener el Cosecha
                 cosecha = cosechaDAO.ObtenerNombreCosecha(nombre);
             }
             catch (Exception ex)
@@ -61,7 +79,7 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
 
             try
             {
-                // Llamada al método del DAO para insertar el rol
+                // Llamada al método del DAO para insertar el Cosecha
                 exito = cosechaDAO.InsertarCosecha(cosecha);
             }
             catch (Exception ex)
@@ -79,7 +97,7 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
 
             try
             {
-                // Llamada al método del DAO para actualizar el rol
+                // Llamada al método del DAO para actualizar el Cosecha
                 exito = cosechaDAO.ActualizarCosecha(id, nombre, fecha);
             }
             catch (Exception ex)
@@ -95,7 +113,7 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
         {
             try
             {
-                // Llamada al método del DAO para eliminar el rol
+                // Llamada al método del DAO para eliminar el Cosecha
                 cosechaDAO.EliminarCosecha(id);
             }
             catch (Exception ex)
@@ -111,12 +129,12 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
 
             try
             {
-                // Llamada al método del DAO para obtener el rol
+                // Llamada al método del DAO para obtener el Cosecha
                 cosecha = cosechaDAO.ObtenerIdCosecha(id);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error al obtener el rol: " + ex.Message);
+                Console.WriteLine("Ocurrió un error al obtener el Cosecha: " + ex.Message);
             }
 
             return cosecha;

@@ -46,6 +46,21 @@ namespace sistema_modular_cafe_majada.controller.ProductController
                 return new List<CalidadCafe>();
             }
         }
+        
+        //
+        public List<CalidadCafe> BuscarCalidades(string buscar)
+        {
+            try
+            {
+                //se llama al metodo DAO para obtener las calidades
+                return ccafeDAO.BuscarCalidades(buscar);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener la lista de calidades de café: " + ex.Message);
+                return new List<CalidadCafe>();
+            }
+        }
 
         public CalidadCafe ObtenerNombreCalidad (string nomCalidad)
         {

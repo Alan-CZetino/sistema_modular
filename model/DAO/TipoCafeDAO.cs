@@ -93,6 +93,47 @@ namespace sistema_modular_cafe_majada.model.DAO
             return listaTipoCafe;
         }
 
+        //funcion para mostrar todos los registros
+        public List<TipoCafe> BuscadorTipoCafes(string buscar)
+        {
+            List<TipoCafe> listaTipoCafe = new List<TipoCafe>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT * FROM Tipo_Cafe WHERE nombre_tipo_cafe LIKE CONCAT('%', @search, '%') ";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", "%" + buscar + "%");
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        TipoCafe TipoCafes = new TipoCafe()
+                        {
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe"]),
+                            NombreTipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
+                            DescripcionTipoCafe = Convert.ToString(reader["descripcion_tipo_cafe"])
+                        };
+
+                        listaTipoCafe.Add(TipoCafes);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return listaTipoCafe;
+        }
+
         //obtener el TipoCafe en especifico mediante el id en la BD
         public TipoCafe ObtenerIdTipoCafe(int idTip)
         {

@@ -64,6 +64,21 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
         }
 
         //
+        public List<Persona> BuscarPersonas(string buscar)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener las personas
+                return personaDAO.BuscarPersonas(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de personas: " + ex.Message);
+                return new List<Persona>();
+            }
+        }
+
+        //
         public Persona ObtenerPersona(string nombrePersona)
         {
             try

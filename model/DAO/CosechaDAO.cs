@@ -94,6 +94,47 @@ namespace sistema_modular_cafe_majada.model.DAO
             return listaCosecha;
         }
 
+        //funcion para mostrar todos los registros
+        public List<Cosecha> BuscarCosecha(string buscar)
+        {
+            List<Cosecha> listaCosecha = new List<Cosecha>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT * FROM Cosecha WHERE nombre_cosecha LIKE CONCAT('%', @search, '%') ";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", "%" + buscar + "%");
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Cosecha cosecha = new Cosecha()
+                        {
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                        };
+                        
+                        listaCosecha.Add(cosecha);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return listaCosecha;
+        }
+
         //obtener la cosecha en especifico mediante el id en la BD
         public Cosecha ObtenerIdCosecha(int id)
         {

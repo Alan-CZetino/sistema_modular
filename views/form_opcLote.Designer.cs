@@ -51,6 +51,9 @@ namespace sistema_modular_cafe_majada.views
             this.txb_buscarOpc.Size = new System.Drawing.Size(286, 17);
             this.txb_buscarOpc.TabIndex = 12;
             this.txb_buscarOpc.Text = "Buscar...";
+            this.txb_buscarOpc.TextChanged += new System.EventHandler(this.txb_buscarOpc_TextChanged);
+            this.txb_buscarOpc.Enter += new System.EventHandler(this.txb_buscarOpc_Enter);
+            this.txb_buscarOpc.Leave += new System.EventHandler(this.txb_buscarOpc_Leave);
             // 
             // pictureBox1
             // 
