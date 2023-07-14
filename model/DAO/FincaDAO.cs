@@ -95,6 +95,49 @@ namespace sistema_modular_cafe_majada.model.DAO
             return listaFincas;
         }
 
+        //
+        public Finca ObtenerNombreFinca(string nombre)
+        {
+            Finca finca = null;
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT * FROM Finca WHERE nombre_finca = @nombreF";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@nombreF", nombre);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            finca = new Finca()
+                            {
+                                IdFinca = Convert.ToInt32(reader["id_finca"]),
+                                nombreFinca = Convert.ToString(reader["nombre_finca"]),
+                                ubicacionFinca = Convert.ToString(reader["ubicacion_finca"])
+                            };
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return finca;
+        }
+
+
         //funcion para actualizar un registro en la base de datos
         public bool ActualizarFinca(int idf,string nomFinca, string ubiFinca)
         {

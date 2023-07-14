@@ -44,10 +44,11 @@ namespace sistema_modular_cafe_majada.views
             this.txb_buscarOpc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txb_buscarOpc.BackColor = System.Drawing.Color.White;
             this.txb_buscarOpc.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txb_buscarOpc.Font = new System.Drawing.Font("Oswald Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_buscarOpc.Location = new System.Drawing.Point(359, 45);
+            this.txb_buscarOpc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_buscarOpc.Location = new System.Drawing.Point(269, 37);
+            this.txb_buscarOpc.Margin = new System.Windows.Forms.Padding(2);
             this.txb_buscarOpc.Name = "txb_buscarOpc";
-            this.txb_buscarOpc.Size = new System.Drawing.Size(382, 27);
+            this.txb_buscarOpc.Size = new System.Drawing.Size(286, 17);
             this.txb_buscarOpc.TabIndex = 12;
             this.txb_buscarOpc.Text = "Buscar...";
             // 
@@ -55,9 +56,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = global::sistema_modular_cafe_majada.Properties.Resources.Barra_de_busqueda;
-            this.pictureBox1.Location = new System.Drawing.Point(312, 42);
+            this.pictureBox1.Location = new System.Drawing.Point(234, 34);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(443, 35);
+            this.pictureBox1.Size = new System.Drawing.Size(332, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
@@ -68,9 +70,9 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.Controls.Add(this.btn_close);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1067, 30);
+            this.panel1.Size = new System.Drawing.Size(800, 24);
             this.panel1.TabIndex = 10;
             // 
             // btn_close
@@ -79,44 +81,49 @@ namespace sistema_modular_cafe_majada.views
             this.btn_close.FlatAppearance.BorderSize = 0;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.Image = global::sistema_modular_cafe_majada.Properties.Resources.x__1___1_;
-            this.btn_close.Location = new System.Drawing.Point(1038, 0);
-            this.btn_close.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_close.Location = new System.Drawing.Point(778, 0);
+            this.btn_close.Margin = new System.Windows.Forms.Padding(2);
             this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(29, 30);
+            this.btn_close.Size = new System.Drawing.Size(22, 24);
             this.btn_close.TabIndex = 0;
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // dtg_tableOpc
             // 
+            this.dtg_tableOpc.AllowUserToAddRows = false;
+            this.dtg_tableOpc.AllowUserToDeleteRows = false;
+            this.dtg_tableOpc.AllowUserToOrderColumns = true;
             this.dtg_tableOpc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtg_tableOpc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_tableOpc.Location = new System.Drawing.Point(11, 107);
-            this.dtg_tableOpc.Margin = new System.Windows.Forms.Padding(4);
+            this.dtg_tableOpc.Location = new System.Drawing.Point(8, 87);
             this.dtg_tableOpc.Name = "dtg_tableOpc";
             this.dtg_tableOpc.ReadOnly = true;
             this.dtg_tableOpc.RowHeadersWidth = 51;
             this.dtg_tableOpc.RowTemplate.Height = 24;
-            this.dtg_tableOpc.Size = new System.Drawing.Size(1045, 482);
+            this.dtg_tableOpc.Size = new System.Drawing.Size(784, 392);
             this.dtg_tableOpc.TabIndex = 9;
+            this.dtg_tableOpc.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_tableOpc_CellDoubleClick);
             // 
             // form_opcLote
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1067, 597);
+            this.ClientSize = new System.Drawing.Size(800, 485);
             this.Controls.Add(this.txb_buscarOpc);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtg_tableOpc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(1067, 597);
-            this.MinimumSize = new System.Drawing.Size(1067, 597);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(800, 485);
+            this.MinimumSize = new System.Drawing.Size(800, 485);
             this.Name = "form_opcLote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "form_opcLote";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.form_opcLote_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_tableOpc)).EndInit();

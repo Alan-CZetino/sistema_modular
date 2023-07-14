@@ -47,19 +47,20 @@ namespace sistema_modular_cafe_majada.controller.ProductController
             }
         }
 
-        //public CalidadCafe ObtenerCalidad (string nomCalidad)
-        //{
-        //    try
-        //    {
-        //        //llamada al metodo DAO para obtener los datos
-        //        return ccafeDAO.ObtenerCalidades(nomCalidad);
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        Console.WriteLine("Ocurrio un error la obtener los datos: " + ex.Message);
-        //        return null;
-        //    }
-        //}
+        public CalidadCafe ObtenerNombreCalidad (string nomCalidad)
+        {
+            CalidadCafe calidad = new CalidadCafe();
+            try
+            {
+                //llamada al metodo DAO para obtener los datos
+                calidad = ccafeDAO.ObtenerNombreCalidad(nomCalidad);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error la obtener los datos: " + ex.Message);
+            }
+            return calidad;
+        }
 
         public void EliminarCalidades(int idCalidades)
         {

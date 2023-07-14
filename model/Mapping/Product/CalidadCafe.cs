@@ -9,8 +9,14 @@ namespace sistema_modular_cafe_majada.model.Mapping
     class CalidadCafe
     {
         public int IdCalidad { get; set; }
-        public string nombreCalidad { get; set; }
-        public string descripcionCalidad { get; set;}
+        public string NombreCalidad { get; set; }
+        public string DescripcionCalidad { get; set;}
 
+    }
+
+    public static class CalidadSeleccionada
+    {
+        public static int ICalidadSeleccionada { get; set; }
+        public static string NombreCalidadSeleccionada { get; set; }
     }
 }

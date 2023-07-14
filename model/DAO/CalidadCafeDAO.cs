@@ -33,8 +33,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@IdCalidad", calidadCafe.IdCalidad);
-                conexion.AgregarParametro("@Calidad", calidadCafe.nombreCalidad);
-                conexion.AgregarParametro("@Comentario", calidadCafe.descripcionCalidad);
+                conexion.AgregarParametro("@Calidad", calidadCafe.NombreCalidad);
+                conexion.AgregarParametro("@Comentario", calidadCafe.DescripcionCalidad);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -73,8 +73,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         CalidadCafe calCafe = new CalidadCafe()
                         {
                             IdCalidad = Convert.ToInt32(reader["id_calidad"]),
-                            nombreCalidad = Convert.ToString(reader["nombre_calidad"]),
-                            descripcionCalidad = Convert.ToString(reader["descripcion"])
+                            NombreCalidad = Convert.ToString(reader["nombre_calidad"]),
+                            DescripcionCalidad = Convert.ToString(reader["descripcion"])
                         };
 
                         calidadesCafe.Add(calCafe);
@@ -138,40 +138,41 @@ namespace sistema_modular_cafe_majada.model.DAO
             return exito;
         }
 
-        //public CalidadCafe Obtenerpersona(string nomCalidad)
-        //{
-        //    CalidadCafe calidad = null;
+        public CalidadCafe ObtenerNombreCalidad(string nomCalidad)
+        {
+            CalidadCafe calidad = null;
 
-        //    try
-        //    {
-        //        conexion.Conectar();
+            try
+            {
+                conexion.Conectar();
 
-        //        string consulta = "SELECT * FROM calidad_cafe WHERE nombre_calidad = @nomCal";
-        //        conexion.CrearComando(consulta);
-        //        conexion.AgregarParametro("@nomCal", nomCalidad);
+                string consulta = "SELECT * FROM calidad_cafe WHERE nombre_calidad = @nomCal";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@nomCal", nomCalidad);
 
-        //        using(MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
-        //        {
-        //            if(reader.Read())
-        //            {
-        //                calidad = new CalidadCafe()
-        //                {
-        //                    IdCalidad = Convert.ToInt32(reader["id_calidad"]),
-        //                    nombreCalidad = Convert.ToString(reader["nombre_calidad"]),
-        //                    descripcionCalidad = Convert.ToString(reader["descripcion"])
-        //                };
-        //            }
-        //        }
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        conexion.Desconectar();
-        //    }
-        //}
+                using(MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if(reader.Read())
+                    {
+                        calidad = new CalidadCafe()
+                        {
+                            IdCalidad = Convert.ToInt32(reader["id_calidad"]),
+                            NombreCalidad = Convert.ToString(reader["nombre_calidad"]),
+                            DescripcionCalidad = Convert.ToString(reader["descripcion"])
+                        };
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+            return calidad;
+        }
 
         public void EliminarCalidad (int idCalidad)
         {

@@ -1,86 +1,68 @@
 ﻿using sistema_modular_cafe_majada.model.DAO;
-using sistema_modular_cafe_majada.model.Mapping.Harvest;
+using sistema_modular_cafe_majada.model.Mapping.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sistema_modular_cafe_majada.controller.HarvestController
+namespace sistema_modular_cafe_majada.controller.ProductController
 {
-    class LoteController
+    class TipoCafeController
     {
-        private LoteDAO loteDAO;
+        private TipoCafeDAO tipoCafeDAO;
 
-        public LoteController()
+        public TipoCafeController()
         {
             // Inicializa la instancia de la clase 
-            loteDAO = new LoteDAO();
+            tipoCafeDAO = new TipoCafeDAO();
         }
 
         //
-        public List<Lote> ObtenerLotes()
+        public List<TipoCafe> ObtenerTipoCafes()
         {
-            List<Lote> lotes = new List<Lote>();
+            List<TipoCafe> tipoCafes = new List<TipoCafe>();
 
             try
             {
                 // Llamada al método del DAO para obtener los roles
-                lotes = loteDAO.ObtenerLotes();
+                tipoCafes = tipoCafeDAO.ObtenerTipoCafes();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocurrió un error al obtener los roles: " + ex.Message);
             }
 
-            return lotes;
-        }
-        
-        //
-        public List<Lote> ObtenerLotesNombreID()
-        {
-            List<Lote> lotes = new List<Lote>();
-
-            try
-            {
-                // Llamada al método del DAO para obtener los roles
-                lotes = loteDAO.ObtenerLotesNombreID();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ocurrió un error al obtener los roles: " + ex.Message);
-            }
-
-            return lotes;
+            return tipoCafes;
         }
 
         //
-        public Lote ObtenerLoteNombre(string nombre)
+        public TipoCafe ObtenerTipoCafeNombre(string nombre)
         {
-            Lote lote = null;
+            TipoCafe tipoCafe = null;
 
             try
             {
                 // Llamada al método del DAO para obtener el rol
-                lote = loteDAO.ObtenerLoteNombre(nombre);
+                tipoCafe = tipoCafeDAO.ObtenerTipoCafeNombre(nombre);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocurrió un error al obtener el rol: " + ex.Message);
             }
 
-            return lote;
+            return tipoCafe;
         }
 
         //
-        public bool InsertarLote(Lote lote)
+        public bool InsertarTipoCafe(TipoCafe tipoCafe)
         {
             bool exito = false;
 
             try
             {
                 // Llamada al método del DAO para insertar el rol
-                exito = loteDAO.InsertarLote(lote);
+                exito = tipoCafeDAO.InsertarTipoCafe(tipoCafe);
             }
             catch (Exception ex)
             {
@@ -91,30 +73,30 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
         }
 
         //
-        public bool ActualizarLote(int id, string nombre, double cantidad, DateTime fecha, int idtipo, int idCalidad, int idCosecha, int idFinca)
+        public bool ActualizarTipoCafe(int id, string nombre, string ubicacion)
         {
             bool exito = false;
 
             try
             {
                 // Llamada al método del DAO para actualizar el rol
-                exito = loteDAO.ActualizarLote(id, nombre, cantidad, fecha, idtipo, idCalidad, idCosecha, idFinca);
+                exito = tipoCafeDAO.ActualizarTipoCafe(id, nombre, ubicacion);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error durante la actualización del Lote: " + ex.Message);
+                Console.WriteLine("Ocurrió un error durante la actualización del tipoCafe: " + ex.Message);
             }
 
             return exito;
         }
 
         //
-        public void EliminarLote(int id)
+        public void EliminarTipoCafe(int id)
         {
             try
             {
                 // Llamada al método del DAO para eliminar el rol
-                loteDAO.EliminarLote(id);
+                tipoCafeDAO.EliminarTipoCafe(id);
             }
             catch (Exception ex)
             {
@@ -123,21 +105,22 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
         }
 
         //
-        public Lote ObtenerILote(int id)
+        public TipoCafe ObtenerITipoCafe(int id)
         {
-            Lote lote = null;
+            TipoCafe tipoCafe = null;
 
             try
             {
                 // Llamada al método del DAO para obtener el rol
-                lote = loteDAO.ObtenerIdLote(id);
+                tipoCafe = tipoCafeDAO.ObtenerIdTipoCafe(id);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ocurrió un error al obtener el rol: " + ex.Message);
             }
 
-            return lote;
+            return tipoCafe;
         }
+
     }
 }

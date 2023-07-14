@@ -28,14 +28,14 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Lote (nombre_lote, fecha_lote, cantidad_lote, tipo_cafe_lote, id_calidad_lote, id_cosecha_lote, id_finca_lote)
-                                    VALUES ( @nombre, @fecha, @cantidad, @tipo, @idCalida, @idCosecha, @idFinca)";
+                string consulta = @"INSERT INTO Lote (nombre_lote, fecha_lote, cantidad_lote, id_tipo_cafe_lote, id_calidad_lote, id_cosecha_lote, id_finca_lote)
+                                    VALUES ( @nombre, @fecha, @cantidad, @idtipo, @idCalidad, @idCosecha, @idFinca)";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@nombre", lote.NombreLote);
                 conexion.AgregarParametro("@fecha", DateTime.Now);
                 conexion.AgregarParametro("@cantidad", lote.CantidadLote);
-                conexion.AgregarParametro("@tipo", lote.TipoCafe);
+                conexion.AgregarParametro("@idtipo", lote.IdTipoCafe);
                 conexion.AgregarParametro("@idCalidad", lote.IdCalidadLote);
                 conexion.AgregarParametro("@idCosecha", lote.IdCosechaLote);
                 conexion.AgregarParametro("@idFinca", lote.IdFinca);
@@ -81,7 +81,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreLote = Convert.ToString(reader["nombre_lote"]),
                             FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
                             CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
-                            TipoCafe = Convert.ToString(reader["tipo_cafe_lote"]),
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe_lote"]),
                             IdCalidadLote = Convert.ToInt32(reader["id_calidad_lote"]),
                             IdCosechaLote = Convert.ToInt32(reader["id_cosecha_lote"]),
                             IdFinca = Convert.ToInt32(reader["id_finca_lote"])
@@ -113,11 +113,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                 //Se conecta con la base de datos
                 conexion.Conectar();
 
-                string consulta = @"SELECT l.id_lote, l.nombre_lote, l.fecha_lote, l.cantidad_lote, l.tipo_cafe_lote, cc.nombre_calidad, 
+                string consulta = @"SELECT l.id_lote, l.nombre_lote, l.fecha_lote, l.cantidad_lote, t.nombre_tipo_cafe, cc.nombre_calidad, 
                                         f.nombre_finca, c.nombre_cosecha
                                     FROM Lote l
                                     INNER JOIN Calidad_Cafe cc ON l.id_calidad_lote = cc.id_calidad 
                                     INNER JOIN Finca f ON l.id_finca_lote = f.id_finca 
+                                    INNER JOIN Tipo_Cafe t ON l.id_tipo_cafe_lote = t.id_tipo_cafe 
                                     INNER JOIN Cosecha c ON l.id_cosecha_lote = c.id_cosecha";
 
                 conexion.CrearComando(consulta);
@@ -132,7 +133,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreLote = Convert.ToString(reader["nombre_lote"]),
                             FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
                             CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
-                            TipoCafe = Convert.ToString(reader["tipo_cafe_lote"]),
+                            TipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
                             NombreCalidadLote = Convert.ToString(reader["nombre_calidad"]),
                             NombreCosechaLote = Convert.ToString(reader["nombre_cosecha"]),
                             NombreFinca = Convert.ToString(reader["nombre_finca"])
@@ -181,7 +182,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreLote = Convert.ToString(reader["nombre_lote"]),
                             FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
                             CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
-                            TipoCafe = Convert.ToString(reader["tipo_cafe_lote"]),
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe_lote"]),
                             IdCalidadLote = Convert.ToInt32(reader["id_calidad_lote"]),
                             IdCosechaLote = Convert.ToInt32(reader["id_cosecha_lote"]),
                             IdFinca = Convert.ToInt32(reader["id_finca_lote"])
@@ -230,7 +231,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreLote = Convert.ToString(reader["nombre_lote"]),
                             FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
                             CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
-                            TipoCafe = Convert.ToString(reader["tipo_cafe_lote"]),
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe_lote"]),
                             IdCalidadLote = Convert.ToInt32(reader["id_calidad_lote"]),
                             IdCosechaLote = Convert.ToInt32(reader["id_cosecha_lote"]),
                             IdFinca = Convert.ToInt32(reader["id_finca_lote"])
@@ -253,7 +254,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para actualizar un registro en la base de datos
-        public bool ActualizarLote(int id, string nombre, double cantidad, string tipo, int idCalidad, int idCosecha, int idFinca)
+        public bool ActualizarLote(int id, string nombre, double cantidad, DateTime fecha, int idtipo, int idCalidad, int idCosecha, int idFinca)
         {
             bool exito = false;
 
@@ -263,15 +264,15 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Lote SET nombre_lote = @nombre, fecha_lote = @fecha, cantidad_lote = @cantidad, tipo_cafe_lote = @tipo, 
-                                        id_calidad_lote = @calidad, id_cosecha_lote = @idCosecha, id_finca_lote = @idFinca
+                string consulta = @"UPDATE Lote SET nombre_lote = @nombre, fecha_lote = @fecha, cantidad_lote = @cantidad, id_tipo_cafe_lote = @idtipo, 
+                                        id_calidad_lote = @idCalidad, id_cosecha_lote = @idCosecha, id_finca_lote = @idFinca
                                     WHERE id_lote = @id";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@nombre", nombre);
-                conexion.AgregarParametro("@fecha", DateTime.Today);
+                conexion.AgregarParametro("@fecha", fecha);
                 conexion.AgregarParametro("@cantidad", cantidad);
-                conexion.AgregarParametro("@tipo", tipo);
+                conexion.AgregarParametro("@idtipo", idtipo);
                 conexion.AgregarParametro("@idCalidad", idCalidad);
                 conexion.AgregarParametro("@idCosecha", idCosecha);
                 conexion.AgregarParametro("@idFinca", idFinca);

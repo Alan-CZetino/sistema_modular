@@ -108,6 +108,7 @@
     <Compile Include="controller\ProductController\CCafeController.cs" />
     <Compile Include="controller\InfrastructureController\BeneficioController.cs" />
     <Compile Include="controller\InfrastructureController\FincaController.cs" />
+    <Compile Include="controller\ProductController\TipoCafeController.cs" />
     <Compile Include="controller\SecurityData\LogController.cs" />
     <Compile Include="controller\SecurityData\PasswordManager.cs" />
     <Compile Include="controller\UserDataController\PersonController.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="model\DAO\RoleDAO.cs" />
     <Compile Include="model\DAO\BeneficioDAO.cs" />
     <Compile Include="model\DAO\SecurityDAO\LogDAO.cs" />
+    <Compile Include="model\DAO\TipoCafeDAO.cs" />
     <Compile Include="model\Mapping\Acces\Module.cs" />
     <Compile Include="model\Mapping\Acces\Role.cs" />
     <Compile Include="model\Connection\ConnectionDB.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="model\Mapping\Harvest\Cosecha.cs" />
     <Compile Include="model\Mapping\Infrastructure\Beneficio.cs" />
     <Compile Include="model\Mapping\Operations\Personal.cs" />
+    <Compile Include="model\Mapping\Product\TipoCafe.cs" />
     <Compile Include="model\Mapping\UserData\Persona.cs" />
     <Compile Include="model\Mapping\UserData\Usuario.cs" />
     <Compile Include="views\form_activos_cafe.cs">
