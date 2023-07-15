@@ -285,10 +285,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Oswald Medium", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(184, 31);
+            this.label2.Location = new System.Drawing.Point(189, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(157, 64);
             this.label2.TabIndex = 3;
@@ -297,7 +297,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             // btn_excelCcalidades
             // 
-            this.btn_excelCcalidades.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_excelCcalidades.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_excelCcalidades.FlatAppearance.BorderSize = 0;
             this.btn_excelCcalidades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_excelCcalidades.Image = global::sistema_modular_cafe_majada.Properties.Resources.excel_24px;
@@ -309,7 +309,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             // btn_pdfCcalidades
             // 
-            this.btn_pdfCcalidades.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_pdfCcalidades.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_pdfCcalidades.FlatAppearance.BorderSize = 0;
             this.btn_pdfCcalidades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_pdfCcalidades.Image = global::sistema_modular_cafe_majada.Properties.Resources.pdf_24px;
