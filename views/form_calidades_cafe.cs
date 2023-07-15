@@ -83,8 +83,8 @@ namespace sistema_modular_cafe_majada.views
             //Se crea una instancia de la clase Calidades_cafe
             CalidadCafe calidadCafe = new CalidadCafe()
             {
-                nombreCalidad = nameCalidad,
-                descripcionCalidad = description
+                NombreCalidad = nameCalidad,
+                DescripcionCalidad = description
             };
 
             if(!imagenClickeada)
@@ -171,8 +171,8 @@ namespace sistema_modular_cafe_majada.views
                     imagenClickeada = true;
 
                     //se asignanlos registros a los cuadros de texto
-                    txb_nameCalidad.Text = calidadSeleccionada.nombreCalidad;
-                    txb_desCalidad.Text = calidadSeleccionada.descripcionCalidad;
+                    txb_nameCalidad.Text = calidadSeleccionada.NombreCalidad;
+                    txb_desCalidad.Text = calidadSeleccionada.DescripcionCalidad;
                     
                     calidadSeleccionada = null;
                 }
@@ -193,7 +193,7 @@ namespace sistema_modular_cafe_majada.views
                 UserController userController = new UserController();
                 //asignar el resultado de obtenerusuario
                 Usuario usuario = userController.ObtenerUsuario(UsuarioActual.NombreUsuario);
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro seleccionado "+calidadSeleccionada.nombreCalidad+"?","Pregunta",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro seleccionado "+calidadSeleccionada.NombreCalidad +"?","Pregunta",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
                 if(result==DialogResult.Yes)
                 {
@@ -202,7 +202,7 @@ namespace sistema_modular_cafe_majada.views
                     controller.EliminarCalidades(calidadSeleccionada.IdCalidad);
 
                     //verifica el departamento del log
-                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de calidad de café", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de Calidad de Café " + calidadSeleccionada.nombreCalidad + " en la base de datos");
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de calidad de café", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de Calidad de Café " + calidadSeleccionada.NombreCalidad + " en la base de datos");
 
                     MessageBox.Show("Calidad de Café Eliminada correctamente");
 
@@ -226,8 +226,8 @@ namespace sistema_modular_cafe_majada.views
             var datosCalidades = datosCCafe.Select(calidades => new
             {
                 Codigo = calidades.IdCalidad,
-                Calidad = calidades.nombreCalidad,
-                Descripcion = calidades.descripcionCalidad
+                Calidad = calidades.NombreCalidad,
+                Descripcion = calidades.DescripcionCalidad
             }).ToList();
 
             //se asignan los datos al datagrid
@@ -286,11 +286,11 @@ namespace sistema_modular_cafe_majada.views
             calidadSeleccionada = new CalidadCafe();
 
             calidadSeleccionada.IdCalidad = Convert.ToInt32(filaSeleccionada.Cells["Codigo"].Value);
-            calidadSeleccionada.nombreCalidad = filaSeleccionada.Cells["Calidad"].Value.ToString();
-            calidadSeleccionada.descripcionCalidad = filaSeleccionada.Cells["Descripcion"].Value.ToString();
+            calidadSeleccionada.NombreCalidad = filaSeleccionada.Cells["Calidad"].Value.ToString();
+            calidadSeleccionada.DescripcionCalidad = filaSeleccionada.Cells["Descripcion"].Value.ToString();
 
 
-            Console.WriteLine("depuracion - capturar datos dobleclick; nombre de calidad de café: " + calidadSeleccionada.nombreCalidad);
+            Console.WriteLine("depuracion - capturar datos dobleclick; nombre de calidad de café: " + calidadSeleccionada.NombreCalidad);
         }
     }
 }

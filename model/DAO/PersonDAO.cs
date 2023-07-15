@@ -156,6 +156,65 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //
+        public List<Persona> BuscarPersonas(string buscar)
+        {
+            List<Persona> personas = new List<Persona>();
+
+            try
+            {
+                // Conectar a la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT * FROM Persona WHERE nombres_persona LIKE CONCAT('%', @search, '%')
+                                        OR apellidos_persona LIKE CONCAT('%', @search, '%')  ";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", "%" + buscar + "%");
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Persona persona = new Persona()
+                        {
+                            IdPersona = Convert.ToInt32(reader["id_persona"]),
+                            NombresPersona = Convert.ToString(reader["nombres_persona"]),
+                            ApellidosPersona = Convert.ToString(reader["apellidos_persona"]),
+                            DireccionPersona = Convert.ToString(reader["direccion_persona"]),
+                            FechaNacimientoPersona = Convert.ToDateTime(reader["fecha_nac_persona"]),
+                            DuiPersona = Convert.ToString(reader["dui_persona"]),
+                            Telefono1Persona = Convert.ToString(reader["tel1_persona"])
+                        };
+
+                        // Verifica si el campo es nulo antes de asignarlo
+                        if (!Convert.IsDBNull(reader["nit_persona"]))
+                        {
+                            persona.NitPersona = Convert.ToString(reader["nit_persona"]);
+                        }
+
+                        if (!Convert.IsDBNull(reader["tel2_persona"]))
+                        {
+                            persona.Telefono2Persona = Convert.ToString(reader["tel2_persona"]);
+                        }
+
+                        personas.Add(persona);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de personas: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return personas;
+        }
+
+        //
         public Persona ObtenerPersona(string nombrePersona)
         {
             Persona persona = null;

@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using sistema_modular_cafe_majada.model.Connection;
-using sistema_modular_cafe_majada.model.Mapping.Harvest;
+using sistema_modular_cafe_majada.model.Mapping.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace sistema_modular_cafe_majada.model.DAO
 {
-    class CosechaDAO
+    class TipoCafeDAO
     {
         private ConnectionDB conexion;
 
-        public CosechaDAO()
+        public TipoCafeDAO()
         {
             //Se crea la instancia de la clase conexion
             conexion = new ConnectionDB();
         }
 
         //funcion para insertar un nuevo registro en la base de datos
-        public bool InsertarCosecha(Cosecha cosecha)
+        public bool InsertarTipoCafe(TipoCafe tipoCafe)
         {
             try
             {
@@ -28,13 +28,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Cosecha (id_cosecha, nombre_cosecha, fecha_cosecha)
-                                    VALUES (@id, @nombre, @fecha)";
+                string consulta = @"INSERT INTO Tipo_Cafe ( nombre_tipo_cafe, descripcion_tipo_cafe)
+                                    VALUES ( @nombre, @descripcion)";
                 conexion.CrearComando(consulta);
 
-                conexion.AgregarParametro("@id", cosecha.IdCosecha);
-                conexion.AgregarParametro("@nombre", cosecha.NombreCosecha);
-                conexion.AgregarParametro("@fecha", cosecha.FechaCosecha);
+                conexion.AgregarParametro("@nombre", tipoCafe.NombreTipoCafe);
+                conexion.AgregarParametro("@descripcion", tipoCafe.DescripcionTipoCafe);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -44,7 +43,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrio un error durante la inserción de la Cosecha en la base de datos: " + ex.Message);
+                Console.WriteLine("Ocurrio un error durante la inserción del TipoCafe en la base de datos: " + ex.Message);
                 return false;
             }
             finally
@@ -55,30 +54,30 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para mostrar todos los registros
-        public List<Cosecha> ObtenerCosecha()
+        public List<TipoCafe> ObtenerTipoCafes()
         {
-            List<Cosecha> listaCosecha = new List<Cosecha>();
+            List<TipoCafe> listaTipoCafe = new List<TipoCafe>();
 
             try
             {
                 //Se conecta con la base de datos
                 conexion.Conectar();
 
-                string consulta = @"SELECT * FROM Cosecha";
+                string consulta = @"SELECT * FROM Tipo_Cafe";
                 conexion.CrearComando(consulta);
 
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
                     while (reader.Read())
                     {
-                        Cosecha cosecha = new Cosecha()
+                        TipoCafe TipoCafes = new TipoCafe()
                         {
-                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
-                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe"]),
+                            NombreTipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
+                            DescripcionTipoCafe = Convert.ToString(reader["descripcion_tipo_cafe"])
                         };
-                        
-                        listaCosecha.Add(cosecha);
+
+                        listaTipoCafe.Add(TipoCafes);
                     }
                 }
             }
@@ -91,20 +90,20 @@ namespace sistema_modular_cafe_majada.model.DAO
                 //se cierra la conexion a la base de datos
                 conexion.Desconectar();
             }
-            return listaCosecha;
+            return listaTipoCafe;
         }
 
         //funcion para mostrar todos los registros
-        public List<Cosecha> BuscarCosecha(string buscar)
+        public List<TipoCafe> BuscadorTipoCafes(string buscar)
         {
-            List<Cosecha> listaCosecha = new List<Cosecha>();
+            List<TipoCafe> listaTipoCafe = new List<TipoCafe>();
 
             try
             {
                 //Se conecta con la base de datos
                 conexion.Conectar();
 
-                string consulta = @"SELECT * FROM Cosecha WHERE nombre_cosecha LIKE CONCAT('%', @search, '%') ";
+                string consulta = @"SELECT * FROM Tipo_Cafe WHERE nombre_tipo_cafe LIKE CONCAT('%', @search, '%') ";
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@search", "%" + buscar + "%");
 
@@ -112,14 +111,14 @@ namespace sistema_modular_cafe_majada.model.DAO
                 {
                     while (reader.Read())
                     {
-                        Cosecha cosecha = new Cosecha()
+                        TipoCafe TipoCafes = new TipoCafe()
                         {
-                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
-                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe"]),
+                            NombreTipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
+                            DescripcionTipoCafe = Convert.ToString(reader["descripcion_tipo_cafe"])
                         };
-                        
-                        listaCosecha.Add(cosecha);
+
+                        listaTipoCafe.Add(TipoCafes);
                     }
                 }
             }
@@ -132,13 +131,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 //se cierra la conexion a la base de datos
                 conexion.Desconectar();
             }
-            return listaCosecha;
+            return listaTipoCafe;
         }
 
-        //obtener la cosecha en especifico mediante el id en la BD
-        public Cosecha ObtenerIdCosecha(int id)
+        //obtener el TipoCafe en especifico mediante el id en la BD
+        public TipoCafe ObtenerIdTipoCafe(int idTip)
         {
-            Cosecha cosecha = null;
+            TipoCafe tipoCafe = null;
 
             try
             {
@@ -146,21 +145,21 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = "SELECT * FROM Cosecha WHERE id_cosecha = @Id";
+                string consulta = "SELECT * FROM Tipo_Cafe WHERE id_tipo_cafe = @Id";
 
                 conexion.CrearComando(consulta);
-                conexion.AgregarParametro("@Id", id);
+                conexion.AgregarParametro("@Id", idTip);
 
                 // Ejecutar la consulta y leer el resultado
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
                     if (reader.HasRows && reader.Read())
                     {
-                        cosecha = new Cosecha()
+                        tipoCafe = new TipoCafe()
                         {
-                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
-                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe"]),
+                            NombreTipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
+                            DescripcionTipoCafe = Convert.ToString(reader["descripcion_tipo_cafe"])
                         };
                     }
                 }
@@ -168,7 +167,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener la Cosecha: " + ex.Message);
+                Console.WriteLine("Error al obtener el TipoCafe: " + ex.Message);
             }
             finally
             {
@@ -176,13 +175,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
 
-            return cosecha;
+            return tipoCafe;
         }
 
-        //obtener la cosecha en especifico mediante el nombre en la BD
-        public Cosecha ObtenerNombreCosecha(string nombre)
+        //obtener el TipoCafe en especifico mediante el id en la BD
+        public TipoCafe ObtenerTipoCafeNombre(string nombre)
         {
-            Cosecha cosecha = null;
+            TipoCafe tipoCafe = null;
 
             try
             {
@@ -190,21 +189,21 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = "SELECT * FROM Cosecha WHERE nombre_cosecha = @Nombre";
+                string consulta = "SELECT * FROM Tipo_Cafe WHERE nombre_tipo_cafe = @nombreTip";
 
                 conexion.CrearComando(consulta);
-                conexion.AgregarParametro("@Nombre", nombre);
+                conexion.AgregarParametro("@nombreTip", nombre);
 
                 // Ejecutar la consulta y leer el resultado
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
                     if (reader.HasRows && reader.Read())
                     {
-                        cosecha = new Cosecha()
+                        tipoCafe = new TipoCafe()
                         {
-                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
-                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe"]),
+                            NombreTipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
+                            DescripcionTipoCafe = Convert.ToString(reader["descripcion_tipo_cafe"])
                         };
                     }
                 }
@@ -212,7 +211,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener la Cosecha: " + ex.Message);
+                Console.WriteLine("Error al obtener el TipoCafe: " + ex.Message);
             }
             finally
             {
@@ -220,11 +219,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
 
-            return cosecha;
+            return tipoCafe;
         }
 
         //funcion para actualizar un registro en la base de datos
-        public bool ActualizarCosecha(int id, string nombre, DateTime fecha)
+        public bool ActualizarTipoCafe(int idTipo, string nombreTipo, string descripcionTipo)
         {
             bool exito = false;
 
@@ -234,13 +233,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Cosecha SET nombre_cosecha = @Nombre, fecha_cosecha = @Fecha
-                                    WHERE id_cosecha = @id";
+                string consulta = @"UPDATE Tipo_Cafe SET nombre_tipo_cafe = @nombre, descripcion_tipo_cafe = @descripcion
+                                    WHERE id_tipo_cafe = @id";
                 conexion.CrearComando(consulta);
 
-                conexion.AgregarParametro("@Nombre", nombre);
-                conexion.AgregarParametro("@Fecha", fecha);
-                conexion.AgregarParametro("@id", id);
+                conexion.AgregarParametro("@nombre", nombreTipo);
+                conexion.AgregarParametro("@descripcion", descripcionTipo);
+                conexion.AgregarParametro("@id", idTipo);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -269,7 +268,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para eliminar un registro de la base de datos
-        public void EliminarCosecha(int id)
+        public void EliminarTipoCafe(int idTip)
         {
             try
             {
@@ -277,10 +276,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL
-                string consulta = @"DELETE FROM Cosecha WHERE id_cosecha = @id";
+                string consulta = @"DELETE FROM Tipo_Cafe WHERE id_tipo_cafe = @id";
 
                 conexion.CrearComando(consulta);
-                conexion.AgregarParametro("@id", id);
+                conexion.AgregarParametro("@id", idTip);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 

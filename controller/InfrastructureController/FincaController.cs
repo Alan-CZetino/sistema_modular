@@ -10,12 +10,12 @@ namespace sistema_modular_cafe_majada.controller
 {
     class FincaController
     {
-        private FincaDAO FincaDao;
+        private FincaDAO fincaDao;
 
         public FincaController()
         {
             //se inicia la instancia de la clase FincaDAO
-            FincaDao = new FincaDAO();
+            fincaDao = new FincaDAO();
         }
 
         //funcion que se enlaza con FincaDao para insertar un registro en la base de datos
@@ -24,7 +24,7 @@ namespace sistema_modular_cafe_majada.controller
             try
             {
                 //se realiza el llamado al metodo DAO para insertar
-                return FincaDao.InsertarFinca(finca);
+                return fincaDao.InsertarFinca(finca);
             }
             catch(Exception ex)
             {
@@ -38,7 +38,7 @@ namespace sistema_modular_cafe_majada.controller
             try
             {
                 //se realiza el llamado al metodo DAO para obtener fincas
-                return FincaDao.ObtenerFincas();
+                return fincaDao.ObtenerFincas();
             }
             catch(Exception ex)
             {
@@ -47,12 +47,46 @@ namespace sistema_modular_cafe_majada.controller
             }
         }
 
+        //
+        public List<Finca> BuscadorFinca(string buscar)
+        {
+            List<Finca> finca = new List<Finca>();
+
+            try
+            {
+                // Llamada al método del DAO para obtener los roles
+                finca = fincaDao.BuscarFincas(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los Tipos de Cafe: " + ex.Message);
+            }
+
+            return finca;
+        }
+
+        //
+        public Finca ObtenerNombreFincas(string nombre)
+        {
+            try
+            {
+                //se realiza el llamado al metodo DAO para obtener fincas
+                return fincaDao.ObtenerNombreFinca(nombre);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener la lista de Fincas: " + ex.Message);
+                return null;
+            }
+        }
+
+
         public bool ActualizarFincas(int id,string nomFinca,string ubiFinca)
         {
             try
             {
                 //se realiza el llamado al metodo DAO para modificar
-                return FincaDao.ActualizarFinca(id, nomFinca, ubiFinca);
+                return fincaDao.ActualizarFinca(id, nomFinca, ubiFinca);
             }
             catch(Exception ex)
             {
@@ -66,7 +100,7 @@ namespace sistema_modular_cafe_majada.controller
             try
             {
                 //se realiza el llamado al metodo DAO para eliminar
-                FincaDao.EliminarFinca(id);
+                fincaDao.EliminarFinca(id);
             }
             catch(Exception ex)
             {

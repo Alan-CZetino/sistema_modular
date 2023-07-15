@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace sistema_modular_cafe_majada.model.DAO
 {
-    class CosechaDAO
+    class LoteDAO
     {
         private ConnectionDB conexion;
 
-        public CosechaDAO()
+        public LoteDAO()
         {
             //Se crea la instancia de la clase conexion
             conexion = new ConnectionDB();
         }
 
         //funcion para insertar un nuevo registro en la base de datos
-        public bool InsertarCosecha(Cosecha cosecha)
+        public bool InsertarLote(Lote lote)
         {
             try
             {
@@ -28,13 +28,17 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Cosecha (id_cosecha, nombre_cosecha, fecha_cosecha)
-                                    VALUES (@id, @nombre, @fecha)";
+                string consulta = @"INSERT INTO Lote (nombre_lote, fecha_lote, cantidad_lote, id_tipo_cafe_lote, id_calidad_lote, id_cosecha_lote, id_finca_lote)
+                                    VALUES ( @nombre, @fecha, @cantidad, @idtipo, @idCalidad, @idCosecha, @idFinca)";
                 conexion.CrearComando(consulta);
 
-                conexion.AgregarParametro("@id", cosecha.IdCosecha);
-                conexion.AgregarParametro("@nombre", cosecha.NombreCosecha);
-                conexion.AgregarParametro("@fecha", cosecha.FechaCosecha);
+                conexion.AgregarParametro("@nombre", lote.NombreLote);
+                conexion.AgregarParametro("@fecha", DateTime.Now);
+                conexion.AgregarParametro("@cantidad", lote.CantidadLote);
+                conexion.AgregarParametro("@idtipo", lote.IdTipoCafe);
+                conexion.AgregarParametro("@idCalidad", lote.IdCalidadLote);
+                conexion.AgregarParametro("@idCosecha", lote.IdCosechaLote);
+                conexion.AgregarParametro("@idFinca", lote.IdFinca);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -44,7 +48,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrio un error durante la inserción de la Cosecha en la base de datos: " + ex.Message);
+                Console.WriteLine("Ocurrio un error durante la inserción del Lote en la base de datos: " + ex.Message);
                 return false;
             }
             finally
@@ -55,30 +59,35 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para mostrar todos los registros
-        public List<Cosecha> ObtenerCosecha()
+        public List<Lote> ObtenerLotes()
         {
-            List<Cosecha> listaCosecha = new List<Cosecha>();
+            List<Lote> listaLote = new List<Lote>();
 
             try
             {
                 //Se conecta con la base de datos
                 conexion.Conectar();
 
-                string consulta = @"SELECT * FROM Cosecha";
+                string consulta = @"SELECT * FROM Lote";
                 conexion.CrearComando(consulta);
 
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
                     while (reader.Read())
                     {
-                        Cosecha cosecha = new Cosecha()
+                        Lote lotes = new Lote()
                         {
-                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
-                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                            IdLote = Convert.ToInt32(reader["id_lote"]),
+                            NombreLote = Convert.ToString(reader["nombre_lote"]),
+                            FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
+                            CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe_lote"]),
+                            IdCalidadLote = Convert.ToInt32(reader["id_calidad_lote"]),
+                            IdCosechaLote = Convert.ToInt32(reader["id_cosecha_lote"]),
+                            IdFinca = Convert.ToInt32(reader["id_finca_lote"])
                         };
-                        
-                        listaCosecha.Add(cosecha);
+
+                        listaLote.Add(lotes);
                     }
                 }
             }
@@ -91,35 +100,46 @@ namespace sistema_modular_cafe_majada.model.DAO
                 //se cierra la conexion a la base de datos
                 conexion.Desconectar();
             }
-            return listaCosecha;
+            return listaLote;
         }
 
         //funcion para mostrar todos los registros
-        public List<Cosecha> BuscarCosecha(string buscar)
+        public List<Lote> ObtenerLotesNombreID()
         {
-            List<Cosecha> listaCosecha = new List<Cosecha>();
+            List<Lote> listaLote = new List<Lote>();
 
             try
             {
                 //Se conecta con la base de datos
                 conexion.Conectar();
 
-                string consulta = @"SELECT * FROM Cosecha WHERE nombre_cosecha LIKE CONCAT('%', @search, '%') ";
+                string consulta = @"SELECT l.id_lote, l.nombre_lote, l.fecha_lote, l.cantidad_lote, t.nombre_tipo_cafe, cc.nombre_calidad, 
+                                        f.nombre_finca, c.nombre_cosecha
+                                    FROM Lote l
+                                    INNER JOIN Calidad_Cafe cc ON l.id_calidad_lote = cc.id_calidad 
+                                    INNER JOIN Finca f ON l.id_finca_lote = f.id_finca 
+                                    INNER JOIN Tipo_Cafe t ON l.id_tipo_cafe_lote = t.id_tipo_cafe 
+                                    INNER JOIN Cosecha c ON l.id_cosecha_lote = c.id_cosecha";
+
                 conexion.CrearComando(consulta);
-                conexion.AgregarParametro("@search", "%" + buscar + "%");
 
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
                     while (reader.Read())
                     {
-                        Cosecha cosecha = new Cosecha()
+                        Lote lotes = new Lote()
                         {
-                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
-                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                            IdLote = Convert.ToInt32(reader["id_lote"]),
+                            NombreLote = Convert.ToString(reader["nombre_lote"]),
+                            FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
+                            CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
+                            TipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
+                            NombreCalidadLote = Convert.ToString(reader["nombre_calidad"]),
+                            NombreCosechaLote = Convert.ToString(reader["nombre_cosecha"]),
+                            NombreFinca = Convert.ToString(reader["nombre_finca"])
                         };
-                        
-                        listaCosecha.Add(cosecha);
+
+                        listaLote.Add(lotes);
                     }
                 }
             }
@@ -132,13 +152,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 //se cierra la conexion a la base de datos
                 conexion.Desconectar();
             }
-            return listaCosecha;
+            return listaLote;
         }
 
-        //obtener la cosecha en especifico mediante el id en la BD
-        public Cosecha ObtenerIdCosecha(int id)
+        //obtener el Lote en especifico mediante el id en la BD
+        public Lote ObtenerIdLote(int id)
         {
-            Cosecha cosecha = null;
+            Lote lote = null;
 
             try
             {
@@ -146,7 +166,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = "SELECT * FROM Cosecha WHERE id_cosecha = @Id";
+                string consulta = "SELECT * FROM Lote WHERE id_lote = @Id";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@Id", id);
@@ -156,11 +176,16 @@ namespace sistema_modular_cafe_majada.model.DAO
                 {
                     if (reader.HasRows && reader.Read())
                     {
-                        cosecha = new Cosecha()
+                        lote = new Lote()
                         {
-                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
-                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                            IdLote = Convert.ToInt32(reader["id_lote"]),
+                            NombreLote = Convert.ToString(reader["nombre_lote"]),
+                            FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
+                            CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe_lote"]),
+                            IdCalidadLote = Convert.ToInt32(reader["id_calidad_lote"]),
+                            IdCosechaLote = Convert.ToInt32(reader["id_cosecha_lote"]),
+                            IdFinca = Convert.ToInt32(reader["id_finca_lote"])
                         };
                     }
                 }
@@ -168,7 +193,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener la Cosecha: " + ex.Message);
+                Console.WriteLine("Error al obtener el Lote: " + ex.Message);
             }
             finally
             {
@@ -176,13 +201,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
 
-            return cosecha;
+            return lote;
         }
 
-        //obtener la cosecha en especifico mediante el nombre en la BD
-        public Cosecha ObtenerNombreCosecha(string nombre)
+        //obtener el lote en especifico mediante el id en la BD
+        public Lote ObtenerLoteNombre(string nombre)
         {
-            Cosecha cosecha = null;
+            Lote lote = null;
 
             try
             {
@@ -190,21 +215,26 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = "SELECT * FROM Cosecha WHERE nombre_cosecha = @Nombre";
+                string consulta = "SELECT * FROM Lote WHERE nombre_lote = @nombreLote";
 
                 conexion.CrearComando(consulta);
-                conexion.AgregarParametro("@Nombre", nombre);
+                conexion.AgregarParametro("@nombreLote", nombre);
 
                 // Ejecutar la consulta y leer el resultado
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
                     if (reader.HasRows && reader.Read())
                     {
-                        cosecha = new Cosecha()
+                        lote = new Lote()
                         {
-                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
-                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                            IdLote = Convert.ToInt32(reader["id_lote"]),
+                            NombreLote = Convert.ToString(reader["nombre_lote"]),
+                            FechaLote = Convert.ToDateTime(reader["fecha_lote"]),
+                            CantidadLote = Convert.ToDouble(reader["cantidad_lote"]),
+                            IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe_lote"]),
+                            IdCalidadLote = Convert.ToInt32(reader["id_calidad_lote"]),
+                            IdCosechaLote = Convert.ToInt32(reader["id_cosecha_lote"]),
+                            IdFinca = Convert.ToInt32(reader["id_finca_lote"])
                         };
                     }
                 }
@@ -212,7 +242,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al obtener la Cosecha: " + ex.Message);
+                Console.WriteLine("Error al obtener el lote: " + ex.Message);
             }
             finally
             {
@@ -220,11 +250,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
 
-            return cosecha;
+            return lote;
         }
 
         //funcion para actualizar un registro en la base de datos
-        public bool ActualizarCosecha(int id, string nombre, DateTime fecha)
+        public bool ActualizarLote(int id, string nombre, double cantidad, DateTime fecha, int idtipo, int idCalidad, int idCosecha, int idFinca)
         {
             bool exito = false;
 
@@ -234,12 +264,18 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Cosecha SET nombre_cosecha = @Nombre, fecha_cosecha = @Fecha
-                                    WHERE id_cosecha = @id";
+                string consulta = @"UPDATE Lote SET nombre_lote = @nombre, fecha_lote = @fecha, cantidad_lote = @cantidad, id_tipo_cafe_lote = @idtipo, 
+                                        id_calidad_lote = @idCalidad, id_cosecha_lote = @idCosecha, id_finca_lote = @idFinca
+                                    WHERE id_lote = @id";
                 conexion.CrearComando(consulta);
 
-                conexion.AgregarParametro("@Nombre", nombre);
-                conexion.AgregarParametro("@Fecha", fecha);
+                conexion.AgregarParametro("@nombre", nombre);
+                conexion.AgregarParametro("@fecha", fecha);
+                conexion.AgregarParametro("@cantidad", cantidad);
+                conexion.AgregarParametro("@idtipo", idtipo);
+                conexion.AgregarParametro("@idCalidad", idCalidad);
+                conexion.AgregarParametro("@idCosecha", idCosecha);
+                conexion.AgregarParametro("@idFinca", idFinca);
                 conexion.AgregarParametro("@id", id);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
@@ -269,7 +305,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para eliminar un registro de la base de datos
-        public void EliminarCosecha(int id)
+        public void EliminarLote(int id)
         {
             try
             {
@@ -277,7 +313,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL
-                string consulta = @"DELETE FROM Cosecha WHERE id_cosecha = @id";
+                string consulta = @"DELETE FROM Lote WHERE id_lote = @id";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@id", id);
@@ -303,6 +339,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
         }
+
 
     }
 }

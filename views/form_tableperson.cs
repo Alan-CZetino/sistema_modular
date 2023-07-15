@@ -14,6 +14,7 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_tableperson : Form
     {
+        List<Persona> datos = new List<Persona>();
         public form_tableperson()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace sistema_modular_cafe_majada.views
             dtg_tablePerson.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             //funcion para mostrar de inicio los datos en el dataGrid
-            ShowPersonGrid();
+            ShowPersonGrid(txb_buscarPer);
 
             //esta es una llamada para funcion para pintar las filas del datagrid
             dtg_tablePerson.CellPainting += dtg_tablePerson_CellPainting;
@@ -54,11 +55,22 @@ namespace sistema_modular_cafe_majada.views
             this.Close();
         }
 
-        public void ShowPersonGrid()
+        public void ShowPersonGrid(TextBox text)
         {
-            // Llamar al método para obtener los datos de la base de datos
             var personController = new PersonController();
-            List<Persona> datos = personController.ObtenerPersonas();
+            
+
+            if (string.IsNullOrWhiteSpace(text.Text) || text.Text == "Buscar...")
+            {
+                // Llamar al método para obtener los datos de la base de datos
+                datos = personController.ObtenerPersonas();
+            }
+            else
+            {
+                // Llamar al método para obtener los datos de la base de datos
+                datos = personController.BuscarPersonas(text.Text);
+
+            }
 
             var datosPersonalizados = datos.Select(persona => new
             {
@@ -109,6 +121,11 @@ namespace sistema_modular_cafe_majada.views
                 txb_buscarPer.Text = "Buscar...";
                 txb_buscarPer.ForeColor = Color.DimGray;
             }
+        }
+
+        private void txb_buscarPer_TextChanged(object sender, EventArgs e)
+        {
+            ShowPersonGrid(txb_buscarPer);
         }
     }
 }
