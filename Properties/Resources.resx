@@ -124,6 +124,9 @@
   <data name="impresora" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\impresora.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="grano-de-cafe 512px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\grano-de-cafe 512px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="x__1___1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\x (1) (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,6 +148,9 @@
   <data name="logo_cafe_majada" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_cafe_majada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="usuario_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usuario 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,13 +166,7 @@
   <data name="admin_1_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\admin 1 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="panel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\panel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cosecha_45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cosecha 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cosecha 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cosecha 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="eliminar__1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -178,6 +178,9 @@
   <data name="servicio_al_cliente_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\servicio-al-cliente 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="panel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\panel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="lupa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lupa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -187,20 +190,20 @@
   <data name="administracion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\administracion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="btn_guardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_guardar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="eliminar__2_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eliminar (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="roles 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\roles 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="admin_2_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\admin 2 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tablas_45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tablas 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cuadrado__2_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cuadrado (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icono_majada" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono-majada.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btn_guardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btn_guardar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boton_eliminar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boton-eliminar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,8 +220,8 @@
   <data name="splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="admin_2_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\admin 2 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cuadrado__2_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cuadrado (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="personas 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\personas 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,31 +229,34 @@
   <data name="cerrar_sesion1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cerrar_sesion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_oficial_majada" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo oficial majada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="modulo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\modulo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="roles 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\roles 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Barra de busqueda" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Barra de busqueda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="usuario_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usuario 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="almacen_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\almacen 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="grano-de-cafe 64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\grano-de-cafe 64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_oficial_majada" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo oficial majada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="grano-de-cafe 24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\grano-de-cafe 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="grano-de-cafe 512px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\grano-de-cafe 512px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="modulo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\modulo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Barra de busqueda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Barra de busqueda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cosecha 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cosecha 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="almacen_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\almacen 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono_majada64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono-majada64px.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo_majada_claro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo_majada_claro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo__majada" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo__majada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

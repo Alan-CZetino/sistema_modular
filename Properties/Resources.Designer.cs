@@ -273,9 +273,9 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
         /// </summary>
-        internal static System.Drawing.Icon icono_majada {
+        internal static System.Drawing.Icon icono_majada64px {
             get {
-                object obj = ResourceManager.GetObject("icono_majada", resourceCulture);
+                object obj = ResourceManager.GetObject("icono_majada64px", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -293,9 +293,29 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logo__majada {
+            get {
+                object obj = ResourceManager.GetObject("Logo__majada", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_cafe_majada {
             get {
                 object obj = ResourceManager.GetObject("logo_cafe_majada", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo_majada_claro {
+            get {
+                object obj = ResourceManager.GetObject("Logo_majada_claro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

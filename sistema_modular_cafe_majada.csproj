@@ -414,6 +414,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\circle-info-solid.png" />
+    <None Include="Resources\Logo__majada.png" />
+    <None Include="Resources\Logo_majada_claro.png" />
+    <None Include="Resources\icono-majada64px.ico" />
+    <None Include="Resources\icono_majada-64px.ico" />
     <None Include="Resources\grano-de-cafe 512px.png" />
     <None Include="Resources\grano-de-cafe 24px.png" />
     <None Include="Resources\grano-de-cafe 64px.png" />
@@ -527,7 +531,7 @@
     <None Include="Resources\logo_cafe_majada.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icono-majada.ico" />
+    <Resource Include="Resources\icono-majada.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icono-majada.ico" />

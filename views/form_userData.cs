@@ -27,35 +27,12 @@ namespace sistema_modular_cafe_majada.views
         public form_userData()
         {
             InitializeComponent();
-            StyleChekedListBox();
-        }
-
-        public void StyleChekedListBox()
-        {
-            clb_permisos.ItemHeight = 30; // Cambiar la altura de cada elemento
-            clb_permisos.Padding = new Padding(10, 5, 10, 5); // Cambiar el relleno interno de cada elemento
-            clb_permisos.Margin = new Padding(5); // Cambiar el margen externo del CheckedListBox
-            //clb_permisos.SelectionMode = SelectionMode.MultiSimple; // Permitir múltiples elementos seleccionados
-            clb_permisos.BorderStyle = BorderStyle.Fixed3D; // Establecer un borde sólido
-            clb_permisos.Font = new Font("Oswald-Medium", 12, FontStyle.Bold); // Establecer la fuente y tamaño del texto
-
         }
 
         private void form_userData_Load(object sender, EventArgs e)
         {
             ReadOnlyTextbox(true);
             ShowDataUser();
-        }
-
-        private void btn_tableUser_Click(object sender, EventArgs e)
-        {
-            form_tableUser ftUser = new form_tableUser();
-            if (ftUser.ShowDialog() == DialogResult.OK)
-            {
-                CargarModulosCheckedListBox();
-                txb_UDuser.Text = UsuarioSeleccionado.Usuario;
-                //ftUser.ShowDialog();
-            }
         }
 
         public void ReadOnlyTextbox(bool verific)
@@ -132,26 +109,10 @@ namespace sistema_modular_cafe_majada.views
             txb_UDpassActual.Text = user.ClaveUsuario;
         }
 
-        private void CargarModulosCheckedListBox()
-        {
-            var moduleControl = new ModuleController();
-            // Obtener los módulos del controlador
-            List<Module> modulos = moduleControl.ObtenerModulos();
-
-            // Limpiar el CheckedListBox
-            clb_permisos.Items.Clear();
-
-            // Agregar los módulos al CheckedListBox
-            foreach (Module modulo in modulos)
-            {
-                clb_permisos.Items.Add(modulo.NombreModulo);
-            }
-        }
-
         //
         public void ClearDataTxb()
         {
-            List<TextBox> txb = new List<TextBox> { txb_UDname, txb_UDnameuser, txb_UDemail, txb_UDpassActual, txb_UDpassConf, txb_UDpassNew, txb_UDrol, txb_UDuser };
+            List<TextBox> txb = new List<TextBox> { txb_UDname, txb_UDnameuser, txb_UDemail, txb_UDpassActual, txb_UDpassConf, txb_UDpassNew, txb_UDrol };
 
             foreach (TextBox textBox in txb)
             {

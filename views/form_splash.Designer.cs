@@ -30,6 +30,7 @@ namespace sistema_modular_cafe_majada.views
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_splash));
             this.label1 = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,7 +47,7 @@ namespace sistema_modular_cafe_majada.views
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 412);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 22);
+            this.label1.Size = new System.Drawing.Size(96, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Versión 0.1 (alfa)";
             // 
@@ -93,6 +94,7 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(750, 450);
             this.MinimumSize = new System.Drawing.Size(750, 450);
             this.Name = "form_splash";

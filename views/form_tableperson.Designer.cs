@@ -29,6 +29,7 @@ namespace sistema_modular_cafe_majada.views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_tableperson));
             this.btn_close = new System.Windows.Forms.Button();
             this.dtg_tablePerson = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -62,7 +63,7 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtg_tablePerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_tablePerson.Location = new System.Drawing.Point(11, 100);
-            this.dtg_tablePerson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtg_tablePerson.Margin = new System.Windows.Forms.Padding(4);
             this.dtg_tablePerson.Name = "dtg_tablePerson";
             this.dtg_tablePerson.ReadOnly = true;
             this.dtg_tablePerson.RowHeadersWidth = 51;
@@ -108,7 +109,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(3, 595);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1061, 2);
             this.panel5.TabIndex = 6;
@@ -152,7 +153,8 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtg_tablePerson);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1067, 597);
             this.Name = "form_tableperson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
