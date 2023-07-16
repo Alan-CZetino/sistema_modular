@@ -210,6 +210,12 @@
     <Compile Include="views\form_maquinas.Designer.cs">
       <DependentUpon>form_maquinas.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_opcGeneralData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_opcGeneralData.Designer.cs">
+      <DependentUpon>form_opcGeneralData.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_opcLote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,11 +266,11 @@
     <Compile Include="views\form_splash.Designer.cs">
       <DependentUpon>form_splash.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_subpatidas.cs">
+    <Compile Include="views\form_coffeeStocks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_subpatidas.Designer.cs">
-      <DependentUpon>form_subpatidas.cs</DependentUpon>
+    <Compile Include="views\form_coffeeStocks.Designer.cs">
+      <DependentUpon>form_coffeeStocks.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_subprod_cafe.cs">
       <SubType>Form</SubType>
@@ -338,6 +344,9 @@
     <EmbeddedResource Include="views\form_maquinas.resx">
       <DependentUpon>form_maquinas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\form_opcGeneralData.resx">
+      <DependentUpon>form_opcGeneralData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_opcLote.resx">
       <DependentUpon>form_opcLote.cs</DependentUpon>
     </EmbeddedResource>
@@ -373,8 +382,8 @@
     <EmbeddedResource Include="views\form_splash.resx">
       <DependentUpon>form_splash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_subpatidas.resx">
-      <DependentUpon>form_subpatidas.cs</DependentUpon>
+    <EmbeddedResource Include="views\form_coffeeStocks.resx">
+      <DependentUpon>form_coffeeStocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_subprod_cafe.resx">
       <DependentUpon>form_subprod_cafe.cs</DependentUpon>
@@ -418,6 +427,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\coffee-cup-presentation.png" />
+    <None Include="Resources\coffee-cup.png" />
+    <None Include="Resources\control-de-calidad 64px.png" />
+    <None Include="Resources\sub_productos 64px.png" />
+    <None Include="Resources\clase_uva64px.png" />
+    <None Include="Resources\finca64px.png" />
+    <None Include="Resources\beneficio64px.png" />
     <Content Include="Resources\circle-info-solid.png" />
     <None Include="Resources\Logo__majada.png" />
     <None Include="Resources\Logo_majada_claro.png" />

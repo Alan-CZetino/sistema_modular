@@ -123,6 +123,16 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap beneficio64px {
+            get {
+                object obj = ResourceManager.GetObject("beneficio64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap boton_eliminar {
             get {
                 object obj = ResourceManager.GetObject("boton_eliminar", resourceCulture);
@@ -156,6 +166,46 @@ namespace sistema_modular_cafe_majada.Properties {
         internal static System.Drawing.Bitmap cerrar_sesion1 {
             get {
                 object obj = ResourceManager.GetObject("cerrar_sesion1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap clase_uva64px {
+            get {
+                object obj = ResourceManager.GetObject("clase_uva64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap coffee_cup {
+            get {
+                object obj = ResourceManager.GetObject("coffee-cup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap coffee_cup_presentation {
+            get {
+                object obj = ResourceManager.GetObject("coffee-cup-presentation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap control_de_calidad_64px {
+            get {
+                object obj = ResourceManager.GetObject("control_de_calidad_64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -236,6 +286,16 @@ namespace sistema_modular_cafe_majada.Properties {
         internal static System.Drawing.Bitmap existencias_cafe {
             get {
                 object obj = ResourceManager.GetObject("existencias_cafe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap finca64px {
+            get {
+                object obj = ResourceManager.GetObject("finca64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -436,6 +496,16 @@ namespace sistema_modular_cafe_majada.Properties {
         internal static System.Drawing.Bitmap splash {
             get {
                 object obj = ResourceManager.GetObject("splash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sub_productos_64px {
+            get {
+                object obj = ResourceManager.GetObject("sub_productos_64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

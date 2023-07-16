@@ -22,6 +22,7 @@ namespace sistema_modular_cafe_majada
         private Usuario usuario;
         private LogController log;
 
+
         public string NombreUsuario
         {
             get { return _nombreUsuario; }
@@ -45,7 +46,6 @@ namespace sistema_modular_cafe_majada
             //Console.WriteLine("Constructor - Nombre de usuario: " + NombreUsuario);
 
             lbl_nameModule.Text = ModuloActual.NombreModulo;
-
         }
 
         private void form_main_Load(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace sistema_modular_cafe_majada
 
         private void btn_activos_Click(object sender, EventArgs e)
         {
-            form_subpatidas fact = new form_subpatidas();
+            form_coffeeStocks fact = new form_coffeeStocks();
             AddFormulario(fact);
         }
 
@@ -107,6 +107,7 @@ namespace sistema_modular_cafe_majada
 
         private void btn_reportes_Click(object sender, EventArgs e)
         {
+
             form_reportes frepor = new form_reportes();
             AddFormulario(frepor);
         }
@@ -116,9 +117,9 @@ namespace sistema_modular_cafe_majada
             log = new LogController();
             UserController usuarioControl = new UserController();
             var usuario = usuarioControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
-            
+
             DialogResult result = MessageBox.Show("¿Estás seguro de cerrar seccion?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
+
             if (result == DialogResult.Yes)
             {
                 //verificar el departamento
@@ -143,6 +144,33 @@ namespace sistema_modular_cafe_majada
         {
             form_userData fUserData = new form_userData();
             AddFormulario(fUserData);
+        }
+
+        private void form_main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+            {
+                if (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Left)
+                {
+                    // Evita que el formulario se redimensione hacia la izquierda
+                    e.Handled = true;
+                }
+                else if (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Right)
+                {
+                    // Evita que el formulario se redimensione hacia la derecha
+                    e.Handled = true;
+                }
+                else if (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Up)
+                {
+                    // Evita que el formulario se redimensione hacia arriba
+                    e.Handled = true;
+                }
+                else if (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Down)
+                {
+                    // Evita que el formulario se redimensione hacia abajo
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

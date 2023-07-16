@@ -31,13 +31,13 @@ namespace sistema_modular_cafe_majada.views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_opcLote));
             this.txb_buscarOpc = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
             this.dtg_tableOpc = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_tableOpc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txb_buscarOpc
@@ -55,18 +55,6 @@ namespace sistema_modular_cafe_majada.views
             this.txb_buscarOpc.TextChanged += new System.EventHandler(this.txb_buscarOpc_TextChanged);
             this.txb_buscarOpc.Enter += new System.EventHandler(this.txb_buscarOpc_Enter);
             this.txb_buscarOpc.Leave += new System.EventHandler(this.txb_buscarOpc_Leave);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.Image = global::sistema_modular_cafe_majada.Properties.Resources.Barra_de_busqueda;
-            this.pictureBox1.Location = new System.Drawing.Point(312, 42);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(443, 34);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -102,7 +90,7 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtg_tableOpc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_tableOpc.Location = new System.Drawing.Point(9, 102);
-            this.dtg_tableOpc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtg_tableOpc.Margin = new System.Windows.Forms.Padding(4);
             this.dtg_tableOpc.Name = "dtg_tableOpc";
             this.dtg_tableOpc.ReadOnly = true;
             this.dtg_tableOpc.RowHeadersWidth = 51;
@@ -110,6 +98,18 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_tableOpc.Size = new System.Drawing.Size(1045, 482);
             this.dtg_tableOpc.TabIndex = 9;
             this.dtg_tableOpc.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_tableOpc_CellDoubleClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.Image = global::sistema_modular_cafe_majada.Properties.Resources.Barra_de_busqueda;
+            this.pictureBox1.Location = new System.Drawing.Point(312, 42);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(443, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // form_opcLote
             // 
@@ -123,16 +123,16 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.dtg_tableOpc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1067, 597);
             this.MinimumSize = new System.Drawing.Size(1067, 597);
             this.Name = "form_opcLote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "form_opcLote";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.form_opcLote_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_tableOpc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,9 +141,9 @@ namespace sistema_modular_cafe_majada.views
         #endregion
 
         private System.Windows.Forms.TextBox txb_buscarOpc;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.DataGridView dtg_tableOpc;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
