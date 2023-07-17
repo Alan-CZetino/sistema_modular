@@ -11,6 +11,7 @@ namespace sistema_modular_cafe_majada.model.Mapping
         public int IdCalidad { get; set; }
         public string NombreCalidad { get; set; }
         public string DescripcionCalidad { get; set;}
+        public int CountCalidad { get; set;}
 
     }
 

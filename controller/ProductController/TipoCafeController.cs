@@ -73,6 +73,24 @@ namespace sistema_modular_cafe_majada.controller.ProductController
         }
 
         //
+        public TipoCafe CountTipoCafe()
+        {
+            TipoCafe tipoCafe = null;
+
+            try
+            {
+                // Llamada al método del DAO para obtener el rol
+                tipoCafe = tipoCafeDAO.CountTipoCafe();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener el total de Tipo de Cafe: " + ex.Message);
+            }
+
+            return tipoCafe;
+        }
+
+        //
         public bool InsertarTipoCafe(TipoCafe tipoCafe)
         {
             bool exito = false;

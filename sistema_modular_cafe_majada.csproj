@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -100,6 +100,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\AccesController\ChargeController.cs" />
     <Compile Include="controller\AccesController\ModuleController.cs" />
     <Compile Include="controller\AccesController\RoleController.cs" />
     <Compile Include="controller\HarvestController\CosechaController.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="controller\UserDataController\PersonController.cs" />
     <Compile Include="controller\UserDataController\UserController.cs" />
     <Compile Include="model\DAO\CalidadCafeDAO.cs" />
+    <Compile Include="model\DAO\ChargeDAO.cs" />
     <Compile Include="model\DAO\CosechaDAO.cs" />
     <Compile Include="model\DAO\FincaDAO.cs" />
     <Compile Include="model\DAO\LoteDAO.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="model\DAO\BeneficioDAO.cs" />
     <Compile Include="model\DAO\SecurityDAO\LogDAO.cs" />
     <Compile Include="model\DAO\TipoCafeDAO.cs" />
+    <Compile Include="model\Mapping\Acces\Charge.cs" />
     <Compile Include="model\Mapping\Acces\Module.cs" />
     <Compile Include="model\Mapping\Acces\Role.cs" />
     <Compile Include="model\Connection\ConnectionDB.cs" />

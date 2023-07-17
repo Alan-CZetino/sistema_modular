@@ -24,17 +24,18 @@ namespace sistema_modular_cafe_majada.model.DAO
         {
             try
             {
+                Console.WriteLine("Depurador - insercion DAO: " + personal.NombrePersonal + " " + personal.Descripcion + " " + personal.ICargo + " " + personal.IdPersona);
+
                 //conexion a la base de datos
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Personal (id_personal, nombre_personal, cargo_personal, descripcion_personal, id_persona_personal)
-                                    VALUES (@id, @nombre, @cargo, @descripcion, @idPerosona)";
+                string consulta = @"INSERT INTO Personal ( nombre_personal, id_cargo_personal, descripcion_personal, id_persona_personal)
+                                    VALUES ( @nombre, @cargo, @descripcion, @idPersona)";
                 conexion.CrearComando(consulta);
 
-                conexion.AgregarParametro("@id", personal.IdPersonal);
                 conexion.AgregarParametro("@nombre", personal.NombrePersonal);
-                conexion.AgregarParametro("@cargo", personal.CargoPersonal);
+                conexion.AgregarParametro("@cargo", personal.ICargo);
                 conexion.AgregarParametro("@descripcion", personal.Descripcion);
                 conexion.AgregarParametro("@idPersona", personal.IdPersona);
 
@@ -77,9 +78,55 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdPersonal = Convert.ToInt32(reader["id_personal"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
-                            CargoPersonal = Convert.ToString(reader["cargo_personal"]),
+                            ICargo = Convert.ToInt32(reader["id_cargo_personal"]),
                             Descripcion = Convert.ToString(reader["descripcion_personal"]),
                             IdPersona = Convert.ToInt32(reader["id_persona_personal"])
+                        };
+
+                        listaPersonal.Add(personales);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return listaPersonal;
+        }
+
+        //funcion para mostrar todos los registros y traer el nombre del cargo
+        public List<Personal> ObtenerPersonalesNombreCargo()
+        {
+            List<Personal> listaPersonal = new List<Personal>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT id_personal, nombre_personal, c.nombre_cargo, descripcion_personal, p.nombres_persona, id_persona_personal
+                                            FROM Personal pl
+                                                INNER JOIN Cargo c ON pl.id_cargo_personal = c.id_cargo
+                                                INNER JOIN Persona p ON pl.id_persona_personal = p.id_persona";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Personal personales = new Personal()
+                        {
+                            IdPersonal = Convert.ToInt32(reader["id_personal"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            NombreCargo = Convert.ToString(reader["nombre_cargo"]),
+                            Descripcion = Convert.ToString(reader["descripcion_personal"]),
+                            IdPersona = Convert.ToInt32(reader["id_persona_personal"]),
+                            NombrePersona = Convert.ToString(reader["nombres_persona"])
                         };
 
                         listaPersonal.Add(personales);
@@ -123,7 +170,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdPersonal = Convert.ToInt32(reader["id_personal"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
-                            CargoPersonal = Convert.ToString(reader["cargo_personal"]),
+                            ICargo = Convert.ToInt32(reader["id_cargo_personal"]),
                             Descripcion = Convert.ToString(reader["descripcion_personal"]),
                             IdPersona = Convert.ToInt32(reader["id_persona_personal"])
                         };
@@ -169,7 +216,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdPersonal = Convert.ToInt32(reader["id_personal"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
-                            CargoPersonal = Convert.ToString(reader["cargo_personal"]),
+                            ICargo = Convert.ToInt32(reader["id_cargo_personal"]),
                             Descripcion = Convert.ToString(reader["descripcion_personal"]),
                             IdPersona = Convert.ToInt32(reader["id_persona_personal"])
                         };
@@ -191,7 +238,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para actualizar un registro en la base de datos
-        public bool ActualizarPersonal(int id, string nombreBen, string cargo, string descripcion, int idPersona)
+        public bool ActualizarPersonal(int id, string nombreBen, int icargo, string descripcion, int idPersona)
         {
             bool exito = false;
 
@@ -201,13 +248,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Personal SET nombre_personal = @nombre, cargo_personal = @cargo, 
+                string consulta = @"UPDATE Personal SET nombre_personal = @nombre, id_cargo_personal = @cargo, 
                                         descripcion_personal = @descripcion, id_persona_personal = @idPersona
                                         WHERE id_personal = @id";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@nombre", nombreBen);
-                conexion.AgregarParametro("@cargo", cargo);
+                conexion.AgregarParametro("@cargo", icargo);
                 conexion.AgregarParametro("@descripcion", descripcion);
                 conexion.AgregarParametro("@idPersona", idPersona);
                 conexion.AgregarParametro("@id", id);

@@ -11,6 +11,7 @@ namespace sistema_modular_cafe_majada.model.Mapping
         public int IdFinca { get; set; }
         public string nombreFinca { get; set; }
         public string ubicacionFinca { get; set; }
+        public int CountFinca { get; set; }
     }
 
     public static class FincaSeleccionada

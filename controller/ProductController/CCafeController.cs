@@ -72,7 +72,22 @@ namespace sistema_modular_cafe_majada.controller.ProductController
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Ocurrio un error la obtener los datos: " + ex.Message);
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            return calidad;
+        }
+
+        public CalidadCafe CountCalidad ()
+        {
+            CalidadCafe calidad = new CalidadCafe();
+            try
+            {
+                //llamada al metodo DAO para obtener los datos
+                calidad = ccafeDAO.CountCalidades();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los totales de datos: " + ex.Message);
             }
             return calidad;
         }

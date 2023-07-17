@@ -11,6 +11,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Product
         public int IdTipoCafe { get; set; }
         public string NombreTipoCafe { get; set; }
         public string DescripcionTipoCafe { get; set; }
+        public int CountTipoCafe { get; set; }
     }
 
     public static class TipoCafeSeleccionado

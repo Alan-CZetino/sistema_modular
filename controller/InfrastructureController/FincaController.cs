@@ -79,6 +79,20 @@ namespace sistema_modular_cafe_majada.controller
                 return null;
             }
         }
+        
+        public Finca CountFincas()
+        {
+            try
+            {
+                //se realiza el llamado al metodo DAO para obtener fincas
+                return fincaDao.CountFinca();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener la lista total de Fincas: " + ex.Message);
+                return null;
+            }
+        }
 
 
         public bool ActualizarFincas(int id,string nomFinca,string ubiFinca)

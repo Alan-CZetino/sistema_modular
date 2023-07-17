@@ -142,7 +142,7 @@ namespace sistema_modular_cafe_majada
 
         private void lbl_username_Click(object sender, EventArgs e)
         {
-            form_userData fUserData = new form_userData();
+            form_userData fUserData = new form_userData(this);
             AddFormulario(fUserData);
         }
 

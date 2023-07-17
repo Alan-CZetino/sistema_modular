@@ -10,9 +10,11 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
     {
         public int IdPersonal { get; set; }
         public string NombrePersonal { get; set; }
-        public string CargoPersonal { get; set; }
+        public int ICargo { get; set; }
+        public string NombreCargo { get; set; }
         public string Descripcion { get; set; }
         public int IdPersona { get; set; }
+        public string NombrePersona { get; set; }
 
     }
 }
