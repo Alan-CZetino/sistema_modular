@@ -174,17 +174,35 @@
     <Compile Include="views\form_cosecha.Designer.cs">
       <DependentUpon>form_cosecha.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_despulpaCafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_despulpaCafe.Designer.cs">
+      <DependentUpon>form_despulpaCafe.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_destCafe.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\form_destCafe.Designer.cs">
       <DependentUpon>form_destCafe.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_entradaCafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_entradaCafe.Designer.cs">
+      <DependentUpon>form_entradaCafe.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_finca.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\form_finca.Designer.cs">
       <DependentUpon>form_finca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_lavadaCafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_lavadaCafe.Designer.cs">
+      <DependentUpon>form_lavadaCafe.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_login.cs">
       <SubType>Form</SubType>
@@ -260,6 +278,12 @@
     <Compile Include="views\form_rol.Designer.cs">
       <DependentUpon>form_rol.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_salidasCafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_salidasCafe.Designer.cs">
+      <DependentUpon>form_salidasCafe.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_splash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +295,12 @@
     </Compile>
     <Compile Include="views\form_coffeeStocks.Designer.cs">
       <DependentUpon>form_coffeeStocks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_subPartidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_subPartidas.Designer.cs">
+      <DependentUpon>form_subPartidas.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_subprod_cafe.cs">
       <SubType>Form</SubType>
@@ -289,6 +319,12 @@
     </Compile>
     <Compile Include="views\form_tableUser.Designer.cs">
       <DependentUpon>form_tableUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_trillaCafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_trillaCafe.Designer.cs">
+      <DependentUpon>form_trillaCafe.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_ubicacion.cs">
       <SubType>Form</SubType>
@@ -331,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_finca.resx">
       <DependentUpon>form_finca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_lavadaCafe.resx">
+      <DependentUpon>form_lavadaCafe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_login.resx">
       <DependentUpon>form_login.cs</DependentUpon>
@@ -385,6 +424,9 @@
     <EmbeddedResource Include="views\form_coffeeStocks.resx">
       <DependentUpon>form_coffeeStocks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\form_subPartidas.resx">
+      <DependentUpon>form_subPartidas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_subprod_cafe.resx">
       <DependentUpon>form_subprod_cafe.cs</DependentUpon>
     </EmbeddedResource>
@@ -427,6 +469,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\lupa 24px.png" />
+    <None Include="Resources\lupa 32px.png" />
+    <None Include="Resources\Despulpa 45px.png" />
+    <None Include="Resources\trilla 45px.png" />
+    <None Include="Resources\Entrada 45px.png" />
+    <None Include="Resources\Salida 45px.png" />
+    <None Include="Resources\SubPartida 45px.png" />
+    <None Include="Resources\lavar 45px.png" />
+    <None Include="Resources\lavar %281%29.png" />
+    <None Include="Resources\lavar.png" />
     <None Include="Resources\coffee-cup-presentation.png" />
     <None Include="Resources\coffee-cup.png" />
     <None Include="Resources\control-de-calidad 64px.png" />
