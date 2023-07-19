@@ -18,15 +18,18 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_userData : Form
     {
+        // Agrega un campo privado para almacenar la referencia de form_main
+        private form_main formularioMain;
         private int idUser;
         private bool verificTxbReadOnly;
         private bool verificTxbPassReadOnly;
         private bool pressPerfile;
         private bool pressPass;
         
-        public form_userData()
+        public form_userData(form_main mainForm)
         {
             InitializeComponent();
+            formularioMain = mainForm; // Almacena la referencia de form_main en el campo privado
         }
 
         private void form_userData_Load(object sender, EventArgs e)
@@ -76,7 +79,7 @@ namespace sistema_modular_cafe_majada.views
         {
             pressPerfile = !pressPerfile; // Cambiar el valor de pressPass
 
-            if (pressPerfile == true)
+            if (pressPerfile)
             {
                 ReadOnlyTextboxUserProfile(!pressPerfile); // Establecer el estado de solo lectura según pressPass
                 return;
@@ -95,11 +98,9 @@ namespace sistema_modular_cafe_majada.views
             Persona person = personControl.ObtenerNombrePersona(user.IdPersonaUsuario);
             Role role = rolControl.ObtenerIRol(user.IdRolUsuario);
 
-            //Verificar porque no carga el nobre de usuario en el form main
-            form_main form_Main = new form_main();
-            form_Main.NombreUsuario = user.NombreUsuario;
-            form_Main.Refresh();
-            //===============================================================
+            //se trae la variable instanciada del formulario main para actualizar el lbl del nombre usuario 
+            formularioMain.NombreUsuario = user.NombreUsuario;
+            formularioMain.Refresh();
 
             idUser = user.IdUsuario;
             txb_UDnameuser.Text = user.NombreUsuario;
@@ -168,24 +169,23 @@ namespace sistema_modular_cafe_majada.views
                         {
                             bool exito = user.ActualizarNombreEmailUsuario(idUser, userName, email);
 
-                            if (exito)
-                            {
-                                MessageBox.Show("Su Usuario se ha actualizada correctamente.");
-                                try
-                                {
-                                    //verificar el departamento del log
-                                    log.RegistrarLog(idUser, "Actualizacion del dato Usuario", ModuloActual.NombreModulo, "Actualizacion", "Actualizo los datos del usuario con ID " + idUser + " en la base de datos");
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine("Error al obtener el usuario: " + ex.Message);
-                                }
-                                ShowDataUser();
-                            }
-                            else
+                            if (!exito)
                             {
                                 MessageBox.Show("Error al actualizar el usuario. Verifica los datos e intenta nuevamente.", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                             }
+
+                            MessageBox.Show("Su Usuario se ha actualizada correctamente.");
+                            try
+                            {
+                                //verificar el departamento del log
+                                log.RegistrarLog(idUser, "Actualizacion del dato Usuario", ModuloActual.NombreModulo, "Actualizacion", "Actualizo los datos del usuario con ID " + idUser + " en la base de datos");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                            }
+                            ShowDataUser();
 
                         }
                         ReadOnlyTextboxUserProfile(true); // Establece los TextBox específicos en solo lectura
@@ -194,6 +194,7 @@ namespace sistema_modular_cafe_majada.views
             }
             catch(Exception ex)
             {
+                Console.WriteLine("Error de tipo: " + ex.Message);
             }
         }
 
@@ -241,27 +242,25 @@ namespace sistema_modular_cafe_majada.views
                         {
                             bool exito = user.ActualizarClaveUsuario(idUser, encryptedPassword);
 
-                            if (exito)
-                            {
-                                MessageBox.Show("Su Clave de Usuario se ha actualizada correctamente.");
-                                try
-                                {
-                                    //verificar el departamento del log
-                                    log.RegistrarLog(idUser, "Actualizacion del dato Usuario", ModuloActual.NombreModulo, "Actualizacion", "Actualizo la clave del usuario con ID " + idUser + " en la base de datos");
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine("Error al obtener el usuario: " + ex.Message);
-                                }
-
-                                ClearDataTxb();
-                                ShowDataUser();
-                            }
-                            else
+                            if (!exito)
                             {
                                 MessageBox.Show("Error al actualizar la clave de usuario. Verifica los datos e intenta nuevamente.", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
                             }
 
+                            MessageBox.Show("Su Clave de Usuario se ha actualizada correctamente.");
+                            try
+                            {
+                                //verificar el departamento del log
+                                log.RegistrarLog(idUser, "Actualizacion del dato Usuario", ModuloActual.NombreModulo, "Actualizacion", "Actualizo la clave del usuario con ID " + idUser + " en la base de datos");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                            }
+
+                            ClearDataTxb();
+                            ShowDataUser();
                         }
                         ReadOnlyTextboxPassword(true); // Establece los TextBox específicos en solo lectura
                     }
@@ -269,8 +268,8 @@ namespace sistema_modular_cafe_majada.views
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Error de tipo: " + ex.Message);
             }
-
         }
 
         private void btn_editPass_Click(object sender, EventArgs e)
@@ -284,7 +283,6 @@ namespace sistema_modular_cafe_majada.views
             }
 
             ReadOnlyTextboxPassword(!pressPass); // Establecer el estado de solo lectura según pressPass
-
         }
 
         public void ReadOnlyTextboxPassword(bool verific)

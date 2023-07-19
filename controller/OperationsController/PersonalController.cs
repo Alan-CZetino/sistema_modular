@@ -35,6 +35,24 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
 
             return personals;
         }
+        
+        //
+        public List<Personal> ObtenerPersonalesNombreCargo()
+        {
+            List<Personal> personals = new List<Personal>();
+
+            try
+            {
+                // Llamada al método del DAO para obtener los roles
+                personals = personalDAO.ObtenerPersonalesNombreCargo();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los roles: " + ex.Message);
+            }
+
+            return personals;
+        }
 
         //
         public Personal ObtenerPersonalNombre(string nombre)
@@ -73,14 +91,14 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
         }
 
         //
-        public bool ActualizarPersonal(int id, string nombre, string cargo, string descripcion, int idPersona)
+        public bool ActualizarPersonal(int id, string nombre, int icargo, string descripcion, int idPersona)
         {
             bool exito = false;
 
             try
             {
                 // Llamada al método del DAO para actualizar el rol
-                exito = personalDAO.ActualizarPersonal(id, nombre, cargo, descripcion, idPersona);
+                exito = personalDAO.ActualizarPersonal(id, nombre, icargo, descripcion, idPersona);
             }
             catch (Exception ex)
             {

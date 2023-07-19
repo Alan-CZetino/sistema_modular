@@ -37,8 +37,6 @@ namespace sistema_modular_cafe_majada.model.Connection
                 string cadenaConexion = $"server={servidor};database={baseDatos};uid={usuario};password={password};";
                 conexion = new MySqlConnection(cadenaConexion);
                 
-                // Utilizar las credenciales para establecer la conexión a la base de datos
-                // ...
             }
             else
             {

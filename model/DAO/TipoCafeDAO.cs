@@ -134,6 +134,47 @@ namespace sistema_modular_cafe_majada.model.DAO
             return listaTipoCafe;
         }
 
+        //obtener el total de TipoCafe de la BD
+        public TipoCafe CountTipoCafe()
+        {
+            TipoCafe tipoCafe = null;
+
+            try
+            {
+                // Conectar a la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para obtener el rol
+                string consulta = "SELECT COUNT(*) AS TotalTipoCafe FROM Tipo_Cafe";
+
+                conexion.CrearComando(consulta);
+
+                // Ejecutar la consulta y leer el resultado
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.Read())
+                    {
+                        tipoCafe = new TipoCafe()
+                        {
+                            CountTipoCafe = Convert.ToInt32(reader["TotalTipoCafe"])
+                        };
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el total TipoCafe: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return tipoCafe;
+        }
+
         //obtener el TipoCafe en especifico mediante el id en la BD
         public TipoCafe ObtenerIdTipoCafe(int idTip)
         {

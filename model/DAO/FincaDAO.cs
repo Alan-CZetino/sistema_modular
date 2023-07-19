@@ -137,6 +137,45 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //
+        public Finca CountFinca()
+        {
+            Finca finca = null;
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalFinca FROM Finca";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            finca = new Finca()
+                            {
+                                CountFinca = Convert.ToInt32(reader["TotalFinca"])
+                            };
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return finca;
+        }
+
+        //
         public Finca ObtenerNombreFinca(string nombre)
         {
             Finca finca = null;
@@ -177,7 +216,6 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             return finca;
         }
-
 
         //funcion para actualizar un registro en la base de datos
         public bool ActualizarFinca(int idf,string nomFinca, string ubiFinca)

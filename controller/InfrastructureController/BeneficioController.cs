@@ -37,6 +37,24 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
         }
 
         //
+        public Beneficio CountBeneficio()
+        {
+            Beneficio beneficio = null;
+
+            try
+            {
+                // Llamada al método del DAO para obtener el rol
+                beneficio = beneficioDAO.CountBeneficio();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener el total de beneficios: " + ex.Message);
+            }
+
+            return beneficio;
+        }
+
+        //
         public Beneficio ObtenerBeneficioNombre(string nombre)
         {
             Beneficio beneficio = null;
@@ -52,6 +70,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
             }
 
             return beneficio;
+        }
+
+        //
+        public List<Beneficio> BuscarBeneficio(string buscar)
+        {
+            try
+            {
+                //se llama al metodo DAO para obtener las calidades
+                return beneficioDAO.BuscarBeneficio(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener la lista de calidades de café: " + ex.Message);
+                return new List<Beneficio>();
+            }
         }
 
         //

@@ -192,6 +192,17 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_SaveBeneficio_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txb_nombreBeneficio.Text))
+            {
+                MessageBox.Show("El campo Nombre, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txb_Ubicacion.Text))
+            {
+                MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             BeneficioController beneficioController = new BeneficioController();
             LogController log = new LogController();
             var userControl = new UserController();

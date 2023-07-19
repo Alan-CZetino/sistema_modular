@@ -72,7 +72,7 @@ namespace sistema_modular_cafe_majada.views
         {
             // Llamar al método para obtener los datos de la base de datos
             UserController userController = new UserController();
-            List<Usuario> datos = userController.ObtenerTodosUsuarios();
+            List<Usuario> datos = userController.ObtenerTodosUsuariosNombresID();
 
             var datosPersonalizados = datos.Select(usuario => new
             {
@@ -83,8 +83,8 @@ namespace sistema_modular_cafe_majada.views
                 Estado = usuario.EstadoUsuario,
                 Fecha_Creacion = usuario.FechaCreacionUsuario,
                 Fecha_Baja = usuario.FechaBajaUsuario,
-                ID_Rol = usuario.IdRolUsuario,
-                ID_Persona = usuario.IdPersonaUsuario
+                Rol = usuario.NombreRol,
+                Persona = usuario.NombrePersonaUsuario
             }).ToList();
 
             // Asignar los datos al DataGridView
@@ -112,8 +112,8 @@ namespace sistema_modular_cafe_majada.views
             object valorCelda = filaSeleccionada.Cells["Fecha_Baja"].Value;
             // Verificar si el valor de la celda es nulo y asignar el valor correspondiente a la propiedad
             usuarioSeleccionado.FechaBajaUsuario = valorCelda != null ? Convert.ToDateTime(valorCelda) : (DateTime?)null;
-            usuarioSeleccionado.IdRolUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID_Rol"].Value);
-            usuarioSeleccionado.IdPersonaUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID_Persona"].Value);
+            usuarioSeleccionado.NombreRol = Convert.ToString(filaSeleccionada.Cells["Rol"].Value);
+            usuarioSeleccionado.NombrePersonaUsuario = Convert.ToString(filaSeleccionada.Cells["Persona"].Value);
 
         }
 
@@ -131,11 +131,12 @@ namespace sistema_modular_cafe_majada.views
 
                     // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
                     PersonController personC = new PersonController();
+                    RoleController rolC = new RoleController();
                     UserController userC = new UserController();
-                    idPerson = usuarioSeleccionado.IdPersonaUsuario;
-                    var name = personC.ObtenerNombrePersona(idPerson);
+                    var name = personC.ObtenerPersona(usuarioSeleccionado.NombrePersonaUsuario);
+                    idPerson = name.IdPersona;
                     
-                    txb_Name.Text = name.NombresPersona;
+                    txb_Name.Text = usuarioSeleccionado.NombrePersonaUsuario;
                     txb_NameUser.Text = usuarioSeleccionado.NombreUsuario;
                     txb_Email.Text = usuarioSeleccionado.EmailUsuario;
                     txb_Password.Text = usuarioSeleccionado.ClaveUsuario;
@@ -155,9 +156,10 @@ namespace sistema_modular_cafe_majada.views
 
                     cbx_role.Items.Clear();
                     CbxRoles();
-                    int irole = usuarioSeleccionado.IdRolUsuario - 1;
-                    cbx_role.SelectedIndex = irole;
 
+                    var rol = rolC.ObtenerRol(usuarioSeleccionado.NombreRol);
+                    int irole = rol.IdRol - 1;
+                    cbx_role.SelectedIndex = irole;
                     cbx_userStatus.Items.Clear();
                     cbx_userStatus.Items.Add("Activo");
                     cbx_userStatus.Items.Add("Inactivo");
@@ -280,7 +282,7 @@ namespace sistema_modular_cafe_majada.views
             UserController userController = new UserController();
             LogController log = new LogController();
             var userControl = new UserController();
-            var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+            var usuario = userControl.ObtenerIUsuario(UsuarioActual.IUsuario); // Asignar el resultado de ObtenerUsuario
 
             string nameUser = txb_NameUser.Text;
             string pass = txb_Password.Text;
@@ -298,14 +300,23 @@ namespace sistema_modular_cafe_majada.views
                     MessageBox.Show("Debe seleccionar la persona resposable del campo Nombre para el usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
+                if (string.IsNullOrWhiteSpace(txb_NameUser.Text))
+                {
+                    MessageBox.Show("El campo Nombre de Usuario, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 // Verificar si se ha seleccionado un rol de usuario
                 if (cbx_role.SelectedItem == null)
                 {
                     MessageBox.Show("Debe seleccionar un rol para el usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-    
+                if (string.IsNullOrWhiteSpace(txb_Password.Text))
+                {
+                    MessageBox.Show("El campo Contraseña, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 // Obtener el valor numérico seleccionado
                 KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
                 if (cbx_role.SelectedItem is KeyValuePair<int, string> keyValue)
@@ -574,8 +585,6 @@ namespace sistema_modular_cafe_majada.views
             {
                 txb_Name.Text = PersonSelect.NamePerson;
             }
-            //ftperson.ShowDialog();
-
         }
 
         private void CargarModulosCheckedListBox()
@@ -585,6 +594,7 @@ namespace sistema_modular_cafe_majada.views
             List<Module> modulos = moduleControl.ObtenerModulos();
 
             // Limpiar el CheckedListBox
+            diccionarioModulos.Clear(); // Limpiar el diccionario
             clb_module.Items.Clear();
 
             // Agregar los módulos al CheckedListBox
@@ -644,16 +654,6 @@ namespace sistema_modular_cafe_majada.views
             clb_module.Margin = new Padding(8); // Cambiar el margen externo del CheckedListBox
             clb_module.BorderStyle = BorderStyle.Fixed3D; // Establecer un borde sólido
             clb_module.Font = new Font("Oswald", 9, FontStyle.Regular); // Establecer la fuente y tamaño del texto
-
-        }
-
-        //
-        public void InsertUserModule(string nameUser)
-        {
-            var userControl = new UserController();
-            Usuario user = userControl.ObtenerUsuario(nameUser);
-
-            int idUser = user.IdUsuario;
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -702,6 +702,14 @@ namespace sistema_modular_cafe_majada.views
         private void txb_NameUser_Enter(object sender, EventArgs e)
         {
             CbxRoles();
+            if (imagenClickeada)
+            {
+                UserController userC = new UserController();
+                var user = userC.ObtenerUsuario(usuarioSeleccionado.NombreUsuario);
+                int idUser = user.IdUsuario;
+                CargarModulosUsuarioCheckedListBox(idUser);
+                return;
+            }
             CargarModulosCheckedListBox();
         }
 

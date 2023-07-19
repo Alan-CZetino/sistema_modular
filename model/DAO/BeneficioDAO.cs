@@ -137,6 +137,47 @@ namespace sistema_modular_cafe_majada.model.DAO
             return beneficio;
         }
 
+        //obtener el total de beneficios en la BD
+        public Beneficio CountBeneficio()
+        {
+            Beneficio beneficio = null;
+
+            try
+            {
+                // Conectar a la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para obtener el rol
+                string consulta = "SELECT COUNT(*) AS TotalBeneficio FROM Beneficio";
+
+                conexion.CrearComando(consulta);
+
+                // Ejecutar la consulta y leer el resultado
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        beneficio = new Beneficio()
+                        {
+                            CountBeneficio = Convert.ToInt32(reader["TotalBeneficio"])
+                        };
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el Beneficio: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return beneficio;
+        }
+
         //obtener el beneficio en especifico mediante el id en la BD
         public Beneficio ObtenerBeneficioNombre(string nombre)
         {
@@ -179,6 +220,47 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
 
             return beneficio;
+        }
+
+        //
+        public List<Beneficio> BuscarBeneficio(string buscar)
+        {
+            List<Beneficio> beneficios = new List<Beneficio>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT * FROM Beneficio WHERE nombre_beneficio LIKE CONCAT('%', @search, '%') ";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", "%" + buscar + "%");
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Beneficio benef = new Beneficio()
+                        {
+                            IdBeneficio = Convert.ToInt32(reader["id_beneficio"]),
+                            NombreBeneficio = Convert.ToString(reader["nombre_beneficio"]),
+                            UbicacionBeneficio = Convert.ToString(reader["ubicacion_beneficio"])
+                        };
+
+                        beneficios.Add(benef);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return beneficios;
         }
 
         //funcion para actualizar un registro en la base de datos

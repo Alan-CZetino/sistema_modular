@@ -94,6 +94,43 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //
+        public CalidadCafe CountCalidades()
+        {
+            CalidadCafe calidadesCafe = null;
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalCalidades FROM calidad_cafe";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.Read())
+                    {
+                        calidadesCafe = new CalidadCafe()
+                        {
+                            CountCalidad = Convert.ToInt32(reader["TotalCalidades"])
+                        };
+                    }
+                    
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return calidadesCafe;
+        }
+
+        //
         public List<CalidadCafe> BuscarCalidades(string buscar)
         {
             List<CalidadCafe> calidadesCafe = new List<CalidadCafe>();

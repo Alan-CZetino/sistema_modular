@@ -181,6 +181,57 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return usuarios;
         }
+        
+        //
+        public List<Usuario> ObtenerTodosUsuariosNombresID()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+
+            try
+            {
+                // Abre la conexión a la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT u.id_usuario, u.nombre_usuario, u.email_usuario, u.clave_usuario, u.estado_usuario, u.fecha_creacion_usuario,
+                                              u.fecha_baja_usuario, r.nombre_rol, p.nombres_persona   
+                                    FROM Usuario u
+                                    INNER JOIN Persona p ON u.id_persona_usuario = p.id_persona
+                                    INNER JOIN Rol r ON u.id_rol_usuario = r.id_rol ";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Usuario usuario = new Usuario()
+                        {
+                            IdUsuario = Convert.ToInt32(reader["id_usuario"]),
+                            NombreUsuario = Convert.ToString(reader["nombre_usuario"]),
+                            EmailUsuario = Convert.ToString(reader["email_usuario"]),
+                            ClaveUsuario = Convert.ToString(reader["clave_usuario"]),
+                            EstadoUsuario = Convert.ToString(reader["estado_usuario"]),
+                            FechaCreacionUsuario = Convert.ToDateTime(reader["fecha_creacion_usuario"]),
+                            FechaBajaUsuario = reader.IsDBNull(reader.GetOrdinal("fecha_baja_usuario")) ? null : (DateTime?)reader["fecha_baja_usuario"],
+                            NombreRol = Convert.ToString(reader["nombre_rol"]),
+                            NombrePersonaUsuario = Convert.ToString(reader["nombres_persona"])
+                        };
+
+                        usuarios.Add(usuario);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener los usuarios: " + ex.Message);
+            }
+            finally
+            {
+                // Cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return usuarios;
+        }
 
         //funcion para insertar unicamente el usuario
         public bool InsertarUsuario(Usuario user)

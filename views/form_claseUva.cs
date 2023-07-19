@@ -196,6 +196,12 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_SaveUva_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txb_claseUva.Text))
+            {
+                MessageBox.Show("El campo Clase Uva, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             TipoCafeController tipoController = new TipoCafeController();
             LogController log = new LogController();
             var userControl = new UserController();
@@ -203,6 +209,16 @@ namespace sistema_modular_cafe_majada.views
 
             TextBox[] textBoxes = { txb_claseUva };
             ConvertFirstCharacter(textBoxes);
+
+            if (string.IsNullOrWhiteSpace(txb_descripcion.Text))
+            {
+                DialogResult result = MessageBox.Show("¿Desea dejar el campo descripcion vacio? Llenar dicho campo permitirá dar una informacion extra a futuros usuarios", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
 
             try
             {
