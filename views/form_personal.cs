@@ -314,7 +314,6 @@ namespace sistema_modular_cafe_majada.views
                     {
                         Console.WriteLine("Error al obtener el personal: " + ex.Message);
                     }
-
                 }
                 else
                 {
@@ -346,14 +345,12 @@ namespace sistema_modular_cafe_majada.views
                     }
                     imagenClickeada = false;
                 }
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error - Se detecto un error al guardar los datos. " + ex.Message);
                 MessageBox.Show("Se detecto un error al guardar los datos, De tipo " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         //
@@ -373,7 +370,5 @@ namespace sistema_modular_cafe_majada.views
                 cbx_cargoPer.Items.Add(new KeyValuePair<int, string>(idRol, nombreRol));
             }
         }
-
-
     }
 }

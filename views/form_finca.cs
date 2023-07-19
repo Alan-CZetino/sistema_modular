@@ -53,17 +53,23 @@ namespace sistema_modular_cafe_majada.views
             dtg_fincas.Columns["nomFinca"].HeaderText = "Nombre de la Finca";
             dtg_fincas.Columns["ubiFinca"].HeaderText = "Ubicación de la Finca";
 
-            
+            dtg_fincas.RowHeadersVisible = false;
+            dtg_fincas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void btn_SaveFinca_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txb_nombreFinca.Text) ||
-                string.IsNullOrWhiteSpace(txb_ubiFinca.Text))
+            if (string.IsNullOrWhiteSpace(txb_nombreFinca.Text))
             {
-                MessageBox.Show("Los campos Nombre de Finca y Ubicacion de Finca son obligatorios.");
+                MessageBox.Show("Los campo Nombre, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            if (string.IsNullOrWhiteSpace(txb_ubiFinca.Text))
+            {
+                MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
 
             FincaController fincaController = new FincaController();
             LogController log = new LogController();

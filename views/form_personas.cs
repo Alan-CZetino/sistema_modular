@@ -142,13 +142,29 @@ namespace sistema_modular_cafe_majada.views
 
         private void SavePerson_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txb_Nombre.Text) || 
-                string.IsNullOrWhiteSpace(txb_Apellido.Text) || 
-                string.IsNullOrWhiteSpace(txb_Direccion.Text) ||
-                string.IsNullOrWhiteSpace(txb_Dui.Text) ||
-                string.IsNullOrWhiteSpace(txb_Tel1.Text))
+            if (string.IsNullOrWhiteSpace(txb_Nombre.Text))
             {
-                MessageBox.Show("Los campos Nombre, Apellido, Dirección, Dui, Telefono son obligatorios.");
+                MessageBox.Show("El campo Nombre, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txb_Apellido.Text))
+            {
+                MessageBox.Show("El campo Apellido, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txb_Direccion.Text))
+            {
+                MessageBox.Show("El campo Direccion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txb_Dui.Text))
+            {
+                MessageBox.Show("El campo DUI, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txb_Tel1.Text))
+            {
+                MessageBox.Show("El campo Telefono 1, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 

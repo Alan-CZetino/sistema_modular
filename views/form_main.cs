@@ -29,7 +29,7 @@ namespace sistema_modular_cafe_majada
             set
             {
                 _nombreUsuario = value;
-                lbl_User.Text = _nombreUsuario;
+                lbl_User.Text = "Usuario: "+_nombreUsuario;
             }
         }
 
@@ -42,10 +42,7 @@ namespace sistema_modular_cafe_majada
 
             // Código 
             this.Shown += form_main_Shown;
-            // Mensaje de depuración
-            //Console.WriteLine("Constructor - Nombre de usuario: " + NombreUsuario);
-
-            lbl_nameModule.Text = ModuloActual.NombreModulo;
+            
         }
 
         private void form_main_Load(object sender, EventArgs e)

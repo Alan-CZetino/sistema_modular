@@ -61,12 +61,12 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_SaveCalidad_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(txb_nameCalidad.Text)||
-                string.IsNullOrWhiteSpace(txb_desCalidad.Text))
+            if(string.IsNullOrWhiteSpace(txb_nameCalidad.Text))
             {
-                MessageBox.Show("Los campos Calidad del Café y Descripción son obligatorios.");
+                MessageBox.Show("El campo Calidad del Café, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
 
             CCafeController cCafeController = new CCafeController();
             LogController log = new LogController();
@@ -87,7 +87,17 @@ namespace sistema_modular_cafe_majada.views
                 DescripcionCalidad = description
             };
 
-            if(!imagenClickeada)
+            if (string.IsNullOrWhiteSpace(txb_desCalidad.Text))
+            {
+                DialogResult result = MessageBox.Show("¿Desea dejar el campo descripcion vacio? Llenar dicho campo permitirá dar una informacion extra a futuros usuarios", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            if (!imagenClickeada)
             {
                 // Código que se ejecutará si no se ha hecho clic en la imagen update
                 // Llamar al controlador para insertar en la base de datos

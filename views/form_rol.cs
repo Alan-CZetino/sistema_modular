@@ -91,6 +91,22 @@ namespace sistema_modular_cafe_majada.views
             ComboBox[] comBoxes = { cbx_access };
             ConvertFirstCharacter(comBoxes);
 
+            if (string.IsNullOrWhiteSpace(txb_Nombre.Text))
+            {
+                MessageBox.Show("El campo Nombre, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txb_Description.Text))
+            {
+                MessageBox.Show("El campo Descripcion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txb_permits.Text))
+            {
+                MessageBox.Show("El campo Permiso, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             try
             {
                 string nameRol = txb_Nombre.Text;
@@ -120,62 +136,59 @@ namespace sistema_modular_cafe_majada.views
                         // Llamar al controlador para insertar la persona en la base de datos
                         bool exito = rolController.InsertarRol(rolInsert);
 
-                        if (exito)
-                        {
-                            MessageBox.Show("Rol agregado correctamente." , "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            try
-                            {
-                                //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                                //verificar el departamento
-                                log.RegistrarLog(usuario.IdUsuario, "Registro de caracteristicas del Rol", ModuloActual.NombreModulo, "Insercion", "Inserto un nuevo Rol a la base de datos");
-
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
-                            }
-
-                            //funcion para actualizar los datos en el dataGrid
-                            ShowRolGrid();
-
-                            //borrar datos de los textbox
-                            ClearDataTxb();
-                        }
-                        else
+                        if (!exito)
                         {
                             MessageBox.Show("Error al agregar el Rol. Verifica los datos e intenta nuevamente.");
+                            return;
                         }
+
+                        MessageBox.Show("Rol agregado correctamente." , "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        try
+                        {
+                            //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                            //verificar el departamento
+                            log.RegistrarLog(usuario.IdUsuario, "Registro de caracteristicas del Rol", ModuloActual.NombreModulo, "Insercion", "Inserto un nuevo Rol a la base de datos");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                        }
+
+                        //funcion para actualizar los datos en el dataGrid
+                        ShowRolGrid();
+
+                        //borrar datos de los textbox
+                        ClearDataTxb();
                     }
                     else
                     {
                         // Código que se ejecutará si se ha hecho clic en la imagen update
                         bool exito = rolController.ActualizarRol(rolSeleccionado.IdRol, nameRol, description, valorSeleccionado, permits);
 
-                        if (exito)
-                        {
-                            MessageBox.Show("Rol actualizada correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            try
-                            {
-                                //verificar el departamento 
-                                log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Rol", ModuloActual.NombreModulo, "Actualizacion", "Actualizo las caracteristicas del Rol con ID " + rolSeleccionado.IdRol + " en la base de datos");
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
-                            }
-
-                            //funcion para actualizar los datos en el dataGrid
-                            ShowRolGrid();
-
-                            ClearDataTxb();
-
-                            imagenClickeada = false;
-                            rolSeleccionado = null;
-                        }
-                        else
+                        if (!exito)
                         {
                             MessageBox.Show("Error al actualizar las caracteristicas del rol. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
+
+                        MessageBox.Show("Rol actualizada correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        try
+                        {
+                            //verificar el departamento 
+                            log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Rol", ModuloActual.NombreModulo, "Actualizacion", "Actualizo las caracteristicas del Rol con ID " + rolSeleccionado.IdRol + " en la base de datos");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                        }
+
+                        //funcion para actualizar los datos en el dataGrid
+                        ShowRolGrid();
+                        ClearDataTxb();
+
+                        imagenClickeada = false;
+                        rolSeleccionado = null;
                     }
                 }
                 else
@@ -186,8 +199,8 @@ namespace sistema_modular_cafe_majada.views
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error - seleccion de nivel de rol; no seleccionado " + ex.Message);
-                MessageBox.Show("Debe seleccionar un nivel de acceso al rol", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Console.WriteLine("Error - Verifica los datos e intenta nuevamente. " + ex.Message);
+                MessageBox.Show("Verifica los datos e intenta nuevamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
