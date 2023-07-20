@@ -189,11 +189,11 @@
     <Compile Include="views\form_destCafe.Designer.cs">
       <DependentUpon>form_destCafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_entradaCafe.cs">
+    <Compile Include="views\form_trasladoCafe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_entradaCafe.Designer.cs">
-      <DependentUpon>form_entradaCafe.cs</DependentUpon>
+    <Compile Include="views\form_trasladoCafe.Designer.cs">
+      <DependentUpon>form_trasladoCafe.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_finca.cs">
       <SubType>Form</SubType>
@@ -365,8 +365,17 @@
     <EmbeddedResource Include="views\form_cosecha.resx">
       <DependentUpon>form_cosecha.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\form_despulpaCafe.resx">
+      <DependentUpon>form_despulpaCafe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_destCafe.resx">
       <DependentUpon>form_destCafe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_salidasCafe.resx">
+      <DependentUpon>form_salidasCafe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_trasladoCafe.resx">
+      <DependentUpon>form_trasladoCafe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_finca.resx">
       <DependentUpon>form_finca.cs</DependentUpon>
@@ -438,6 +447,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_tableUser.resx">
       <DependentUpon>form_tableUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_trillaCafe.resx">
+      <DependentUpon>form_trillaCafe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_ubicacion.resx">
       <DependentUpon>form_ubicacion.cs</DependentUpon>

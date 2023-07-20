@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace sistema_modular_cafe_majada.views
 {
-    public partial class form_entradaCafe : Form
+    public partial class form_trasladoCafe : Form
     {
-        public form_entradaCafe()
+        public form_trasladoCafe()
         {
             InitializeComponent();
         }

@@ -63,7 +63,7 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_entradaCafe_Click(object sender, EventArgs e)
         {
-            form_entradaCafe form_Entrada = new form_entradaCafe();
+            form_trasladoCafe form_Entrada = new form_trasladoCafe();
             AddFormulario(form_Entrada);
         }
 

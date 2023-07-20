@@ -1,7 +1,7 @@
 ﻿
 namespace sistema_modular_cafe_majada.views
 {
-    partial class form_salidasCafe
+    partial class form_trasladoCafe
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,6 @@ namespace sistema_modular_cafe_majada.views
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,73 +56,18 @@ namespace sistema_modular_cafe_majada.views
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(658, 85);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(610, 363);
-            this.groupBox1.TabIndex = 46;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Destino del Café";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(44, 46);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(103, 29);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "Tipo de Salida:";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(172, 233);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(66, 33);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Otros";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(172, 147);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(108, 33);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Torrefactora";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(175, 71);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(105, 33);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Exportación";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -142,7 +82,7 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox4.Location = new System.Drawing.Point(12, 454);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1256, 255);
-            this.groupBox4.TabIndex = 47;
+            this.groupBox4.TabIndex = 37;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Observaciones Generales";
             // 
@@ -200,7 +140,7 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox3.Location = new System.Drawing.Point(19, 85);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(610, 217);
-            this.groupBox3.TabIndex = 45;
+            this.groupBox3.TabIndex = 36;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Procedencia del Café";
             // 
@@ -272,7 +212,7 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox2.Location = new System.Drawing.Point(19, 307);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(610, 141);
-            this.groupBox2.TabIndex = 44;
+            this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos del Producto";
             // 
@@ -355,7 +295,7 @@ namespace sistema_modular_cafe_majada.views
             this.button1.Location = new System.Drawing.Point(1233, 36);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(35, 35);
-            this.button1.TabIndex = 43;
+            this.button1.TabIndex = 33;
             this.button1.UseVisualStyleBackColor = true;
             // 
             // textBox2
@@ -365,7 +305,7 @@ namespace sistema_modular_cafe_majada.views
             this.textBox2.Location = new System.Drawing.Point(1096, 41);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(117, 30);
-            this.textBox2.TabIndex = 42;
+            this.textBox2.TabIndex = 32;
             // 
             // label2
             // 
@@ -375,7 +315,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2.Location = new System.Drawing.Point(1091, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 26);
-            this.label2.TabIndex = 41;
+            this.label2.TabIndex = 31;
             this.label2.Text = "N° SubPartida";
             // 
             // textBox1
@@ -385,7 +325,7 @@ namespace sistema_modular_cafe_majada.views
             this.textBox1.Location = new System.Drawing.Point(955, 41);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(117, 30);
-            this.textBox1.TabIndex = 40;
+            this.textBox1.TabIndex = 30;
             // 
             // label1
             // 
@@ -395,7 +335,7 @@ namespace sistema_modular_cafe_majada.views
             this.label1.Location = new System.Drawing.Point(950, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 26);
-            this.label1.TabIndex = 39;
+            this.label1.TabIndex = 29;
             this.label1.Text = "Cosecha";
             // 
             // label3
@@ -404,11 +344,89 @@ namespace sistema_modular_cafe_majada.views
             this.label3.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(13, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 35);
-            this.label3.TabIndex = 38;
-            this.label3.Text = "Salida de Café";
+            this.label3.Size = new System.Drawing.Size(137, 35);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Traslado de Café";
             // 
-            // form_salidasCafe
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.textBox11);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.textBox13);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.textBox14);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(658, 85);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(610, 363);
+            this.groupBox1.TabIndex = 37;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Destino del Café";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox11.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox11.Location = new System.Drawing.Point(217, 152);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(338, 33);
+            this.textBox11.TabIndex = 5;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(24, 157);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(179, 29);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Ubicación Fisica en Bodega";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox13.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox13.Location = new System.Drawing.Point(217, 268);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(338, 33);
+            this.textBox13.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(61, 273);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(142, 29);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Finca de Procedencia";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox14.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox14.Location = new System.Drawing.Point(217, 43);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(338, 33);
+            this.textBox14.TabIndex = 1;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(6, 47);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(197, 29);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Ubicación de Almacenamiento";
+            // 
+            // form_entradaCafe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -427,16 +445,16 @@ namespace sistema_modular_cafe_majada.views
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1800, 1010);
             this.MinimumSize = new System.Drawing.Size(1280, 720);
-            this.Name = "form_salidasCafe";
-            this.Text = "form_salidasCafe";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Name = "form_entradaCafe";
+            this.Text = "form_entradaCafe";
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,11 +462,6 @@ namespace sistema_modular_cafe_majada.views
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label8;
@@ -476,5 +489,12 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label label15;
     }
 }

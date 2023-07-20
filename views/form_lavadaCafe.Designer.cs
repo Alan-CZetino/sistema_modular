@@ -49,16 +49,16 @@ namespace sistema_modular_cafe_majada.views
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -275,65 +275,25 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Personal";
             // 
-            // label9
+            // label12
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 47);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(23, 26);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "1-";
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(6, 273);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(24, 26);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "5-";
             // 
-            // textBox10
+            // textBox11
             // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(35, 47);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(542, 30);
-            this.textBox10.TabIndex = 9;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 100);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 26);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "2-";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(35, 100);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(542, 30);
-            this.textBox5.TabIndex = 15;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 156);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(24, 26);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "3-";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(35, 156);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(542, 30);
-            this.textBox7.TabIndex = 17;
+            this.textBox11.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox11.Location = new System.Drawing.Point(35, 273);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(542, 30);
+            this.textBox11.TabIndex = 21;
             // 
             // label11
             // 
@@ -355,30 +315,71 @@ namespace sistema_modular_cafe_majada.views
             this.textBox8.Size = new System.Drawing.Size(542, 30);
             this.textBox8.TabIndex = 19;
             // 
-            // label12
+            // label8
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 273);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(24, 26);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "5-";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 156);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(24, 26);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "3-";
             // 
-            // textBox11
+            // textBox7
             // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(35, 273);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(542, 30);
-            this.textBox11.TabIndex = 21;
+            this.textBox7.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(35, 156);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(542, 30);
+            this.textBox7.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(6, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 26);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "2-";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox5.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(35, 100);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(542, 30);
+            this.textBox5.TabIndex = 15;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(6, 47);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(23, 26);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "1-";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox10.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(35, 47);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(542, 30);
+            this.textBox10.TabIndex = 9;
             // 
             // form_lavadaCafe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
