@@ -52,12 +52,12 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Controls.Add(this.btn_salidaCafe, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_entradaCafe, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_subPartida, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_trillaCafe, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_despulpaCafe, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_lavadaCafe, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_despulpaCafe, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_lavadaCafe, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_subPartida, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_trillaCafe, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_entradaCafe, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_salidaCafe, 3, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -77,9 +77,9 @@ namespace sistema_modular_cafe_majada.views
             this.btn_salidaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_salidaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Salida_45px;
             this.btn_salidaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_salidaCafe.Location = new System.Drawing.Point(698, 3);
+            this.btn_salidaCafe.Location = new System.Drawing.Point(420, 3);
             this.btn_salidaCafe.Name = "btn_salidaCafe";
-            this.btn_salidaCafe.Size = new System.Drawing.Size(136, 94);
+            this.btn_salidaCafe.Size = new System.Drawing.Size(133, 94);
             this.btn_salidaCafe.TabIndex = 5;
             this.btn_salidaCafe.Text = "Salida";
             this.btn_salidaCafe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -97,7 +97,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_entradaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_entradaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Entrada_45px;
             this.btn_entradaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_entradaCafe.Location = new System.Drawing.Point(559, 3);
+            this.btn_entradaCafe.Location = new System.Drawing.Point(281, 3);
             this.btn_entradaCafe.Name = "btn_entradaCafe";
             this.btn_entradaCafe.Size = new System.Drawing.Size(133, 94);
             this.btn_entradaCafe.TabIndex = 4;
@@ -117,7 +117,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_subPartida.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_subPartida.Image = global::sistema_modular_cafe_majada.Properties.Resources.SubPartida_45px;
             this.btn_subPartida.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_subPartida.Location = new System.Drawing.Point(420, 3);
+            this.btn_subPartida.Location = new System.Drawing.Point(3, 3);
             this.btn_subPartida.Name = "btn_subPartida";
             this.btn_subPartida.Size = new System.Drawing.Size(133, 94);
             this.btn_subPartida.TabIndex = 3;
@@ -137,7 +137,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_trillaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_trillaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.trilla_45px;
             this.btn_trillaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_trillaCafe.Location = new System.Drawing.Point(281, 3);
+            this.btn_trillaCafe.Location = new System.Drawing.Point(142, 3);
             this.btn_trillaCafe.Name = "btn_trillaCafe";
             this.btn_trillaCafe.Size = new System.Drawing.Size(133, 94);
             this.btn_trillaCafe.TabIndex = 2;
@@ -157,9 +157,9 @@ namespace sistema_modular_cafe_majada.views
             this.btn_despulpaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_despulpaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Despulpa_45px;
             this.btn_despulpaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_despulpaCafe.Location = new System.Drawing.Point(142, 3);
+            this.btn_despulpaCafe.Location = new System.Drawing.Point(698, 3);
             this.btn_despulpaCafe.Name = "btn_despulpaCafe";
-            this.btn_despulpaCafe.Size = new System.Drawing.Size(133, 94);
+            this.btn_despulpaCafe.Size = new System.Drawing.Size(136, 94);
             this.btn_despulpaCafe.TabIndex = 1;
             this.btn_despulpaCafe.Text = "Despulpa";
             this.btn_despulpaCafe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -177,7 +177,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_lavadaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_lavadaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.lavar_45px;
             this.btn_lavadaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_lavadaCafe.Location = new System.Drawing.Point(3, 3);
+            this.btn_lavadaCafe.Location = new System.Drawing.Point(559, 3);
             this.btn_lavadaCafe.Name = "btn_lavadaCafe";
             this.btn_lavadaCafe.Size = new System.Drawing.Size(133, 94);
             this.btn_lavadaCafe.TabIndex = 0;

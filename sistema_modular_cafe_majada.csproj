@@ -484,6 +484,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\cose45px.png" />
+    <None Include="Resources\trabajadores 45px.png" />
+    <None Include="Resources\personas 45px.png" />
+    <None Include="Resources\roles 45px.png" />
     <None Include="Resources\lupa 24px.png" />
     <None Include="Resources\lupa 32px.png" />
     <None Include="Resources\Despulpa 45px.png" />
@@ -574,9 +578,6 @@
     <None Include="Resources\usuarios 45px.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cosecha 45px.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\tablas 45px.png" />
   </ItemGroup>
   <ItemGroup>
@@ -636,9 +637,6 @@
     <None Include="Resources\diseno-de-interfaz-de-usuario.png" />
     <None Include="Resources\cerrar-sesion.png" />
     <None Include="Resources\existencias.png" />
-    <None Include="Resources\trabajadores 45px.png" />
-    <None Include="Resources\roles 45px.png" />
-    <None Include="Resources\personas 45px.png" />
     <None Include="Resources\usuario 512px.png" />
     <None Include="Resources\usuario.png" />
     <None Include="Resources\lupa.png" />

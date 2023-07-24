@@ -80,12 +80,12 @@ namespace sistema_modular_cafe_majada
             // 
             this.txb_username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.txb_username.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_username.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_username.ForeColor = System.Drawing.Color.DimGray;
             this.txb_username.Location = new System.Drawing.Point(323, 71);
             this.txb_username.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_username.Name = "txb_username";
-            this.txb_username.Size = new System.Drawing.Size(427, 20);
+            this.txb_username.Size = new System.Drawing.Size(427, 26);
             this.txb_username.TabIndex = 1;
             this.txb_username.Text = "Usuario";
             this.txb_username.Enter += new System.EventHandler(this.txb_username_Enter);
@@ -96,12 +96,12 @@ namespace sistema_modular_cafe_majada
             // 
             this.txb_password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.txb_password.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txb_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_password.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_password.ForeColor = System.Drawing.Color.DimGray;
             this.txb_password.Location = new System.Drawing.Point(323, 159);
             this.txb_password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_password.Name = "txb_password";
-            this.txb_password.Size = new System.Drawing.Size(427, 20);
+            this.txb_password.Size = new System.Drawing.Size(427, 26);
             this.txb_password.TabIndex = 2;
             this.txb_password.Text = "Contraseña";
             this.txb_password.Enter += new System.EventHandler(this.txb_password_Enter);
@@ -111,11 +111,11 @@ namespace sistema_modular_cafe_majada
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Oswald", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(444, 9);
+            this.label1.Location = new System.Drawing.Point(457, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 25);
+            this.label1.Size = new System.Drawing.Size(152, 41);
             this.label1.TabIndex = 8;
             this.label1.Text = "Inicio de Sesión";
             // 
@@ -144,6 +144,7 @@ namespace sistema_modular_cafe_majada
             this.btn_login.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.btn_login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_login.Font = new System.Drawing.Font("Oswald Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_login.ForeColor = System.Drawing.Color.White;
             this.btn_login.Location = new System.Drawing.Point(279, 313);
             this.btn_login.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -158,13 +159,15 @@ namespace sistema_modular_cafe_majada
             // 
             this.linkLabel1.ActiveLinkColor = System.Drawing.Color.White;
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Oswald Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkColor = System.Drawing.Color.DimGray;
-            this.linkLabel1.Location = new System.Drawing.Point(435, 356);
+            this.linkLabel1.Location = new System.Drawing.Point(458, 354);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(158, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(114, 22);
             this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "¿Olvido su contraseña?";
+            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Black;
             // 
             // panel4
             // 
@@ -180,13 +183,13 @@ namespace sistema_modular_cafe_majada
             this.cb_modulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.cb_modulos.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cb_modulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_modulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_modulos.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_modulos.ForeColor = System.Drawing.Color.DimGray;
             this.cb_modulos.FormattingEnabled = true;
             this.cb_modulos.Location = new System.Drawing.Point(323, 238);
             this.cb_modulos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_modulos.Name = "cb_modulos";
-            this.cb_modulos.Size = new System.Drawing.Size(425, 28);
+            this.cb_modulos.Size = new System.Drawing.Size(425, 34);
             this.cb_modulos.TabIndex = 3;
             this.cb_modulos.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbx_DrawItem);
             this.cb_modulos.DropDown += new System.EventHandler(this.cbx_DropDown);

@@ -193,9 +193,9 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap coffee_cup_presentation {
+        internal static System.Drawing.Bitmap control_de_calidad_64px {
             get {
-                object obj = ResourceManager.GetObject("coffee-cup-presentation", resourceCulture);
+                object obj = ResourceManager.GetObject("control_de_calidad_64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap control_de_calidad_64px {
+        internal static System.Drawing.Bitmap cose45px {
             get {
-                object obj = ResourceManager.GetObject("control_de_calidad_64px", resourceCulture);
+                object obj = ResourceManager.GetObject("cose45px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,16 +283,6 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap excel {
-            get {
-                object obj = ResourceManager.GetObject("excel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap excel_24px {
             get {
                 object obj = ResourceManager.GetObject("excel_24px", resourceCulture);
@@ -326,16 +316,6 @@ namespace sistema_modular_cafe_majada.Properties {
         internal static System.Drawing.Bitmap grano_de_cafe_24px {
             get {
                 object obj = ResourceManager.GetObject("grano-de-cafe 24px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap grano_de_cafe_512px {
-            get {
-                object obj = ResourceManager.GetObject("grano-de-cafe 512px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -483,16 +463,6 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pdf {
-            get {
-                object obj = ResourceManager.GetObject("pdf", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap pdf_24px {
             get {
                 object obj = ResourceManager.GetObject("pdf_24px", resourceCulture);
@@ -505,7 +475,7 @@ namespace sistema_modular_cafe_majada.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap personas_45px {
             get {
-                object obj = ResourceManager.GetObject("personas 45px", resourceCulture);
+                object obj = ResourceManager.GetObject("personas_45px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -525,7 +495,7 @@ namespace sistema_modular_cafe_majada.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap roles_45px {
             get {
-                object obj = ResourceManager.GetObject("roles 45px", resourceCulture);
+                object obj = ResourceManager.GetObject("roles_45px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -615,7 +585,7 @@ namespace sistema_modular_cafe_majada.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap trabajadores_45px {
             get {
-                object obj = ResourceManager.GetObject("trabajadores 45px", resourceCulture);
+                object obj = ResourceManager.GetObject("trabajadores_45px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
