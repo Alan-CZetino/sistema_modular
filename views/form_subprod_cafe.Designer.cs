@@ -34,6 +34,11 @@ namespace sistema_modular_cafe_majada.views
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.btn_tableCalidades = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txb_subProdCafe = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -105,6 +110,11 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
+            this.panel8.Controls.Add(this.btn_tableCalidades);
+            this.panel8.Controls.Add(this.textBox2);
+            this.panel8.Controls.Add(this.label5);
+            this.panel8.Controls.Add(this.textBox1);
+            this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.txb_subProdCafe);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -112,6 +122,55 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(296, 316);
             this.panel8.TabIndex = 7;
+            // 
+            // btn_tableCalidades
+            // 
+            this.btn_tableCalidades.FlatAppearance.BorderSize = 0;
+            this.btn_tableCalidades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tableCalidades.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tableCalidades.Location = new System.Drawing.Point(250, 181);
+            this.btn_tableCalidades.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_tableCalidades.Name = "btn_tableCalidades";
+            this.btn_tableCalidades.Size = new System.Drawing.Size(33, 33);
+            this.btn_tableCalidades.TabIndex = 6;
+            this.btn_tableCalidades.UseVisualStyleBackColor = true;
+            this.btn_tableCalidades.Click += new System.EventHandler(this.btn_tableCalidades_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(13, 181);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(231, 33);
+            this.textBox2.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(10, 152);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 26);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Calidad de Café";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(13, 107);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(231, 33);
+            this.textBox1.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(10, 78);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 26);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Descripción";
             // 
             // txb_subProdCafe
             // 
@@ -313,6 +372,11 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dtg_subProdCafe;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_tableCalidades;
     }
 }
     

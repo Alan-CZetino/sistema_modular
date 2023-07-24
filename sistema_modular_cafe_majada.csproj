@@ -189,6 +189,36 @@
     <Compile Include="views\form_destCafe.Designer.cs">
       <DependentUpon>form_destCafe.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_opcSalida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_opcSalida.Designer.cs">
+      <DependentUpon>form_opcSalida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_opcSubPartida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_opcSubPartida.Designer.cs">
+      <DependentUpon>form_opcSubPartida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_opcTraslado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_opcTraslado.Designer.cs">
+      <DependentUpon>form_opcTraslado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_opcTrilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_opcTrilla.Designer.cs">
+      <DependentUpon>form_opcTrilla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_tablaCCafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_tablaCCafe.Designer.cs">
+      <DependentUpon>form_tablaCCafe.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_trasladoCafe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -371,8 +401,23 @@
     <EmbeddedResource Include="views\form_destCafe.resx">
       <DependentUpon>form_destCafe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\form_opcSalida.resx">
+      <DependentUpon>form_opcSalida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_opcSubPartida.resx">
+      <DependentUpon>form_opcSubPartida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_opcTraslado.resx">
+      <DependentUpon>form_opcTraslado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_opcTrilla.resx">
+      <DependentUpon>form_opcTrilla.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_salidasCafe.resx">
       <DependentUpon>form_salidasCafe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_tablaCCafe.resx">
+      <DependentUpon>form_tablaCCafe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_trasladoCafe.resx">
       <DependentUpon>form_trasladoCafe.cs</DependentUpon>

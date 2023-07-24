@@ -35,11 +35,15 @@ namespace sistema_modular_cafe_majada.views
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btn_tPesador = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_tFinca = new System.Windows.Forms.Button();
+            this.btn_tUbicacion = new System.Windows.Forms.Button();
+            this.btn_tAlmacen = new System.Windows.Forms.Button();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
@@ -47,6 +51,8 @@ namespace sistema_modular_cafe_majada.views
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_tSPCafe = new System.Windows.Forms.Button();
+            this.btn_tCCafe = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -55,19 +61,13 @@ namespace sistema_modular_cafe_majada.views
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_tSalidas = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -140,7 +140,7 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.button7);
+            this.groupBox4.Controls.Add(this.btn_tPesador);
             this.groupBox4.Controls.Add(this.textBox7);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.textBox12);
@@ -152,6 +152,19 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox4.TabIndex = 47;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Observaciones Generales";
+            // 
+            // btn_tPesador
+            // 
+            this.btn_tPesador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_tPesador.FlatAppearance.BorderSize = 0;
+            this.btn_tPesador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tPesador.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tPesador.Location = new System.Drawing.Point(1207, 40);
+            this.btn_tPesador.Name = "btn_tPesador";
+            this.btn_tPesador.Size = new System.Drawing.Size(35, 35);
+            this.btn_tPesador.TabIndex = 55;
+            this.btn_tPesador.UseVisualStyleBackColor = true;
+            this.btn_tPesador.Click += new System.EventHandler(this.btn_tPesador_Click);
             // 
             // textBox7
             // 
@@ -201,9 +214,9 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.btn_tFinca);
+            this.groupBox3.Controls.Add(this.btn_tUbicacion);
+            this.groupBox3.Controls.Add(this.btn_tAlmacen);
             this.groupBox3.Controls.Add(this.textBox8);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.textBox9);
@@ -217,6 +230,45 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox3.TabIndex = 45;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Procedencia del Café";
+            // 
+            // btn_tFinca
+            // 
+            this.btn_tFinca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_tFinca.FlatAppearance.BorderSize = 0;
+            this.btn_tFinca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tFinca.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tFinca.Location = new System.Drawing.Point(561, 172);
+            this.btn_tFinca.Name = "btn_tFinca";
+            this.btn_tFinca.Size = new System.Drawing.Size(35, 35);
+            this.btn_tFinca.TabIndex = 52;
+            this.btn_tFinca.UseVisualStyleBackColor = true;
+            this.btn_tFinca.Click += new System.EventHandler(this.btn_tFinca_Click);
+            // 
+            // btn_tUbicacion
+            // 
+            this.btn_tUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_tUbicacion.FlatAppearance.BorderSize = 0;
+            this.btn_tUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tUbicacion.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tUbicacion.Location = new System.Drawing.Point(561, 107);
+            this.btn_tUbicacion.Name = "btn_tUbicacion";
+            this.btn_tUbicacion.Size = new System.Drawing.Size(35, 35);
+            this.btn_tUbicacion.TabIndex = 51;
+            this.btn_tUbicacion.UseVisualStyleBackColor = true;
+            this.btn_tUbicacion.Click += new System.EventHandler(this.btn_tUbicacion_Click);
+            // 
+            // btn_tAlmacen
+            // 
+            this.btn_tAlmacen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_tAlmacen.FlatAppearance.BorderSize = 0;
+            this.btn_tAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tAlmacen.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tAlmacen.Location = new System.Drawing.Point(561, 41);
+            this.btn_tAlmacen.Name = "btn_tAlmacen";
+            this.btn_tAlmacen.Size = new System.Drawing.Size(35, 35);
+            this.btn_tAlmacen.TabIndex = 50;
+            this.btn_tAlmacen.UseVisualStyleBackColor = true;
+            this.btn_tAlmacen.Click += new System.EventHandler(this.btn_tAlmacen_Click);
             // 
             // textBox8
             // 
@@ -288,8 +340,8 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.btn_tSPCafe);
+            this.groupBox2.Controls.Add(this.btn_tCCafe);
             this.groupBox2.Controls.Add(this.textBox6);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.textBox5);
@@ -305,6 +357,30 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox2.TabIndex = 44;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos del Producto";
+            // 
+            // btn_tSPCafe
+            // 
+            this.btn_tSPCafe.FlatAppearance.BorderSize = 0;
+            this.btn_tSPCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tSPCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tSPCafe.Location = new System.Drawing.Point(693, 44);
+            this.btn_tSPCafe.Name = "btn_tSPCafe";
+            this.btn_tSPCafe.Size = new System.Drawing.Size(35, 35);
+            this.btn_tSPCafe.TabIndex = 54;
+            this.btn_tSPCafe.UseVisualStyleBackColor = true;
+            this.btn_tSPCafe.Click += new System.EventHandler(this.btn_tSPCafe_Click);
+            // 
+            // btn_tCCafe
+            // 
+            this.btn_tCCafe.FlatAppearance.BorderSize = 0;
+            this.btn_tCCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tCCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tCCafe.Location = new System.Drawing.Point(303, 43);
+            this.btn_tCCafe.Name = "btn_tCCafe";
+            this.btn_tCCafe.Size = new System.Drawing.Size(35, 35);
+            this.btn_tCCafe.TabIndex = 53;
+            this.btn_tCCafe.UseVisualStyleBackColor = true;
+            this.btn_tCCafe.Click += new System.EventHandler(this.btn_tCCafe_Click);
             // 
             // textBox6
             // 
@@ -382,16 +458,17 @@ namespace sistema_modular_cafe_majada.views
             this.label4.TabIndex = 0;
             this.label4.Text = "Calidad de Café";
             // 
-            // button1
+            // btn_tSalidas
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.button1.Location = new System.Drawing.Point(283, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 35);
-            this.button1.TabIndex = 43;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_tSalidas.FlatAppearance.BorderSize = 0;
+            this.btn_tSalidas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tSalidas.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tSalidas.Location = new System.Drawing.Point(283, 34);
+            this.btn_tSalidas.Name = "btn_tSalidas";
+            this.btn_tSalidas.Size = new System.Drawing.Size(35, 35);
+            this.btn_tSalidas.TabIndex = 43;
+            this.btn_tSalidas.UseVisualStyleBackColor = true;
+            this.btn_tSalidas.Click += new System.EventHandler(this.btn_tSalidas_Click);
             // 
             // textBox2
             // 
@@ -451,76 +528,6 @@ namespace sistema_modular_cafe_majada.views
             this.label3.TabIndex = 48;
             this.label3.Text = "Fecha";
             // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.button2.Location = new System.Drawing.Point(561, 41);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(35, 35);
-            this.button2.TabIndex = 50;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.button3.Location = new System.Drawing.Point(561, 107);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(35, 35);
-            this.button3.TabIndex = 51;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.button4.Location = new System.Drawing.Point(561, 172);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(35, 35);
-            this.button4.TabIndex = 52;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.button5.Location = new System.Drawing.Point(303, 43);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(35, 35);
-            this.button5.TabIndex = 53;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.button6.Location = new System.Drawing.Point(693, 44);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(35, 35);
-            this.button6.TabIndex = 54;
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.button7.Location = new System.Drawing.Point(1207, 40);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(35, 35);
-            this.button7.TabIndex = 55;
-            this.button7.UseVisualStyleBackColor = true;
-            // 
             // form_salidasCafe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -533,7 +540,7 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_tSalidas);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
@@ -584,18 +591,18 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_tSalidas;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_tPesador;
+        private System.Windows.Forms.Button btn_tFinca;
+        private System.Windows.Forms.Button btn_tUbicacion;
+        private System.Windows.Forms.Button btn_tAlmacen;
+        private System.Windows.Forms.Button btn_tSPCafe;
+        private System.Windows.Forms.Button btn_tCCafe;
     }
 }

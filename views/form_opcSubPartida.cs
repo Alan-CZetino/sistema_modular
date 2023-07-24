@@ -10,17 +10,16 @@ using System.Windows.Forms;
 
 namespace sistema_modular_cafe_majada.views
 {
-    public partial class form_subprod_cafe : Form
+    public partial class form_opcSubPartida : Form
     {
-        public form_subprod_cafe()
+        public form_opcSubPartida()
         {
             InitializeComponent();
         }
 
-        private void btn_tableCalidades_Click(object sender, EventArgs e)
+        private void btn_close_Click(object sender, EventArgs e)
         {
-            form_tablaCCafe tablaCCafe = new form_tablaCCafe();
-            tablaCCafe.ShowDialog();
+            this.Close();
         }
     }
 }

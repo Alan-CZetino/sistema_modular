@@ -16,5 +16,41 @@ namespace sistema_modular_cafe_majada.views
         {
             InitializeComponent();
         }
+
+        private void btn_tTrillas_Click(object sender, EventArgs e)
+        {
+            form_opcTrilla opcTrilla = new form_opcTrilla();
+            opcTrilla.ShowDialog();
+        }
+
+        private void btn_tCCafe_Click(object sender, EventArgs e)
+        {
+            form_opcTrilla opcTrilla = new form_opcTrilla();
+            opcTrilla.ShowDialog();
+        }
+
+        private void btn_tSPCafe_Click(object sender, EventArgs e)
+        {
+            form_opcTrilla opcTrilla = new form_opcTrilla();
+            opcTrilla.ShowDialog();
+        }
+
+        private void btn_tAlmacen_Click(object sender, EventArgs e)
+        {
+            form_opcTrilla opcTrilla = new form_opcTrilla();
+            opcTrilla.ShowDialog();
+        }
+
+        private void btn_tUbicacion_Click(object sender, EventArgs e)
+        {
+            form_opcTrilla opcTrilla = new form_opcTrilla();
+            opcTrilla.ShowDialog();
+        }
+
+        private void btn_tPesador_Click(object sender, EventArgs e)
+        {
+            form_opcTrilla opcTrilla = new form_opcTrilla();
+            opcTrilla.ShowDialog();
+        }
     }
 }

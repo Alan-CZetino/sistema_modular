@@ -16,5 +16,65 @@ namespace sistema_modular_cafe_majada.views
         {
             InitializeComponent();
         }
+
+        private void btn_tTraslado_Click(object sender, EventArgs e)
+        {
+            form_opcTraslado opcTraslado = new form_opcTraslado();
+            opcTraslado.ShowDialog();
+        }
+
+        private void btn_tAlmacenP_Click(object sender, EventArgs e)
+        {
+            form_opcTraslado opcTraslado = new form_opcTraslado();
+            opcTraslado.ShowDialog();
+        }
+
+        private void btn_tUbicacionP_Click(object sender, EventArgs e)
+        {
+            form_opcTraslado opcTraslado = new form_opcTraslado();
+            opcTraslado.ShowDialog();
+        }
+
+        private void btn_tFincaP_Click(object sender, EventArgs e)
+        {
+            form_opcTraslado opcTraslado = new form_opcTraslado();
+            opcTraslado.ShowDialog();
+        }
+
+        private void btn_tCCafe_Click(object sender, EventArgs e)
+        {
+            form_opcTraslado opcTraslado = new form_opcTraslado();
+            opcTraslado.ShowDialog();
+        }
+
+        private void btn_tSPCafe_Click(object sender, EventArgs e)
+        {
+            form_opcTraslado opcTraslado = new form_opcTraslado();
+            opcTraslado.ShowDialog();
+        }
+
+        private void btn_tAlmacenD_Click(object sender, EventArgs e)
+        {
+            form_opcTraslado opcTraslado = new form_opcTraslado();
+            opcTraslado.ShowDialog();
+        }
+
+        private void btn_tUbicacionD_Click(object sender, EventArgs e)
+        {
+            form_opcTraslado opcTraslado = new form_opcTraslado();
+            opcTraslado.ShowDialog();
+        }
+
+        private void btn_tFincaD_Click(object sender, EventArgs e)
+        {
+            form_opcTraslado opcTraslado = new form_opcTraslado();
+            opcTraslado.ShowDialog();
+        }
+
+        private void btn_tPesadores_Click(object sender, EventArgs e)
+        {
+            form_opcTraslado opcTraslado = new form_opcTraslado();
+            opcTraslado.ShowDialog();
+        }
     }
 }
