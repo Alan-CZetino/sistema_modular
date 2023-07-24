@@ -38,13 +38,11 @@ namespace sistema_modular_cafe_majada.views
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_tSPCafe = new System.Windows.Forms.Button();
             this.btn_tCCafe = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,6 +63,7 @@ namespace sistema_modular_cafe_majada.views
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -159,13 +158,12 @@ namespace sistema_modular_cafe_majada.views
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btn_tSPCafe);
+            this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.btn_tCCafe);
             this.groupBox2.Controls.Add(this.textBox6);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.textBox5);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Controls.Add(this.label4);
@@ -176,18 +174,6 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos del Producto";
-            // 
-            // btn_tSPCafe
-            // 
-            this.btn_tSPCafe.FlatAppearance.BorderSize = 0;
-            this.btn_tSPCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tSPCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.btn_tSPCafe.Location = new System.Drawing.Point(567, 43);
-            this.btn_tSPCafe.Name = "btn_tSPCafe";
-            this.btn_tSPCafe.Size = new System.Drawing.Size(35, 35);
-            this.btn_tSPCafe.TabIndex = 31;
-            this.btn_tSPCafe.UseVisualStyleBackColor = true;
-            this.btn_tSPCafe.Click += new System.EventHandler(this.btn_tSPCafe_Click);
             // 
             // btn_tCCafe
             // 
@@ -238,15 +224,6 @@ namespace sistema_modular_cafe_majada.views
             this.label6.Size = new System.Drawing.Size(88, 29);
             this.label6.TabIndex = 4;
             this.label6.Text = "Sacos/Pesas";
-            // 
-            // textBox4
-            // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(420, 43);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(141, 33);
-            this.textBox4.TabIndex = 3;
             // 
             // label5
             // 
@@ -479,6 +456,15 @@ namespace sistema_modular_cafe_majada.views
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 30);
             this.dateTimePicker1.TabIndex = 29;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(420, 43);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(171, 34);
+            this.comboBox1.TabIndex = 31;
+            // 
             // form_trillaCafe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -529,7 +515,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
@@ -547,10 +532,10 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button btn_tSPCafe;
         private System.Windows.Forms.Button btn_tCCafe;
         private System.Windows.Forms.Button btn_tUbicacion;
         private System.Windows.Forms.Button btn_tAlmacen;
         private System.Windows.Forms.Button btn_tPesador;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

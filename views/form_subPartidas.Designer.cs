@@ -38,7 +38,6 @@ namespace sistema_modular_cafe_majada.views
             this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.btn_SPCafe = new System.Windows.Forms.Button();
             this.btn_CCafe = new System.Windows.Forms.Button();
             this.btn_prodCafe = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
@@ -58,13 +57,13 @@ namespace sistema_modular_cafe_majada.views
             this.label8 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_puntero = new System.Windows.Forms.Button();
             this.dateTimePicker8 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
@@ -86,6 +85,7 @@ namespace sistema_modular_cafe_majada.views
             this.label23 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_catador = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.textBox37 = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
@@ -114,10 +114,7 @@ namespace sistema_modular_cafe_majada.views
             this.textBox27 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btn_catador = new System.Windows.Forms.Button();
-            this.btn_puntero = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -178,10 +175,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.dateTimePicker5);
             this.groupBox1.Controls.Add(this.dateTimePicker4);
             this.groupBox1.Controls.Add(this.dateTimePicker3);
-            this.groupBox1.Controls.Add(this.btn_SPCafe);
             this.groupBox1.Controls.Add(this.btn_CCafe);
             this.groupBox1.Controls.Add(this.btn_prodCafe);
             this.groupBox1.Controls.Add(this.label14);
@@ -201,7 +198,6 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.label5);
@@ -247,18 +243,6 @@ namespace sistema_modular_cafe_majada.views
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(145, 30);
             this.dateTimePicker3.TabIndex = 41;
-            // 
-            // btn_SPCafe
-            // 
-            this.btn_SPCafe.FlatAppearance.BorderSize = 0;
-            this.btn_SPCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SPCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.btn_SPCafe.Location = new System.Drawing.Point(606, 74);
-            this.btn_SPCafe.Name = "btn_SPCafe";
-            this.btn_SPCafe.Size = new System.Drawing.Size(35, 35);
-            this.btn_SPCafe.TabIndex = 40;
-            this.btn_SPCafe.UseVisualStyleBackColor = true;
-            this.btn_SPCafe.Click += new System.EventHandler(this.btn_SPCafe_Click);
             // 
             // btn_CCafe
             // 
@@ -449,15 +433,6 @@ namespace sistema_modular_cafe_majada.views
             this.label7.TabIndex = 8;
             this.label7.Text = "Pdas Semana N°";
             // 
-            // textBox5
-            // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(449, 76);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(151, 30);
-            this.textBox5.TabIndex = 7;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -537,6 +512,19 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informacion de Secado";
+            // 
+            // btn_puntero
+            // 
+            this.btn_puntero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_puntero.FlatAppearance.BorderSize = 0;
+            this.btn_puntero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_puntero.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_puntero.Location = new System.Drawing.Point(556, 227);
+            this.btn_puntero.Name = "btn_puntero";
+            this.btn_puntero.Size = new System.Drawing.Size(35, 35);
+            this.btn_puntero.TabIndex = 45;
+            this.btn_puntero.UseVisualStyleBackColor = true;
+            this.btn_puntero.Click += new System.EventHandler(this.btn_puntero_Click);
             // 
             // dateTimePicker8
             // 
@@ -746,6 +734,19 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Informacion de la catacion";
             // 
+            // btn_catador
+            // 
+            this.btn_catador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_catador.FlatAppearance.BorderSize = 0;
+            this.btn_catador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_catador.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_catador.Location = new System.Drawing.Point(1207, 44);
+            this.btn_catador.Name = "btn_catador";
+            this.btn_catador.Size = new System.Drawing.Size(35, 35);
+            this.btn_catador.TabIndex = 44;
+            this.btn_catador.UseVisualStyleBackColor = true;
+            this.btn_catador.Click += new System.EventHandler(this.btn_catador_Click);
+            // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -826,7 +827,8 @@ namespace sistema_modular_cafe_majada.views
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.btn_ubiFisicaCafe);
             this.groupBox4.Controls.Add(this.btn_ubicacionCafe);
@@ -902,13 +904,15 @@ namespace sistema_modular_cafe_majada.views
             // 
             // textBox36
             // 
-            this.textBox36.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox36.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox36.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox36.Location = new System.Drawing.Point(673, 159);
+            this.textBox36.Multiline = true;
             this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(513, 30);
+            this.textBox36.Size = new System.Drawing.Size(513, 22);
             this.textBox36.TabIndex = 39;
             // 
             // label37
@@ -1049,49 +1053,16 @@ namespace sistema_modular_cafe_majada.views
             this.label31.TabIndex = 24;
             this.label31.Text = "Fecha de Pesado";
             // 
-            // dateTimePicker1
+            // comboBox1
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(341, 38);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 30);
-            this.dateTimePicker1.TabIndex = 37;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(336, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 26);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "Fecha";
-            // 
-            // btn_catador
-            // 
-            this.btn_catador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_catador.FlatAppearance.BorderSize = 0;
-            this.btn_catador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_catador.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.btn_catador.Location = new System.Drawing.Point(1207, 44);
-            this.btn_catador.Name = "btn_catador";
-            this.btn_catador.Size = new System.Drawing.Size(35, 35);
-            this.btn_catador.TabIndex = 44;
-            this.btn_catador.UseVisualStyleBackColor = true;
-            this.btn_catador.Click += new System.EventHandler(this.btn_catador_Click);
-            // 
-            // btn_puntero
-            // 
-            this.btn_puntero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_puntero.FlatAppearance.BorderSize = 0;
-            this.btn_puntero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_puntero.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.btn_puntero.Location = new System.Drawing.Point(556, 227);
-            this.btn_puntero.Name = "btn_puntero";
-            this.btn_puntero.Size = new System.Drawing.Size(35, 35);
-            this.btn_puntero.TabIndex = 45;
-            this.btn_puntero.UseVisualStyleBackColor = true;
-            this.btn_puntero.Click += new System.EventHandler(this.btn_puntero_Click);
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(454, 76);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(178, 34);
+            this.comboBox1.TabIndex = 44;
             // 
             // form_subPartidas
             // 
@@ -1099,8 +1070,6 @@ namespace sistema_modular_cafe_majada.views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -1152,7 +1121,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
@@ -1198,12 +1166,9 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.TextBox textBox32;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.TextBox textBox37;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Button btn_SPCafe;
         private System.Windows.Forms.Button btn_CCafe;
         private System.Windows.Forms.Button btn_prodCafe;
         private System.Windows.Forms.DateTimePicker dateTimePicker5;
@@ -1218,5 +1183,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Button btn_ubicacionCafe;
         private System.Windows.Forms.Button btn_puntero;
         private System.Windows.Forms.Button btn_catador;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

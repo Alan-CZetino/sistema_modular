@@ -36,6 +36,9 @@ namespace sistema_modular_cafe_majada
             this.btn_min = new System.Windows.Forms.PictureBox();
             this.btn_close = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.lbl_User = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_CloseSection = new System.Windows.Forms.Button();
@@ -46,9 +49,6 @@ namespace sistema_modular_cafe_majada
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_container = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.barra_controles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_close)).BeginInit();
@@ -139,10 +139,42 @@ namespace sistema_modular_cafe_majada
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 39);
-            this.panel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(251, 882);
             this.panel2.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(134, 729);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 32);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "numero";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(12, 729);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(123, 32);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Cosecha Actual:";
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 764);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(251, 20);
+            this.panel4.TabIndex = 9;
             // 
             // lbl_User
             // 
@@ -163,7 +195,7 @@ namespace sistema_modular_cafe_majada
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 816);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(251, 20);
             this.panel1.TabIndex = 7;
@@ -290,42 +322,10 @@ namespace sistema_modular_cafe_majada
             this.panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_container.ForeColor = System.Drawing.Color.Black;
             this.panel_container.Location = new System.Drawing.Point(251, 39);
-            this.panel_container.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel_container.Margin = new System.Windows.Forms.Padding(5);
             this.panel_container.Name = "panel_container";
             this.panel_container.Size = new System.Drawing.Size(1209, 882);
             this.panel_container.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 764);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(251, 20);
-            this.panel4.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 729);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 32);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Cosecha Actual:";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(134, 729);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 32);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "numero";
             // 
             // form_main
             // 
