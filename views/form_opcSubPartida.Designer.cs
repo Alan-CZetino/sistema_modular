@@ -29,6 +29,7 @@ namespace sistema_modular_cafe_majada.views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_opcSubPartida));
             this.txb_buscarOpc = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -143,6 +144,7 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1067, 597);
             this.MinimumSize = new System.Drawing.Size(1067, 597);
             this.Name = "form_opcSubPartida";

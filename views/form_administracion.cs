@@ -13,9 +13,32 @@ namespace sistema_modular_cafe_majada
 {
     public partial class form_administracion : Form
     {
+        //DICCIONARIO PARA ALMACENAR EL COLOR ORIGINAL DEL BOTON
+        private Dictionary<Button, Color> originalColors;
+
         public form_administracion()
         {
             InitializeComponent();
+
+            //SE INICIALIZA EL DICCIONARIO DE COLORES
+            originalColors = new Dictionary<Button, Color>();
+
+            //SE LLAMA LA FUNCION ASIGNAR COLOR ORIGINAL
+            AsignarColorOriginal(btn_calidades_cafe);
+            AsignarColorOriginal(btn_beneficios);
+            AsignarColorOriginal(btn_clase_cafeuva);
+            AsignarColorOriginal(btn_cosecha);
+            AsignarColorOriginal(btn_dest_cafe);
+            AsignarColorOriginal(btn_fincas);
+            AsignarColorOriginal(btn_maquinas);
+            AsignarColorOriginal(btn_persona);
+            AsignarColorOriginal(btn_personal);
+            AsignarColorOriginal(btn_proce_cafe);
+            AsignarColorOriginal(btn_rol);
+            AsignarColorOriginal(btn_socios);
+            AsignarColorOriginal(btn_subprod_cafe);
+            AsignarColorOriginal(btn_ubicacion);
+            AsignarColorOriginal(btn_usuarios);
         }
 
         //FUNCION PARA IR AGREGANDO Y REMOVIENDO FORMULARIOS
@@ -83,7 +106,7 @@ namespace sistema_modular_cafe_majada
 
         private void btn_lote_Click(object sender, EventArgs e)
         {
-            form_lote fLotes = new form_lote();
+            form_socios fLotes = new form_socios();
             AddFormulario(fLotes);
         }
         
@@ -121,6 +144,43 @@ namespace sistema_modular_cafe_majada
         {
             form_personal fPersonal = new form_personal();
             AddFormulario(fPersonal);
+        }
+
+
+        //FUNCIONES PARA CAMBIAR DE COLOR LOS BOTONES AL HACER CLICK EN ELLOS
+        private void AsignarColorOriginal(Button button)
+        {
+            // Guardar el color original del botón en el diccionario
+            originalColors.Add(button, button.BackColor);
+
+            // Suscribir el evento Click al botón
+            button.Click += Button_Click;
+
+            // Suscribir el evento LostFocus al botón
+            button.LostFocus += Button_Leave;
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            // Obtener el botón actual
+            Button button = (Button)sender;
+
+            // Cambiar el color del botón al ser seleccionado
+            button.BackColor = Color.FromArgb(224, 238, 249);
+            button.FlatAppearance.BorderColor = Color.FromArgb(26,134,216);
+            button.FlatAppearance.BorderSize = 1;
+        }
+
+        private void Button_Leave(object sender, EventArgs e)
+        {
+            // Obtener el botón actual
+            Button button = (Button)sender;
+
+            // Restaurar el color original del botón al perder el foco
+            button.BackColor = originalColors[button];
+            button.ForeColor = Color.Black;
+            button.FlatAppearance.BorderColor = Color.Black;
+            button.FlatAppearance.BorderSize = 1;
         }
 
     }

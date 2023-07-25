@@ -10,17 +10,16 @@ using System.Windows.Forms;
 
 namespace sistema_modular_cafe_majada.views
 {
-    public partial class form_maquinas : Form
+    public partial class form_tablaBeneficio : Form
     {
-        public form_maquinas()
+        public form_tablaBeneficio()
         {
             InitializeComponent();
         }
 
-        private void btn_fallaMaquina_Click(object sender, EventArgs e)
+        private void btn_close_Click(object sender, EventArgs e)
         {
-            form_fallaMaquina fallaMaquina = new form_fallaMaquina();
-            fallaMaquina.ShowDialog();
+            this.Close();
         }
     }
 }

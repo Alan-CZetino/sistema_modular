@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace sistema_modular_cafe_majada
+namespace sistema_modular_cafe_majada.views
 {
-    public partial class form_activos : Form
+    public partial class form_fallaMaquina : Form
     {
-        public form_activos()
+        public form_fallaMaquina()
         {
             InitializeComponent();
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

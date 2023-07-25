@@ -21,7 +21,7 @@ using System.Windows.Forms;
 
 namespace sistema_modular_cafe_majada.views
 {
-    public partial class form_lote : Form
+    public partial class form_socios : Form
     {
         //variable global para verificar el estado del boton actualizar
         private bool imagenClickeada = false;
@@ -30,7 +30,7 @@ namespace sistema_modular_cafe_majada.views
         
         form_opcLote form_Opc;
 
-        public form_lote()
+        public form_socios()
         {
             InitializeComponent();
 
@@ -42,14 +42,14 @@ namespace sistema_modular_cafe_majada.views
             dtg_lotes.CellPainting += dtgv_lote_CellPainting;
 
             //restringir los txb para que no se puedan editar
-            txb_cosecha.ReadOnly = true;
-            txb_calidadCafe.ReadOnly = true;
+            //txb_cosecha.ReadOnly = true;
+            //txb_calidadCafe.ReadOnly = true;
             txb_nomFinca.ReadOnly = true;
-            txb_tipoCafe.ReadOnly = true;
-            txb_cosecha.Enabled = false;
+            //txb_tipoCafe.ReadOnly = true;
+            //txb_cosecha.Enabled = false;
             txb_nomFinca.Enabled = false;
-            txb_calidadCafe.Enabled = false;
-            txb_tipoCafe.Enabled = false;
+            //txb_calidadCafe.Enabled = false;
+            //txb_tipoCafe.Enabled = false;
 
             //funcion que restringe el uso de caracteres en los textbox necesarios
             List<TextBox> textBoxListN = new List<TextBox> { txb_cantidad };
@@ -105,14 +105,14 @@ namespace sistema_modular_cafe_majada.views
 
         public void ClearDataTxb()
         {
-            List<TextBox> txb = new List<TextBox> { txb_numLote, txb_nomFinca, txb_cantidad, txb_tipoCafe, txb_cosecha, txb_calidadCafe,  };
+            List<TextBox> txb = new List<TextBox> { txb_numLote, txb_nomFinca, txb_cantidad/*, txb_tipoCafe, txb_cosecha, txb_calidadCafe,*/  };
 
             foreach (TextBox textBox in txb)
             {
                 textBox.Text = "";
             }
 
-            dtp_fecha.Value = DateTime.Now;
+            //dtp_fecha.Value = DateTime.Now;
 
         }
 
@@ -161,11 +161,11 @@ namespace sistema_modular_cafe_majada.views
                 // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
                 txb_numLote.Text = loteSeleccionado.NombreLote;
                 txb_nomFinca.Text = loteSeleccionado.NombreFinca;
-                txb_calidadCafe.Text = loteSeleccionado.NombreCalidadLote;
+                //txb_calidadCafe.Text = loteSeleccionado.NombreCalidadLote;
                 txb_cantidad.Text = loteSeleccionado.CantidadLote.ToString("0.00");
-                txb_cosecha.Text = loteSeleccionado.NombreCosechaLote;
-                dtp_fecha.Value = loteSeleccionado.FechaLote;
-                txb_tipoCafe.Text = loteSeleccionado.TipoCafe;
+                //txb_cosecha.Text = loteSeleccionado.NombreCosechaLote;
+                //dtp_fecha.Value = loteSeleccionado.FechaLote;
+                //txb_tipoCafe.Text = loteSeleccionado.TipoCafe;
             }
             else
             {
@@ -229,7 +229,7 @@ namespace sistema_modular_cafe_majada.views
 
             if (form_Opc.ShowDialog() == DialogResult.OK)
             {
-                txb_tipoCafe.Text = TipoCafeSeleccionado.NombreTipoCafeSeleccionado;
+                //txb_tipoCafe.Text = TipoCafeSeleccionado.NombreTipoCafeSeleccionado;
             }
         }
 
@@ -240,7 +240,7 @@ namespace sistema_modular_cafe_majada.views
 
             if (form_Opc.ShowDialog() == DialogResult.OK)
             {
-                txb_calidadCafe.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
+                //txb_calidadCafe.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
             }
         }
 
@@ -251,7 +251,7 @@ namespace sistema_modular_cafe_majada.views
 
             if (form_Opc.ShowDialog() == DialogResult.OK)
             {
-                txb_cosecha.Text = CosechaSeleccionada.NombreCosechaSeleccionada;
+                //txb_cosecha.Text = CosechaSeleccionada.NombreCosechaSeleccionada;
             }
         }
 
@@ -313,11 +313,11 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 string nameLote = txb_numLote.Text;
-                DateTime fecha = dtp_fecha.Value;
-                string calidad = txb_calidadCafe.Text;
-                string cosecha = txb_cosecha.Text;
+                //DateTime fecha = dtp_fecha.Value;
+                //string calidad = txb_calidadCafe.Text;
+                //string cosecha = txb_cosecha.Text;
                 string finca = txb_nomFinca.Text;
-                string tipoCafe = txb_tipoCafe.Text;
+                //string tipoCafe = txb_tipoCafe.Text;
 
 
                 // Crear una instancia de la clase Lote con los valores obtenidos
@@ -363,7 +363,7 @@ namespace sistema_modular_cafe_majada.views
                     //borrar datos de los textbox
                     ClearDataTxb();
                 }
-                else
+                /*else
                 {
                     var cosechaC = new CosechaController();
                     var calidadC = new CCafeController();
@@ -375,13 +375,13 @@ namespace sistema_modular_cafe_majada.views
                     TipoCafe tip = new TipoCafe();
                     CalidadCafe cali = new CalidadCafe();
 
-                    cos = cosechaC.ObtenerNombreCosecha(cosecha);
+                    //cos = cosechaC.ObtenerNombreCosecha(cosecha);
                     fin = fincaC.ObtenerNombreFincas(finca);
-                    cali = calidadC.ObtenerNombreCalidad(calidad);
-                    tip = tipoC.ObtenerTipoCafeNombre(tipoCafe);
+                    //cali = calidadC.ObtenerNombreCalidad(calidad);
+                    //tip = tipoC.ObtenerTipoCafeNombre(tipoCafe);
 
                     // Código que se ejecutará si se ha hecho clic en la imagen update
-                    bool exito = loteController.ActualizarLote(loteSeleccionado.IdLote, nameLote, cantidad, fecha, cos.IdCosecha, 
+                    bool exito= loteController.ActualizarLote(loteSeleccionado.IdLote, nameLote, cantidad, fecha, cos.IdCosecha, 
                                                    fin.IdFinca, cali.IdCalidad ,tip.IdTipoCafe);
                     
                     if (!exito)
@@ -409,7 +409,7 @@ namespace sistema_modular_cafe_majada.views
                     imagenClickeada = false;
                     loteSeleccionado = null;
 
-                }
+                }*/
             }
             catch (Exception ex)
             {

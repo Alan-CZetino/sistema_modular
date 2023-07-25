@@ -1,7 +1,7 @@
 ﻿
 namespace sistema_modular_cafe_majada.views
 {
-    partial class form_opcTraslado
+    partial class form_tablaBeneficio
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,7 @@ namespace sistema_modular_cafe_majada.views
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_opcTraslado));
-            this.txb_buscarOpc = new System.Windows.Forms.TextBox();
+            this.txb_buscarPer = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
@@ -43,18 +42,18 @@ namespace sistema_modular_cafe_majada.views
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // txb_buscarOpc
+            // txb_buscarPer
             // 
-            this.txb_buscarOpc.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txb_buscarOpc.BackColor = System.Drawing.Color.White;
-            this.txb_buscarOpc.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txb_buscarOpc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_buscarOpc.Location = new System.Drawing.Point(359, 48);
-            this.txb_buscarOpc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txb_buscarOpc.Name = "txb_buscarOpc";
-            this.txb_buscarOpc.Size = new System.Drawing.Size(381, 21);
-            this.txb_buscarOpc.TabIndex = 18;
-            this.txb_buscarOpc.Text = "Buscar...";
+            this.txb_buscarPer.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txb_buscarPer.BackColor = System.Drawing.Color.White;
+            this.txb_buscarPer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txb_buscarPer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_buscarPer.Location = new System.Drawing.Point(359, 48);
+            this.txb_buscarPer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txb_buscarPer.Name = "txb_buscarPer";
+            this.txb_buscarPer.Size = new System.Drawing.Size(381, 21);
+            this.txb_buscarPer.TabIndex = 11;
+            this.txb_buscarPer.Text = "Buscar...";
             // 
             // pictureBox1
             // 
@@ -65,7 +64,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(443, 34);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
             // panel1
@@ -77,7 +76,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1067, 30);
-            this.panel1.TabIndex = 16;
+            this.panel1.TabIndex = 9;
             // 
             // btn_close
             // 
@@ -100,7 +99,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel2.Location = new System.Drawing.Point(0, 30);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 567);
-            this.panel2.TabIndex = 19;
+            this.panel2.TabIndex = 12;
             // 
             // panel3
             // 
@@ -109,7 +108,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel3.Location = new System.Drawing.Point(2, 595);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1065, 2);
-            this.panel3.TabIndex = 20;
+            this.panel3.TabIndex = 13;
             // 
             // panel4
             // 
@@ -118,7 +117,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel4.Location = new System.Drawing.Point(1065, 30);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2, 565);
-            this.panel4.TabIndex = 20;
+            this.panel4.TabIndex = 14;
             // 
             // dataGridView1
             // 
@@ -128,9 +127,9 @@ namespace sistema_modular_cafe_majada.views
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1050, 483);
-            this.dataGridView1.TabIndex = 21;
+            this.dataGridView1.TabIndex = 15;
             // 
-            // form_opcTraslado
+            // form_tablaBeneficio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -140,16 +139,14 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.txb_buscarOpc);
+            this.Controls.Add(this.txb_buscarPer);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1067, 597);
             this.MinimumSize = new System.Drawing.Size(1067, 597);
-            this.Name = "form_opcTraslado";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "form_opcTraslado";
+            this.Name = "form_tablaBeneficio";
+            this.Text = "form_tablaBeneficio";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -160,7 +157,7 @@ namespace sistema_modular_cafe_majada.views
 
         #endregion
 
-        private System.Windows.Forms.TextBox txb_buscarOpc;
+        private System.Windows.Forms.TextBox txb_buscarPer;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_close;

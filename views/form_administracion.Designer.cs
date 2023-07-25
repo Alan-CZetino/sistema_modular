@@ -40,7 +40,7 @@ namespace sistema_modular_cafe_majada
             this.btn_subprod_cafe = new System.Windows.Forms.Button();
             this.btn_beneficios = new System.Windows.Forms.Button();
             this.btn_fincas = new System.Windows.Forms.Button();
-            this.btn_lote = new System.Windows.Forms.Button();
+            this.btn_socios = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btn_persona = new System.Windows.Forms.Button();
@@ -84,7 +84,7 @@ namespace sistema_modular_cafe_majada
             this.tableLayoutPanel2.Controls.Add(this.btn_subprod_cafe, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_beneficios, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.btn_fincas, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btn_lote, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btn_socios, 1, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(13, 119);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -97,6 +97,8 @@ namespace sistema_modular_cafe_majada
             // btn_clase_cafeuva
             // 
             this.btn_clase_cafeuva.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_clase_cafeuva.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_clase_cafeuva.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_clase_cafeuva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_clase_cafeuva.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clase_cafeuva.Location = new System.Drawing.Point(839, 48);
@@ -111,6 +113,8 @@ namespace sistema_modular_cafe_majada
             // btn_maquinas
             // 
             this.btn_maquinas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_maquinas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_maquinas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_maquinas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_maquinas.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_maquinas.Location = new System.Drawing.Point(1048, 2);
@@ -118,13 +122,15 @@ namespace sistema_modular_cafe_majada
             this.btn_maquinas.Name = "btn_maquinas";
             this.btn_maquinas.Size = new System.Drawing.Size(205, 42);
             this.btn_maquinas.TabIndex = 21;
-            this.btn_maquinas.Text = "Secadoras y otras máquinas";
+            this.btn_maquinas.Text = "Secadoras";
             this.btn_maquinas.UseVisualStyleBackColor = true;
             this.btn_maquinas.Click += new System.EventHandler(this.btn_maquinas_Click);
             // 
             // btn_ubicacion
             // 
             this.btn_ubicacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_ubicacion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_ubicacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_ubicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ubicacion.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ubicacion.Location = new System.Drawing.Point(839, 2);
@@ -139,6 +145,8 @@ namespace sistema_modular_cafe_majada
             // btn_dest_cafe
             // 
             this.btn_dest_cafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_dest_cafe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_dest_cafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_dest_cafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_dest_cafe.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_dest_cafe.Location = new System.Drawing.Point(630, 2);
@@ -153,6 +161,8 @@ namespace sistema_modular_cafe_majada
             // btn_proce_cafe
             // 
             this.btn_proce_cafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_proce_cafe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_proce_cafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_proce_cafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_proce_cafe.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_proce_cafe.Location = new System.Drawing.Point(421, 2);
@@ -167,6 +177,8 @@ namespace sistema_modular_cafe_majada
             // btn_calidades_cafe
             // 
             this.btn_calidades_cafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_calidades_cafe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_calidades_cafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_calidades_cafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_calidades_cafe.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_calidades_cafe.Location = new System.Drawing.Point(3, 2);
@@ -181,6 +193,8 @@ namespace sistema_modular_cafe_majada
             // btn_subprod_cafe
             // 
             this.btn_subprod_cafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_subprod_cafe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_subprod_cafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_subprod_cafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_subprod_cafe.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_subprod_cafe.Location = new System.Drawing.Point(212, 2);
@@ -195,6 +209,8 @@ namespace sistema_modular_cafe_majada
             // btn_beneficios
             // 
             this.btn_beneficios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_beneficios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_beneficios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_beneficios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_beneficios.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_beneficios.Location = new System.Drawing.Point(630, 48);
@@ -209,6 +225,8 @@ namespace sistema_modular_cafe_majada
             // btn_fincas
             // 
             this.btn_fincas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_fincas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_fincas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_fincas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_fincas.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_fincas.Location = new System.Drawing.Point(421, 48);
@@ -220,19 +238,21 @@ namespace sistema_modular_cafe_majada
             this.btn_fincas.UseVisualStyleBackColor = true;
             this.btn_fincas.Click += new System.EventHandler(this.btn_fincas_Click);
             // 
-            // btn_lote
+            // btn_socios
             // 
-            this.btn_lote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_lote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_lote.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_lote.Location = new System.Drawing.Point(212, 48);
-            this.btn_lote.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_lote.Name = "btn_lote";
-            this.btn_lote.Size = new System.Drawing.Size(203, 42);
-            this.btn_lote.TabIndex = 16;
-            this.btn_lote.Text = "Lotes";
-            this.btn_lote.UseVisualStyleBackColor = true;
-            this.btn_lote.Click += new System.EventHandler(this.btn_lote_Click);
+            this.btn_socios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_socios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_socios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_socios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_socios.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_socios.Location = new System.Drawing.Point(212, 48);
+            this.btn_socios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_socios.Name = "btn_socios";
+            this.btn_socios.Size = new System.Drawing.Size(203, 42);
+            this.btn_socios.TabIndex = 16;
+            this.btn_socios.Text = "Socios";
+            this.btn_socios.UseVisualStyleBackColor = true;
+            this.btn_socios.Click += new System.EventHandler(this.btn_lote_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -273,6 +293,8 @@ namespace sistema_modular_cafe_majada
             this.btn_persona.BackColor = System.Drawing.Color.White;
             this.btn_persona.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_persona.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.btn_persona.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_persona.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_persona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_persona.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_persona.ForeColor = System.Drawing.Color.Black;
@@ -303,6 +325,8 @@ namespace sistema_modular_cafe_majada
             this.btn_rol.BackColor = System.Drawing.Color.White;
             this.btn_rol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_rol.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.btn_rol.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_rol.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_rol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_rol.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_rol.ForeColor = System.Drawing.Color.Black;
@@ -333,6 +357,8 @@ namespace sistema_modular_cafe_majada
             this.btn_usuarios.BackColor = System.Drawing.Color.White;
             this.btn_usuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_usuarios.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.btn_usuarios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_usuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_usuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_usuarios.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_usuarios.ForeColor = System.Drawing.Color.Black;
@@ -363,6 +389,8 @@ namespace sistema_modular_cafe_majada
             this.btn_personal.BackColor = System.Drawing.Color.White;
             this.btn_personal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_personal.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.btn_personal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_personal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_personal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_personal.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_personal.ForeColor = System.Drawing.Color.Black;
@@ -393,6 +421,8 @@ namespace sistema_modular_cafe_majada
             this.btn_cosecha.BackColor = System.Drawing.Color.White;
             this.btn_cosecha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_cosecha.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
+            this.btn_cosecha.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
+            this.btn_cosecha.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_cosecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cosecha.Font = new System.Drawing.Font("Oswald", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cosecha.ForeColor = System.Drawing.Color.Black;
@@ -469,7 +499,7 @@ namespace sistema_modular_cafe_majada
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btn_calidades_cafe;
         private System.Windows.Forms.Button btn_fincas;
-        private System.Windows.Forms.Button btn_lote;
+        private System.Windows.Forms.Button btn_socios;
         private System.Windows.Forms.Button btn_dest_cafe;
         private System.Windows.Forms.Button btn_proce_cafe;
         private System.Windows.Forms.Button btn_subprod_cafe;

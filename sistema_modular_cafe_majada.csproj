@@ -141,12 +141,6 @@
     <Compile Include="model\Mapping\Product\TipoCafe.cs" />
     <Compile Include="model\Mapping\UserData\Persona.cs" />
     <Compile Include="model\Mapping\UserData\Usuario.cs" />
-    <Compile Include="views\form_activos_cafe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\form_activos_cafe.Designer.cs">
-      <DependentUpon>form_activos_cafe.cs</DependentUpon>
-    </Compile>
     <Compile Include="views\form_administracion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +183,12 @@
     <Compile Include="views\form_destCafe.Designer.cs">
       <DependentUpon>form_destCafe.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_fallaMaquina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_fallaMaquina.Designer.cs">
+      <DependentUpon>form_fallaMaquina.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_opcSalida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +212,18 @@
     </Compile>
     <Compile Include="views\form_opcTrilla.Designer.cs">
       <DependentUpon>form_opcTrilla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_seleccionCosecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_seleccionCosecha.Designer.cs">
+      <DependentUpon>form_seleccionCosecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\form_tablaBeneficio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_tablaBeneficio.Designer.cs">
+      <DependentUpon>form_tablaBeneficio.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_tablaCCafe.cs">
       <SubType>Form</SubType>
@@ -243,11 +255,11 @@
     <Compile Include="views\form_login.Designer.cs">
       <DependentUpon>form_login.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_lote.cs">
+    <Compile Include="views\form_socios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_lote.Designer.cs">
-      <DependentUpon>form_lote.cs</DependentUpon>
+    <Compile Include="views\form_socios.Designer.cs">
+      <DependentUpon>form_socios.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_main.cs">
       <SubType>Form</SubType>
@@ -377,9 +389,6 @@
     <Compile Include="views\form_usuarios.Designer.cs">
       <DependentUpon>form_usuarios.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="views\form_activos_cafe.resx">
-      <DependentUpon>form_activos_cafe.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="views\form_administracion.resx">
       <DependentUpon>form_administracion.cs</DependentUpon>
     </EmbeddedResource>
@@ -401,6 +410,9 @@
     <EmbeddedResource Include="views\form_destCafe.resx">
       <DependentUpon>form_destCafe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\form_fallaMaquina.resx">
+      <DependentUpon>form_fallaMaquina.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_opcSalida.resx">
       <DependentUpon>form_opcSalida.cs</DependentUpon>
     </EmbeddedResource>
@@ -415,6 +427,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_salidasCafe.resx">
       <DependentUpon>form_salidasCafe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_seleccionCosecha.resx">
+      <DependentUpon>form_seleccionCosecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_tablaBeneficio.resx">
+      <DependentUpon>form_tablaBeneficio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_tablaCCafe.resx">
       <DependentUpon>form_tablaCCafe.cs</DependentUpon>
@@ -431,8 +449,8 @@
     <EmbeddedResource Include="views\form_login.resx">
       <DependentUpon>form_login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_lote.resx">
-      <DependentUpon>form_lote.cs</DependentUpon>
+    <EmbeddedResource Include="views\form_socios.resx">
+      <DependentUpon>form_socios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_main.resx">
       <DependentUpon>form_main.cs</DependentUpon>
@@ -529,6 +547,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\falla 64px.png" />
     <None Include="Resources\cose45px.png" />
     <None Include="Resources\trabajadores 45px.png" />
     <None Include="Resources\personas 45px.png" />
@@ -550,6 +569,8 @@
     <None Include="Resources\clase_uva64px.png" />
     <None Include="Resources\finca64px.png" />
     <None Include="Resources\beneficio64px.png" />
+    <None Include="Resources\calendario.png" />
+    <None Include="Resources\calendario 128px.png" />
     <Content Include="Resources\circle-info-solid.png" />
     <None Include="Resources\Logo__majada.png" />
     <None Include="Resources\Logo_majada_claro.png" />

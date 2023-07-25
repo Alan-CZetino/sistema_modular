@@ -16,5 +16,11 @@ namespace sistema_modular_cafe_majada.views
         {
             InitializeComponent();
         }
+
+        private void btn_tBeneficio_Click(object sender, EventArgs e)
+        {
+            form_tablaBeneficio tablaBeneficio = new form_tablaBeneficio();
+            tablaBeneficio.ShowDialog();
+        }
     }
 }

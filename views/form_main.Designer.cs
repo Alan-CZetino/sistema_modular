@@ -36,7 +36,7 @@ namespace sistema_modular_cafe_majada
             this.btn_min = new System.Windows.Forms.PictureBox();
             this.btn_close = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_numCosecha = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbl_User = new System.Windows.Forms.Label();
@@ -125,7 +125,7 @@ namespace sistema_modular_cafe_majada
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.lbl_numCosecha);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.lbl_User);
@@ -144,17 +144,18 @@ namespace sistema_modular_cafe_majada
             this.panel2.Size = new System.Drawing.Size(251, 882);
             this.panel2.TabIndex = 1;
             // 
-            // label3
+            // lbl_numCosecha
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(134, 729);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 32);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "numero";
+            this.lbl_numCosecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_numCosecha.AutoSize = true;
+            this.lbl_numCosecha.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_numCosecha.ForeColor = System.Drawing.Color.White;
+            this.lbl_numCosecha.Location = new System.Drawing.Point(134, 729);
+            this.lbl_numCosecha.Name = "lbl_numCosecha";
+            this.lbl_numCosecha.Size = new System.Drawing.Size(66, 32);
+            this.lbl_numCosecha.TabIndex = 11;
+            this.lbl_numCosecha.Text = "numero";
+            this.lbl_numCosecha.Click += new System.EventHandler(this.lbl_numCosecha_Click);
             // 
             // label2
             // 
@@ -376,7 +377,7 @@ namespace sistema_modular_cafe_majada
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_nameModule;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_numCosecha;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
     }

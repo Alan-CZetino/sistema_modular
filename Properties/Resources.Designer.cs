@@ -163,6 +163,26 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calendario {
+            get {
+                object obj = ResourceManager.GetObject("calendario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap calendario_128px {
+            get {
+                object obj = ResourceManager.GetObject("calendario 128px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cerrar_sesion1 {
             get {
                 object obj = ResourceManager.GetObject("cerrar_sesion1", resourceCulture);
@@ -296,6 +316,16 @@ namespace sistema_modular_cafe_majada.Properties {
         internal static System.Drawing.Bitmap existencias_cafe {
             get {
                 object obj = ResourceManager.GetObject("existencias_cafe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap falla_64px {
+            get {
+                object obj = ResourceManager.GetObject("falla 64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
