@@ -35,6 +35,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2 = new System.Windows.Forms.Label();
             this.btn_sPartida = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
@@ -114,7 +115,6 @@ namespace sistema_modular_cafe_majada.views
             this.textBox27 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -210,6 +210,17 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Identificación del Café";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(454, 76);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(178, 34);
+            this.comboBox1.TabIndex = 44;
             // 
             // dateTimePicker5
             // 
@@ -736,11 +747,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             // btn_catador
             // 
-            this.btn_catador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_catador.FlatAppearance.BorderSize = 0;
             this.btn_catador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_catador.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.btn_catador.Location = new System.Drawing.Point(1207, 44);
+            this.btn_catador.Location = new System.Drawing.Point(711, 44);
             this.btn_catador.Name = "btn_catador";
             this.btn_catador.Size = new System.Drawing.Size(35, 35);
             this.btn_catador.TabIndex = 44;
@@ -757,11 +767,9 @@ namespace sistema_modular_cafe_majada.views
             // 
             // textBox37
             // 
-            this.textBox37.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox37.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox37.Location = new System.Drawing.Point(954, 46);
+            this.textBox37.Location = new System.Drawing.Point(458, 46);
             this.textBox37.Name = "textBox37";
             this.textBox37.Size = new System.Drawing.Size(249, 30);
             this.textBox37.TabIndex = 33;
@@ -770,7 +778,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(949, 17);
+            this.label38.Location = new System.Drawing.Point(453, 17);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(117, 26);
             this.label38.TabIndex = 32;
@@ -778,19 +786,21 @@ namespace sistema_modular_cafe_majada.views
             // 
             // textBox26
             // 
+            this.textBox26.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox26.Font = new System.Drawing.Font("Oswald Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox26.Location = new System.Drawing.Point(553, 27);
+            this.textBox26.Location = new System.Drawing.Point(847, 21);
             this.textBox26.Multiline = true;
             this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(390, 76);
+            this.textBox26.Size = new System.Drawing.Size(392, 76);
             this.textBox26.TabIndex = 31;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(457, 47);
+            this.label27.Location = new System.Drawing.Point(751, 41);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(90, 26);
             this.label27.TabIndex = 30;
@@ -1052,17 +1062,6 @@ namespace sistema_modular_cafe_majada.views
             this.label31.Size = new System.Drawing.Size(100, 26);
             this.label31.TabIndex = 24;
             this.label31.Text = "Fecha de Pesado";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(454, 76);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(178, 34);
-            this.comboBox1.TabIndex = 44;
             // 
             // form_subPartidas
             // 

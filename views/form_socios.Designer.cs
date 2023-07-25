@@ -35,6 +35,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_tFinca = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txb_cantidad = new System.Windows.Forms.TextBox();
@@ -53,7 +54,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtg_lotes = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -118,6 +119,7 @@ namespace sistema_modular_cafe_majada.views
             // panel8
             // 
             this.panel8.AutoScroll = true;
+            this.panel8.Controls.Add(this.label7);
             this.panel8.Controls.Add(this.textBox1);
             this.panel8.Controls.Add(this.btn_tFinca);
             this.panel8.Controls.Add(this.label6);
@@ -133,6 +135,17 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(279, 380);
             this.panel8.TabIndex = 9;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(13, 168);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(216, 33);
+            this.textBox1.TabIndex = 16;
             // 
             // btn_tFinca
             // 
@@ -370,18 +383,17 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_lotes.TabIndex = 19;
             this.dtg_lotes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_lotes_CellDoubleClick);
             // 
-            // textBox1
+            // label7
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(13, 168);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(216, 33);
-            this.textBox1.TabIndex = 16;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Elephant", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(13, 283);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(198, 35);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Sigan viendo";
             // 
-            // form_lote
+            // form_socios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -395,7 +407,7 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "form_lote";
+            this.Name = "form_socios";
             this.Text = "form_lote";
             this.panel6.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -438,5 +450,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.DataGridView dtg_lotes;
         private System.Windows.Forms.Button btn_tFinca;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label7;
     }
 }
