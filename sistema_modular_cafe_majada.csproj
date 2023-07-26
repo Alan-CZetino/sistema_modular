@@ -40,6 +40,7 @@
     <ApplicationIcon>icono-majada.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
     </Reference>
@@ -59,10 +60,10 @@
       <HintPath>packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=8.0.33.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.8.0.33\lib\net462\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -101,11 +102,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\AccesController\ChargeController.cs" />
+    <Compile Include="controller\AccesController\FallaController.cs" />
     <Compile Include="controller\AccesController\ModuleController.cs" />
     <Compile Include="controller\AccesController\RoleController.cs" />
     <Compile Include="controller\HarvestController\CosechaController.cs" />
     <Compile Include="controller\HarvestController\LoteController.cs" />
+    <Compile Include="controller\InfrastructureController\AlmacenController.cs" />
+    <Compile Include="controller\InfrastructureController\BodegaController.cs" />
+    <Compile Include="controller\InfrastructureController\MaquinariaController.cs" />
+    <Compile Include="controller\OperationsController\CantidadSiloPiñaController.cs" />
     <Compile Include="controller\OperationsController\PersonalController.cs" />
+    <Compile Include="controller\OperationsController\ProcedenciaDestinoController.cs" />
+    <Compile Include="controller\OperationsController\SalidaController.cs" />
+    <Compile Include="controller\OperationsController\SocioController.cs" />
+    <Compile Include="controller\OperationsController\SubPartidaController.cs" />
+    <Compile Include="controller\OperationsController\SubProductoController.cs" />
+    <Compile Include="controller\OperationsController\TrasladoController.cs" />
+    <Compile Include="controller\OperationsController\TrillaController.cs" />
     <Compile Include="controller\ProductController\CCafeController.cs" />
     <Compile Include="controller\InfrastructureController\BeneficioController.cs" />
     <Compile Include="controller\InfrastructureController\FincaController.cs" />
@@ -114,24 +127,48 @@
     <Compile Include="controller\SecurityData\PasswordManager.cs" />
     <Compile Include="controller\UserDataController\PersonController.cs" />
     <Compile Include="controller\UserDataController\UserController.cs" />
+    <Compile Include="model\DAO\AlmacenDAO.cs" />
+    <Compile Include="model\DAO\BodegaDAO.cs" />
     <Compile Include="model\DAO\CalidadCafeDAO.cs" />
+    <Compile Include="model\DAO\CantidadSiloPiñaDAO.cs" />
     <Compile Include="model\DAO\ChargeDAO.cs" />
     <Compile Include="model\DAO\CosechaDAO.cs" />
+    <Compile Include="model\DAO\FallasDAO.cs" />
     <Compile Include="model\DAO\FincaDAO.cs" />
     <Compile Include="model\DAO\LoteDAO.cs" />
+    <Compile Include="model\DAO\MaquinariaDAO.cs" />
     <Compile Include="model\DAO\ModuleDAO.cs" />
     <Compile Include="model\DAO\PersonalDAO.cs" />
     <Compile Include="model\DAO\PersonDAO.cs" />
+    <Compile Include="model\DAO\ProcedenciaDestinoDAO.cs" />
     <Compile Include="model\DAO\RoleDAO.cs" />
     <Compile Include="model\DAO\BeneficioDAO.cs" />
+    <Compile Include="model\DAO\SalidaDAO.cs" />
     <Compile Include="model\DAO\SecurityDAO\LogDAO.cs" />
+    <Compile Include="model\DAO\SocioDAO.cs" />
+    <Compile Include="model\DAO\SubPartidaDAO.cs" />
+    <Compile Include="model\DAO\SubProductoDAO.cs" />
     <Compile Include="model\DAO\TipoCafeDAO.cs" />
+    <Compile Include="model\DAO\TrasladoDAO.cs" />
+    <Compile Include="model\DAO\TrillaDAO.cs" />
     <Compile Include="model\Mapping\Acces\Charge.cs" />
+    <Compile Include="model\Mapping\Acces\Fallas.cs" />
     <Compile Include="model\Mapping\Acces\Module.cs" />
     <Compile Include="model\Mapping\Acces\Role.cs" />
     <Compile Include="model\Connection\ConnectionDB.cs" />
     <Compile Include="model\DAO\UserDAO.cs" />
     <Compile Include="model\Mapping\Acces\User_Module.cs" />
+    <Compile Include="model\Mapping\Infrastructure\Almacen.cs" />
+    <Compile Include="model\Mapping\Infrastructure\Bodega.cs" />
+    <Compile Include="model\Mapping\Infrastructure\Maquinaria.cs" />
+    <Compile Include="model\Mapping\Operations\CantidadSiloPiña.cs" />
+    <Compile Include="model\Mapping\Operations\ProcedenciaDestino.cs" />
+    <Compile Include="model\Mapping\Operations\Salida.cs" />
+    <Compile Include="model\Mapping\Operations\Socio.cs" />
+    <Compile Include="model\Mapping\Operations\SubPartida.cs" />
+    <Compile Include="model\Mapping\Operations\SubProducto.cs" />
+    <Compile Include="model\Mapping\Operations\Traslado.cs" />
+    <Compile Include="model\Mapping\Operations\Trilla.cs" />
     <Compile Include="model\Mapping\Product\CalidadCafe.cs" />
     <Compile Include="model\Mapping\Harvest\Lote.cs" />
     <Compile Include="model\Mapping\Infrastructure\Finca.cs" />

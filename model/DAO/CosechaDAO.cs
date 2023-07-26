@@ -95,6 +95,84 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para mostrar todos los registros
+        public List<Cosecha> ObtenerCosechaDESC()
+        {
+            List<Cosecha> listaCosecha = new List<Cosecha>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT * FROM Cosecha ORDER BY fecha_cosecha DESC";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Cosecha cosecha = new Cosecha()
+                        {
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                        };
+                        
+                        listaCosecha.Add(cosecha);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return listaCosecha;
+        }
+        
+        //funcion para mostrar todos los registros
+        public Cosecha ObtenerCosechaUltima()
+        {
+            Cosecha cosecha = null;
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT * FROM Cosecha ORDER BY fecha_cosecha DESC LIMIT 1";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        cosecha = new Cosecha()
+                        {
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            FechaCosecha = Convert.ToDateTime(reader["fecha_cosecha"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return cosecha;
+        }
+
+        //funcion para mostrar todos los registros
         public List<Cosecha> BuscarCosecha(string buscar)
         {
             List<Cosecha> listaCosecha = new List<Cosecha>();

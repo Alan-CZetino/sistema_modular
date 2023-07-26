@@ -19,6 +19,7 @@ namespace sistema_modular_cafe_majada
     public partial class form_main : Form
     {
         private string _nombreUsuario;
+        private string _nombreCosecha;
         private Usuario usuario;
         private LogController log;
 
@@ -32,6 +33,16 @@ namespace sistema_modular_cafe_majada
             {
                 _nombreUsuario = value;
                 lbl_User.Text = "Usuario: "+_nombreUsuario;
+            }
+        }
+
+        public string NombreCosecha
+        {
+            get { return _nombreCosecha; }
+            set
+            {
+                _nombreCosecha = value;
+                lbl_numCosecha.Text = _nombreCosecha;
             }
         }
 
@@ -146,6 +157,9 @@ namespace sistema_modular_cafe_majada
         {
             string name = "Usuario: " + NombreUsuario;
             lbl_User.Text = name;
+            
+            string nameCosecha = NombreCosecha;
+            lbl_numCosecha.Text = nameCosecha;
         }
 
         private void lbl_username_Click(object sender, EventArgs e)
@@ -183,8 +197,13 @@ namespace sistema_modular_cafe_majada
 
         private void lbl_numCosecha_Click(object sender, EventArgs e)
         {
-            form_seleccionCosecha seleccionCosecha = new form_seleccionCosecha();
+            form_seleccionCosecha seleccionCosecha = new form_seleccionCosecha(this);
             seleccionCosecha.ShowDialog();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            lbl_numCosecha_Click(sender, e);
         }
 
         //FUNCIONES PARA CAMBIAR DE COLOR LOS BOTONES AL HACER CLICK EN ELLOS

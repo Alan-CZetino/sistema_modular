@@ -35,6 +35,42 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
 
             return cosechas;
         }
+        
+        //
+        public List<Cosecha> ObtenerCosechaDESC()
+        {
+            List<Cosecha> cosechas = new List<Cosecha>();
+
+            try
+            {
+                // Llamada al método del DAO para obtener los Cosecha
+                cosechas = cosechaDAO.ObtenerCosechaDESC();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener las Cosecha: " + ex.Message);
+            }
+
+            return cosechas;
+        }
+        
+        //
+        public Cosecha ObtenerCosechaUltima()
+        {
+            Cosecha cosechas = null;
+
+            try
+            {
+                // Llamada al método del DAO para obtener los Cosecha
+                cosechas = cosechaDAO.ObtenerCosechaUltima();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener las Cosecha: " + ex.Message);
+            }
+
+            return cosechas;
+        }
 
         //
         public List<Cosecha> BuscarCosecha(string buscar)

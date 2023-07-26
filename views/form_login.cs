@@ -13,6 +13,8 @@ using sistema_modular_cafe_majada.controller;
 using sistema_modular_cafe_majada.model.Acces;
 using sistema_modular_cafe_majada.controller.AccesController;
 using sistema_modular_cafe_majada.controller.UserDataController;
+using sistema_modular_cafe_majada.controller.HarvestController;
+using sistema_modular_cafe_majada.model.Mapping.Harvest;
 
 namespace sistema_modular_cafe_majada
 {
@@ -127,6 +129,7 @@ namespace sistema_modular_cafe_majada
 
         public void StartSeccionModuleCafe()
         {
+            var cosechaC = new CosechaController();
             var userControl = new UserController();
             var log = new controller.SecurityData.LogController();
 
@@ -139,6 +142,7 @@ namespace sistema_modular_cafe_majada
 
             bool loginSuccessful = userControl.AutenticarUsuario(user, password);
             var usuario = userControl.ObtenerUsuario(user); // Asignar el resultado de ObtenerUsuario
+            var cosecha = cosechaC.ObtenerCosechaUltima();
 
             contador++;
             if (loginSuccessful)
@@ -164,6 +168,9 @@ namespace sistema_modular_cafe_majada
                             formPrin.NombreUsuario = user;
                             UsuarioActual.NombreUsuario = user;
                             UsuarioActual.IUsuario = usuario.IdUsuario;
+                            CosechaActual.NombreCosechaActual = cosecha.NombreCosecha;
+                            CosechaActual.ICosechaActual = cosecha.IdCosecha;
+                            formPrin.NombreCosecha = CosechaActual.NombreCosechaActual;
 
                             LimpiarComboBox();
                             formPrin.Show();
