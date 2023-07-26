@@ -3,7 +3,7 @@ using sistema_modular_cafe_majada.controller.HarvestController;
 using sistema_modular_cafe_majada.controller.ProductController;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Mapping;
-using sistema_modular_cafe_majada.model.Mapping.Harvest;
+using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.Mapping.Product;
 using sistema_modular_cafe_majada.model.UserData;
 using System;
@@ -20,8 +20,6 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_opcLote : Form
     {
-        List<Persona> datos = new List<Persona>();
-
         public form_opcLote()
         {
             InitializeComponent();

@@ -6,7 +6,6 @@ using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
 using sistema_modular_cafe_majada.model.Mapping;
-using sistema_modular_cafe_majada.model.Mapping.Harvest;
 using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.Mapping.Product;
 using sistema_modular_cafe_majada.model.UserData;

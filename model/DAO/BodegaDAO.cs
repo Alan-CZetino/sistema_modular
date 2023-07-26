@@ -36,7 +36,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@nombre", bodega.NombreBodega);
                 conexion.AgregarParametro("@descrip", bodega.DescripcionBodega);
                 conexion.AgregarParametro("@ubicacion", bodega.UbicacionBodega);
-                conexion.AgregarParametro("@iBodega", bodega.IdBenficioUbicacion);
+                conexion.AgregarParametro("@iBeneficio", bodega.IdBenficioUbicacion);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -303,7 +303,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Bodega SET nombre_bodega = @nombre, descripcion_bodega = @descrip, 
+                string consulta = @"UPDATE Bodega_Cafe SET nombre_bodega = @nombre, descripcion_bodega = @descrip, 
                                                         ubicacion_bodega = @ubicacion, id_benficio_ubicacion_bodega = @iBeneficio
                                     WHERE id_Bodega = @id";
                 conexion.CrearComando(consulta);
@@ -349,7 +349,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL
-                string consulta = @"DELETE FROM Bodega WHERE id_Bodega = @id";
+                string consulta = @"DELETE FROM Bodega_Cafe WHERE id_Bodega = @id";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@id", idBodega);
