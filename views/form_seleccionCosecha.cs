@@ -44,26 +44,41 @@ namespace sistema_modular_cafe_majada.views
                 string nombreCosecha = cosch.NombreCosecha;
 
                 // Agregar el objeto Cosecha directamente al ComboBox
-                cbx_cosecha.Items.Add(cosch);
+                cbx_cosecha.Items.Add(new KeyValuePair<int, string>(iCosecha, nombreCosecha));
 
                 // Asignar el DisplayMember y ValueMember para mostrar solo el nombre y mantener el ID asociado internamente
-                cbx_cosecha.DisplayMember = "NombreCosecha";
-                cbx_cosecha.ValueMember = "IdCosecha";
+                /*cbx_cosecha.DisplayMember = "NombreCosecha";
+                cbx_cosecha.ValueMember = "IdCosecha";*/
             }
+            
             cbx_cosecha.SelectedIndex = 0;
 
         }
 
         private void btn_aplicar_Click(object sender, EventArgs e)
         {
-            var cosecha = new CosechaController();
-            int icosecha = (int)cbx_cosecha.SelectedValue;
-            //CosechaSeleccionada.ICosechaSeleccionada = (int)cbx_cosecha.SelectedValue;
-            //CosechaSeleccionada.NombreCosechaSeleccionada = (string)cbx_cosecha.DisplayMember;
-            Console.WriteLine("cosecha nombre " + icosecha);
+            // Obtener el valor numérico seleccionado
+            KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
+            if (cbx_cosecha.SelectedItem is KeyValuePair<int, string> keyValue)
+            {
+                selectedStatus = keyValue;
+            }
+            else if (cbx_cosecha.SelectedItem != null)
+            {
+                selectedStatus = (KeyValuePair<int, string>)cbx_cosecha.SelectedItem;
+            }
+
+            int selectedValue = selectedStatus.Key;
+            string select = selectedStatus.Value;
+
+            CosechaActual.ICosechaActual = selectedValue;
+            CosechaActual.NombreCosechaActual = select;
+            
             //se trae la variable instanciada del formulario main para actualizar el lbl del nombre usuario 
-            /*formularioMain.NombreCosecha = CosechaSeleccionada.NombreCosechaSeleccionada;
-            formularioMain.Refresh();*/
+            formularioMain.NombreCosecha = CosechaActual.NombreCosechaActual;
+            formularioMain.Refresh();
+
+            this.Close();
         }
     }
 }

@@ -13,5 +13,6 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public string DescripcionSubProducto { get; set; }
         public int IdCalidadCafe { get; set; }
         public string NombreCalidadCafe { get; set; }
+        public int CountSubProducto { get; set; }
     }
 }

@@ -189,6 +189,43 @@ namespace sistema_modular_cafe_majada.model.DAO
             return subProducto;
         }
 
+        //
+        public SubProducto CountSubProducto()
+        {
+            SubProducto subP = null;
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalSubProducto FROM SubProducto";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.Read())
+                    {
+                        subP = new SubProducto()
+                        {
+                            CountSubProducto = Convert.ToInt32(reader["TotalSubProducto"])
+                        };
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return subP;
+        }
+
         //obtener la Cantidad y el nombre almacen en la BD
         public List<SubProducto> ObtenerNombreSubProductos()
         {
@@ -200,7 +237,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener la cantidad y el nombre del almacén
-                string consulta = @"SELECT sp.id_subproducto, sp.nombre_subproducto, sp.descripcion, sp.id_calidad_supproducto, cc.nombre_calidad_cafe
+                string consulta = @"SELECT sp.id_subproducto, sp.nombre_subproducto, sp.descripcion, sp.id_calidad_supproducto, cc.nombre_calidad
                                     FROM SubProducto sp
                                     INNER JOIN Calidad_Cafe cc ON sp.id_calidad_supproducto = cc.id_calidad";
 
@@ -217,7 +254,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
                             DescripcionSubProducto = Convert.ToString(reader["descripcion"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_supproducto"]),
-                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad_cafe"])
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"])
                         };
                         listaSubProducto.Add(sub);
                     }

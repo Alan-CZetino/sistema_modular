@@ -32,6 +32,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
             }
         }
 
+        // Función para obtener total de los subproductos
+        public SubProducto CountSubProducto()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el total de los subproductos
+                return sproductoDAO.CountSubProducto();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener el total de subproductos: " + ex.Message);
+                return new SubProducto();
+            }
+        }
+
         // Función para insertar un nuevo subproducto
         public bool InsertarSubProducto(SubProducto subproducto)
         {

@@ -1,8 +1,10 @@
 ﻿using sistema_modular_cafe_majada.controller;
 using sistema_modular_cafe_majada.controller.InfrastructureController;
+using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.ProductController;
 using sistema_modular_cafe_majada.model.Mapping;
 using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
+using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.Mapping.Product;
 using System;
 using System.Collections.Generic;
@@ -73,6 +75,29 @@ namespace sistema_modular_cafe_majada.views
                 ID = calidad.IdCalidad,
                 Nombre = calidad.NombreCalidad,
                 Descripcion = calidad.DescripcionCalidad
+            }).ToList();
+
+            // Asignar los datos al DataGridView
+            dtg_multiple.DataSource = datosPersonalizados;
+
+            dtg_multiple.RowHeadersVisible = false;
+            dtg_multiple.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+        }
+
+        //
+        public void ShowSubProductoGrid()
+        {
+            // Llamar al método para obtener los datos de la base de datos
+            var subProductoController = new SubProductoController();
+            List<SubProducto> datos = subProductoController.ObtenerNombreSubProductos();
+
+            var datosPersonalizados = datos.Select(sub => new
+            {
+                ID = sub.IdSubProducto,
+                Nombre = sub.NombreSubProducto,
+                Descripcion = sub.DescripcionSubProducto,
+                Calidad_Cafe = sub.NombreCalidadCafe
             }).ToList();
 
             // Asignar los datos al DataGridView
@@ -205,6 +230,34 @@ namespace sistema_modular_cafe_majada.views
 
                     break;
                 case 2:
+                    {
+                        //tipo de cafe
+                        if (string.IsNullOrWhiteSpace(text.Text) || text.Text == "Buscar...")
+                        {
+                            //funcion para mostrar de inicio los datos en el dataGrid
+                            ShowSubProductoGrid();
+                        }
+                        else
+                        {
+                            // Llamar al método para obtener los datos de la base de datos
+                            var subProductoController = new SubProductoController();
+                            List<SubProducto> datos = subProductoController.ObtenerNombreSubProductos();
+
+                            var datosPersonalizados = datos.Select(sub => new
+                            {
+                                ID = sub.IdSubProducto,
+                                Nombre = sub.NombreSubProducto,
+                                Descripcion = sub.DescripcionSubProducto,
+                                Calidad_Cafe = sub.NombreCalidadCafe
+                            }).ToList();
+
+                            // Asignar los datos al DataGridView
+                            dtg_multiple.DataSource = datosPersonalizados;
+
+                            dtg_multiple.RowHeadersVisible = false;
+                            dtg_multiple.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                        }
+                    }
                     break;
                 case 3:
                     {

@@ -11,9 +11,11 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using sistema_modular_cafe_majada.controller;
 using sistema_modular_cafe_majada.controller.InfrastructureController;
+using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.ProductController;
 using sistema_modular_cafe_majada.model.Mapping;
 using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
+using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.Mapping.Product;
 using sistema_modular_cafe_majada.views;
 
@@ -71,6 +73,11 @@ namespace sistema_modular_cafe_majada
             var ccafe = new CCafeController();
             CalidadCafe totalccafe = ccafe.CountCalidad();
             lbl_calidad.Text = totalccafe.CountCalidad.ToString();
+
+            //para calidad de cafe
+            var subP = new SubProductoController();
+            SubProducto totalsub = subP.CountSubProducto();
+            lbl_subProduct.Text = totalsub.CountSubProducto.ToString();
             
             //para tipo de cafe
             var tipocafe = new TipoCafeController();
@@ -82,7 +89,7 @@ namespace sistema_modular_cafe_majada
             Finca totalFinca = finca.CountFincas();
             lbl_finca.Text = totalFinca.CountFinca.ToString();
 
-            //para tipo de cafe
+            //para beneficio
             var beneficio = new BeneficioController();
             Beneficio totalBeneficio = beneficio.CountBeneficio();
             lbl_beneficio.Text = totalBeneficio.CountBeneficio.ToString();
