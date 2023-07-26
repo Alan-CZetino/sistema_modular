@@ -1,9 +1,11 @@
 ﻿using sistema_modular_cafe_majada.controller;
 using sistema_modular_cafe_majada.controller.HarvestController;
 using sistema_modular_cafe_majada.controller.ProductController;
+using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Mapping;
 using sistema_modular_cafe_majada.model.Mapping.Harvest;
 using sistema_modular_cafe_majada.model.Mapping.Product;
+using sistema_modular_cafe_majada.model.UserData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +20,7 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_opcLote : Form
     {
+        List<Persona> datos = new List<Persona>();
 
         public form_opcLote()
         {
@@ -31,7 +34,7 @@ namespace sistema_modular_cafe_majada.views
             //
             SearchRegister(txb_buscarOpc);
             txb_buscarOpc.TextChanged += txb_buscarOpc_TextChanged;
-
+            
             //esta es una llamada para funcion para pintar las filas del datagrid
             dtg_tableOpc.CellPainting += dtg_tableOpc_CellPainting;
         }
@@ -56,51 +59,7 @@ namespace sistema_modular_cafe_majada.views
                 }
             }
         }
-
-        //
-        public void ShowCalidadGrid()
-        {
-            // Llamar al método para obtener los datos de la base de datos
-            var calidadController = new CCafeController();
-            List<CalidadCafe> datos = calidadController.ObtenerCalidades();
-
-            var datosPersonalizados = datos.Select(calidad => new
-            {
-                ID = calidad.IdCalidad,
-                Nombre = calidad.NombreCalidad,
-                Descripcion = calidad.DescripcionCalidad
-            }).ToList();
-
-            // Asignar los datos al DataGridView
-            dtg_tableOpc.DataSource = datosPersonalizados;
-
-            dtg_tableOpc.RowHeadersVisible = false;
-            dtg_tableOpc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-        }
-
-        //
-        public void ShowCosechaGrid()
-        {
-            // Llamar al método para obtener los datos de la base de datos
-            var cosechaController = new CosechaController();
-            List<Cosecha> datos = cosechaController.ObtenerCosecha();
-
-            var datosPersonalizados = datos.Select(cosecha => new
-            {
-                ID = cosecha.IdCosecha,
-                Nombre = cosecha.NombreCosecha,
-                Fecha_Inicio = cosecha.FechaCosecha
-            }).ToList();
-
-            // Asignar los datos al DataGridView
-            dtg_tableOpc.DataSource = datosPersonalizados;
-
-            dtg_tableOpc.RowHeadersVisible = false;
-            dtg_tableOpc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-        }
-
+        
         //
         public void ShowFincaGrid()
         {
@@ -124,17 +83,20 @@ namespace sistema_modular_cafe_majada.views
         }
 
         //
-        public void ShowTipoCafeGrid()
+        public void ShowPersonGrid()
         {
             // Llamar al método para obtener los datos de la base de datos
-            var tipoCafeController = new TipoCafeController();
-            List<TipoCafe> datos = tipoCafeController.ObtenerTipoCafes();
+            var personaController = new PersonController();
+            List<Persona> datos = personaController.ObtenerPersonas();
 
-            var datosPersonalizados = datos.Select(tipoC => new
+            var datosPersonalizados = datos.Select(persona => new
             {
-                ID = tipoC.IdTipoCafe,
-                Nombre = tipoC.NombreTipoCafe,
-                Descripcion = tipoC.DescripcionTipoCafe
+                ID = persona.IdPersona,
+                Nombres = persona.NombresPersona,
+                Apellidos = persona.ApellidosPersona,
+                Dirección = persona.DireccionPersona,
+                DUI = persona.DuiPersona,
+                Teléfono = persona.Telefono1Persona,
             }).ToList();
 
             // Asignar los datos al DataGridView
@@ -168,37 +130,15 @@ namespace sistema_modular_cafe_majada.views
                         FincaSeleccionada.IFincaSeleccionada = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
                         FincaSeleccionada.NombreFincaSeleccionada = filaSeleccionada.Cells["Nombres"].Value.ToString();
 
-                        Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre finca: " + FincaSeleccionada.NombreFincaSeleccionada);
                     }
                     break;
                 case 2:
-                    //tipo de cafe
+                    //Persona
                     {
                         // Obtener los valores de las celdas de la fila seleccionada
-                        TipoCafeSeleccionado.ITipoCafeSeleccionado = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        TipoCafeSeleccionado.NombreTipoCafeSeleccionado = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                        PersonSelect.IdPerson = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                        PersonSelect.NamePerson = filaSeleccionada.Cells["Nombres"].Value.ToString();
 
-                        Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre finca: " + FincaSeleccionada.NombreFincaSeleccionada);
-                    }
-                    break;
-                case 3:
-                    //calidad
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        CalidadSeleccionada.ICalidadSeleccionada = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        CalidadSeleccionada.NombreCalidadSeleccionada = filaSeleccionada.Cells["Nombre"].Value.ToString();
-
-                        Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre finca: " + FincaSeleccionada.NombreFincaSeleccionada);
-                    }
-                    break;
-                case 4:
-                    //cosecha
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        CosechaSeleccionada.ICosechaSeleccionada = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        CosechaSeleccionada.NombreCosechaSeleccionada = filaSeleccionada.Cells["Nombre"].Value.ToString();
-
-                        Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre finca: " + FincaSeleccionada.NombreFincaSeleccionada);
                     }
                     break;
                 default:
@@ -241,14 +181,17 @@ namespace sistema_modular_cafe_majada.views
                         else
                         {
                             // Llamar al método para obtener los datos de la base de datos
-                            var fincaController = new FincaController();
-                            List<Finca> datos = fincaController.BuscadorFinca(text.Text);
+                            var personController = new PersonController();
+                            List<Persona> datos = personController.BuscarPersonas(text.Text);
 
-                            var datosPersonalizados = datos.Select(finca => new
+                            var datosPersonalizados = datos.Select(persona => new
                             {
-                                ID = finca.IdFinca,
-                                Nombres = finca.nombreFinca,
-                                Ubicacion = finca.ubicacionFinca
+                                ID = persona.IdPersona,
+                                Nombres = persona.NombresPersona,
+                                Apellidos = persona.ApellidosPersona,
+                                Dirección = persona.DireccionPersona,
+                                DUI = persona.DuiPersona,
+                                Teléfono = persona.Telefono1Persona,
                             }).ToList();
 
                             // Asignar los datos al DataGridView
@@ -266,7 +209,7 @@ namespace sistema_modular_cafe_majada.views
                         if (string.IsNullOrWhiteSpace(text.Text) || text.Text == "Buscar...")
                         {
                             //funcion para mostrar de inicio los datos en el dataGrid
-                            ShowTipoCafeGrid();
+                            ShowPersonGrid();
                         }
                         else
                         {
@@ -279,64 +222,6 @@ namespace sistema_modular_cafe_majada.views
                                 ID = tipoC.IdTipoCafe,
                                 Nombre = tipoC.NombreTipoCafe,
                                 Descripcion = tipoC.DescripcionTipoCafe
-                            }).ToList();
-
-                            // Asignar los datos al DataGridView
-                            dtg_tableOpc.DataSource = datosPersonalizados;
-
-                            dtg_tableOpc.RowHeadersVisible = false;
-                            dtg_tableOpc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                        }
-                    }
-                    break;
-                case 3:
-                    //calidad
-                    {
-                        if(string.IsNullOrWhiteSpace(text.Text) || text.Text == "Buscar...")
-                        {
-                            //funcion para mostrar de inicio los datos en el dataGrid
-                            ShowCalidadGrid();
-                        }
-                        else
-                        {
-                            // Llamar al método para obtener los datos de la base de datos
-                            var calidadController = new CCafeController();
-                            List<CalidadCafe> datos = calidadController.BuscarCalidades(text.Text);
-
-                            var datosPersonalizados = datos.Select(calidad => new
-                            {
-                                ID = calidad.IdCalidad,
-                                Nombre = calidad.NombreCalidad,
-                                Descripcion = calidad.DescripcionCalidad
-                            }).ToList();
-
-                            // Asignar los datos al DataGridView
-                            dtg_tableOpc.DataSource = datosPersonalizados;
-
-                            dtg_tableOpc.RowHeadersVisible = false;
-                            dtg_tableOpc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                        }
-                    }
-                    break;
-                case 4:
-                    //cosecha
-                    {
-                        if(string.IsNullOrWhiteSpace(text.Text) || text.Text == "Buscar...")
-                        {
-                            //funcion para mostrar de inicio los datos en el dataGrid
-                            ShowCosechaGrid();
-                        }
-                        else
-                        {
-                            // Llamar al método para obtener los datos de la base de datos
-                            var cosechaController = new CosechaController();
-                            List<Cosecha> datos = cosechaController.BuscarCosecha(text.Text);
-
-                            var datosPersonalizados = datos.Select(cosecha => new
-                            {
-                                ID = cosecha.IdCosecha,
-                                Nombre = cosecha.NombreCosecha,
-                                Fecha_Inicio = cosecha.FechaCosecha
                             }).ToList();
 
                             // Asignar los datos al DataGridView

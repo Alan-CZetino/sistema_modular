@@ -1,11 +1,13 @@
 using sistema_modular_cafe_majada.controller;
 using sistema_modular_cafe_majada.controller.HarvestController;
+using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.ProductController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
 using sistema_modular_cafe_majada.model.Mapping;
 using sistema_modular_cafe_majada.model.Mapping.Harvest;
+using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.Mapping.Product;
 using sistema_modular_cafe_majada.model.UserData;
 using System;
@@ -25,8 +27,8 @@ namespace sistema_modular_cafe_majada.views
     {
         //variable global para verificar el estado del boton actualizar
         private bool imagenClickeada = false;
-        //instancia de la clase mapeo Lote para capturar los datos seleccionado por el usuario
-        private Lote loteSeleccionado;
+        //instancia de la clase mapeo Socio para capturar los datos seleccionado por el usuario
+        private Socio socioSeleccionado;
         
         form_opcLote form_Opc;
 
@@ -35,30 +37,20 @@ namespace sistema_modular_cafe_majada.views
             InitializeComponent();
 
             //auto ajustar el contenido de los datos al área establecido para el datagrid
-            dtg_lotes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtg_socios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            ShowLoteGrid();
+            ShowSociosGrid();
 
-            dtg_lotes.CellPainting += dtgv_lote_CellPainting;
+            dtg_socios.CellPainting += dtgv_socios_CellPainting;
 
-            //restringir los txb para que no se puedan editar
-            //txb_cosecha.ReadOnly = true;
-            //txb_calidadCafe.ReadOnly = true;
-            txb_nomFinca.ReadOnly = true;
-            //txb_tipoCafe.ReadOnly = true;
-            //txb_cosecha.Enabled = false;
-            txb_nomFinca.Enabled = false;
-            //txb_calidadCafe.Enabled = false;
-            //txb_tipoCafe.Enabled = false;
-
-            //funcion que restringe el uso de caracteres en los textbox necesarios
-            List<TextBox> textBoxListN = new List<TextBox> { txb_cantidad };
-
-            //funcion para restringir cual quier caracter y solo acepta unicamente num
-            RestrictTextBoxNum(textBoxListN);
+            //
+            txb_nombreFinca.ReadOnly = true;
+            txb_nombreFinca.Enabled = false;
+            txb_nombrePersona.ReadOnly = true;
+            txb_nombrePersona.Enabled = false;
         }
 
-        private void dtgv_lote_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dtgv_socios_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             string headerColorHex = "#D7D7D7"; // Color hexadecimal deseado
 
@@ -78,44 +70,43 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
-        public void ShowLoteGrid()
+        public void ShowSociosGrid()
         {
             // Llamar al método para obtener los datos de la base de datos
-            var loteController = new LoteController();
-            List<Lote> datos = loteController.ObtenerLotesNombreID();
+            var socioController = new SocioController();
+            List<Socio> datos = socioController.ObtenerSocioNombrePersona();
 
-            var datosPersonalizados = datos.Select(lote => new
+            var datosPersonalizados = datos.Select(soc => new
             {
-                ID = lote.IdLote,
-                Nombre = lote.NombreLote,
-                Cantidad = lote.CantidadLote,
-                Fecha = lote.FechaLote,
-                Tipo_Cafe = lote.TipoCafe,
-                Nombre_Calidad = lote.NombreCalidadLote,
-                Nombre_Cosecha = lote.NombreCosechaLote,
-                Nombre_Finca = lote.NombreFinca
+                ID = soc.IdSocio,
+                Nombre = soc.NombreSocio,
+                Descripcion = soc.DescripcionSocio,
+                Ubicacion = soc.UbicacionSocio,
+                Nombre_Persona = soc.NombrePersonaResp,
+                Nombre_Finca = soc.NombreFinca
             }).ToList();
 
             // Asignar los datos al DataGridView
-            dtg_lotes.DataSource = datosPersonalizados;
+            dtg_socios.DataSource = datosPersonalizados;
 
-            dtg_lotes.RowHeadersVisible = false;
-            dtg_lotes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtg_socios.RowHeadersVisible = false;
+            dtg_socios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
+        //
         public void ClearDataTxb()
         {
-            List<TextBox> txb = new List<TextBox> { txb_numLote, txb_nomFinca, txb_cantidad/*, txb_tipoCafe, txb_cosecha, txb_calidadCafe,*/  };
+            List<TextBox> txb = new List<TextBox> { txb_nombre, txb_descripcion, txb_nombrePersona, txb_ubicacion, txb_nombreFinca  };
 
             foreach (TextBox textBox in txb)
             {
                 textBox.Text = "";
             }
 
-            //dtp_fecha.Value = DateTime.Now;
 
         }
 
+        //
         public void ConvertFirstCharacter(TextBox[] textBoxes)
         {
             foreach (TextBox textBox in textBoxes)
@@ -149,54 +140,100 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
-        private void btn_updateLote_Click(object sender, EventArgs e)
+        //
+        public void ConvertFirstLetter(TextBox[] textBoxes)
         {
-            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            foreach (TextBox textBox in textBoxes)
             {
-                // El usuario seleccionó "Sí"
-                imagenClickeada = true;
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
 
-                // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                txb_numLote.Text = loteSeleccionado.NombreLote;
-                txb_nomFinca.Text = loteSeleccionado.NombreFinca;
-                //txb_calidadCafe.Text = loteSeleccionado.NombreCalidadLote;
-                txb_cantidad.Text = loteSeleccionado.CantidadLote.ToString("0.00");
-                //txb_cosecha.Text = loteSeleccionado.NombreCosechaLote;
-                //dtp_fecha.Value = loteSeleccionado.FechaLote;
-                //txb_tipoCafe.Text = loteSeleccionado.TipoCafe;
-            }
-            else
-            {
-                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a minúsculas
+                    string lowerCaseInput = input.ToLower();
+
+                    // Dividir la cadena en palabras utilizando espacios como delimitadores
+                    string[] words = lowerCaseInput.Split(' ');
+
+                    // Recorrer cada palabra y convertir el primer carácter a mayúscula solo si es la primera palabra
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        if (!string.IsNullOrEmpty(words[i]))
+                        {
+                            if (i == 0) // Verificar si es la primera palabra
+                            {
+                                words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1);
+                            }
+                        }
+                    }
+
+                    // Unir las palabras nuevamente en una sola cadena
+                    string result = string.Join(" ", words);
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = result;
+                }
             }
         }
 
+        //
+        private void btn_updateLote_Click(object sender, EventArgs e)
+        {
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (socioSeleccionado != null)
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario seleccionó "Sí"
+                    imagenClickeada = true;
+
+                    // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
+                    txb_nombre.Text = socioSeleccionado.NombreSocio;
+                    txb_descripcion.Text = socioSeleccionado.DescripcionSocio;
+                    txb_ubicacion.Text = socioSeleccionado.UbicacionSocio;
+                    txb_nombrePersona.Text = socioSeleccionado.NombrePersonaResp;
+                    txb_nombreFinca.Text = socioSeleccionado.NombreFinca;
+                }
+                else
+                {
+                    // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                }
+            }
+            else
+            {
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //
         private void btn_deleteLote_Click(object sender, EventArgs e)
         {
             //condicion para verificar si los datos seleccionados van nulos, para evitar error
-            if (loteSeleccionado != null)
+            if (socioSeleccionado != null)
             {
                 LogController log = new LogController();
                 UserController userControl = new UserController();
                 Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar los datos registrado del Lote: (" + loteSeleccionado.NombreLote + ") ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar los datos registrado del Socio: (" + socioSeleccionado.NombreSocio + ") ?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
                     //se llama la funcion delete del controlador para eliminar el registro
-                    LoteController controller = new LoteController();
-                    controller.EliminarLote(loteSeleccionado.IdLote);
+                    SocioController controller = new SocioController();
+                    controller.EliminarSocio(socioSeleccionado.IdSocio);
 
                     //verificar el departamento del log
-                    log.RegistrarLog(usuario.IdUsuario, "Eliminado los datos Lote", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos del Lote (" + loteSeleccionado.NombreLote + ") en la base de datos");
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminado los datos Socio", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos del Socio (" + socioSeleccionado.NombreSocio + ") en la base de datos");
 
-                    MessageBox.Show("Lote Eliminado correctamente.", "Eliminacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Socio Eliminado correctamente.", "Eliminacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
-                    ShowLoteGrid();
-                    loteSeleccionado = null;
+                    ShowSociosGrid();
+                    socioSeleccionado = null;
                 }
             }
             else
@@ -206,6 +243,7 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        //
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
@@ -218,138 +256,122 @@ namespace sistema_modular_cafe_majada.views
 
             if (form_Opc.ShowDialog() == DialogResult.OK)
             {
-                txb_nomFinca.Text = FincaSeleccionada.NombreFincaSeleccionada;
+                txb_nombreFinca.Text = FincaSeleccionada.NombreFincaSeleccionada;
             }
         }
 
-        private void btn_tCafe_Click(object sender, EventArgs e)
+        private void btn_tPersona_Click(object sender, EventArgs e)
         {
             TablaSeleccionada.ITable = 2;
             form_Opc = new form_opcLote();
 
             if (form_Opc.ShowDialog() == DialogResult.OK)
             {
-                //txb_tipoCafe.Text = TipoCafeSeleccionado.NombreTipoCafeSeleccionado;
-            }
-        }
-
-        private void btn_tcCafe_Click(object sender, EventArgs e)
-        {
-            TablaSeleccionada.ITable = 3;
-            form_Opc = new form_opcLote();
-
-            if (form_Opc.ShowDialog() == DialogResult.OK)
-            {
-                //txb_calidadCafe.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
-            }
-        }
-
-        private void btn_tCosecha_Click(object sender, EventArgs e)
-        {
-            TablaSeleccionada.ITable = 4;
-            form_Opc = new form_opcLote();
-
-            if (form_Opc.ShowDialog() == DialogResult.OK)
-            {
-                //txb_cosecha.Text = CosechaSeleccionada.NombreCosechaSeleccionada;
-            }
-        }
-
-        //
-        public void RestrictTextBoxNum(List<TextBox> textBoxes)
-        {
-            foreach (TextBox textBox in textBoxes)
-            {
-                textBox.KeyPress += (sender, e) =>
-                {
-                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
-                    {
-                        e.Handled = true; // Cancela el evento KeyPress si no es un dígito, un punto o una tecla de control
-                    }
-
-                    // Permitir solo un punto decimal
-                    if (e.KeyChar == '.' && ((TextBox)sender).Text.IndexOf('.') > -1)
-                    {
-                        e.Handled = true;
-                    }
-                };
+                txb_nombrePersona.Text = PersonSelect.NamePerson;
             }
         }
 
         private void dtg_lotes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_lotes.Rows[e.RowIndex];
-            loteSeleccionado = new Lote();
+            DataGridViewRow filaSeleccionada = dtg_socios.Rows[e.RowIndex];
+            socioSeleccionado = new Socio();
 
             // Obtener los valores de las celdas de la fila seleccionada
-            loteSeleccionado.IdLote = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            loteSeleccionado.NombreLote = filaSeleccionada.Cells["Nombre"].Value.ToString();
-            loteSeleccionado.CantidadLote = Convert.ToDouble(filaSeleccionada.Cells["Cantidad"].Value);
-            loteSeleccionado.FechaLote = Convert.ToDateTime(filaSeleccionada.Cells["Fecha"].Value);
-            loteSeleccionado.TipoCafe = filaSeleccionada.Cells["Tipo_Cafe"].Value.ToString();
-            loteSeleccionado.NombreCalidadLote = filaSeleccionada.Cells["Nombre_Calidad"].Value.ToString();
-            loteSeleccionado.NombreCosechaLote = filaSeleccionada.Cells["Nombre_Cosecha"].Value.ToString();
-            loteSeleccionado.NombreFinca = filaSeleccionada.Cells["Nombre_Finca"].Value.ToString();
+            socioSeleccionado.IdSocio = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+            socioSeleccionado.NombreSocio = filaSeleccionada.Cells["Nombre"].Value.ToString();
+            socioSeleccionado.DescripcionSocio = filaSeleccionada.Cells["Descripcion"].Value.ToString();
+            socioSeleccionado.UbicacionSocio = filaSeleccionada.Cells["Ubicacion"].Value.ToString();
+            socioSeleccionado.NombrePersonaResp = filaSeleccionada.Cells["Nombre_Persona"].Value.ToString();
+            socioSeleccionado.NombreFinca = filaSeleccionada.Cells["Nombre_Finca"].Value.ToString();
         }
 
         private void btn_SaveLote_Click(object sender, EventArgs e)
         {
-            LoteController loteController = new LoteController();
+            if (string.IsNullOrWhiteSpace(txb_nombre.Text))
+            {
+                MessageBox.Show("El campo Nombre, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txb_ubicacion.Text))
+            {
+                MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            
+            if (string.IsNullOrWhiteSpace(txb_nombrePersona.Text))
+            {
+                MessageBox.Show("El campo Nombre Socio, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txb_descripcion.Text))
+            {
+                DialogResult result = MessageBox.Show("¿Desea dejar el campo descripcion vacio? Llenar dicho campo permitirá dar una informacion extra a futuros usuarios", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(txb_nombreFinca.Text))
+            {
+                DialogResult result = MessageBox.Show("Verifique si el Socio no tiene una Finca asociada a él. Si no tienen finca asociada precione NO y continue con la inserción", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+
+            SocioController socioController = new SocioController();
             LogController log = new LogController();
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
 
-            TextBox[] textBoxes = { txb_numLote };
+            TextBox[] textBoxes = { txb_nombre, txb_ubicacion };
             ConvertFirstCharacter(textBoxes);
+            TextBox[] textBoxesLetter = { txb_descripcion };
+            ConvertFirstLetter(textBoxesLetter);
 
             try
             {
-                double cantidad;
-                if (double.TryParse(txb_cantidad.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out cantidad))
+                string name = txb_nombre.Text;
+                string descripcion = txb_descripcion.Text;
+                string ubicacion = txb_ubicacion.Text;
+                string finca = txb_nombreFinca.Text;
+                string persona = txb_nombrePersona.Text;
+
+
+                // Crear una instancia de la clase Socio con los valores obtenidos
+                Socio socioInsert = new Socio()
                 {
-                    // El parseo se realizó con éxito, el valor de cantidad contiene el número parseado
-                    // Realiza las operaciones que necesites con la variable cantidad
-                }
-
-                string nameLote = txb_numLote.Text;
-                //DateTime fecha = dtp_fecha.Value;
-                //string calidad = txb_calidadCafe.Text;
-                //string cosecha = txb_cosecha.Text;
-                string finca = txb_nomFinca.Text;
-                //string tipoCafe = txb_tipoCafe.Text;
-
-
-                // Crear una instancia de la clase Lote con los valores obtenidos
-                Lote loteInsert = new Lote()
-                {
-                    NombreLote = nameLote,
-                    CantidadLote = cantidad,
-                    IdCalidadLote = CalidadSeleccionada.ICalidadSeleccionada,
-                    IdCosechaLote = CosechaSeleccionada.ICosechaSeleccionada,
-                    IdFinca = FincaSeleccionada.IFincaSeleccionada,
-                    IdTipoCafe = TipoCafeSeleccionado.ITipoCafeSeleccionado
+                    NombreSocio = name,
+                    DescripcionSocio = descripcion,
+                    UbicacionSocio = ubicacion,
+                    IdPersonaRespSocio = PersonSelect.IdPerson,
+                    IdFincaSocio = FincaSeleccionada.IFincaSeleccionada
                 };
 
                 if (!imagenClickeada)
                 {
                     // Código que se ejecutará si no se ha hecho clic en la imagen update
-                    // Llamar al controlador para insertar el Lote en la base de datos
-                    bool exito = loteController.InsertarLote(loteInsert);
+                    // Llamar al controlador para insertar el Socio en la base de datos
+                    bool exito = socioController.InsertarSocio(socioInsert);
 
                     if (!exito)
                     {
-                        MessageBox.Show("Error al agregar el Lote. Verifica los datos e intenta nuevamente.");
+                        MessageBox.Show("Error al agregar el Socio. Verifica los datos e intenta nuevamente.");
                         return;
                     }
 
-                    MessageBox.Show("Lote agregado correctamente.", "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Socio agregado correctamente.", "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
-                        //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                        //verificar el departamento
-                        log.RegistrarLog(usuario.IdUsuario, "Registro de caracteristicas del Lote", ModuloActual.NombreModulo, "Insercion", "Inserto un nuevo Lote a la base de datos");
+                        log.RegistrarLog(usuario.IdUsuario, "Registro de caracteristicas del Socio", ModuloActual.NombreModulo, "Insercion", "Inserto un nuevo Socio a la base de datos");
 
                     }
                     catch (Exception ex)
@@ -358,43 +380,36 @@ namespace sistema_modular_cafe_majada.views
                     }
 
                     //funcion para actualizar los datos en el dataGrid
-                    ShowLoteGrid();
+                    ShowSociosGrid();
 
                     //borrar datos de los textbox
                     ClearDataTxb();
                 }
-                /*else
+                else
                 {
-                    var cosechaC = new CosechaController();
-                    var calidadC = new CCafeController();
-                    var tipoC = new TipoCafeController();
+                    var personaC = new PersonController();
                     FincaController fincaC = new FincaController();
                     
-                    Cosecha cos = new Cosecha();
+                    Persona pers = new Persona();
                     Finca fin = new Finca();
-                    TipoCafe tip = new TipoCafe();
-                    CalidadCafe cali = new CalidadCafe();
 
-                    //cos = cosechaC.ObtenerNombreCosecha(cosecha);
                     fin = fincaC.ObtenerNombreFincas(finca);
-                    //cali = calidadC.ObtenerNombreCalidad(calidad);
-                    //tip = tipoC.ObtenerTipoCafeNombre(tipoCafe);
+                    pers = personaC.ObtenerPersona(persona);
 
                     // Código que se ejecutará si se ha hecho clic en la imagen update
-                    bool exito= loteController.ActualizarLote(loteSeleccionado.IdLote, nameLote, cantidad, fecha, cos.IdCosecha, 
-                                                   fin.IdFinca, cali.IdCalidad ,tip.IdTipoCafe);
+                    bool exito= socioController.ActualizarSocio(socioSeleccionado.IdSocio, name, descripcion, ubicacion, fin.IdFinca, pers.IdPersona);
                     
                     if (!exito)
                     {
-                        MessageBox.Show("Error al actualizar los datos del Lote. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al actualizar los datos del Socio. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    MessageBox.Show("Lote actualizado correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Socio actualizado correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
                         //verificar el departamento 
-                        log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Lote", ModuloActual.NombreModulo, "Actualizacion", "Actualizo las caracteristicas del Lote con ID " + loteSeleccionado.IdLote + " en la base de datos");
+                        log.RegistrarLog(usuario.IdUsuario, "Actualizacion del dato Socio", ModuloActual.NombreModulo, "Actualizacion", "Actualizo las caracteristicas del Socio con ID " + socioSeleccionado.IdSocio + " en la base de datos");
                     }
                     catch (Exception ex)
                     {
@@ -402,14 +417,14 @@ namespace sistema_modular_cafe_majada.views
                     }
 
                     //funcion para actualizar los datos en el dataGrid
-                    ShowLoteGrid();
+                    ShowSociosGrid();
 
                     ClearDataTxb();
 
                     imagenClickeada = false;
-                    loteSeleccionado = null;
+                    socioSeleccionado = null;
 
-                }*/
+                }
             }
             catch (Exception ex)
             {

@@ -187,6 +187,43 @@ namespace sistema_modular_cafe_majada.views
         }
 
         //
+        public void ConvertFirstLetter(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a minúsculas
+                    string lowerCaseInput = input.ToLower();
+
+                    // Dividir la cadena en palabras utilizando espacios como delimitadores
+                    string[] words = lowerCaseInput.Split(' ');
+
+                    // Recorrer cada palabra y convertir el primer carácter a mayúscula solo si es la primera palabra
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        if (!string.IsNullOrEmpty(words[i]))
+                        {
+                            if (i == 0) // Verificar si es la primera palabra
+                            {
+                                words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1);
+                            }
+                        }
+                    }
+
+                    // Unir las palabras nuevamente en una sola cadena
+                    string result = string.Join(" ", words);
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = result;
+                }
+            }
+        }
+
+        //
         public void ConvertFirstCharacter(TextBox[] textBoxes)
         {
             foreach (TextBox textBox in textBoxes)
@@ -240,7 +277,9 @@ namespace sistema_modular_cafe_majada.views
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
 
             TextBox[] textBoxes = { txb_subProdCafe };
+            TextBox[] textBoxesLetter = { txb_descripcion };
             ConvertFirstCharacter(textBoxes);
+            ConvertFirstLetter(textBoxesLetter);
 
             //se obtiene los valores ingresados por el usuario
             string nameSubProducto = txb_subProdCafe.Text;
