@@ -159,7 +159,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Crear la consulta SQL para obtener el rol
                 string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
                                         FROM Almacen a
-                                        INNER JOIN Bodega b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
                                         WHERE b.nombre_bodega = @nombreM";
 
                 conexion.CrearComando(consulta);
@@ -208,9 +208,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = @"SELECT f.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
                                         FROM Almacen a
-                                        INNER JOIN Bodega b ON a.id_bodega_ubicacion_almacen = b.id_bodega";
+                                        INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega";
 
                 conexion.CrearComando(consulta);
 
@@ -258,9 +258,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = @"SELECT f.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
                                         FROM Almacen a
-                                        INNER JOIN Bodega b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
                                         WHERE b.nombre_bodega LIKE CONCAT('%', @search, '%') OR a.nombre_almacen LIKE CONCAT('%', @search, '%')";
 
                 conexion.CrearComando(consulta);
