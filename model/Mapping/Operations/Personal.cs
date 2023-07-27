@@ -17,4 +17,16 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public string NombrePersona { get; set; }
 
     }
+
+    public static class PersonalSeleccionado
+    {
+        public static int IPersonal { get; set; }
+        public static string NombrePersonal { get; set; }
+        public static int IPersonalCatador { get; set; }
+        public static string NombrePersonalCatador { get; set; }
+        public static int IPersonalPuntero { get; set; }
+        public static string NombrePersonalPuntero { get; set; }
+        public static int IPersonalPesador { get; set; }
+        public static string NombrePersonalPesador { get; set; }
+    }
 }

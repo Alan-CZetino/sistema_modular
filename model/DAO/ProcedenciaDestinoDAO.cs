@@ -222,10 +222,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"SELECT pd.*,
                                            b.nombre_beneficio,
                                            s.nombre_socio,
+                                           f.nombre_finca,
                                            m.nombre_maquinaria
                                     FROM Procedencia_Destino_Cafe pd
                                     INNER JOIN Beneficio b ON pd.id_benficio_ubicacion_procedencia = b.id_beneficio
                                     INNER JOIN Socio s ON pd.id_socio_procedencia = s.id_socio
+                                    INNER JOIN Finca f ON s.id_finca_socio = f.id_finca
                                     INNER JOIN Maquinaria m ON pd.id_maquinaria_procedencia = m.id_maquinaria";
 
                 conexion.CrearComando(consulta);
@@ -240,9 +242,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
                             DescripcionProcedencia = Convert.ToString(reader["descripcion_procedencia"]),
                             IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_procedencia"]),
-                            NombreBenficioUbicacion = Convert.ToString(reader["nombre_benficio_ubicacion"]),
+                            NombreBenficioUbicacion = Convert.ToString(reader["nombre_beneficio"]),
                             IdSocioProcedencia = Convert.ToInt32(reader["id_socio_procedencia"]),
-                            NombreSocioProcedencia = Convert.ToString(reader["nombre_socio_procedencia"]),
+                            NombreSocioProcedencia = Convert.ToString(reader["nombre_socio"]),
+                            NombreFincaSocio = Convert.ToString(reader["nombre_finca"]),
                             IdMaquinaria = Convert.ToInt32(reader["id_maquinaria_procedencia"]),
                             NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"])
                         };

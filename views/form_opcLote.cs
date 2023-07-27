@@ -36,7 +36,7 @@ namespace sistema_modular_cafe_majada.views
             //esta es una llamada para funcion para pintar las filas del datagrid
             dtg_tableOpc.CellPainting += dtg_tableOpc_CellPainting;
         }
-
+         
         //esta es una funcion para pintar las filas del datagrid
         private void dtg_tableOpc_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -179,17 +179,14 @@ namespace sistema_modular_cafe_majada.views
                         else
                         {
                             // Llamar al método para obtener los datos de la base de datos
-                            var personController = new PersonController();
-                            List<Persona> datos = personController.BuscarPersonas(text.Text);
+                            var fincaController = new FincaController();
+                            List<Finca> datos = fincaController.BuscadorFinca(text.Text);
 
-                            var datosPersonalizados = datos.Select(persona => new
+                            var datosPersonalizados = datos.Select(finca => new
                             {
-                                ID = persona.IdPersona,
-                                Nombres = persona.NombresPersona,
-                                Apellidos = persona.ApellidosPersona,
-                                Dirección = persona.DireccionPersona,
-                                DUI = persona.DuiPersona,
-                                Teléfono = persona.Telefono1Persona,
+                                ID = finca.IdFinca,
+                                Nombres = finca.nombreFinca,
+                                Ubicacion = finca.ubicacionFinca
                             }).ToList();
 
                             // Asignar los datos al DataGridView
@@ -212,14 +209,17 @@ namespace sistema_modular_cafe_majada.views
                         else
                         {
                             // Llamar al método para obtener los datos de la base de datos
-                            var tipoCafeController = new TipoCafeController();
-                            List<TipoCafe> datos = tipoCafeController.BuscadorTipoCafes(text.Text);
+                            var personController = new PersonController();
+                            List<Persona> datos = personController.BuscarPersonas(text.Text);
 
-                            var datosPersonalizados = datos.Select(tipoC => new
+                            var datosPersonalizados = datos.Select(persona => new
                             {
-                                ID = tipoC.IdTipoCafe,
-                                Nombre = tipoC.NombreTipoCafe,
-                                Descripcion = tipoC.DescripcionTipoCafe
+                                ID = persona.IdPersona,
+                                Nombres = persona.NombresPersona,
+                                Apellidos = persona.ApellidosPersona,
+                                Dirección = persona.DireccionPersona,
+                                DUI = persona.DuiPersona,
+                                Teléfono = persona.Telefono1Persona,
                             }).ToList();
 
                             // Asignar los datos al DataGridView

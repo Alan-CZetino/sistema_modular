@@ -47,6 +47,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return null;
             }
         }
+        
+        //
+        public SubPartida ObtenerSubPartidasPorNombreAndCosecha(string nombre, string cosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la SubPartida
+                return subPartidaDAO.ObtenerSubPartidasPorNombreAndCosecha(nombre, cosecha);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la SubPartida: " + ex.Message);
+                return null;
+            }
+        }
 
         //
         public bool InsertarSubPartida(SubPartida subPartida)
@@ -64,12 +79,12 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
         }
 
         //
-        public List<SubPartida> ObtenerSubPartidasNombres()
+        public List<SubPartida> ObtenerSubPartidasNombresPorCosecha(string cosecha)
         {
             try
             {
                 // Llamada al método del DAO para obtener las SubPartida
-                return subPartidaDAO.ObtenerSubPartidasNombres();
+                return subPartidaDAO.ObtenerSubPartidasNombresPorCosecha(cosecha);
             }
             catch (Exception ex)
             {

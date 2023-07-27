@@ -25,12 +25,12 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
 
             try
             {
-                // Llamada al método del DAO para obtener los roles
+                // Llamada al método del DAO para obtener los Personales
                 personals = personalDAO.ObtenerPersonales();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error al obtener los roles: " + ex.Message);
+                Console.WriteLine("Ocurrió un error al obtener los Personales: " + ex.Message);
             }
 
             return personals;
@@ -43,12 +43,48 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
 
             try
             {
-                // Llamada al método del DAO para obtener los roles
+                // Llamada al método del DAO para obtener los Personales
                 personals = personalDAO.ObtenerPersonalesNombreCargo();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error al obtener los roles: " + ex.Message);
+                Console.WriteLine("Ocurrió un error al obtener los Personales: " + ex.Message);
+            }
+
+            return personals;
+        }
+        
+        //
+        public List<Personal> ObtenerPersonalEspecificoNombreCargo(string nombre)
+        {
+            List<Personal> personals = new List<Personal>();
+
+            try
+            {
+                // Llamada al método del DAO para obtener los Personales
+                personals = personalDAO.ObtenerPersonalEspecificoNombreCargo(nombre);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los Personales: " + ex.Message);
+            }
+
+            return personals;
+        }
+        
+        //
+        public List<Personal> BuscarPersonal(string buscar)
+        {
+            List<Personal> personals = new List<Personal>();
+
+            try
+            {
+                // Llamada al método del DAO para obtener los Personales
+                personals = personalDAO.BuscarPersonal(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los Personales: " + ex.Message);
             }
 
             return personals;

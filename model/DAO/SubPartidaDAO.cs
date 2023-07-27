@@ -31,6 +31,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"
             INSERT INTO SubPartida (
                 id_cosecha_subpartida,
+                num_subpartida,
                 id_procedencia_subpartida,
                 id_calidad_cafe_subpartida,
                 id_subproducto_subpartida,
@@ -64,6 +65,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 observacion_pesado_subpartida
             ) VALUES (
                 @idCosecha,
+                @numSubParti,
                 @idProcedencia,
                 @idCalidadCafe,
                 @idSubProducto,
@@ -100,6 +102,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@idCosecha", subPartida.IdCosecha);
+                conexion.AgregarParametro("@numSubParti", subPartida.NumeroSubpartida);
                 conexion.AgregarParametro("@idProcedencia", subPartida.IdProcedencia);
                 conexion.AgregarParametro("@idCalidadCafe", subPartida.IdCalidadCafe);
                 conexion.AgregarParametro("@idSubProducto", subPartida.IdSubProducto);
@@ -366,7 +369,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         // Función para obtener todos los registros de SubPartida en la base de datos
-        public List<SubPartida> ObtenerSubPartidasNombres()
+        public List<SubPartida> ObtenerSubPartidasNombresPorCosecha(string cosecha)
         {
             List<SubPartida> listaSubPartidas = new List<SubPartida>();
 
@@ -378,7 +381,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"SELECT sp.*,
                                            c.nombre_cosecha,
                                            pd.nombre_procedencia,
-                                           cc.nombre_calidad_cafe,
+                                           cc.nombre_calidad,
                                            sbp.nombre_subproducto,
                                            p.nombre_personal,
                                            pb.nombre_bodega,
@@ -396,9 +399,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                                     INNER JOIN Almacen a ON sp.id_almacen_subpartida = a.id_almacen
                                     INNER JOIN Personal ps ON sp.id_puntero_secado_subpartida = ps.id_personal
                                     INNER JOIN Personal pc ON sp.id_catador_subpartida = pc.id_personal
-                                    INNER JOIN Personal pe ON sp.id_pesador_subpartida = pe.id_personal";
+                                    INNER JOIN Personal pe ON sp.id_pesador_subpartida = pe.id_personal
+                                    WHERE c.nombre_cosecha = @cosecha";
 
                 conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@cosecha", cosecha);
 
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
@@ -407,12 +412,121 @@ namespace sistema_modular_cafe_majada.model.DAO
                         SubPartida subPartida = new SubPartida()
                         {
                             IdSubpartida = Convert.ToInt32(reader["id_subpartida"]),
+                            NumeroSubpartida = Convert.ToInt32(reader["num_subpartida"]),
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha_subpartida"]),
+                            NombreCosecha = Convert.IsDBNull(reader["nombre_cosecha"]) ? null : Convert.ToString(reader["nombre_cosecha"]),
+                            IdProcedencia = Convert.ToInt32(reader["id_procedencia_subpartida"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
+                            IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_subpartida"]),
+                            NombreCalidadCafe = Convert.IsDBNull(reader["nombre_calidad"]) ? null : Convert.ToString(reader["nombre_calidad"]),
+                            IdSubProducto = Convert.ToInt32(reader["id_subproducto_subpartida"]),
+                            NombreSubProducto = Convert.IsDBNull(reader["nombre_subproducto"]) ? null : Convert.ToString(reader["nombre_subproducto"]),
+                            Num1Semana = Convert.ToInt32(reader["num1_semana_subpartida"]),
+                            Num2Semana = Convert.IsDBNull(reader["num2_semana_subpartida"]) ? 0 : Convert.ToInt32(reader["num2_semana_subpartida"]),
+                            Num3Semana = Convert.IsDBNull(reader["num3_semana_subpartida"]) ? 0 : Convert.ToInt32(reader["num3_semana_subpartida"]),
+                            Dias1SubPartida = Convert.ToInt32(reader["dias1_subpartida"]),
+                            Dias2SubPartida = Convert.IsDBNull(reader["dias2_subpartida"]) ? 0 : Convert.ToInt32(reader["dias2_subpartida"]),
+                            Dias3SubPartida = Convert.IsDBNull(reader["dias3_subpartida"]) ? 0 : Convert.ToInt32(reader["dias3_subpartida"]),
+                            Fecha1SubPartida = Convert.ToDateTime(reader["fecha1_subpartida"]),
+                            Fecha2SubPartida = reader["fecha2_subpartida"] as DateTime? ?? default(DateTime),
+                            Fecha3SubPartida = reader["fecha3_subpartida"] as DateTime? ?? default(DateTime),
+                            ObservacionIdentificacionCafe = Convert.IsDBNull(reader["observacion_cafe_subpartida"]) ? null : Convert.ToString(reader["observacion_cafe_subpartida"]),
+                            FechaSecado = Convert.ToDateTime(reader["fecha_carga_secado_subpartida"]),
+                            InicioSecado = Convert.ToDateTime(reader["inicio_secado_subpartida"]),
+                            SalidaSecado = Convert.ToDateTime(reader["salida_punto_secado_subpartida"]),
+                            TiempoSecado = TimeSpan.Parse(reader["tiempo_secado_subpartida"].ToString()),
+                            HumedadSecado = Convert.ToDouble(reader["humedad_secado_subpartida"]),
+                            Rendimiento = Convert.ToDouble(reader["rendimiento_subpartida"]),
+                            IdPunteroSecador = Convert.ToInt32(reader["id_puntero_secado_subpartida"]),
+                            NombrePunteroSecador = Convert.IsDBNull(reader["nombre_puntero_secador"]) ? null : Convert.ToString(reader["nombre_puntero_secador"]),
+                            ObservacionSecado = Convert.IsDBNull(reader["observacion_secado_subpartida"]) ? null : Convert.ToString(reader["observacion_secado_subpartida"]),
+                            IdCatador = Convert.ToInt32(reader["id_catador_subpartida"]),
+                            NombreCatador = Convert.IsDBNull(reader["nombre_catador"]) ? null : Convert.ToString(reader["nombre_catador"]),
+                            FechaCatacion = Convert.ToDateTime(reader["fecha_catacion_subpartida"]),
+                            ObservacionCatador = Convert.IsDBNull(reader["observacion_catacion_subpartida"]) ? null : Convert.ToString(reader["observacion_catacion_subpartida"]),
+                            FechaPesado = Convert.ToDateTime(reader["fecha_pesado_subpartida"]),
+                            PesaSaco = Convert.ToDouble(reader["peso_saco_subpartida"]),
+                            PesaQQs = Convert.ToDouble(reader["peso_qqs_subpartida"]),
+                            IdAlmacen = Convert.ToInt32(reader["id_almacen_subpartida"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            IdBodega = Convert.ToInt32(reader["id_bodega_subpartida"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            DoctoAlmacen = Convert.IsDBNull(reader["docto_almacen_subpartida"]) ? null : Convert.ToString(reader["docto_almacen_subpartida"]),
+                            IdPesador = Convert.ToInt32(reader["id_pesador_subpartida"]),
+                            NombrePunteroPesador = Convert.IsDBNull(reader["nombre_pesador"]) ? null : Convert.ToString(reader["nombre_pesador"]),
+                            ObservacionPesador = Convert.IsDBNull(reader["observacion_pesado_subpartida"]) ? null : Convert.ToString(reader["observacion_pesado_subpartida"])
+                        };
+
+
+                        listaSubPartidas.Add(subPartida);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return listaSubPartidas;
+        }
+        
+        // Función para obtener todos los registros de SubPartida en la base de datos
+        public SubPartida ObtenerSubPartidasPorNombreAndCosecha(string nombre, string cosecha)
+        {
+            SubPartida subPartida = null;
+
+            try
+            {
+                // Conexión a la base de datos (asegúrate de tener la clase "conexion" y los métodos correspondientes)
+                conexion.Conectar();
+
+                string consulta = @"SELECT sp.*,
+                                           c.nombre_cosecha,
+                                           pd.nombre_procedencia,
+                                           cc.nombre_calidad,
+                                           sbp.nombre_subproducto,
+                                           p.nombre_personal,
+                                           pb.nombre_bodega,
+                                           a.nombre_almacen,
+                                           ps.nombre_personal AS nombre_puntero_secador,
+                                           pc.nombre_personal AS nombre_catador,
+                                           pe.nombre_personal AS nombre_pesador
+                                    FROM SubPartida sp
+                                    INNER JOIN Cosecha c ON sp.id_cosecha_subpartida = c.id_cosecha
+                                    INNER JOIN Procedencia_Destino_Cafe pd ON sp.id_procedencia_subpartida = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON sp.id_calidad_cafe_subpartida = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON sp.id_subproducto_subpartida = sbp.id_subproducto
+                                    INNER JOIN Personal p ON sp.id_puntero_secado_subpartida = p.id_personal
+                                    INNER JOIN Bodega_Cafe pb ON sp.id_bodega_subpartida = pb.id_bodega
+                                    INNER JOIN Almacen a ON sp.id_almacen_subpartida = a.id_almacen
+                                    INNER JOIN Personal ps ON sp.id_puntero_secado_subpartida = ps.id_personal
+                                    INNER JOIN Personal pc ON sp.id_catador_subpartida = pc.id_personal
+                                    INNER JOIN Personal pe ON sp.id_pesador_subpartida = pe.id_personal
+                                    WHERE sp.num_subpartida = @nombre AND c.nombre_cosecha = @cosecha";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@nombre", nombre);
+                conexion.AgregarParametro("@cosecha", cosecha);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        subPartida = new SubPartida()
+                        {
+                            IdSubpartida = Convert.ToInt32(reader["id_subpartida"]),
+                            NumeroSubpartida = Convert.ToInt32(reader["num_subpartida"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_subpartida"]),
                             NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
                             IdProcedencia = Convert.ToInt32(reader["id_procedencia_subpartida"]),
                             NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_subpartida"]),
-                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad_cafe"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_subpartida"]),
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
                             Num1Semana = Convert.ToInt32(reader["num1_semana_subpartida"]),
@@ -438,6 +552,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreCatador = Convert.ToString(reader["nombre_catador"]),
                             FechaCatacion = Convert.ToDateTime(reader["fecha_catacion_subpartida"]),
                             ObservacionCatador = Convert.ToString(reader["observacion_catacion_subpartida"]),
+                            ResultadoCatador = Convert.ToString(reader["resultado_catacion_subpartida"]),
                             FechaPesado = Convert.ToDateTime(reader["fecha_pesado_subpartida"]),
                             PesaSaco = Convert.ToDouble(reader["peso_saco_subpartida"]),
                             PesaQQs = Convert.ToDouble(reader["peso_qqs_subpartida"]),
@@ -445,13 +560,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreAlmacen = Convert.ToString(reader["nombre_almacen"]),
                             IdBodega = Convert.ToInt32(reader["id_bodega_subpartida"]),
                             NombreBodega = Convert.ToString(reader["nombre_bodega"]),
+                            DoctoAlmacen = Convert.ToString(reader["docto_almacen_subpartida"]),
                             IdPesador = Convert.ToInt32(reader["id_pesador_subpartida"]),
                             NombrePunteroPesador = Convert.ToString(reader["nombre_pesador"]),
                             ObservacionPesador = Convert.ToString(reader["observacion_pesado_subpartida"])
 
                         };
-
-                        listaSubPartidas.Add(subPartida);
                     }
                 }
             }
@@ -465,7 +579,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
 
-            return listaSubPartidas;
+            return subPartida;
         }
 
         // Función para obtener todos los registros de SubPartida en la base de datos
@@ -478,7 +592,30 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Conexión a la base de datos (asegúrate de tener la clase "conexion" y los métodos correspondientes)
                 conexion.Conectar();
 
-                string consulta = "SELECT * FROM SubPartida WHERE id_subpartida = @Id";
+                string consulta = @"SELECT sp.*,
+                                           c.nombre_cosecha,
+                                           pd.nombre_procedencia,
+                                           cc.nombre_calidad,
+                                           sbp.nombre_subproducto,
+                                           p.nombre_personal,
+                                           pb.nombre_bodega,
+                                           a.nombre_almacen,
+                                           ps.nombre_personal AS nombre_puntero_secador,
+                                           pc.nombre_personal AS nombre_catador,
+                                           pe.nombre_personal AS nombre_pesador
+                                    FROM SubPartida sp
+                                    INNER JOIN Cosecha c ON sp.id_cosecha_subpartida = c.id_cosecha
+                                    INNER JOIN Procedencia_Destino_Cafe pd ON sp.id_procedencia_subpartida = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON sp.id_calidad_cafe_subpartida = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON sp.id_subproducto_subpartida = sbp.id_subproducto
+                                    INNER JOIN Personal p ON sp.id_puntero_secado_subpartida = p.id_personal
+                                    INNER JOIN Bodega_Cafe pb ON sp.id_bodega_subpartida = pb.id_bodega
+                                    INNER JOIN Almacen a ON sp.id_almacen_subpartida = a.id_almacen
+                                    INNER JOIN Personal ps ON sp.id_puntero_secado_subpartida = ps.id_personal
+                                    INNER JOIN Personal pc ON sp.id_catador_subpartida = pc.id_personal
+                                    INNER JOIN Personal pe ON sp.id_pesador_subpartida = pe.id_personal
+                                    WHERE id_subpartida = @Id";
+
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@Id", idSubPartida);
 
@@ -489,20 +626,25 @@ namespace sistema_modular_cafe_majada.model.DAO
                         subPartida = new SubPartida()
                         {
                             IdSubpartida = Convert.ToInt32(reader["id_subpartida"]),
+                            NumeroSubpartida = Convert.ToInt32(reader["num_subpartida"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_subpartida"]),
+                            NombreCosecha = Convert.IsDBNull(reader["nombre_cosecha"]) ? null : Convert.ToString(reader["nombre_cosecha"]),
                             IdProcedencia = Convert.ToInt32(reader["id_procedencia_subpartida"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_subpartida"]),
+                            NombreCalidadCafe = Convert.IsDBNull(reader["nombre_calidad"]) ? null : Convert.ToString(reader["nombre_calidad"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_subpartida"]),
+                            NombreSubProducto = Convert.IsDBNull(reader["nombre_subproducto"]) ? null : Convert.ToString(reader["nombre_subproducto"]),
                             Num1Semana = Convert.ToInt32(reader["num1_semana_subpartida"]),
-                            Num2Semana = Convert.ToInt32(reader["num2_semana_subpartida"]),
-                            Num3Semana = Convert.ToInt32(reader["num3_semana_subpartida"]),
+                            Num2Semana = Convert.IsDBNull(reader["num2_semana_subpartida"]) ? 0 : Convert.ToInt32(reader["num2_semana_subpartida"]),
+                            Num3Semana = Convert.IsDBNull(reader["num3_semana_subpartida"]) ? 0 : Convert.ToInt32(reader["num3_semana_subpartida"]),
                             Dias1SubPartida = Convert.ToInt32(reader["dias1_subpartida"]),
-                            Dias2SubPartida = Convert.ToInt32(reader["dias2_subpartida"]),
-                            Dias3SubPartida = Convert.ToInt32(reader["dias3_subpartida"]),
+                            Dias2SubPartida = Convert.IsDBNull(reader["dias2_subpartida"]) ? 0 : Convert.ToInt32(reader["dias2_subpartida"]),
+                            Dias3SubPartida = Convert.IsDBNull(reader["dias3_subpartida"]) ? 0 : Convert.ToInt32(reader["dias3_subpartida"]),
                             Fecha1SubPartida = Convert.ToDateTime(reader["fecha1_subpartida"]),
-                            Fecha2SubPartida = Convert.ToDateTime(reader["fecha2_subpartida"]),
-                            Fecha3SubPartida = Convert.ToDateTime(reader["fecha3_subpartida"]),
-                            ObservacionIdentificacionCafe = Convert.ToString(reader["observacion_cafe_subpartida"]),
+                            Fecha2SubPartida = reader["fecha2_subpartida"] as DateTime? ?? default(DateTime),
+                            Fecha3SubPartida = reader["fecha3_subpartida"] as DateTime? ?? default(DateTime),
+                            ObservacionIdentificacionCafe = Convert.IsDBNull(reader["observacion_cafe_subpartida"]) ? null : Convert.ToString(reader["observacion_cafe_subpartida"]),
                             FechaSecado = Convert.ToDateTime(reader["fecha_carga_secado_subpartida"]),
                             InicioSecado = Convert.ToDateTime(reader["inicio_secado_subpartida"]),
                             SalidaSecado = Convert.ToDateTime(reader["salida_punto_secado_subpartida"]),
@@ -510,17 +652,24 @@ namespace sistema_modular_cafe_majada.model.DAO
                             HumedadSecado = Convert.ToDouble(reader["humedad_secado_subpartida"]),
                             Rendimiento = Convert.ToDouble(reader["rendimiento_subpartida"]),
                             IdPunteroSecador = Convert.ToInt32(reader["id_puntero_secado_subpartida"]),
-                            ObservacionSecado = Convert.ToString(reader["observacion_secado_subpartida"]),
+                            NombrePunteroSecador = Convert.IsDBNull(reader["nombre_puntero_secador"]) ? null : Convert.ToString(reader["nombre_puntero_secador"]),
+                            ObservacionSecado = Convert.IsDBNull(reader["observacion_secado_subpartida"]) ? null : Convert.ToString(reader["observacion_secado_subpartida"]),
                             IdCatador = Convert.ToInt32(reader["id_catador_subpartida"]),
+                            NombreCatador = Convert.IsDBNull(reader["nombre_catador"]) ? null : Convert.ToString(reader["nombre_catador"]),
                             FechaCatacion = Convert.ToDateTime(reader["fecha_catacion_subpartida"]),
-                            ObservacionCatador = Convert.ToString(reader["observacion_catacion_subpartida"]),
+                            ObservacionCatador = Convert.IsDBNull(reader["observacion_catacion_subpartida"]) ? null : Convert.ToString(reader["observacion_catacion_subpartida"]),
                             FechaPesado = Convert.ToDateTime(reader["fecha_pesado_subpartida"]),
                             PesaSaco = Convert.ToDouble(reader["peso_saco_subpartida"]),
                             PesaQQs = Convert.ToDouble(reader["peso_qqs_subpartida"]),
                             IdAlmacen = Convert.ToInt32(reader["id_almacen_subpartida"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
                             IdBodega = Convert.ToInt32(reader["id_bodega_subpartida"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            DoctoAlmacen = Convert.IsDBNull(reader["docto_almacen_subpartida"]) ? null : Convert.ToString(reader["docto_almacen_subpartida"]),
                             IdPesador = Convert.ToInt32(reader["id_pesador_subpartida"]),
-                            ObservacionPesador = Convert.ToString(reader["observacion_pesado_subpartida"])
+                            NombrePunteroPesador = Convert.IsDBNull(reader["nombre_pesador"]) ? null : Convert.ToString(reader["nombre_pesador"]),
+                            ObservacionPesador = Convert.IsDBNull(reader["observacion_pesado_subpartida"]) ? null : Convert.ToString(reader["observacion_pesado_subpartida"])
+
                         };
                     }
                 }

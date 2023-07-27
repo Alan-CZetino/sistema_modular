@@ -151,7 +151,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el subproducto por nombre
-                string consulta = @"SELECT sp.id_subproducto, sp.nombre_subproducto, sp.descripcion, sp.id_calidad_supproducto, cc.nombre_calidad_cafe
+                string consulta = @"SELECT sp.id_subproducto, sp.nombre_subproducto, sp.descripcion, sp.id_calidad_supproducto, cc.nombre_calidad
                     FROM SubProducto sp
                     INNER JOIN Calidad_Cafe cc ON sp.id_calidad_supproducto = cc.id_calidad
                     WHERE sp.nombre_subproducto = @nombreSubProducto";
@@ -170,7 +170,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
                             DescripcionSubProducto = Convert.ToString(reader["descripcion"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_supproducto"]),
-                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad_cafe"])
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"])
                         };
                     }
                 }
