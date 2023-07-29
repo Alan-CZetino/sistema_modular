@@ -77,6 +77,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return false;
             }
         }
+        
+        //
+        public SubPartida CountSubPartida(int idCosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para contar la SubPartida
+                return subPartidaDAO.CountSubPartida(idCosecha);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la inserción de SubPartida en la base de datos: " + ex.Message);
+                return null;
+            }
+        }
 
         //
         public List<SubPartida> ObtenerSubPartidasNombresPorCosecha(string cosecha)

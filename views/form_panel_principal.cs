@@ -47,6 +47,7 @@ namespace sistema_modular_cafe_majada
             refreshTimer.Interval = 5000; // Intervalo en milisegundos (5 segundos en este caso).
             refreshTimer.Elapsed += RefreshTimer_Elapsed;
             refreshTimer.Start();
+
         }
 
         private void RefreshTimer_Elapsed(object sender, ElapsedEventArgs e)

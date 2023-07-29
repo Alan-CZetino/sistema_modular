@@ -35,7 +35,7 @@ namespace sistema_modular_cafe_majada.views
             //esta es una llamada para funcion para pintar las filas del datagrid
             dtg_opcSP.CellPainting += dtg_opcSP_CellPainting;
         }
-
+        
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -90,42 +90,29 @@ namespace sistema_modular_cafe_majada.views
         {
             // Llamar al método para obtener los datos de la base de datos
             var personalController = new PersonalController();
-            List<Personal> datos = personalController.ObtenerPersonalesNombreCargo();
+            List<Personal> datosP = null;
 
             // Verificar si se obtuvieron datos
-            if (datos.Count > 0)
+            if (PersonalSeleccionado.TipoPersonal.Length != 0)
             {
-                // Se obtuvieron datos,
-                var datosPersonalizados = datos.Select(personal => new
-                {
-                    ID = personal.IdPersonal,
-                    Nombre = personal.NombrePersonal,
-                    Cargo = personal.NombreCargo,
-                    Descripcion = personal.Descripcion,
-                    ID_Persona = personal.IdPersona,
-                }).ToList();
-
-                // Asignar los datos al DataGridView
-                dtg_opcSP.DataSource = datosPersonalizados;
+                datosP = personalController.BuscarPersonalCargo(PersonalSeleccionado.TipoPersonal);
             }
             else
             {
-                // No se encontraron datos,
-                List<Personal> datosP = personalController.ObtenerPersonalesNombreCargo();
-
-                var datosPersonalizados = datosP.Select(personal => new
-                {
-                    ID = personal.IdPersonal,
-                    Nombre = personal.NombrePersonal,
-                    Cargo = personal.NombreCargo,
-                    Descripcion = personal.Descripcion,
-                    ID_Persona = personal.IdPersona,
-                }).ToList();
-            
-                // Asignar los datos al DataGridView
-                dtg_opcSP.DataSource = datosPersonalizados;
-
+                datosP = personalController.ObtenerPersonalesNombreCargo();
             }
+
+            var datosPersonalizados = datosP.Select(personal => new
+            {
+                ID = personal.IdPersonal,
+                Nombre = personal.NombrePersonal,
+                Cargo = personal.NombreCargo,
+                Descripcion = personal.Descripcion,
+                ID_Persona = personal.IdPersona,
+            }).ToList();
+            
+            // Asignar los datos al DataGridView
+            dtg_opcSP.DataSource = datosPersonalizados;
 
             dtg_opcSP.RowHeadersVisible = false;
             dtg_opcSP.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -136,7 +123,17 @@ namespace sistema_modular_cafe_majada.views
         {
             // Llamar al método para obtener los datos de la base de datos
             AlmacenController almacenController = new AlmacenController();
-            List<Almacen> datos = almacenController.ObtenerAlmacenNombreBodega();
+            List<Almacen> datos = null;
+
+            Console.WriteLine("Depuracion - id Bodega" + AlmacenBodegaClick.IBodega);
+            if (AlmacenBodegaClick.IBodega != 0)
+            {
+                datos = almacenController.BuscarIDBodegaAlmacens(AlmacenBodegaClick.IBodega);
+            }
+            else
+            {
+                datos = almacenController.ObtenerAlmacenNombreBodega();
+            }
 
             var datosPersonalizados = datos.Select(almacen => new
             {

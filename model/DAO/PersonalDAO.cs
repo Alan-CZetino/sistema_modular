@@ -240,6 +240,54 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             return listaPersonal;
         }
+        
+        //funcion para mostrar todos los registros y traer el nombre del cargo
+        public List<Personal> BuscarPersonalCargo(string buscar)
+        {
+            List<Personal> listaPersonal = new List<Personal>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT pl.id_personal, pl.nombre_personal, c.nombre_cargo, pl.descripcion_personal, p.nombres_persona, pl.id_persona_personal
+                                            FROM Personal pl
+                                                INNER JOIN Cargo c ON pl.id_cargo_personal = c.id_cargo
+                                                INNER JOIN Persona p ON pl.id_persona_personal = p.id_persona
+                                            WHERE c.nombre_cargo LIKE CONCAT('%', @search, '%')";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", buscar);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Personal personales = new Personal()
+                        {
+                            IdPersonal = Convert.ToInt32(reader["id_personal"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            NombreCargo = Convert.ToString(reader["nombre_cargo"]),
+                            Descripcion = Convert.ToString(reader["descripcion_personal"]),
+                            IdPersona = Convert.ToInt32(reader["id_persona_personal"]),
+                            NombrePersona = Convert.ToString(reader["nombres_persona"])
+                        };
+
+                        listaPersonal.Add(personales);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return listaPersonal;
+        }
 
         //obtener el Personal en especifico mediante el id en la BD
         public Personal ObtenerIdPersonal(int id)

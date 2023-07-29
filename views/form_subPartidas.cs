@@ -1,4 +1,5 @@
-﻿using sistema_modular_cafe_majada.controller.OperationsController;
+﻿using sistema_modular_cafe_majada.controller.InfrastructureController;
+using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
@@ -23,6 +24,12 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_subPartidas : Form
     {
+        private List<TextBox> txbRestrict;
+        private bool imagenClickeada = false;
+        private bool imgClickAlmacen = false;
+        private bool imgClickBodega = false;
+        SubPartidaController countSP = null;
+
         //variable para refrescar el formulario cad cierto tiempo
         private System.Timers.Timer refreshTimer;
 
@@ -30,6 +37,7 @@ namespace sistema_modular_cafe_majada.views
         private int ibenef;
 
         private int iProcedencia;
+        private int icosechaCambio;
         private int isubProducto;
         private int iCatador;
         private int iPesador;
@@ -37,7 +45,7 @@ namespace sistema_modular_cafe_majada.views
         private int iBodega;
         private int iAlmacen;
         private int iCalidad;
-        private int iCosecha;
+        private int iSubPartida;
 
         public form_subPartidas()
         {
@@ -49,9 +57,17 @@ namespace sistema_modular_cafe_majada.views
             refreshTimer.Elapsed += RefreshTimer_Elapsed;
             refreshTimer.Start();
 
+            txbRestrict = new List<TextBox> { txb_pdasSemana1, txb_pdasSemana2, txb_pdasSemana3, txb_diasPdas1, txb_diasPdas2, txb_diasPdas3,
+                                                txb_humedad, txb_rendimiento, txb_cantidadQQs, txb_CantidadSaco };
+
+            RestrictTextBoxNum(txbRestrict);
+
             CbxSubProducto();
 
+            countSP = new SubPartidaController();
+            var subSPa = countSP.CountSubPartida(CosechaActual.ICosechaActual);
             //
+            txb_subPartida.Text = Convert.ToInt32(subSPa.CountSubPartida + 1 ).ToString();
             txb_nombreCatador.Enabled = false;
             txb_nombreCatador.ReadOnly = true;
             txb_nombrePesador.Enabled = false;
@@ -61,8 +77,9 @@ namespace sistema_modular_cafe_majada.views
             txb_cosecha.Enabled = false;
             txb_cosecha.ReadOnly = true;
             txb_cosecha.Text = CosechaActual.NombreCosechaActual;
-            //txb_subPartida.Enabled = false;
-            //txb_subPartida.ReadOnly = true;
+            txb_horaInicio.Text = "00:00:00";
+            txb_horaSalida.Text = "00:00:00";
+            txb_tiempoSecad.Text = "00:00:00";
             txb_procedencia.Enabled = false;
             txb_procedencia.ReadOnly = true;
             txb_calidad.Enabled = false;
@@ -85,6 +102,32 @@ namespace sistema_modular_cafe_majada.views
                     // Por ejemplo, si queremos actualizar datos desde una base de datos o un servicio, lo haríamos aquí.
                     if (!this.IsDisposed)
                     {
+                        // Llamamos a la función ConvertTimeTxb y almacenamos el resultado formateado en la variable "miVariableTime".
+                        string miVariableTime = ConvertILimitTimeTxb(txb_tiempoSecad);
+
+                        Console.WriteLine("Resultado formateado: " + miVariableTime); // Esto imprimirá "Resultado formateado: 02:30:00"
+
+                        // Llamamos a la función ConvertTimeTxb y almacenamos el resultado formateado en la variable "miVariableTime".
+                        try
+                        {
+                            string miVariableTime1 = ConvertTimeLimitTxb(txb_horaInicio);
+                            DateTime fechaInicioSecado = dtp_fechaInicioSecad.Value.Date + TimeSpan.Parse(miVariableTime1);
+                            Console.WriteLine("Resultado formateado: " + fechaInicioSecado);
+                        }
+                        catch (FormatException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        if (icosechaCambio != CosechaActual.ICosechaActual)
+                        {
+                            countSP = new SubPartidaController();
+                            var subSPa = countSP.CountSubPartida(CosechaActual.ICosechaActual);
+                            //
+                            txb_subPartida.Text = Convert.ToInt32(subSPa.CountSubPartida + 1 ).ToString();
+                            icosechaCambio = CosechaActual.ICosechaActual;
+                        }
                         txb_cosecha.Text = CosechaActual.NombreCosechaActual;
                     }
                 }));
@@ -109,9 +152,163 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        //
+        public static string ConvertTimeLimitTxb(TextBox textTime)
+        {
+            string horaCompleta = textTime.Text;
+
+            // Dividir la cadena en partes utilizando el carácter ':'
+            string[] partesHora = horaCompleta.Split(':');
+
+            try
+            {
+                // Convertir a horas, minutos y segundos
+                if (partesHora.Length == 1 && int.TryParse(partesHora[0], out int horas))
+                {
+                    // Si hay solo una parte y se pudo convertir a entero, asumimos que es el número de horas.
+
+                    // Ajuste para las horas en formato de 24 horas
+                    // Si el formato no es de 12 horas, verificamos que el valor esté dentro del rango de 0 a 24.
+                    if (horas < 0 || horas > 24)
+                    {
+                        throw new FormatException("El valor ingresado está fuera del rango de horas válido (0 a 24).");
+                    }
+
+                    // Ajuste para las horas: Si la parte de las horas tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                    horaCompleta = horas < 10 ? "0" + horas : horas.ToString();
+
+                    // Añadimos los minutos y segundos con valor 00.
+                    horaCompleta += ":00:00";
+                
+                }
+                else if (partesHora.Length == 2 && int.TryParse(partesHora[0], out int horas2) && int.TryParse(partesHora[1], out int minutos))
+                {
+                    // Si hay dos partes y ambas se pudieron convertir a enteros, asumimos que es el número de horas y minutos.
+
+                    // Ajuste para las horas: Si la parte de las horas tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                    horaCompleta = horas2 < 10 ? "0" + horas2 : horas2.ToString();
+
+                    // Ajuste para los minutos: Si la parte de los minutos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                    horaCompleta += ":" + (minutos < 10 ? "0" + minutos : minutos.ToString());
+
+                    // Añadimos los segundos con valor 00.
+                    horaCompleta += ":00";
+                }
+                else if (partesHora.Length == 3 && int.TryParse(partesHora[0], out int horas3) && int.TryParse(partesHora[1], out int minutos3) && int.TryParse(partesHora[2], out int segundos))
+                {
+                    // Si hay tres partes y todas se pudieron convertir a enteros, asumimos que es el número de horas, minutos y segundos.
+
+                    // Ajuste para las horas: Si la parte de las horas tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                    horaCompleta = horas3 < 10 ? "0" + horas3 : horas3.ToString();
+
+                    // Ajuste para los minutos: Si la parte de los minutos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                    horaCompleta += ":" + (minutos3 < 10 ? "0" + minutos3 : minutos3.ToString());
+
+                    // Ajuste para los segundos: Si la parte de los segundos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                    horaCompleta += ":" + (segundos < 10 ? "0" + segundos : segundos.ToString());
+                }
+                else
+                {
+                    // Si no se cumple ninguna de las condiciones, el formato ingresado no es válido.
+                    Console.WriteLine("Formato de hora no válido.");
+                    return string.Empty;
+                }
+
+
+                // Devolvemos el resultado formateado.
+                return horaCompleta;
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+                // Lanzamos una excepción personalizada con el mensaje de error.
+                throw new FormatException("El valor ingresado en el campo Inicio Secado o Salida Secado está fuera del rango de horas válido (0 a 24).", ex);
+                
+            }
+
+        }
+
+        //
+        public static string ConvertILimitTimeTxb(TextBox textTime)
+        {
+            string horaCompleta = textTime.Text;
+
+            // Dividir la cadena en partes utilizando el carácter ':'
+            string[] partesHora = horaCompleta.Split(':');
+
+            if (partesHora.Length == 1 && int.TryParse(partesHora[0], out int horas))
+            {
+                // Si hay solo una parte y se pudo convertir a entero, asumimos que es el número de horas.
+
+                // Ajuste para las horas: Si la parte de las horas tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                horaCompleta = horas < 10 ? "0" + horas : horas.ToString();
+
+                // Añadimos los minutos y segundos con valor 00.
+                horaCompleta += ":00:00";
+            }
+            else if (partesHora.Length == 2 && int.TryParse(partesHora[0], out int horas2) && int.TryParse(partesHora[1], out int minutos))
+            {
+                // Si hay dos partes y ambas se pudieron convertir a enteros, asumimos que es el número de horas y minutos.
+
+                // Ajuste para las horas: Si la parte de las horas tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                horaCompleta = horas2 < 10 ? "0" + horas2 : horas2.ToString();
+
+                // Ajuste para los minutos: Si la parte de los minutos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                horaCompleta += ":" + (minutos < 10 ? "0" + minutos : minutos.ToString());
+
+                // Añadimos los segundos con valor 00.
+                horaCompleta += ":00";
+            }
+            else if (partesHora.Length == 3 && int.TryParse(partesHora[0], out int horas3) && int.TryParse(partesHora[1], out int minutos3) && int.TryParse(partesHora[2], out int segundos))
+            {
+                // Si hay tres partes y todas se pudieron convertir a enteros, asumimos que es el número de horas, minutos y segundos.
+
+                // Ajuste para las horas: Si la parte de las horas tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                horaCompleta = horas3 < 10 ? "0" + horas3 : horas3.ToString();
+
+                // Ajuste para los minutos: Si la parte de los minutos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                horaCompleta += ":" + (minutos3 < 10 ? "0" + minutos3 : minutos3.ToString());
+
+                // Ajuste para los segundos: Si la parte de los segundos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
+                horaCompleta += ":" + (segundos < 10 ? "0" + segundos : segundos.ToString());
+            }
+            else
+            {
+                // Si no se cumple ninguna de las condiciones, el formato ingresado no es válido.
+                Console.WriteLine("Formato de hora no válido.");
+                return string.Empty; // O puedes lanzar una excepción si es necesario.
+            }
+
+            // Devolvemos el resultado formateado.
+            return horaCompleta;
+        }
+
+        //
+        public void RestrictTextBoxNum(List<TextBox> textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.KeyPress += (sender, e) =>
+                {
+                    char decimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0];
+
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != decimalSeparator && e.KeyChar != '.')
+                    {
+                        e.Handled = true; // Cancela el evento KeyPress si no es un dígito, el punto o la coma
+                    }
+
+                    // Permite solo un punto o una coma en el TextBox
+                    if ((e.KeyChar == decimalSeparator || e.KeyChar == '.') && (textBox.Text.Contains(decimalSeparator.ToString()) || textBox.Text.Contains('.')))
+                    {
+                        e.Handled = true; // Cancela el evento KeyPress si ya hay un punto o una coma en el TextBox
+                    }
+                };
+            }
+        }
 
         private void btn_sPartida_Click(object sender, EventArgs e)
         {
+            imagenClickeada = true;
             TablaSeleccionadasubPartd.ITable = 1;
             var subPC = new SubPartidaController();
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
@@ -134,6 +331,7 @@ namespace sistema_modular_cafe_majada.views
                 DateTime fechaSalida = sub.SalidaSecado.Date;
                 TimeSpan horaSalida = sub.SalidaSecado.TimeOfDay;
 
+                iSubPartida = SubPartidaSeleccionado.ISubPartida;
                 txb_subPartida.Text = SubPartidaSeleccionado.NombreSubParti;
                 txb_procedencia.Text = sub.NombreProcedencia;
                 iProcedencia = sub.IdProcedencia ?? 0;
@@ -146,9 +344,9 @@ namespace sistema_modular_cafe_majada.views
                 txb_diasPdas1.Text = Convert.ToString(sub.Dias1SubPartida);
                 txb_diasPdas2.Text = Convert.ToString(sub.Dias2SubPartida);
                 txb_diasPdas3.Text = Convert.ToString(sub.Dias3SubPartida);
-                dtp_fecha1.Value = sub.Fecha1SubPartida;
-                dtp_fecha2.Value = DateTime.Today;
-                dtp_fecha3.Value = DateTime.Today;
+                txb_fechaPartd1.Text = sub.Fecha1SubPartida;
+                txb_fechaPartd2.Text = sub.Fecha2SubPartida;
+                txb_fechaPartd3.Text = sub.Fecha3SubPartida;
                 txb_observacionCafe.Text = sub.ObservacionIdentificacionCafe;
                 dtp_fechaSecado.Value = sub.FechaSecado;
                 dtp_fechaInicioSecad.Value = fechaInicio;
@@ -177,6 +375,7 @@ namespace sistema_modular_cafe_majada.views
                 iPesador = sub.IdPesador ?? 0;
                 txb_doctoAlmacen.Text = sub.DoctoAlmacen;
                 txb_observacionPesa.Text = sub.ObservacionPesador;
+
             }
         }
 
@@ -186,6 +385,7 @@ namespace sistema_modular_cafe_majada.views
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
+                iProcedencia = ProcedenciaSeleccionada.IProcedencia;
                 txb_procedencia.Text = ProcedenciaSeleccionada.NombreProcedencia;
             }
         }
@@ -196,6 +396,7 @@ namespace sistema_modular_cafe_majada.views
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
+                iCalidad = CalidadSeleccionada.ICalidadSeleccionada;
                 txb_calidad.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
             }
         }
@@ -203,9 +404,11 @@ namespace sistema_modular_cafe_majada.views
         private void btn_puntero_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 4;
+            PersonalSeleccionado.TipoPersonal = "eca";
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
+                iSecador = PersonalSeleccionado.IPersonalPuntero;
                 txb_nombrePuntero.Text = PersonalSeleccionado.NombrePersonalPuntero;
             }
         }
@@ -213,9 +416,11 @@ namespace sistema_modular_cafe_majada.views
         private void btn_catador_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 5;
+            PersonalSeleccionado.TipoPersonal = "ata";
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
+                iCatador = PersonalSeleccionado.IPersonalCatador;
                 txb_nombreCatador.Text = PersonalSeleccionado.NombrePersonalCatador;
             }
         }
@@ -223,9 +428,21 @@ namespace sistema_modular_cafe_majada.views
         private void btn_ubicacionCafe_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 6;
+            imgClickBodega = true;
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
+                iBodega = BodegaSeleccionada.IdBodega;
+                
+                if(iBodega != AlmacenBodegaClick.IBodega)
+                {
+                    imgClickAlmacen = false;
+                }
+                if (!imgClickAlmacen)
+                {
+                    AlmacenBodegaClick.IBodega = iBodega;
+                }
+
                 txb_ubicadoBodega.Text = BodegaSeleccionada.NombreBodega;
             }
         }
@@ -233,9 +450,23 @@ namespace sistema_modular_cafe_majada.views
         private void btn_ubiFisicaCafe_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 7;
+            imgClickAlmacen = true;
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
+                if (!imgClickBodega)
+                {
+                    // Llamar al método para obtener los datos de la base de datos
+                    AlmacenController almacenController = new AlmacenController();
+                    Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
+                    BodegaController bodegaController = new BodegaController();
+                    Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+
+                    txb_ubicadoBodega.Text = datoB.NombreBodega;
+                    iBodega = datoB.IdBodega;
+                    imgClickBodega = false;
+                }
+                iAlmacen = AlmacenSeleccionado.IAlmacen;
                 txb_almacenSiloPiña.Text = AlmacenSeleccionado.NombreAlmacen;
             }
         }
@@ -243,9 +474,11 @@ namespace sistema_modular_cafe_majada.views
         private void btn_pesador_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 8;
+            PersonalSeleccionado.TipoPersonal = "esa";
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
+                iPesador = PersonalSeleccionado.IPersonalPesador;
                 txb_nombrePesador.Text = PersonalSeleccionado.NombrePersonalPesador;
             }
         }
@@ -280,29 +513,10 @@ namespace sistema_modular_cafe_majada.views
                 int? dias2SubPartida = string.IsNullOrWhiteSpace(txb_diasPdas2.Text) ? 0 : Convert.ToInt32(txb_diasPdas2.Text);
                 int? dias3SubPartida = string.IsNullOrWhiteSpace(txb_diasPdas3.Text) ? 0 : Convert.ToInt32(txb_diasPdas3.Text);
                 
-                DateTime fecha1SubPartida = dtp_fecha1.Value;
+                string fecha1SubPartida = txb_fechaPartd1.Text;
+                string fecha2SubPartida = txb_fechaPartd2.Text;
+                string fecha3SubPartida = txb_fechaPartd3.Text;
                 
-                DateTime? fecha2SubPartida;
-                DateTime? fecha3SubPartida;
-
-                if (dtp_fecha2.Value == DateTime.Today)
-                {
-                    fecha2SubPartida = null;
-                }
-                else
-                {
-                    fecha2SubPartida = dtp_fecha2.Value;
-                }
-
-                if (dtp_fecha3.Value == DateTime.Today)
-                {
-                    fecha3SubPartida = null;
-                }
-                else
-                {
-                    fecha3SubPartida = dtp_fecha3.Value;
-                }
-
                 string observacionCafe = txb_observacionCafe.Text;
                 DateTime fechaSecado = dtp_fechaSecado.Value;
                 
@@ -326,6 +540,7 @@ namespace sistema_modular_cafe_majada.views
                 string doctoAlmacen = txb_doctoAlmacen.Text;
                 string nombrePunteroPesador = txb_nombrePesador.Text;
                 string observacionPesador = txb_observacionPesa.Text;
+
                 double pesoSaco;
                 if (double.TryParse(txb_CantidadSaco.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoSaco)){}
                 else
@@ -345,11 +560,12 @@ namespace sistema_modular_cafe_majada.views
                 SubPartida subPart = new SubPartida()
                 {
                     // Asignar los valores a las propiedades de la instancia
+                    IdSubpartida = iSubPartida,
                     NumeroSubpartida = subPartida,
                     NombreProcedencia = procedenciaNombre,
-                    IdProcedencia = ProcedenciaSeleccionada.IProcedencia,
+                    IdProcedencia = iProcedencia,
                     NombreCalidadCafe = calidadNombre,
-                    IdCalidadCafe = CalidadSeleccionada.ICalidadSeleccionada,
+                    IdCalidadCafe = iCalidad,
                     IdSubProducto = selectedValue,
                     IdCosecha = CosechaActual.ICosechaActual,
                     NombreCosecha = CosechaActual.NombreCosechaActual,
@@ -374,22 +590,22 @@ namespace sistema_modular_cafe_majada.views
                     TiempoSecado = tiempoSecado,
                     HumedadSecado = humedadSecado,
                     Rendimiento = rendimiento,
-                    IdPunteroSecador = PersonalSeleccionado.IPersonalPuntero,
+                    IdPunteroSecador = iSecador,
                     NombrePunteroSecador = nombrePunteroSecador,
                     ObservacionSecado = observacionSecado,
-                    IdCatador = PersonalSeleccionado.IPersonalCatador,
+                    IdCatador = iCatador,
                     NombreCatador = resultadoCatador,
                     FechaCatacion = fechaCatacion,
                     ObservacionCatador = observacionCatador,
                     FechaPesado = fechaPesado,
                     PesaSaco = pesoSaco,
                     PesaQQs = pesoQQs,
-                    IdBodega = BodegaSeleccionada.IdBodega,
+                    IdBodega = iBodega,
                     NombreBodega = nombreBodega,
-                    IdAlmacen = AlmacenSeleccionado.IAlmacen,
+                    IdAlmacen = iAlmacen,
                     NombreAlmacen = nombreAlmacen,
                     DoctoAlmacen = doctoAlmacen,
-                    IdPesador = PersonalSeleccionado.IPersonalPesador,
+                    IdPesador = iPesador,
                     NombrePunteroPesador = nombrePunteroPesador,
                     ObservacionPesador = observacionPesador
                 };
@@ -399,31 +615,67 @@ namespace sistema_modular_cafe_majada.views
                 LogController log = new LogController();
                 var userControl = new UserController();
                 var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
-
                 var subPartController = new SubPartidaController();
-                bool exito = subPartController.InsertarSubPartida(subPart);
 
-                if (exito)
+                if (!imagenClickeada)
                 {
-                    MessageBox.Show("SubPartida agregada correctamente.");
-                    try
-                    {
-                        //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                        //verificar el departamento
-                        log.RegistrarLog(usuario.IdUsuario, "Registro dato SubPartida", ModuloActual.NombreModulo, "Insercion", "Inserto una nueva SubPartida a la base de datos");
+                    Console.WriteLine("depuracion - img cliqueada " + imagenClickeada);
+                    bool exito = subPartController.InsertarSubPartida(subPart);
 
-                    }
-                    catch (Exception ex)
+                    if (exito)
                     {
-                        Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                        MessageBox.Show("SubPartida agregada correctamente.");
+                        try
+                        {
+                            //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                            //verificar el departamento
+                            log.RegistrarLog(usuario.IdUsuario, "Registro dato SubPartida", ModuloActual.NombreModulo, "Insercion", "Inserto una nueva SubPartida a la base de datos");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                        }
+
+                        //borrar datos de los textbox
+                        ClearDataTxb();
+                        imgClickBodega = false;
+                        imgClickAlmacen = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar la SubPartida. Verifica los datos e intenta nuevamente.");
                     }
 
-                    //borrar datos de los textbox
-                    ClearDataTxb();
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar la SubPartida. Verifica los datos e intenta nuevamente.");
+                    bool exito = subPartController.ActualizarSubPartida(subPart);
+
+                    if (exito)
+                    {
+                        MessageBox.Show("SubPartida Actualizada correctamente.");
+                        try
+                        {
+                            //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                            //verificar el departamento
+                            log.RegistrarLog(usuario.IdUsuario, "Actualizacion dato SubPartida", ModuloActual.NombreModulo, "Actualizacion", "Actualizo los datos de la SubPartida con id ( " + subPart.IdSubpartida + " ) en la base de datos");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                        }
+
+                        //borrar datos de los textbox
+                        ClearDataTxb();
+                        imgClickBodega = false;
+                        imgClickAlmacen = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al actualizar la SubPartida. Verifica los datos e intenta nuevamente.");
+                    }
                 }
             }
         }
@@ -466,9 +718,9 @@ namespace sistema_modular_cafe_majada.views
             }
 
             // Verificar campo fecha1_subpartida
-            if (dtp_fecha1.Value == DateTimePicker.MinimumDateTime)
+            if (string.IsNullOrWhiteSpace(txb_fechaPartd1.Text))
             {
-                MessageBox.Show("La fechaPdas 1 está sin seleccionar y es obligatoria.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("La fechaPdas 1 está vacio y es obligatoria.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 
@@ -594,6 +846,7 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
+            AlmacenBodegaClick.IBodega = 0;
             dtp_fechaSecado.Value = DateTime.Now;
             dtp_fechaInicioSecad.Value = DateTime.Now;
             dtp_fechaSalidaSecad.Value = DateTime.Now;
@@ -609,6 +862,9 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
+            imgClickBodega = false;
+            imgClickAlmacen = false;
+
         }
     }
 }

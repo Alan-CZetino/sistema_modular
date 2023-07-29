@@ -261,7 +261,58 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
                                         FROM Almacen a
                                         INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
-                                        WHERE b.nombre_bodega LIKE CONCAT('%', @search, '%') OR a.nombre_almacen LIKE CONCAT('%', @search, '%')";
+                                        WHERE b.nombre_bodega LIKE CONCAT('%', @search, '%') OR a.nombre_almacen LIKE CONCAT('%', @search, '%') 
+                                                OR a.id_bodega_ubicacion_almacen LIKE CONCAT('%', @search, '%')";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", "%" + buscar + "%");
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Almacen almacen = new Almacen()
+                        {
+                            IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
+                            UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
+                            IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
+                            NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"])
+                        };
+
+                        almacens.Add(almacen);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return almacens;
+        }
+        
+        //
+        public List<Almacen> BuscarIDBodegaAlmacen(int buscar)
+        {
+            List<Almacen> almacens = new List<Almacen>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para obtener el rol
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
+                                        FROM Almacen a
+                                        INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        WHERE a.id_bodega_ubicacion_almacen LIKE CONCAT('%', @search, '%')";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@search", "%" + buscar + "%");

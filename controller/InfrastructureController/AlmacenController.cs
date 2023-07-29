@@ -107,6 +107,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 return new List<Almacen>();
             }
         }
+        
+        //
+        public List<Almacen> BuscarIDBodegaAlmacens(int buscar)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener las Almacens
+                return almacenDAO.BuscarIDBodegaAlmacen(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de Almacens: " + ex.Message);
+                return new List<Almacen>();
+            }
+        }
 
         //
         public bool ActualizarAlmacens(int idAlmacen, string nombre, string descripcion, double capacidad, string ubicacion, int idBodega)

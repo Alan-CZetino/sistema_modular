@@ -89,6 +89,24 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
 
             return personals;
         }
+        
+        //
+        public List<Personal> BuscarPersonalCargo(string buscar)
+        {
+            List<Personal> personals = new List<Personal>();
+
+            try
+            {
+                // Llamada al método del DAO para obtener los Personales
+                personals = personalDAO.BuscarPersonalCargo(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los Personales: " + ex.Message);
+            }
+
+            return personals;
+        }
 
         //
         public Personal ObtenerPersonalNombre(string nombre)

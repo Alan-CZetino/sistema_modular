@@ -27,77 +27,92 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Conexión a la base de datos
                 conexion.Conectar();
 
+                // Verificar si ya existe una combinación num_subpartida e id_cosecha_subpartida igual a la que queremos insertar
+                string consultaVerificar = @"SELECT COUNT(*) FROM SubPartida
+                                                WHERE num_subpartida = @numSubParti AND id_cosecha_subpartida = @idCosecha";
+
+                conexion.CrearComando(consultaVerificar);
+                conexion.AgregarParametro("@numSubParti", subPartida.NumeroSubpartida);
+                conexion.AgregarParametro("@idCosecha", subPartida.IdCosecha);
+
+                int conteoExistente = (int)conexion.EjecutarConsultaEscalar();
+
+                // Si ya existe una combinación igual, no se permite la inserción
+                if (conteoExistente > 0)
+                {
+                    Console.WriteLine("Error: Ya existe una subpartida con el mismo número para la misma cosecha.");
+                    return false;
+                }
+
+
                 // Se crea el script SQL para insertar
-                string consulta = @"
-            INSERT INTO SubPartida (
-                id_cosecha_subpartida,
-                num_subpartida,
-                id_procedencia_subpartida,
-                id_calidad_cafe_subpartida,
-                id_subproducto_subpartida,
-                num1_semana_subpartida,
-                num2_semana_subpartida,
-                num3_semana_subpartida,
-                dias1_subpartida,
-                dias2_subpartida,
-                dias3_subpartida,
-                fecha1_subpartida,
-                fecha2_subpartida,
-                fecha3_subpartida,
-                observacion_cafe_subpartida,
-                fecha_carga_secado_subpartida,
-                inicio_secado_subpartida,
-                salida_punto_secado_subpartida,
-                tiempo_secado_subpartida,
-                humedad_secado_subpartida,
-                rendimiento_subpartida,
-                id_puntero_secado_subpartida,
-                observacion_secado_subpartida,
-                id_catador_subpartida,
-                fecha_catacion_subpartida,
-                observacion_catacion_subpartida,
-                fecha_pesado_subpartida,
-                peso_saco_subpartida,
-                peso_qqs_subpartida,
-                id_almacen_subpartida,
-                id_bodega_subpartida,
-                id_pesador_subpartida,
-                observacion_pesado_subpartida
-            ) VALUES (
-                @idCosecha,
-                @numSubParti,
-                @idProcedencia,
-                @idCalidadCafe,
-                @idSubProducto,
-                @num1Semana,
-                @num2Semana,
-                @num3Semana,
-                @dias1,
-                @dias2,
-                @dias3,
-                @fecha1,
-                @fecha2,
-                @fecha3,
-                @observacionCafe,
-                @fechaCargaSecado,
-                @inicioSecado,
-                @salidaPuntoSecado,
-                @tiempoSecado,
-                @humedadSecado,
-                @rendimiento,
-                @idPunteroSecado,
-                @observacionSecado,
-                @idCatador,
-                @fechaCatacion,
-                @observacionCatacion,
-                @fechaPesado,
-                @pesoSaco,
-                @pesoQQs,
-                @idAlmacen,
-                @idBodega,
-                @idPesador,
-                @observacionPesado
-            )";
+                string consulta = @"INSERT INTO SubPartida (id_cosecha_subpartida, num_subpartida, id_procedencia_subpartida,
+                                        id_calidad_cafe_subpartida,
+                                        id_subproducto_subpartida,
+                                        num1_semana_subpartida,
+                                        num2_semana_subpartida,
+                                        num3_semana_subpartida,
+                                        dias1_subpartida,
+                                        dias2_subpartida,
+                                        dias3_subpartida,
+                                        fecha1_subpartida,
+                                        fecha2_subpartida,
+                                        fecha3_subpartida,
+                                        observacion_cafe_subpartida,
+                                        fecha_carga_secado_subpartida,
+                                        inicio_secado_subpartida,
+                                        salida_punto_secado_subpartida,
+                                        tiempo_secado_subpartida,
+                                        humedad_secado_subpartida,
+                                        rendimiento_subpartida,
+                                        id_puntero_secado_subpartida,
+                                        observacion_secado_subpartida,
+                                        id_catador_subpartida,
+                                        fecha_catacion_subpartida,
+                                        observacion_catacion_subpartida,
+                                        resultado_catacion_subpartida,
+                                        fecha_pesado_subpartida,
+                                        peso_saco_subpartida,
+                                        peso_qqs_subpartida,
+                                        id_almacen_subpartida,
+                                        id_bodega_subpartida,
+                                        id_pesador_subpartida,
+                                        observacion_pesado_subpartida,
+                                        docto_almacen_subpartida) VALUES (@idCosecha,
+                                        @numSubParti,
+                                        @idProcedencia,
+                                        @idCalidadCafe,
+                                        @idSubProducto,
+                                        @num1Semana,
+                                        @num2Semana,
+                                        @num3Semana,
+                                        @dias1,
+                                        @dias2,
+                                        @dias3,
+                                        @fecha1,
+                                        @fecha2,
+                                        @fecha3,
+                                        @observacionCafe,
+                                        @fechaCargaSecado,
+                                        @inicioSecado,
+                                        @salidaPuntoSecado,
+                                        @tiempoSecado,
+                                        @humedadSecado,
+                                        @rendimiento,
+                                        @idPunteroSecado,
+                                        @observacionSecado,
+                                        @idCatador,
+                                        @fechaCatacion,
+                                        @observacionCatacion,
+                                        @resultado,
+                                        @fechaPesado,
+                                        @pesoSaco,
+                                        @pesoQQs,
+                                        @idAlmacen,
+                                        @idBodega,
+                                        @idPesador,
+                                        @observacionPesado,
+                                        @docto)";
 
                 conexion.CrearComando(consulta);
 
@@ -127,6 +142,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@idCatador", subPartida.IdCatador);
                 conexion.AgregarParametro("@fechaCatacion", subPartida.FechaCatacion);
                 conexion.AgregarParametro("@observacionCatacion", subPartida.ObservacionCatador);
+                conexion.AgregarParametro("@resultado", subPartida.ResultadoCatador);
                 conexion.AgregarParametro("@fechaPesado", subPartida.FechaPesado);
                 conexion.AgregarParametro("@pesoSaco", subPartida.PesaSaco);
                 conexion.AgregarParametro("@pesoQQs", subPartida.PesaQQs);
@@ -134,6 +150,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@idBodega", subPartida.IdBodega);
                 conexion.AgregarParametro("@idPesador", subPartida.IdPesador);
                 conexion.AgregarParametro("@observacionPesado", subPartida.ObservacionPesador);
+                conexion.AgregarParametro("@docto", subPartida.DoctoAlmacen);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -164,44 +181,48 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Se crea el script SQL para actualizar
                 string consulta = @"UPDATE SubPartida 
-                            SET id_cosecha_subpartida = @idCosecha,
-                                id_procedencia_subpartida = @idProcedencia,
-                                id_calidad_cafe_subpartida = @idCalidadCafe,
-                                id_subproducto_subpartida = @idSubProducto,
-                                num1_semana_subpartida = @num1Semana,
-                                num2_semana_subpartida = @num2Semana,
-                                num3_semana_subpartida = @num3Semana,
-                                dias1_subpartida = @dias1,
-                                dias2_subpartida = @dias2,
-                                dias3_subpartida = @dias3,
-                                fecha1_subpartida = @fecha1,
-                                fecha2_subpartida = @fecha2,
-                                fecha3_subpartida = @fecha3,
-                                observacion_cafe_subpartida = @observacionCafe,
-                                fecha_carga_secado_subpartida = @fechaCargaSecado,
-                                inicio_secado_subpartida = @inicioSecado,
-                                salida_punto_secado_subpartida = @salidaPuntoSecado,
-                                tiempo_secado_subpartida = @tiempoSecado,
-                                humedad_secado_subpartida = @humedadSecado,
-                                rendimiento_subpartida = @rendimiento,
-                                id_puntero_secado_subpartida = @idPunteroSecador,
-                                observacion_secado_subpartida = @observacionSecado,
-                                id_catador_subpartida = @idCatador,
-                                fecha_catacion_subpartida = @fechaCatacion,
-                                observacion_catacion_subpartida = @observacionCatador,
-                                fecha_pesado_subpartida = @fechaPesado,
-                                peso_saco_subpartida = @pesoSaco,
-                                peso_qqs_subpartida = @pesoQQs,
-                                id_almacen_subpartida = @idAlmacen,
-                                id_bodega_subpartida = @idBodega,
-                                id_pesador_subpartida = @idPesador,
-                                observacion_pesado_subpartida = @observacionPesador
-                            WHERE id_subpartida = @id";
+                                   SET id_cosecha_subpartida = @idCosecha,
+                                    num_subpartida = @numSubParti,
+                                    id_procedencia_subpartida = @idProcedencia,
+                                    id_calidad_cafe_subpartida = @idCalidadCafe,
+                                    id_subproducto_subpartida = @idSubProducto,
+                                    num1_semana_subpartida = @num1Semana,
+                                    num2_semana_subpartida = @num2Semana,
+                                    num3_semana_subpartida = @num3Semana,
+                                    dias1_subpartida = @dias1,
+                                    dias2_subpartida = @dias2,
+                                    dias3_subpartida = @dias3,
+                                    fecha1_subpartida = @fecha1,
+                                    fecha2_subpartida = @fecha2,
+                                    fecha3_subpartida = @fecha3,
+                                    observacion_cafe_subpartida = @observacionCafe,
+                                    fecha_carga_secado_subpartida = @fechaCargaSecado,
+                                    inicio_secado_subpartida = @inicioSecado,
+                                    salida_punto_secado_subpartida = @salidaPuntoSecado,
+                                    tiempo_secado_subpartida = @tiempoSecado,
+                                    humedad_secado_subpartida = @humedadSecado,
+                                    rendimiento_subpartida = @rendimiento,
+                                    id_puntero_secado_subpartida = @idPunteroSecado,
+                                    observacion_secado_subpartida = @observacionSecado,
+                                    id_catador_subpartida = @idCatador,
+                                    fecha_catacion_subpartida = @fechaCatacion,
+                                    observacion_catacion_subpartida = @observacionCatacion,
+                                    resultado_catacion_subpartida = @resultado,
+                                    fecha_pesado_subpartida = @fechaPesado,
+                                    peso_saco_subpartida = @pesoSaco,
+                                    peso_qqs_subpartida = @pesoQQs,
+                                    id_almacen_subpartida = @idAlmacen,
+                                    id_bodega_subpartida = @idBodega,
+                                    id_pesador_subpartida = @idPesador,
+                                    observacion_pesado_subpartida = @observacionPesado,
+                                    docto_almacen_subpartida = @docto
+                                WHERE id_subpartida = @id";
 
                 conexion.CrearComando(consulta);
 
-                // Agregar parámetros
+                // Agregamos parámetros
                 conexion.AgregarParametro("@idCosecha", subPartida.IdCosecha);
+                conexion.AgregarParametro("@numSubParti", subPartida.NumeroSubpartida);
                 conexion.AgregarParametro("@idProcedencia", subPartida.IdProcedencia);
                 conexion.AgregarParametro("@idCalidadCafe", subPartida.IdCalidadCafe);
                 conexion.AgregarParametro("@idSubProducto", subPartida.IdSubProducto);
@@ -221,18 +242,20 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@tiempoSecado", subPartida.TiempoSecado);
                 conexion.AgregarParametro("@humedadSecado", subPartida.HumedadSecado);
                 conexion.AgregarParametro("@rendimiento", subPartida.Rendimiento);
-                conexion.AgregarParametro("@idPunteroSecador", subPartida.IdPunteroSecador);
+                conexion.AgregarParametro("@idPunteroSecado", subPartida.IdPunteroSecador);
                 conexion.AgregarParametro("@observacionSecado", subPartida.ObservacionSecado);
                 conexion.AgregarParametro("@idCatador", subPartida.IdCatador);
                 conexion.AgregarParametro("@fechaCatacion", subPartida.FechaCatacion);
-                conexion.AgregarParametro("@observacionCatador", subPartida.ObservacionCatador);
+                conexion.AgregarParametro("@observacionCatacion", subPartida.ObservacionCatador);
+                conexion.AgregarParametro("@resultado", subPartida.ResultadoCatador);
                 conexion.AgregarParametro("@fechaPesado", subPartida.FechaPesado);
                 conexion.AgregarParametro("@pesoSaco", subPartida.PesaSaco);
                 conexion.AgregarParametro("@pesoQQs", subPartida.PesaQQs);
                 conexion.AgregarParametro("@idAlmacen", subPartida.IdAlmacen);
                 conexion.AgregarParametro("@idBodega", subPartida.IdBodega);
                 conexion.AgregarParametro("@idPesador", subPartida.IdPesador);
-                conexion.AgregarParametro("@observacionPesador", subPartida.ObservacionPesador);
+                conexion.AgregarParametro("@observacionPesado", subPartida.ObservacionPesador);
+                conexion.AgregarParametro("@docto", subPartida.DoctoAlmacen);
                 conexion.AgregarParametro("@id", subPartida.IdSubpartida);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
@@ -327,9 +350,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                             Dias1SubPartida = Convert.ToInt32(reader["dias1_subpartida"]),
                             Dias2SubPartida = Convert.ToInt32(reader["dias2_subpartida"]),
                             Dias3SubPartida = Convert.ToInt32(reader["dias3_subpartida"]),
-                            Fecha1SubPartida = Convert.ToDateTime(reader["fecha1_subpartida"]),
-                            Fecha2SubPartida = Convert.ToDateTime(reader["fecha2_subpartida"]),
-                            Fecha3SubPartida = Convert.ToDateTime(reader["fecha3_subpartida"]),
+                            Fecha1SubPartida = Convert.ToString(reader["fecha1_subpartida"]),
+                            Fecha2SubPartida = Convert.ToString(reader["fecha2_subpartida"]),
+                            Fecha3SubPartida = Convert.ToString(reader["fecha3_subpartida"]),
                             ObservacionIdentificacionCafe = Convert.ToString(reader["observacion_cafe_subpartida"]),
                             FechaSecado = Convert.ToDateTime(reader["fecha_carga_secado_subpartida"]),
                             InicioSecado = Convert.ToDateTime(reader["inicio_secado_subpartida"]),
@@ -427,9 +450,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                             Dias1SubPartida = Convert.ToInt32(reader["dias1_subpartida"]),
                             Dias2SubPartida = Convert.IsDBNull(reader["dias2_subpartida"]) ? 0 : Convert.ToInt32(reader["dias2_subpartida"]),
                             Dias3SubPartida = Convert.IsDBNull(reader["dias3_subpartida"]) ? 0 : Convert.ToInt32(reader["dias3_subpartida"]),
-                            Fecha1SubPartida = Convert.ToDateTime(reader["fecha1_subpartida"]),
-                            Fecha2SubPartida = reader["fecha2_subpartida"] as DateTime? ?? default(DateTime),
-                            Fecha3SubPartida = reader["fecha3_subpartida"] as DateTime? ?? default(DateTime),
+                            Fecha1SubPartida = Convert.ToString(reader["fecha1_subpartida"]),
+                            Fecha2SubPartida = Convert.IsDBNull(reader["fecha2_subpartida"]) ? null : Convert.ToString(reader["fecha2_subpartida"]),
+                            Fecha3SubPartida = Convert.IsDBNull(reader["fecha3_subpartida"]) ? null : Convert.ToString(reader["fecha3_subpartida"]),
                             ObservacionIdentificacionCafe = Convert.IsDBNull(reader["observacion_cafe_subpartida"]) ? null : Convert.ToString(reader["observacion_cafe_subpartida"]),
                             FechaSecado = Convert.ToDateTime(reader["fecha_carga_secado_subpartida"]),
                             InicioSecado = Convert.ToDateTime(reader["inicio_secado_subpartida"]),
@@ -535,9 +558,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                             Dias1SubPartida = Convert.ToInt32(reader["dias1_subpartida"]),
                             Dias2SubPartida = Convert.ToInt32(reader["dias2_subpartida"]),
                             Dias3SubPartida = Convert.ToInt32(reader["dias3_subpartida"]),
-                            Fecha1SubPartida = Convert.ToDateTime(reader["fecha1_subpartida"]),
-                            Fecha2SubPartida = Convert.ToDateTime(reader["fecha2_subpartida"]),
-                            Fecha3SubPartida = Convert.ToDateTime(reader["fecha3_subpartida"]),
+                            Fecha1SubPartida = Convert.ToString(reader["fecha1_subpartida"]),
+                            Fecha2SubPartida = Convert.ToString(reader["fecha2_subpartida"]),
+                            Fecha3SubPartida = Convert.ToString(reader["fecha3_subpartida"]),
                             ObservacionIdentificacionCafe = Convert.ToString(reader["observacion_cafe_subpartida"]),
                             FechaSecado = Convert.ToDateTime(reader["fecha_carga_secado_subpartida"]),
                             InicioSecado = Convert.ToDateTime(reader["inicio_secado_subpartida"]),
@@ -641,9 +664,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                             Dias1SubPartida = Convert.ToInt32(reader["dias1_subpartida"]),
                             Dias2SubPartida = Convert.IsDBNull(reader["dias2_subpartida"]) ? 0 : Convert.ToInt32(reader["dias2_subpartida"]),
                             Dias3SubPartida = Convert.IsDBNull(reader["dias3_subpartida"]) ? 0 : Convert.ToInt32(reader["dias3_subpartida"]),
-                            Fecha1SubPartida = Convert.ToDateTime(reader["fecha1_subpartida"]),
-                            Fecha2SubPartida = reader["fecha2_subpartida"] as DateTime? ?? default(DateTime),
-                            Fecha3SubPartida = reader["fecha3_subpartida"] as DateTime? ?? default(DateTime),
+                            Fecha1SubPartida = Convert.ToString(reader["fecha1_subpartida"]),
+                            Fecha2SubPartida = Convert.IsDBNull(reader["fecha2_subpartida"]) ? null : Convert.ToString(reader["fecha2_subpartida"]),
+                            Fecha3SubPartida = Convert.IsDBNull(reader["fecha3_subpartida"]) ? null : Convert.ToString(reader["fecha3_subpartida"]),
                             ObservacionIdentificacionCafe = Convert.IsDBNull(reader["observacion_cafe_subpartida"]) ? null : Convert.ToString(reader["observacion_cafe_subpartida"]),
                             FechaSecado = Convert.ToDateTime(reader["fecha_carga_secado_subpartida"]),
                             InicioSecado = Convert.ToDateTime(reader["inicio_secado_subpartida"]),
@@ -755,9 +778,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                             Dias1SubPartida = Convert.ToInt32(reader["dias1_subpartida"]),
                             Dias2SubPartida = Convert.ToInt32(reader["dias2_subpartida"]),
                             Dias3SubPartida = Convert.ToInt32(reader["dias3_subpartida"]),
-                            Fecha1SubPartida = Convert.ToDateTime(reader["fecha1_subpartida"]),
-                            Fecha2SubPartida = Convert.ToDateTime(reader["fecha2_subpartida"]),
-                            Fecha3SubPartida = Convert.ToDateTime(reader["fecha3_subpartida"]),
+                            Fecha1SubPartida = Convert.ToString(reader["fecha1_subpartida"]),
+                            Fecha2SubPartida = Convert.ToString(reader["fecha2_subpartida"]),
+                            Fecha3SubPartida = Convert.ToString(reader["fecha3_subpartida"]),
                             ObservacionIdentificacionCafe = Convert.ToString(reader["observacion_cafe_subpartida"]),
                             FechaSecado = Convert.ToDateTime(reader["fecha_carga_secado_subpartida"]),
                             InicioSecado = Convert.ToDateTime(reader["inicio_secado_subpartida"]),
@@ -799,5 +822,48 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             return subpartidas;
         }
+
+        //
+        public SubPartida CountSubPartida(int idCosecha)
+        {
+            SubPartida subpartidas = null;
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalSubPartida FROM SubPartida
+                                    WHERE id_cosecha_subpartida = @id";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", idCosecha);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            subpartidas = new SubPartida()
+                            {
+                                CountSubPartida = Convert.ToInt32(reader["TotalSubPartida"])
+                            };
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return subpartidas;
+        }
+
     }
 }
