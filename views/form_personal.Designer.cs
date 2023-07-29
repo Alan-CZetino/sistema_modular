@@ -45,6 +45,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SavePersonal = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_cargosPersonal = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_modPersonal = new System.Windows.Forms.PictureBox();
             this.btn_deletePersonal = new System.Windows.Forms.PictureBox();
@@ -69,37 +70,37 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(988, 5);
+            this.panel1.Size = new System.Drawing.Size(1280, 1);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 5);
+            this.panel2.Location = new System.Drawing.Point(0, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(5, 433);
+            this.panel2.Size = new System.Drawing.Size(1, 718);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(983, 5);
+            this.panel3.Location = new System.Drawing.Point(1279, 1);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(5, 433);
+            this.panel3.Size = new System.Drawing.Size(1, 718);
             this.panel3.TabIndex = 1;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 438);
+            this.panel4.Location = new System.Drawing.Point(0, 719);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(988, 5);
+            this.panel4.Size = new System.Drawing.Size(1280, 1);
             this.panel4.TabIndex = 1;
             // 
             // panel6
@@ -107,10 +108,10 @@ namespace sistema_modular_cafe_majada.views
             this.panel6.Controls.Add(this.panel8);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(5, 75);
+            this.panel6.Location = new System.Drawing.Point(1, 80);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(296, 363);
+            this.panel6.Size = new System.Drawing.Size(296, 639);
             this.panel6.TabIndex = 22;
             // 
             // panel8
@@ -126,7 +127,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(296, 316);
+            this.panel8.Size = new System.Drawing.Size(296, 592);
             this.panel8.TabIndex = 7;
             // 
             // cbx_cargoPer
@@ -150,20 +151,20 @@ namespace sistema_modular_cafe_majada.views
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(8, 137);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 18);
+            this.label5.Size = new System.Drawing.Size(83, 26);
             this.label5.TabIndex = 4;
             this.label5.Text = "Descripción";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 71);
+            this.label4.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 63);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 18);
+            this.label4.Size = new System.Drawing.Size(51, 26);
             this.label4.TabIndex = 2;
             this.label4.Text = "Cargo ";
             // 
@@ -179,10 +180,10 @@ namespace sistema_modular_cafe_majada.views
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(8, 6);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 18);
+            this.label3.Size = new System.Drawing.Size(126, 26);
             this.label3.TabIndex = 0;
             this.label3.Text = "Nombre del Obrero";
             // 
@@ -191,7 +192,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel7.Controls.Add(this.btn_SavePersonal);
             this.panel7.Controls.Add(this.btn_Cancel);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 316);
+            this.panel7.Location = new System.Drawing.Point(0, 592);
             this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(296, 47);
@@ -205,7 +206,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SavePersonal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
             this.btn_SavePersonal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
             this.btn_SavePersonal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SavePersonal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SavePersonal.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SavePersonal.ForeColor = System.Drawing.Color.White;
             this.btn_SavePersonal.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_SavePersonal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -227,7 +228,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.FlatAppearance.BorderSize = 0;
             this.btn_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
             this.btn_Cancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
             this.btn_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -244,15 +245,33 @@ namespace sistema_modular_cafe_majada.views
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btn_cargosPersonal);
             this.panel5.Controls.Add(this.tableLayoutPanel1);
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(5, 5);
+            this.panel5.Location = new System.Drawing.Point(1, 1);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(978, 70);
+            this.panel5.Size = new System.Drawing.Size(1278, 79);
             this.panel5.TabIndex = 21;
+            // 
+            // btn_cargosPersonal
+            // 
+            this.btn_cargosPersonal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_cargosPersonal.FlatAppearance.BorderSize = 0;
+            this.btn_cargosPersonal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cargosPersonal.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cargosPersonal.Image = global::sistema_modular_cafe_majada.Properties.Resources.cargos_32px;
+            this.btn_cargosPersonal.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_cargosPersonal.Location = new System.Drawing.Point(1063, 4);
+            this.btn_cargosPersonal.Name = "btn_cargosPersonal";
+            this.btn_cargosPersonal.Size = new System.Drawing.Size(75, 72);
+            this.btn_cargosPersonal.TabIndex = 5;
+            this.btn_cargosPersonal.Text = "Cargos";
+            this.btn_cargosPersonal.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_cargosPersonal.UseVisualStyleBackColor = true;
+            this.btn_cargosPersonal.Click += new System.EventHandler(this.btn_cargosPersonal_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -263,7 +282,7 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btn_modPersonal, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_deletePersonal, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(844, 7);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(1144, 7);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -310,10 +329,10 @@ namespace sistema_modular_cafe_majada.views
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Oswald", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(7, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(414, 24);
+            this.label1.Size = new System.Drawing.Size(348, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Formulario de Registro de Personal Obrero";
             // 
@@ -339,13 +358,13 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtg_personal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_personal.Location = new System.Drawing.Point(308, 82);
+            this.dtg_personal.Location = new System.Drawing.Point(308, 102);
             this.dtg_personal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtg_personal.Name = "dtg_personal";
             this.dtg_personal.ReadOnly = true;
             this.dtg_personal.RowHeadersWidth = 51;
             this.dtg_personal.RowTemplate.Height = 24;
-            this.dtg_personal.Size = new System.Drawing.Size(668, 350);
+            this.dtg_personal.Size = new System.Drawing.Size(960, 607);
             this.dtg_personal.TabIndex = 23;
             this.dtg_personal.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_personal_CellDoubleClick);
             // 
@@ -353,7 +372,8 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(988, 443);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.dtg_personal);
             this.Controls.Add(this.btn_tablePerson);
             this.Controls.Add(this.panel6);
@@ -405,5 +425,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.ComboBox cbx_cargoPer;
         private System.Windows.Forms.TextBox txb_Descrip;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btn_cargosPersonal;
     }
 }

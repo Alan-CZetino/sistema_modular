@@ -370,5 +370,12 @@ namespace sistema_modular_cafe_majada.views
                 cbx_cargoPer.Items.Add(new KeyValuePair<int, string>(idRol, nombreRol));
             }
         }
+
+        private void btn_cargosPersonal_Click(object sender, EventArgs e)
+        {
+            btn_cargosPersonal.FlatAppearance.BorderSize = 0;
+            form_cargosPersonal form_Cargos = new form_cargosPersonal();
+            form_Cargos.ShowDialog();
+        }
     }
 }
