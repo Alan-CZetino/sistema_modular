@@ -182,19 +182,19 @@ namespace sistema_modular_cafe_majada.views
             var procedenciaController = new ProcedenciaDestinoController();
             List<ProcedenciaDestino> datosP = procedenciaController.ObtenerProcedenciasDestinoNombres();
 
-            var datosCalidades = datosP.Select(proced => new
+            var datosProcedencia = datosP.Select(proced => new
             {
                 ID = proced.IdProcedencia,
                 Nombre = proced.NombreProcedencia,
-                Descripcion = proced.DescripcionProcedencia,
-                Nombre_Socio = proced.NombreSocioProcedencia,
-                Nombre_Finca = proced.NombreFincaSocio,
-                Nombre_Beneficio = proced.NombreBenficioUbicacion,
-                Nombre_Maquinaria = proced.NombreMaquinaria
+                Descripcion = string.IsNullOrWhiteSpace(proced.DescripcionProcedencia) ? proced.DescripcionProcedencia = "" : proced.DescripcionProcedencia,
+                Nombre_Socio = proced.NombreSocioProcedencia ?? "", // Verificar si es NULL y establecer cadena vacía en ese caso
+                Nombre_Finca = proced.NombreFincaSocio ?? "",       
+                Nombre_Beneficio = proced.NombreBenficioUbicacion ?? "", 
+                Nombre_Maquinaria = proced.NombreMaquinaria ?? "" 
             }).ToList();
 
             // Asignar los datos al DataGridView
-            dtg_opcSP.DataSource = datosCalidades;
+            dtg_opcSP.DataSource = datosProcedencia;
 
             dtg_opcSP.RowHeadersVisible = false;
             dtg_opcSP.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -212,6 +212,7 @@ namespace sistema_modular_cafe_majada.views
             {
                 ID = subP.IdSubpartida,
                 Numero_SubPartida = subP.NumeroSubpartida,
+                Nombre_Cosecha = subP.NombreCosecha,
                 Nombre_Procedencia = subP.NombreProcedencia,
                 Nombre_CalidadCafe = subP.NombreCalidadCafe,
                 Nombre_SubProducto = subP.NombreSubProducto,
@@ -242,8 +243,12 @@ namespace sistema_modular_cafe_majada.views
                 case 1:
                     //SubPartida
                     {
+                        form_subPartidas subSPa = new form_subPartidas();
+                        subSPa.imagenClickeada = true;
                         // Obtener los valores de las celdas de la fila seleccionada
                         SubPartidaSeleccionado.ISubPartida = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                        subSPa.SubSPart = SubPartidaSeleccionado.ISubPartida;
+                        subSPa.SubSPartCosecha = filaSeleccionada.Cells["Nombre_Cosecha"].Value.ToString();
                         SubPartidaSeleccionado.NombreSubParti = filaSeleccionada.Cells["Numero_SubPartida"].Value.ToString();
                     }
                     break;
@@ -381,19 +386,19 @@ namespace sistema_modular_cafe_majada.views
                             var procedenciaController = new ProcedenciaDestinoController();
                             List<ProcedenciaDestino> datosP = procedenciaController.BuscarProcedenciaDestino(text.Text);
 
-                            var datosCalidades = datosP.Select(proced => new
+                            var datosProcedencia = datosP.Select(proced => new
                             {
                                 ID = proced.IdProcedencia,
                                 Nombre = proced.NombreProcedencia,
-                                Descripcion = proced.DescripcionProcedencia,
-                                Nombre_Socio = proced.NombreSocioProcedencia,
-                                Nombre_Finca = proced.NombreFincaSocio,
-                                Nombre_Beneficio = proced.NombreBenficioUbicacion,
-                                Nombre_Maquinaria = proced.NombreMaquinaria
+                                Descripcion = string.IsNullOrWhiteSpace(proced.DescripcionProcedencia) ? proced.DescripcionProcedencia = "" : proced.DescripcionProcedencia,
+                                Nombre_Socio = proced.NombreSocioProcedencia ?? "", // Verificar si es NULL y establecer cadena vacía en ese caso
+                                Nombre_Finca = proced.NombreFincaSocio ?? "",
+                                Nombre_Beneficio = proced.NombreBenficioUbicacion ?? "",
+                                Nombre_Maquinaria = proced.NombreMaquinaria ?? ""
                             }).ToList();
 
                             // Asignar los datos al DataGridView
-                            dtg_opcSP.DataSource = datosCalidades;
+                            dtg_opcSP.DataSource = datosProcedencia;
 
                             dtg_opcSP.RowHeadersVisible = false;
                             dtg_opcSP.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

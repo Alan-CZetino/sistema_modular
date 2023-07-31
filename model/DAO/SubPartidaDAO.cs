@@ -27,23 +27,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Conexión a la base de datos
                 conexion.Conectar();
 
-                // Verificar si ya existe una combinación num_subpartida e id_cosecha_subpartida igual a la que queremos insertar
-                string consultaVerificar = @"SELECT COUNT(*) FROM SubPartida
-                                                WHERE num_subpartida = @numSubParti AND id_cosecha_subpartida = @idCosecha";
-
-                conexion.CrearComando(consultaVerificar);
-                conexion.AgregarParametro("@numSubParti", subPartida.NumeroSubpartida);
-                conexion.AgregarParametro("@idCosecha", subPartida.IdCosecha);
-
-                int conteoExistente = (int)conexion.EjecutarConsultaEscalar();
-
-                // Si ya existe una combinación igual, no se permite la inserción
-                if (conteoExistente > 0)
-                {
-                    Console.WriteLine("Error: Ya existe una subpartida con el mismo número para la misma cosecha.");
-                    return false;
-                }
-
+                // Convertir TimeSpan a una cadena en formato de tiempo
+                string tiempoSecadoFormatted = $"{(int)subPartida.TiempoSecado.TotalHours:00}:{subPartida.TiempoSecado.Minutes:00}:{subPartida.TiempoSecado.Seconds:00}";
 
                 // Se crea el script SQL para insertar
                 string consulta = @"INSERT INTO SubPartida (id_cosecha_subpartida, num_subpartida, id_procedencia_subpartida,
@@ -134,7 +119,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@fechaCargaSecado", subPartida.FechaSecado);
                 conexion.AgregarParametro("@inicioSecado", subPartida.InicioSecado);
                 conexion.AgregarParametro("@salidaPuntoSecado", subPartida.SalidaSecado);
-                conexion.AgregarParametro("@tiempoSecado", subPartida.TiempoSecado);
+                conexion.AgregarParametro("@tiempoSecado", tiempoSecadoFormatted);
                 conexion.AgregarParametro("@humedadSecado", subPartida.HumedadSecado);
                 conexion.AgregarParametro("@rendimiento", subPartida.Rendimiento);
                 conexion.AgregarParametro("@idPunteroSecado", subPartida.IdPunteroSecador);
@@ -864,6 +849,9 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             return subpartidas;
         }
+
+        //
+
 
     }
 }

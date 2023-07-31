@@ -241,12 +241,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdProcedencia = Convert.ToInt32(reader["id_procedencia"]),
                             NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
                             DescripcionProcedencia = Convert.ToString(reader["descripcion_procedencia"]),
-                            IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_procedencia"]),
                             NombreBenficioUbicacion = Convert.ToString(reader["nombre_beneficio"]),
-                            IdSocioProcedencia = Convert.ToInt32(reader["id_socio_procedencia"]),
                             NombreSocioProcedencia = Convert.ToString(reader["nombre_socio"]),
                             NombreFincaSocio = Convert.ToString(reader["nombre_finca"]),
-                            IdMaquinaria = Convert.ToInt32(reader["id_maquinaria_procedencia"]),
                             NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"])
                         };
 

@@ -25,7 +25,10 @@ namespace sistema_modular_cafe_majada.views
     public partial class form_subPartidas : Form
     {
         private List<TextBox> txbRestrict;
-        private bool imagenClickeada = false;
+        public bool imagenClickeada = false;
+        public int SubSPart;
+        public string SubSPartCosecha;
+        private bool imagenClickeadaSP = false;
         private bool imgClickAlmacen = false;
         private bool imgClickBodega = false;
         SubPartidaController countSP = null;
@@ -33,8 +36,8 @@ namespace sistema_modular_cafe_majada.views
         //variable para refrescar el formulario cad cierto tiempo
         private System.Timers.Timer refreshTimer;
 
-        private SubPartida subptdaSeleccionado;
-        private int ibenef;
+        //private SubPartida subptdaSeleccionado;
+        //private int ibenef;
 
         private int iProcedencia;
         private int icosechaCambio;
@@ -102,30 +105,12 @@ namespace sistema_modular_cafe_majada.views
                     // Por ejemplo, si queremos actualizar datos desde una base de datos o un servicio, lo haríamos aquí.
                     if (!this.IsDisposed)
                     {
-                        // Llamamos a la función ConvertTimeTxb y almacenamos el resultado formateado en la variable "miVariableTime".
-                        string miVariableTime = ConvertILimitTimeTxb(txb_tiempoSecad);
-
-                        Console.WriteLine("Resultado formateado: " + miVariableTime); // Esto imprimirá "Resultado formateado: 02:30:00"
-
-                        // Llamamos a la función ConvertTimeTxb y almacenamos el resultado formateado en la variable "miVariableTime".
-                        try
-                        {
-                            string miVariableTime1 = ConvertTimeLimitTxb(txb_horaInicio);
-                            DateTime fechaInicioSecado = dtp_fechaInicioSecad.Value.Date + TimeSpan.Parse(miVariableTime1);
-                            Console.WriteLine("Resultado formateado: " + fechaInicioSecado);
-                        }
-                        catch (FormatException ex)
-                        {
-                            Console.WriteLine(ex.Message);
-                            MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-                        if (icosechaCambio != CosechaActual.ICosechaActual)
+                        if (icosechaCambio != CosechaActual.ICosechaActual || string.IsNullOrWhiteSpace(txb_subPartida.Text))
                         {
                             countSP = new SubPartidaController();
                             var subSPa = countSP.CountSubPartida(CosechaActual.ICosechaActual);
                             //
-                            txb_subPartida.Text = Convert.ToInt32(subSPa.CountSubPartida + 1 ).ToString();
+                            txb_subPartida.Text = Convert.ToInt32(subSPa.CountSubPartida + 1).ToString();
                             icosechaCambio = CosechaActual.ICosechaActual;
                         }
                         txb_cosecha.Text = CosechaActual.NombreCosechaActual;
@@ -150,82 +135,6 @@ namespace sistema_modular_cafe_majada.views
 
                 cbx_subProducto.Items.Add(new KeyValuePair<int, string>(idSubP, nombreSubP));
             }
-        }
-
-        //
-        public static string ConvertTimeLimitTxb(TextBox textTime)
-        {
-            string horaCompleta = textTime.Text;
-
-            // Dividir la cadena en partes utilizando el carácter ':'
-            string[] partesHora = horaCompleta.Split(':');
-
-            try
-            {
-                // Convertir a horas, minutos y segundos
-                if (partesHora.Length == 1 && int.TryParse(partesHora[0], out int horas))
-                {
-                    // Si hay solo una parte y se pudo convertir a entero, asumimos que es el número de horas.
-
-                    // Ajuste para las horas en formato de 24 horas
-                    // Si el formato no es de 12 horas, verificamos que el valor esté dentro del rango de 0 a 24.
-                    if (horas < 0 || horas > 24)
-                    {
-                        throw new FormatException("El valor ingresado está fuera del rango de horas válido (0 a 24).");
-                    }
-
-                    // Ajuste para las horas: Si la parte de las horas tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
-                    horaCompleta = horas < 10 ? "0" + horas : horas.ToString();
-
-                    // Añadimos los minutos y segundos con valor 00.
-                    horaCompleta += ":00:00";
-                
-                }
-                else if (partesHora.Length == 2 && int.TryParse(partesHora[0], out int horas2) && int.TryParse(partesHora[1], out int minutos))
-                {
-                    // Si hay dos partes y ambas se pudieron convertir a enteros, asumimos que es el número de horas y minutos.
-
-                    // Ajuste para las horas: Si la parte de las horas tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
-                    horaCompleta = horas2 < 10 ? "0" + horas2 : horas2.ToString();
-
-                    // Ajuste para los minutos: Si la parte de los minutos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
-                    horaCompleta += ":" + (minutos < 10 ? "0" + minutos : minutos.ToString());
-
-                    // Añadimos los segundos con valor 00.
-                    horaCompleta += ":00";
-                }
-                else if (partesHora.Length == 3 && int.TryParse(partesHora[0], out int horas3) && int.TryParse(partesHora[1], out int minutos3) && int.TryParse(partesHora[2], out int segundos))
-                {
-                    // Si hay tres partes y todas se pudieron convertir a enteros, asumimos que es el número de horas, minutos y segundos.
-
-                    // Ajuste para las horas: Si la parte de las horas tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
-                    horaCompleta = horas3 < 10 ? "0" + horas3 : horas3.ToString();
-
-                    // Ajuste para los minutos: Si la parte de los minutos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
-                    horaCompleta += ":" + (minutos3 < 10 ? "0" + minutos3 : minutos3.ToString());
-
-                    // Ajuste para los segundos: Si la parte de los segundos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
-                    horaCompleta += ":" + (segundos < 10 ? "0" + segundos : segundos.ToString());
-                }
-                else
-                {
-                    // Si no se cumple ninguna de las condiciones, el formato ingresado no es válido.
-                    Console.WriteLine("Formato de hora no válido.");
-                    return string.Empty;
-                }
-
-
-                // Devolvemos el resultado formateado.
-                return horaCompleta;
-            }
-            catch (FormatException ex)
-            {
-                Console.WriteLine(ex.Message);
-                // Lanzamos una excepción personalizada con el mensaje de error.
-                throw new FormatException("El valor ingresado en el campo Inicio Secado o Salida Secado está fuera del rango de horas válido (0 a 24).", ex);
-                
-            }
-
         }
 
         //
@@ -284,6 +193,24 @@ namespace sistema_modular_cafe_majada.views
         }
 
         //
+        public static TimeSpan ConvertToTimeSpan(string horaCompleta)
+        {
+            string[] partesHora = horaCompleta.Split(':');
+            if (partesHora.Length == 3 && int.TryParse(partesHora[0], out int horas) && int.TryParse(partesHora[1], out int minutos) && int.TryParse(partesHora[2], out int segundos))
+            {
+                // Si hay tres partes y todas se pudieron convertir a enteros, creamos el TimeSpan.
+                TimeSpan tiempo = new TimeSpan(horas, minutos, segundos);
+                return tiempo;
+            }
+            else
+            {
+                // Si no se cumple la condición, significa que el formato ingresado no es válido.
+                Console.WriteLine("Formato de hora no válido.");
+                return TimeSpan.Zero; // O puedes devolver un valor por defecto en caso de error.
+            }
+        }
+
+        //
         public void RestrictTextBoxNum(List<TextBox> textBoxes)
         {
             foreach (TextBox textBox in textBoxes)
@@ -305,80 +232,88 @@ namespace sistema_modular_cafe_majada.views
                 };
             }
         }
+        
+        //
+        public void ShowSubParidaView()
+        {
+            var subPC = new SubPartidaController();
+            SubProductoController subProC = new SubProductoController();
+            var sub = subPC.ObtenerSubPartidaPorID(SubPartidaSeleccionado.ISubPartida);
+            var name = subProC.ObtenerSubProductoPorNombre(sub.NombreSubProducto);
+            isubProducto = name.IdSubProducto;
 
+            //cbx
+            cbx_subProducto.Items.Clear();
+            CbxSubProducto();
+
+            int isP = name.IdSubProducto - 1;
+
+            // Obtener la fecha y la hora por separado
+            DateTime fechaInicio = sub.InicioSecado.Date;
+            TimeSpan horaInicio = sub.InicioSecado.TimeOfDay;
+            DateTime fechaSalida = sub.SalidaSecado.Date;
+            TimeSpan horaSalida = sub.SalidaSecado.TimeOfDay;
+
+            iSubPartida = SubPartidaSeleccionado.ISubPartida;
+            txb_subPartida.Text = SubPartidaSeleccionado.NombreSubParti;
+            txb_procedencia.Text = sub.NombreProcedencia;
+            iProcedencia = sub.IdProcedencia;
+            txb_calidad.Text = sub.NombreCalidadCafe;
+            iCalidad = sub.IdCalidadCafe;
+            cbx_subProducto.SelectedIndex = isP;
+            txb_pdasSemana1.Text = Convert.ToString(sub.Num1Semana);
+            txb_pdasSemana2.Text = Convert.ToString(sub.Num2Semana);
+            txb_pdasSemana3.Text = Convert.ToString(sub.Num3Semana);
+            txb_diasPdas1.Text = Convert.ToString(sub.Dias1SubPartida);
+            txb_diasPdas2.Text = Convert.ToString(sub.Dias2SubPartida);
+            txb_diasPdas3.Text = Convert.ToString(sub.Dias3SubPartida);
+            txb_fechaPartd1.Text = sub.Fecha1SubPartida;
+            txb_fechaPartd2.Text = sub.Fecha2SubPartida;
+            txb_fechaPartd3.Text = sub.Fecha3SubPartida;
+            txb_observacionCafe.Text = sub.ObservacionIdentificacionCafe;
+            dtp_fechaSecado.Value = sub.FechaSecado;
+            dtp_fechaInicioSecad.Value = fechaInicio;
+            dtp_fechaSalidaSecad.Value = fechaSalida;
+            txb_horaInicio.Text = Convert.ToString(horaInicio);
+            txb_horaSalida.Text = Convert.ToString(horaSalida);
+            txb_tiempoSecad.Text = Convert.ToString(sub.TiempoSecado);
+            txb_humedad.Text = sub.HumedadSecado.ToString();
+            txb_rendimiento.Text = sub.Rendimiento.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
+            txb_nombrePuntero.Text = sub.NombrePunteroSecador;
+            iSecador = sub.IdPunteroSecador;
+            txb_observacionSecad.Text = sub.ObservacionSecado;
+            txb_resultadoCatacion.Text = sub.ResultadoCatador;
+            dtp_fechaCatacion.Value = sub.FechaCatacion;
+            txb_nombreCatador.Text = sub.NombreCatador;
+            iCatador = sub.IdCatador;
+            txb_observacionCatador.Text = sub.ObservacionCatador;
+            dtp_fechaPesa.Value = sub.FechaPesado;
+            txb_CantidadSaco.Text = sub.PesaSaco.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
+            txb_cantidadQQs.Text = sub.PesaQQs.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
+            txb_ubicadoBodega.Text = sub.NombreBodega;
+            iBodega = sub.IdBodega;
+            txb_almacenSiloPiña.Text = sub.NombreAlmacen;
+            iAlmacen = sub.IdAlmacen;
+            txb_nombrePesador.Text = sub.NombrePunteroPesador;
+            iPesador = sub.IdPesador;
+            txb_doctoAlmacen.Text = sub.DoctoAlmacen;
+            txb_observacionPesa.Text = sub.ObservacionPesador;
+
+        }
+
+        //
         private void btn_sPartida_Click(object sender, EventArgs e)
         {
-            imagenClickeada = true;
+            imagenClickeadaSP = true;
             TablaSeleccionadasubPartd.ITable = 1;
-            var subPC = new SubPartidaController();
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
-                SubProductoController subProC = new SubProductoController();
-                var sub = subPC.ObtenerSubPartidaPorID(SubPartidaSeleccionado.ISubPartida);
-                var name = subProC.ObtenerSubProductoPorNombre(sub.NombreSubProducto);
-                isubProducto = name.IdSubProducto;
-
-                //cbx
-                cbx_subProducto.Items.Clear();
-                CbxSubProducto();
-
-                int isP = name.IdSubProducto - 1;
-                
-                // Obtener la fecha y la hora por separado
-                DateTime fechaInicio = sub.InicioSecado.Date;
-                TimeSpan horaInicio = sub.InicioSecado.TimeOfDay;
-                DateTime fechaSalida = sub.SalidaSecado.Date;
-                TimeSpan horaSalida = sub.SalidaSecado.TimeOfDay;
-
-                iSubPartida = SubPartidaSeleccionado.ISubPartida;
-                txb_subPartida.Text = SubPartidaSeleccionado.NombreSubParti;
-                txb_procedencia.Text = sub.NombreProcedencia;
-                iProcedencia = sub.IdProcedencia ?? 0;
-                txb_calidad.Text = sub.NombreCalidadCafe;
-                iCalidad = sub.IdCalidadCafe ?? 0;
-                cbx_subProducto.SelectedIndex = isP;
-                txb_pdasSemana1.Text = Convert.ToString(sub.Num1Semana);
-                txb_pdasSemana2.Text = Convert.ToString(sub.Num2Semana);
-                txb_pdasSemana3.Text = Convert.ToString(sub.Num3Semana);
-                txb_diasPdas1.Text = Convert.ToString(sub.Dias1SubPartida);
-                txb_diasPdas2.Text = Convert.ToString(sub.Dias2SubPartida);
-                txb_diasPdas3.Text = Convert.ToString(sub.Dias3SubPartida);
-                txb_fechaPartd1.Text = sub.Fecha1SubPartida;
-                txb_fechaPartd2.Text = sub.Fecha2SubPartida;
-                txb_fechaPartd3.Text = sub.Fecha3SubPartida;
-                txb_observacionCafe.Text = sub.ObservacionIdentificacionCafe;
-                dtp_fechaSecado.Value = sub.FechaSecado;
-                dtp_fechaInicioSecad.Value = fechaInicio;
-                dtp_fechaSalidaSecad.Value = fechaSalida;
-                txb_horaInicio.Text = Convert.ToString(horaInicio);
-                txb_horaSalida.Text = Convert.ToString(horaSalida);
-                txb_tiempoSecad.Text = Convert.ToString(sub.TiempoSecado);
-                txb_humedad.Text = Convert.ToString(sub.HumedadSecado);
-                txb_rendimiento.Text = Convert.ToString(sub.Rendimiento);
-                txb_nombrePuntero.Text = sub.NombrePunteroSecador;
-                iSecador = sub.IdPunteroSecador ?? 0;
-                txb_observacionSecad.Text = sub.ObservacionSecado;
-                txb_resultadoCatacion.Text = sub.ResultadoCatador;
-                dtp_fechaCatacion.Value = sub.FechaCatacion;
-                txb_nombreCatador.Text = sub.NombreCatador;
-                iCatador = sub.IdCatador ?? 0;
-                txb_observacionCatador.Text = sub.ObservacionCatador;
-                dtp_fechaPesa.Value = sub.FechaPesado;
-                txb_CantidadSaco.Text = Convert.ToString(sub.PesaSaco);
-                txb_cantidadQQs.Text = Convert.ToString(sub.PesaQQs);
-                txb_ubicadoBodega.Text = sub.NombreBodega;
-                iBodega = sub.IdBodega ?? 0;
-                txb_almacenSiloPiña.Text = sub.NombreAlmacen;
-                iAlmacen = sub.IdAlmacen ?? 0;
-                txb_nombrePesador.Text = sub.NombrePunteroPesador;
-                iPesador = sub.IdPesador ?? 0;
-                txb_doctoAlmacen.Text = sub.DoctoAlmacen;
-                txb_observacionPesa.Text = sub.ObservacionPesador;
-
+                ShowSubParidaView();
             }
         }
 
+        //
         private void btn_prodCafe_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 2;
@@ -390,6 +325,7 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        //
         private void btn_CCafe_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 3;
@@ -401,6 +337,7 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        //
         private void btn_puntero_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 4;
@@ -413,6 +350,7 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        //
         private void btn_catador_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 5;
@@ -425,6 +363,7 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        //
         private void btn_ubicacionCafe_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 6;
@@ -447,6 +386,7 @@ namespace sistema_modular_cafe_majada.views
             }
         }
         
+        //
         private void btn_ubiFisicaCafe_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 7;
@@ -471,6 +411,7 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        //
         private void btn_pesador_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 8;
@@ -485,6 +426,7 @@ namespace sistema_modular_cafe_majada.views
 
         public void SaveSubPartida() 
         {
+            //SubPartida subParti = new SubPartida();
             bool verific = VerificarCamposObligatorios();
             if(verific == true)
             {
@@ -506,26 +448,62 @@ namespace sistema_modular_cafe_majada.views
 
                 int selectedValue = selectedStatus.Key;
 
-                int? num1Semana = string.IsNullOrWhiteSpace(txb_pdasSemana1.Text) ? 0 : Convert.ToInt32(txb_pdasSemana1.Text);
-                int? num2Semana = string.IsNullOrWhiteSpace(txb_pdasSemana2.Text) ? 0 : Convert.ToInt32(txb_pdasSemana2.Text);
-                int? num3Semana = string.IsNullOrWhiteSpace(txb_pdasSemana3.Text) ? 0 : Convert.ToInt32(txb_pdasSemana3.Text);
-                int? dias1SubPartida = string.IsNullOrWhiteSpace(txb_diasPdas1.Text) ? 0 : Convert.ToInt32(txb_diasPdas1.Text);
-                int? dias2SubPartida = string.IsNullOrWhiteSpace(txb_diasPdas2.Text) ? 0 : Convert.ToInt32(txb_diasPdas2.Text);
-                int? dias3SubPartida = string.IsNullOrWhiteSpace(txb_diasPdas3.Text) ? 0 : Convert.ToInt32(txb_diasPdas3.Text);
+                int num1Semana = string.IsNullOrWhiteSpace(txb_pdasSemana1.Text) ? 0 : Convert.ToInt32(txb_pdasSemana1.Text);
+                int num2Semana = string.IsNullOrWhiteSpace(txb_pdasSemana2.Text) ? 0 : Convert.ToInt32(txb_pdasSemana2.Text);
+                int num3Semana = string.IsNullOrWhiteSpace(txb_pdasSemana3.Text) ? 0 : Convert.ToInt32(txb_pdasSemana3.Text);
+                int dias1SubPartida = string.IsNullOrWhiteSpace(txb_diasPdas1.Text) ? 0 : Convert.ToInt32(txb_diasPdas1.Text);
+                int dias2SubPartida = string.IsNullOrWhiteSpace(txb_diasPdas2.Text) ? 0 : Convert.ToInt32(txb_diasPdas2.Text);
+                int dias3SubPartida = string.IsNullOrWhiteSpace(txb_diasPdas3.Text) ? 0 : Convert.ToInt32(txb_diasPdas3.Text);
                 
                 string fecha1SubPartida = txb_fechaPartd1.Text;
                 string fecha2SubPartida = txb_fechaPartd2.Text;
                 string fecha3SubPartida = txb_fechaPartd3.Text;
                 
                 string observacionCafe = txb_observacionCafe.Text;
-                DateTime fechaSecado = dtp_fechaSecado.Value;
+                DateTime fechaSecado = dtp_fechaSecado.Value.Date;
                 
-                DateTime fechaInicioSecado = dtp_fechaInicioSecad.Value.Date + TimeSpan.Parse(txb_horaInicio.Text);
-                DateTime fechaSalidaSecado = dtp_fechaSalidaSecad.Value.Date + TimeSpan.Parse(txb_horaSalida.Text);
+                // Llamamos a la función ConvertTimeTxb y almacenamos el resultado formateado en la variable.
+                string inicioSecado = ConvertILimitTimeTxb(txb_horaInicio);
+                string salidaSecado = ConvertILimitTimeTxb(txb_horaSalida);
+                string horaFormateada = ConvertILimitTimeTxb(txb_tiempoSecad);
 
-                TimeSpan tiempoSecado = TimeSpan.Parse(txb_tiempoSecad.Text);
-                double humedadSecado = Convert.ToDouble(txb_humedad.Text);
-                double rendimiento = Convert.ToDouble(txb_rendimiento.Text);
+                Console.WriteLine("Depuracion Tiempo - inicio " + inicioSecado);
+                Console.WriteLine("Depuracion Tiempo - salida " + salidaSecado);
+                Console.WriteLine("Depuracion Tiempo - Secado " + horaFormateada);
+
+                TimeSpan tiempoSecado = ConvertToTimeSpan(horaFormateada);
+                TimeSpan inicio = ConvertToTimeSpan(inicioSecado);
+                TimeSpan salida = ConvertToTimeSpan(salidaSecado);
+
+                if(inicio.Hours > 24)
+                {
+                    MessageBox.Show("El valor ingresado en el campo Inicio Secado no tiene un formato de hora válido. El formato es de 0 a 24 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if(salida.Hours > 24)
+                {
+                    MessageBox.Show("El valor ingresado en el campo Salida Secado no tiene un formato de hora válido. El formato es de 0 a 24 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DateTime fechaInicioSecado = dtp_fechaInicioSecad.Value.Date + inicio;
+
+                DateTime fechaSalidaSecado = dtp_fechaSalidaSecad.Value.Date + salida;
+
+
+                double humedadSecado;
+                if (double.TryParse(txb_humedad.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out humedadSecado)) { }
+                else
+                {
+                    MessageBox.Show("El valor ingresado en el campo Capacidad no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                double rendimiento;
+                if (double.TryParse(txb_rendimiento.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out rendimiento)){}
+                else
+                {
+                    MessageBox.Show("El valor ingresado en el campo Capacidad no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 string nombrePunteroSecador = txb_nombrePuntero.Text;
                 string observacionSecado = txb_observacionSecad.Text;
@@ -617,9 +595,9 @@ namespace sistema_modular_cafe_majada.views
                 var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
                 var subPartController = new SubPartidaController();
 
+                Console.WriteLine("depuracion - img cliqueada " + imagenClickeada);
                 if (!imagenClickeada)
                 {
-                    Console.WriteLine("depuracion - img cliqueada " + imagenClickeada);
                     bool exito = subPartController.InsertarSubPartida(subPart);
 
                     if (exito)
@@ -640,6 +618,8 @@ namespace sistema_modular_cafe_majada.views
                         //borrar datos de los textbox
                         ClearDataTxb();
                         imgClickBodega = false;
+                        imagenClickeada = false;
+                        imagenClickeadaSP = false;
                         imgClickAlmacen = false;
                     }
                     else
@@ -670,6 +650,8 @@ namespace sistema_modular_cafe_majada.views
                         //borrar datos de los textbox
                         ClearDataTxb();
                         imgClickBodega = false;
+                        imagenClickeada = false;
+                        imagenClickeadaSP = false;
                         imgClickAlmacen = false;
                     }
                     else
@@ -862,9 +844,46 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
+            cbx_subProducto.SelectedIndex = -1;
             imgClickBodega = false;
+            imagenClickeada = false;
+            imagenClickeadaSP = false;
             imgClickAlmacen = false;
 
+        }
+
+        private void btn_deleteSPartida_Click(object sender, EventArgs e)
+        {
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (SubSPart != 0)
+            {
+                LogController log = new LogController();
+                UserController userControl = new UserController();
+
+                Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro SubPartida No: " + SubSPart + ", de la cosecha: " + SubSPartCosecha + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    //se llama la funcion delete del controlador para eliminar el registro
+                    SubPartidaController controller = new SubPartidaController();
+                    controller.EliminarSubPartida(SubSPart);
+
+                    //verificar el departamento del log
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato SubPartida", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la SubPartida No: " + SubSPart + " en la base de datos");
+
+                    MessageBox.Show("SubPartida Eliminada correctamente.");
+
+                    //se actualiza la tabla
+                    ClearDataTxb();
+                    cbx_subProducto.SelectedIndex = -1;
+                }
+            }
+            else
+            {
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
