@@ -22,7 +22,6 @@ namespace sistema_modular_cafe_majada
             // Aquí puedes realizar las operaciones que necesites en la base de datos
             conexionBD.Desconectar();*/
 
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new form_splash());

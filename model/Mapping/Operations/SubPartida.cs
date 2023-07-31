@@ -66,6 +66,8 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
     public static class SubPartidaSeleccionado
     {
         public static int ISubPartida { get; set; }
+        public static int NumSubPartida { get; set; }
         public static string NombreSubParti { get; set; }
+        public static bool clickImg { get; set; }
     }
 }

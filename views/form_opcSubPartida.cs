@@ -244,10 +244,10 @@ namespace sistema_modular_cafe_majada.views
                     //SubPartida
                     {
                         form_subPartidas subSPa = new form_subPartidas();
-                        subSPa.imagenClickeada = true;
+                        SubPartidaSeleccionado.clickImg = true;
                         // Obtener los valores de las celdas de la fila seleccionada
                         SubPartidaSeleccionado.ISubPartida = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        subSPa.SubSPart = SubPartidaSeleccionado.ISubPartida;
+                        SubPartidaSeleccionado.NumSubPartida = Convert.ToInt32(filaSeleccionada.Cells["Numero_SubPartida"].Value);
                         subSPa.SubSPartCosecha = filaSeleccionada.Cells["Nombre_Cosecha"].Value.ToString();
                         SubPartidaSeleccionado.NombreSubParti = filaSeleccionada.Cells["Numero_SubPartida"].Value.ToString();
                     }

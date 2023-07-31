@@ -137,6 +137,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return false;
             }
         }
+        
+        //
+        public bool VerificarExistenciaSubPartida(int idCosecha, int numSubpartida)
+        {
+            try
+            {
+                // Llamada al método del DAO para verificar la SubPartida
+                return subPartidaDAO.VerificarExistenciaSubPartida(idCosecha, numSubpartida);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia de la SubPartida: " + ex.Message);
+                return false;
+            }
+        }
 
         //
         public void EliminarSubPartida(int idSubPartida)

@@ -138,9 +138,9 @@ namespace sistema_modular_cafe_majada.views
         }
 
         //
-        public static string ConvertILimitTimeTxb(TextBox textTime)
+        public static string ConvertILimitTimeTxb(string textTime)
         {
-            string horaCompleta = textTime.Text;
+            string horaCompleta = textTime;
 
             // Dividir la cadena en partes utilizando el carácter ':'
             string[] partesHora = horaCompleta.Split(':');
@@ -232,7 +232,32 @@ namespace sistema_modular_cafe_majada.views
                 };
             }
         }
-        
+
+        //
+        public static string ConvertToHHMMSS(string tiempoOriginalStr)
+        {
+            TimeSpan tiempoOriginal;
+
+            // Parsear el valor original a un TimeSpan
+            if (TimeSpan.TryParse(tiempoOriginalStr, out tiempoOriginal))
+            {
+                // Calcular el total de horas (días * 24 + horas)
+                int totalHoras = tiempoOriginal.Days * 24 + tiempoOriginal.Hours;
+                int min = tiempoOriginal.Minutes;
+                int seg = tiempoOriginal.Seconds;
+
+                string tiempoNuevo = Convert.ToString(totalHoras + ":" + tiempoOriginal.Minutes);
+
+                return tiempoNuevo;
+            }
+            else
+            {
+                // Devolver el valor original en caso de formato inválido
+                Console.WriteLine("Error de Formato en fecha convert");
+                return tiempoOriginalStr;
+            }
+        }
+
         //
         public void ShowSubParidaView()
         {
@@ -242,6 +267,7 @@ namespace sistema_modular_cafe_majada.views
             var name = subProC.ObtenerSubProductoPorNombre(sub.NombreSubProducto);
             isubProducto = name.IdSubProducto;
 
+            string tiempoSec = ConvertToHHMMSS(sub.TiempoSecado.ToString());
             //cbx
             cbx_subProducto.Items.Clear();
             CbxSubProducto();
@@ -276,7 +302,7 @@ namespace sistema_modular_cafe_majada.views
             dtp_fechaSalidaSecad.Value = fechaSalida;
             txb_horaInicio.Text = Convert.ToString(horaInicio);
             txb_horaSalida.Text = Convert.ToString(horaSalida);
-            txb_tiempoSecad.Text = Convert.ToString(sub.TiempoSecado);
+            txb_tiempoSecad.Text = tiempoSec;
             txb_humedad.Text = sub.HumedadSecado.ToString();
             txb_rendimiento.Text = sub.Rendimiento.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             txb_nombrePuntero.Text = sub.NombrePunteroSecador;
@@ -461,11 +487,14 @@ namespace sistema_modular_cafe_majada.views
                 
                 string observacionCafe = txb_observacionCafe.Text;
                 DateTime fechaSecado = dtp_fechaSecado.Value.Date;
-                
+
                 // Llamamos a la función ConvertTimeTxb y almacenamos el resultado formateado en la variable.
-                string inicioSecado = ConvertILimitTimeTxb(txb_horaInicio);
-                string salidaSecado = ConvertILimitTimeTxb(txb_horaSalida);
-                string horaFormateada = ConvertILimitTimeTxb(txb_tiempoSecad);
+                string hhend = txb_horaSalida.Text;
+                string hhstart = txb_horaInicio.Text;
+                string hhsec = txb_tiempoSecad.Text;
+                string inicioSecado = ConvertILimitTimeTxb(hhstart);
+                string salidaSecado = ConvertILimitTimeTxb(hhend);
+                string horaFormateada = ConvertILimitTimeTxb(hhsec);
 
                 Console.WriteLine("Depuracion Tiempo - inicio " + inicioSecado);
                 Console.WriteLine("Depuracion Tiempo - salida " + salidaSecado);
@@ -475,7 +504,9 @@ namespace sistema_modular_cafe_majada.views
                 TimeSpan inicio = ConvertToTimeSpan(inicioSecado);
                 TimeSpan salida = ConvertToTimeSpan(salidaSecado);
 
-                if(inicio.Hours > 24)
+                Console.WriteLine("Depuracion Tiempo - secado en timeSpan " + tiempoSecado);
+
+                if (inicio.Hours > 24)
                 {
                     MessageBox.Show("El valor ingresado en el campo Inicio Secado no tiene un formato de hora válido. El formato es de 0 a 24 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -596,35 +627,45 @@ namespace sistema_modular_cafe_majada.views
                 var subPartController = new SubPartidaController();
 
                 Console.WriteLine("depuracion - img cliqueada " + imagenClickeada);
-                if (!imagenClickeada)
+                if (!SubPartidaSeleccionado.clickImg)
                 {
-                    bool exito = subPartController.InsertarSubPartida(subPart);
-
-                    if (exito)
+                    bool verificexisten = subPartController.VerificarExistenciaSubPartida(CosechaActual.ICosechaActual, Convert.ToInt32(txb_subPartida.Text));
+                    
+                    if (!verificexisten)
                     {
-                        MessageBox.Show("SubPartida agregada correctamente.");
-                        try
-                        {
-                            //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
-                            //verificar el departamento
-                            log.RegistrarLog(usuario.IdUsuario, "Registro dato SubPartida", ModuloActual.NombreModulo, "Insercion", "Inserto una nueva SubPartida a la base de datos");
+                        bool exito = subPartController.InsertarSubPartida(subPart);
 
-                        }
-                        catch (Exception ex)
+                        if (exito)
                         {
-                            Console.WriteLine("Error al obtener el usuario: " + ex.Message);
-                        }
+                            MessageBox.Show("SubPartida agregada correctamente.");
+                            try
+                            {
+                                //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
+                                //verificar el departamento
+                                log.RegistrarLog(usuario.IdUsuario, "Registro dato SubPartida", ModuloActual.NombreModulo, "Insercion", "Inserto una nueva SubPartida a la base de datos");
 
-                        //borrar datos de los textbox
-                        ClearDataTxb();
-                        imgClickBodega = false;
-                        imagenClickeada = false;
-                        imagenClickeadaSP = false;
-                        imgClickAlmacen = false;
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Error al obtener el usuario: " + ex.Message);
+                            }
+
+                            //borrar datos de los textbox
+                            ClearDataTxb();
+                            imgClickBodega = false;
+                            imagenClickeada = false;
+                            imagenClickeadaSP = false;
+                            imgClickAlmacen = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al agregar la SubPartida. Verifica los datos e intenta nuevamente.");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar la SubPartida. Verifica los datos e intenta nuevamente.");
+                        MessageBox.Show("Error al agregar la SubPartida. El numero de SubPartida ya existe en la cosecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
 
                 }
@@ -649,6 +690,7 @@ namespace sistema_modular_cafe_majada.views
 
                         //borrar datos de los textbox
                         ClearDataTxb();
+                        SubPartidaSeleccionado.clickImg = false;
                         imgClickBodega = false;
                         imagenClickeada = false;
                         imagenClickeadaSP = false;
@@ -821,7 +863,8 @@ namespace sistema_modular_cafe_majada.views
                                                     txb_observacionCafe,txb_horaInicio,txb_horaSalida,txb_tiempoSecad,txb_humedad,txb_rendimiento,
                                                     txb_nombrePuntero,txb_observacionSecad,txb_resultadoCatacion,
                                                     txb_nombreCatador,txb_observacionCatador,txb_CantidadSaco,txb_cantidadQQs,
-                                                    txb_ubicadoBodega,txb_almacenSiloPiña,txb_nombrePesador,txb_doctoAlmacen,txb_observacionPesa};
+                                                    txb_ubicadoBodega,txb_almacenSiloPiña,txb_nombrePesador,txb_doctoAlmacen,txb_observacionPesa,
+                                                    txb_fechaPartd1,txb_fechaPartd2,txb_fechaPartd3};
 
             foreach (TextBox textBox in txb)
             {
@@ -849,28 +892,28 @@ namespace sistema_modular_cafe_majada.views
             imagenClickeada = false;
             imagenClickeadaSP = false;
             imgClickAlmacen = false;
-
+            SubPartidaSeleccionado.clickImg = false;
         }
 
         private void btn_deleteSPartida_Click(object sender, EventArgs e)
         {
             //condicion para verificar si los datos seleccionados van nulos, para evitar error
-            if (SubSPart != 0)
+            if (SubPartidaSeleccionado.NumSubPartida != 0)
             {
                 LogController log = new LogController();
                 UserController userControl = new UserController();
 
                 Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro SubPartida No: " + SubSPart + ", de la cosecha: " + SubSPartCosecha + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro SubPartida No: " + SubPartidaSeleccionado.NumSubPartida + ", de la cosecha: " + CosechaActual.NombreCosechaActual + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
                     //se llama la funcion delete del controlador para eliminar el registro
                     SubPartidaController controller = new SubPartidaController();
-                    controller.EliminarSubPartida(SubSPart);
+                    controller.EliminarSubPartida(SubPartidaSeleccionado.ISubPartida);
 
                     //verificar el departamento del log
-                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato SubPartida", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la SubPartida No: " + SubSPart + " en la base de datos");
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato SubPartida", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la SubPartida No: " + SubPartidaSeleccionado.NumSubPartida + " en la base de datos");
 
                     MessageBox.Show("SubPartida Eliminada correctamente.");
 

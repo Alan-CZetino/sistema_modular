@@ -397,7 +397,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                                            ps.nombre_personal AS nombre_puntero_secador,
                                            pc.nombre_personal AS nombre_catador,
                                            pe.nombre_personal AS nombre_pesador
-                                    FROM SubPartida sp
+                                    FROM SubPartida sp 
                                     INNER JOIN Cosecha c ON sp.id_cosecha_subpartida = c.id_cosecha
                                     INNER JOIN Procedencia_Destino_Cafe pd ON sp.id_procedencia_subpartida = pd.id_procedencia
                                     INNER JOIN Calidad_Cafe cc ON sp.id_calidad_cafe_subpartida = cc.id_calidad
@@ -408,7 +408,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                                     INNER JOIN Personal ps ON sp.id_puntero_secado_subpartida = ps.id_personal
                                     INNER JOIN Personal pc ON sp.id_catador_subpartida = pc.id_personal
                                     INNER JOIN Personal pe ON sp.id_pesador_subpartida = pe.id_personal
-                                    WHERE c.nombre_cosecha = @cosecha";
+                                    WHERE c.nombre_cosecha = @cosecha
+                                    ORDER BY sp.num_subpartida DESC";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@cosecha", cosecha);
@@ -629,6 +630,7 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {
+
                     if (reader.HasRows && reader.Read())
                     {
                         subPartida = new SubPartida()
@@ -656,7 +658,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             FechaSecado = Convert.ToDateTime(reader["fecha_carga_secado_subpartida"]),
                             InicioSecado = Convert.ToDateTime(reader["inicio_secado_subpartida"]),
                             SalidaSecado = Convert.ToDateTime(reader["salida_punto_secado_subpartida"]),
-                            TiempoSecado = TimeSpan.Parse(reader["tiempo_secado_subpartida"].ToString()),
+                            TiempoSecado = TimeSpan.Parse(Convert.ToString(reader["tiempo_secado_subpartida"])),
                             HumedadSecado = Convert.ToDouble(reader["humedad_secado_subpartida"]),
                             Rendimiento = Convert.ToDouble(reader["rendimiento_subpartida"]),
                             IdPunteroSecador = Convert.ToInt32(reader["id_puntero_secado_subpartida"]),
@@ -851,6 +853,43 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //
+        public bool VerificarExistenciaSubPartida(int idCosecha, int numSubpartida)
+        {
+            bool existeSubPartida = false;
+
+            try
+            {
+                // Conexión a la base de datos
+                conexion.Conectar();
+
+                // Consulta SQL con la cláusula WHERE para verificar la existencia de la subpartida
+                string consulta = @"SELECT COUNT(*) FROM SubPartida 
+                            WHERE id_cosecha_subpartida = @idCosecha AND num_subpartida = @numSubpartida";
+
+                conexion.CrearComando(consulta);
+
+                // Agregar los parámetros para evitar posibles ataques de inyección SQL
+                conexion.AgregarParametro("@idCosecha", idCosecha);
+                conexion.AgregarParametro("@numSubpartida", numSubpartida);
+
+                // Ejecutar la consulta y obtener el resultado
+                int resultado = Convert.ToInt32(conexion.EjecutarConsultaEscalar());
+
+                // Si el resultado es mayor que 0, significa que existe una subpartida con los valores proporcionados
+                existeSubPartida = resultado > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia de la subpartida: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return existeSubPartida;
+        }
 
 
     }
