@@ -160,6 +160,9 @@ namespace sistema_modular_cafe_majada
             
             string nameCosecha = NombreCosecha;
             lbl_numCosecha.Text = nameCosecha;
+            
+            string modulo = ModuloActual.NombreModulo;
+            lbl_nameModule.Text = modulo;
         }
 
         private void lbl_username_Click(object sender, EventArgs e)

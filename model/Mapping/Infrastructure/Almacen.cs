@@ -12,9 +12,12 @@ namespace sistema_modular_cafe_majada.model.Mapping.Infrastructure
         public string NombreAlmacen { get; set; }
         public string DescripcionAlmacen { get; set; }
         public double CapacidadAlmacen { get; set; }
+        public double CantidadActualAlmacen { get; set; }
         public string UbicacionAlmacen { get; set; }
         public int IdBodegaUbicacion { get; set; }
         public string NombreBodegaUbicacion { get; set; }
+        public int IdCalidadCafe { get; set; }
+        public string NombreCalidadCafe { get; set; }
     }
 
     public static class AlmacenSeleccionado
