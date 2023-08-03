@@ -153,6 +153,16 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btn_eliminar_24px {
+            get {
+                object obj = ResourceManager.GetObject("btn_eliminar 24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btn_guardar {
             get {
                 object obj = ResourceManager.GetObject("btn_guardar", resourceCulture);
@@ -176,6 +186,16 @@ namespace sistema_modular_cafe_majada.Properties {
         internal static System.Drawing.Bitmap calendario_128px {
             get {
                 object obj = ResourceManager.GetObject("calendario 128px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cargos_32px {
+            get {
+                object obj = ResourceManager.GetObject("cargos 32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

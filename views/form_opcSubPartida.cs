@@ -35,7 +35,7 @@ namespace sistema_modular_cafe_majada.views
             //esta es una llamada para funcion para pintar las filas del datagrid
             dtg_opcSP.CellPainting += dtg_opcSP_CellPainting;
         }
-
+        
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -90,42 +90,29 @@ namespace sistema_modular_cafe_majada.views
         {
             // Llamar al método para obtener los datos de la base de datos
             var personalController = new PersonalController();
-            List<Personal> datos = personalController.ObtenerPersonalesNombreCargo();
+            List<Personal> datosP = null;
 
             // Verificar si se obtuvieron datos
-            if (datos.Count > 0)
+            if (PersonalSeleccionado.TipoPersonal.Length != 0)
             {
-                // Se obtuvieron datos,
-                var datosPersonalizados = datos.Select(personal => new
-                {
-                    ID = personal.IdPersonal,
-                    Nombre = personal.NombrePersonal,
-                    Cargo = personal.NombreCargo,
-                    Descripcion = personal.Descripcion,
-                    ID_Persona = personal.IdPersona,
-                }).ToList();
-
-                // Asignar los datos al DataGridView
-                dtg_opcSP.DataSource = datosPersonalizados;
+                datosP = personalController.BuscarPersonalCargo(PersonalSeleccionado.TipoPersonal);
             }
             else
             {
-                // No se encontraron datos,
-                List<Personal> datosP = personalController.ObtenerPersonalesNombreCargo();
-
-                var datosPersonalizados = datosP.Select(personal => new
-                {
-                    ID = personal.IdPersonal,
-                    Nombre = personal.NombrePersonal,
-                    Cargo = personal.NombreCargo,
-                    Descripcion = personal.Descripcion,
-                    ID_Persona = personal.IdPersona,
-                }).ToList();
-            
-                // Asignar los datos al DataGridView
-                dtg_opcSP.DataSource = datosPersonalizados;
-
+                datosP = personalController.ObtenerPersonalesNombreCargo();
             }
+
+            var datosPersonalizados = datosP.Select(personal => new
+            {
+                ID = personal.IdPersonal,
+                Nombre = personal.NombrePersonal,
+                Cargo = personal.NombreCargo,
+                Descripcion = personal.Descripcion,
+                ID_Persona = personal.IdPersona,
+            }).ToList();
+            
+            // Asignar los datos al DataGridView
+            dtg_opcSP.DataSource = datosPersonalizados;
 
             dtg_opcSP.RowHeadersVisible = false;
             dtg_opcSP.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -136,7 +123,17 @@ namespace sistema_modular_cafe_majada.views
         {
             // Llamar al método para obtener los datos de la base de datos
             AlmacenController almacenController = new AlmacenController();
-            List<Almacen> datos = almacenController.ObtenerAlmacenNombreBodega();
+            List<Almacen> datos = null;
+
+            Console.WriteLine("Depuracion - id Bodega" + AlmacenBodegaClick.IBodega);
+            if (AlmacenBodegaClick.IBodega != 0)
+            {
+                datos = almacenController.BuscarIDBodegaAlmacenCalidad(AlmacenBodegaClick.IBodega, CalidadSeleccionada.ICalidadSeleccionada);
+            }
+            else
+            {
+                datos = almacenController.ObtenerPorIDAlmacenNombreCalidadBodega(CalidadSeleccionada.ICalidadSeleccionada);
+            }
 
             var datosPersonalizados = datos.Select(almacen => new
             {
@@ -144,7 +141,9 @@ namespace sistema_modular_cafe_majada.views
                 Nombre = almacen.NombreAlmacen,
                 Descripcion = almacen.DescripcionAlmacen,
                 Capacidad = almacen.CapacidadAlmacen,
+                Cantidad_Actual = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
                 Ubicacion = almacen.UbicacionAlmacen,
+                Nombre_Calidad = almacen.NombreCalidadCafe ?? "",
                 Bodega_Ubicacion = almacen.NombreBodegaUbicacion
             }).ToList();
 
@@ -185,19 +184,19 @@ namespace sistema_modular_cafe_majada.views
             var procedenciaController = new ProcedenciaDestinoController();
             List<ProcedenciaDestino> datosP = procedenciaController.ObtenerProcedenciasDestinoNombres();
 
-            var datosCalidades = datosP.Select(proced => new
+            var datosProcedencia = datosP.Select(proced => new
             {
                 ID = proced.IdProcedencia,
                 Nombre = proced.NombreProcedencia,
-                Descripcion = proced.DescripcionProcedencia,
-                Nombre_Socio = proced.NombreSocioProcedencia,
-                Nombre_Finca = proced.NombreFincaSocio,
-                Nombre_Beneficio = proced.NombreBenficioUbicacion,
-                Nombre_Maquinaria = proced.NombreMaquinaria
+                Descripcion = string.IsNullOrWhiteSpace(proced.DescripcionProcedencia) ? proced.DescripcionProcedencia = "" : proced.DescripcionProcedencia,
+                Nombre_Socio = proced.NombreSocioProcedencia ?? "", // Verificar si es NULL y establecer cadena vacía en ese caso
+                Nombre_Finca = proced.NombreFincaSocio ?? "",       
+                Nombre_Beneficio = proced.NombreBenficioUbicacion ?? "", 
+                Nombre_Maquinaria = proced.NombreMaquinaria ?? "" 
             }).ToList();
 
             // Asignar los datos al DataGridView
-            dtg_opcSP.DataSource = datosCalidades;
+            dtg_opcSP.DataSource = datosProcedencia;
 
             dtg_opcSP.RowHeadersVisible = false;
             dtg_opcSP.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -215,6 +214,7 @@ namespace sistema_modular_cafe_majada.views
             {
                 ID = subP.IdSubpartida,
                 Numero_SubPartida = subP.NumeroSubpartida,
+                Nombre_Cosecha = subP.NombreCosecha,
                 Nombre_Procedencia = subP.NombreProcedencia,
                 Nombre_CalidadCafe = subP.NombreCalidadCafe,
                 Nombre_SubProducto = subP.NombreSubProducto,
@@ -245,8 +245,12 @@ namespace sistema_modular_cafe_majada.views
                 case 1:
                     //SubPartida
                     {
+                        form_subPartidas subSPa = new form_subPartidas();
+                        SubPartidaSeleccionado.clickImg = true;
                         // Obtener los valores de las celdas de la fila seleccionada
                         SubPartidaSeleccionado.ISubPartida = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                        SubPartidaSeleccionado.NumSubPartida = Convert.ToInt32(filaSeleccionada.Cells["Numero_SubPartida"].Value);
+                        subSPa.SubSPartCosecha = filaSeleccionada.Cells["Nombre_Cosecha"].Value.ToString();
                         SubPartidaSeleccionado.NombreSubParti = filaSeleccionada.Cells["Numero_SubPartida"].Value.ToString();
                     }
                     break;
@@ -384,19 +388,19 @@ namespace sistema_modular_cafe_majada.views
                             var procedenciaController = new ProcedenciaDestinoController();
                             List<ProcedenciaDestino> datosP = procedenciaController.BuscarProcedenciaDestino(text.Text);
 
-                            var datosCalidades = datosP.Select(proced => new
+                            var datosProcedencia = datosP.Select(proced => new
                             {
                                 ID = proced.IdProcedencia,
                                 Nombre = proced.NombreProcedencia,
-                                Descripcion = proced.DescripcionProcedencia,
-                                Nombre_Socio = proced.NombreSocioProcedencia,
-                                Nombre_Finca = proced.NombreFincaSocio,
-                                Nombre_Beneficio = proced.NombreBenficioUbicacion,
-                                Nombre_Maquinaria = proced.NombreMaquinaria
+                                Descripcion = string.IsNullOrWhiteSpace(proced.DescripcionProcedencia) ? proced.DescripcionProcedencia = "" : proced.DescripcionProcedencia,
+                                Nombre_Socio = proced.NombreSocioProcedencia ?? "", // Verificar si es NULL y establecer cadena vacía en ese caso
+                                Nombre_Finca = proced.NombreFincaSocio ?? "",
+                                Nombre_Beneficio = proced.NombreBenficioUbicacion ?? "",
+                                Nombre_Maquinaria = proced.NombreMaquinaria ?? ""
                             }).ToList();
 
                             // Asignar los datos al DataGridView
-                            dtg_opcSP.DataSource = datosCalidades;
+                            dtg_opcSP.DataSource = datosProcedencia;
 
                             dtg_opcSP.RowHeadersVisible = false;
                             dtg_opcSP.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -550,7 +554,9 @@ namespace sistema_modular_cafe_majada.views
                                 Nombre = almacen.NombreAlmacen,
                                 Descripcion = almacen.DescripcionAlmacen,
                                 Capacidad = almacen.CapacidadAlmacen,
+                                Cantidad_Actual = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
                                 Ubicacion = almacen.UbicacionAlmacen,
+                                Nombre_Calidad = almacen.NombreCalidadCafe ?? "",
                                 Bodega_Ubicacion = almacen.NombreBodegaUbicacion
                             }).ToList();
 

@@ -101,6 +101,20 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return new List<CantidadSiloPiña>();
             }
         }
+        
+        public CantidadSiloPiña BuscarCantidadSiloPiñaSub(string buscar)
+        {
+            try
+            {
+                // Llamada al método del DAO para buscar cantidades de café en el silo/piña por nombre de calidad o nombre de almacén
+                return cantidadDAO.BuscarCantidadSiloPiñaSub(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al buscar cantidades de café en el silo/piña: " + ex.Message);
+                return null;
+            }
+        }
 
         public bool ActualizarCantidadCafeSiloPiña(CantidadSiloPiña cantidad)
         {

@@ -32,6 +32,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 return new List<Almacen>();
             }
         }
+        
+        //
+        public List<Almacen> ObtenerAlmacenNombreCalidadBodega()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la Almacen
+                return almacenDAO.ObtenerAlmacenNombreCalidadBodega();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de Almacens: " + ex.Message);
+                return new List<Almacen>();
+            }
+        }
 
         //
         public Almacen ObtenerIdAlmacen(int idAlmacen)
@@ -107,6 +122,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 return new List<Almacen>();
             }
         }
+        
+        //
+        public List<Almacen> BuscarIDBodegaAlmacens(int buscar)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener las Almacens
+                return almacenDAO.BuscarIDBodegaAlmacen(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de Almacens: " + ex.Message);
+                return new List<Almacen>();
+            }
+        }
 
         //
         public bool ActualizarAlmacens(int idAlmacen, string nombre, string descripcion, double capacidad, string ubicacion, int idBodega)
@@ -136,6 +166,83 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 Console.WriteLine("Ocurrió un error al eliminar la Almacens: " + ex.Message);
             }
         }
+        
+        //
+        public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, int iCalidad)
+        {
+            try
+            {
+                // Llamada al método del DAO para actualizar la Almacens
+                return almacenDAO.ActualizarCantidadEntradaCafeAlmacen(idAlmacen, cantidad, iCalidad);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al actualizar las Cantidades Almacens: " + ex.Message);
+                return false;
+            }
+        }
+        
+        //
+        public bool ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(int idAlmacen, double cantidadNu, int iCalidad)
+        {
+            try
+            {
+                // Llamada al método del DAO para actualizar la Almacens
+                return almacenDAO.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(idAlmacen, cantidadNu, iCalidad);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al actualizar las Cantidades Almacens: " + ex.Message);
+                return false;
+            }
+        }
+
+        //
+        public Almacen ObtenerCantidadCafeAlmacen(int iAlmacen)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la Almacens
+                return almacenDAO.ObtenerCantidadCafeAlmacen(iAlmacen);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la cantidad: " + ex.Message);
+                return null;
+            }
+        }
+
+        //
+        public List<Almacen> ObtenerPorIDAlmacenNombreCalidadBodega(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la Almacen
+                return almacenDAO.ObtenerPorIDAlmacenNombreCalidadBodega(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de Almacens: " + ex.Message);
+                return new List<Almacen>();
+            }
+        }
+
+        //
+        public List<Almacen> BuscarIDBodegaAlmacenCalidad(int buscar, int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener las Almacens
+                return almacenDAO.BuscarIDBodegaAlmacenCalidad(buscar, id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de Almacens: " + ex.Message);
+                return new List<Almacen>();
+            }
+        }
+
+
 
     }
 }

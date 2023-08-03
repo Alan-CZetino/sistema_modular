@@ -35,10 +35,10 @@ namespace sistema_modular_cafe_majada.views
             this.label2 = new System.Windows.Forms.Label();
             this.btn_sPartida = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txb_fechaPartd3 = new System.Windows.Forms.TextBox();
+            this.txb_fechaPartd2 = new System.Windows.Forms.TextBox();
+            this.txb_fechaPartd1 = new System.Windows.Forms.TextBox();
             this.cbx_subProducto = new System.Windows.Forms.ComboBox();
-            this.dtp_fecha3 = new System.Windows.Forms.DateTimePicker();
-            this.dtp_fecha2 = new System.Windows.Forms.DateTimePicker();
-            this.dtp_fecha1 = new System.Windows.Forms.DateTimePicker();
             this.btn_CCafe = new System.Windows.Forms.Button();
             this.btn_prodCafe = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
@@ -117,6 +117,8 @@ namespace sistema_modular_cafe_majada.views
             this.label31 = new System.Windows.Forms.Label();
             this.btn_SaveUser = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.btn_deleteSPartida = new System.Windows.Forms.Button();
+            this.btn_pdfSPartida = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -182,10 +184,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txb_fechaPartd3);
+            this.groupBox1.Controls.Add(this.txb_fechaPartd2);
+            this.groupBox1.Controls.Add(this.txb_fechaPartd1);
             this.groupBox1.Controls.Add(this.cbx_subProducto);
-            this.groupBox1.Controls.Add(this.dtp_fecha3);
-            this.groupBox1.Controls.Add(this.dtp_fecha2);
-            this.groupBox1.Controls.Add(this.dtp_fecha1);
             this.groupBox1.Controls.Add(this.btn_CCafe);
             this.groupBox1.Controls.Add(this.btn_prodCafe);
             this.groupBox1.Controls.Add(this.label14);
@@ -220,6 +222,42 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Identificación del Café";
             // 
+            // txb_fechaPartd3
+            // 
+            this.txb_fechaPartd3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_fechaPartd3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_fechaPartd3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_fechaPartd3.Location = new System.Drawing.Point(365, 186);
+            this.txb_fechaPartd3.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_fechaPartd3.Name = "txb_fechaPartd3";
+            this.txb_fechaPartd3.Size = new System.Drawing.Size(110, 21);
+            this.txb_fechaPartd3.TabIndex = 47;
+            // 
+            // txb_fechaPartd2
+            // 
+            this.txb_fechaPartd2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_fechaPartd2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_fechaPartd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_fechaPartd2.Location = new System.Drawing.Point(365, 146);
+            this.txb_fechaPartd2.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_fechaPartd2.Name = "txb_fechaPartd2";
+            this.txb_fechaPartd2.Size = new System.Drawing.Size(110, 21);
+            this.txb_fechaPartd2.TabIndex = 46;
+            // 
+            // txb_fechaPartd1
+            // 
+            this.txb_fechaPartd1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_fechaPartd1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_fechaPartd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_fechaPartd1.Location = new System.Drawing.Point(365, 101);
+            this.txb_fechaPartd1.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_fechaPartd1.Name = "txb_fechaPartd1";
+            this.txb_fechaPartd1.Size = new System.Drawing.Size(110, 21);
+            this.txb_fechaPartd1.TabIndex = 45;
+            // 
             // cbx_subProducto
             // 
             this.cbx_subProducto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -231,42 +269,6 @@ namespace sistema_modular_cafe_majada.views
             this.cbx_subProducto.Name = "cbx_subProducto";
             this.cbx_subProducto.Size = new System.Drawing.Size(134, 25);
             this.cbx_subProducto.TabIndex = 44;
-            // 
-            // dtp_fecha3
-            // 
-            this.dtp_fecha3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtp_fecha3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_fecha3.Location = new System.Drawing.Point(365, 188);
-            this.dtp_fecha3.Margin = new System.Windows.Forms.Padding(2);
-            this.dtp_fecha3.MaximumSize = new System.Drawing.Size(376, 30);
-            this.dtp_fecha3.Name = "dtp_fecha3";
-            this.dtp_fecha3.Size = new System.Drawing.Size(110, 21);
-            this.dtp_fecha3.TabIndex = 43;
-            // 
-            // dtp_fecha2
-            // 
-            this.dtp_fecha2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtp_fecha2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_fecha2.Location = new System.Drawing.Point(365, 145);
-            this.dtp_fecha2.Margin = new System.Windows.Forms.Padding(2);
-            this.dtp_fecha2.MaximumSize = new System.Drawing.Size(376, 30);
-            this.dtp_fecha2.Name = "dtp_fecha2";
-            this.dtp_fecha2.Size = new System.Drawing.Size(110, 21);
-            this.dtp_fecha2.TabIndex = 42;
-            // 
-            // dtp_fecha1
-            // 
-            this.dtp_fecha1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtp_fecha1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_fecha1.Location = new System.Drawing.Point(365, 102);
-            this.dtp_fecha1.Margin = new System.Windows.Forms.Padding(2);
-            this.dtp_fecha1.MaximumSize = new System.Drawing.Size(376, 30);
-            this.dtp_fecha1.Name = "dtp_fecha1";
-            this.dtp_fecha1.Size = new System.Drawing.Size(110, 21);
-            this.dtp_fecha1.TabIndex = 41;
             // 
             // btn_CCafe
             // 
@@ -309,17 +311,17 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_diasPdas3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_diasPdas3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_diasPdas3.Location = new System.Drawing.Point(186, 188);
+            this.txb_diasPdas3.Location = new System.Drawing.Point(210, 188);
             this.txb_diasPdas3.Margin = new System.Windows.Forms.Padding(2);
             this.txb_diasPdas3.Name = "txb_diasPdas3";
-            this.txb_diasPdas3.Size = new System.Drawing.Size(112, 21);
+            this.txb_diasPdas3.Size = new System.Drawing.Size(88, 21);
             this.txb_diasPdas3.TabIndex = 25;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(119, 190);
+            this.label15.Location = new System.Drawing.Point(135, 192);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(71, 17);
@@ -333,7 +335,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_pdasSemana3.Location = new System.Drawing.Point(85, 187);
             this.txb_pdasSemana3.Margin = new System.Windows.Forms.Padding(2);
             this.txb_pdasSemana3.Name = "txb_pdasSemana3";
-            this.txb_pdasSemana3.Size = new System.Drawing.Size(30, 21);
+            this.txb_pdasSemana3.Size = new System.Drawing.Size(46, 21);
             this.txb_pdasSemana3.TabIndex = 23;
             // 
             // label16
@@ -362,17 +364,17 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_diasPdas2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_diasPdas2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_diasPdas2.Location = new System.Drawing.Point(186, 145);
+            this.txb_diasPdas2.Location = new System.Drawing.Point(210, 145);
             this.txb_diasPdas2.Margin = new System.Windows.Forms.Padding(2);
             this.txb_diasPdas2.Name = "txb_diasPdas2";
-            this.txb_diasPdas2.Size = new System.Drawing.Size(112, 21);
+            this.txb_diasPdas2.Size = new System.Drawing.Size(88, 21);
             this.txb_diasPdas2.TabIndex = 19;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(119, 148);
+            this.label12.Location = new System.Drawing.Point(135, 148);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(71, 17);
@@ -386,7 +388,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_pdasSemana2.Location = new System.Drawing.Point(85, 145);
             this.txb_pdasSemana2.Margin = new System.Windows.Forms.Padding(2);
             this.txb_pdasSemana2.Name = "txb_pdasSemana2";
-            this.txb_pdasSemana2.Size = new System.Drawing.Size(30, 21);
+            this.txb_pdasSemana2.Size = new System.Drawing.Size(46, 21);
             this.txb_pdasSemana2.TabIndex = 17;
             // 
             // label13
@@ -438,17 +440,17 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_diasPdas1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_diasPdas1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_diasPdas1.Location = new System.Drawing.Point(186, 103);
+            this.txb_diasPdas1.Location = new System.Drawing.Point(210, 103);
             this.txb_diasPdas1.Margin = new System.Windows.Forms.Padding(2);
             this.txb_diasPdas1.Name = "txb_diasPdas1";
-            this.txb_diasPdas1.Size = new System.Drawing.Size(112, 21);
+            this.txb_diasPdas1.Size = new System.Drawing.Size(88, 21);
             this.txb_diasPdas1.TabIndex = 11;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(119, 106);
+            this.label8.Location = new System.Drawing.Point(135, 106);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(71, 17);
@@ -462,7 +464,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_pdasSemana1.Location = new System.Drawing.Point(85, 102);
             this.txb_pdasSemana1.Margin = new System.Windows.Forms.Padding(2);
             this.txb_pdasSemana1.Name = "txb_pdasSemana1";
-            this.txb_pdasSemana1.Size = new System.Drawing.Size(30, 21);
+            this.txb_pdasSemana1.Size = new System.Drawing.Size(46, 21);
             this.txb_pdasSemana1.TabIndex = 9;
             // 
             // label7
@@ -1163,15 +1165,15 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SaveUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
             this.btn_SaveUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
             this.btn_SaveUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SaveUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SaveUser.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SaveUser.ForeColor = System.Drawing.Color.White;
             this.btn_SaveUser.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_SaveUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_SaveUser.Location = new System.Drawing.Point(861, 20);
+            this.btn_SaveUser.Location = new System.Drawing.Point(789, 37);
             this.btn_SaveUser.Margin = new System.Windows.Forms.Padding(2);
             this.btn_SaveUser.Name = "btn_SaveUser";
             this.btn_SaveUser.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btn_SaveUser.Size = new System.Drawing.Size(82, 32);
+            this.btn_SaveUser.Size = new System.Drawing.Size(79, 32);
             this.btn_SaveUser.TabIndex = 45;
             this.btn_SaveUser.Text = "Guardar";
             this.btn_SaveUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1185,20 +1187,53 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.FlatAppearance.BorderSize = 0;
             this.btn_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
             this.btn_Cancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
             this.btn_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Cancel.Location = new System.Drawing.Point(758, 20);
+            this.btn_Cancel.Location = new System.Drawing.Point(872, 37);
             this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btn_Cancel.Size = new System.Drawing.Size(82, 32);
+            this.btn_Cancel.Size = new System.Drawing.Size(79, 32);
             this.btn_Cancel.TabIndex = 46;
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
+            // btn_deleteSPartida
+            // 
+            this.btn_deleteSPartida.FlatAppearance.BorderSize = 0;
+            this.btn_deleteSPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_deleteSPartida.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar_24px;
+            this.btn_deleteSPartida.Location = new System.Drawing.Point(241, 27);
+            this.btn_deleteSPartida.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_deleteSPartida.Name = "btn_deleteSPartida";
+            this.btn_deleteSPartida.Size = new System.Drawing.Size(26, 28);
+            this.btn_deleteSPartida.TabIndex = 47;
+            this.btn_deleteSPartida.UseVisualStyleBackColor = true;
+            this.btn_deleteSPartida.Click += new System.EventHandler(this.btn_deleteSPartida_Click);
+            // 
+            // btn_pdfSPartida
+            // 
+            this.btn_pdfSPartida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_pdfSPartida.BackColor = System.Drawing.Color.White;
+            this.btn_pdfSPartida.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btn_pdfSPartida.FlatAppearance.BorderSize = 2;
+            this.btn_pdfSPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pdfSPartida.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pdfSPartida.ForeColor = System.Drawing.Color.Black;
+            this.btn_pdfSPartida.Image = global::sistema_modular_cafe_majada.Properties.Resources.pdf_24px;
+            this.btn_pdfSPartida.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_pdfSPartida.Location = new System.Drawing.Point(789, 2);
+            this.btn_pdfSPartida.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_pdfSPartida.Name = "btn_pdfSPartida";
+            this.btn_pdfSPartida.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.btn_pdfSPartida.Size = new System.Drawing.Size(162, 32);
+            this.btn_pdfSPartida.TabIndex = 48;
+            this.btn_pdfSPartida.Text = "Generar PDF";
+            this.btn_pdfSPartida.UseVisualStyleBackColor = false;
             // 
             // form_subPartidas
             // 
@@ -1206,6 +1241,8 @@ namespace sistema_modular_cafe_majada.views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 585);
+            this.Controls.Add(this.btn_pdfSPartida);
+            this.Controls.Add(this.btn_deleteSPartida);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_SaveUser);
             this.Controls.Add(this.groupBox4);
@@ -1310,10 +1347,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Button btn_CCafe;
         private System.Windows.Forms.Button btn_prodCafe;
-        private System.Windows.Forms.DateTimePicker dtp_fecha3;
-        private System.Windows.Forms.DateTimePicker dtp_fecha2;
-        private System.Windows.Forms.DateTimePicker dtp_fecha1;
-        private System.Windows.Forms.DateTimePicker dtp_fechaSalidaSecad;
         private System.Windows.Forms.DateTimePicker dtp_fechaInicioSecad;
         private System.Windows.Forms.DateTimePicker dtp_fechaSecado;
         private System.Windows.Forms.Button btn_pesador;
@@ -1325,5 +1358,11 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.ComboBox cbx_subProducto;
         private System.Windows.Forms.Button btn_SaveUser;
         private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.TextBox txb_fechaPartd3;
+        private System.Windows.Forms.TextBox txb_fechaPartd2;
+        private System.Windows.Forms.TextBox txb_fechaPartd1;
+        private System.Windows.Forms.Button btn_deleteSPartida;
+        private System.Windows.Forms.Button btn_pdfSPartida;
+        private System.Windows.Forms.DateTimePicker dtp_fechaSalidaSecad;
     }
 }

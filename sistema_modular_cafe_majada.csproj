@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -267,6 +267,12 @@
     <Compile Include="views\form_calidades_cafe.Designer.cs">
       <DependentUpon>form_calidades_cafe.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_cargosPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_cargosPersonal.Designer.cs">
+      <DependentUpon>form_cargosPersonal.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_claseUva.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -506,6 +512,9 @@
     <EmbeddedResource Include="views\form_calidades_cafe.resx">
       <DependentUpon>form_calidades_cafe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\form_cargosPersonal.resx">
+      <DependentUpon>form_cargosPersonal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\form_claseUva.resx">
       <DependentUpon>form_claseUva.cs</DependentUpon>
     </EmbeddedResource>
@@ -740,6 +749,8 @@
     <None Include="Resources\beneficio64px.png" />
     <None Include="Resources\calendario.png" />
     <None Include="Resources\calendario 128px.png" />
+    <None Include="Resources\cargos 32px.png" />
+    <None Include="Resources\btn_eliminar 24px.png" />
     <Content Include="Resources\circle-info-solid.png" />
     <None Include="Resources\Logo__majada.png" />
     <None Include="Resources\Logo_majada_claro.png" />

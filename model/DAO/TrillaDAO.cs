@@ -31,25 +31,29 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"
                 INSERT INTO Trilla (
                     id_cosecha_trilla,
-                    id_subpartida_trilla,
+                    num_trilla,
                     tipo_movimiento_trilla,
                     id_calidad_cafe_trilla,
                     id_subproducto_trilla,
                     cantidad_trilla_qqs_cafe,
                     cantidad_trilla_sacos_cafe,
                     id_procedencia_trilla,
+                    id_almacen_trilla,
+                    id_bodega_trilla,
                     fecha_trillaCafe,
                     id_personal_trilla,
                     observacion_trilla
                 ) VALUES (
                     @idCosecha,
-                    @idSubPartida,
+                    @numTrilla,
                     @tipoMovimientoTrilla,
                     @idCalidadCafe,
                     @idSubProducto,
                     @cantidadTrillaQQs,
                     @cantidadTrillaSacos,
                     @idProcedencia,
+                    @iAlmacen,
+                    @iBodega,
                     @fechaTrillaCafe,
                     @idPersonal,
                     @observacionTrilla
@@ -58,13 +62,15 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@idCosecha", trilla.IdCosecha);
-                conexion.AgregarParametro("@idSubPartida", trilla.IdSubPartida);
+                conexion.AgregarParametro("@numTrilla", trilla.NumTrilla);
                 conexion.AgregarParametro("@tipoMovimientoTrilla", trilla.TipoMovimientoTrilla);
                 conexion.AgregarParametro("@idCalidadCafe", trilla.IdCalidadCafe);
                 conexion.AgregarParametro("@idSubProducto", trilla.IdSubProducto);
                 conexion.AgregarParametro("@cantidadTrillaQQs", trilla.CantidadTrillaQQs);
                 conexion.AgregarParametro("@cantidadTrillaSacos", trilla.CantidadTrillaSacos);
                 conexion.AgregarParametro("@idProcedencia", trilla.IdProcedencia);
+                conexion.AgregarParametro("@iAlmacen", trilla.IdAlmacen);
+                conexion.AgregarParametro("@iBodega", trilla.IdBodega);
                 conexion.AgregarParametro("@fechaTrillaCafe", trilla.FechaTrillaCafe);
                 conexion.AgregarParametro("@idPersonal", trilla.IdPersonal);
                 conexion.AgregarParametro("@observacionTrilla", trilla.ObservacionTrilla);
@@ -99,17 +105,19 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Crear la consulta SQL para buscar trillas
                 string consulta = @" SELECT t.*,
                                            c.nombre_cosecha,
-                                           sp.nombre_subpartida,
                                            pd.nombre_procedencia,
-                                           cc.nombre_calidad_cafe,
+                                           cc.nombre_calidad,
                                            sbp.nombre_subproducto,
+                                           a.nombre_almacen,
+                                           b.nombre_bodega,
                                            p.nombre_personal
                                     FROM Trilla t
                                     INNER JOIN Cosecha c ON t.id_cosecha_trilla = c.id_cosecha
-                                    INNER JOIN SubPartida sp ON t.id_subpartida_trilla = sp.id_subpartida
-                                    INNER JOIN Procedencia_Destino_Cafe pd ON t.id_procedencia_trilla = pd.id_procedencia
+                                    LEFT JOIN Procedencia_Destino_Cafe pd ON t.id_procedencia_trilla = pd.id_procedencia
                                     INNER JOIN Calidad_Cafe cc ON t.id_calidad_cafe_trilla = cc.id_calidad
                                     INNER JOIN SubProducto sbp ON t.id_subproducto_trilla = sbp.id_subproducto
+                                    LEFT JOIN Almacen a ON t.id_almacen_trilla = a.id_almacen
+                                    LEFT JOIN Bodega_Cafe b ON t.id_bodega_trilla = b.id_bodega
                                     INNER JOIN Personal p ON t.id_personal_trilla = p.id_personal";
 
                 conexion.CrearComando(consulta);
@@ -123,21 +131,24 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdTrilla_cafe = Convert.ToInt32(reader["id_trilla"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_trilla"]),
                             NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            IdSubPartida = Convert.ToInt32(reader["id_subpartida_trilla"]),
-                            NombreSubPartida = Convert.ToString(reader["nombre_subpartida"]),
-                            IdProcedencia = Convert.ToInt32(reader["id_procedencia_trilla"]),
-                            NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
+                            NumTrilla = Convert.ToInt32(reader["num_trilla"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_trilla"]) ? 0 : Convert.ToInt32(reader["id_procedencia_trilla"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_trilla"]),
-                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad_cafe"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_trilla"]),
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_trilla"]) ? 0 : Convert.ToInt32(reader["id_almacen_trilla"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_trilla"]) ? 0 : Convert.ToInt32(reader["id_bodega_trilla"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
                             TipoMovimientoTrilla = Convert.ToString(reader["tipo_movimiento_trilla"]),
                             CantidadTrillaQQs = Convert.ToDouble(reader["cantidad_trilla_qqs_cafe"]),
                             CantidadTrillaSacos = Convert.ToDouble(reader["cantidad_trilla_sacos_cafe"]),
                             FechaTrillaCafe = Convert.ToDateTime(reader["fecha_trillaCafe"]),
                             IdPersonal = Convert.ToInt32(reader["id_personal_trilla"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
-                            ObservacionTrilla = Convert.ToString(reader["observacion_trilla"])
+                            ObservacionTrilla = Convert.IsDBNull(reader["observacion_trilla"]) ? null : Convert.ToString(reader["observacion_trilla"])
                         };
 
                         trillas.Add(trilla);
@@ -169,20 +180,21 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Crear la consulta SQL para buscar trillas
                 string consulta = @" SELECT t.*,
                                            c.nombre_cosecha,
-                                           sp.nombre_subpartida,
                                            pd.nombre_procedencia,
-                                           cc.nombre_calidad_cafe,
+                                           cc.nombre_calidad,
                                            sbp.nombre_subproducto,
+                                           a.nombre_almacen,
+                                           b.nombre_bodega,
                                            p.nombre_personal
                                     FROM Trilla t
                                     INNER JOIN Cosecha c ON t.id_cosecha_trilla = c.id_cosecha
-                                    INNER JOIN SubPartida sp ON t.id_subpartida_trilla = sp.id_subpartida
-                                    INNER JOIN Procedencia_Destino_Cafe pd ON t.id_procedencia_trilla = pd.id_procedencia
+                                    LEFT JOIN Procedencia_Destino_Cafe pd ON t.id_procedencia_trilla = pd.id_procedencia
                                     INNER JOIN Calidad_Cafe cc ON t.id_calidad_cafe_trilla = cc.id_calidad
                                     INNER JOIN SubProducto sbp ON t.id_subproducto_trilla = sbp.id_subproducto
+                                    LEFT JOIN Almacen a ON t.id_almacen_trilla = a.id_almacen
+                                    LEFT JOIN Bodega_Cafe b ON t.id_bodega_trilla = b.id_bodega
                                     INNER JOIN Personal p ON t.id_personal_trilla = p.id_personal
                                     WHERE c.nombre_cosecha LIKE CONCAT('%', @search, '%') OR
-                                          sp.nombre_subpartida LIKE CONCAT('%', @search, '%') OR
                                           pd.nombre_procedencia LIKE CONCAT('%', @search, '%') OR
                                           cc.nombre_calidad_cafe LIKE CONCAT('%', @search, '%') OR
                                           sbp.nombre_subproducto LIKE CONCAT('%', @search, '%') OR
@@ -201,21 +213,24 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdTrilla_cafe = Convert.ToInt32(reader["id_trilla"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_trilla"]),
                             NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            IdSubPartida = Convert.ToInt32(reader["id_subpartida_trilla"]),
-                            NombreSubPartida = Convert.ToString(reader["nombre_subpartida"]),
-                            IdProcedencia = Convert.ToInt32(reader["id_procedencia_trilla"]),
-                            NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
+                            NumTrilla = Convert.ToInt32(reader["num_trilla"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_trilla"]) ? 0 : Convert.ToInt32(reader["id_procedencia_trilla"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_trilla"]),
-                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad_cafe"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_trilla"]),
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_trilla"]) ? 0 : Convert.ToInt32(reader["id_almacen_trilla"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_trilla"]) ? 0 : Convert.ToInt32(reader["id_bodega_trilla"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
                             TipoMovimientoTrilla = Convert.ToString(reader["tipo_movimiento_trilla"]),
                             CantidadTrillaQQs = Convert.ToDouble(reader["cantidad_trilla_qqs_cafe"]),
                             CantidadTrillaSacos = Convert.ToDouble(reader["cantidad_trilla_sacos_cafe"]),
                             FechaTrillaCafe = Convert.ToDateTime(reader["fecha_trillaCafe"]),
                             IdPersonal = Convert.ToInt32(reader["id_personal_trilla"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
-                            ObservacionTrilla = Convert.ToString(reader["observacion_trilla"])
+                            ObservacionTrilla = Convert.IsDBNull(reader["observacion_trilla"]) ? null : Convert.ToString(reader["observacion_trilla"])
                         };
 
                         trillas.Add(trilla);
@@ -239,6 +254,21 @@ namespace sistema_modular_cafe_majada.model.DAO
         {
             bool exito = false;
 
+            Console.WriteLine("Depuracion DAO - iTrilla " + trilla.IdTrilla_cafe);
+            Console.WriteLine("Depuracion DAO - iCosecha " + trilla.IdCosecha);
+            Console.WriteLine("Depuracion DAO - iCalidad " + trilla.IdCalidadCafe);
+            Console.WriteLine("Depuracion DAO - iAlmacen " + trilla.IdAlmacen);
+            Console.WriteLine("Depuracion DAO - iBodega " + trilla.IdBodega);
+            Console.WriteLine("Depuracion DAO - iProcedencia " + trilla.IdProcedencia);
+            Console.WriteLine("Depuracion DAO - iPersonal " + trilla.IdPersonal);
+            Console.WriteLine("Depuracion DAO - iSubProducto " + trilla.IdSubProducto);
+            Console.WriteLine("Depuracion DAO - Fecha " + trilla.FechaTrillaCafe);
+            Console.WriteLine("Depuracion DAO - Tipo " + trilla.TipoMovimientoTrilla);
+            Console.WriteLine("Depuracion DAO - NumTrilla " + trilla.NumTrilla);
+            Console.WriteLine("Depuracion DAO - Observacion " + trilla.ObservacionTrilla);
+            Console.WriteLine("Depuracion DAO - CantidadQQs " + trilla.CantidadTrillaQQs);
+            Console.WriteLine("Depuracion DAO - CantidadSaco " + trilla.CantidadTrillaSacos);
+
             try
             {
                 // Conexión a la base de datos
@@ -247,28 +277,37 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Se crea el script SQL para actualizar
                 string consulta = @"UPDATE Trilla 
                                 SET id_cosecha_trilla = @idCosecha,
-                                    id_subpartida_trilla = @idSubPartida,
+                                    num_trilla = @numTrilla,
                                     tipo_movimiento_trilla = @tipoMovimientoTrilla,
                                     id_calidad_cafe_trilla = @idCalidadCafe,
                                     id_subproducto_trilla = @idSubProducto,
                                     cantidad_trilla_qqs_cafe = @cantidadTrillaQQs,
-                                    cantidad_trilla_sacos_cafe = @cantidadTrillaSacos,
-                                    id_procedencia_trilla = @idProcedencia,
+                                    cantidad_trilla_sacos_cafe = @cantidadTrillaSacos,";
+
+                                    if (trilla.IdProcedencia != 0)
+                                    {
+                                        consulta += "id_procedencia_trilla = @idProcedencia,";
+                                    }
+
+                                    consulta += @"id_almacen_trilla = @iAlmacen,
+                                    id_bodega_trilla = @iBodega,
                                     fecha_trillaCafe = @fechaTrillaCafe,
                                     id_personal_trilla = @idPersonal,
                                     observacion_trilla = @observacionTrilla
-                                WHERE id_trilla = @id";
+                                    WHERE id_trilla = @id";
 
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@idCosecha", trilla.IdCosecha);
-                conexion.AgregarParametro("@idSubPartida", trilla.IdSubPartida);
+                conexion.AgregarParametro("@numTrilla", trilla.NumTrilla);
                 conexion.AgregarParametro("@tipoMovimientoTrilla", trilla.TipoMovimientoTrilla);
                 conexion.AgregarParametro("@idCalidadCafe", trilla.IdCalidadCafe);
                 conexion.AgregarParametro("@idSubProducto", trilla.IdSubProducto);
                 conexion.AgregarParametro("@cantidadTrillaQQs", trilla.CantidadTrillaQQs);
                 conexion.AgregarParametro("@cantidadTrillaSacos", trilla.CantidadTrillaSacos);
                 conexion.AgregarParametro("@idProcedencia", trilla.IdProcedencia);
+                conexion.AgregarParametro("@iAlmacen", trilla.IdAlmacen);
+                conexion.AgregarParametro("@iBodega", trilla.IdBodega);
                 conexion.AgregarParametro("@fechaTrillaCafe", trilla.FechaTrillaCafe);
                 conexion.AgregarParametro("@idPersonal", trilla.IdPersonal);
                 conexion.AgregarParametro("@observacionTrilla", trilla.ObservacionTrilla);
@@ -357,16 +396,97 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdTrilla_cafe = Convert.ToInt32(reader["id_trilla"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_trilla"]),
-                            IdSubPartida = Convert.ToInt32(reader["id_subpartida_trilla"]),
-                            TipoMovimientoTrilla = Convert.ToString(reader["tipo_movimiento_trilla"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumTrilla = Convert.ToInt32(reader["num_trilla"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_trilla"]) ? 0 : Convert.ToInt32(reader["id_procedencia_trilla"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_trilla"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad_cafe"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_trilla"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_trilla"]) ? 0 : Convert.ToInt32(reader["id_almacen_trilla"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_trilla"]) ? 0 : Convert.ToInt32(reader["id_bodega_trilla"]),
+                            TipoMovimientoTrilla = Convert.ToString(reader["tipo_movimiento_trilla"]),
                             CantidadTrillaQQs = Convert.ToDouble(reader["cantidad_trilla_qqs_cafe"]),
                             CantidadTrillaSacos = Convert.ToDouble(reader["cantidad_trilla_sacos_cafe"]),
-                            IdProcedencia = Convert.ToInt32(reader["id_procedencia_trilla"]),
                             FechaTrillaCafe = Convert.ToDateTime(reader["fecha_trillaCafe"]),
                             IdPersonal = Convert.ToInt32(reader["id_personal_trilla"]),
-                            ObservacionTrilla = Convert.ToString(reader["observacion_trilla"])
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionTrilla = Convert.IsDBNull(reader["observacion_trilla"]) ? null : Convert.ToString(reader["observacion_trilla"])
+                        };
+
+                        listaTrillas.Add(trilla);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return listaTrillas;
+        }
+        
+        // Función para obtener todos los registros de Trilla en la base de datos
+        public List<Trilla> ObtenerTrillasPorCosecha(int iCosecha)
+        {
+            List<Trilla> listaTrillas = new List<Trilla>();
+
+            try
+            {
+                // Conexión a la base de datos (asegúrate de tener la clase "conexion" y los métodos correspondientes)
+                conexion.Conectar();
+
+                string consulta = @"SELECT t.*,
+                                            c.nombre_cosecha,
+                                           pd.nombre_procedencia,
+                                           cc.nombre_calidad,
+                                           sbp.nombre_subproducto,
+                                           a.nombre_almacen,
+                                           b.nombre_bodega,
+                                           p.nombre_personal
+                                    FROM Trilla t
+                                    INNER JOIN Cosecha c ON t.id_cosecha_trilla = c.id_cosecha
+                                    LEFT JOIN Procedencia_Destino_Cafe pd ON t.id_procedencia_trilla = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON t.id_calidad_cafe_trilla = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON t.id_subproducto_trilla = sbp.id_subproducto
+                                    LEFT JOIN Almacen a ON t.id_almacen_trilla = a.id_almacen
+                                    LEFT JOIN Bodega_Cafe b ON t.id_bodega_trilla = b.id_bodega
+                                    INNER JOIN Personal p ON t.id_personal_trilla = p.id_personal";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", iCosecha);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Trilla trilla = new Trilla()
+                        {
+                            IdTrilla_cafe = Convert.ToInt32(reader["id_trilla"]),
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha_trilla"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumTrilla = Convert.ToInt32(reader["num_trilla"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_trilla"]) ? 0 : Convert.ToInt32(reader["id_procedencia_trilla"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
+                            IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_trilla"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
+                            IdSubProducto = Convert.ToInt32(reader["id_subproducto_trilla"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_trilla"]) ? 0 : Convert.ToInt32(reader["id_almacen_trilla"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_trilla"]) ? 0 : Convert.ToInt32(reader["id_bodega_trilla"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            TipoMovimientoTrilla = Convert.ToString(reader["tipo_movimiento_trilla"]),
+                            CantidadTrillaQQs = Convert.ToDouble(reader["cantidad_trilla_qqs_cafe"]),
+                            CantidadTrillaSacos = Convert.ToDouble(reader["cantidad_trilla_sacos_cafe"]),
+                            FechaTrillaCafe = Convert.ToDateTime(reader["fecha_trillaCafe"]),
+                            IdPersonal = Convert.ToInt32(reader["id_personal_trilla"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionTrilla = Convert.IsDBNull(reader["observacion_trilla"]) ? null : Convert.ToString(reader["observacion_trilla"])
                         };
 
                         listaTrillas.Add(trilla);
@@ -408,16 +528,22 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdTrilla_cafe = Convert.ToInt32(reader["id_trilla"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_trilla"]),
-                            IdSubPartida = Convert.ToInt32(reader["id_subpartida_trilla"]),
-                            TipoMovimientoTrilla = Convert.ToString(reader["tipo_movimiento_trilla"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumTrilla = Convert.ToInt32(reader["num_trilla"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_trilla"]) ? 0 : Convert.ToInt32(reader["id_procedencia_trilla"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_trilla"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad_cafe"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_trilla"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_trilla"]) ? 0 : Convert.ToInt32(reader["id_almacen_trilla"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_trilla"]) ? 0 : Convert.ToInt32(reader["id_bodega_trilla"]),
+                            TipoMovimientoTrilla = Convert.ToString(reader["tipo_movimiento_trilla"]),
                             CantidadTrillaQQs = Convert.ToDouble(reader["cantidad_trilla_qqs_cafe"]),
                             CantidadTrillaSacos = Convert.ToDouble(reader["cantidad_trilla_sacos_cafe"]),
-                            IdProcedencia = Convert.ToInt32(reader["id_procedencia_trilla"]),
                             FechaTrillaCafe = Convert.ToDateTime(reader["fecha_trillaCafe"]),
                             IdPersonal = Convert.ToInt32(reader["id_personal_trilla"]),
-                            ObservacionTrilla = Convert.ToString(reader["observacion_trilla"])
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionTrilla = Convert.IsDBNull(reader["observacion_trilla"]) ? null : Convert.ToString(reader["observacion_trilla"])
                         };
                     }
                 }
@@ -434,5 +560,164 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return trilla;
         }
+        
+        // Función para obtener todos los registros de Trilla en la base de datos
+        public Trilla ObtenerTrillasPorIDNombre(int idTrilla)
+        {
+            Trilla trilla = null;
+
+            try
+            {
+                // Conexión a la base de datos (asegúrate de tener la clase "conexion" y los métodos correspondientes)
+                conexion.Conectar();
+
+                string consulta = @"SELECT t.*,
+                                            c.nombre_cosecha,
+                                           pd.nombre_procedencia,
+                                           cc.nombre_calidad,
+                                           sbp.nombre_subproducto,
+                                           a.nombre_almacen,
+                                           b.nombre_bodega,
+                                           p.nombre_personal
+                                    FROM Trilla t
+                                    INNER JOIN Cosecha c ON t.id_cosecha_trilla = c.id_cosecha
+                                    LEFT JOIN Procedencia_Destino_Cafe pd ON t.id_procedencia_trilla = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON t.id_calidad_cafe_trilla = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON t.id_subproducto_trilla = sbp.id_subproducto
+                                    LEFT JOIN Almacen a ON t.id_almacen_trilla = a.id_almacen
+                                    LEFT JOIN Bodega_Cafe b ON t.id_bodega_trilla = b.id_bodega
+                                    INNER JOIN Personal p ON t.id_personal_trilla = p.id_personal
+                                    WHERE id_trilla = @Id";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id", idTrilla);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        trilla = new Trilla()
+                        {
+                            IdTrilla_cafe = Convert.ToInt32(reader["id_trilla"]),
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha_trilla"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumTrilla = Convert.ToInt32(reader["num_trilla"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_trilla"]) ? 0 : Convert.ToInt32(reader["id_procedencia_trilla"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
+                            IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_trilla"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
+                            IdSubProducto = Convert.ToInt32(reader["id_subproducto_trilla"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_trilla"]) ? 0 : Convert.ToInt32(reader["id_almacen_trilla"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_trilla"]) ? 0 : Convert.ToInt32(reader["id_bodega_trilla"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            TipoMovimientoTrilla = Convert.ToString(reader["tipo_movimiento_trilla"]),
+                            CantidadTrillaQQs = Convert.ToDouble(reader["cantidad_trilla_qqs_cafe"]),
+                            CantidadTrillaSacos = Convert.ToDouble(reader["cantidad_trilla_sacos_cafe"]),
+                            FechaTrillaCafe = Convert.ToDateTime(reader["fecha_trillaCafe"]),
+                            IdPersonal = Convert.ToInt32(reader["id_personal_trilla"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionTrilla = Convert.IsDBNull(reader["observacion_trilla"]) ? null : Convert.ToString(reader["observacion_trilla"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return trilla;
+        }
+
+        //
+        public Trilla CountTrilla(int idCosecha)
+        {
+            Trilla trilla = null;
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalTrilla FROM Trilla
+                                    WHERE id_cosecha_trilla = @id";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", idCosecha);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            trilla = new Trilla()
+                            {
+                                CountTrilla = Convert.ToInt32(reader["TotalTrilla"])
+                            };
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return trilla;
+        }
+
+        //
+        public bool VerificarExistenciaTrilla(int idCosecha, int numSubpartida)
+        {
+            bool existeSubPartida = false;
+
+            try
+            {
+                // Conexión a la base de datos
+                conexion.Conectar();
+
+                // Consulta SQL con la cláusula WHERE para verificar la existencia de la subpartida
+                string consulta = @"SELECT COUNT(*) FROM Trilla 
+                            WHERE id_cosecha_trilla = @idCosecha AND num_trilla = @numTrilla";
+
+                conexion.CrearComando(consulta);
+
+                // Agregar los parámetros para evitar posibles ataques de inyección SQL
+                conexion.AgregarParametro("@idCosecha", idCosecha);
+                conexion.AgregarParametro("@numTrilla", numSubpartida);
+
+                // Ejecutar la consulta y obtener el resultado
+                int resultado = Convert.ToInt32(conexion.EjecutarConsultaEscalar());
+
+                // Si el resultado es mayor que 0, significa que existe una subpartida con los valores proporcionados
+                existeSubPartida = resultado > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia de la subpartida: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return existeSubPartida;
+        }
+
+
+
     }
 }

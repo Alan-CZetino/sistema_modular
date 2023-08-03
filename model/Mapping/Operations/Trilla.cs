@@ -10,11 +10,16 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
     {
         public int IdTrilla_cafe { get; set; }
         public int IdCosecha { get; set; }
+        public int NumTrilla { get; set; }
         public string NombreCosecha { get; set; }
-        public int IdSubPartida { get; set; }
-        public string NombreSubPartida { get; set; }
+
         public int IdProcedencia { get; set; }
         public string NombreProcedencia { get; set; }
+        public int IdAlmacen { get; set; }
+        public string NombreAlmacen { get; set; }
+        public int IdBodega { get; set; }
+        public string NombreBodega { get; set; }
+
         public int IdCalidadCafe { get; set; }
         public string NombreCalidadCafe { get; set; }
         public int IdSubProducto { get; set; }
@@ -26,5 +31,18 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public int IdPersonal { get; set; }
         public string NombrePersonal { get; set; }
         public string ObservacionTrilla { get; set; }
+        public int CountTrilla { get; set; }
+    }
+
+    public static class TablaSeleccionadaTrilla
+    {
+        public static int ITable { get; set; }
+    }
+
+    public static class TrillaSeleccionado
+    {
+        public static int ITrilla { get; set; }
+        public static int NumTrilla { get; set; }
+        public static bool clickImg { get; set; }
     }
 }
