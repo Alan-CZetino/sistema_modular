@@ -198,6 +198,61 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //obtener la Almacen y el nombre maquinaria en la BD
+        public List<Almacen> ObtenerAlmacenNombreCalidadBodega()
+        {
+            List<Almacen> listaAlmacen = new List<Almacen>();
+
+            try
+            {
+                // Conectar a la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para obtener el rol
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
+                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
+                                        FROM Almacen a
+                                        LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad";
+
+                conexion.CrearComando(consulta);
+
+                // Ejecutar la consulta y leer el resultado
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Almacen almacen = new Almacen()
+                        {
+                            IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
+                            UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
+                            IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
+                            NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            IdCalidadCafe = reader["id_calidad_cafe"] is DBNull ? (int?)null : Convert.ToInt32(reader["id_calidad_cafe"]),
+                            NombreCalidadCafe = reader["nombre_calidad"] is DBNull ? null : Convert.ToString(reader["nombre_calidad"])
+                        };
+                        listaAlmacen.Add(almacen);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el Almacen: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return listaAlmacen;
+        }
+        
+        //obtener la Almacen y el nombre maquinaria en la BD
         public List<Almacen> ObtenerAlmacenNombreBodega()
         {
             List<Almacen> listaAlmacen = new List<Almacen>();
@@ -258,11 +313,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
+                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
                                         FROM Almacen a
-                                        INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
                                         WHERE b.nombre_bodega LIKE CONCAT('%', @search, '%') OR a.nombre_almacen LIKE CONCAT('%', @search, '%') 
-                                                OR a.id_bodega_ubicacion_almacen LIKE CONCAT('%', @search, '%')";
+                                                OR a.id_bodega_ubicacion_almacen LIKE CONCAT('%', @search, '%') OR c.nombre_calidad LIKE CONCAT('%', @search, '%')";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@search", "%" + buscar + "%");
@@ -279,7 +336,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
-                            NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"])
+                            NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            IdCalidadCafe = reader["id_calidad_cafe"] is DBNull ? (int?)null : Convert.ToInt32(reader["id_calidad_cafe"]),
+                            NombreCalidadCafe = reader["nombre_calidad"] is DBNull ? null : Convert.ToString(reader["nombre_calidad"])
                         };
 
                         almacens.Add(almacen);
@@ -309,9 +369,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
+                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
                                         FROM Almacen a
-                                        INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
                                         WHERE a.id_bodega_ubicacion_almacen LIKE CONCAT('%', @search, '%')";
 
                 conexion.CrearComando(consulta);
@@ -329,7 +391,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
-                            NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"])
+                            NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            IdCalidadCafe = reader["id_calidad_cafe"] is DBNull ? (int?)null : Convert.ToInt32(reader["id_calidad_cafe"]),
+                            NombreCalidadCafe = reader["nombre_calidad"] is DBNull ? null : Convert.ToString(reader["nombre_calidad"])
                         };
 
                         almacens.Add(almacen);
@@ -396,7 +461,7 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return exito;
         }
-
+        
         //funcion para eliminar un registro de la base de datos
         public void EliminarAlmacen(int idAlmacen)
         {
@@ -432,6 +497,252 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
         }
+
+        //
+        public Almacen ObtenerCantidadCafeAlmacen(int iAlmacen)
+        {
+            Almacen almacen = null;
+            try
+            {
+                conexion.Conectar();
+
+                string consulta = @"SELECT * FROM Almacen WHERE id_almacen = @id";
+
+                conexion.CrearComando(consulta);
+
+                conexion.AgregarParametro("@id", iAlmacen);
+
+                // Ejecutar la consulta y leer el resultado
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        almacen = new Almacen()
+                        {
+                            CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"]))
+                        };
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener las cantidades: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+            return almacen;
+        }
+
+        //funcion para actualizar el registro de catidades en la base de datos
+        public bool ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(int idAlmacen, double cantidadNueva, int idCalidad)
+        {
+            bool exito = false;
+
+            try
+            {
+                //conexion a la base de datos
+                conexion.Conectar();
+
+                //se crea el script SQL 
+                string consulta = @"UPDATE Almacen SET cantidad_actual_almacen = @cantidadNu, id_calidad_cafe = @iCalidad
+                                    WHERE id_almacen = @id";
+                conexion.CrearComando(consulta);
+
+                conexion.AgregarParametro("@cantidadNu", cantidadNueva);
+                conexion.AgregarParametro("@iCalidad", idCalidad);
+                conexion.AgregarParametro("@id", idAlmacen);
+
+                int filasAfectadas = conexion.EjecutarInstruccion();
+
+                if (filasAfectadas > 0)
+                {
+                    Console.WriteLine("La actualización se realizó correctamente");
+                    exito = true;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo realizar la actualización");
+                    exito = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al actualizar los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion con la base de datos{
+                conexion.Desconectar();
+            }
+
+            return exito;
+        }
+        
+        //funcion para actualizar el registro de catidades en la base de datos
+        public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, int idCalidad)
+        {
+            bool exito = false;
+            Console.WriteLine("Depuracion - cantidad obtenida a actualizar " + cantidad);
+            try
+            {
+                //conexion a la base de datos
+                conexion.Conectar();
+
+                //se crea el script SQL 
+                string consulta = @"UPDATE Almacen SET cantidad_actual_almacen = @cantidad, id_calidad_cafe = @iCalidad
+                                    WHERE id_almacen = @id";
+                conexion.CrearComando(consulta);
+
+                conexion.AgregarParametro("@cantidad", cantidad);
+                conexion.AgregarParametro("@iCalidad", idCalidad);
+                conexion.AgregarParametro("@id", idAlmacen);
+
+                int filasAfectadas = conexion.EjecutarInstruccion();
+
+                if (filasAfectadas > 0)
+                {
+                    Console.WriteLine("La actualización se realizó correctamente");
+                    exito = true;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo realizar la actualización");
+                    exito = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al actualizar los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion con la base de datos{
+                conexion.Desconectar();
+            }
+
+            return exito;
+        }
+
+        //obtener la Almacen y el nombre maquinaria en la BD
+        public List<Almacen> ObtenerPorIDAlmacenNombreCalidadBodega(int id)
+        {
+            List<Almacen> listaAlmacen = new List<Almacen>();
+
+            try
+            {
+                // Conectar a la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para obtener el rol
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
+                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
+                                        FROM Almacen a
+                                        LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
+                                        WHERE ((id_calidad_cafe = @id or id_calidad_cafe IS NULL) AND (cantidad_actual_almacen IS NULL OR cantidad_actual_almacen < capacidad_almacen or 0.0))
+                                            OR (id_calidad_cafe <> @id AND (cantidad_actual_almacen = 0.0 or cantidad_actual_almacen IS NULL))";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", id);
+
+                // Ejecutar la consulta y leer el resultado
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Almacen almacen = new Almacen()
+                        {
+                            IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
+                            UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
+                            IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
+                            NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            IdCalidadCafe = reader["id_calidad_cafe"] is DBNull ? (int?)null : Convert.ToInt32(reader["id_calidad_cafe"]),
+                            NombreCalidadCafe = reader["nombre_calidad"] is DBNull ? null : Convert.ToString(reader["nombre_calidad"])
+                        };
+                        listaAlmacen.Add(almacen);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el Almacen: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return listaAlmacen;
+        }
+
+        //
+        public List<Almacen> BuscarIDBodegaAlmacenCalidad(int buscar, int id)
+        {
+            List<Almacen> almacens = new List<Almacen>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para obtener el rol
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
+                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
+                                        FROM Almacen a
+                                        LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
+                                        WHERE a.id_bodega_ubicacion_almacen LIKE CONCAT('%', @search, '%')
+                                            AND ((id_calidad_cafe = @id or id_calidad_cafe IS NULL) AND (cantidad_actual_almacen IS NULL OR cantidad_actual_almacen < capacidad_almacen or 0.0))
+                                            OR (id_calidad_cafe <> @id AND (cantidad_actual_almacen = 0.0 or cantidad_actual_almacen IS NULL))";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", "%" + buscar + "%");
+                conexion.AgregarParametro("@id", id);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Almacen almacen = new Almacen()
+                        {
+                            IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
+                            UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
+                            IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
+                            NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            IdCalidadCafe = reader["id_calidad_cafe"] is DBNull ? (int?)null : Convert.ToInt32(reader["id_calidad_cafe"]),
+                            NombreCalidadCafe = reader["nombre_calidad"] is DBNull ? null : Convert.ToString(reader["nombre_calidad"])
+                        };
+
+                        almacens.Add(almacen);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return almacens;
+        }
+
+
 
     }
 }

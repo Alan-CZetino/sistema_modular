@@ -27,13 +27,14 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Se crea script SQL para insertar
-                string consulta = @"INSERT INTO CantidadCafe_Silo_Piña (fecha_movimiento_cantidad_cafe, tipo_movimiento_cantidad_cafe, 
+                string consulta = @"INSERT INTO CantidadCafe_Silo_Piña (fecha_movimiento_cantidad_cafe, id_cosecha_cantidad, tipo_movimiento_cantidad_cafe, 
                                                                 cantidad_cafe ,id_almacen_silo_piña)
-                                    VALUES (@fecha, @cantidad, @tipo, @idAlmacenSiloPiña)";
+                                    VALUES (@fecha, @idC, @tipo, @cantidad, @idAlmacenSiloPiña)";
 
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@fecha", cantidad.FechaMovimiento);
+                conexion.AgregarParametro("@idC", cantidad.IdCosechaCantidad);
                 conexion.AgregarParametro("@cantidad", cantidad.CantidadCafe);
                 conexion.AgregarParametro("@tipo", cantidad.TipoMovimiento);
                 conexion.AgregarParametro("@idAlmacenSiloPiña", cantidad.IdAlmacenSiloPiña);
@@ -298,6 +299,53 @@ namespace sistema_modular_cafe_majada.model.DAO
             return cantidads;
         }
 
+
+        //
+        public CantidadSiloPiña BuscarCantidadSiloPiñaSub(string buscar)
+        {
+            CantidadSiloPiña cantidads = null;
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para obtener el rol
+                string consulta = @"SELECT *
+                                    FROM CantidadCafe_Silo_Piña
+                                    WHERE tipo_movimiento_cantidad_cafe LIKE CONCAT('%', @search)";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", "%" + buscar);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        cantidads = new CantidadSiloPiña()
+                        {
+                            IdCantidadCafe = Convert.ToInt32(reader["id_cantidad_cafe"]),
+                            IdCosechaCantidad = Convert.ToInt32(reader["id_cosecha_cantidad"]),
+                            FechaMovimiento = Convert.ToDateTime(reader["fecha_movimiento_cantidad_cafe"]),
+                            CantidadCafe = Convert.ToDouble(reader["cantidad_cafe"]),
+                            TipoMovimiento = Convert.ToString(reader["tipo_movimiento_cantidad_cafe"]),
+                            IdAlmacenSiloPiña = Convert.ToInt32(reader["id_almacen_silo_piña"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return cantidads;
+        }
+
         public bool ActualizarCantidadCafeSiloPiña(CantidadSiloPiña cantidad)
         {
             bool exito = false;
@@ -309,15 +357,15 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Se crea el script SQL 
                 string consulta = @"UPDATE CantidadCafe_Silo_Piña 
-                            SET fecha_movimiento_cantidad_cafe = @fecha, cantidad_cafe = @cantidad, tipo_movimiento_cantidad_cafe = @tipo,
+                            SET fecha_movimiento_cantidad_cafe = @fecha, id_cosecha_cantidad = @idC, cantidad_cafe = @cantidad,
                                 id_almacen_silo_piña = @idAlmacenSiloPiña
                             WHERE id_cantidad_cafe = @idCantidadCafe";
 
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@fecha", cantidad.FechaMovimiento);
+                conexion.AgregarParametro("@idC", cantidad.IdCosechaCantidad);
                 conexion.AgregarParametro("@cantidad", cantidad.CantidadCafe);
-                conexion.AgregarParametro("@tipo", cantidad.TipoMovimiento);
                 conexion.AgregarParametro("@idAlmacenSiloPiña", cantidad.IdAlmacenSiloPiña);
                 conexion.AgregarParametro("@idCantidadCafe", cantidad.IdCantidadCafe);
 

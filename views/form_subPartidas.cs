@@ -32,6 +32,8 @@ namespace sistema_modular_cafe_majada.views
         private bool imgClickAlmacen = false;
         private bool imgClickBodega = false;
         SubPartidaController countSP = null;
+        public double cantidaQQsUpdate = 0.00;
+        public double cantidaQQsActUpdate = 0.00;
 
         //variable para refrescar el formulario cad cierto tiempo
         private System.Timers.Timer refreshTimer;
@@ -48,6 +50,7 @@ namespace sistema_modular_cafe_majada.views
         private int iBodega;
         private int iAlmacen;
         private int iCalidad;
+        private int iCalidadNoUpd;
         private int iSubPartida;
 
         public form_subPartidas()
@@ -286,6 +289,7 @@ namespace sistema_modular_cafe_majada.views
             iProcedencia = sub.IdProcedencia;
             txb_calidad.Text = sub.NombreCalidadCafe;
             iCalidad = sub.IdCalidadCafe;
+            iCalidadNoUpd = sub.IdCalidadCafe;
             cbx_subProducto.SelectedIndex = isP;
             txb_pdasSemana1.Text = Convert.ToString(sub.Num1Semana);
             txb_pdasSemana2.Text = Convert.ToString(sub.Num2Semana);
@@ -303,7 +307,7 @@ namespace sistema_modular_cafe_majada.views
             txb_horaInicio.Text = Convert.ToString(horaInicio);
             txb_horaSalida.Text = Convert.ToString(horaSalida);
             txb_tiempoSecad.Text = tiempoSec;
-            txb_humedad.Text = sub.HumedadSecado.ToString();
+            txb_humedad.Text = sub.HumedadSecado.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             txb_rendimiento.Text = sub.Rendimiento.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             txb_nombrePuntero.Text = sub.NombrePunteroSecador;
             iSecador = sub.IdPunteroSecador;
@@ -316,6 +320,7 @@ namespace sistema_modular_cafe_majada.views
             dtp_fechaPesa.Value = sub.FechaPesado;
             txb_CantidadSaco.Text = sub.PesaSaco.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             txb_cantidadQQs.Text = sub.PesaQQs.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
+            cantidaQQsUpdate = sub.PesaQQs;
             txb_ubicadoBodega.Text = sub.NombreBodega;
             iBodega = sub.IdBodega;
             txb_almacenSiloPiña.Text = sub.NombreAlmacen;
@@ -452,6 +457,12 @@ namespace sistema_modular_cafe_majada.views
 
         public void SaveSubPartida() 
         {
+            var almacenC = new AlmacenController();
+            var cantSP = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
+            double cantMax = cantSP.CapacidadAlmacen;
+            double cantAct = cantSP.CantidadActualAlmacen;
+            double cantRest = cantMax - cantAct;
+            int idAlmacenUpd;
             //SubPartida subParti = new SubPartida();
             bool verific = VerificarCamposObligatorios();
             if(verific == true)
@@ -525,14 +536,14 @@ namespace sistema_modular_cafe_majada.views
                 if (double.TryParse(txb_humedad.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out humedadSecado)) { }
                 else
                 {
-                    MessageBox.Show("El valor ingresado en el campo Capacidad no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor ingresado en el campo Humedad no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 double rendimiento;
                 if (double.TryParse(txb_rendimiento.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out rendimiento)){}
                 else
                 {
-                    MessageBox.Show("El valor ingresado en el campo Capacidad no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor ingresado en el campo Rendimiento no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -554,14 +565,14 @@ namespace sistema_modular_cafe_majada.views
                 if (double.TryParse(txb_CantidadSaco.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoSaco)){}
                 else
                 {
-                    MessageBox.Show("El valor ingresado en el campo Capacidad no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor ingresado en el campo Cantidad Saco no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 double pesoQQs;
-                if (double.TryParse(txb_cantidadQQs.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoQQs)){}
+                if (double.TryParse(txb_cantidadQQs.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoQQs)){ cantidaQQsActUpdate = pesoQQs; }
                 else
                 {
-                    MessageBox.Show("El valor ingresado en el campo Capacidad no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor ingresado en el campo Cantidad QQs no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -619,12 +630,15 @@ namespace sistema_modular_cafe_majada.views
                     ObservacionPesador = observacionPesador
                 };
 
-
                 // Llamar al controlador para insertar la SubPartida en la base de datos
                 LogController log = new LogController();
                 var userControl = new UserController();
                 var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
                 var subPartController = new SubPartidaController();
+
+                //
+                var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
+                double actcantidad = almCM.CantidadActualAlmacen;
 
                 Console.WriteLine("depuracion - img cliqueada " + imagenClickeada);
                 if (!SubPartidaSeleccionado.clickImg)
@@ -633,11 +647,42 @@ namespace sistema_modular_cafe_majada.views
                     
                     if (!verificexisten)
                     {
+                        
+                        if (cantRest < pesoQQs)
+                        {
+                            MessageBox.Show("Error, la cantidad QQs de cafe que desea agregar al almacen excede sus limite. Desea Agregar la cantidad de " + pesoQQs + " en el espacio disponible "+ cantRest + " de " + cantMax, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        var cantidadCafeC = new CantidadSiloPiñaController();
+
+                        CantidadSiloPiña cantidad = new CantidadSiloPiña()
+                        {
+                            FechaMovimiento = fechaPesado,
+                            IdCosechaCantidad = CosechaActual.ICosechaActual,
+                            CantidadCafe = pesoQQs,
+                            TipoMovimiento = "Entrada Cafe No.SubPartida " + subPartida,
+                            IdAlmacenSiloPiña = iAlmacen
+                        };
+                        bool exitoregistroCantidad = cantidadCafeC.InsertarCantidadCafeSiloPiña(cantidad);
+                        if (!exitoregistroCantidad)
+                        {
+                            MessageBox.Show("Error, Ocurrio un problema en la insercion de la cantidad de cafe verifique los campos QQs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         bool exito = subPartController.InsertarSubPartida(subPart);
 
                         if (exito)
                         {
                             MessageBox.Show("SubPartida agregada correctamente.");
+
+                            
+                            double resultCa = actcantidad + pesoQQs; 
+                            Console.WriteLine("Depuracion - cantidad resultante " + resultCa);
+                            Console.WriteLine("Depuracion - cantidad obtenida a actualizar en subP" + pesoQQs);
+                            almacenC.ActualizarCantidadEntradaCafeAlmacen(iAlmacen, resultCa, iCalidad);
+                            
                             try
                             {
                                 //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
@@ -671,10 +716,68 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
+
+                    var cantidadCafeC = new CantidadSiloPiñaController();
+                    string search = "No.SubPartida " + SubPartidaSeleccionado.NombreSubParti;
+                    Console.WriteLine("Depuracion - buscador   " + search);
+                    var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
+
+                    Console.WriteLine("Depuracion - idCantodadSiloPiña  " + cantUpd.IdCantidadCafe);
+                    Console.WriteLine("Depuracion - cantidad obtenida a actualizar en subP" + cantUpd.CantidadCafe);
+                    Console.WriteLine("Depuracion - Almacen obtenida a actualizar en subP" + cantUpd.IdAlmacenSiloPiña);
+
+                    CantidadSiloPiña cantidad = new CantidadSiloPiña()
+                    {
+                        IdCantidadCafe = cantUpd.IdCantidadCafe,
+                        FechaMovimiento = fechaPesado,
+                        IdCosechaCantidad = CosechaActual.ICosechaActual,
+                        CantidadCafe = cantidaQQsActUpdate,
+                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
+                    };
+
+                    if (cantidaQQsUpdate != cantidaQQsActUpdate)
+                    {
+                        if (cantRest < pesoQQs)
+                        {
+                            MessageBox.Show("Error, la cantidad QQs de cafe que desea agregar al almacen excede sus limite. Desea Agregar la cantidad de " + pesoQQs + " en el espacio disponible " + cantRest + " de " + cantMax, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        bool exitoregistroCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidad);
+                        if (!exitoregistroCantidad)
+                        {
+                            MessageBox.Show("Error, Ocurrio un problema en la actualizacion de la cantidad de cafe verifique los campos QQs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        
+                    }
+
                     bool exito = subPartController.ActualizarSubPartida(subPart);
 
                     if (exito)
                     {
+                        if (cantidaQQsUpdate != cantidaQQsActUpdate)
+                        {
+                            double resultCaUpd = actcantidad + cantidaQQsActUpdate - cantidaQQsUpdate;
+                            double resultCaNoUpd = actcantidad - cantidaQQsUpdate;
+                            Console.WriteLine("Depuracion - cantidad resultante " + resultCaUpd);
+                            Console.WriteLine("Depuracion - cantidad obtenida a actualizar en subP" + resultCaUpd);
+
+                            if(cantUpd.IdAlmacenSiloPiña != iAlmacen)
+                            {
+                                Console.WriteLine("Depuracion - se detecto cambio de almacen  " + cantUpd.IdCantidadCafe + " " + iAlmacen);
+                                //no actualiza los id unicamnete la cantidad restara ya que detecto que el almacen es diferente 
+                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaNoUpd, iCalidadNoUpd);
+                                //cambia los nuevos datos ya que detecto que el almacen cambio 
+                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, iCalidad);
+                            }
+                            else
+                            {
+                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaUpd, iCalidad);
+                            }
+                        }
+
                         MessageBox.Show("SubPartida Actualizada correctamente.");
                         try
                         {
@@ -872,6 +975,7 @@ namespace sistema_modular_cafe_majada.views
             }
 
             AlmacenBodegaClick.IBodega = 0;
+            iBodega = 0;
             dtp_fechaSecado.Value = DateTime.Now;
             dtp_fechaInicioSecad.Value = DateTime.Now;
             dtp_fechaSalidaSecad.Value = DateTime.Now;
