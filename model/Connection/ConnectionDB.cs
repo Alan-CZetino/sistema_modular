@@ -95,5 +95,7 @@ namespace sistema_modular_cafe_majada.model.Connection
             return comando.ExecuteReader();
         }
 
+
+
     }
 }
