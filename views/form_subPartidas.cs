@@ -262,7 +262,7 @@ namespace sistema_modular_cafe_majada.views
         }
 
         //
-        public void ShowSubParidaView()
+        public void ShowSubPartidaView()
         {
             var subPC = new SubPartidaController();
             SubProductoController subProC = new SubProductoController();
@@ -340,7 +340,7 @@ namespace sistema_modular_cafe_majada.views
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
-                ShowSubParidaView();
+                ShowSubPartidaView();
             }
         }
 
