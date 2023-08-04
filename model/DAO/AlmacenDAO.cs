@@ -331,8 +331,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         Almacen almacen = new Almacen()
                         {
                             IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
-                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
-                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
