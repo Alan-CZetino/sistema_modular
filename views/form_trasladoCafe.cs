@@ -167,6 +167,7 @@ namespace sistema_modular_cafe_majada.views
             txb_fincaDes.Text = sub.NombreProcedenciaDestino;
             iProcedencia = sub.IdProcedencia;
             iProcedenciaDest = sub.IdProcedenciaDestino;
+
         }
 
         //
@@ -679,14 +680,9 @@ namespace sistema_modular_cafe_majada.views
                 string searchPr = "Procedencia No.TrasladoCafe " + TrasladoSeleccionado.NumTraslado;
                 string searchDes = "Destino No.TrasladoCafe " + TrasladoSeleccionado.NumTraslado;
                 //Procedencia
-                Console.WriteLine("Depuracion - buscador Procedencia  " + searchPr);
                 var cantUpdPr = cantidadCafeC.BuscarCantidadSiloPiñaSub(searchPr);
                 //Destino
-                Console.WriteLine("Depuracion - buscador Destino  " + searchDes);
                 var cantUpdDes = cantidadCafeC.BuscarCantidadSiloPiñaSub(searchDes);
-
-                Console.WriteLine("Depuracion - Id Procedencia  " + cantUpdPr.IdCantidadCafe + " Almacen " + cantUpdPr.IdAlmacenSiloPiña);
-                Console.WriteLine("Depuracion - Id Destino  " + cantUpdDes.IdCantidadCafe + " Almacen " + cantUpdDes.IdAlmacenSiloPiña);
 
                 if (cantActPr < pesoQQs && cantRestDes < pesoQQs)
                 {
@@ -704,7 +700,7 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 //Procedencia
-                if (cantUpdPr.IdAlmacenSiloPiña != AlmacenSeleccionado.IAlmacen )
+                if (cantUpdPr.IdAlmacenSiloPiña != iAlmacenProce )
                 {
                     //actual almacen
                     //no actualiza los id, unicamnete la cantidad sumara ya que detecto que el almacen es diferente 
@@ -712,19 +708,15 @@ namespace sistema_modular_cafe_majada.views
                     double cantidAct = cantidadActC.CantidadActualAlmacen;
                     double resultCaNoUpd = cantidAct + cantidaQQsActUpdate;
 
-                    Console.WriteLine("Depuracion - Cantidad Procedencia no upd  " + resultCaNoUpd + " id Almacem " + cantUpdPr.IdAlmacenSiloPiña);
-
                     almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpdPr.IdAlmacenSiloPiña, resultCaNoUpd, iCalidadNoUpd);
 
                     //nuevo almacen
                     //cambia los nuevos datos ya que detecto que el almacen cambio 
-                    var cantidadNewC = almacenC.ObtenerCantidadCafeAlmacen(AlmacenSeleccionado.IAlmacen);
+                    var cantidadNewC = almacenC.ObtenerCantidadCafeAlmacen((AlmacenSeleccionado.IAlmacen == 0) ? iAlmacenProce : AlmacenSeleccionado.IAlmacen);
                     double cantidNew = cantidadNewC.CantidadActualAlmacen;
                     double resultCaUpd = cantidNew - cantidaQQsActUpdate;
 
-                    Console.WriteLine("Depuracion - Cantidad Procedencia upd  " + resultCaUpd + " id Almacem " + iAlmacenProce);
-
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(AlmacenSeleccionado.IAlmacen, resultCaUpd, iCalidad);
+                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen((AlmacenSeleccionado.IAlmacen == 0) ? iAlmacenProce : AlmacenSeleccionado.IAlmacen, resultCaUpd, iCalidad);
 
                     CantidadSiloPiña cantidadUpd = new CantidadSiloPiña()
                     {
@@ -744,7 +736,7 @@ namespace sistema_modular_cafe_majada.views
 
                 }
                 //Destino
-                if( cantUpdDes.IdAlmacenSiloPiña != AlmacenSeleccionado.IAlmacenDestino )
+                if( cantUpdDes.IdAlmacenSiloPiña != iAlmacenDest )
                 {
                     //actual almacen
                     //no actualiza los id, unicamnete la cantidad sumara ya que detecto que el almacen es diferente 
@@ -752,19 +744,15 @@ namespace sistema_modular_cafe_majada.views
                     double cantidAct = cantidadActC.CantidadActualAlmacen;
                     double resultCaNoUpd = cantidAct - cantidaQQsActUpdate;
 
-                    Console.WriteLine("Depuracion - Cantidad Procedencia upd  " + resultCaNoUpd + " id Almacem " + cantUpdDes.IdAlmacenSiloPiña);
-
                     almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpdDes.IdAlmacenSiloPiña, resultCaNoUpd, iCalidadNoUpd);
 
                     //nuevo almacen
                     //cambia los nuevos datos ya que detecto que el almacen cambio 
-                    var cantidadNewC = almacenC.ObtenerCantidadCafeAlmacen(AlmacenSeleccionado.IAlmacenDestino);
+                    var cantidadNewC = almacenC.ObtenerCantidadCafeAlmacen((AlmacenSeleccionado.IAlmacenDestino == 0) ? iAlmacenDest : AlmacenSeleccionado.IAlmacenDestino);
                     double cantidNew = cantidadNewC.CantidadActualAlmacen;
                     double resultCaUpd = cantidNew + cantidaQQsActUpdate;
 
-                    Console.WriteLine("Depuracion - Cantidad Procedencia upd  " + resultCaUpd + " id Almacem " + iAlmacenDest);
-
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(AlmacenSeleccionado.IAlmacenDestino, resultCaUpd, iCalidad);
+                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen((AlmacenSeleccionado.IAlmacenDestino == 0) ? iAlmacenDest : AlmacenSeleccionado.IAlmacenDestino, resultCaUpd, iCalidad);
 
                     CantidadSiloPiña cantidadUpd = new CantidadSiloPiña()
                     {
@@ -798,7 +786,7 @@ namespace sistema_modular_cafe_majada.views
                     };
                     
                     //Destino
-                    double resultCaUpdDes = actcantidadPr - cantidaQQsUpdate + cantidaQQsActUpdate;
+                    double resultCaUpdDes = actcantidadDes + cantidaQQsActUpdate - cantidaQQsUpdate;
                     almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpdDes.IdAlmacenSiloPiña, resultCaUpdDes, iCalidad);
 
                     CantidadSiloPiña cantidadDes = new CantidadSiloPiña()
@@ -868,17 +856,14 @@ namespace sistema_modular_cafe_majada.views
                     var cantidadCafeC = new CantidadSiloPiñaController();
                     string searchPr = "Procedencia No.TrasladoCafe " + TrasladoSeleccionado.NumTraslado;
                     string searchDes = "Destino No.TrasladoCafe " + TrasladoSeleccionado.NumTraslado;
+                    
                     //Procedencia
-                    Console.WriteLine("Depuracion - buscador Procedencia  " + searchPr);
                     var cantUpdPr = cantidadCafeC.BuscarCantidadSiloPiñaSub(searchPr);
                     //Destino
-                    Console.WriteLine("Depuracion - buscador Destino  " + searchDes);
                     var cantUpdDes = cantidadCafeC.BuscarCantidadSiloPiñaSub(searchDes);
 
                     var almacenC = new AlmacenController();
                     
-
-
                     //Almacen Procedencia
                     var almCMP = almacenC.ObtenerCantidadCafeAlmacen(iAlmacenProce);
                     double actcantidadPr = almCMP.CantidadActualAlmacen;
@@ -891,7 +876,7 @@ namespace sistema_modular_cafe_majada.views
                     double actcantidadDes = almCMD.CantidadActualAlmacen;
 
                     double resultCaUpdDes = actcantidadDes - cantidaQQsActUpdate;
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacenProce, resultCaUpdDes, iCalidad);
+                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacenDest, resultCaUpdDes, iCalidad);
 
                     cantidadCafeC.EliminarCantidadSiloPiña(cantUpdPr.IdCantidadCafe);
                     cantidadCafeC.EliminarCantidadSiloPiña(cantUpdDes.IdCantidadCafe);
