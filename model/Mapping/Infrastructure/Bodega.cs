@@ -20,6 +20,8 @@ namespace sistema_modular_cafe_majada.model.Mapping.Infrastructure
     {
         public static int IdBodega { get; set; }
         public static string NombreBodega { get; set; }
+        public static int IdBodegaDestino { get; set; }
+        public static string NombreBodegaDestino { get; set; }
     }
 
     public static class TablaSeleccionadabodega

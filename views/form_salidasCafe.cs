@@ -126,6 +126,7 @@ namespace sistema_modular_cafe_majada.views
             // Obtener la fecha y la hora por separado
             DateTime fechaSalida = sub.FechaSalidaCafe.Date;
 
+            dtp_fechaSalida.Value = fechaSalida;
             iSalida = SalidaSeleccionado.ISalida;
             txb_numSalida.Text = Convert.ToString(SalidaSeleccionado.NumSalida);
             txb_calidadCafe.Text = sub.NombreCalidadCafe;
@@ -142,6 +143,8 @@ namespace sistema_modular_cafe_majada.views
             iAlmacen = sub.IdAlmacen;
             txb_personal.Text = sub.NombrePersonal;
             iPesador = sub.IdPersonal;
+            txb_finca.Text = sub.NombreProcedencia;
+            iProcedencia = sub.IdProcedencia;
 
             if (sub.TipoSalida == "Exportacion")
             {
@@ -526,7 +529,7 @@ namespace sistema_modular_cafe_majada.views
                         imgClickBodega = false;
                         imagenClickeadaSL = false;
                         imgClickAlmacen = false;
-                        TrillaSeleccionado.clickImg = false;
+                        SalidaSeleccionado.clickImg = false;
                     }
                     else
                     {

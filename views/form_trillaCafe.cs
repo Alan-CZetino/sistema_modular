@@ -150,6 +150,7 @@ namespace sistema_modular_cafe_majada.views
             // Obtener la fecha y la hora por separado
             DateTime fechaTrilla = sub.FechaTrillaCafe.Date;
 
+            dtp_fechaTrilla.Value = fechaTrilla;
             iTrilla = TrillaSeleccionado.ITrilla;
             txb_numTrilla.Text = Convert.ToString(TrillaSeleccionado.NumTrilla);
             txb_calidadCafe.Text = sub.NombreCalidadCafe;
@@ -166,6 +167,8 @@ namespace sistema_modular_cafe_majada.views
             iAlmacen = sub.IdAlmacen;
             txb_personal.Text = sub.NombrePersonal;
             iPesador = sub.IdPersonal;
+            txb_finca.Text = sub.NombreProcedencia;
+            iProcedencia = sub.IdProcedencia;
             
             if (sub.TipoMovimientoTrilla == "SubProducto de Trilla")
             {
