@@ -94,12 +94,12 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
         }
 
         //
-        public bool ActualizarSalidaCafe(int idSalidaCafe, Salida salidaCafe)
+        public bool ActualizarSalidaCafe(Salida salidaCafe)
         {
             try
             {
                 // Llamada al método del DAO para actualizar la Salida
-                return salidaDAO.ActualizarSalidaCafe(idSalidaCafe, salidaCafe);
+                return salidaDAO.ActualizarSalidaCafe(salidaCafe);
             }
             catch (Exception ex)
             {
@@ -119,6 +119,66 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
             catch (Exception ex)
             {
                 Console.WriteLine("Ocurrió un error al eliminar la Salida: " + ex.Message);
+            }
+        }
+
+        //
+        public List<Salida> ObtenerSalidasPorCosecha(int iCosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener las Trilla
+                return salidaDAO.ObtenerSalidasPorCosecha(iCosecha);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de Salidas de Cafe: " + ex.Message);
+                return new List<Salida>();
+            }
+        }
+
+        //
+        public Salida ObtenerSalidasPorIDNombre(int idSalida)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la Salida
+                return salidaDAO.ObtenerSalidasPorIDNombre(idSalida);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la Salida: " + ex.Message);
+                return null;
+            }
+        }
+
+        //
+        public Salida CountSalida(int idCosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para contar la Salida
+                return salidaDAO.CountSalida(idCosecha);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la totalizacion de las Salidas en la base de datos: " + ex.Message);
+                return null;
+            }
+        }
+
+        //
+        public bool VerificarExistenciaSalida(int idCosecha, int numSalida)
+        {
+            try
+            {
+                // Llamada al método del DAO para verificar la Salida
+                return salidaDAO.VerificarExistenciaSalida(idCosecha, numSalida);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia de las Salidas: " + ex.Message);
+                return false;
             }
         }
 

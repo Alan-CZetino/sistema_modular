@@ -34,6 +34,8 @@ namespace sistema_modular_cafe_majada.views
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
+        public double cantidaSacoUpdate = 0.00;
+        public double cantidaSacoActUpdate = 0.00;
 
         private bool imagenClickeadaTR = false;
         private bool imgClickAlmacen = false;
@@ -150,6 +152,7 @@ namespace sistema_modular_cafe_majada.views
             // Obtener la fecha y la hora por separado
             DateTime fechaTrilla = sub.FechaTrillaCafe.Date;
 
+            dtp_fechaTrilla.Value = fechaTrilla;
             iTrilla = TrillaSeleccionado.ITrilla;
             txb_numTrilla.Text = Convert.ToString(TrillaSeleccionado.NumTrilla);
             txb_calidadCafe.Text = sub.NombreCalidadCafe;
@@ -160,12 +163,15 @@ namespace sistema_modular_cafe_majada.views
             txb_pesoSaco.Text = sub.CantidadTrillaSacos.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             txb_pesoQQs.Text = sub.CantidadTrillaQQs.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             cantidaQQsUpdate = sub.CantidadTrillaQQs;
+            cantidaSacoUpdate = sub.CantidadTrillaSacos;
             txb_bodega.Text = sub.NombreBodega;
             iBodega = sub.IdBodega;
             txb_almacen.Text = sub.NombreAlmacen;
             iAlmacen = sub.IdAlmacen;
             txb_personal.Text = sub.NombrePersonal;
             iPesador = sub.IdPersonal;
+            txb_finca.Text = sub.NombreProcedencia;
+            iProcedencia = sub.IdProcedencia;
             
             if (sub.TipoMovimientoTrilla == "SubProducto de Trilla")
             {
@@ -308,7 +314,6 @@ namespace sistema_modular_cafe_majada.views
         //
         public void SaveTrilla()
         {
-            
             bool verific = VerificarCamposObligatorios();
             if (!verific)
             {
@@ -336,6 +341,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 MessageBox.Show("Ninguna Tipo de Movimiento en Trilla a sido seleccionado. Por favor seleccionar uno.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             // Obtener el valor numérico seleccionado
@@ -359,7 +365,7 @@ namespace sistema_modular_cafe_majada.views
             }
 
             double pesoSaco;
-            if (double.TryParse(txb_pesoSaco.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoSaco)) { }
+            if (double.TryParse(txb_pesoSaco.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoSaco)) { cantidaSacoActUpdate = pesoSaco; }
             else
             {
                 MessageBox.Show("El valor ingresado en el campo Cantidad Saco no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -402,8 +408,7 @@ namespace sistema_modular_cafe_majada.views
             //
             var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
             double actcantidad = almCM.CantidadActualAlmacen;
-            Console.WriteLine("Depuracion - cantidad actual en almacen  " + almCM.CantidadActualAlmacen);
-            //Console.WriteLine("depuracion - img cliqueada " + imagenClickeada);
+
             if (!TrillaSeleccionado.clickImg)
             {
                 bool verificexisten = trillaController.VerificarExistenciaTrilla(CosechaActual.ICosechaActual, Convert.ToInt32(txb_numTrilla.Text));
@@ -424,6 +429,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaTrilla,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = pesoQQs,
+                        CantidadCafeSaco = pesoSaco,
                         TipoMovimiento = "Salida Cafe No.Trilla " + numTrilla,
                         IdAlmacenSiloPiña = iAlmacen
                     };
@@ -504,20 +510,6 @@ namespace sistema_modular_cafe_majada.views
                 Console.WriteLine("Depuracion - buscador   " + search);
                 var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
 
-                Console.WriteLine("Depuracion - id Cantidad silopiña  " + cantUpd.IdCantidadCafe);
-                Console.WriteLine("Depuracion - idCantodadSiloPiña  " + cantUpd.IdCantidadCafe);
-                Console.WriteLine("Depuracion - cantidad obtenida a actualizar en subP" + cantUpd.CantidadCafe);
-                Console.WriteLine("Depuracion - Almacen obtenida a actualizar en subP" + cantUpd.IdAlmacenSiloPiña);
-
-                CantidadSiloPiña cantidad = new CantidadSiloPiña()
-                {
-                    IdCantidadCafe = cantUpd.IdCantidadCafe,
-                    FechaMovimiento = fechaTrilla,
-                    IdCosechaCantidad = CosechaActual.ICosechaActual,
-                    CantidadCafe = cantidaQQsActUpdate,
-                    IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
-                };
-
                 if (cantAct < pesoQQs)
                 {
                     MessageBox.Show("Error, la cantidad QQs de cafe que desea Sacar del almacen excede sus limite. Desea Sacar la cantidad de " + pesoQQs + " en el contenido disponible " + cantAct, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -532,58 +524,74 @@ namespace sistema_modular_cafe_majada.views
                     return;
                 }
 
-                //Console.WriteLine("Depuracion - cantidad resultante " + resultCaUpd);
-                //Console.WriteLine("Depuracion - cantidad obtenida a actualizar en subP" + resultCaUpd);
-
-                Console.WriteLine("Depuracion - paso 1");
                 if (imgClickUpdAlmacen)
                 {
                     iAlmacen = AlmacenSeleccionado.IAlmacen;
                 }
 
-                Console.WriteLine("Depuracion - paso 2");
                 if (cantUpd.IdAlmacenSiloPiña != iAlmacen)
                 {
-                    Console.WriteLine("Depuracion - paso 3 en if");
-                    Console.WriteLine("Depuracion - se detecto cambio de almacen  " + cantUpd.IdAlmacenSiloPiña + " " + iAlmacen);
-
                     var cantidadActC = almacenC.ObtenerCantidadCafeAlmacen(cantUpd.IdAlmacenSiloPiña);
                     double cantidAct = cantidadActC.CantidadActualAlmacen;
                     double resultCaNoUpd = cantidAct + cantidaQQsUpdate;
+                    
                     //actual almacen
-                    Console.WriteLine("Depuracion - cantidad actual almacen " + cantidAct + " " + cantUpd.IdAlmacenSiloPiña);
-                    Console.WriteLine("Depuracion - resultado cantidad " + resultCaNoUpd + " " + cantUpd.IdAlmacenSiloPiña);
                     //no actualiza los id, unicamnete la cantidad sumara ya que detecto que el almacen es diferente 
                     almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaNoUpd, iCalidadNoUpd);
 
                     var cantidadNewC = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
                     double cantidNew = cantidadNewC.CantidadActualAlmacen;
                     double resultCaUpd = cantidNew - cantidaQQsActUpdate;
+                    
                     //nuevo almacen
-                    Console.WriteLine("Depuracion - cantidad actual almacen " + cantidNew + " " + iAlmacen);
-                    Console.WriteLine("Depuracion - resultado cantidad " + resultCaUpd + " " + iAlmacen);
                     //cambia los nuevos datos ya que detecto que el almacen cambio 
                     almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, iCalidad);
+
+                    CantidadSiloPiña cantidadUpd = new CantidadSiloPiña()
+                    {
+                        IdCantidadCafe = cantUpd.IdCantidadCafe,
+                        FechaMovimiento = fechaTrilla,
+                        IdCosechaCantidad = CosechaActual.ICosechaActual,
+                        CantidadCafe = cantidaQQsActUpdate,
+                        CantidadCafeSaco = cantidaSacoActUpdate,
+                        IdAlmacenSiloPiña = iAlmacen
+                    };
+
+                    bool exitoUpdateCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidadUpd);
+                    if (!exitoUpdateCantidad)
+                    {
+                        MessageBox.Show("Error, Ocurrio un problema en la actualizacion de la cantidad de cafe verifique los campos QQs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                 }
                 else
                 {
-                    Console.WriteLine("Depuracion - paso 3 en else");
                     double resultCaUpd = actcantidad + cantidaQQsUpdate - cantidaQQsActUpdate;
                     almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaUpd, iCalidad);
-                }
 
-                bool exitoregistroCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidad);
-                Console.WriteLine("Depuracion - paso 4");
-                if (!exitoregistroCantidad)
-                {
-                    MessageBox.Show("Error, Ocurrio un problema en la actualizacion de la cantidad de cafe verifique los campos QQs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    CantidadSiloPiña cantidad = new CantidadSiloPiña()
+                    {
+                        IdCantidadCafe = cantUpd.IdCantidadCafe,
+                        FechaMovimiento = fechaTrilla,
+                        IdCosechaCantidad = CosechaActual.ICosechaActual,
+                        CantidadCafe = cantidaQQsActUpdate,
+                        CantidadCafeSaco = cantidaSacoActUpdate,
+                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
+                    };
+
+                    bool exitoactualizarCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidad);
+                    if (!exitoactualizarCantidad)
+                    {
+                        MessageBox.Show("Error, Ocurrio un problema en la actualizacion de la cantidad de cafe verifique los campos QQs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                 }
 
                 MessageBox.Show("Trilla Actualizada correctamente.");
                 try
                 {
-                    //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
                     //verificar el departamento
                     log.RegistrarLog(usuario.IdUsuario, "Actualizacion dato Trilla", ModuloActual.NombreModulo, "Actualizacion", "Actualizo los datos de la Trilla con id ( " + trilla.IdTrilla_cafe + " ) en la base de datos");
                     TrillaSeleccionado.clickImg = false;
@@ -664,6 +672,7 @@ namespace sistema_modular_cafe_majada.views
         private void btn_SaveTrilla_Click(object sender, EventArgs e)
         {
             SaveTrilla();
+            cbx_subProducto.SelectedIndex = -1;
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -676,5 +685,54 @@ namespace sistema_modular_cafe_majada.views
             TrillaSeleccionado.clickImg = false;
         }
 
+        private void btn_deleteTrilla_Click(object sender, EventArgs e)
+        {
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (TrillaSeleccionado.NumTrilla != 0)
+            {
+                LogController log = new LogController();
+                UserController userControl = new UserController();
+
+                Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro Trilla No: " + TrillaSeleccionado.NumTrilla + ", de la cosecha: " + CosechaActual.NombreCosechaActual + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    //se llama la funcion delete del controlador para eliminar el registro
+                    TrillaController controller = new TrillaController();
+                    controller.EliminarTrilla(TrillaSeleccionado.ITrilla);
+
+                    DateTime fechaTrilla = dtp_fechaTrilla.Value.Date;
+                    var cantidadCafeC = new CantidadSiloPiñaController();
+                    string search = "No.Trilla " + TrillaSeleccionado.NumTrilla;
+                    var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
+
+                    var almacenC = new AlmacenController();
+                    var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
+                    double actcantidad = almCM.CantidadActualAlmacen;
+
+                    double resultCaUpd = actcantidad + cantidaQQsUpdate;
+                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, iCalidad);
+
+                    cantidadCafeC.EliminarCantidadSiloPiña(cantUpd.IdCantidadCafe);
+                    
+                    //verificar el departamento del log
+                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Trilla", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la Trilla No: " + TrillaSeleccionado.NumTrilla + " del ID en la BD: " + TrillaSeleccionado.ITrilla + " en la base de datos");
+
+                    MessageBox.Show("Trilla Eliminada correctamente.");
+
+                    //se actualiza la tabla
+                    ClearDataTxb();
+                    cbx_subProducto.SelectedIndex = -1;
+                    TrillaSeleccionado.ITrilla = 0;
+                    TrillaSeleccionado.NumTrilla = 0;
+                }
+            }
+            else
+            {
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

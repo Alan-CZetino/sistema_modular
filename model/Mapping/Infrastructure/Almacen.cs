@@ -24,11 +24,14 @@ namespace sistema_modular_cafe_majada.model.Mapping.Infrastructure
     {
         public static int IAlmacen { get; set; }
         public static string NombreAlmacen { get; set; }
+        public static int IAlmacenDestino { get; set; }
+        public static string NombreAlmacenDestino { get; set; }
     }
 
     public static class AlmacenBodegaClick
     {
         public static int IBodega { get; set; }
+        public static int IBodegaDestino { get; set; }
         //public static string NombreAlmacen { get; set; }
     }
 }
