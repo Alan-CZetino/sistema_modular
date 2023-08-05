@@ -24,5 +24,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
     {
         public static int IProcedencia { get; set; }
         public static string NombreProcedencia { get; set; }
+        public static int IProcedenciaDestino { get; set; }
+        public static string NombreProcedenciaDestino { get; set; }
     }
 }

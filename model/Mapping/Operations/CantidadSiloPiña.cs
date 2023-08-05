@@ -11,6 +11,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public int IdCantidadCafe { get; set; }
         public DateTime FechaMovimiento { get; set; }
         public double CantidadCafe { get; set; }
+        public double CantidadCafeSaco { get; set; }
         public string TipoMovimiento { get; set; }
         public int IdAlmacenSiloPiña { get; set; }
         public string NombreAlmacen { get; set; }

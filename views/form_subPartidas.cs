@@ -34,6 +34,8 @@ namespace sistema_modular_cafe_majada.views
         SubPartidaController countSP = null;
         public double cantidaQQsUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
+        public double cantidaSacoUpdate = 0.00;
+        public double cantidaSacoActUpdate = 0.00;
 
         //variable para refrescar el formulario cad cierto tiempo
         private System.Timers.Timer refreshTimer;
@@ -262,7 +264,7 @@ namespace sistema_modular_cafe_majada.views
         }
 
         //
-        public void ShowSubParidaView()
+        public void ShowSubPartidaView()
         {
             var subPC = new SubPartidaController();
             SubProductoController subProC = new SubProductoController();
@@ -321,6 +323,7 @@ namespace sistema_modular_cafe_majada.views
             txb_CantidadSaco.Text = sub.PesaSaco.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             txb_cantidadQQs.Text = sub.PesaQQs.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             cantidaQQsUpdate = sub.PesaQQs;
+            cantidaSacoUpdate = sub.PesaSaco;
             txb_ubicadoBodega.Text = sub.NombreBodega;
             iBodega = sub.IdBodega;
             txb_almacenSiloPiña.Text = sub.NombreAlmacen;
@@ -340,7 +343,7 @@ namespace sistema_modular_cafe_majada.views
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
-                ShowSubParidaView();
+                ShowSubPartidaView();
             }
         }
 
@@ -562,7 +565,7 @@ namespace sistema_modular_cafe_majada.views
                 string observacionPesador = txb_observacionPesa.Text;
 
                 double pesoSaco;
-                if (double.TryParse(txb_CantidadSaco.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoSaco)){}
+                if (double.TryParse(txb_CantidadSaco.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoSaco)){ cantidaSacoActUpdate = pesoSaco; }
                 else
                 {
                     MessageBox.Show("El valor ingresado en el campo Cantidad Saco no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -661,6 +664,7 @@ namespace sistema_modular_cafe_majada.views
                             FechaMovimiento = fechaPesado,
                             IdCosechaCantidad = CosechaActual.ICosechaActual,
                             CantidadCafe = pesoQQs,
+                            CantidadCafeSaco = pesoSaco,
                             TipoMovimiento = "Entrada Cafe No.SubPartida " + subPartida,
                             IdAlmacenSiloPiña = iAlmacen
                         };
@@ -688,7 +692,7 @@ namespace sistema_modular_cafe_majada.views
                                 //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
                                 //verificar el departamento
                                 log.RegistrarLog(usuario.IdUsuario, "Registro dato SubPartida", ModuloActual.NombreModulo, "Insercion", "Inserto una nueva SubPartida a la base de datos");
-
+                                SubPartidaSeleccionado.clickImg = false;
                             }
                             catch (Exception ex)
                             {
@@ -732,6 +736,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaPesado,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
+                        CantidadCafeSaco = cantidaSacoActUpdate,
                         IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
                     };
 

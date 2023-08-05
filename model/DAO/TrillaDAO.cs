@@ -253,22 +253,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         public bool ActualizarTrilla(Trilla trilla)
         {
             bool exito = false;
-
-            Console.WriteLine("Depuracion DAO - iTrilla " + trilla.IdTrilla_cafe);
-            Console.WriteLine("Depuracion DAO - iCosecha " + trilla.IdCosecha);
-            Console.WriteLine("Depuracion DAO - iCalidad " + trilla.IdCalidadCafe);
-            Console.WriteLine("Depuracion DAO - iAlmacen " + trilla.IdAlmacen);
-            Console.WriteLine("Depuracion DAO - iBodega " + trilla.IdBodega);
-            Console.WriteLine("Depuracion DAO - iProcedencia " + trilla.IdProcedencia);
-            Console.WriteLine("Depuracion DAO - iPersonal " + trilla.IdPersonal);
-            Console.WriteLine("Depuracion DAO - iSubProducto " + trilla.IdSubProducto);
-            Console.WriteLine("Depuracion DAO - Fecha " + trilla.FechaTrillaCafe);
-            Console.WriteLine("Depuracion DAO - Tipo " + trilla.TipoMovimientoTrilla);
-            Console.WriteLine("Depuracion DAO - NumTrilla " + trilla.NumTrilla);
-            Console.WriteLine("Depuracion DAO - Observacion " + trilla.ObservacionTrilla);
-            Console.WriteLine("Depuracion DAO - CantidadQQs " + trilla.CantidadTrillaQQs);
-            Console.WriteLine("Depuracion DAO - CantidadSaco " + trilla.CantidadTrillaSacos);
-
+            
             try
             {
                 // Conexión a la base de datos

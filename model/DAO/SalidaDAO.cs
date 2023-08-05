@@ -24,19 +24,20 @@ namespace sistema_modular_cafe_majada.model.DAO
         {
             try
             {
-                //conexion a la base de datos (asumiendo que tienes una clase llamada "conexion" que maneja la conexión y ejecución de consultas)
+                //conexion a la base de datos
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Salida_Cafe (id_cosecha_salida, id_subpartida_salida, id_procedencia_salida, id_calidad_cafe_salida,
+                string consulta = @"INSERT INTO Salida_Cafe (num_salida, id_cosecha_salida, id_procedencia_salida, id_calidad_cafe_salida,
                                         id_subproducto_salida, tipo_salida, cantidad_salida_qqs_cafe, cantidad_salida_sacos_cafe, fecha_salidaCafe,
-                                        id_personal_salida, observacion_salida )
-                                    VALUES ( @idCosecha, @idSubPartida, @idProcedencia, @idCalidadCafe, @idSubProducto, @tipoSalida,
-                                                @cantidadSalidaQQs, @cantidadSalidaSacos, @fechaSalidaCafe, @idPersonal, @observacionSalida)";
+                                        id_personal_salida, observacion_salida, id_almacen_salida, id_bodega_salida )
+                                    VALUES (@numSalida, @idCosecha, @idProcedencia, @idCalidadCafe, @idSubProducto, @tipoSalida,
+                                                @cantidadSalidaQQs, @cantidadSalidaSacos, @fechaSalidaCafe, @idPersonal, @observacionSalida,
+                                                @iAlmacen, @iBodega)";
                 conexion.CrearComando(consulta);
 
+                conexion.AgregarParametro("@numSalida", salidaCafe.NumSalida_cafe);
                 conexion.AgregarParametro("@idCosecha", salidaCafe.IdCosecha);
-                conexion.AgregarParametro("@idSubPartida", salidaCafe.IdSubPartida);
                 conexion.AgregarParametro("@idProcedencia", salidaCafe.IdProcedencia);
                 conexion.AgregarParametro("@idCalidadCafe", salidaCafe.IdCalidadCafe);
                 conexion.AgregarParametro("@idSubProducto", salidaCafe.IdSubProducto);
@@ -46,6 +47,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@fechaSalidaCafe", salidaCafe.FechaSalidaCafe);
                 conexion.AgregarParametro("@idPersonal", salidaCafe.IdPersonal);
                 conexion.AgregarParametro("@observacionSalida", salidaCafe.ObservacionSalida);
+                conexion.AgregarParametro("@iAlmacen", salidaCafe.IdAlmacen);
+                conexion.AgregarParametro("@iBodega", salidaCafe.IdBodega);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -85,7 +88,6 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSalida_cafe = Convert.ToInt32(reader["id_salida_cafe"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_salida"]),
-                            IdSubPartida = Convert.ToInt32(reader["id_subpartida_salida"]),
                             IdProcedencia = Convert.ToInt32(reader["id_procedencia_salida"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_salida"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_salida"]),
@@ -136,7 +138,6 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSalida_cafe = Convert.ToInt32(reader["id_salida_cafe"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_salida"]),
-                            IdSubPartida = Convert.ToInt32(reader["id_subpartida_salida"]),
                             IdProcedencia = Convert.ToInt32(reader["id_procedencia_salida"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_salida"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_salida"]),
@@ -166,17 +167,16 @@ namespace sistema_modular_cafe_majada.model.DAO
         // Función para obtener una salida de café por su ID
         public List<Salida> ObtenerSalidaCafeNombres()
         {
-            List<Salida> salidaCafes = null;
+            List<Salida> salidaCafes = new List<Salida>();
 
             try
             {
                 // Conexión a la base de datos 
                 conexion.Conectar();
 
-                string consulta = @"SELECT s.*, c.nombre_cosecha, spa.nombre_subpartida, pd.nombre_procedencia, cc.nombre_calidad, spo.nombre_subproducto pl.nombre_personal
+                string consulta = @"SELECT s.*, c.nombre_cosecha, pd.nombre_procedencia, cc.nombre_calidad, spo.nombre_subproducto pl.nombre_personal
                                     FROM Salida_Cafe s 
                                     INNER JOIN Cosecha c ON s.id_cosecha_salida = c.id_cosecha
-                                    INNER JOIN SubPartida spa ON s.id_subpartida_salida = spa.id_subpartida
                                     INNER JOIN Procedencia_Destino_Cafe pd ON s.id_procedencia_salida = pd.id_procedencia
                                     INNER JOIN Calidad_Cafe cc ON s.id_calidad_cafe_salida = cc.id_calidad
                                     INNER JOIN SubProducto spo ON s.id_subproducto_salida = spo.id_subproducto
@@ -193,8 +193,6 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdSalida_cafe = Convert.ToInt32(reader["id_salida_cafe"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_salida"]),
                             NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            IdSubPartida = Convert.ToInt32(reader["id_subpartida_salida"]),
-                            NombreSubPartida = Convert.ToString(reader["nombre_subpartida"]),
                             IdProcedencia = Convert.ToInt32(reader["id_procedencia_salida"]),
                             NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_salida"]),
@@ -227,7 +225,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         // Función para actualizar un registro en la base de datos
-        public bool ActualizarSalidaCafe(int idSalidaCafe, Salida salidaCafe)
+        public bool ActualizarSalidaCafe(Salida salidaCafe)
         {
             bool exito = false;
 
@@ -240,8 +238,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"
                 UPDATE Salida_Cafe SET
                     id_cosecha_salida = @idCosecha,
-                    id_subpartida_salida = @idSubPartida,
+                    num_salida = @numSalida,
                     id_procedencia_salida = @idProcedencia,
+                    id_bodega_salida = @iBodega,
+                    id_almacen_salida = @iAlmacen,
                     id_calidad_cafe_salida = @idCalidadCafe,
                     id_subproducto_salida = @idSubProducto,
                     tipo_salida = @tipoSalida,
@@ -255,8 +255,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@idCosecha", salidaCafe.IdCosecha);
-                conexion.AgregarParametro("@idSubPartida", salidaCafe.IdSubPartida);
+                conexion.AgregarParametro("@numSalida", salidaCafe.NumSalida_cafe);
                 conexion.AgregarParametro("@idProcedencia", salidaCafe.IdProcedencia);
+                conexion.AgregarParametro("@iBodega", salidaCafe.IdBodega);
+                conexion.AgregarParametro("@iAlmacen", salidaCafe.IdAlmacen);
                 conexion.AgregarParametro("@idCalidadCafe", salidaCafe.IdCalidadCafe);
                 conexion.AgregarParametro("@idSubProducto", salidaCafe.IdSubProducto);
                 conexion.AgregarParametro("@tipoSalida", salidaCafe.TipoSalida);
@@ -265,7 +267,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@fechaSalidaCafe", salidaCafe.FechaSalidaCafe);
                 conexion.AgregarParametro("@idPersonal", salidaCafe.IdPersonal);
                 conexion.AgregarParametro("@observacionSalida", salidaCafe.ObservacionSalida);
-                conexion.AgregarParametro("@id", idSalidaCafe);
+                conexion.AgregarParametro("@id", salidaCafe.IdSalida_cafe);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -291,6 +293,82 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
 
             return exito;
+        }
+
+        // Función para obtener todos los registros de Salida en la base de datos
+        public List<Salida> ObtenerSalidasPorCosecha(int iCosecha)
+        {
+            List<Salida> listaSalidas = new List<Salida>();
+
+            try
+            {
+                // Conexión a la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT s.*,
+                                            c.nombre_cosecha,
+                                           pd.nombre_procedencia,
+                                           cc.nombre_calidad,
+                                           sbp.nombre_subproducto,
+                                           a.nombre_almacen,
+                                           b.nombre_bodega,
+                                           p.nombre_personal
+                                    FROM Salida_Cafe s
+                                    INNER JOIN Cosecha c ON s.id_cosecha_salida = c.id_cosecha
+                                    LEFT JOIN Procedencia_Destino_Cafe pd ON s.id_procedencia_salida = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON s.id_calidad_cafe_salida = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON s.id_subproducto_salida = sbp.id_subproducto
+                                    LEFT JOIN Almacen a ON s.id_almacen_salida = a.id_almacen
+                                    LEFT JOIN Bodega_Cafe b ON s.id_bodega_salida = b.id_bodega
+                                    INNER JOIN Personal p ON s.id_personal_salida = p.id_personal";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", iCosecha);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Salida salida = new Salida()
+                        {
+                            IdSalida_cafe = Convert.ToInt32(reader["id_salida_cafe"]),
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha_salida"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumSalida_cafe = Convert.ToInt32(reader["num_salida"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_salida"]) ? 0 : Convert.ToInt32(reader["id_procedencia_salida"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
+                            IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_salida"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
+                            IdSubProducto = Convert.ToInt32(reader["id_subproducto_salida"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_salida"]) ? 0 : Convert.ToInt32(reader["id_almacen_salida"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_salida"]) ? 0 : Convert.ToInt32(reader["id_bodega_salida"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            TipoSalida = Convert.ToString(reader["tipo_salida"]),
+                            CantidadSalidaQQs = Convert.ToDouble(reader["cantidad_salida_qqs_cafe"]),
+                            CantidadSalidaSacos = Convert.ToDouble(reader["cantidad_salida_sacos_cafe"]),
+                            FechaSalidaCafe = Convert.ToDateTime(reader["fecha_salidaCafe"]),
+                            IdPersonal = Convert.ToInt32(reader["id_personal_salida"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionSalida = Convert.IsDBNull(reader["observacion_salida"]) ? null : Convert.ToString(reader["observacion_salida"])
+                        };
+
+                        listaSalidas.Add(salida);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return listaSalidas;
         }
 
         // Función para eliminar un registro en la base de datos
@@ -349,24 +427,26 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"
                 SELECT s.*,
                        c.nombre_cosecha,
-                       sp.nombre_subpartida,
                        pd.nombre_procedencia,
                        cc.nombre_calidad_cafe,
+                       a.nombre_almacen,
+                       b.nombre_bodega,
                        sbp.nombre_subproducto,
                        p.nombre_personal
                 FROM Salida_Cafe s
                 INNER JOIN Cosecha c ON s.id_cosecha_salida = c.id_cosecha
-                INNER JOIN SubPartida sp ON s.id_subpartida_salida = sp.id_subpartida
-                INNER JOIN Procedencia_Destino_Cafe pd ON s.id_procedencia_salida = pd.id_procedencia
+                LEFT JOIN Procedencia_Destino_Cafe pd ON s.id_procedencia_salida = pd.id_procedencia
                 INNER JOIN Calidad_Cafe cc ON s.id_calidad_cafe_salida = cc.id_calidad
                 INNER JOIN SubProducto sbp ON s.id_subproducto_salida = sbp.id_subproducto
+                LEFT JOIN Almacen a ON t.id_almacen_salida = a.id_almacen
+                LEFT JOIN Bodega_Cafe b ON t.id_bodega_salida = b.id_bodega
                 INNER JOIN Personal p ON s.id_personal_salida = p.id_personal
                 WHERE c.nombre_cosecha LIKE CONCAT('%', @search, '%') OR
-                      sp.nombre_subpartida LIKE CONCAT('%', @search, '%') OR
                       pd.nombre_procedencia LIKE CONCAT('%', @search, '%') OR
                       cc.nombre_calidad_cafe LIKE CONCAT('%', @search, '%') OR
                       sbp.nombre_subproducto LIKE CONCAT('%', @search, '%') OR
                       s.tipo_salida LIKE CONCAT('%', @search, '%') OR
+                      b.nombre_bodega LIKE CONCAT('%', @search, '%') OR
                       p.nombre_personal LIKE CONCAT('%', @search, '%')";
 
                 conexion.CrearComando(consulta);
@@ -381,21 +461,24 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdSalida_cafe = Convert.ToInt32(reader["id_salida_cafe"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_salida"]),
                             NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            IdSubPartida = Convert.ToInt32(reader["id_subpartida_salida"]),
-                            NombreSubPartida = Convert.ToString(reader["nombre_subpartida"]),
-                            IdProcedencia = Convert.ToInt32(reader["id_procedencia_salida"]),
-                            NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
+                            NumSalida_cafe = Convert.ToInt32(reader["num_salida"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_salida"]) ? 0 : Convert.ToInt32(reader["id_procedencia_salida"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_salida"]),
-                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad_cafe"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_salida"]),
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_salida"]) ? 0 : Convert.ToInt32(reader["id_almacen_salida"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_salida"]) ? 0 : Convert.ToInt32(reader["id_bodega_salida"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
                             TipoSalida = Convert.ToString(reader["tipo_salida"]),
                             CantidadSalidaQQs = Convert.ToDouble(reader["cantidad_salida_qqs_cafe"]),
                             CantidadSalidaSacos = Convert.ToDouble(reader["cantidad_salida_sacos_cafe"]),
                             FechaSalidaCafe = Convert.ToDateTime(reader["fecha_salidaCafe"]),
                             IdPersonal = Convert.ToInt32(reader["id_personal_salida"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
-                            ObservacionSalida = Convert.ToString(reader["observacion_salida"])
+                            ObservacionSalida = Convert.IsDBNull(reader["observacion_salida"]) ? null : Convert.ToString(reader["observacion_salida"])
                         };
 
                         salidasCafe.Add(salidaCafe);
@@ -413,5 +496,163 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             return salidasCafe;
         }
+
+        // Función para obtener todos los registros de la Salida en la base de datos
+        public Salida ObtenerSalidasPorIDNombre(int idSalida)
+        {
+            Salida salida = null;
+
+            try
+            {
+                // Conexión a la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT s.*,
+                                            c.nombre_cosecha,
+                                           pd.nombre_procedencia,
+                                           cc.nombre_calidad,
+                                           sbp.nombre_subproducto,
+                                           a.nombre_almacen,
+                                           b.nombre_bodega,
+                                           p.nombre_personal
+                                    FROM Salida_Cafe s
+                                    INNER JOIN Cosecha c ON s.id_cosecha_salida = c.id_cosecha
+                                    LEFT JOIN Procedencia_Destino_Cafe pd ON s.id_procedencia_salida = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON s.id_calidad_cafe_salida = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON s.id_subproducto_salida = sbp.id_subproducto
+                                    LEFT JOIN Almacen a ON s.id_almacen_salida = a.id_almacen
+                                    LEFT JOIN Bodega_Cafe b ON s.id_bodega_salida = b.id_bodega
+                                    INNER JOIN Personal p ON s.id_personal_salida = p.id_personal
+                                    WHERE s.id_salida_cafe = @Id";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id", idSalida);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        salida = new Salida()
+                        {
+                            IdSalida_cafe = Convert.ToInt32(reader["id_salida_cafe"]),
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha_salida"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumSalida_cafe = Convert.ToInt32(reader["num_salida"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_salida"]) ? 0 : Convert.ToInt32(reader["id_procedencia_salida"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
+                            IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_salida"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
+                            IdSubProducto = Convert.ToInt32(reader["id_subproducto_salida"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_salida"]) ? 0 : Convert.ToInt32(reader["id_almacen_salida"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_salida"]) ? 0 : Convert.ToInt32(reader["id_bodega_salida"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            TipoSalida = Convert.ToString(reader["tipo_salida"]),
+                            CantidadSalidaQQs = Convert.ToDouble(reader["cantidad_salida_qqs_cafe"]),
+                            CantidadSalidaSacos = Convert.ToDouble(reader["cantidad_salida_sacos_cafe"]),
+                            FechaSalidaCafe = Convert.ToDateTime(reader["fecha_salidaCafe"]),
+                            IdPersonal = Convert.ToInt32(reader["id_personal_salida"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionSalida = Convert.IsDBNull(reader["observacion_salida"]) ? null : Convert.ToString(reader["observacion_salida"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return salida;
+        }
+
+        //
+        public Salida CountSalida(int idCosecha)
+        {
+            Salida salida = null;
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalSalida FROM Salida_Cafe
+                                    WHERE id_cosecha_salida = @id";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", idCosecha);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            salida = new Salida()
+                            {
+                                CountSalida = Convert.ToInt32(reader["TotalSalida"])
+                            };
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return salida;
+        }
+
+        //
+        public bool VerificarExistenciaSalida(int idCosecha, int numSalida)
+        {
+            bool existeSalida = false;
+
+            try
+            {
+                // Conexión a la base de datos
+                conexion.Conectar();
+
+                // Consulta SQL con la cláusula WHERE para verificar la existencia de la Salida
+                string consulta = @"SELECT COUNT(*) FROM Salida_Cafe 
+                            WHERE id_cosecha_salida = @idCosecha AND num_salida = @numSalida";
+
+                conexion.CrearComando(consulta);
+
+                // Agregar los parámetros
+                conexion.AgregarParametro("@idCosecha", idCosecha);
+                conexion.AgregarParametro("@numSalida", numSalida);
+
+                // Ejecutar la consulta y obtener el resultado
+                int resultado = Convert.ToInt32(conexion.EjecutarConsultaEscalar());
+
+                // Si el resultado es mayor que 0, significa que existe una Salida con los valores proporcionados
+                existeSalida = resultado > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia de las Salidas: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return existeSalida;
+        }
+
+
     }
 }
