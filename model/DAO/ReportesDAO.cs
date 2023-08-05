@@ -87,10 +87,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
                 string consulta = @"
                                     SELECT
-                                        sp.id_subpartida AS subpartida,
+                                        sp.num_subpartida AS subpartida,
                                         sp.num1_semana_subpartida AS semana,
                                         dias1_subpartida AS partida,
-                                        DATE_FORMAT(sp.fecha1_subpartida, '%d/%m/%Y') AS fecha,
+                                        sp.fecha1_subpartida AS fecha,
                                         cc.nombre_calidad AS calidad_cafe,
                                         pd.nombre_procedencia AS procedencia,
                                         CONCAT(bodega.nombre_bodega, ' - ', al.nombre_almacen) AS almacenado_en,
@@ -98,7 +98,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                                         sp.peso_qqs_subpartida AS qqs_punto,
                                         DATE_FORMAT(sp.inicio_secado_subpartida, '%d/%m/%Y') AS inicio_secado,
                                         DATE_FORMAT(sp.salida_punto_secado_subpartida, '%d/%m/%Y') AS fin_secado,
-                                        ROUND( HOUR(sp.tiempo_secado_subpartida) + MINUTE(sp.tiempo_secado_subpartida) / 60, 1) AS tiempo,
+                                        ROUND(HOUR(sp.tiempo_secado_subpartida) + MINUTE(sp.tiempo_secado_subpartida) / 60, 1) AS tiempo,
                                         ROUND((sp.peso_qqs_subpartida / sp.rendimiento_subpartida), 2) AS qqs_oro,
                                         sp.humedad_secado_subpartida AS humedad,
                                         sp.rendimiento_subpartida AS rendimiento,
@@ -106,7 +106,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                                         DATE_FORMAT(sp.fecha_catacion_subpartida, '%d/%m/%Y') AS fecha_catacion,
                                         sp.observacion_catacion_subpartida AS catacion,
                                         sp.docto_almacen_subpartida AS almacen,
-                                        sp.fecha1_subpartida AS fecha_secado
+                                        DATE_FORMAT(sp.fecha_carga_secado_subpartida, '%d/%m/%Y') AS fecha_secado
                                     FROM
                                         SubPartida sp
                                     LEFT JOIN Calidad_Cafe cc ON sp.id_calidad_cafe_subpartida = cc.id_calidad
@@ -114,7 +114,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                                     LEFT JOIN Almacen al ON sp.id_almacen_subpartida = al.id_almacen
                                     LEFT JOIN Bodega_Cafe bodega ON sp.id_bodega_subpartida = bodega.id_bodega
                                     LEFT JOIN Personal per ON sp.id_puntero_secado_subpartida = per.id_personal
-                                    WHERE sp.id_cosecha_subpartida = @id_cosecha AND sp.fecha1_subpartida BETWEEN STR_TO_DATE(@fecha_inicial, '%d/%m/%Y') AND STR_TO_DATE(@fecha_final, '%d/%m/%Y');
+                                    WHERE
+                                        sp.id_cosecha_subpartida = @id_cosecha AND 
+                                        IF(
+                                          fecha1_subpartida LIKE '%al%',
+                                          STR_TO_DATE(CONCAT(SUBSTRING_INDEX(fecha1_subpartida, ' al ', 1), '/', SUBSTRING(fecha1_subpartida, LOCATE('al ', fecha1_subpartida) + 7)), '%d/%m/%Y'),
+                                          STR_TO_DATE(fecha1_subpartida, '%d/%m/%Y')
+                                        ) BETWEEN STR_TO_DATE(@fecha_inicial, '%d/%m/%Y') AND STR_TO_DATE(@fecha_final, '%d/%m/%Y');
             ";
 
                 conexion.CrearComando(consulta);
@@ -175,21 +181,22 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
                 string consulta = @"
                 SELECT
-                    bc.nombre_bodega AS nombre_bodega,
+                    TRIM(bc.nombre_bodega) AS nombre_bodega,
                     cc.nombre_calidad AS calidad_cafe,
-                    MIN(ch.nombre_cosecha) AS nombre_cosecha,
                     SUM(sp.peso_saco_subpartida) AS total_sacos,
                     SUM(sp.peso_qqs_subpartida) AS total_qqspunto
                 FROM
                     Bodega_Cafe bc
                 JOIN SubPartida sp ON bc.id_bodega = sp.id_bodega_subpartida
                 JOIN Calidad_Cafe cc ON sp.id_calidad_cafe_subpartida = cc.id_calidad
-                JOIN Cosecha ch ON sp.id_cosecha_subpartida = ch.id_cosecha
                 WHERE
-                    sp.id_cosecha_subpartida = @id_cosecha -- Reemplaza {valor_id_cosecha} por el valor específico que desees filtrar
+                    sp.id_cosecha_subpartida = @id_cosecha
                 GROUP BY
-                    bc.nombre_bodega,
-                    cc.nombre_calidad;
+                    TRIM(bc.nombre_bodega),
+                    cc.nombre_calidad
+                ORDER BY
+                    TRIM(bc.nombre_bodega);
+
             ";
 
                 conexion.CrearComando(consulta);
@@ -200,7 +207,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 {
                     ReportesBodegas reportesBodegas = new ReportesBodegas()
                     {
-                        nombre_cosecha = reader["nombre_cosecha"].ToString(),
+
                         nombre_bodega = reader["nombre_bodega"].ToString(),
                         calidad_cafe = reader["calidad_cafe"].ToString(),
                         total_sacos = Convert.ToDouble(reader["total_sacos"]),
