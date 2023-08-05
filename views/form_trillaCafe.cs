@@ -34,6 +34,8 @@ namespace sistema_modular_cafe_majada.views
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
+        public double cantidaSacoUpdate = 0.00;
+        public double cantidaSacoActUpdate = 0.00;
 
         private bool imagenClickeadaTR = false;
         private bool imgClickAlmacen = false;
@@ -161,6 +163,7 @@ namespace sistema_modular_cafe_majada.views
             txb_pesoSaco.Text = sub.CantidadTrillaSacos.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             txb_pesoQQs.Text = sub.CantidadTrillaQQs.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             cantidaQQsUpdate = sub.CantidadTrillaQQs;
+            cantidaSacoUpdate = sub.CantidadTrillaSacos;
             txb_bodega.Text = sub.NombreBodega;
             iBodega = sub.IdBodega;
             txb_almacen.Text = sub.NombreAlmacen;
@@ -362,7 +365,7 @@ namespace sistema_modular_cafe_majada.views
             }
 
             double pesoSaco;
-            if (double.TryParse(txb_pesoSaco.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoSaco)) { }
+            if (double.TryParse(txb_pesoSaco.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoSaco)) { cantidaSacoActUpdate = pesoSaco; }
             else
             {
                 MessageBox.Show("El valor ingresado en el campo Cantidad Saco no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -426,6 +429,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaTrilla,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = pesoQQs,
+                        CantidadCafeSaco = pesoSaco,
                         TipoMovimiento = "Salida Cafe No.Trilla " + numTrilla,
                         IdAlmacenSiloPiña = iAlmacen
                     };
@@ -549,6 +553,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaTrilla,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
+                        CantidadCafeSaco = cantidaSacoActUpdate,
                         IdAlmacenSiloPiña = iAlmacen
                     };
 
@@ -571,6 +576,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaTrilla,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
+                        CantidadCafeSaco = cantidaSacoActUpdate,
                         IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
                     };
 

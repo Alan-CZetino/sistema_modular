@@ -33,7 +33,9 @@ namespace sistema_modular_cafe_majada.views
 
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
+        public double cantidaSacoUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
+        public double cantidaSacoActUpdate = 0.00;
 
         private bool imagenClickeadaSL = false;
         private bool imgClickAlmacenP = false;
@@ -152,6 +154,7 @@ namespace sistema_modular_cafe_majada.views
             txb_pesoSaco.Text = sub.CantidadTrasladoSacos.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             txb_pesoQQs.Text = sub.CantidadTrasladoQQs.ToString("0.00", CultureInfo.GetCultureInfo("en-US"));
             cantidaQQsUpdate = sub.CantidadTrasladoQQs;
+            cantidaSacoUpdate = sub.CantidadTrasladoSacos;
             txb_bodegaPr.Text = sub.NombreBodegaProcedencia;
             iBodegaProce = sub.IdBodegaProcedencia;
             txb_bodegaDes.Text = sub.NombreBodegaDestino;
@@ -508,7 +511,7 @@ namespace sistema_modular_cafe_majada.views
             }
 
             double pesoSaco;
-            if (double.TryParse(txb_pesoSaco.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoSaco)) { }
+            if (double.TryParse(txb_pesoSaco.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out pesoSaco)) { cantidaSacoActUpdate = pesoSaco; }
             else
             {
                 MessageBox.Show("El valor ingresado en el campo Cantidad Saco no es un número válido, verifique el separador decimal que sea punto y no coma. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -567,7 +570,6 @@ namespace sistema_modular_cafe_majada.views
 
                 if (!verificexisten)
                 {
-
                     if (cantActPr < pesoQQs && cantRestDes < pesoQQs)
                     {
                         MessageBox.Show("Error, la cantidad QQs de cafe que desea Sacar en Procedencia del almacen excede sus limite. Desea Sacar la cantidad de " + pesoQQs + " en el contenido disponible " + cantActPr
@@ -582,6 +584,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaTraslado,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = pesoQQs,
+                        CantidadCafeSaco = pesoSaco,
                         TipoMovimiento = "Traslado Cafe - Procedencia No.TrasladoCafe " + numTraslado,
                         IdAlmacenSiloPiña = iAlmacenProce
                         //imaquinaria
@@ -592,6 +595,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaTraslado,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = pesoQQs,
+                        CantidadCafeSaco = pesoSaco,
                         TipoMovimiento = "Traslado Cafe - Destino No.TrasladoCafe " + numTraslado,
                         IdAlmacenSiloPiña = iAlmacenDest
                         //imaquinaria
@@ -724,6 +728,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaTraslado,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
+                        CantidadCafeSaco = cantidaSacoActUpdate,
                         IdAlmacenSiloPiña = AlmacenSeleccionado.IAlmacen
                     };
 
@@ -760,6 +765,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaTraslado,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
+                        CantidadCafeSaco = cantidaSacoActUpdate,
                         IdAlmacenSiloPiña = AlmacenSeleccionado.IAlmacenDestino
                     };
 
@@ -782,6 +788,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaTraslado,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
+                        CantidadCafeSaco = cantidaSacoActUpdate,
                         IdAlmacenSiloPiña = cantUpdPr.IdAlmacenSiloPiña
                     };
                     
@@ -795,6 +802,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaTraslado,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
+                        CantidadCafeSaco = cantidaSacoActUpdate,
                         IdAlmacenSiloPiña = cantUpdDes.IdAlmacenSiloPiña
                     };
 
@@ -813,7 +821,7 @@ namespace sistema_modular_cafe_majada.views
                 {
                     //verificar el departamento
                     log.RegistrarLog(usuario.IdUsuario, "Actualizacion dato Traslado de Cafe", ModuloActual.NombreModulo, "Actualizacion", "Actualizo los datos del Traslado de Cafe con id ( " + traslado.Idtraslado_cafe + " ) en la base de datos");
-                    SalidaSeleccionado.clickImg = false;
+                    TrasladoSeleccionado.clickImg = false;
                 }
                 catch (Exception ex)
                 {
