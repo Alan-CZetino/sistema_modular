@@ -1,5 +1,6 @@
 ﻿using sistema_modular_cafe_majada.model.DAO;
 using sistema_modular_cafe_majada.model.Mapping.Acces;
+using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -134,6 +135,21 @@ namespace sistema_modular_cafe_majada.controller.AccesController
             catch (Exception ex)
             {
                 Console.WriteLine("Ocurrió un error al eliminar la Fallas: " + ex.Message);
+            }
+        }
+
+        //
+        public List<Maquinaria> ObtenerMaquinas()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la Bodega
+                return fallaDAO.ObtenerMaquina();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de Bodegas: " + ex.Message);
+                return new List<Maquinaria>();
             }
         }
 

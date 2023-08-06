@@ -127,7 +127,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@id_cosecha", cosecha);
                 conexion.AgregarParametro("@fecha_inicial", fechaini);
                 conexion.AgregarParametro("@fecha_final", fechafin);
-
+                //
                 MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta);
 
                 while (reader.Read())

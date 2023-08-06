@@ -31,16 +31,15 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"INSERT INTO Maquinaria (nombre_maquinaria, numero_serie_maquinaria, modelo_maquinaria, 
                                            capacidad_max_maquinaria, proveedor_maquinaria, direccion_proveedor_maquinaria, 
                                            telefono_proveedor_maquinaria, contrato_servicio_maquinaria, id_beneficio_maquinaria)
-                                    VALUES (@NombreMaquinaria, @NumeroSerieMaquinaria, @ModeloMaquinaria, @TemperaturaMaquinaria, @TiempoExtraccionMaquinaria, 
-                                            @PresionMaquinaria, @FechaMantenimientoMaquinaria, @PiezasReemplazadasMaquinaria, @CantidadProducidaMaquinaria, 
-                                            @CalidadProducidaMaquinaria, @ProveedorMaquinaria, @DireccionProveedorMaquinaria, @TelefonoProveedorMaquinaria, 
+                                    VALUES (@NombreMaquinaria, @NumeroSerieMaquinaria, @ModeloMaquinaria, 
+                                            @CapacidadMaxima, @ProveedorMaquinaria, @DireccionProveedorMaquinaria, @TelefonoProveedorMaquinaria, 
                                             @ContratoServicioMaquinaria, @IdBeneficioMaquinaria)";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@NombreMaquinaria", maquinaria.NombreMaquinaria);
                 conexion.AgregarParametro("@NumeroSerieMaquinaria", maquinaria.NumeroSerieMaquinaria);
                 conexion.AgregarParametro("@ModeloMaquinaria", maquinaria.ModeloMaquinaria);
-                conexion.AgregarParametro("@CalidadProducidaMaquinaria", maquinaria.CapacidadMaxMaquinaria);
+                conexion.AgregarParametro("@CapacidadMaxima", maquinaria.CapacidadMaxMaquinaria);
                 conexion.AgregarParametro("@ProveedorMaquinaria", maquinaria.ProveedorMaquinaria);
                 conexion.AgregarParametro("@DireccionProveedorMaquinaria", maquinaria.DireccionProveedorMaquinaria);
                 conexion.AgregarParametro("@TelefonoProveedorMaquinaria", maquinaria.TelefonoProveedorMaquinaria);
@@ -89,7 +88,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"]),
                             NumeroSerieMaquinaria = Convert.ToString(reader["numero_serie_maquinaria"]),
                             ModeloMaquinaria = Convert.ToString(reader["modelo_maquinaria"]),
-                            CapacidadMaxMaquinaria = Convert.IsDBNull(reader["capacidad_max_maquinaria"]) ? (decimal?)null : Convert.ToDecimal(reader["capacidad_max_maquinaria"]),
+                            CapacidadMaxMaquinaria = (reader["capacidad_max_maquinaria"] is DBNull ? 0 : Convert.ToDouble(reader["capacidad_max_maquinaria"])),
                             ProveedorMaquinaria = Convert.ToString(reader["proveedor_maquinaria"]),
                             DireccionProveedorMaquinaria = Convert.ToString(reader["direccion_proveedor_maquinaria"]),
                             TelefonoProveedorMaquinaria = Convert.ToString(reader["telefono_proveedor_maquinaria"]),
@@ -124,7 +123,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = "SELECT * FROM Maquinaria WHERE id_maquinaria = @Id";
+                string consulta = @"SELECT * FROM Maquinaria WHERE id_maquinaria = @Id";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@Id", idMaquinaria);
@@ -140,7 +139,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"]),
                             NumeroSerieMaquinaria = Convert.ToString(reader["numero_serie_maquinaria"]),
                             ModeloMaquinaria = Convert.ToString(reader["modelo_maquinaria"]),
-                            CapacidadMaxMaquinaria = Convert.IsDBNull(reader["capacidad_max_maquinaria"]) ? (decimal?)null : Convert.ToDecimal(reader["capacidad_max_maquinaria"]),
+                            CapacidadMaxMaquinaria = (reader["capacidad_max_maquinaria"] is DBNull ? 0 : Convert.ToDouble(reader["capacidad_max_maquinaria"])),
                             ProveedorMaquinaria = Convert.ToString(reader["proveedor_maquinaria"]),
                             DireccionProveedorMaquinaria = Convert.ToString(reader["direccion_proveedor_maquinaria"]),
                             TelefonoProveedorMaquinaria = Convert.ToString(reader["telefono_proveedor_maquinaria"]),
@@ -198,7 +197,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"]),
                             NumeroSerieMaquinaria = Convert.ToString(reader["numero_serie_maquinaria"]),
                             ModeloMaquinaria = Convert.ToString(reader["modelo_maquinaria"]),
-                            CapacidadMaxMaquinaria = Convert.IsDBNull(reader["capacidad_max_maquinaria"]) ? (decimal?)null : Convert.ToDecimal(reader["capacidad_max_maquinaria"]),
+                            CapacidadMaxMaquinaria = (reader["capacidad_max_maquinaria"] is DBNull ? 0 : Convert.ToDouble(reader["capacidad_max_maquinaria"])),
                             ProveedorMaquinaria = Convert.ToString(reader["proveedor_maquinaria"]),
                             DireccionProveedorMaquinaria = Convert.ToString(reader["direccion_proveedor_maquinaria"]),
                             TelefonoProveedorMaquinaria = Convert.ToString(reader["telefono_proveedor_maquinaria"]),
@@ -254,7 +253,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"]),
                             NumeroSerieMaquinaria = Convert.ToString(reader["numero_serie_maquinaria"]),
                             ModeloMaquinaria = Convert.ToString(reader["modelo_maquinaria"]),
-                            CapacidadMaxMaquinaria = Convert.IsDBNull(reader["capacidad_max_maquinaria"]) ? (decimal?)null : Convert.ToDecimal(reader["capacidad_max_maquinaria"]),
+                            CapacidadMaxMaquinaria = (reader["capacidad_max_maquinaria"] is DBNull ? 0 : Convert.ToDouble(reader["capacidad_max_maquinaria"])),
                             ProveedorMaquinaria = Convert.ToString(reader["proveedor_maquinaria"]),
                             DireccionProveedorMaquinaria = Convert.ToString(reader["direccion_proveedor_maquinaria"]),
                             TelefonoProveedorMaquinaria = Convert.ToString(reader["telefono_proveedor_maquinaria"]),
@@ -313,7 +312,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"]),
                             NumeroSerieMaquinaria = Convert.ToString(reader["numero_serie_maquinaria"]),
                             ModeloMaquinaria = Convert.ToString(reader["modelo_maquinaria"]),
-                            CapacidadMaxMaquinaria = Convert.IsDBNull(reader["capacidad_max_maquinaria"]) ? (decimal?)null : Convert.ToDecimal(reader["capacidad_max_maquinaria"]),
+                            CapacidadMaxMaquinaria = (reader["capacidad_max_maquinaria"] is DBNull ? 0 : Convert.ToDouble(reader["capacidad_max_maquinaria"])),
                             ProveedorMaquinaria = Convert.ToString(reader["proveedor_maquinaria"]),
                             DireccionProveedorMaquinaria = Convert.ToString(reader["direccion_proveedor_maquinaria"]),
                             TelefonoProveedorMaquinaria = Convert.ToString(reader["telefono_proveedor_maquinaria"]),
@@ -340,7 +339,7 @@ namespace sistema_modular_cafe_majada.model.DAO
 
         //funcion para actualizar un registro en la base de datos
         public bool ActualizarMaquinaria(int idMaquinaria, string nombreMaquinaria, string numeroSerieMaquinaria,
-                                 string modeloMaquinaria, decimal? capacidadMax, string proveedorMaquinaria,
+                                 string modeloMaquinaria, double capacidadMax, string proveedorMaquinaria,
                                  string direccionProveedorMaquinaria, string telefonoProveedorMaquinaria,
                                  string contratoServicioMaquinaria, int idBeneficioMaquinaria)
         {
