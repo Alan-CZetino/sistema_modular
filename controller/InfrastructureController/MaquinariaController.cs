@@ -110,7 +110,7 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
 
         //
         public bool ActualizarMaquinaria(int idMaquinaria, string nombreMaquinaria, string numeroSerieMaquinaria,
-                                 string modeloMaquinaria, decimal? capacidadMax, string proveedorMaquinaria,
+                                 string modeloMaquinaria, double capacidadMax, string proveedorMaquinaria,
                                  string direccionProveedorMaquinaria, string telefonoProveedorMaquinaria,
                                  string contratoServicioMaquinaria, int idBeneficioMaquinaria)
         {

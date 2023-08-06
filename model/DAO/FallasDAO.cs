@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using sistema_modular_cafe_majada.model.Connection;
 using sistema_modular_cafe_majada.model.Mapping.Acces;
+using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -112,7 +113,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = "SELECT * FROM Falla WHERE id_falla = @Id";
+                string consulta = @"SELECT * FROM Falla WHERE id_falla = @Id";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@Id", idfalla);
@@ -200,6 +201,53 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
 
             return falla;
+        }
+
+        //se obtiene el nombre de la maquina
+        public List<Maquinaria> ObtenerMaquina()
+        {
+            List<Maquinaria> listaMaquina = new List<Maquinaria>();
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT * FROM maquinaria";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        Maquinaria maquina = new Maquinaria()
+                        {
+                            IdMaquinaria = Convert.ToInt32(reader["id_maquinaria"]),
+                            NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"]),
+                            NumeroSerieMaquinaria = Convert.ToString(reader["numero_serie_maquinaria"]),
+                            ModeloMaquinaria = Convert.ToString(reader["modelo_maquinaria"]),
+                            CapacidadMaxMaquinaria = (reader["capacidad_max_maquinaria"] is DBNull ? 0 : Convert.ToDouble(reader["capacidad_max_maquinaria"])),
+                            ProveedorMaquinaria = Convert.ToString(reader["proveedor_maquinaria"]),
+                            DireccionProveedorMaquinaria = Convert.ToString(reader["direccion_proveedor_maquinaria"]),
+                            TelefonoProveedorMaquinaria = Convert.ToString(reader["telefono_proveedor_maquinaria"]),
+                            ContratoServicioMaquinaria = Convert.ToString(reader["contrato_servicio_maquinaria"]),
+                            IdBeneficio = Convert.ToInt32(reader["id_beneficio_maquinaria"])
+                        };
+
+                        listaMaquina.Add(maquina);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return listaMaquina;
         }
 
         //obtener la Falla y el nombre maquinaria en la BD

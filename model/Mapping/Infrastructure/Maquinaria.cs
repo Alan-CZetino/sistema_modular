@@ -12,7 +12,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Infrastructure
         public string NombreMaquinaria { get; set; }
         public string NumeroSerieMaquinaria { get; set; }
         public string ModeloMaquinaria { get; set; }
-        public decimal? CapacidadMaxMaquinaria { get; set; }
+        public double CapacidadMaxMaquinaria { get; set; }
         public string ProveedorMaquinaria { get; set; }
         public string DireccionProveedorMaquinaria { get; set; }
         public string TelefonoProveedorMaquinaria { get; set; }
@@ -20,4 +20,5 @@ namespace sistema_modular_cafe_majada.model.Mapping.Infrastructure
         public int IdBeneficio { get; set; }
         public string NombreBeneficio { get; set; }
     }
+
 }
