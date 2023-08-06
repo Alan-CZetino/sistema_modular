@@ -168,12 +168,12 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
         }
         
         //
-        public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, int iCalidad, int iSubProd)
+        public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, double cantidadSaco, int iCalidad, int iSubProd)
         {
             try
             {
                 // Llamada al método del DAO para actualizar la Almacens
-                return almacenDAO.ActualizarCantidadEntradaCafeAlmacen(idAlmacen, cantidad, iCalidad, iSubProd);
+                return almacenDAO.ActualizarCantidadEntradaCafeAlmacen(idAlmacen, cantidad, cantidadSaco, iCalidad, iSubProd);
             }
             catch (Exception ex)
             {
@@ -183,12 +183,12 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
         }
         
         //
-        public bool ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(int idAlmacen, double cantidadNu, int iCalidad, int iSubPro)
+        public bool ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(int idAlmacen, double cantidadNu, double cantidadNuSaco, int iCalidad, int iSubPro)
         {
             try
             {
                 // Llamada al método del DAO para actualizar la Almacens
-                return almacenDAO.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(idAlmacen, cantidadNu, iCalidad, iSubPro );
+                return almacenDAO.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(idAlmacen, cantidadNu, cantidadNuSaco, iCalidad, iSubPro );
             }
             catch (Exception ex)
             {
@@ -202,8 +202,23 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
         {
             try
             {
-                // Llamada al método del DAO para obtener el nombre de la Almacens
+                // Llamada al método del DAO para obtener el nombre de las cantidades
                 return almacenDAO.ObtenerCantidadCafeAlmacen(iAlmacen);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la cantidad: " + ex.Message);
+                return null;
+            }
+        }
+        
+        //
+        public Almacen ObtenerAlmacenNombreCalidad(int iAlmacen)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre del Almacens
+                return almacenDAO.ObtenerAlmacenNombreCalidad(iAlmacen);
             }
             catch (Exception ex)
             {

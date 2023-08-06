@@ -642,6 +642,7 @@ namespace sistema_modular_cafe_majada.views
                 //
                 var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
                 double actcantidad = almCM.CantidadActualAlmacen;
+                double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
 
                 Console.WriteLine("depuracion - img cliqueada " + imagenClickeada);
                 if (!SubPartidaSeleccionado.clickImg)
@@ -683,9 +684,10 @@ namespace sistema_modular_cafe_majada.views
 
                             
                             double resultCa = actcantidad + pesoQQs; 
+                            double resultCaSaco = actcantidadSaco + pesoSaco; 
                             Console.WriteLine("Depuracion - cantidad resultante " + resultCa);
                             Console.WriteLine("Depuracion - cantidad obtenida a actualizar en subP" + pesoQQs);
-                            almacenC.ActualizarCantidadEntradaCafeAlmacen(iAlmacen, resultCa, iCalidad, selectedValue);
+                            almacenC.ActualizarCantidadEntradaCafeAlmacen(iAlmacen, resultCa, resultCaSaco, iCalidad, selectedValue);
                             
                             try
                             {
@@ -766,6 +768,8 @@ namespace sistema_modular_cafe_majada.views
                         {
                             double resultCaUpd = actcantidad + cantidaQQsActUpdate - cantidaQQsUpdate;
                             double resultCaNoUpd = actcantidad - cantidaQQsUpdate;
+                            double resultCaUpdSaco = actcantidadSaco + cantidaSacoActUpdate - cantidaSacoUpdate;
+                            double resultCaNoUpdSaco = actcantidadSaco - cantidaSacoUpdate;
                             Console.WriteLine("Depuracion - cantidad resultante " + resultCaUpd);
                             Console.WriteLine("Depuracion - cantidad obtenida a actualizar en subP" + resultCaUpd);
 
@@ -773,13 +777,13 @@ namespace sistema_modular_cafe_majada.views
                             {
                                 Console.WriteLine("Depuracion - se detecto cambio de almacen  " + cantUpd.IdCantidadCafe + " " + iAlmacen);
                                 //no actualiza los id unicamnete la cantidad restara ya que detecto que el almacen es diferente 
-                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaNoUpd, iCalidadNoUpd, selectedValue);
+                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaNoUpd, resultCaNoUpdSaco, iCalidadNoUpd, selectedValue);
                                 //cambia los nuevos datos ya que detecto que el almacen cambio 
-                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, iCalidad, selectedValue);
+                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
                             }
                             else
                             {
-                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaUpd, iCalidad, selectedValue);
+                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
                             }
                         }
 

@@ -28,15 +28,16 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Almacen ( nombre_almacen, descripcion_almacen, capacidad_almacen, cantidad_actual_almacen ,ubicacion_almacen,
-                                            id_bodega_ubicacion_almacen)
-                                    VALUES ( @nombre, @descrip, @capacidad, @capacidadAct, @ubicacion, @iBodega)";
+                string consulta = @"INSERT INTO Almacen ( nombre_almacen, descripcion_almacen, capacidad_almacen, cantidad_actual_almacen, cantidad_actual_saco_almacen,  
+                                            ,ubicacion_almacen, id_bodega_ubicacion_almacen)
+                                    VALUES ( @nombre, @descrip, @capacidad, @capacidadAct, @capacidadSacoAct, @ubicacion, @iBodega)";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@nombre", almacen.NombreAlmacen);
                 conexion.AgregarParametro("@descrip", almacen.DescripcionAlmacen);
                 conexion.AgregarParametro("@capacidad", almacen.CapacidadAlmacen);
                 conexion.AgregarParametro("@capacidadAct", 0.0);
+                conexion.AgregarParametro("@capacidadSacoAct", 0.0);
                 conexion.AgregarParametro("@ubicacion", almacen.UbicacionAlmacen);
                 conexion.AgregarParametro("@iBodega", almacen.IdBodegaUbicacion);
 
@@ -82,6 +83,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"])
                         };
@@ -130,6 +132,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"])
                         };
@@ -181,6 +184,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
                             NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"])
@@ -236,6 +240,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
                             NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             IdCalidadCafe = reader["id_calidad_cafe"] is DBNull ? (int?)null : Convert.ToInt32(reader["id_calidad_cafe"]),
                             NombreCalidadCafe = reader["nombre_calidad"] is DBNull ? null : Convert.ToString(reader["nombre_calidad"])
                         };
@@ -286,6 +291,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
                             NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"])
@@ -344,6 +350,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
                             NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             IdCalidadCafe = reader["id_calidad_cafe"] is DBNull ? (int?)null : Convert.ToInt32(reader["id_calidad_cafe"]),
                             NombreCalidadCafe = reader["nombre_calidad"] is DBNull ? null : Convert.ToString(reader["nombre_calidad"])
                         };
@@ -399,6 +406,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
                             NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             IdCalidadCafe = reader["id_calidad_cafe"] is DBNull ? (int?)null : Convert.ToInt32(reader["id_calidad_cafe"]),
                             NombreCalidadCafe = reader["nombre_calidad"] is DBNull ? null : Convert.ToString(reader["nombre_calidad"])
                         };
@@ -526,7 +534,55 @@ namespace sistema_modular_cafe_majada.model.DAO
                         almacen = new Almacen()
                         {
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
-                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"]))
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"]))
+                        };
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener las cantidades: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+            return almacen;
+        }
+        
+        //
+        public Almacen ObtenerAlmacenNombreCalidad(int iAlmacen)
+        {
+            Almacen almacen = null;
+            try
+            {
+                conexion.Conectar();
+
+                string consulta = @"SELECT a.*, cc.nombre_calidad, sp.nombre_subproducto
+                                    FROM Almacen a 
+                                    LEFT JOIN Calidad_Cafe cc ON a.id_calidad_cafe = cc.id_calidad
+                                    LEFT JOIN SubProducto sp ON a.id_subproducto_cafe = sp.id_subproducto
+                                    WHERE id_almacen = @id";
+
+                conexion.CrearComando(consulta);
+
+                conexion.AgregarParametro("@id", iAlmacen);
+
+                // Ejecutar la consulta y leer el resultado
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        almacen = new Almacen()
+                        {
+                            IdCalidadCafe = (reader["id_calidad_cafe"]) is DBNull ? 0 : Convert.ToInt32(reader["id_calidad_cafe"]),
+                            NombreCalidadCafe = (reader["nombre_calidad"]) is DBNull ? "" : Convert.ToString(reader["nombre_calidad"]),
+                            IdSubProducto = (reader["id_subproducto_cafe"]) is DBNull ? 0 : Convert.ToInt32(reader["id_subproducto_cafe"]),
+                            NombreSubProducto = (reader["nombre_subproducto"]) is DBNull ? "" : Convert.ToString(reader["nombre_subproducto"]),
+                            CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"]))
                         };
                     }
                 }
@@ -543,7 +599,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para actualizar el registro de catidades en la base de datos
-        public bool ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(int idAlmacen, double cantidadNueva, int idCalidad, int isubProducto)
+        public bool ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(int idAlmacen, double cantidadNueva, double cantidadNuevaSaco, int idCalidad, int isubProducto)
         {
             bool exito = false;
 
@@ -553,11 +609,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Almacen SET cantidad_actual_almacen = @cantidadNu, id_calidad_cafe = @iCalidad, id_subproducto_cafe = @iSubProd
+                string consulta = @"UPDATE Almacen SET cantidad_actual_almacen = @cantidadNu, cantidad_actual_saco_almacen = @cantidadNuSaco, id_calidad_cafe = @iCalidad, id_subproducto_cafe = @iSubProd
                                     WHERE id_almacen = @id";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@cantidadNu", cantidadNueva);
+                conexion.AgregarParametro("@cantidadNuSaco", cantidadNuevaSaco);
                 conexion.AgregarParametro("@iCalidad", idCalidad);
                 conexion.AgregarParametro("@id", idAlmacen);
                 conexion.AgregarParametro("@iSubProd", isubProducto);
@@ -589,7 +646,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
         
         //funcion para actualizar el registro de catidades en la base de datos
-        public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, int idCalidad, int iSubProd)
+        public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, double cantidadSaco, int idCalidad, int iSubProd)
         {
             bool exito = false;
             Console.WriteLine("Depuracion - cantidad obtenida a actualizar " + cantidad);
@@ -599,11 +656,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Almacen SET cantidad_actual_almacen = @cantidad, id_calidad_cafe = @iCalidad, id_subproducto_cafe = @iSubProd
+                string consulta = @"UPDATE Almacen SET cantidad_actual_almacen = @cantidad, cantidad_actual_saco_almacen = @cantidadSaco, id_calidad_cafe = @iCalidad, id_subproducto_cafe = @iSubProd
                                     WHERE id_almacen = @id";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@cantidad", cantidad);
+                conexion.AgregarParametro("@cantidadSaco", cantidadSaco);
                 conexion.AgregarParametro("@iCalidad", idCalidad);
                 conexion.AgregarParametro("@iSubProd", iSubProd);
                 conexion.AgregarParametro("@id", idAlmacen);
@@ -645,7 +703,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.cantidad_actual_saco_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
                                             b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
                                         FROM Almacen a
                                         LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
@@ -671,6 +729,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
                             NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             IdCalidadCafe = reader["id_calidad_cafe"] is DBNull ? (int?)null : Convert.ToInt32(reader["id_calidad_cafe"]),
                             NombreCalidadCafe = reader["nombre_calidad"] is DBNull ? null : Convert.ToString(reader["nombre_calidad"])
                         };
@@ -704,7 +763,7 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Crear la consulta SQL para obtener el rol
                 string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
-                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
+                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen, a.cantidad_actual_saco_almacen
                                         FROM Almacen a
                                         LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
                                         LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
@@ -730,6 +789,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
                             NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
+                            CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             IdCalidadCafe = reader["id_calidad_cafe"] is DBNull ? (int?)null : Convert.ToInt32(reader["id_calidad_cafe"]),
                             NombreCalidadCafe = reader["nombre_calidad"] is DBNull ? null : Convert.ToString(reader["nombre_calidad"])
                         };
