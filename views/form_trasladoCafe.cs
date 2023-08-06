@@ -488,12 +488,16 @@ namespace sistema_modular_cafe_majada.views
             var cantSPr = almacenC.ObtenerCantidadCafeAlmacen(iAlmacenProce);
             double cantMaxPr = cantSPr.CapacidadAlmacen;
             double cantActPr = cantSPr.CantidadActualAlmacen;
+            double cantActSacoPr = cantSPr.CantidadActualSacoAlmacen;
             double cantRestPr = cantMaxPr - cantActPr;
+            double cantRestSacoPr = cantMaxPr - cantActSacoPr;
             //Destino
             var cantSDes = almacenC.ObtenerCantidadCafeAlmacen(iAlmacenProce);
             double cantMaxDes = cantSDes.CapacidadAlmacen;
             double cantActDes = cantSDes.CantidadActualAlmacen;
+            double cantActSacoDes = cantSDes.CantidadActualSacoAlmacen;
             double cantRestDes = cantMaxDes - cantActDes;
+            double cantRestSacoDes = cantMaxDes - cantActSacoDes;
             
             int numTraslado = Convert.ToInt32(txb_numTraslado.Text);
             string observacion = txb_observacion.Text;
@@ -510,6 +514,7 @@ namespace sistema_modular_cafe_majada.views
             }
 
             int selectedValue = selectedStatus.Key;
+            string selectedValueName = selectedStatus.Value;
 
             // Verificar si se ha seleccionado un rol de usuario
             if (cbx_subProducto.SelectedItem == null)
@@ -594,6 +599,19 @@ namespace sistema_modular_cafe_majada.views
                             , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    
+                    if (cantActSacoPr < pesoSaco || cantActSacoPr == 0)
+                    {
+                        MessageBox.Show("Error, la cantidad en Sacos de cafe que desea Sacar en Procedencia del almacen excede sus limite. Desea Sacar la cantidad de " + pesoSaco + " en el contenido disponible " + cantActSacoPr
+                            , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (cantRestSacoDes < pesoSaco || cantActSacoPr < 0)
+                    {
+                        MessageBox.Show("Error, la cantidad en Saco de cafe que desea Agrega en Procedencia del almacen excede sus limite maximos. Desea Agregar la cantidad de " + pesoSaco + " en el contenido disponible " + cantRestSacoDes
+                            , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
                     int icalidadDesName = Convert.ToInt32(almNCMDes.IdCalidadCafe == null ? 0 : almNCMDes.IdCalidadCafe);
                     if (almNCM.IdCalidadCafe != icalidadDesName && icalidadDesName != 0)
@@ -609,13 +627,21 @@ namespace sistema_modular_cafe_majada.views
                             + CalidadSeleccionada.NombreCalidadSeleccionada +".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    /*
-                    if(almNCM.IdAlmacen != almNCMDes.IdCalidadCafe && almNCMDes.IdCalidadCafe != 0)
+
+                    int isubProductoDesName = Convert.ToInt32(almNCMDes.IdSubProducto == null ? 0 : almNCMDes.IdSubProducto);
+                    if (almNCM.IdSubProducto != isubProductoDesName && isubProductoDesName != 0)
                     {
-                        MessageBox.Show("La Calidad Cafe que desea trasladar al Almacen de destino no es compatible, La calidad a trasladar es "+ almNCM.NombreCalidadCafe + " y el Almacen destino tiene la calidad actual " + almNCMDes.NombreCalidadCafe +".", 
+                        MessageBox.Show("El SubProducto Cafe que desea trasladar al Almacen de destino no es compatible, el SubProducto a trasladar es "+ almNCM.NombreSubProducto + " y el Almacen destino tiene el SubProducto actual " + almNCMDes.NombreSubProducto +".", 
                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
-                    }*/
+                    }
+                    
+                    if ((almNCM.IdSubProducto != selectedValue || isubProductoDesName != selectedValue) && isubProductoDesName != 0)
+                    {
+                        MessageBox.Show("El SubProducto Cafe que se a seleccionado en el formulario no es compatible, El SubProducto a trasladar es "+ almNCM.NombreSubProducto + " y el Almacen destino tiene el SubProducto actual " + almNCMDes.NombreSubProducto +" y a seleccionado el SubProducto "
+                            + selectedValueName +".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
                     var cantidadCafeC = new CantidadSiloPiñaController();
 
@@ -742,6 +768,19 @@ namespace sistema_modular_cafe_majada.views
                         , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                
+                if (cantActSacoPr < pesoSaco && cantRestSacoDes < pesoSaco)
+                {
+                    MessageBox.Show("Error, la cantidad en Saco de cafe que desea Sacar en Procedencia del almacen excede sus limite. Desea Sacar la cantidad de " + pesoSaco + " en el contenido disponible " + cantActSacoPr
+                        + " O, la cantidad QQs de cafe que desea Agregar en Destino del almacen excede sus limite. Desea Agregar la cantidad de " + pesoQQs + " en el contenido disponible " + cantRestDes, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (cantRestSacoDes < pesoSaco || cantActSacoPr < 0)
+                {
+                    MessageBox.Show("Error, la cantidad en Saco de cafe que desea Agrega en Procedencia del almacen excede sus limite maximos. Desea Agregar la cantidad de " + pesoSaco + " en el contenido disponible " + cantRestSacoDes
+                        , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 int icalidadDesName = Convert.ToInt32(almNCMDes.IdCalidadCafe == null ? 0 : almNCMDes.IdCalidadCafe);
                 if (almNCM.IdCalidadCafe != icalidadDesName && icalidadDesName != 0)
@@ -755,6 +794,21 @@ namespace sistema_modular_cafe_majada.views
                 {
                     MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a trasladar es " + almNCM.NombreCalidadCafe + " y el Almacen destino tiene la calidad actual " + almNCMDes.NombreCalidadCafe + " y a seleccionado la calidad "
                         + CalidadSeleccionada.NombreCalidadSeleccionada + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int isubProductoDesName = Convert.ToInt32(almNCMDes.IdSubProducto == null ? 0 : almNCMDes.IdSubProducto);
+                if (almNCM.IdSubProducto != isubProductoDesName && isubProductoDesName != 0)
+                {
+                    MessageBox.Show("El SubProducto Cafe que desea trasladar al Almacen de destino no es compatible, el SubProducto a trasladar es " + almNCM.NombreSubProducto + " y el Almacen destino tiene el SubProducto actual " + almNCMDes.NombreSubProducto + ".",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if ((almNCM.IdSubProducto != selectedValue || isubProductoDesName != selectedValue) && isubProductoDesName != 0)
+                {
+                    MessageBox.Show("El SubProducto Cafe que se a seleccionado en el formulario no es compatible, El SubProducto a trasladar es " + almNCM.NombreSubProducto + " y el Almacen destino tiene el SubProducto actual " + almNCMDes.NombreSubProducto + " y a seleccionado el SubProducto "
+                        + selectedValueName + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

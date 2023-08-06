@@ -417,6 +417,10 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 txb_ubicadoBodega.Text = BodegaSeleccionada.NombreBodega;
+                txb_almacenSiloPiña.Text = null;
+                iAlmacen = 0;
+                AlmacenSeleccionado.NombreAlmacen = null;
+                AlmacenSeleccionado.IAlmacen = 0;
             }
         }
         
@@ -465,6 +469,8 @@ namespace sistema_modular_cafe_majada.views
             double cantMax = cantSP.CapacidadAlmacen;
             double cantAct = cantSP.CantidadActualAlmacen;
             double cantRest = cantMax - cantAct;
+            double cantActSaco = cantSP.CantidadActualSacoAlmacen;
+            double cantRestSaco = cantMax - cantActSaco;
             int idAlmacenUpd;
             //SubPartida subParti = new SubPartida();
             bool verific = VerificarCamposObligatorios();
@@ -487,6 +493,7 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 int selectedValue = selectedStatus.Key;
+                string selectedValueName = selectedStatus.Value;
 
                 int num1Semana = string.IsNullOrWhiteSpace(txb_pdasSemana1.Text) ? 0 : Convert.ToInt32(txb_pdasSemana1.Text);
                 int num2Semana = string.IsNullOrWhiteSpace(txb_pdasSemana2.Text) ? 0 : Convert.ToInt32(txb_pdasSemana2.Text);
@@ -641,6 +648,7 @@ namespace sistema_modular_cafe_majada.views
 
                 //
                 var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
+                var almNCM = almacenC.ObtenerAlmacenNombreCalidad(iAlmacen);
                 double actcantidad = almCM.CantidadActualAlmacen;
                 double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
 
@@ -651,10 +659,29 @@ namespace sistema_modular_cafe_majada.views
                     
                     if (!verificexisten)
                     {
-                        
-                        if (cantRest < pesoQQs)
+                        if (cantAct < pesoQQs || cantAct == cantMax)
                         {
-                            MessageBox.Show("Error, la cantidad QQs de cafe que desea agregar al almacen excede sus limite. Desea Agregar la cantidad de " + pesoQQs + " en el espacio disponible "+ cantRest + " de " + cantMax, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Error, la cantidad QQs de cafe que desea Agregar al almacen excede sus limite. Desea Agregar la cantidad de " + pesoQQs + " en el contenido disponible " + cantAct, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (cantActSaco < pesoSaco || cantActSaco == 0)
+                        {
+                            MessageBox.Show("Error, la cantidad en Saco de cafe que desea Agregar al almacen excede sus limite. Desea Agregar la cantidad de " + pesoSaco + " en el contenido disponible " + cantActSaco, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (almNCM.IdCalidadCafe != CalidadSeleccionada.ICalidadSeleccionada && (cantAct != 0 && cantActSaco != 0))
+                        {
+                            MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a Agregar al almacen es " + almNCM.NombreCalidadCafe + " y a seleccionado la calidad "
+                                + CalidadSeleccionada.NombreCalidadSeleccionada + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (almNCM.IdSubProducto != selectedValue && (cantAct != 0 && cantActSaco != 0))
+                        {
+                            MessageBox.Show("El SubProducto Cafe que se a seleccionado en el formulario no es compatible, El SubProducto a Agregar es " + almNCM.NombreSubProducto + " y a seleccionado el SubProducto "
+                                + selectedValueName + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
