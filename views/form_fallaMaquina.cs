@@ -62,7 +62,7 @@ namespace sistema_modular_cafe_majada.views
             dtg_fallas.DataSource = datosPersonalizados;
 
             dtg_fallas.Columns["ID"].HeaderText = "Identificador de Falla";
-            dtg_fallas.Columns["Descripcion"].HeaderText = "Descripcion de la Falla";
+            dtg_fallas.Columns["Descripcion"].HeaderText = "Descripcion de Falla";
             dtg_fallas.Columns["Pieza"].HeaderText = "Pieza a reemplazar";
             dtg_fallas.Columns["fecha"].HeaderText = "Fecha";
             dtg_fallas.Columns["Acciones"].HeaderText = "Acciones a tomar";
@@ -361,6 +361,36 @@ namespace sistema_modular_cafe_majada.views
                 cbx_fallaMaquina.SelectedIndex = imaquina;
 
             }
+        }
+
+        private void dtg_fallas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dtg_fallas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtg_fallas.BorderStyle = BorderStyle.None;
+
+            //configuracion de la fila de encabezado en el datagrid
+            Font customFonten = new Font("Oswald", 8f, FontStyle.Bold);
+            dtg_fallas.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            dtg_fallas.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            dtg_fallas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dtg_fallas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            dtg_fallas.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            dtg_fallas.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //configuracion de las filas por defecto en el datagrid
+            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+
+            dtg_fallas.DefaultCellStyle.BackColor = Color.White;
+            dtg_fallas.DefaultCellStyle.Font = customFontdef;
+            dtg_fallas.DefaultCellStyle.ForeColor = Color.Black;
+            dtg_fallas.DefaultCellStyle.SelectionBackColor = Color.White;
+            dtg_fallas.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dtg_fallas.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //configuracion de las filas que son seleccionadas
+            dtg_fallas.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            dtg_fallas.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
     }
 }

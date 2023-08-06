@@ -426,5 +426,35 @@ namespace sistema_modular_cafe_majada.views
                 MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dtg_maquina_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dtg_maquina.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtg_maquina.BorderStyle = BorderStyle.None;
+
+            //configuracion de la fila de encabezado en el datagrid
+            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
+            dtg_maquina.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            dtg_maquina.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            dtg_maquina.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dtg_maquina.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            dtg_maquina.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            dtg_maquina.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //configuracion de las filas por defecto en el datagrid
+            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+
+            dtg_maquina.DefaultCellStyle.BackColor = Color.White;
+            dtg_maquina.DefaultCellStyle.Font = customFontdef;
+            dtg_maquina.DefaultCellStyle.ForeColor = Color.Black;
+            dtg_maquina.DefaultCellStyle.SelectionBackColor = Color.White;
+            dtg_maquina.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dtg_maquina.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //configuracion de las filas que son seleccionadas
+            dtg_maquina.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            dtg_maquina.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+        }
     }
 }

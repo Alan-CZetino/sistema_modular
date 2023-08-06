@@ -48,11 +48,11 @@ namespace sistema_modular_cafe_majada.views
             this.txb_buscarOpc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txb_buscarOpc.BackColor = System.Drawing.Color.White;
             this.txb_buscarOpc.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txb_buscarOpc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_buscarOpc.Location = new System.Drawing.Point(359, 48);
+            this.txb_buscarOpc.Font = new System.Drawing.Font("Oswald Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_buscarOpc.Location = new System.Drawing.Point(359, 46);
             this.txb_buscarOpc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_buscarOpc.Name = "txb_buscarOpc";
-            this.txb_buscarOpc.Size = new System.Drawing.Size(381, 21);
+            this.txb_buscarOpc.Size = new System.Drawing.Size(381, 27);
             this.txb_buscarOpc.TabIndex = 12;
             this.txb_buscarOpc.Text = "Buscar...";
             this.txb_buscarOpc.TextChanged += new System.EventHandler(this.txb_buscarOpc_TextChanged);
@@ -91,7 +91,9 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_tableOpc.AllowUserToOrderColumns = true;
             this.dtg_tableOpc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtg_tableOpc.BackgroundColor = System.Drawing.Color.White;
             this.dtg_tableOpc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_tableOpc.EnableHeadersVisualStyles = false;
             this.dtg_tableOpc.Location = new System.Drawing.Point(9, 102);
             this.dtg_tableOpc.Margin = new System.Windows.Forms.Padding(4);
             this.dtg_tableOpc.Name = "dtg_tableOpc";

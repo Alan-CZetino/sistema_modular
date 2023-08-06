@@ -50,22 +50,32 @@ namespace sistema_modular_cafe_majada.views
 
         private void dataGrid_UserView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            string headerColorHex = "#D7D7D7"; // Color hexadecimal deseado
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dataGrid_UserView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGrid_UserView.BorderStyle = BorderStyle.None;
 
-            Color headerColor = ColorTranslator.FromHtml(headerColorHex);
+            //configuracion de la fila de encabezado en el datagrid
+            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
+            dataGrid_UserView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            dataGrid_UserView.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            dataGrid_UserView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGrid_UserView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            dataGrid_UserView.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            dataGrid_UserView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            if (e.RowIndex == -1)
-            {
-                using (SolidBrush brush = new SolidBrush(headerColor))
-                {
-                    e.Graphics.FillRectangle(brush, e.CellBounds);
-                    // Centrar el texto del encabezado
-                    e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    // Dibujar el fondo del encabezado
-                    e.PaintContent(e.CellBounds);
-                    e.Handled = true;
-                }
-            }
+            //configuracion de las filas por defecto en el datagrid
+            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+
+            dataGrid_UserView.DefaultCellStyle.BackColor = Color.White;
+            dataGrid_UserView.DefaultCellStyle.Font = customFontdef;
+            dataGrid_UserView.DefaultCellStyle.ForeColor = Color.Black;
+            dataGrid_UserView.DefaultCellStyle.SelectionBackColor = Color.White;
+            dataGrid_UserView.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGrid_UserView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //configuracion de las filas que son seleccionadas
+            dataGrid_UserView.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            dataGrid_UserView.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public void ShowUserGrid()

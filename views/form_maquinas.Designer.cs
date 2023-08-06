@@ -46,6 +46,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.btn_tBeneficioM = new System.Windows.Forms.Button();
+            this.txb_beneficio = new System.Windows.Forms.TextBox();
+            this.txb_numContrato = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txb_proveedorTelefono = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txb_proveedorDireccion = new System.Windows.Forms.TextBox();
@@ -61,10 +65,6 @@ namespace sistema_modular_cafe_majada.views
             this.label4 = new System.Windows.Forms.Label();
             this.txb_maquina = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txb_numContrato = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txb_beneficio = new System.Windows.Forms.TextBox();
-            this.btn_tBeneficioM = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_fallaMaquina)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -201,7 +201,10 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_maquina.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtg_maquina.BackgroundColor = System.Drawing.Color.White;
             this.dtg_maquina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_maquina.EnableHeadersVisualStyles = false;
+            this.dtg_maquina.GridColor = System.Drawing.Color.Black;
             this.dtg_maquina.Location = new System.Drawing.Point(308, 82);
             this.dtg_maquina.Name = "dtg_maquina";
             this.dtg_maquina.RowHeadersWidth = 51;
@@ -209,6 +212,7 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_maquina.Size = new System.Drawing.Size(960, 626);
             this.dtg_maquina.TabIndex = 25;
             this.dtg_maquina.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_maquina_CellDoubleClick);
+            this.dtg_maquina.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dtg_maquina_CellPainting);
             // 
             // panel7
             // 
@@ -300,6 +304,47 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(296, 607);
             this.panel8.TabIndex = 7;
+            // 
+            // btn_tBeneficioM
+            // 
+            this.btn_tBeneficioM.FlatAppearance.BorderSize = 0;
+            this.btn_tBeneficioM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tBeneficioM.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tBeneficioM.Location = new System.Drawing.Point(240, 573);
+            this.btn_tBeneficioM.Name = "btn_tBeneficioM";
+            this.btn_tBeneficioM.Size = new System.Drawing.Size(30, 30);
+            this.btn_tBeneficioM.TabIndex = 21;
+            this.btn_tBeneficioM.UseVisualStyleBackColor = true;
+            this.btn_tBeneficioM.Click += new System.EventHandler(this.btn_tBeneficioM_Click);
+            // 
+            // txb_beneficio
+            // 
+            this.txb_beneficio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_beneficio.Enabled = false;
+            this.txb_beneficio.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_beneficio.Location = new System.Drawing.Point(13, 573);
+            this.txb_beneficio.Name = "txb_beneficio";
+            this.txb_beneficio.Size = new System.Drawing.Size(220, 33);
+            this.txb_beneficio.TabIndex = 20;
+            // 
+            // txb_numContrato
+            // 
+            this.txb_numContrato.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_numContrato.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_numContrato.Location = new System.Drawing.Point(13, 508);
+            this.txb_numContrato.Name = "txb_numContrato";
+            this.txb_numContrato.Size = new System.Drawing.Size(220, 33);
+            this.txb_numContrato.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(8, 476);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(132, 26);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Numero de Contrato";
             // 
             // txb_proveedorTelefono
             // 
@@ -443,47 +488,6 @@ namespace sistema_modular_cafe_majada.views
             this.label3.Size = new System.Drawing.Size(144, 26);
             this.label3.TabIndex = 0;
             this.label3.Text = "Nombre de la Máquina";
-            // 
-            // txb_numContrato
-            // 
-            this.txb_numContrato.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txb_numContrato.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_numContrato.Location = new System.Drawing.Point(13, 508);
-            this.txb_numContrato.Name = "txb_numContrato";
-            this.txb_numContrato.Size = new System.Drawing.Size(220, 33);
-            this.txb_numContrato.TabIndex = 19;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(8, 476);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 26);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Numero de Contrato";
-            // 
-            // txb_beneficio
-            // 
-            this.txb_beneficio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txb_beneficio.Enabled = false;
-            this.txb_beneficio.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_beneficio.Location = new System.Drawing.Point(13, 573);
-            this.txb_beneficio.Name = "txb_beneficio";
-            this.txb_beneficio.Size = new System.Drawing.Size(220, 33);
-            this.txb_beneficio.TabIndex = 20;
-            // 
-            // btn_tBeneficioM
-            // 
-            this.btn_tBeneficioM.FlatAppearance.BorderSize = 0;
-            this.btn_tBeneficioM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tBeneficioM.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
-            this.btn_tBeneficioM.Location = new System.Drawing.Point(240, 573);
-            this.btn_tBeneficioM.Name = "btn_tBeneficioM";
-            this.btn_tBeneficioM.Size = new System.Drawing.Size(30, 30);
-            this.btn_tBeneficioM.TabIndex = 21;
-            this.btn_tBeneficioM.UseVisualStyleBackColor = true;
-            this.btn_tBeneficioM.Click += new System.EventHandler(this.btn_tBeneficioM_Click);
             // 
             // form_maquinas
             // 

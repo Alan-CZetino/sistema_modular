@@ -38,22 +38,32 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtgv_roles_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            string headerColorHex = "#D7D7D7"; // Color hexadecimal deseado
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dtgv_roles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgv_roles.BorderStyle = BorderStyle.None;
 
-            Color headerColor = ColorTranslator.FromHtml(headerColorHex);
+            //configuracion de la fila de encabezado en el datagrid
+            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
+            dtgv_roles.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            dtgv_roles.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            dtgv_roles.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dtgv_roles.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            dtgv_roles.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            dtgv_roles.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            if (e.RowIndex == -1)
-            {
-                using (SolidBrush brush = new SolidBrush(headerColor))
-                {
-                    e.Graphics.FillRectangle(brush, e.CellBounds);
-                    // Centrar el texto del encabezado
-                    e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    // Dibujar el fondo del encabezado
-                    e.PaintContent(e.CellBounds);
-                    e.Handled = true;
-                }
-            }
+            //configuracion de las filas por defecto en el datagrid
+            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+
+            dtgv_roles.DefaultCellStyle.BackColor = Color.White;
+            dtgv_roles.DefaultCellStyle.Font = customFontdef;
+            dtgv_roles.DefaultCellStyle.ForeColor = Color.Black;
+            dtgv_roles.DefaultCellStyle.SelectionBackColor = Color.White;
+            dtgv_roles.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dtgv_roles.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //configuracion de las filas que son seleccionadas
+            dtgv_roles.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            dtgv_roles.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public void ShowRolGrid()

@@ -47,11 +47,11 @@ namespace sistema_modular_cafe_majada.views
             this.txb_buscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txb_buscar.BackColor = System.Drawing.Color.White;
             this.txb_buscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txb_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_buscar.Location = new System.Drawing.Point(359, 48);
+            this.txb_buscar.Font = new System.Drawing.Font("Oswald Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_buscar.Location = new System.Drawing.Point(359, 46);
             this.txb_buscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_buscar.Name = "txb_buscar";
-            this.txb_buscar.Size = new System.Drawing.Size(381, 21);
+            this.txb_buscar.Size = new System.Drawing.Size(381, 27);
             this.txb_buscar.TabIndex = 11;
             this.txb_buscar.Text = "Buscar...";
             this.txb_buscar.TextChanged += new System.EventHandler(this.txb_buscarOpc_TextChanged);
@@ -130,7 +130,10 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_tOpc.AllowUserToAddRows = false;
             this.dtg_tOpc.AllowUserToDeleteRows = false;
             this.dtg_tOpc.AllowUserToOrderColumns = true;
+            this.dtg_tOpc.BackgroundColor = System.Drawing.Color.White;
             this.dtg_tOpc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_tOpc.EnableHeadersVisualStyles = false;
+            this.dtg_tOpc.GridColor = System.Drawing.Color.Black;
             this.dtg_tOpc.Location = new System.Drawing.Point(9, 102);
             this.dtg_tOpc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtg_tOpc.Name = "dtg_tOpc";

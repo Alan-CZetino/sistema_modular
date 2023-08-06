@@ -65,34 +65,34 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(5, 443);
+            this.panel1.Size = new System.Drawing.Size(1, 443);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(5, 0);
+            this.panel2.Location = new System.Drawing.Point(1, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(978, 5);
+            this.panel2.Size = new System.Drawing.Size(986, 1);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(5, 438);
+            this.panel3.Location = new System.Drawing.Point(1, 442);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(978, 5);
+            this.panel3.Size = new System.Drawing.Size(986, 1);
             this.panel3.TabIndex = 1;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(983, 0);
+            this.panel4.Location = new System.Drawing.Point(987, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(5, 443);
+            this.panel4.Size = new System.Drawing.Size(1, 443);
             this.panel4.TabIndex = 1;
             // 
             // panel5
@@ -101,9 +101,9 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(5, 5);
+            this.panel5.Location = new System.Drawing.Point(1, 1);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(978, 67);
+            this.panel5.Size = new System.Drawing.Size(986, 67);
             this.panel5.TabIndex = 13;
             // 
             // tableLayoutPanel1
@@ -115,7 +115,7 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btn_updateFinca, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_deleteFinca, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(844, 7);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(852, 7);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -171,9 +171,9 @@ namespace sistema_modular_cafe_majada.views
             this.panel6.Controls.Add(this.panel8);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(5, 72);
+            this.panel6.Location = new System.Drawing.Point(1, 68);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(279, 366);
+            this.panel6.Size = new System.Drawing.Size(279, 374);
             this.panel6.TabIndex = 14;
             // 
             // panel8
@@ -186,7 +186,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(279, 319);
+            this.panel8.Size = new System.Drawing.Size(279, 327);
             this.panel8.TabIndex = 9;
             // 
             // label4
@@ -203,6 +203,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_ubiFinca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_ubiFinca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_ubiFinca.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_ubiFinca.Location = new System.Drawing.Point(13, 100);
             this.txb_ubiFinca.Name = "txb_ubiFinca";
@@ -223,6 +224,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_nombreFinca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_nombreFinca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_nombreFinca.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_nombreFinca.Location = new System.Drawing.Point(13, 35);
             this.txb_nombreFinca.Name = "txb_nombreFinca";
@@ -234,7 +236,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel7.Controls.Add(this.btn_SaveFinca);
             this.panel7.Controls.Add(this.btn_Cancel);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 319);
+            this.panel7.Location = new System.Drawing.Point(0, 327);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(279, 47);
             this.panel7.TabIndex = 8;
@@ -290,7 +292,10 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_fincas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtg_fincas.BackgroundColor = System.Drawing.Color.White;
             this.dtg_fincas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_fincas.EnableHeadersVisualStyles = false;
+            this.dtg_fincas.GridColor = System.Drawing.Color.Black;
             this.dtg_fincas.Location = new System.Drawing.Point(290, 78);
             this.dtg_fincas.Name = "dtg_fincas";
             this.dtg_fincas.ReadOnly = true;
@@ -299,11 +304,13 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_fincas.Size = new System.Drawing.Size(686, 353);
             this.dtg_fincas.TabIndex = 15;
             this.dtg_fincas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_fincas_CellDoubleClick);
+            this.dtg_fincas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dtg_fincas_CellPainting);
             // 
             // form_finca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(988, 443);
             this.Controls.Add(this.dtg_fincas);
             this.Controls.Add(this.panel6);

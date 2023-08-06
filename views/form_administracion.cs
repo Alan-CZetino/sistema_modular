@@ -179,7 +179,7 @@ namespace sistema_modular_cafe_majada
             // Restaurar el color original del botón al perder el foco
             button.BackColor = originalColors[button];
             button.ForeColor = Color.Black;
-            button.FlatAppearance.BorderColor = Color.Black;
+            button.FlatAppearance.BorderColor = Color.FromArgb(218, 218, 218);
             button.FlatAppearance.BorderSize = 1;
         }
 

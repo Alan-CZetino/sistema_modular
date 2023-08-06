@@ -44,22 +44,32 @@ namespace sistema_modular_cafe_majada.views
         //esta es una funcion para pintar las filas del datagrid
         private void dtg_opcSP_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            string headerColorHex = "#D7D7D7"; // Color hexadecimal deseado
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dtg_opcSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtg_opcSP.BorderStyle = BorderStyle.None;
 
-            Color headerColor = ColorTranslator.FromHtml(headerColorHex);
+            //configuracion de la fila de encabezado en el datagrid
+            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
+            dtg_opcSP.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            dtg_opcSP.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            dtg_opcSP.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dtg_opcSP.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            dtg_opcSP.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            dtg_opcSP.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            if (e.RowIndex == -1)
-            {
-                using (SolidBrush brush = new SolidBrush(headerColor))
-                {
-                    e.Graphics.FillRectangle(brush, e.CellBounds);
-                    // Centrar el texto del encabezado
-                    e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    // Dibujar el fondo del encabezado
-                    e.PaintContent(e.CellBounds);
-                    e.Handled = true;
-                }
-            }
+            //configuracion de las filas por defecto en el datagrid
+            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+
+            dtg_opcSP.DefaultCellStyle.BackColor = Color.White;
+            dtg_opcSP.DefaultCellStyle.Font = customFontdef;
+            dtg_opcSP.DefaultCellStyle.ForeColor = Color.Black;
+            dtg_opcSP.DefaultCellStyle.SelectionBackColor = Color.White;
+            dtg_opcSP.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dtg_opcSP.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //configuracion de las filas que son seleccionadas
+            dtg_opcSP.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            dtg_opcSP.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public void ShowBodegaGrid()
