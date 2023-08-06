@@ -35,25 +35,27 @@ namespace sistema_modular_cafe_majada.views
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btn_SaveFalla = new System.Windows.Forms.Button();
+            this.btn_Cancel = new System.Windows.Forms.Button();
+            this.txb_obsFalla = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txb_accionesFalla = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cbx_fallaMaquina = new System.Windows.Forms.ComboBox();
+            this.txb_piezaFalla = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_fechaFalla = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txb_desFalla = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btn_SaveFalla = new System.Windows.Forms.Button();
-            this.btn_Cancel = new System.Windows.Forms.Button();
+            this.dtg_fallas = new System.Windows.Forms.DataGridView();
+            this.btn_modFalla = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_fallas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_modFalla)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -110,20 +112,21 @@ namespace sistema_modular_cafe_majada.views
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btn_modFalla);
             this.panel5.Controls.Add(this.btn_SaveFalla);
             this.panel5.Controls.Add(this.btn_Cancel);
-            this.panel5.Controls.Add(this.textBox4);
+            this.panel5.Controls.Add(this.txb_obsFalla);
             this.panel5.Controls.Add(this.label7);
-            this.panel5.Controls.Add(this.textBox2);
+            this.panel5.Controls.Add(this.txb_accionesFalla);
             this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.comboBox1);
-            this.panel5.Controls.Add(this.textBox3);
+            this.panel5.Controls.Add(this.cbx_fallaMaquina);
+            this.panel5.Controls.Add(this.txb_piezaFalla);
             this.panel5.Controls.Add(this.label5);
-            this.panel5.Controls.Add(this.dateTimePicker1);
+            this.panel5.Controls.Add(this.dtp_fechaFalla);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.label1);
-            this.panel5.Controls.Add(this.textBox1);
+            this.panel5.Controls.Add(this.txb_desFalla);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(2, 30);
@@ -131,15 +134,60 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.Size = new System.Drawing.Size(1258, 156);
             this.panel5.TabIndex = 20;
             // 
-            // textBox4
+            // btn_SaveFalla
             // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(716, 67);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(220, 82);
-            this.textBox4.TabIndex = 15;
+            this.btn_SaveFalla.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_SaveFalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.btn_SaveFalla.FlatAppearance.BorderSize = 0;
+            this.btn_SaveFalla.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
+            this.btn_SaveFalla.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
+            this.btn_SaveFalla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SaveFalla.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SaveFalla.ForeColor = System.Drawing.Color.White;
+            this.btn_SaveFalla.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
+            this.btn_SaveFalla.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_SaveFalla.Location = new System.Drawing.Point(1014, 110);
+            this.btn_SaveFalla.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_SaveFalla.Name = "btn_SaveFalla";
+            this.btn_SaveFalla.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.btn_SaveFalla.Size = new System.Drawing.Size(109, 39);
+            this.btn_SaveFalla.TabIndex = 16;
+            this.btn_SaveFalla.Text = "Guardar";
+            this.btn_SaveFalla.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_SaveFalla.UseVisualStyleBackColor = false;
+            this.btn_SaveFalla.Click += new System.EventHandler(this.btn_SaveFalla_Click);
+            // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btn_Cancel.FlatAppearance.BorderSize = 0;
+            this.btn_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
+            this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Cancel.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.ForeColor = System.Drawing.Color.White;
+            this.btn_Cancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
+            this.btn_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Cancel.Location = new System.Drawing.Point(1139, 110);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.btn_Cancel.Size = new System.Drawing.Size(109, 39);
+            this.btn_Cancel.TabIndex = 17;
+            this.btn_Cancel.Text = "Cancelar";
+            this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
+            // txb_obsFalla
+            // 
+            this.txb_obsFalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_obsFalla.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_obsFalla.Location = new System.Drawing.Point(716, 67);
+            this.txb_obsFalla.Multiline = true;
+            this.txb_obsFalla.Name = "txb_obsFalla";
+            this.txb_obsFalla.Size = new System.Drawing.Size(220, 82);
+            this.txb_obsFalla.TabIndex = 15;
             // 
             // label7
             // 
@@ -151,14 +199,14 @@ namespace sistema_modular_cafe_majada.views
             this.label7.TabIndex = 14;
             this.label7.Text = "Observaciones";
             // 
-            // textBox2
+            // txb_accionesFalla
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(323, 112);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(385, 33);
-            this.textBox2.TabIndex = 13;
+            this.txb_accionesFalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_accionesFalla.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_accionesFalla.Location = new System.Drawing.Point(323, 112);
+            this.txb_accionesFalla.Name = "txb_accionesFalla";
+            this.txb_accionesFalla.Size = new System.Drawing.Size(385, 33);
+            this.txb_accionesFalla.TabIndex = 13;
             // 
             // label6
             // 
@@ -170,23 +218,23 @@ namespace sistema_modular_cafe_majada.views
             this.label6.TabIndex = 12;
             this.label6.Text = "Acciones";
             // 
-            // comboBox1
+            // cbx_fallaMaquina
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(261, 63);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(220, 37);
-            this.comboBox1.TabIndex = 11;
+            this.cbx_fallaMaquina.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_fallaMaquina.FormattingEnabled = true;
+            this.cbx_fallaMaquina.Location = new System.Drawing.Point(261, 63);
+            this.cbx_fallaMaquina.Name = "cbx_fallaMaquina";
+            this.cbx_fallaMaquina.Size = new System.Drawing.Size(220, 37);
+            this.cbx_fallaMaquina.TabIndex = 11;
             // 
-            // textBox3
+            // txb_piezaFalla
             // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(488, 67);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(220, 33);
-            this.textBox3.TabIndex = 10;
+            this.txb_piezaFalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_piezaFalla.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_piezaFalla.Location = new System.Drawing.Point(488, 67);
+            this.txb_piezaFalla.Name = "txb_piezaFalla";
+            this.txb_piezaFalla.Size = new System.Drawing.Size(220, 33);
+            this.txb_piezaFalla.TabIndex = 10;
             // 
             // label5
             // 
@@ -198,14 +246,14 @@ namespace sistema_modular_cafe_majada.views
             this.label5.TabIndex = 9;
             this.label5.Text = "Pieza a cambiar";
             // 
-            // dateTimePicker1
+            // dtp_fechaFalla
             // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(1048, 32);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 33);
-            this.dateTimePicker1.TabIndex = 8;
+            this.dtp_fechaFalla.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtp_fechaFalla.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_fechaFalla.Location = new System.Drawing.Point(1048, 32);
+            this.dtp_fechaFalla.Name = "dtp_fechaFalla";
+            this.dtp_fechaFalla.Size = new System.Drawing.Size(200, 33);
+            this.dtp_fechaFalla.TabIndex = 8;
             // 
             // label4
             // 
@@ -238,15 +286,15 @@ namespace sistema_modular_cafe_majada.views
             this.label1.TabIndex = 4;
             this.label1.Text = "Formulario de Falla de Maquinas";
             // 
-            // textBox1
+            // txb_desFalla
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(12, 67);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(220, 82);
-            this.textBox1.TabIndex = 3;
+            this.txb_desFalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_desFalla.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_desFalla.Location = new System.Drawing.Point(12, 67);
+            this.txb_desFalla.Multiline = true;
+            this.txb_desFalla.Name = "txb_desFalla";
+            this.txb_desFalla.Size = new System.Drawing.Size(220, 82);
+            this.txb_desFalla.TabIndex = 3;
             // 
             // label3
             // 
@@ -258,65 +306,35 @@ namespace sistema_modular_cafe_majada.views
             this.label3.TabIndex = 2;
             this.label3.Text = "Descripcion de la Falla";
             // 
-            // dataGridView1
+            // dtg_fallas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 193);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1236, 468);
-            this.dataGridView1.TabIndex = 21;
+            this.dtg_fallas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_fallas.Location = new System.Drawing.Point(14, 193);
+            this.dtg_fallas.Name = "dtg_fallas";
+            this.dtg_fallas.RowHeadersWidth = 51;
+            this.dtg_fallas.RowTemplate.Height = 24;
+            this.dtg_fallas.Size = new System.Drawing.Size(1236, 468);
+            this.dtg_fallas.TabIndex = 21;
+            this.dtg_fallas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_fallas_CellDoubleClick);
             // 
-            // btn_SaveFalla
+            // btn_modFalla
             // 
-            this.btn_SaveFalla.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_SaveFalla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
-            this.btn_SaveFalla.FlatAppearance.BorderSize = 0;
-            this.btn_SaveFalla.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
-            this.btn_SaveFalla.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(115)))), ((int)(((byte)(71)))));
-            this.btn_SaveFalla.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SaveFalla.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_SaveFalla.ForeColor = System.Drawing.Color.White;
-            this.btn_SaveFalla.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
-            this.btn_SaveFalla.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_SaveFalla.Location = new System.Drawing.Point(1014, 110);
-            this.btn_SaveFalla.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_SaveFalla.Name = "btn_SaveFalla";
-            this.btn_SaveFalla.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btn_SaveFalla.Size = new System.Drawing.Size(109, 39);
-            this.btn_SaveFalla.TabIndex = 16;
-            this.btn_SaveFalla.Text = "Guardar";
-            this.btn_SaveFalla.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_SaveFalla.UseVisualStyleBackColor = false;
-            // 
-            // btn_Cancel
-            // 
-            this.btn_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btn_Cancel.FlatAppearance.BorderSize = 0;
-            this.btn_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
-            this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cancel.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_Cancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
-            this.btn_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Cancel.Location = new System.Drawing.Point(1139, 110);
-            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.btn_Cancel.Size = new System.Drawing.Size(109, 39);
-            this.btn_Cancel.TabIndex = 17;
-            this.btn_Cancel.Text = "Cancelar";
-            this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_modFalla.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_modFalla.BackgroundImage = global::sistema_modular_cafe_majada.Properties.Resources.editar;
+            this.btn_modFalla.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_modFalla.Location = new System.Drawing.Point(965, 105);
+            this.btn_modFalla.Name = "btn_modFalla";
+            this.btn_modFalla.Size = new System.Drawing.Size(43, 48);
+            this.btn_modFalla.TabIndex = 18;
+            this.btn_modFalla.TabStop = false;
+            this.btn_modFalla.Click += new System.EventHandler(this.btn_modFalla_Click);
             // 
             // form_fallaMaquina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1262, 673);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtg_fallas);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -329,7 +347,8 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_fallas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_modFalla)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -343,20 +362,21 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txb_obsFalla;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txb_accionesFalla;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox cbx_fallaMaquina;
+        private System.Windows.Forms.TextBox txb_piezaFalla;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtp_fechaFalla;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txb_desFalla;
+        private System.Windows.Forms.DataGridView dtg_fallas;
         private System.Windows.Forms.Button btn_SaveFalla;
         private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.PictureBox btn_modFalla;
     }
 }

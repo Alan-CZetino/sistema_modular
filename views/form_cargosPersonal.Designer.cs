@@ -29,23 +29,32 @@ namespace sistema_modular_cafe_majada.views
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_cargosPersonal));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_deleteCargo = new System.Windows.Forms.PictureBox();
+            this.btn_modCargo = new System.Windows.Forms.PictureBox();
+            this.txb_cargo = new System.Windows.Forms.TextBox();
             this.btn_SaveCargo = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.txb_descripCargo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txb_cargo = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtg_cargosPersonal = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_deleteCargo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_modCargo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_cargosPersonal)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -102,6 +111,8 @@ namespace sistema_modular_cafe_majada.views
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btn_deleteCargo);
+            this.panel5.Controls.Add(this.btn_modCargo);
             this.panel5.Controls.Add(this.txb_cargo);
             this.panel5.Controls.Add(this.btn_SaveCargo);
             this.panel5.Controls.Add(this.btn_Cancel);
@@ -114,6 +125,37 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1240, 106);
             this.panel5.TabIndex = 26;
+            // 
+            // btn_deleteCargo
+            // 
+            this.btn_deleteCargo.BackgroundImage = global::sistema_modular_cafe_majada.Properties.Resources.boton_eliminar;
+            this.btn_deleteCargo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_deleteCargo.Location = new System.Drawing.Point(507, 66);
+            this.btn_deleteCargo.Name = "btn_deleteCargo";
+            this.btn_deleteCargo.Size = new System.Drawing.Size(33, 33);
+            this.btn_deleteCargo.TabIndex = 20;
+            this.btn_deleteCargo.TabStop = false;
+            this.btn_deleteCargo.Click += new System.EventHandler(this.btn_deleteCargo_Click);
+            // 
+            // btn_modCargo
+            // 
+            this.btn_modCargo.BackgroundImage = global::sistema_modular_cafe_majada.Properties.Resources.editar;
+            this.btn_modCargo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_modCargo.Location = new System.Drawing.Point(468, 67);
+            this.btn_modCargo.Name = "btn_modCargo";
+            this.btn_modCargo.Size = new System.Drawing.Size(33, 33);
+            this.btn_modCargo.TabIndex = 19;
+            this.btn_modCargo.TabStop = false;
+            this.btn_modCargo.Click += new System.EventHandler(this.btn_modCargo_Click);
+            // 
+            // txb_cargo
+            // 
+            this.txb_cargo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_cargo.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_cargo.Location = new System.Drawing.Point(6, 67);
+            this.txb_cargo.Name = "txb_cargo";
+            this.txb_cargo.Size = new System.Drawing.Size(220, 33);
+            this.txb_cargo.TabIndex = 18;
             // 
             // btn_SaveCargo
             // 
@@ -136,6 +178,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SaveCargo.Text = "Guardar";
             this.btn_SaveCargo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SaveCargo.UseVisualStyleBackColor = false;
+            this.btn_SaveCargo.Click += new System.EventHandler(this.btn_SaveCargo_Click);
             // 
             // btn_Cancel
             // 
@@ -157,6 +200,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // txb_descripCargo
             // 
@@ -197,46 +241,77 @@ namespace sistema_modular_cafe_majada.views
             this.label9.TabIndex = 4;
             this.label9.Text = "Formulario de Cargos de Personal";
             // 
-            // txb_cargo
+            // dtg_cargosPersonal
             // 
-            this.txb_cargo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txb_cargo.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_cargo.Location = new System.Drawing.Point(6, 67);
-            this.txb_cargo.Name = "txb_cargo";
-            this.txb_cargo.Size = new System.Drawing.Size(220, 33);
-            this.txb_cargo.TabIndex = 18;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dtg_cargosPersonal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 143);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1227, 475);
-            this.dataGridView1.TabIndex = 27;
+            this.dtg_cargosPersonal.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dtg_cargosPersonal.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtg_cargosPersonal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtg_cargosPersonal.ColumnHeadersHeight = 29;
+            this.dtg_cargosPersonal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtg_cargosPersonal.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtg_cargosPersonal.EnableHeadersVisualStyles = false;
+            this.dtg_cargosPersonal.Location = new System.Drawing.Point(9, 143);
+            this.dtg_cargosPersonal.MultiSelect = false;
+            this.dtg_cargosPersonal.Name = "dtg_cargosPersonal";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtg_cargosPersonal.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtg_cargosPersonal.RowHeadersWidth = 51;
+            this.dtg_cargosPersonal.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(199)))), ((int)(((byte)(199)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtg_cargosPersonal.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtg_cargosPersonal.RowTemplate.Height = 24;
+            this.dtg_cargosPersonal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtg_cargosPersonal.Size = new System.Drawing.Size(1227, 475);
+            this.dtg_cargosPersonal.TabIndex = 27;
+            this.dtg_cargosPersonal.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_cargosPersonal_CellDoubleClick);
+            this.dtg_cargosPersonal.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dtg_cargosPersonal_CellPainting);
             // 
             // form_cargosPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1244, 626);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtg_cargosPersonal);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "form_cargosPersonal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "form_cargosPersonal";
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_deleteCargo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_modCargo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_cargosPersonal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -256,6 +331,8 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtg_cargosPersonal;
+        private System.Windows.Forms.PictureBox btn_deleteCargo;
+        private System.Windows.Forms.PictureBox btn_modCargo;
     }
 }
