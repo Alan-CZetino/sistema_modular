@@ -440,7 +440,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             return listaTraslados;
         }
 
-        // Función para obtener todos los registros de Salida en la base de datos
+        // Función para obtener todos los registros de Traslado en la base de datos
         public List<Traslado> ObtenerTrasladoPorCosecha(int iCosecha)
         {
             List<Traslado> listaTraslados = new List<Traslado>();

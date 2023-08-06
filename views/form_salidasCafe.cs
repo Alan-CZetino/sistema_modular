@@ -516,7 +516,7 @@ namespace sistema_modular_cafe_majada.views
 
                         double resultCa = actcantidad - pesoQQs;
 
-                        almacenC.ActualizarCantidadEntradaCafeAlmacen(iAlmacen, resultCa, iCalidad);
+                        almacenC.ActualizarCantidadEntradaCafeAlmacen(iAlmacen, resultCa, iCalidad, selectedValue);
 
                         try
                         {
@@ -599,7 +599,7 @@ namespace sistema_modular_cafe_majada.views
 
                     //actual almacen
                     //no actualiza los id, unicamnete la cantidad sumara ya que detecto que el almacen es diferente 
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaNoUpd, iCalidadNoUpd);
+                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaNoUpd, iCalidadNoUpd, selectedValue);
 
                     var cantidadNewC = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
                     double cantidNew = cantidadNewC.CantidadActualAlmacen;
@@ -607,7 +607,7 @@ namespace sistema_modular_cafe_majada.views
 
                     //nuevo almacen
                     //cambia los nuevos datos ya que detecto que el almacen cambio 
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, iCalidad);
+                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, iCalidad, selectedValue);
 
                     CantidadSiloPiña cantidadUpd = new CantidadSiloPiña()
                     {
@@ -630,7 +630,7 @@ namespace sistema_modular_cafe_majada.views
                 else
                 {
                     double resultCaUpd = actcantidad + cantidaQQsUpdate - cantidaQQsActUpdate;
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaUpd, iCalidad);
+                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaUpd, iCalidad, selectedValue);
 
                     CantidadSiloPiña cantidad = new CantidadSiloPiña()
                     {
@@ -700,6 +700,19 @@ namespace sistema_modular_cafe_majada.views
 
                 if (result == DialogResult.Yes)
                 {
+                    // Obtener el valor numérico seleccionado
+                    KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
+                    if (cbx_subProducto.SelectedItem is KeyValuePair<int, string> keyValue)
+                    {
+                        selectedStatus = keyValue;
+                    }
+                    else if (cbx_subProducto.SelectedItem != null)
+                    {
+                        selectedStatus = (KeyValuePair<int, string>)cbx_subProducto.SelectedItem;
+                    }
+
+                    int selectedValue = selectedStatus.Key;
+
                     //se llama la funcion delete del controlador para eliminar el registro
                     SalidaController controller = new SalidaController();
                     controller.EliminarSalidaCafe(SalidaSeleccionado.ISalida);
@@ -713,7 +726,7 @@ namespace sistema_modular_cafe_majada.views
                     double actcantidad = almCM.CantidadActualAlmacen;
 
                     double resultCaUpd = actcantidad + cantidaQQsUpdate;
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, iCalidad);
+                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, iCalidad, selectedValue);
 
                     cantidadCafeC.EliminarCantidadSiloPiña(cantUpd.IdCantidadCafe);
 

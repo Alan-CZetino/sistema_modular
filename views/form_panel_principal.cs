@@ -38,6 +38,7 @@ namespace sistema_modular_cafe_majada
             InitializeComponent();
 
             ShowCountBDCard();
+            ShowCountExistenciaBDCard();
             ConfigurarGrafico1();
             ConfigurarGrafico2();
             ConfigurarGrafico3();
@@ -62,6 +63,7 @@ namespace sistema_modular_cafe_majada
                     if (!this.IsDisposed)
                     {
                         ShowCountBDCard();
+                        ShowCountExistenciaBDCard();
                     }
                 }));
             }
@@ -94,6 +96,25 @@ namespace sistema_modular_cafe_majada
             var beneficio = new BeneficioController();
             Beneficio totalBeneficio = beneficio.CountBeneficio();
             lbl_beneficio.Text = totalBeneficio.CountBeneficio.ToString();
+        }
+
+        //funcion para mostrar los totales de existencia de cafe para cada tarjeta en el panel principal de existencia
+        public void ShowCountExistenciaBDCard()
+        {
+            var almacenExistenciaC = new AlmacenController();
+            Almacen almacen = new Almacen();
+
+            //cantidad SHG
+            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen("S.H.G.");
+            lbl_cafeSHG.Text = Convert.ToString(almacen.CountExistenceCoffe);
+
+            //cantidad HG
+            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen("H.G.");
+            lbl_cafeHG.Text = Convert.ToString(almacen.CountExistenceCoffe);
+
+            //cantidad CS
+            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen("C.S.");
+            lbl_cafeCS.Text = Convert.ToString(almacen.CountExistenceCoffe);
         }
 
         //Configuracion para la grafica 1

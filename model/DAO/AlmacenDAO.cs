@@ -28,13 +28,15 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Almacen ( nombre_almacen, descripcion_almacen,  capacidad_almacen ,ubicacion_almacen, id_bodega_ubicacion_almacen)
-                                    VALUES ( @nombre, @descrip, @capacidad, @ubicacion, @iBodega)";
+                string consulta = @"INSERT INTO Almacen ( nombre_almacen, descripcion_almacen, capacidad_almacen, cantidad_actual_almacen ,ubicacion_almacen,
+                                            id_bodega_ubicacion_almacen)
+                                    VALUES ( @nombre, @descrip, @capacidad, @capacidadAct, @ubicacion, @iBodega)";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@nombre", almacen.NombreAlmacen);
                 conexion.AgregarParametro("@descrip", almacen.DescripcionAlmacen);
                 conexion.AgregarParametro("@capacidad", almacen.CapacidadAlmacen);
+                conexion.AgregarParametro("@capacidadAct", 0.0);
                 conexion.AgregarParametro("@ubicacion", almacen.UbicacionAlmacen);
                 conexion.AgregarParametro("@iBodega", almacen.IdBodegaUbicacion);
 
@@ -79,6 +81,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"])
                         };
@@ -126,6 +129,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"])
                         };
@@ -176,6 +180,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
                             NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"])
@@ -280,6 +285,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
+                            CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
                             NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"])
@@ -537,7 +543,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para actualizar el registro de catidades en la base de datos
-        public bool ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(int idAlmacen, double cantidadNueva, int idCalidad)
+        public bool ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(int idAlmacen, double cantidadNueva, int idCalidad, int isubProducto)
         {
             bool exito = false;
 
@@ -547,13 +553,14 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Almacen SET cantidad_actual_almacen = @cantidadNu, id_calidad_cafe = @iCalidad
+                string consulta = @"UPDATE Almacen SET cantidad_actual_almacen = @cantidadNu, id_calidad_cafe = @iCalidad, id_subproducto_cafe = @iSubProd
                                     WHERE id_almacen = @id";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@cantidadNu", cantidadNueva);
                 conexion.AgregarParametro("@iCalidad", idCalidad);
                 conexion.AgregarParametro("@id", idAlmacen);
+                conexion.AgregarParametro("@iSubProd", isubProducto);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -582,7 +589,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
         
         //funcion para actualizar el registro de catidades en la base de datos
-        public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, int idCalidad)
+        public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, int idCalidad, int iSubProd)
         {
             bool exito = false;
             Console.WriteLine("Depuracion - cantidad obtenida a actualizar " + cantidad);
@@ -592,12 +599,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Almacen SET cantidad_actual_almacen = @cantidad, id_calidad_cafe = @iCalidad
+                string consulta = @"UPDATE Almacen SET cantidad_actual_almacen = @cantidad, id_calidad_cafe = @iCalidad, id_subproducto_cafe = @iSubProd
                                     WHERE id_almacen = @id";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@cantidad", cantidad);
                 conexion.AgregarParametro("@iCalidad", idCalidad);
+                conexion.AgregarParametro("@iSubProd", iSubProd);
                 conexion.AgregarParametro("@id", idAlmacen);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
@@ -742,6 +750,49 @@ namespace sistema_modular_cafe_majada.model.DAO
             return almacens;
         }
 
+        //
+        public Almacen CountExistenceCofee(string buscar)
+        {
+            Almacen almacen = null;
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT SUM(a.cantidad_actual_almacen) AS TotalExistencia 
+                                    FROM Almacen a
+                                    INNER JOIN Calidad_Cafe cc ON a.id_calidad_cafe = cc.id_calidad
+                                    WHERE cc.nombre_calidad LIKE CONCAT('%', @search)";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", buscar);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            almacen = new Almacen()
+                            {
+                                CountExistenceCoffe = (reader["TotalExistencia"] is DBNull ? 0 : Convert.ToInt32(reader["TotalExistencia"]))
+                            };
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return almacen;
+        }
 
 
     }

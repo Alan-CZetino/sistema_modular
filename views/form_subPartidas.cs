@@ -685,7 +685,7 @@ namespace sistema_modular_cafe_majada.views
                             double resultCa = actcantidad + pesoQQs; 
                             Console.WriteLine("Depuracion - cantidad resultante " + resultCa);
                             Console.WriteLine("Depuracion - cantidad obtenida a actualizar en subP" + pesoQQs);
-                            almacenC.ActualizarCantidadEntradaCafeAlmacen(iAlmacen, resultCa, iCalidad);
+                            almacenC.ActualizarCantidadEntradaCafeAlmacen(iAlmacen, resultCa, iCalidad, selectedValue);
                             
                             try
                             {
@@ -773,13 +773,13 @@ namespace sistema_modular_cafe_majada.views
                             {
                                 Console.WriteLine("Depuracion - se detecto cambio de almacen  " + cantUpd.IdCantidadCafe + " " + iAlmacen);
                                 //no actualiza los id unicamnete la cantidad restara ya que detecto que el almacen es diferente 
-                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaNoUpd, iCalidadNoUpd);
+                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaNoUpd, iCalidadNoUpd, selectedValue);
                                 //cambia los nuevos datos ya que detecto que el almacen cambio 
-                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, iCalidad);
+                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, iCalidad, selectedValue);
                             }
                             else
                             {
-                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaUpd, iCalidad);
+                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaUpd, iCalidad, selectedValue);
                             }
                         }
 

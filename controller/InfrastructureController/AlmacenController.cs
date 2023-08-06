@@ -168,12 +168,12 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
         }
         
         //
-        public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, int iCalidad)
+        public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, int iCalidad, int iSubProd)
         {
             try
             {
                 // Llamada al método del DAO para actualizar la Almacens
-                return almacenDAO.ActualizarCantidadEntradaCafeAlmacen(idAlmacen, cantidad, iCalidad);
+                return almacenDAO.ActualizarCantidadEntradaCafeAlmacen(idAlmacen, cantidad, iCalidad, iSubProd);
             }
             catch (Exception ex)
             {
@@ -183,12 +183,12 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
         }
         
         //
-        public bool ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(int idAlmacen, double cantidadNu, int iCalidad)
+        public bool ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(int idAlmacen, double cantidadNu, int iCalidad, int iSubPro)
         {
             try
             {
                 // Llamada al método del DAO para actualizar la Almacens
-                return almacenDAO.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(idAlmacen, cantidadNu, iCalidad);
+                return almacenDAO.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(idAlmacen, cantidadNu, iCalidad, iSubPro );
             }
             catch (Exception ex)
             {
@@ -242,6 +242,19 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
             }
         }
 
+        public Almacen CountExistenceCofeeAlmacen(string buscar)
+        {
+            try
+            {
+                //se realiza el llamado al metodo DAO para obtener las existencias de cafe por calidad en los almacenes
+                return almacenDAO.CountExistenceCofee(buscar);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener la lista total de Existencias de cafe por calidad: " + ex.Message);
+                return null;
+            }
+        }
 
 
     }
