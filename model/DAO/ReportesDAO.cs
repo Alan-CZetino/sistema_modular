@@ -180,17 +180,21 @@ namespace sistema_modular_cafe_majada.model.DAO
             {
                 conexion.Conectar();
                 string consulta = @"
-                SELECT
-                    TRIM(bc.nombre_bodega) AS nombre_bodega,
-                    cc.nombre_calidad AS calidad_cafe,
-                    SUM(sp.peso_saco_subpartida) AS total_sacos,
-                    SUM(sp.peso_qqs_subpartida) AS total_qqspunto
+                SELECT DISTINCT
+                    TRIM(b.nombre_bodega) AS nombre_bodega,
+                    c.nombre_calidad AS calidad_cafe,
+                    a.cantidad_actual_almacen AS total_sacos,
+                    a.cantidad_actual_saco_almacen AS total_qqspunto
                 FROM
-                    Bodega_Cafe bc
-                JOIN SubPartida sp ON bc.id_bodega = sp.id_bodega_subpartida
-                JOIN Calidad_Cafe cc ON sp.id_calidad_cafe_subpartida = cc.id_calidad
+                    Almacen a
+                JOIN
+                    Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
+                JOIN
+                    Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                JOIN
+                    CantidadCafe_Silo_Piña ccsp ON ccsp.id_almacen_silo_piña = a.id_almacen
                 WHERE
-                    sp.id_cosecha_subpartida = @id_cosecha
+                    ccsp.id_cosecha_cantidad = 3;
                 GROUP BY
                     TRIM(bc.nombre_bodega),
                     cc.nombre_calidad
