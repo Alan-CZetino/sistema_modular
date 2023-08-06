@@ -27,15 +27,17 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Se crea script SQL para insertar
-                string consulta = @"INSERT INTO CantidadCafe_Silo_Piña (fecha_movimiento_cantidad_cafe, tipo_movimiento_cantidad_cafe, 
-                                                                cantidad_cafe ,id_almacen_silo_piña)
-                                    VALUES (@fecha, @cantidad, @tipo, @idAlmacenSiloPiña)";
+                string consulta = @"INSERT INTO CantidadCafe_Silo_Piña (fecha_movimiento_cantidad_cafe, id_cosecha_cantidad, tipo_movimiento_cantidad_cafe, 
+                                                                cantidad_qqs_cafe ,cantidad_saco_cafe ,id_almacen_silo_piña)
+                                    VALUES (@fecha, @idC, @tipo, @cantidad, @cantidadSaco, @idAlmacenSiloPiña)";
 
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@fecha", cantidad.FechaMovimiento);
-                conexion.AgregarParametro("@cantidad", cantidad.CantidadCafe);
+                conexion.AgregarParametro("@idC", cantidad.IdCosechaCantidad);
                 conexion.AgregarParametro("@tipo", cantidad.TipoMovimiento);
+                conexion.AgregarParametro("@cantidad", cantidad.CantidadCafe);
+                conexion.AgregarParametro("@cantidadSaco", cantidad.CantidadCafeSaco);
                 conexion.AgregarParametro("@idAlmacenSiloPiña", cantidad.IdAlmacenSiloPiña);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
@@ -76,7 +78,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCantidadCafe = Convert.ToInt32(reader["id_cantidad_cafe"]),
                             FechaMovimiento = Convert.ToDateTime(reader["fecha_movimiento_cantidad_cafe"]),
-                            CantidadCafe = Convert.ToDouble(reader["cantidad_cafe"]),
+                            CantidadCafe = Convert.ToDouble(reader["cantidad_qqs_cafe"]),
+                            CantidadCafeSaco = Convert.ToDouble(reader["cantidad_saco_cafe"]),
                             TipoMovimiento = Convert.ToString(reader["tipo_movimiento_cantidad_cafe"]),
                             IdAlmacenSiloPiña = Convert.ToInt32(reader["id_almacen_silo_piña"])
                         };
@@ -107,7 +110,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Conectar a la base de datos
                 conexion.Conectar();
 
-                // Crear la consulta SQL para obtener el rol
+                // Crear la consulta SQL para obtener el historial de las cantidades de cafe
                 string consulta = "SELECT * FROM CantidadCafe_Silo_Piña WHERE id_cantidad_cafe = @Id";
 
                 conexion.CrearComando(consulta);
@@ -122,7 +125,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCantidadCafe = Convert.ToInt32(reader["id_cantidad_cafe"]),
                             FechaMovimiento = Convert.ToDateTime(reader["fecha_movimiento_cantidad_cafe"]),
-                            CantidadCafe = Convert.ToDouble(reader["cantidad_cafe"]),
+                            CantidadCafe = Convert.ToDouble(reader["cantidad_qqs_cafe"]),
+                            CantidadCafeSaco = Convert.ToDouble(reader["cantidad_saco_cafe"]),
                             TipoMovimiento = Convert.ToString(reader["tipo_movimiento_cantidad_cafe"]),
                             IdAlmacenSiloPiña = Convert.ToInt32(reader["id_almacen_silo_piña"])
                         };
@@ -153,9 +157,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Conectar a la base de datos
                 conexion.Conectar();
 
-                // Crear la consulta SQL para obtener el rol
+                // Crear la consulta SQL para obtener los registros 
                 string consulta = @"SELECT c.id_cantidad_cafe, c.fecha_movimiento_cantidad_cafe,
-                                  c.cantidad_cafe, c.tipo_movimiento_cantidad_cafe,
+                                  c.cantidad_qqs_cafe, c.cantidad_saco_cafe, c.tipo_movimiento_cantidad_cafe,
                                   c.id_almacen_silo_piña, a.nombre_almacen
                             FROM CantidadCafe_Silo_Piña c
                             INNER JOIN Almacen a ON c.id_almacen_silo_piña = a.id_almacen
@@ -173,7 +177,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCantidadCafe = Convert.ToInt32(reader["id_cantidad_cafe"]),
                             FechaMovimiento = Convert.ToDateTime(reader["fecha_movimiento_cantidad_cafe"]),
-                            CantidadCafe = Convert.ToDouble(reader["cantidad_cafe"]),
+                            CantidadCafe = Convert.ToDouble(reader["cantidad_qqs_cafe"]),
+                            CantidadCafeSaco = Convert.ToDouble(reader["cantidad_saco_cafe"]),
                             TipoMovimiento = Convert.ToString(reader["tipo_movimiento_cantidad_cafe"]),
                             IdAlmacenSiloPiña = Convert.ToInt32(reader["id_almacen_silo_piña"]),
                             NombreAlmacen = Convert.ToString(reader["nombre_almacen"])
@@ -205,9 +210,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Conectar a la base de datos
                 conexion.Conectar();
 
-                // Crear la consulta SQL para obtener el rol
+                // Crear la consulta SQL para obtener los registros
                 string consulta = @"SELECT c.id_cantidad_cafe, c.fecha_movimiento_cantidad_cafe,
-                                  c.cantidad_cafe, c.tipo_movimiento_cantidad_cafe,
+                                  c.cantidad_qqs_cafe, c.cantidad_saco_cafe, c.tipo_movimiento_cantidad_cafe,
                                   c.id_almacen_silo_piña, a.nombre_almacen
                             FROM CantidadCafe_Silo_Piña c
                             INNER JOIN Almacen a ON c.id_almacen_silo_piña = a.id_almacen";
@@ -223,7 +228,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCantidadCafe = Convert.ToInt32(reader["id_cantidad_cafe"]),
                             FechaMovimiento = Convert.ToDateTime(reader["fecha_movimiento_cantidad_cafe"]),
-                            CantidadCafe = Convert.ToDouble(reader["cantidad_cafe"]),
+                            CantidadCafe = Convert.ToDouble(reader["cantidad_qqs_cafe"]),
+                            CantidadCafeSaco = Convert.ToDouble(reader["cantidad_saco_cafe"]),
                             TipoMovimiento = Convert.ToString(reader["tipo_movimiento_cantidad_cafe"]),
                             IdAlmacenSiloPiña = Convert.ToInt32(reader["id_almacen_silo_piña"]),
                             NombreAlmacen = Convert.ToString(reader["nombre_almacen"])
@@ -256,9 +262,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                 //Se conecta con la base de datos
                 conexion.Conectar();
 
-                // Crear la consulta SQL para obtener el rol
+                // Crear la consulta SQL para obtener los registros
                 string consulta = @"SELECT c.id_cantidad_cafe, c.fecha_movimiento_cantidad_cafe,
-                                  c.cantidad_cafe, c.tipo_movimiento_cantidad_cafe,
+                                  c.cantidad_qqs_cafe, c.cantidad_saco_cafe, c.tipo_movimiento_cantidad_cafe,
                                   c.id_almacen_silo_piña, a.nombre_almacen
                             FROM CantidadCafe_Silo_Piña c
                             INNER JOIN Almacen a ON c.id_almacen_silo_piña = a.id_almacen
@@ -276,13 +282,62 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCantidadCafe = Convert.ToInt32(reader["id_cantidad_cafe"]),
                             FechaMovimiento = Convert.ToDateTime(reader["fecha_movimiento_cantidad_cafe"]),
-                            CantidadCafe = Convert.ToDouble(reader["cantidad_cafe"]),
+                            CantidadCafe = Convert.ToDouble(reader["cantidad_qqs_cafe"]),
+                            CantidadCafeSaco = Convert.ToDouble(reader["cantidad_saco_cafe"]),
                             TipoMovimiento = Convert.ToString(reader["tipo_movimiento_cantidad_cafe"]),
                             IdAlmacenSiloPiña = Convert.ToInt32(reader["id_almacen_silo_piña"]),
                             NombreAlmacen = Convert.ToString(reader["nombre_almacen"])
                         };
 
                         cantidads.Add(cantidad);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return cantidads;
+        }
+
+
+        //
+        public CantidadSiloPiña BuscarCantidadSiloPiñaSub(string buscar)
+        {
+            CantidadSiloPiña cantidads = null;
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para obtener los registros
+                string consulta = @"SELECT *
+                                    FROM CantidadCafe_Silo_Piña
+                                    WHERE tipo_movimiento_cantidad_cafe LIKE CONCAT('%', @search)";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@search", "%" + buscar);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        cantidads = new CantidadSiloPiña()
+                        {
+                            IdCantidadCafe = Convert.ToInt32(reader["id_cantidad_cafe"]),
+                            IdCosechaCantidad = Convert.ToInt32(reader["id_cosecha_cantidad"]),
+                            FechaMovimiento = Convert.ToDateTime(reader["fecha_movimiento_cantidad_cafe"]),
+                            CantidadCafe = Convert.ToDouble(reader["cantidad_qqs_cafe"]),
+                            CantidadCafeSaco = Convert.ToDouble(reader["cantidad_saco_cafe"]),
+                            TipoMovimiento = Convert.ToString(reader["tipo_movimiento_cantidad_cafe"]),
+                            IdAlmacenSiloPiña = Convert.ToInt32(reader["id_almacen_silo_piña"])
+                        };
                     }
                 }
             }
@@ -309,15 +364,16 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Se crea el script SQL 
                 string consulta = @"UPDATE CantidadCafe_Silo_Piña 
-                            SET fecha_movimiento_cantidad_cafe = @fecha, cantidad_cafe = @cantidad, tipo_movimiento_cantidad_cafe = @tipo,
-                                id_almacen_silo_piña = @idAlmacenSiloPiña
+                            SET fecha_movimiento_cantidad_cafe = @fecha, id_cosecha_cantidad = @idC, cantidad_qqs_cafe = @cantidad, 
+                                cantidad_saco_cafe = @cantidadSaco, id_almacen_silo_piña = @idAlmacenSiloPiña
                             WHERE id_cantidad_cafe = @idCantidadCafe";
 
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@fecha", cantidad.FechaMovimiento);
+                conexion.AgregarParametro("@idC", cantidad.IdCosechaCantidad);
                 conexion.AgregarParametro("@cantidad", cantidad.CantidadCafe);
-                conexion.AgregarParametro("@tipo", cantidad.TipoMovimiento);
+                conexion.AgregarParametro("@cantidadSaco", cantidad.CantidadCafeSaco);
                 conexion.AgregarParametro("@idAlmacenSiloPiña", cantidad.IdAlmacenSiloPiña);
                 conexion.AgregarParametro("@idCantidadCafe", cantidad.IdCantidadCafe);
 

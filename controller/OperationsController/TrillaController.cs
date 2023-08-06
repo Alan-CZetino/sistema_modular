@@ -47,6 +47,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return null;
             }
         }
+        
+        //
+        public Trilla ObtenerTrillasPorIDNombre(int idTrilla)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la Trilla
+                return trillaDAO.ObtenerTrillasPorIDNombre(idTrilla);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la Trilla: " + ex.Message);
+                return null;
+            }
+        }
 
         //
         public bool InsertarTrilla(Trilla trilla)
@@ -70,6 +85,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
             {
                 // Llamada al método del DAO para obtener las Trilla
                 return trillaDAO.ObtenerTrillasNombre();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de Trilla: " + ex.Message);
+                return new List<Trilla>();
+            }
+        }
+        
+        //
+        public List<Trilla> ObtenerTrillasPorCosecha(int iCosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener las Trilla
+                return trillaDAO.ObtenerTrillasPorCosecha(iCosecha);
             }
             catch (Exception ex)
             {
@@ -121,6 +151,38 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 Console.WriteLine("Ocurrió un error al eliminar la Trilla: " + ex.Message);
             }
         }
+
+
+        //
+        public Trilla CountTrilla(int idCosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para contar la trilla
+                return trillaDAO.CountTrilla(idCosecha);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la totalizacion de trilla en la base de datos: " + ex.Message);
+                return null;
+            }
+        }
+
+        //
+        public bool VerificarExistenciaTrilla(int idCosecha, int numSubpartida)
+        {
+            try
+            {
+                // Llamada al método del DAO para verificar la SubPartida
+                return trillaDAO.VerificarExistenciaTrilla(idCosecha, numSubpartida);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia de las Trillas: " + ex.Message);
+                return false;
+            }
+        }
+
 
     }
 }

@@ -128,11 +128,11 @@ namespace sistema_modular_cafe_majada.views
             Console.WriteLine("Depuracion - id Bodega" + AlmacenBodegaClick.IBodega);
             if (AlmacenBodegaClick.IBodega != 0)
             {
-                datos = almacenController.BuscarIDBodegaAlmacens(AlmacenBodegaClick.IBodega);
+                datos = almacenController.BuscarIDBodegaAlmacenCalidad(AlmacenBodegaClick.IBodega, CalidadSeleccionada.ICalidadSeleccionada);
             }
             else
             {
-                datos = almacenController.ObtenerAlmacenNombreBodega();
+                datos = almacenController.ObtenerPorIDAlmacenNombreCalidadBodega(CalidadSeleccionada.ICalidadSeleccionada);
             }
 
             var datosPersonalizados = datos.Select(almacen => new
@@ -141,7 +141,9 @@ namespace sistema_modular_cafe_majada.views
                 Nombre = almacen.NombreAlmacen,
                 Descripcion = almacen.DescripcionAlmacen,
                 Capacidad = almacen.CapacidadAlmacen,
+                Cantidad_Actual = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
                 Ubicacion = almacen.UbicacionAlmacen,
+                Nombre_Calidad = almacen.NombreCalidadCafe ?? "",
                 Bodega_Ubicacion = almacen.NombreBodegaUbicacion
             }).ToList();
 
@@ -552,7 +554,9 @@ namespace sistema_modular_cafe_majada.views
                                 Nombre = almacen.NombreAlmacen,
                                 Descripcion = almacen.DescripcionAlmacen,
                                 Capacidad = almacen.CapacidadAlmacen,
+                                Cantidad_Actual = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
                                 Ubicacion = almacen.UbicacionAlmacen,
+                                Nombre_Calidad = almacen.NombreCalidadCafe ?? "",
                                 Bodega_Ubicacion = almacen.NombreBodegaUbicacion
                             }).ToList();
 

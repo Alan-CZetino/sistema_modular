@@ -121,5 +121,66 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 Console.WriteLine("Ocurrió un error al eliminar el Traslado: " + ex.Message);
             }
         }
+
+        //
+        public Traslado ObtenerTrasladoPorIDNombre(int idTraslado)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre del Traslado
+                return trasladoDAO.ObtenerTrasladoPorIDNombre(idTraslado);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el Traslado: " + ex.Message);
+                return null;
+            }
+        }
+
+        //
+        public List<Traslado> ObtenerTrasladoPorCosecha(int iCosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener las Trilla
+                return trasladoDAO.ObtenerTrasladoPorCosecha(iCosecha);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de Trasalados de Cafe: " + ex.Message);
+                return new List<Traslado>();
+            }
+        }
+
+        //
+        public bool VerificarExistenciaTraslado(int idCosecha, int numTraslado)
+        {
+            try
+            {
+                // Llamada al método del DAO para verificar los Traslado
+                return trasladoDAO.VerificarExistenciaTraslado(idCosecha, numTraslado);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia de los Traslados: " + ex.Message);
+                return false;
+            }
+        }
+
+        //
+        public Traslado CountTraslado(int idCosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para contar la Salida
+                return trasladoDAO.CountTraslado(idCosecha);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la totalizacion de los Traslado en la base de datos: " + ex.Message);
+                return null;
+            }
+        }
+
     }
 }

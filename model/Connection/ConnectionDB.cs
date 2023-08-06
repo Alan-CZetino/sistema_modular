@@ -49,7 +49,7 @@ namespace sistema_modular_cafe_majada.model.Connection
             try
             {
                 conexion.Open();
-                Console.WriteLine("Conexión establecida correctamente");
+                //Console.WriteLine("Conexión establecida correctamente");
             }
             catch (Exception ex)
             {
@@ -60,7 +60,7 @@ namespace sistema_modular_cafe_majada.model.Connection
         public void Desconectar()
         {
             conexion.Close();
-            Console.WriteLine("Conexión cerrada correctamente");
+            //Console.WriteLine("Conexión cerrada correctamente");
         }
 
         // Aquí se añadiran más métodos para realizar consultas, inserciones, actualizaciones, etc.
@@ -94,6 +94,8 @@ namespace sistema_modular_cafe_majada.model.Connection
         {
             return comando.ExecuteReader();
         }
+
+
 
     }
 }
