@@ -164,7 +164,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.cantidad_actual_saco_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
                                         FROM Almacen a
                                         INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
                                         WHERE b.nombre_bodega = @nombreM";
@@ -218,7 +218,7 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Crear la consulta SQL para obtener el rol
                 string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
-                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
+                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen, a.cantidad_actual_saco_almacen
                                         FROM Almacen a
                                         LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
                                         LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad";
@@ -274,6 +274,7 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Crear la consulta SQL para obtener el rol
                 string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
+                                        a.cantidad_actual_saco_almacen, a.cantidad_actual_almacen
                                         FROM Almacen a
                                         INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega";
 
@@ -326,7 +327,7 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Crear la consulta SQL para obtener el rol
                 string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
-                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
+                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen, a.cantidad_actual_saco_almacen
                                         FROM Almacen a
                                         LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
                                         LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
@@ -383,7 +384,7 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Crear la consulta SQL para obtener el rol
                 string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, 
-                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
+                                            b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen, a.cantidad_actual_saco_almacen
                                         FROM Almacen a
                                         LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
                                         LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
