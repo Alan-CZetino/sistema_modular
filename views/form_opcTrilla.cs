@@ -206,7 +206,8 @@ namespace sistema_modular_cafe_majada.views
                 Nombre = almacen.NombreAlmacen,
                 Descripcion = almacen.DescripcionAlmacen,
                 Capacidad = almacen.CapacidadAlmacen,
-                Cantidad_Actual = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
+                Cantidad_ActualQQs = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
+                Cantidad_Saco = string.IsNullOrWhiteSpace(almacen.CantidadActualSacoAlmacen.ToString()) ? 0.0 : almacen.CantidadActualSacoAlmacen,
                 Ubicacion = almacen.UbicacionAlmacen,
                 Nombre_Calidad = almacen.NombreCalidadCafe ?? "",
                 Bodega_Ubicacion = almacen.NombreBodegaUbicacion
@@ -418,7 +419,8 @@ namespace sistema_modular_cafe_majada.views
                                 Nombre = almacen.NombreAlmacen,
                                 Descripcion = almacen.DescripcionAlmacen,
                                 Capacidad = almacen.CapacidadAlmacen,
-                                Cantidad_Actual = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
+                                Cantidad_ActualQQs = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
+                                Cantidad_Saco = string.IsNullOrWhiteSpace(almacen.CantidadActualSacoAlmacen.ToString()) ? 0.0 : almacen.CantidadActualSacoAlmacen,
                                 Ubicacion = almacen.UbicacionAlmacen,
                                 Nombre_Calidad = almacen.NombreCalidadCafe ?? "",
                                 Bodega_Ubicacion = almacen.NombreBodegaUbicacion

@@ -659,13 +659,13 @@ namespace sistema_modular_cafe_majada.views
                     
                     if (!verificexisten)
                     {
-                        if (cantAct < pesoQQs || cantAct == cantMax)
+                        if (cantRest < pesoQQs || cantAct == cantMax)
                         {
                             MessageBox.Show("Error, la cantidad QQs de cafe que desea Agregar al almacen excede sus limite. Desea Agregar la cantidad de " + pesoQQs + " en el contenido disponible " + cantAct, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
-                        if (cantActSaco < pesoSaco || cantActSaco == 0)
+                        if (cantRestSaco < pesoSaco || cantActSaco == cantMax)
                         {
                             MessageBox.Show("Error, la cantidad en Saco de cafe que desea Agregar al almacen excede sus limite. Desea Agregar la cantidad de " + pesoSaco + " en el contenido disponible " + cantActSaco, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
