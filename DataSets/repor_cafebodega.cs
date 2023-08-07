@@ -4,5 +4,8 @@
 
     partial class repor_cafebodega
     {
+        partial class repor_cafebodegaDataTable
+        {
+        }
     }
 }

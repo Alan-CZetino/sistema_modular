@@ -289,13 +289,21 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             private global::System.Data.DataColumn columnnombre_subproducto;
             
-            private global::System.Data.DataColumn columntotal_sacos;
+            private global::System.Data.DataColumn columntotal_sacosE;
             
-            private global::System.Data.DataColumn columntotal_qqspunto;
+            private global::System.Data.DataColumn columntotal_qqspuntoE;
             
             private global::System.Data.DataColumn columnfecha;
             
             private global::System.Data.DataColumn columnnombre_cosecha;
+            
+            private global::System.Data.DataColumn columntotal_sacosS;
+            
+            private global::System.Data.DataColumn columntotal_qqspuntoS;
+            
+            private global::System.Data.DataColumn columntotal_sacosT;
+            
+            private global::System.Data.DataColumn columntotal_qqspuntoT;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -372,17 +380,17 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn total_sacosColumn {
+            public global::System.Data.DataColumn total_sacosEColumn {
                 get {
-                    return this.columntotal_sacos;
+                    return this.columntotal_sacosE;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn total_qqspuntoColumn {
+            public global::System.Data.DataColumn total_qqspuntoEColumn {
                 get {
-                    return this.columntotal_qqspunto;
+                    return this.columntotal_qqspuntoE;
                 }
             }
             
@@ -399,6 +407,38 @@ namespace sistema_modular_cafe_majada.DataSets {
             public global::System.Data.DataColumn nombre_cosechaColumn {
                 get {
                     return this.columnnombre_cosecha;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn total_sacosSColumn {
+                get {
+                    return this.columntotal_sacosS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn total_qqspuntoSColumn {
+                get {
+                    return this.columntotal_qqspuntoS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn total_sacosTColumn {
+                get {
+                    return this.columntotal_sacosT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn total_qqspuntoTColumn {
+                get {
+                    return this.columntotal_qqspuntoT;
                 }
             }
             
@@ -439,7 +479,7 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public repor_cafebodegaRow Addrepor_cafebodegaRow(string nombre_bodega, string nombre_almacen, string id_calidad, string nombre_calidad, string nombre_subproducto, string total_sacos, string total_qqspunto, string fecha, string nombre_cosecha) {
+            public repor_cafebodegaRow Addrepor_cafebodegaRow(string nombre_bodega, string nombre_almacen, string id_calidad, string nombre_calidad, string nombre_subproducto, string total_sacosE, string total_qqspuntoE, string fecha, string nombre_cosecha, string total_sacosS, string total_qqspuntoS, string total_sacosT, string total_qqspuntoT) {
                 repor_cafebodegaRow rowrepor_cafebodegaRow = ((repor_cafebodegaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nombre_bodega,
@@ -447,10 +487,14 @@ namespace sistema_modular_cafe_majada.DataSets {
                         id_calidad,
                         nombre_calidad,
                         nombre_subproducto,
-                        total_sacos,
-                        total_qqspunto,
+                        total_sacosE,
+                        total_qqspuntoE,
                         fecha,
-                        nombre_cosecha};
+                        nombre_cosecha,
+                        total_sacosS,
+                        total_qqspuntoS,
+                        total_sacosT,
+                        total_qqspuntoT};
                 rowrepor_cafebodegaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrepor_cafebodegaRow);
                 return rowrepor_cafebodegaRow;
@@ -478,10 +522,14 @@ namespace sistema_modular_cafe_majada.DataSets {
                 this.columnid_calidad = base.Columns["id_calidad"];
                 this.columnnombre_calidad = base.Columns["nombre_calidad"];
                 this.columnnombre_subproducto = base.Columns["nombre_subproducto"];
-                this.columntotal_sacos = base.Columns["total_sacos"];
-                this.columntotal_qqspunto = base.Columns["total_qqspunto"];
+                this.columntotal_sacosE = base.Columns["total_sacosE"];
+                this.columntotal_qqspuntoE = base.Columns["total_qqspuntoE"];
                 this.columnfecha = base.Columns["fecha"];
                 this.columnnombre_cosecha = base.Columns["nombre_cosecha"];
+                this.columntotal_sacosS = base.Columns["total_sacosS"];
+                this.columntotal_qqspuntoS = base.Columns["total_qqspuntoS"];
+                this.columntotal_sacosT = base.Columns["total_sacosT"];
+                this.columntotal_qqspuntoT = base.Columns["total_qqspuntoT"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -497,14 +545,22 @@ namespace sistema_modular_cafe_majada.DataSets {
                 base.Columns.Add(this.columnnombre_calidad);
                 this.columnnombre_subproducto = new global::System.Data.DataColumn("nombre_subproducto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnombre_subproducto);
-                this.columntotal_sacos = new global::System.Data.DataColumn("total_sacos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntotal_sacos);
-                this.columntotal_qqspunto = new global::System.Data.DataColumn("total_qqspunto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntotal_qqspunto);
+                this.columntotal_sacosE = new global::System.Data.DataColumn("total_sacosE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_sacosE);
+                this.columntotal_qqspuntoE = new global::System.Data.DataColumn("total_qqspuntoE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_qqspuntoE);
                 this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfecha);
                 this.columnnombre_cosecha = new global::System.Data.DataColumn("nombre_cosecha", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnombre_cosecha);
+                this.columntotal_sacosS = new global::System.Data.DataColumn("total_sacosS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_sacosS);
+                this.columntotal_qqspuntoS = new global::System.Data.DataColumn("total_qqspuntoS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_qqspuntoS);
+                this.columntotal_sacosT = new global::System.Data.DataColumn("total_sacosT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_sacosT);
+                this.columntotal_qqspuntoT = new global::System.Data.DataColumn("total_qqspuntoT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_qqspuntoT);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_repor_cafebodega");
                 this.ExtendedProperties.Add("Generator_UserTableName", "repor_cafebodega");
             }
@@ -732,34 +788,34 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string total_sacos {
+            public string total_sacosE {
                 get {
                     try {
-                        return ((string)(this[this.tablerepor_cafebodega.total_sacosColumn]));
+                        return ((string)(this[this.tablerepor_cafebodega.total_sacosEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'total_sacos\' de la tabla \'repor_cafebodega\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'total_sacosE\' de la tabla \'repor_cafebodega\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablerepor_cafebodega.total_sacosColumn] = value;
+                    this[this.tablerepor_cafebodega.total_sacosEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string total_qqspunto {
+            public string total_qqspuntoE {
                 get {
                     try {
-                        return ((string)(this[this.tablerepor_cafebodega.total_qqspuntoColumn]));
+                        return ((string)(this[this.tablerepor_cafebodega.total_qqspuntoEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'total_qqspunto\' de la tabla \'repor_cafebodega\' es DBNull." +
-                                "", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'total_qqspuntoE\' de la tabla \'repor_cafebodega\' es DBNull" +
+                                ".", e);
                     }
                 }
                 set {
-                    this[this.tablerepor_cafebodega.total_qqspuntoColumn] = value;
+                    this[this.tablerepor_cafebodega.total_qqspuntoEColumn] = value;
                 }
             }
             
@@ -793,6 +849,72 @@ namespace sistema_modular_cafe_majada.DataSets {
                 }
                 set {
                     this[this.tablerepor_cafebodega.nombre_cosechaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string total_sacosS {
+                get {
+                    try {
+                        return ((string)(this[this.tablerepor_cafebodega.total_sacosSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'total_sacosS\' de la tabla \'repor_cafebodega\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerepor_cafebodega.total_sacosSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string total_qqspuntoS {
+                get {
+                    try {
+                        return ((string)(this[this.tablerepor_cafebodega.total_qqspuntoSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'total_qqspuntoS\' de la tabla \'repor_cafebodega\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablerepor_cafebodega.total_qqspuntoSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string total_sacosT {
+                get {
+                    try {
+                        return ((string)(this[this.tablerepor_cafebodega.total_sacosTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'total_sacosT\' de la tabla \'repor_cafebodega\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerepor_cafebodega.total_sacosTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string total_qqspuntoT {
+                get {
+                    try {
+                        return ((string)(this[this.tablerepor_cafebodega.total_qqspuntoTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'total_qqspuntoT\' de la tabla \'repor_cafebodega\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablerepor_cafebodega.total_qqspuntoTColumn] = value;
                 }
             }
             
@@ -858,26 +980,26 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Istotal_sacosNull() {
-                return this.IsNull(this.tablerepor_cafebodega.total_sacosColumn);
+            public bool Istotal_sacosENull() {
+                return this.IsNull(this.tablerepor_cafebodega.total_sacosEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Settotal_sacosNull() {
-                this[this.tablerepor_cafebodega.total_sacosColumn] = global::System.Convert.DBNull;
+            public void Settotal_sacosENull() {
+                this[this.tablerepor_cafebodega.total_sacosEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Istotal_qqspuntoNull() {
-                return this.IsNull(this.tablerepor_cafebodega.total_qqspuntoColumn);
+            public bool Istotal_qqspuntoENull() {
+                return this.IsNull(this.tablerepor_cafebodega.total_qqspuntoEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Settotal_qqspuntoNull() {
-                this[this.tablerepor_cafebodega.total_qqspuntoColumn] = global::System.Convert.DBNull;
+            public void Settotal_qqspuntoENull() {
+                this[this.tablerepor_cafebodega.total_qqspuntoEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -902,6 +1024,54 @@ namespace sistema_modular_cafe_majada.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setnombre_cosechaNull() {
                 this[this.tablerepor_cafebodega.nombre_cosechaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Istotal_sacosSNull() {
+                return this.IsNull(this.tablerepor_cafebodega.total_sacosSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Settotal_sacosSNull() {
+                this[this.tablerepor_cafebodega.total_sacosSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Istotal_qqspuntoSNull() {
+                return this.IsNull(this.tablerepor_cafebodega.total_qqspuntoSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Settotal_qqspuntoSNull() {
+                this[this.tablerepor_cafebodega.total_qqspuntoSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Istotal_sacosTNull() {
+                return this.IsNull(this.tablerepor_cafebodega.total_sacosTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Settotal_sacosTNull() {
+                this[this.tablerepor_cafebodega.total_sacosTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Istotal_qqspuntoTNull() {
+                return this.IsNull(this.tablerepor_cafebodega.total_qqspuntoTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Settotal_qqspuntoTNull() {
+                this[this.tablerepor_cafebodega.total_qqspuntoTColumn] = global::System.Convert.DBNull;
             }
         }
         
