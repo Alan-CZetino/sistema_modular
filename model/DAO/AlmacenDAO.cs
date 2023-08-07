@@ -647,6 +647,49 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
         
         //funcion para actualizar el registro de catidades en la base de datos
+        public bool ActualizarCalidadAlmacen(int idCalidad, int idAlmacen)
+        {
+            bool exito = false;
+
+            try
+            {
+                //conexion a la base de datos
+                conexion.Conectar();
+
+                //se crea el script SQL 
+                string consulta = @"UPDATE Almacen SET id_calidad_cafe = @iCalidad
+                                    WHERE id_almacen = @id";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@iCalidad", idCalidad);
+                conexion.AgregarParametro("@id", idAlmacen);
+
+                int filasAfectadas = conexion.EjecutarInstruccion();
+
+                if (filasAfectadas > 0)
+                {
+                    Console.WriteLine("La actualización se realizó correctamente");
+                    exito = true;
+                }
+                else
+                {
+                    Console.WriteLine("No se pudo realizar la actualización");
+                    exito = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al actualizar los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion con la base de datos{
+                conexion.Desconectar();
+            }
+
+            return exito;
+        }
+        
+        //funcion para actualizar el registro de catidades en la base de datos
         public bool ActualizarCantidadEntradaCafeAlmacen(int idAlmacen, double cantidad, double cantidadSaco, int idCalidad, int iSubProd)
         {
             bool exito = false;

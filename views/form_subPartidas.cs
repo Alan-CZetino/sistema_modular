@@ -471,7 +471,7 @@ namespace sistema_modular_cafe_majada.views
             double cantRest = cantMax - cantAct;
             double cantActSaco = cantSP.CantidadActualSacoAlmacen;
             double cantRestSaco = cantMax - cantActSaco;
-            int idAlmacenUpd;
+
             //SubPartida subParti = new SubPartida();
             bool verific = VerificarCamposObligatorios();
             if(verific == true)
@@ -696,20 +696,20 @@ namespace sistema_modular_cafe_majada.views
                             TipoMovimiento = "Entrada Cafe No.SubPartida " + subPartida,
                             IdAlmacenSiloPiña = iAlmacen
                         };
-                        bool exitoregistroCantidad = cantidadCafeC.InsertarCantidadCafeSiloPiña(cantidad);
-                        if (!exitoregistroCantidad)
-                        {
-                            MessageBox.Show("Error, Ocurrio un problema en la insercion de la cantidad de cafe verifique los campos QQs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
+                        
                         bool exito = subPartController.InsertarSubPartida(subPart);
 
                         if (exito)
                         {
                             MessageBox.Show("SubPartida agregada correctamente.");
 
-                            
+                            bool exitoregistroCantidad = cantidadCafeC.InsertarCantidadCafeSiloPiña(cantidad);
+                            if (!exitoregistroCantidad)
+                            {
+                                MessageBox.Show("Error, Ocurrio un problema en la insercion de la cantidad de cafe verifique los campos QQs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
                             double resultCa = actcantidad + pesoQQs; 
                             double resultCaSaco = actcantidadSaco + pesoSaco; 
                             Console.WriteLine("Depuracion - cantidad resultante " + resultCa);
@@ -754,6 +754,8 @@ namespace sistema_modular_cafe_majada.views
                     string search = "No.SubPartida " + SubPartidaSeleccionado.NombreSubParti;
                     Console.WriteLine("Depuracion - buscador   " + search);
                     var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
+                    double cantObtQQs = cantUpd.CantidadCafe;
+                    double cantObtSaco = cantUpd.CantidadCafeSaco;
 
                     Console.WriteLine("Depuracion - idCantodadSiloPiña  " + cantUpd.IdCantidadCafe);
                     Console.WriteLine("Depuracion - cantidad obtenida a actualizar en subP" + cantUpd.CantidadCafe);
@@ -768,6 +770,16 @@ namespace sistema_modular_cafe_majada.views
                         CantidadCafeSaco = cantidaSacoActUpdate,
                         IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
                     };
+
+                    if (iCalidadNoUpd != CalidadSeleccionada.ICalidadSeleccionada && CalidadSeleccionada.ICalidadSeleccionada != 0)
+                    {
+                        if (cantObtQQs != actcantidad && cantObtSaco != actcantidadSaco)
+                        {
+                            MessageBox.Show("La calidad cafe que desea actualizar en el almacen no es permitido ya que contiene otra calidad. Calidad Actual "
+                                +almNCM.NombreCalidadCafe+ " Calidad a actualizar "+txb_calidad.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
 
                     if (cantidaQQsUpdate != cantidaQQsActUpdate)
                     {
@@ -804,13 +816,23 @@ namespace sistema_modular_cafe_majada.views
                             {
                                 Console.WriteLine("Depuracion - se detecto cambio de almacen  " + cantUpd.IdCantidadCafe + " " + iAlmacen);
                                 //no actualiza los id unicamnete la cantidad restara ya que detecto que el almacen es diferente 
-                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaNoUpd, resultCaNoUpdSaco, iCalidadNoUpd, selectedValue);
+                                almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaNoUpd, resultCaNoUpdSaco, iCalidad, selectedValue);
                                 //cambia los nuevos datos ya que detecto que el almacen cambio 
                                 almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
+
                             }
                             else
                             {
                                 almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(cantUpd.IdAlmacenSiloPiña, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
+
+                            }
+                        }
+
+                        if (iCalidadNoUpd != CalidadSeleccionada.ICalidadSeleccionada && CalidadSeleccionada.ICalidadSeleccionada != 0)
+                        {
+                            if (cantObtQQs == actcantidad && cantObtSaco == actcantidadSaco)
+                            {
+                                almacenC.ActualizarCalidadAlmacen(iCalidad, iAlmacen);
                             }
                         }
 
@@ -1010,7 +1032,11 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
+            AlmacenSeleccionado.IAlmacen = 0;
+            BodegaSeleccionada.IdBodega = 0;
             AlmacenBodegaClick.IBodega = 0;
+            CalidadSeleccionada.ICalidadSeleccionada = 0;
+            ProcedenciaSeleccionada.IProcedencia = 0;
             iBodega = 0;
             dtp_fechaSecado.Value = DateTime.Now;
             dtp_fechaInicioSecad.Value = DateTime.Now;

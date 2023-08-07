@@ -196,6 +196,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 return false;
             }
         }
+        
+        //
+        public bool ActualizarCalidadAlmacen(int iCalidad, int iAlmacen)
+        {
+            try
+            {
+                // Llamada al método del DAO para actualizar la Almacens
+                return almacenDAO.ActualizarCalidadAlmacen(iCalidad, iAlmacen);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al actualizar la Calidad Almacens: " + ex.Message);
+                return false;
+            }
+        }
 
         //
         public Almacen ObtenerCantidadCafeAlmacen(int iAlmacen)
