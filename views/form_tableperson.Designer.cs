@@ -61,9 +61,12 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.dtg_tablePerson.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtg_tablePerson.BackgroundColor = System.Drawing.Color.White;
             this.dtg_tablePerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_tablePerson.EnableHeadersVisualStyles = false;
+            this.dtg_tablePerson.GridColor = System.Drawing.Color.Black;
             this.dtg_tablePerson.Location = new System.Drawing.Point(9, 102);
-            this.dtg_tablePerson.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dtg_tablePerson.Margin = new System.Windows.Forms.Padding(5);
             this.dtg_tablePerson.Name = "dtg_tablePerson";
             this.dtg_tablePerson.ReadOnly = true;
             this.dtg_tablePerson.RowHeadersWidth = 51;
@@ -109,7 +112,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.BackColor = System.Drawing.Color.Black;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(3, 595);
-            this.panel5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel5.Margin = new System.Windows.Forms.Padding(5);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1061, 2);
             this.panel5.TabIndex = 6;
@@ -131,11 +134,11 @@ namespace sistema_modular_cafe_majada.views
             this.txb_buscarPer.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txb_buscarPer.BackColor = System.Drawing.Color.White;
             this.txb_buscarPer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txb_buscarPer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_buscarPer.Location = new System.Drawing.Point(359, 48);
+            this.txb_buscarPer.Font = new System.Drawing.Font("Oswald Light", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_buscarPer.Location = new System.Drawing.Point(359, 46);
             this.txb_buscarPer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_buscarPer.Name = "txb_buscarPer";
-            this.txb_buscarPer.Size = new System.Drawing.Size(381, 21);
+            this.txb_buscarPer.Size = new System.Drawing.Size(381, 27);
             this.txb_buscarPer.TabIndex = 8;
             this.txb_buscarPer.Text = "Buscar...";
             this.txb_buscarPer.TextChanged += new System.EventHandler(this.txb_buscarPer_TextChanged);
@@ -157,7 +160,7 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.dtg_tablePerson);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximumSize = new System.Drawing.Size(1067, 597);
             this.MinimumSize = new System.Drawing.Size(1067, 597);
             this.Name = "form_tableperson";

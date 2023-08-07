@@ -35,6 +35,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_modFalla = new System.Windows.Forms.PictureBox();
             this.btn_SaveFalla = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.txb_obsFalla = new System.Windows.Forms.TextBox();
@@ -51,11 +52,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_desFalla = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dtg_fallas = new System.Windows.Forms.DataGridView();
-            this.btn_modFalla = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtg_fallas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_modFalla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_fallas)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -133,6 +133,18 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1258, 156);
             this.panel5.TabIndex = 20;
+            // 
+            // btn_modFalla
+            // 
+            this.btn_modFalla.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_modFalla.BackgroundImage = global::sistema_modular_cafe_majada.Properties.Resources.editar;
+            this.btn_modFalla.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_modFalla.Location = new System.Drawing.Point(965, 105);
+            this.btn_modFalla.Name = "btn_modFalla";
+            this.btn_modFalla.Size = new System.Drawing.Size(43, 48);
+            this.btn_modFalla.TabIndex = 18;
+            this.btn_modFalla.TabStop = false;
+            this.btn_modFalla.Click += new System.EventHandler(this.btn_modFalla_Click);
             // 
             // btn_SaveFalla
             // 
@@ -308,7 +320,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             // dtg_fallas
             // 
+            this.dtg_fallas.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dtg_fallas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_fallas.EnableHeadersVisualStyles = false;
+            this.dtg_fallas.GridColor = System.Drawing.Color.Black;
             this.dtg_fallas.Location = new System.Drawing.Point(14, 193);
             this.dtg_fallas.Name = "dtg_fallas";
             this.dtg_fallas.RowHeadersWidth = 51;
@@ -316,23 +331,13 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_fallas.Size = new System.Drawing.Size(1236, 468);
             this.dtg_fallas.TabIndex = 21;
             this.dtg_fallas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_fallas_CellDoubleClick);
-            // 
-            // btn_modFalla
-            // 
-            this.btn_modFalla.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_modFalla.BackgroundImage = global::sistema_modular_cafe_majada.Properties.Resources.editar;
-            this.btn_modFalla.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_modFalla.Location = new System.Drawing.Point(965, 105);
-            this.btn_modFalla.Name = "btn_modFalla";
-            this.btn_modFalla.Size = new System.Drawing.Size(43, 48);
-            this.btn_modFalla.TabIndex = 18;
-            this.btn_modFalla.TabStop = false;
-            this.btn_modFalla.Click += new System.EventHandler(this.btn_modFalla_Click);
+            this.dtg_fallas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dtg_fallas_CellPainting);
             // 
             // form_fallaMaquina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.dtg_fallas);
             this.Controls.Add(this.panel5);
@@ -347,8 +352,8 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtg_fallas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_modFalla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_fallas)).EndInit();
             this.ResumeLayout(false);
 
         }

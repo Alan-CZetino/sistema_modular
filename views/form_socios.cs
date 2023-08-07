@@ -51,22 +51,32 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtgv_socios_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            string headerColorHex = "#D7D7D7"; // Color hexadecimal deseado
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dtg_socios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtg_socios.BorderStyle = BorderStyle.None;
 
-            Color headerColor = ColorTranslator.FromHtml(headerColorHex);
+            //configuracion de la fila de encabezado en el datagrid
+            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
+            dtg_socios.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            dtg_socios.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            dtg_socios.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dtg_socios.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            dtg_socios.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            dtg_socios.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            if (e.RowIndex == -1)
-            {
-                using (SolidBrush brush = new SolidBrush(headerColor))
-                {
-                    e.Graphics.FillRectangle(brush, e.CellBounds);
-                    // Centrar el texto del encabezado
-                    e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    // Dibujar el fondo del encabezado
-                    e.PaintContent(e.CellBounds);
-                    e.Handled = true;
-                }
-            }
+            //configuracion de las filas por defecto en el datagrid
+            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+
+            dtg_socios.DefaultCellStyle.BackColor = Color.White;
+            dtg_socios.DefaultCellStyle.Font = customFontdef;
+            dtg_socios.DefaultCellStyle.ForeColor = Color.Black;
+            dtg_socios.DefaultCellStyle.SelectionBackColor = Color.White;
+            dtg_socios.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dtg_socios.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //configuracion de las filas que son seleccionadas
+            dtg_socios.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            dtg_socios.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public void ShowSociosGrid()

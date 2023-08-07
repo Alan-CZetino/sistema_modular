@@ -45,16 +45,14 @@ namespace sistema_modular_cafe_majada.views
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.dtgv_cosechas = new System.Windows.Forms.DataGridView();
-            this.id_cosecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cosecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtg_cosechas = new System.Windows.Forms.DataGridView();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_mod_cosecha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_delete_cosecha)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_cosechas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_cosechas)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -63,34 +61,34 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(5, 490);
+            this.panel1.Size = new System.Drawing.Size(1, 490);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(5, 0);
+            this.panel2.Location = new System.Drawing.Point(1, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1001, 5);
+            this.panel2.Size = new System.Drawing.Size(1005, 1);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1001, 5);
+            this.panel3.Location = new System.Drawing.Point(1005, 1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(5, 485);
+            this.panel3.Size = new System.Drawing.Size(1, 489);
             this.panel3.TabIndex = 2;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(5, 485);
+            this.panel4.Location = new System.Drawing.Point(1, 489);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(996, 5);
+            this.panel4.Size = new System.Drawing.Size(1004, 1);
             this.panel4.TabIndex = 3;
             // 
             // panel5
@@ -99,9 +97,9 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(5, 5);
+            this.panel5.Location = new System.Drawing.Point(1, 1);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(996, 70);
+            this.panel5.Size = new System.Drawing.Size(1004, 70);
             this.panel5.TabIndex = 4;
             // 
             // tableLayoutPanel1
@@ -113,7 +111,7 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btn_mod_cosecha, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_delete_cosecha, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(862, 7);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(870, 7);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -156,7 +154,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Oswald SemiBold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 4);
+            this.label1.Location = new System.Drawing.Point(10, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(197, 32);
             this.label1.TabIndex = 0;
@@ -169,9 +167,9 @@ namespace sistema_modular_cafe_majada.views
             this.panel6.Controls.Add(this.textBox1);
             this.panel6.Controls.Add(this.label3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(5, 75);
+            this.panel6.Location = new System.Drawing.Point(1, 71);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(296, 410);
+            this.panel6.Size = new System.Drawing.Size(296, 418);
             this.panel6.TabIndex = 5;
             // 
             // button2
@@ -184,7 +182,7 @@ namespace sistema_modular_cafe_majada.views
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = global::sistema_modular_cafe_majada.Properties.Resources.eliminar__2_;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(16, 148);
+            this.button2.Location = new System.Drawing.Point(11, 144);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.button2.Size = new System.Drawing.Size(274, 40);
@@ -203,7 +201,7 @@ namespace sistema_modular_cafe_majada.views
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(16, 105);
+            this.button1.Location = new System.Drawing.Point(11, 101);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(274, 40);
@@ -216,7 +214,7 @@ namespace sistema_modular_cafe_majada.views
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(16, 60);
+            this.textBox1.Location = new System.Drawing.Point(11, 45);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(274, 33);
             this.textBox1.TabIndex = 1;
@@ -233,49 +231,36 @@ namespace sistema_modular_cafe_majada.views
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.dtgv_cosechas);
+            this.panel7.Controls.Add(this.dtg_cosechas);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(301, 75);
+            this.panel7.Location = new System.Drawing.Point(297, 71);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(700, 410);
+            this.panel7.Size = new System.Drawing.Size(708, 418);
             this.panel7.TabIndex = 6;
             // 
-            // dtgv_cosechas
+            // dtg_cosechas
             // 
-            this.dtgv_cosechas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dtg_cosechas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgv_cosechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_cosechas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_cosecha,
-            this.cosecha});
-            this.dtgv_cosechas.Location = new System.Drawing.Point(6, 6);
-            this.dtgv_cosechas.Name = "dtgv_cosechas";
-            this.dtgv_cosechas.RowHeadersVisible = false;
-            this.dtgv_cosechas.RowHeadersWidth = 51;
-            this.dtgv_cosechas.RowTemplate.Height = 24;
-            this.dtgv_cosechas.Size = new System.Drawing.Size(688, 397);
-            this.dtgv_cosechas.TabIndex = 0;
-            // 
-            // id_cosecha
-            // 
-            this.id_cosecha.HeaderText = "Codigo de Cosecha";
-            this.id_cosecha.MinimumWidth = 6;
-            this.id_cosecha.Name = "id_cosecha";
-            this.id_cosecha.Width = 125;
-            // 
-            // cosecha
-            // 
-            this.cosecha.HeaderText = "Periodo de Cosecha";
-            this.cosecha.MinimumWidth = 6;
-            this.cosecha.Name = "cosecha";
-            this.cosecha.Width = 125;
+            this.dtg_cosechas.BackgroundColor = System.Drawing.Color.White;
+            this.dtg_cosechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_cosechas.EnableHeadersVisualStyles = false;
+            this.dtg_cosechas.GridColor = System.Drawing.Color.Black;
+            this.dtg_cosechas.Location = new System.Drawing.Point(6, 6);
+            this.dtg_cosechas.Name = "dtg_cosechas";
+            this.dtg_cosechas.RowHeadersVisible = false;
+            this.dtg_cosechas.RowHeadersWidth = 51;
+            this.dtg_cosechas.RowTemplate.Height = 24;
+            this.dtg_cosechas.Size = new System.Drawing.Size(696, 405);
+            this.dtg_cosechas.TabIndex = 0;
+            this.dtg_cosechas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dtgv_cosechas_CellPainting);
             // 
             // form_cosecha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1006, 490);
             this.ControlBox = false;
             this.Controls.Add(this.panel7);
@@ -296,7 +281,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_cosechas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_cosechas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -316,9 +301,7 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DataGridView dtgv_cosechas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_cosecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cosecha;
+        private System.Windows.Forms.DataGridView dtg_cosechas;
         private System.Windows.Forms.PictureBox btn_delete_cosecha;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;

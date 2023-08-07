@@ -184,7 +184,6 @@ namespace sistema_modular_cafe_majada.views
                     txb_nameCalidad.Text = calidadSeleccionada.NombreCalidad;
                     txb_desCalidad.Text = calidadSeleccionada.DescripcionCalidad;
                     
-                    calidadSeleccionada = null;
                 }
             }
             else
@@ -301,6 +300,36 @@ namespace sistema_modular_cafe_majada.views
 
 
             Console.WriteLine("depuracion - capturar datos dobleclick; nombre de calidad de café: " + calidadSeleccionada.NombreCalidad);
+        }
+
+        private void dtg_calidadCafe_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dtg_calidadCafe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtg_calidadCafe.BorderStyle = BorderStyle.None;
+
+            //configuracion de la fila de encabezado en el datagrid
+            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
+            dtg_calidadCafe.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            dtg_calidadCafe.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            dtg_calidadCafe.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dtg_calidadCafe.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            dtg_calidadCafe.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            dtg_calidadCafe.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //configuracion de las filas por defecto en el datagrid
+            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+
+            dtg_calidadCafe.DefaultCellStyle.BackColor = Color.White;
+            dtg_calidadCafe.DefaultCellStyle.Font = customFontdef;
+            dtg_calidadCafe.DefaultCellStyle.ForeColor = Color.Black;
+            dtg_calidadCafe.DefaultCellStyle.SelectionBackColor = Color.White;
+            dtg_calidadCafe.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dtg_calidadCafe.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //configuracion de las filas que son seleccionadas
+            dtg_calidadCafe.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            dtg_calidadCafe.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
     }
 }

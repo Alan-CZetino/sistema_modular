@@ -337,6 +337,10 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 txb_bodega.Text = BodegaSeleccionada.NombreBodega;
+                txb_almacen.Text = null;
+                iAlmacen = 0;
+                AlmacenSeleccionado.NombreAlmacen = null;
+                AlmacenSeleccionado.IAlmacen = 0;
             }
         }
 
@@ -388,6 +392,8 @@ namespace sistema_modular_cafe_majada.views
             double cantMax = cantSP.CapacidadAlmacen;
             double cantAct = cantSP.CantidadActualAlmacen;
             double cantRest = cantMax - cantAct;
+            double cantActSaco = cantSP.CantidadActualSacoAlmacen;
+            double cantRestSaco = cantMax - cantActSaco;
             int idAlmacenUpd;
 
             int numSalida = Convert.ToInt32(txb_numSalida.Text);
@@ -423,6 +429,7 @@ namespace sistema_modular_cafe_majada.views
             }
 
             int selectedValue = selectedStatus.Key;
+            string selectedValueName = selectedStatus.Value;
 
             // Verificar si se ha seleccionado un rol de usuario
             if (cbx_subProducto.SelectedItem == null)
@@ -474,6 +481,7 @@ namespace sistema_modular_cafe_majada.views
 
             //
             var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
+            var almNCM = almacenC.ObtenerAlmacenNombreCalidad(iAlmacen);
             double actcantidad = almCM.CantidadActualAlmacen;
             double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
 
@@ -484,9 +492,29 @@ namespace sistema_modular_cafe_majada.views
                 if (!verificexisten)
                 {
 
-                    if (cantAct < pesoQQs)
+                    if (cantAct < pesoQQs || cantAct == 0)
                     {
                         MessageBox.Show("Error, la cantidad QQs de cafe que desea Sacar del almacen excede sus limite. Desea Sacar la cantidad de " + pesoQQs + " en el contenido disponible " + cantAct, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    
+                    if (cantActSaco < pesoSaco || cantActSaco == 0)
+                    {
+                        MessageBox.Show("Error, la cantidad en Saco de cafe que desea Sacar del almacen excede sus limite. Desea Sacar la cantidad de " + pesoSaco + " en el contenido disponible " + cantActSaco, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (almNCM.IdCalidadCafe != CalidadSeleccionada.ICalidadSeleccionada)
+                    {
+                        MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a dar Salida es " + almNCM.NombreCalidadCafe +" y a seleccionado la calidad "
+                            + CalidadSeleccionada.NombreCalidadSeleccionada + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (almNCM.IdSubProducto != selectedValue)
+                    {
+                        MessageBox.Show("El SubProducto Cafe que se a seleccionado en el formulario no es compatible, El SubProducto a dar Salida es " + almNCM.NombreSubProducto +" y a seleccionado el SubProducto "
+                            + selectedValueName + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -574,9 +602,29 @@ namespace sistema_modular_cafe_majada.views
                 Console.WriteLine("Depuracion - buscador   " + search);
                 var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
 
-                if (cantAct < pesoQQs)
+                if (cantAct < pesoQQs || cantAct == 0)
                 {
                     MessageBox.Show("Error, la cantidad QQs de cafe que desea Sacar del almacen excede sus limite. Desea Sacar la cantidad de " + pesoQQs + " en el contenido disponible " + cantAct, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (cantActSaco < pesoSaco || cantActSaco == 0)
+                {
+                    MessageBox.Show("Error, la cantidad en Saco de cafe que desea Sacar del almacen excede sus limite. Desea Sacar la cantidad de " + pesoSaco + " en el contenido disponible " + cantActSaco, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (almNCM.IdCalidadCafe != CalidadSeleccionada.ICalidadSeleccionada)
+                {
+                    MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a dar Salida es " + almNCM.NombreCalidadCafe + " y a seleccionado la calidad "
+                        + CalidadSeleccionada.NombreCalidadSeleccionada + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (almNCM.IdSubProducto != selectedValue)
+                {
+                    MessageBox.Show("El SubProducto Cafe que se a seleccionado en el formulario no es compatible, El SubProducto a dar Salida es " + almNCM.NombreSubProducto + " y a seleccionado el SubProducto "
+                        + selectedValueName + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

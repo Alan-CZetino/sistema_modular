@@ -38,22 +38,32 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtgv_claseUva_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            string headerColorHex = "#D7D7D7"; // Color hexadecimal deseado
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dtg_claseUva.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtg_claseUva.BorderStyle = BorderStyle.None;
 
-            Color headerColor = ColorTranslator.FromHtml(headerColorHex);
+            //configuracion de la fila de encabezado en el datagrid
+            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
+            dtg_claseUva.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            dtg_claseUva.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            dtg_claseUva.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dtg_claseUva.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            dtg_claseUva.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            dtg_claseUva.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            if (e.RowIndex == -1)
-            {
-                using (SolidBrush brush = new SolidBrush(headerColor))
-                {
-                    e.Graphics.FillRectangle(brush, e.CellBounds);
-                    // Centrar el texto del encabezado
-                    e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    // Dibujar el fondo del encabezado
-                    e.PaintContent(e.CellBounds);
-                    e.Handled = true;
-                }
-            }
+            //configuracion de las filas por defecto en el datagrid
+            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+
+            dtg_claseUva.DefaultCellStyle.BackColor = Color.White;
+            dtg_claseUva.DefaultCellStyle.Font = customFontdef;
+            dtg_claseUva.DefaultCellStyle.ForeColor = Color.Black;
+            dtg_claseUva.DefaultCellStyle.SelectionBackColor = Color.White;
+            dtg_claseUva.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dtg_claseUva.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //configuracion de las filas que son seleccionadas
+            dtg_claseUva.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            dtg_claseUva.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public void ShowTipoCafeGrid()

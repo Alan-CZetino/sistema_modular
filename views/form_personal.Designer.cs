@@ -140,6 +140,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             // txb_Descrip
             // 
+            this.txb_Descrip.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_Descrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_Descrip.Location = new System.Drawing.Point(13, 166);
             this.txb_Descrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -170,6 +171,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             // txb_namePersonal
             // 
+            this.txb_namePersonal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_namePersonal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_namePersonal.Location = new System.Drawing.Point(11, 34);
             this.txb_namePersonal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -357,7 +359,10 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_personal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtg_personal.BackgroundColor = System.Drawing.Color.White;
             this.dtg_personal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_personal.EnableHeadersVisualStyles = false;
+            this.dtg_personal.GridColor = System.Drawing.Color.Black;
             this.dtg_personal.Location = new System.Drawing.Point(308, 102);
             this.dtg_personal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtg_personal.Name = "dtg_personal";

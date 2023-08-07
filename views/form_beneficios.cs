@@ -26,7 +26,7 @@ namespace sistema_modular_cafe_majada.views
         public form_beneficios()
         {
             InitializeComponent();
-            
+
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dtg_beneficios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -37,22 +37,32 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtgv_beneficios_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            string headerColorHex = "#D7D7D7"; // Color hexadecimal deseado
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dtg_beneficios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtg_beneficios.BorderStyle = BorderStyle.None;
 
-            Color headerColor = ColorTranslator.FromHtml(headerColorHex);
+            //configuracion de la fila de encabezado en el datagrid
+            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
+            dtg_beneficios.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            dtg_beneficios.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            dtg_beneficios.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dtg_beneficios.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            dtg_beneficios.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            dtg_beneficios.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            if (e.RowIndex == -1)
-            {
-                using (SolidBrush brush = new SolidBrush(headerColor))
-                {
-                    e.Graphics.FillRectangle(brush, e.CellBounds);
-                    // Centrar el texto del encabezado
-                    e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    // Dibujar el fondo del encabezado
-                    e.PaintContent(e.CellBounds);
-                    e.Handled = true;
-                }
-            }
+            //configuracion de las filas por defecto en el datagrid
+            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+
+            dtg_beneficios.DefaultCellStyle.BackColor = Color.White;
+            dtg_beneficios.DefaultCellStyle.Font = customFontdef;
+            dtg_beneficios.DefaultCellStyle.ForeColor = Color.Black;
+            dtg_beneficios.DefaultCellStyle.SelectionBackColor = Color.White;
+            dtg_beneficios.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dtg_beneficios.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            //configuracion de las filas que son seleccionadas
+            dtg_beneficios.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            dtg_beneficios.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public void ShowBeneficioGrid()
@@ -222,7 +232,7 @@ namespace sistema_modular_cafe_majada.views
                     NombreBeneficio = name,
                     UbicacionBeneficio = location
                 };
-                
+
                 if (!imagenClickeada)
                 {
                     // Código que se ejecutará si no se ha hecho clic en la imagen update
@@ -234,7 +244,7 @@ namespace sistema_modular_cafe_majada.views
                         MessageBox.Show("Error al agregar el Beneficio. Verifica los datos e intenta nuevamente.");
                         return;
                     }
-                            
+
                     MessageBox.Show("Beneficio agregado correctamente.", "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
@@ -284,7 +294,7 @@ namespace sistema_modular_cafe_majada.views
 
                     imagenClickeada = false;
                     beneficioSeleccionado = null;
-                
+
                 }
             }
             catch (Exception ex)
