@@ -49,14 +49,16 @@ namespace sistema_modular_cafe_majada.model.Mapping.Reports
     class ReportesCCaliadades
     {
         public string nombre_cosecha { get; set; }
+        public int id_nombre_calidad { get; set; }
         public string nombre_calidad { get; set; }
-
         public string nombre_subproducto { get; set; }
         public string almacenado_en { get; set; }
-
-        public double total_sacos { get; set; }
-
-        public double total_qqspunto { get; set; }
+        public double total_sacosE { get; set; }
+        public double total_qqspuntoE { get; set; }
+        public double total_sacosS { get; set; }
+        public double total_qqspuntoS { get; set; }
+        public double total_sacosT { get; set; }
+        public double total_qqspuntoT { get; set; }
         public string fecha { get; set; }
 
     }

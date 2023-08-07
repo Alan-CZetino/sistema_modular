@@ -29,22 +29,51 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
                 string consulta = @"
                                     SELECT
-                                        cc.nombre_calidad AS calidad_cafe,
-                                        spro.nombre_subproducto AS subproducto,
-                                        CONCAT(bc.nombre_bodega, ' - ', a.nombre_almacen) AS almacenado_en,
-                                        SUM(sp.peso_saco_subpartida) AS sacos,
-                                        SUM(sp.peso_qqs_subpartida) AS qqspunto
+                                        a.id_calidad_cafe AS IdCalidad,
+                                        c.nombre_calidad AS calidad_cafe,
+                                        sp.nombre_subproducto AS subproducto,
+                                        CONCAT(b.nombre_bodega, ' - ', a.nombre_almacen) AS almacenado_en,
+                                        SUM(CASE WHEN ccsp.tipo_movimiento_cantidad_cafe LIKE '%Entrada%' THEN ccsp.cantidad_saco_cafe ELSE 0 END) 
+                                            + COALESCE((SELECT SUM(ccsp2.cantidad_saco_cafe)
+                                                        FROM CantidadCafe_Silo_Piña ccsp2
+                                                        WHERE ccsp2.id_almacen_silo_piña = a.id_almacen
+                                                        AND ccsp2.tipo_movimiento_cantidad_cafe LIKE '%Traslado Cafe - Destino%'), 0) 
+                                            AS entradas_cantidad_sacos,
+                                        SUM(CASE WHEN ccsp.tipo_movimiento_cantidad_cafe LIKE '%Entrada%' THEN ccsp.cantidad_qqs_cafe ELSE 0 END) 
+                                            + COALESCE((SELECT SUM(ccsp2.cantidad_qqs_cafe)
+                                                        FROM CantidadCafe_Silo_Piña ccsp2
+                                                        WHERE ccsp2.id_almacen_silo_piña = a.id_almacen
+                                                        AND ccsp2.tipo_movimiento_cantidad_cafe LIKE '%Traslado Cafe - Destino%'), 0) 
+                                            AS entradas_cantidad_qqs,
+                                        SUM(CASE WHEN ccsp.tipo_movimiento_cantidad_cafe LIKE '%Salida%' THEN ccsp.cantidad_saco_cafe ELSE 0 END) AS salidas_cantidad_sacos,
+                                        SUM(CASE WHEN ccsp.tipo_movimiento_cantidad_cafe LIKE '%Salida%' THEN ccsp.cantidad_qqs_cafe ELSE 0 END) AS salidas_cantidad_qqs,
+                                        SUM(CASE WHEN ccsp.tipo_movimiento_cantidad_cafe LIKE '%Traslado Cafe - Procedencia%' THEN ccsp.cantidad_saco_cafe ELSE 0 END) 
+                                            AS traslados_cantidad_sacos_procedencia,
+                                        SUM(CASE WHEN ccsp.tipo_movimiento_cantidad_cafe LIKE '%Traslado Cafe - Procedencia%' THEN ccsp.cantidad_qqs_cafe ELSE 0 END) 
+                                            AS traslados_cantidad_qqs_procedencia
                                     FROM
-                                        SubPartida sp
-                                    JOIN Calidad_Cafe cc ON sp.id_calidad_cafe_subpartida = cc.id_calidad
-                                    JOIN SubProducto spro ON sp.id_subproducto_subpartida = spro.id_subproducto
-                                    JOIN Almacen a ON sp.id_almacen_subpartida = a.id_almacen
-                                    JOIN Bodega_Cafe bc ON a.id_bodega_ubicacion_almacen = bc.id_bodega
+                                        Almacen a
+                                    JOIN
+                                        Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
+                                    JOIN
+                                        Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                    JOIN
+                                        SubProducto sp ON a.id_subproducto_cafe = sp.id_subproducto
+                                    LEFT JOIN
+                                        CantidadCafe_Silo_Piña ccsp ON ccsp.id_almacen_silo_piña = a.id_almacen
                                     WHERE
-	                                    sp.id_cosecha_subpartida = @id_cosecha
+                                        ccsp.id_cosecha_cantidad = @id_cosecha
                                     GROUP BY
-                                        cc.nombre_calidad,
-                                        spro.nombre_subproducto,
+                                        a.id_calidad_cafe,
+                                        c.nombre_calidad,
+                                        sp.nombre_subproducto,
+                                        almacenado_en,
+
+                                        a.id_almacen
+                                    ORDER BY
+	                                    id_calidad_cafe,
+	                                    nombre_calidad,
+	                                    nombre_subproducto,
                                         almacenado_en;
             ";
 
@@ -56,11 +85,16 @@ namespace sistema_modular_cafe_majada.model.DAO
                 {
                     ReportesCCaliadades reportesCCalidades = new ReportesCCaliadades()
                     {
+                        id_nombre_calidad = Convert.ToInt32(reader["IdCalidad"]),
                         nombre_calidad = reader["calidad_cafe"].ToString(),
                         nombre_subproducto = reader["subproducto"].ToString(),
                         almacenado_en = reader["almacenado_en"].ToString(),
-                        total_sacos = Convert.ToDouble(reader["sacos"]),
-                        total_qqspunto = Convert.ToDouble(reader["qqspunto"]),
+                        total_sacosE = Convert.ToDouble(reader["entradas_cantidad_sacos"]),
+                        total_qqspuntoE = Convert.ToDouble(reader["entradas_cantidad_qqs"]),
+                        total_sacosS = Convert.ToDouble(reader["salidas_cantidad_sacos"]),
+                        total_qqspuntoS = Convert.ToDouble(reader["salidas_cantidad_qqs"]),
+                        total_sacosT = Convert.ToDouble(reader["traslados_cantidad_sacos_procedencia"]),
+                        total_qqspuntoT = Convert.ToDouble(reader["traslados_cantidad_qqs_procedencia"])
                     };
                     data.Add(reportesCCalidades);
                 }
@@ -194,7 +228,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 JOIN
                     CantidadCafe_Silo_Piña ccsp ON ccsp.id_almacen_silo_piña = a.id_almacen
                 WHERE
-                    ccsp.id_cosecha_cantidad = 3;
+                    ccsp.id_cosecha_cantidad = @id_cosecha;
 
             ";
 

@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.78507cm</Width>
+              <Width>1.75861cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.11799cm</Width>
+              <Width>2.09153cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -337,7 +337,7 @@
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>1.89644cm</Size>
+                <Size>1.86998cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox83">
                     <CanGrow>true</CanGrow>
@@ -382,7 +382,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.5033cm</Size>
+                    <Size>1.47684cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox84">
                         <CanGrow>true</CanGrow>
@@ -427,7 +427,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>0.86753cm</Size>
+                        <Size>0.84107cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox85">
                             <CanGrow>true</CanGrow>
@@ -472,7 +472,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>3.35168cm</Size>
+                            <Size>3.32522cm</Size>
                             <CellContents>
                               <Textbox Name="Textbox86">
                                 <CanGrow>true</CanGrow>
@@ -517,7 +517,7 @@
                           <TablixMembers>
                             <TablixMember>
                               <TablixHeader>
-                                <Size>3.10413cm</Size>
+                                <Size>3.07767cm</Size>
                                 <CellContents>
                                   <Textbox Name="Textbox87">
                                     <CanGrow>true</CanGrow>
@@ -562,7 +562,7 @@
                               <TablixMembers>
                                 <TablixMember>
                                   <TablixHeader>
-                                    <Size>3.76289cm</Size>
+                                    <Size>3.70997cm</Size>
                                     <CellContents>
                                       <Textbox Name="Textbox12">
                                         <CanGrow>true</CanGrow>
@@ -602,7 +602,7 @@
                                   <TablixMembers>
                                     <TablixMember>
                                       <TablixHeader>
-                                        <Size>3.67528cm</Size>
+                                        <Size>3.62236cm</Size>
                                         <CellContents>
                                           <Textbox Name="Textbox13">
                                             <CanGrow>true</CanGrow>
@@ -611,7 +611,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>--ENTRADAS--</Value>
+                                                    <Value>--SALIDAS--</Value>
                                                     <Style>
                                                       <FontStyle>Normal</FontStyle>
                                                       <FontSize>9pt</FontSize>
@@ -642,7 +642,7 @@
                                       <TablixMembers>
                                         <TablixMember>
                                           <TablixHeader>
-                                            <Size>3.72783cm</Size>
+                                            <Size>3.67491cm</Size>
                                             <CellContents>
                                               <Textbox Name="Textbox15">
                                                 <CanGrow>true</CanGrow>
@@ -651,7 +651,7 @@
                                                   <Paragraph>
                                                     <TextRuns>
                                                       <TextRun>
-                                                        <Value>--ENTRADAS--</Value>
+                                                        <Value>--TRASLADOS--</Value>
                                                         <Style>
                                                           <FontStyle>Normal</FontStyle>
                                                           <FontSize>9pt</FontSize>
@@ -697,7 +697,7 @@
             </TablixMember>
             <TablixMember>
               <TablixHeader>
-                <Size>3.39974cm</Size>
+                <Size>3.34682cm</Size>
                 <CellContents>
                   <Textbox Name="nombre_calidad4">
                     <CanGrow>true</CanGrow>
@@ -732,7 +732,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.86753cm</Size>
+                    <Size>0.84107cm</Size>
                     <CellContents>
                       <Textbox Name="nombre_subproducto4">
                         <CanGrow>true</CanGrow>
@@ -767,7 +767,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>3.35168cm</Size>
+                        <Size>3.32522cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox39">
                             <CanGrow>true</CanGrow>
@@ -800,7 +800,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>3.10413cm</Size>
+                            <Size>3.07767cm</Size>
                             <CellContents>
                               <Textbox Name="almacenado_en4">
                                 <CanGrow>true</CanGrow>
@@ -833,7 +833,7 @@
                           <TablixMembers>
                             <TablixMember>
                               <TablixHeader>
-                                <Size>1.65899cm</Size>
+                                <Size>1.63253cm</Size>
                                 <CellContents>
                                   <Textbox Name="total_sacos16">
                                     <CanGrow>true</CanGrow>
@@ -868,7 +868,7 @@
                               <TablixMembers>
                                 <TablixMember>
                                   <TablixHeader>
-                                    <Size>2.1039cm</Size>
+                                    <Size>2.07744cm</Size>
                                     <CellContents>
                                       <Textbox Name="total_qqspunto14">
                                         <CanGrow>true</CanGrow>
@@ -903,7 +903,7 @@
                                   <TablixMembers>
                                     <TablixMember>
                                       <TablixHeader>
-                                        <Size>1.57481cm</Size>
+                                        <Size>1.54835cm</Size>
                                         <CellContents>
                                           <Textbox Name="total_sacos17">
                                             <CanGrow>true</CanGrow>
@@ -938,7 +938,7 @@
                                       <TablixMembers>
                                         <TablixMember>
                                           <TablixHeader>
-                                            <Size>2.10047cm</Size>
+                                            <Size>2.07401cm</Size>
                                             <CellContents>
                                               <Textbox Name="total_qqspunto15">
                                                 <CanGrow>true</CanGrow>
@@ -973,7 +973,7 @@
                                           <TablixMembers>
                                             <TablixMember>
                                               <TablixHeader>
-                                                <Size>1.64489cm</Size>
+                                                <Size>1.61843cm</Size>
                                                 <CellContents>
                                                   <Textbox Name="total_sacos18">
                                                     <CanGrow>true</CanGrow>
@@ -1008,7 +1008,7 @@
                                               <TablixMembers>
                                                 <TablixMember>
                                                   <TablixHeader>
-                                                    <Size>2.08294cm</Size>
+                                                    <Size>2.05648cm</Size>
                                                     <CellContents>
                                                       <Textbox Name="total_qqspunto16">
                                                         <CanGrow>true</CanGrow>
@@ -1075,7 +1075,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>1.89644cm</Size>
+                <Size>1.86998cm</Size>
                 <CellContents>
                   <Textbox Name="nombre_bodega2">
                     <CanGrow>true</CanGrow>
@@ -1117,7 +1117,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>1.5033cm</Size>
+                    <Size>1.47684cm</Size>
                     <CellContents>
                       <Textbox Name="nombre_almacen2">
                         <CanGrow>true</CanGrow>
@@ -1159,7 +1159,7 @@
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>0.86753cm</Size>
+                        <Size>0.84107cm</Size>
                         <CellContents>
                           <Textbox Name="id_calidad2">
                             <CanGrow>true</CanGrow>
@@ -1201,7 +1201,7 @@
                             </SortExpression>
                           </SortExpressions>
                           <TablixHeader>
-                            <Size>3.35168cm</Size>
+                            <Size>3.32522cm</Size>
                             <CellContents>
                               <Textbox Name="nombre_calidad2">
                                 <CanGrow>true</CanGrow>
@@ -1243,7 +1243,7 @@
                                 </SortExpression>
                               </SortExpressions>
                               <TablixHeader>
-                                <Size>3.10413cm</Size>
+                                <Size>3.07767cm</Size>
                                 <CellContents>
                                   <Textbox Name="nombre_subproducto2">
                                     <CanGrow>true</CanGrow>
@@ -1285,7 +1285,7 @@
                                     </SortExpression>
                                   </SortExpressions>
                                   <TablixHeader>
-                                    <Size>1.65899cm</Size>
+                                    <Size>1.63253cm</Size>
                                     <CellContents>
                                       <Textbox Name="total_sacosE2">
                                         <CanGrow>true</CanGrow>
@@ -1329,7 +1329,7 @@
                                         </SortExpression>
                                       </SortExpressions>
                                       <TablixHeader>
-                                        <Size>2.1039cm</Size>
+                                        <Size>2.07744cm</Size>
                                         <CellContents>
                                           <Textbox Name="total_qqspuntoE2">
                                             <CanGrow>true</CanGrow>
@@ -1373,7 +1373,7 @@
                                             </SortExpression>
                                           </SortExpressions>
                                           <TablixHeader>
-                                            <Size>1.57481cm</Size>
+                                            <Size>1.54835cm</Size>
                                             <CellContents>
                                               <Textbox Name="total_sacosS2">
                                                 <CanGrow>true</CanGrow>
@@ -1417,7 +1417,7 @@
                                                 </SortExpression>
                                               </SortExpressions>
                                               <TablixHeader>
-                                                <Size>2.10047cm</Size>
+                                                <Size>2.07401cm</Size>
                                                 <CellContents>
                                                   <Textbox Name="total_qqspuntoS2">
                                                     <CanGrow>true</CanGrow>
@@ -1461,7 +1461,7 @@
                                                     </SortExpression>
                                                   </SortExpressions>
                                                   <TablixHeader>
-                                                    <Size>1.64489cm</Size>
+                                                    <Size>1.61843cm</Size>
                                                     <CellContents>
                                                       <Textbox Name="total_sacosT2">
                                                         <CanGrow>true</CanGrow>
@@ -1505,7 +1505,7 @@
                                                         </SortExpression>
                                                       </SortExpressions>
                                                       <TablixHeader>
-                                                        <Size>2.08294cm</Size>
+                                                        <Size>2.05648cm</Size>
                                                         <CellContents>
                                                           <Textbox Name="total_qqspuntoT2">
                                                             <CanGrow>true</CanGrow>
@@ -1562,7 +1562,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>8.82664cm</Size>
+                    <Size>8.7208cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox126">
                         <CanGrow>true</CanGrow>
@@ -1596,7 +1596,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>1.65899cm</Size>
+                        <Size>1.63253cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox130">
                             <CanGrow>true</CanGrow>
@@ -1630,7 +1630,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>2.1039cm</Size>
+                            <Size>2.07744cm</Size>
                             <CellContents>
                               <Textbox Name="Textbox131">
                                 <CanGrow>true</CanGrow>
@@ -1662,7 +1662,7 @@
                           <TablixMembers>
                             <TablixMember>
                               <TablixHeader>
-                                <Size>1.57481cm</Size>
+                                <Size>1.54835cm</Size>
                                 <CellContents>
                                   <Textbox Name="Textbox132">
                                     <CanGrow>true</CanGrow>
@@ -1694,7 +1694,7 @@
                               <TablixMembers>
                                 <TablixMember>
                                   <TablixHeader>
-                                    <Size>2.10047cm</Size>
+                                    <Size>2.07401cm</Size>
                                     <CellContents>
                                       <Textbox Name="Textbox133">
                                         <CanGrow>true</CanGrow>
@@ -1726,7 +1726,7 @@
                                   <TablixMembers>
                                     <TablixMember>
                                       <TablixHeader>
-                                        <Size>1.64489cm</Size>
+                                        <Size>1.61843cm</Size>
                                         <CellContents>
                                           <Textbox Name="Textbox134">
                                             <CanGrow>true</CanGrow>
@@ -1758,7 +1758,7 @@
                                       <TablixMembers>
                                         <TablixMember>
                                           <TablixHeader>
-                                            <Size>2.08294cm</Size>
+                                            <Size>2.05648cm</Size>
                                             <CellContents>
                                               <Textbox Name="Textbox135">
                                                 <CanGrow>true</CanGrow>
@@ -1805,7 +1805,7 @@
             </TablixMember>
             <TablixMember>
               <TablixHeader>
-                <Size>10.72308cm</Size>
+                <Size>10.59078cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox111">
                     <CanGrow>true</CanGrow>
@@ -1839,7 +1839,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.65899cm</Size>
+                    <Size>1.63253cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox117">
                         <CanGrow>true</CanGrow>
@@ -1873,7 +1873,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.1039cm</Size>
+                        <Size>2.07744cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox118">
                             <CanGrow>true</CanGrow>
@@ -1907,7 +1907,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>1.57481cm</Size>
+                            <Size>1.54835cm</Size>
                             <CellContents>
                               <Textbox Name="Textbox119">
                                 <CanGrow>true</CanGrow>
@@ -1941,7 +1941,7 @@
                           <TablixMembers>
                             <TablixMember>
                               <TablixHeader>
-                                <Size>2.10047cm</Size>
+                                <Size>2.07401cm</Size>
                                 <CellContents>
                                   <Textbox Name="Textbox120">
                                     <CanGrow>true</CanGrow>
@@ -1975,7 +1975,7 @@
                               <TablixMembers>
                                 <TablixMember>
                                   <TablixHeader>
-                                    <Size>1.64489cm</Size>
+                                    <Size>1.61843cm</Size>
                                     <CellContents>
                                       <Textbox Name="Textbox121">
                                         <CanGrow>true</CanGrow>
@@ -2009,7 +2009,7 @@
                                   <TablixMembers>
                                     <TablixMember>
                                       <TablixHeader>
-                                        <Size>2.08294cm</Size>
+                                        <Size>2.05648cm</Size>
                                         <CellContents>
                                           <Textbox Name="Textbox122">
                                             <CanGrow>true</CanGrow>
@@ -2059,7 +2059,7 @@
         <DataSetName>repor_cafebodega</DataSetName>
         <Top>0.12912cm</Top>
         <Height>3cm</Height>
-        <Width>25.79214cm</Width>
+        <Width>25.44818cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2070,7 +2070,7 @@
     <Height>2.35694in</Height>
     <Style />
   </Body>
-  <Width>10.27939in</Width>
+  <Width>10.03981in</Width>
   <Page>
     <PageHeader>
       <Height>1.82562cm</Height>
