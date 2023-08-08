@@ -37,7 +37,8 @@
     </Win32Resource>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icono-majada.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -252,40 +253,40 @@
     <Compile Include="model\Mapping\UserData\Persona.cs" />
     <Compile Include="model\Mapping\UserData\Usuario.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="views\form_administracion.cs">
+    <Compile Include="views\Main\form_administracion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_administracion.Designer.cs">
+    <Compile Include="views\Main\form_administracion.Designer.cs">
       <DependentUpon>form_administracion.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_beneficios.cs">
+    <Compile Include="views\Infrastructure\form_beneficios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_beneficios.Designer.cs">
+    <Compile Include="views\Infrastructure\form_beneficios.Designer.cs">
       <DependentUpon>form_beneficios.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_calidades_cafe.cs">
+    <Compile Include="views\Product\form_calidades_cafe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_calidades_cafe.Designer.cs">
+    <Compile Include="views\Product\form_calidades_cafe.Designer.cs">
       <DependentUpon>form_calidades_cafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_cargosPersonal.cs">
+    <Compile Include="views\Acces\form_cargosPersonal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_cargosPersonal.Designer.cs">
+    <Compile Include="views\Acces\form_cargosPersonal.Designer.cs">
       <DependentUpon>form_cargosPersonal.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_claseUva.cs">
+    <Compile Include="views\Product\form_claseUva.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_claseUva.Designer.cs">
+    <Compile Include="views\Product\form_claseUva.Designer.cs">
       <DependentUpon>form_claseUva.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_cosecha.cs">
+    <Compile Include="views\Harvest\form_cosecha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_cosecha.Designer.cs">
+    <Compile Include="views\Harvest\form_cosecha.Designer.cs">
       <DependentUpon>form_cosecha.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_despulpaCafe.cs">
@@ -294,76 +295,76 @@
     <Compile Include="views\form_despulpaCafe.Designer.cs">
       <DependentUpon>form_despulpaCafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_destCafe.cs">
+    <Compile Include="views\Infrastructure\form_destCafe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_destCafe.Designer.cs">
+    <Compile Include="views\Infrastructure\form_destCafe.Designer.cs">
       <DependentUpon>form_destCafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_fallaMaquina.cs">
+    <Compile Include="views\Acces\form_fallaMaquina.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_fallaMaquina.Designer.cs">
+    <Compile Include="views\Acces\form_fallaMaquina.Designer.cs">
       <DependentUpon>form_fallaMaquina.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_opcReportExistencias.cs">
+    <Compile Include="views\GridViews\form_opcReportExistencias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_opcReportExistencias.Designer.cs">
+    <Compile Include="views\GridViews\form_opcReportExistencias.Designer.cs">
       <DependentUpon>form_opcReportExistencias.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_opcSalida.cs">
+    <Compile Include="views\GridViews\form_opcSalida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_opcSalida.Designer.cs">
+    <Compile Include="views\GridViews\form_opcSalida.Designer.cs">
       <DependentUpon>form_opcSalida.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_opcSubPartida.cs">
+    <Compile Include="views\GridViews\form_opcSubPartida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_opcSubPartida.Designer.cs">
+    <Compile Include="views\GridViews\form_opcSubPartida.Designer.cs">
       <DependentUpon>form_opcSubPartida.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_opcTraslado.cs">
+    <Compile Include="views\GridViews\form_opcTraslado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_opcTraslado.Designer.cs">
+    <Compile Include="views\GridViews\form_opcTraslado.Designer.cs">
       <DependentUpon>form_opcTraslado.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_opcTrilla.cs">
+    <Compile Include="views\GridViews\form_opcTrilla.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_opcTrilla.Designer.cs">
+    <Compile Include="views\GridViews\form_opcTrilla.Designer.cs">
       <DependentUpon>form_opcTrilla.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_seleccionCosecha.cs">
+    <Compile Include="views\Main\form_seleccionCosecha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_seleccionCosecha.Designer.cs">
+    <Compile Include="views\Main\form_seleccionCosecha.Designer.cs">
       <DependentUpon>form_seleccionCosecha.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_tablaBeneficio.cs">
+    <Compile Include="views\GridViews\form_tablaBeneficio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_tablaBeneficio.Designer.cs">
+    <Compile Include="views\GridViews\form_tablaBeneficio.Designer.cs">
       <DependentUpon>form_tablaBeneficio.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_tablaCCafe.cs">
+    <Compile Include="views\GridViews\form_tablaCCafe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_tablaCCafe.Designer.cs">
+    <Compile Include="views\GridViews\form_tablaCCafe.Designer.cs">
       <DependentUpon>form_tablaCCafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_trasladoCafe.cs">
+    <Compile Include="views\Operations\form_trasladoCafe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_trasladoCafe.Designer.cs">
+    <Compile Include="views\Operations\form_trasladoCafe.Designer.cs">
       <DependentUpon>form_trasladoCafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_finca.cs">
+    <Compile Include="views\Infrastructure\form_finca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_finca.Designer.cs">
+    <Compile Include="views\Infrastructure\form_finca.Designer.cs">
       <DependentUpon>form_finca.cs</DependentUpon>
     </Compile>
     <Compile Include="views\form_lavadaCafe.cs">
@@ -372,228 +373,228 @@
     <Compile Include="views\form_lavadaCafe.Designer.cs">
       <DependentUpon>form_lavadaCafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_login.cs">
+    <Compile Include="views\Acces\form_login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_login.Designer.cs">
+    <Compile Include="views\Acces\form_login.Designer.cs">
       <DependentUpon>form_login.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_socios.cs">
+    <Compile Include="views\Operations\form_socios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_socios.Designer.cs">
+    <Compile Include="views\Operations\form_socios.Designer.cs">
       <DependentUpon>form_socios.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_main.cs">
+    <Compile Include="views\Main\form_main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_main.Designer.cs">
+    <Compile Include="views\Main\form_main.Designer.cs">
       <DependentUpon>form_main.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_maquinas.cs">
+    <Compile Include="views\Infrastructure\form_maquinas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_maquinas.Designer.cs">
+    <Compile Include="views\Infrastructure\form_maquinas.Designer.cs">
       <DependentUpon>form_maquinas.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_opcGeneralData.cs">
+    <Compile Include="views\GridViews\form_opcGeneralData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_opcGeneralData.Designer.cs">
+    <Compile Include="views\GridViews\form_opcGeneralData.Designer.cs">
       <DependentUpon>form_opcGeneralData.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_opcLote.cs">
+    <Compile Include="views\GridViews\form_opcLote.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_opcLote.Designer.cs">
+    <Compile Include="views\GridViews\form_opcLote.Designer.cs">
       <DependentUpon>form_opcLote.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_panel_principal.cs">
+    <Compile Include="views\Main\form_panel_principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_panel_principal.Designer.cs">
+    <Compile Include="views\Main\form_panel_principal.Designer.cs">
       <DependentUpon>form_panel_principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="views\form_personal.cs">
+    <Compile Include="views\Operations\form_personal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_personal.Designer.cs">
+    <Compile Include="views\Operations\form_personal.Designer.cs">
       <DependentUpon>form_personal.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_personas.cs">
+    <Compile Include="views\UserData\form_personas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_personas.Designer.cs">
+    <Compile Include="views\UserData\form_personas.Designer.cs">
       <DependentUpon>form_personas.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_prodCafe.cs">
+    <Compile Include="views\Operations\form_prodCafe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_prodCafe.Designer.cs">
+    <Compile Include="views\Operations\form_prodCafe.Designer.cs">
       <DependentUpon>form_prodCafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_reportes.cs">
+    <Compile Include="views\Main\form_reportes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_reportes.Designer.cs">
+    <Compile Include="views\Main\form_reportes.Designer.cs">
       <DependentUpon>form_reportes.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_rol.cs">
+    <Compile Include="views\Acces\form_rol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_rol.Designer.cs">
+    <Compile Include="views\Acces\form_rol.Designer.cs">
       <DependentUpon>form_rol.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_salidasCafe.cs">
+    <Compile Include="views\Operations\form_salidasCafe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_salidasCafe.Designer.cs">
+    <Compile Include="views\Operations\form_salidasCafe.Designer.cs">
       <DependentUpon>form_salidasCafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_splash.cs">
+    <Compile Include="views\Acces\form_splash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_splash.Designer.cs">
+    <Compile Include="views\Acces\form_splash.Designer.cs">
       <DependentUpon>form_splash.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_coffeeStocks.cs">
+    <Compile Include="views\Main\form_coffeeStocks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_coffeeStocks.Designer.cs">
+    <Compile Include="views\Main\form_coffeeStocks.Designer.cs">
       <DependentUpon>form_coffeeStocks.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_subPartidas.cs">
+    <Compile Include="views\Operations\form_subPartidas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_subPartidas.Designer.cs">
+    <Compile Include="views\Operations\form_subPartidas.Designer.cs">
       <DependentUpon>form_subPartidas.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_subprod_cafe.cs">
+    <Compile Include="views\Operations\form_subprod_cafe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_subprod_cafe.Designer.cs">
+    <Compile Include="views\Operations\form_subprod_cafe.Designer.cs">
       <DependentUpon>form_subprod_cafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_tableperson.cs">
+    <Compile Include="views\GridViews\form_tableperson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_tableperson.Designer.cs">
+    <Compile Include="views\GridViews\form_tableperson.Designer.cs">
       <DependentUpon>form_tableperson.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_tableUser.cs">
+    <Compile Include="views\GridViews\form_tableUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_tableUser.Designer.cs">
+    <Compile Include="views\GridViews\form_tableUser.Designer.cs">
       <DependentUpon>form_tableUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_trillaCafe.cs">
+    <Compile Include="views\Operations\form_trillaCafe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_trillaCafe.Designer.cs">
+    <Compile Include="views\Operations\form_trillaCafe.Designer.cs">
       <DependentUpon>form_trillaCafe.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_ubicacion.cs">
+    <Compile Include="views\Infrastructure\form_ubicacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_ubicacion.Designer.cs">
+    <Compile Include="views\Infrastructure\form_ubicacion.Designer.cs">
       <DependentUpon>form_ubicacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_userData.cs">
+    <Compile Include="views\Main\form_userData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_userData.Designer.cs">
+    <Compile Include="views\Main\form_userData.Designer.cs">
       <DependentUpon>form_userData.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_usuarios.cs">
+    <Compile Include="views\UserData\form_usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\form_usuarios.Designer.cs">
+    <Compile Include="views\UserData\form_usuarios.Designer.cs">
       <DependentUpon>form_usuarios.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="views\form_administracion.resx">
+    <EmbeddedResource Include="views\Main\form_administracion.resx">
       <DependentUpon>form_administracion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_beneficios.resx">
+    <EmbeddedResource Include="views\Infrastructure\form_beneficios.resx">
       <DependentUpon>form_beneficios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_calidades_cafe.resx">
+    <EmbeddedResource Include="views\Product\form_calidades_cafe.resx">
       <DependentUpon>form_calidades_cafe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_cargosPersonal.resx">
+    <EmbeddedResource Include="views\Acces\form_cargosPersonal.resx">
       <DependentUpon>form_cargosPersonal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_claseUva.resx">
+    <EmbeddedResource Include="views\Product\form_claseUva.resx">
       <DependentUpon>form_claseUva.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_cosecha.resx">
+    <EmbeddedResource Include="views\Harvest\form_cosecha.resx">
       <DependentUpon>form_cosecha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_despulpaCafe.resx">
       <DependentUpon>form_despulpaCafe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_destCafe.resx">
+    <EmbeddedResource Include="views\Infrastructure\form_destCafe.resx">
       <DependentUpon>form_destCafe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_fallaMaquina.resx">
+    <EmbeddedResource Include="views\Acces\form_fallaMaquina.resx">
       <DependentUpon>form_fallaMaquina.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_opcReportExistencias.resx">
+    <EmbeddedResource Include="views\GridViews\form_opcReportExistencias.resx">
       <DependentUpon>form_opcReportExistencias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_opcSalida.resx">
+    <EmbeddedResource Include="views\GridViews\form_opcSalida.resx">
       <DependentUpon>form_opcSalida.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_opcSubPartida.resx">
+    <EmbeddedResource Include="views\GridViews\form_opcSubPartida.resx">
       <DependentUpon>form_opcSubPartida.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_opcTraslado.resx">
+    <EmbeddedResource Include="views\GridViews\form_opcTraslado.resx">
       <DependentUpon>form_opcTraslado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_opcTrilla.resx">
+    <EmbeddedResource Include="views\GridViews\form_opcTrilla.resx">
       <DependentUpon>form_opcTrilla.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_salidasCafe.resx">
+    <EmbeddedResource Include="views\Operations\form_salidasCafe.resx">
       <DependentUpon>form_salidasCafe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_seleccionCosecha.resx">
+    <EmbeddedResource Include="views\Main\form_seleccionCosecha.resx">
       <DependentUpon>form_seleccionCosecha.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_tablaBeneficio.resx">
+    <EmbeddedResource Include="views\GridViews\form_tablaBeneficio.resx">
       <DependentUpon>form_tablaBeneficio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_tablaCCafe.resx">
+    <EmbeddedResource Include="views\GridViews\form_tablaCCafe.resx">
       <DependentUpon>form_tablaCCafe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_trasladoCafe.resx">
+    <EmbeddedResource Include="views\Operations\form_trasladoCafe.resx">
       <DependentUpon>form_trasladoCafe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_finca.resx">
+    <EmbeddedResource Include="views\Infrastructure\form_finca.resx">
       <DependentUpon>form_finca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_lavadaCafe.resx">
       <DependentUpon>form_lavadaCafe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_login.resx">
+    <EmbeddedResource Include="views\Acces\form_login.resx">
       <DependentUpon>form_login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_socios.resx">
+    <EmbeddedResource Include="views\Operations\form_socios.resx">
       <DependentUpon>form_socios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_main.resx">
+    <EmbeddedResource Include="views\Main\form_main.resx">
       <DependentUpon>form_main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_maquinas.resx">
+    <EmbeddedResource Include="views\Infrastructure\form_maquinas.resx">
       <DependentUpon>form_maquinas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_opcGeneralData.resx">
+    <EmbeddedResource Include="views\GridViews\form_opcGeneralData.resx">
       <DependentUpon>form_opcGeneralData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_opcLote.resx">
+    <EmbeddedResource Include="views\GridViews\form_opcLote.resx">
       <DependentUpon>form_opcLote.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_panel_principal.resx">
+    <EmbeddedResource Include="views\Main\form_panel_principal.resx">
       <DependentUpon>form_panel_principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -606,22 +607,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="views\form_personal.resx">
+    <EmbeddedResource Include="views\Operations\form_personal.resx">
       <DependentUpon>form_personal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_personas.resx">
+    <EmbeddedResource Include="views\UserData\form_personas.resx">
       <DependentUpon>form_personas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_prodCafe.resx">
+    <EmbeddedResource Include="views\Operations\form_prodCafe.resx">
       <DependentUpon>form_prodCafe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_reportes.resx">
+    <EmbeddedResource Include="views\Main\form_reportes.resx">
       <DependentUpon>form_reportes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\repor_bodega.rdlc" />
-    <EmbeddedResource Include="views\repor_cafebodega.rdlc" />
-    <EmbeddedResource Include="views\repor_ccalidad.rdlc" />
-    <EmbeddedResource Include="views\repor_subpartida.rdlc" />
+    <EmbeddedResource Include="views\Reports\repor_bodega.rdlc" />
+    <EmbeddedResource Include="views\Reports\repor_cafebodega.rdlc" />
+    <EmbeddedResource Include="views\Reports\repor_ccalidad.rdlc" />
+    <EmbeddedResource Include="views\Reports\repor_subpartida.rdlc" />
     <None Include="DataSets\repor_bodega.xsc">
       <DependentUpon>repor_bodega.xsd</DependentUpon>
     </None>
@@ -667,37 +668,37 @@
       <DependentUpon>repor_subpartida.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <EmbeddedResource Include="views\form_rol.resx">
+    <EmbeddedResource Include="views\Acces\form_rol.resx">
       <DependentUpon>form_rol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_splash.resx">
+    <EmbeddedResource Include="views\Acces\form_splash.resx">
       <DependentUpon>form_splash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_coffeeStocks.resx">
+    <EmbeddedResource Include="views\Main\form_coffeeStocks.resx">
       <DependentUpon>form_coffeeStocks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_subPartidas.resx">
+    <EmbeddedResource Include="views\Operations\form_subPartidas.resx">
       <DependentUpon>form_subPartidas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_subprod_cafe.resx">
+    <EmbeddedResource Include="views\Operations\form_subprod_cafe.resx">
       <DependentUpon>form_subprod_cafe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_tableperson.resx">
+    <EmbeddedResource Include="views\GridViews\form_tableperson.resx">
       <DependentUpon>form_tableperson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_tableUser.resx">
+    <EmbeddedResource Include="views\GridViews\form_tableUser.resx">
       <DependentUpon>form_tableUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_trillaCafe.resx">
+    <EmbeddedResource Include="views\Operations\form_trillaCafe.resx">
       <DependentUpon>form_trillaCafe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_ubicacion.resx">
+    <EmbeddedResource Include="views\Infrastructure\form_ubicacion.resx">
       <DependentUpon>form_ubicacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_userData.resx">
+    <EmbeddedResource Include="views\Main\form_userData.resx">
       <DependentUpon>form_userData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_usuarios.resx">
+    <EmbeddedResource Include="views\UserData\form_usuarios.resx">
       <DependentUpon>form_usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Fonts\Oswald-Bold.ttf" />
@@ -881,7 +882,6 @@
     <Resource Include="Resources\icono-majada.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icono-majada.ico" />
     <None Include="Resources\excel 24px.png" />
     <None Include="Resources\pdf 24px.png" />
     <None Include="Resources\excel.png" />
