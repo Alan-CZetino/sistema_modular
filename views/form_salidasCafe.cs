@@ -805,5 +805,11 @@ namespace sistema_modular_cafe_majada.views
                 MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btn_pdfSalida_Click(object sender, EventArgs e)
+        {
+            form_opcReportExistencias reportSalida = new form_opcReportExistencias();
+            reportSalida.ShowDialog();
+        }
     }
 }

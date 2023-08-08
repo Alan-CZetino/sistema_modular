@@ -306,6 +306,12 @@
     <Compile Include="views\form_fallaMaquina.Designer.cs">
       <DependentUpon>form_fallaMaquina.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\form_opcReportExistencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\form_opcReportExistencias.Designer.cs">
+      <DependentUpon>form_opcReportExistencias.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\form_opcSalida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -532,6 +538,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_fallaMaquina.resx">
       <DependentUpon>form_fallaMaquina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\form_opcReportExistencias.resx">
+      <DependentUpon>form_opcReportExistencias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\form_opcSalida.resx">
       <DependentUpon>form_opcSalida.cs</DependentUpon>

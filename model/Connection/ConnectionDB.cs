@@ -15,52 +15,30 @@ namespace sistema_modular_cafe_majada.model.Connection
         private MySqlConnection conexion;
         private MySqlCommand comando;
 
-        //ruta correcta al archivo XML
-        string rutaArchivoConfiguracion = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Settings", "app.config");
-
         public ConnectionDB()
         {
-            // Verificar si el archivo existe
-            if (File.Exists(rutaArchivoConfiguracion))
-            {
-                // Cargar la configuración desde el archivo
-                ExeConfigurationFileMap fileMap = new ExeConfigurationFileMap();
-                fileMap.ExeConfigFilename = rutaArchivoConfiguracion;
-                Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
-
-                // Acceder a las credenciales de la base de datos
-                string servidor = configuration.AppSettings.Settings["DBServer"].Value;
-                string baseDatos = configuration.AppSettings.Settings["DBName"].Value;
-                string usuario = configuration.AppSettings.Settings["DBUsername"].Value;
-                string password = configuration.AppSettings.Settings["DBPassword1"].Value;
-
-                string cadenaConexion = $"server={servidor};database={baseDatos};uid={usuario};password={password};";
-                conexion = new MySqlConnection(cadenaConexion);
-                
-            }
-            else
-            {
-                Console.WriteLine("El archivo de configuración no existe en la ruta especificada.");
-            }
+            connectionString = ConfigurationManager.ConnectionStrings["cadena_conexion"].ConnectionString;
+            conexion = new MySqlConnection(connectionString);
         }
 
-        public void Conectar()
+        //private MySqlConnection connection;
+        private string connectionString;
+
+        public MySqlConnection Conectar()
         {
-            try
+            if (conexion.State != ConnectionState.Open)
             {
                 conexion.Open();
-                //Console.WriteLine("Conexión establecida correctamente");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
-            }
+            return conexion;
         }
 
         public void Desconectar()
         {
-            conexion.Close();
-            //Console.WriteLine("Conexión cerrada correctamente");
+            if (conexion.State != ConnectionState.Closed)
+            {
+                conexion.Close();
+            }
         }
 
         // Aquí se añadiran más métodos para realizar consultas, inserciones, actualizaciones, etc.
