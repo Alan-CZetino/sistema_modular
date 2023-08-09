@@ -78,10 +78,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSocio = Convert.ToInt32(reader["id_socio"]),
                             NombreSocio = Convert.ToString(reader["nombre_socio"]),
-                            DescripcionSocio = Convert.ToString(reader["descripcion_socio"]),
+                            DescripcionSocio = (reader["descripcion_socio"]) is DBNull ? "" : Convert.ToString(reader["descripcion_socio"]),
                             UbicacionSocio = Convert.ToString(reader["ubicacion_socio"]),
                             IdPersonaRespSocio = Convert.ToInt32(reader["id_persona_resp_socio"]),
-                            IdFincaSocio = Convert.ToInt32(reader["id_finca_socio"])
+                            IdFincaSocio = (reader["id_finca_socio"]) is DBNull ? 0 : Convert.ToInt32(reader["id_finca_socio"])
                         };
 
                         listaSocios.Add(socio);
@@ -346,7 +346,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = @"SELECT s.*, p.nombres_persona f.nombre_finca
+                string consulta = @"SELECT s.*, p.nombres_persona, f.nombre_finca
                             FROM Socio s
                             INNER JOIN Persona p ON s.id_persona_resp_socio = p.id_persona
                             INNER JOIN Finca f ON s.id_finca_socio = f.id_finca
@@ -367,8 +367,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                             UbicacionSocio = Convert.ToString(reader["ubicacion_socio"]),
                             IdPersonaRespSocio = Convert.ToInt32(reader["id_persona_resp_socio"]),
                             NombrePersonaResp = Convert.ToString(reader["nombres_persona"]),
-                            IdFincaSocio = Convert.ToInt32(reader["id_finca_socio"]),
-                            NombreFinca = Convert.ToString(reader["nombre_finca"])
+                            IdFincaSocio = (reader["id_finca_socio"]) is DBNull ? 0 : Convert.ToInt32(reader["id_finca_socio"]),
+                            NombreFinca = (reader["nombre_finca"]) is DBNull ? "" : Convert.ToString(reader["nombre_finca"])
                         };
                     }
                 }

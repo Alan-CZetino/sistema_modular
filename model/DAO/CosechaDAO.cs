@@ -302,7 +302,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //funcion para actualizar un registro en la base de datos
-        public bool ActualizarCosecha(int id, string nombre, DateTime fecha)
+        public bool ActualizarCosecha(int id, string nombre)
         {
             bool exito = false;
 
@@ -315,7 +315,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"UPDATE Cosecha SET nombre_cosecha = @Nombre, fecha_cosecha = @Fecha
                                     WHERE id_cosecha = @id";
                 conexion.CrearComando(consulta);
-
+                DateTime fecha = DateTime.Today;
                 conexion.AgregarParametro("@Nombre", nombre);
                 conexion.AgregarParametro("@Fecha", fecha);
                 conexion.AgregarParametro("@id", id);
@@ -380,6 +380,46 @@ namespace sistema_modular_cafe_majada.model.DAO
                 //se cierra la conexion con la base de datos
                 conexion.Desconectar();
             }
+        }
+
+        //
+        public Cosecha CountCosecha()
+        {
+            Cosecha cosec = null;
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalCosecha FROM Cosecha";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            cosec = new Cosecha()
+                            {
+                                CountCosecha = Convert.ToInt32(reader["TotalCosecha"])
+                            };
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return cosec;
         }
 
     }

@@ -121,5 +121,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 Console.WriteLine("Ocurrió un error al eliminar la ProcedenciaDestino: " + ex.Message);
             }
         }
+
+        //
+        public ProcedenciaDestino CountProcedencia()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener la cantidad de las ProcedenciaDestino
+                return prodesDAO.CountProcedencia();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el numero de las ProcedenciaDestino: " + ex.Message);
+                return null;
+            }
+        }
+
     }
 }
