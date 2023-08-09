@@ -28,10 +28,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Tipo_Cafe ( nombre_tipo_cafe, descripcion_tipo_cafe)
-                                    VALUES ( @nombre, @descripcion)";
+                string consulta = @"INSERT INTO Tipo_Cafe (id_tipo_cafe, nombre_tipo_cafe, descripcion_tipo_cafe)
+                                    VALUES ( @id, @nombre, @descripcion)";
                 conexion.CrearComando(consulta);
 
+                conexion.AgregarParametro("@id", tipoCafe.IdTipoCafe);
                 conexion.AgregarParametro("@nombre", tipoCafe.NombreTipoCafe);
                 conexion.AgregarParametro("@descripcion", tipoCafe.DescripcionTipoCafe);
 

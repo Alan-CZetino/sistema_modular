@@ -133,7 +133,7 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_opcSP.BackgroundColor = System.Drawing.Color.White;
             this.dtg_opcSP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_opcSP.EnableHeadersVisualStyles = false;
-            this.dtg_opcSP.GridColor = System.Drawing.Color.White;
+            this.dtg_opcSP.GridColor = System.Drawing.Color.Black;
             this.dtg_opcSP.Location = new System.Drawing.Point(9, 102);
             this.dtg_opcSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtg_opcSP.Name = "dtg_opcSP";

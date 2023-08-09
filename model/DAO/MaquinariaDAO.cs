@@ -28,14 +28,15 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Se crea el script SQL para insertar el registro en la tabla Maquinaria:
-                string consulta = @"INSERT INTO Maquinaria (nombre_maquinaria, numero_serie_maquinaria, modelo_maquinaria, 
+                string consulta = @"INSERT INTO Maquinaria (id_maquinaria,nombre_maquinaria, numero_serie_maquinaria, modelo_maquinaria, 
                                            capacidad_max_maquinaria, proveedor_maquinaria, direccion_proveedor_maquinaria, 
                                            telefono_proveedor_maquinaria, contrato_servicio_maquinaria, id_beneficio_maquinaria)
-                                    VALUES (@NombreMaquinaria, @NumeroSerieMaquinaria, @ModeloMaquinaria, 
+                                    VALUES (@id, @NombreMaquinaria, @NumeroSerieMaquinaria, @ModeloMaquinaria, 
                                             @CapacidadMaxima, @ProveedorMaquinaria, @DireccionProveedorMaquinaria, @TelefonoProveedorMaquinaria, 
                                             @ContratoServicioMaquinaria, @IdBeneficioMaquinaria)";
                 conexion.CrearComando(consulta);
 
+                conexion.AgregarParametro("@id", maquinaria.IdMaquinaria);
                 conexion.AgregarParametro("@NombreMaquinaria", maquinaria.NombreMaquinaria);
                 conexion.AgregarParametro("@NumeroSerieMaquinaria", maquinaria.NumeroSerieMaquinaria);
                 conexion.AgregarParametro("@ModeloMaquinaria", maquinaria.ModeloMaquinaria);

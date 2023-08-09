@@ -28,11 +28,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Almacen ( nombre_almacen, descripcion_almacen, capacidad_almacen, cantidad_actual_almacen, cantidad_actual_saco_almacen,  
+                string consulta = @"INSERT INTO Almacen ( id_almacen, nombre_almacen, descripcion_almacen, capacidad_almacen, cantidad_actual_almacen, cantidad_actual_saco_almacen,  
                                             ,ubicacion_almacen, id_bodega_ubicacion_almacen)
-                                    VALUES ( @nombre, @descrip, @capacidad, @capacidadAct, @capacidadSacoAct, @ubicacion, @iBodega)";
+                                    VALUES ( @id, @nombre, @descrip, @capacidad, @capacidadAct, @capacidadSacoAct, @ubicacion, @iBodega)";
                 conexion.CrearComando(consulta);
 
+                conexion.AgregarParametro("@id", almacen.IdAlmacen);
                 conexion.AgregarParametro("@nombre", almacen.NombreAlmacen);
                 conexion.AgregarParametro("@descrip", almacen.DescripcionAlmacen);
                 conexion.AgregarParametro("@capacidad", almacen.CapacidadAlmacen);

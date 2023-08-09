@@ -37,7 +37,6 @@ namespace sistema_modular_cafe_majada.views
             this.btn_entradaCafe = new System.Windows.Forms.Button();
             this.btn_salidaCafe = new System.Windows.Forms.Button();
             this.pnl_opcStock = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,10 +68,9 @@ namespace sistema_modular_cafe_majada.views
             // btn_despulpaCafe
             // 
             this.btn_despulpaCafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_despulpaCafe.Enabled = false;
             this.btn_despulpaCafe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btn_despulpaCafe.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
-            this.btn_despulpaCafe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
-            this.btn_despulpaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
+            this.btn_despulpaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_despulpaCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_despulpaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_despulpaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Despulpa_45px;
@@ -89,10 +87,9 @@ namespace sistema_modular_cafe_majada.views
             // btn_lavadaCafe
             // 
             this.btn_lavadaCafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_lavadaCafe.Enabled = false;
             this.btn_lavadaCafe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btn_lavadaCafe.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
-            this.btn_lavadaCafe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
-            this.btn_lavadaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
+            this.btn_lavadaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_lavadaCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_lavadaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_lavadaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.lavar_45px;
@@ -110,9 +107,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_subPartida.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_subPartida.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btn_subPartida.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
-            this.btn_subPartida.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
-            this.btn_subPartida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
+            this.btn_subPartida.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_subPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_subPartida.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_subPartida.Image = global::sistema_modular_cafe_majada.Properties.Resources.SubPartida_45px;
@@ -130,9 +125,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_trillaCafe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_trillaCafe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btn_trillaCafe.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
-            this.btn_trillaCafe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
-            this.btn_trillaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
+            this.btn_trillaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_trillaCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_trillaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_trillaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.trilla_45px;
@@ -150,9 +143,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_entradaCafe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_entradaCafe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btn_entradaCafe.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
-            this.btn_entradaCafe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
-            this.btn_entradaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
+            this.btn_entradaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_entradaCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_entradaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_entradaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Entrada_45px;
@@ -170,9 +161,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_salidaCafe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_salidaCafe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btn_salidaCafe.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
-            this.btn_salidaCafe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
-            this.btn_salidaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
+            this.btn_salidaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
             this.btn_salidaCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_salidaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_salidaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Salida_45px;
@@ -199,22 +188,12 @@ namespace sistema_modular_cafe_majada.views
             this.pnl_opcStock.Size = new System.Drawing.Size(1255, 588);
             this.pnl_opcStock.TabIndex = 1;
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.DimGray;
-            this.panel2.Location = new System.Drawing.Point(857, 13);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(411, 100);
-            this.panel2.TabIndex = 2;
-            // 
             // form_coffeeStocks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnl_opcStock);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -237,6 +216,5 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Button btn_trillaCafe;
         private System.Windows.Forms.Button btn_despulpaCafe;
         private System.Windows.Forms.Button btn_lavadaCafe;
-        private System.Windows.Forms.Panel panel2;
     }
 }

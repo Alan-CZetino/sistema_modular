@@ -12,9 +12,22 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_coffeeStocks : Form
     {
+        //DICCIONARIO PARA ALMACENAR EL COLOR ORIGINAL DEL BOTON
+        private Dictionary<Button, Color> originalColors;
         public form_coffeeStocks()
         {
             InitializeComponent();
+
+            //SE INICIALIZA EL DICCIONARIO DE COLORES
+            originalColors = new Dictionary<Button, Color>();
+
+            //SE LLAMA LA FUNCION ASIGNAR COLOR ORIGINAL
+            AsignarColorOriginal(btn_despulpaCafe);
+            AsignarColorOriginal(btn_entradaCafe);
+            AsignarColorOriginal(btn_lavadaCafe);
+            AsignarColorOriginal(btn_salidaCafe);
+            AsignarColorOriginal(btn_subPartida);
+            AsignarColorOriginal(btn_trillaCafe);
         }
 
         //FUNCION PARA IR AGREGANDO Y REMOVIENDO FORMULARIOS
@@ -71,6 +84,42 @@ namespace sistema_modular_cafe_majada.views
         {
             form_salidasCafe form_Salidas = new form_salidasCafe();
             AddFormulario(form_Salidas);
+        }
+
+        //FUNCIONES PARA CAMBIAR DE COLOR LOS BOTONES AL HACER CLICK EN ELLOS
+        private void AsignarColorOriginal(Button button)
+        {
+            // Guardar el color original del botón en el diccionario
+            originalColors.Add(button, button.BackColor);
+
+            // Suscribir el evento Click al botón
+            button.Click += Button_Click;
+
+            // Suscribir el evento LostFocus al botón
+            button.LostFocus += Button_Leave;
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            // Obtener el botón actual
+            Button button = (Button)sender;
+
+            // Cambiar el color del botón al ser seleccionado
+            button.BackColor = Color.FromArgb(224, 238, 249);
+            button.FlatAppearance.BorderColor = Color.FromArgb(26, 134, 216);
+            button.FlatAppearance.BorderSize = 1;
+        }
+
+        private void Button_Leave(object sender, EventArgs e)
+        {
+            // Obtener el botón actual
+            Button button = (Button)sender;
+
+            // Restaurar el color original del botón al perder el foco
+            button.BackColor = originalColors[button];
+            button.ForeColor = Color.Black;
+            button.FlatAppearance.BorderColor = Color.FromArgb(218, 218, 218);
+            button.FlatAppearance.BorderSize = 1;
         }
     }
 }

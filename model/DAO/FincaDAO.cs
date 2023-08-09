@@ -29,7 +29,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO finca (id_finca,nombre_finca,ubicacion_finca)
+                string consulta = @"INSERT INTO finca (id_finca, nombre_finca,ubicacion_finca)
                                     VALUES (@idFinca,@nomFinca,@ubiFinca)";
                 conexion.CrearComando(consulta);
 
