@@ -127,14 +127,14 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
         }
 
         //
-        public bool ActualizarCosecha(int id, string nombre, DateTime fecha)
+        public bool ActualizarCosecha(int id, string nombre)
         {
             bool exito = false;
 
             try
             {
                 // Llamada al método del DAO para actualizar el Cosecha
-                exito = cosechaDAO.ActualizarCosecha(id, nombre, fecha);
+                exito = cosechaDAO.ActualizarCosecha(id, nombre);
             }
             catch (Exception ex)
             {
@@ -167,6 +167,24 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
             {
                 // Llamada al método del DAO para obtener el Cosecha
                 cosecha = cosechaDAO.ObtenerIdCosecha(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener el Cosecha: " + ex.Message);
+            }
+
+            return cosecha;
+        }
+        
+        //
+        public Cosecha CountCosecha()
+        {
+            Cosecha cosecha = null;
+
+            try
+            {
+                // Llamada al método del DAO para obtener el Cosecha
+                cosecha = cosechaDAO.CountCosecha();
             }
             catch (Exception ex)
             {

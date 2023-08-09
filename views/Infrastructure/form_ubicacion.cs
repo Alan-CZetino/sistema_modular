@@ -270,7 +270,6 @@ namespace sistema_modular_cafe_majada.views
                     imagenClickeada = true;
 
                     // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                    AlmacenController AlmacenC = new AlmacenController();
                     BodegaController bodegaC = new BodegaController();
                     var name = bodegaC.ObtenerNombreBodega(BodegaSeleccionada.NombreBodega);
                     ibodega = name.IdBodega;

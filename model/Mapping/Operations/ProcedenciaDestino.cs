@@ -18,6 +18,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public string NombreFincaSocio { get; set; }
         public int IdMaquinaria { get; set; }
         public string NombreMaquinaria { get; set; }
+        public int CountProcedencia { get; set; }
     }
 
     public static class ProcedenciaSeleccionada

@@ -11,6 +11,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Harvest
         public int IdCosecha { get; set; }
         public string NombreCosecha { get; set; }
         public DateTime FechaCosecha { get; set; }
+        public int CountCosecha { get; set; }
     }
 
     public static class CosechaSeleccionada

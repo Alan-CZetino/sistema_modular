@@ -28,22 +28,28 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Se crea el script SQL para insertar
-                string consulta = @"INSERT INTO Procedencia_Destino_Cafe (
-                                        nombre_procedencia,
-                                        descripcion_procedencia,
-                                        id_benficio_ubicacion_procedencia,
-                                        id_socio_procedencia,
-                                        id_maquinaria_procedencia
-                                    ) VALUES (
-                                        @nombreProcedencia,
-                                        @descripcionProcedencia,
-                                        @idBeneficioUbicacion,
-                                        @idSocio,
-                                        @idMaquinaria
-                                    )";
+                string consulta = @"INSERT INTO Procedencia_Destino_Cafe SET
+                                        id_procedencia = @iProce,
+                                        nombre_procedencia = @nombreProcedencia,
+                                        descripcion_procedencia = @descripcionProcedencia,";
+                                            if (procedenciaDestino.IdBenficioUbicacion != 0)
+                                            {
+                                                consulta += "id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,";
+                                            }
+                                            consulta += @"";
+                                            if (procedenciaDestino.IdSocioProcedencia != 0)
+                                            {
+                                                consulta += "id_socio_procedencia = @idSocio,";
+                                            }
+                                            consulta += @"";
+                                            if (procedenciaDestino.IdMaquinaria != 0)
+                                            {
+                                                consulta += "id_maquinaria_procedencia = @idMaquinaria";
+                                            }
 
                 conexion.CrearComando(consulta);
 
+                conexion.AgregarParametro("@iProce", procedenciaDestino.IdProcedencia);
                 conexion.AgregarParametro("@nombreProcedencia", procedenciaDestino.NombreProcedencia);
                 conexion.AgregarParametro("@descripcionProcedencia", procedenciaDestino.DescripcionProcedencia);
                 conexion.AgregarParametro("@idBeneficioUbicacion", procedenciaDestino.IdBenficioUbicacion);
@@ -80,18 +86,29 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Se crea el script SQL para actualizar
                 string consulta = @"UPDATE Procedencia_Destino_Cafe 
                             SET nombre_procedencia = @nombreProcedencia,
-                                descripcion_procedencia = @descripcionProcedencia,
-                                id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,
-                                id_socio_procedencia = @idSocioProcedencia,
-                                id_maquinaria_procedencia = @idMaquinaria
-                            WHERE id_procedencia = @id";
+                                descripcion_procedencia = @descripcionProcedencia,";
+                            if (procedenciaDestino.IdBenficioUbicacion != 0)
+                            {
+                                consulta += "id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,";
+                            }
+                            consulta += @"";
+                            if (procedenciaDestino.IdSocioProcedencia != 0)
+                            {
+                                consulta += "id_socio_procedencia = @idSocio,";
+                            }
+                            consulta += @"";
+                            if (procedenciaDestino.IdMaquinaria != 0)
+                            {
+                                consulta += "id_maquinaria_procedencia = @idMaquinaria";
+                            }
+                            consulta += @" WHERE id_procedencia = @id";
 
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@nombreProcedencia", procedenciaDestino.NombreProcedencia);
                 conexion.AgregarParametro("@descripcionProcedencia", procedenciaDestino.DescripcionProcedencia);
                 conexion.AgregarParametro("@idBeneficioUbicacion", procedenciaDestino.IdBenficioUbicacion);
-                conexion.AgregarParametro("@idSocioProcedencia", procedenciaDestino.IdSocioProcedencia);
+                conexion.AgregarParametro("@idSocio", procedenciaDestino.IdSocioProcedencia);
                 conexion.AgregarParametro("@idMaquinaria", procedenciaDestino.IdMaquinaria);
                 conexion.AgregarParametro("@id", procedenciaDestino.IdProcedencia);
 
@@ -187,9 +204,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdProcedencia = Convert.ToInt32(reader["id_procedencia"]),
                             NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
                             DescripcionProcedencia = Convert.ToString(reader["descripcion_procedencia"]),
-                            IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_procedencia"]),
-                            IdSocioProcedencia = Convert.ToInt32(reader["id_socio_procedencia"]),
-                            IdMaquinaria = Convert.ToInt32(reader["id_maquinaria_procedencia"])
+                            IdBenficioUbicacion = (reader["id_benficio_ubicacion_procedencia"]) is DBNull ? 0 : Convert.ToInt32(reader["id_benficio_ubicacion_procedencia"]),
+                            IdSocioProcedencia = (reader["id_socio_procedencia"]) is DBNull ? 0 : Convert.ToInt32(reader["id_socio_procedencia"]),
+                            IdMaquinaria = (reader["id_maquinaria_procedencia"]) is DBNull ? 0 : Convert.ToInt32(reader["id_maquinaria_procedencia"])
                         };
 
                         listaProcedenciasDestino.Add(procedenciaDestino);
@@ -241,10 +258,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdProcedencia = Convert.ToInt32(reader["id_procedencia"]),
                             NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
                             DescripcionProcedencia = Convert.ToString(reader["descripcion_procedencia"]),
-                            NombreBenficioUbicacion = Convert.ToString(reader["nombre_beneficio"]),
-                            NombreSocioProcedencia = Convert.ToString(reader["nombre_socio"]),
-                            NombreFincaSocio = Convert.ToString(reader["nombre_finca"]),
-                            NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"])
+                            NombreBenficioUbicacion = (reader["nombre_beneficio"]) is DBNull ? "" : Convert.ToString(reader["nombre_beneficio"]),
+                            NombreSocioProcedencia = (reader["nombre_socio"]) is DBNull ? "" : Convert.ToString(reader["nombre_socio"]),
+                            NombreFincaSocio = (reader["nombre_finca"]) is DBNull ? "" : Convert.ToString(reader["nombre_finca"]),
+                            NombreMaquinaria = (reader["nombre_maquinaria"]) is DBNull ? "" : Convert.ToString(reader["nombre_maquinaria"]),
+                            IdBenficioUbicacion = (reader["id_benficio_ubicacion_procedencia"]) is DBNull ? 0 : Convert.ToInt32(reader["id_benficio_ubicacion_procedencia"]),
+                            IdSocioProcedencia = (reader["id_socio_procedencia"]) is DBNull ? 0 : Convert.ToInt32(reader["id_socio_procedencia"]),
+                            IdMaquinaria = (reader["id_maquinaria_procedencia"]) is DBNull ? 0 : Convert.ToInt32(reader["id_maquinaria_procedencia"])
                         };
 
                         listaProcedenciasDestino.Add(procedenciaDestino);
@@ -274,7 +294,16 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Conexión a la base de datos
                 conexion.Conectar();
 
-                string consulta = "SELECT * FROM Procedencia_Destino_Cafe WHERE id_procedencia = @id";
+                string consulta = @"SELECT pd.*,
+                                           b.nombre_beneficio AS nombre_benficio_ubicacion,
+                                           s.nombre_socio AS nombre_socio_procedencia,
+                                           m.nombre_maquinaria AS nombre_maquinaria_procedencia
+                                    FROM Procedencia_Destino_Cafe pd
+                                    INNER JOIN Beneficio b ON pd.id_benficio_ubicacion_procedencia = b.id_beneficio
+                                    INNER JOIN Socio s ON pd.id_socio_procedencia = s.id_socio
+                                    INNER JOIN Maquinaria m ON pd.id_maquinaria_procedencia = m.id_maquinaria
+                                    WHERE pd.id_procedencia = @id";
+
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@id", idProcedencia);
 
@@ -287,10 +316,35 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdProcedencia = Convert.ToInt32(reader["id_procedencia"]),
                             NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
                             DescripcionProcedencia = Convert.ToString(reader["descripcion_procedencia"]),
-                            IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_procedencia"]),
-                            IdSocioProcedencia = Convert.ToInt32(reader["id_socio_procedencia"]),
-                            IdMaquinaria = Convert.ToInt32(reader["id_maquinaria_procedencia"])
+                            NombreBenficioUbicacion = (reader["nombre_benficio_ubicacion"]) is DBNull ? "" : Convert.ToString(reader["nombre_benficio_ubicacion"]),
+                            NombreSocioProcedencia = (reader["nombre_socio_procedencia"]) is DBNull ? "" : Convert.ToString(reader["nombre_socio_procedencia"]),
+                            NombreMaquinaria = (reader["nombre_maquinaria_procedencia"]) is DBNull ? "" : Convert.ToString(reader["nombre_maquinaria_procedencia"]),
+                            
                         };
+                        if (reader["id_socio_procedencia"] == DBNull.Value)
+                        {
+                            procedenciaDestino.IdSocioProcedencia = 0; // o cualquier valor predeterminado que desees
+                        }
+                        else
+                        {
+                            procedenciaDestino.IdSocioProcedencia = Convert.ToInt32(reader["id_socio_procedencia"]);
+                        }
+                        if (reader["id_maquinaria_procedencia"] == DBNull.Value)
+                        {
+                            procedenciaDestino.IdMaquinaria = 0; // o cualquier valor predeterminado que desees
+                        }
+                        else
+                        {
+                            procedenciaDestino.IdSocioProcedencia = Convert.ToInt32(reader["id_maquinaria_procedencia"]);
+                        }
+                        if (reader["id_benficio_ubicacion_procedencia"] == DBNull.Value)
+                        {
+                            procedenciaDestino.IdSocioProcedencia = 0; // o cualquier valor predeterminado que desees
+                        }
+                        else
+                        {
+                            procedenciaDestino.IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_procedencia"]);
+                        }
                     }
                 }
             }
@@ -343,12 +397,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdProcedencia = Convert.ToInt32(reader["id_procedencia"]),
                             NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
                             DescripcionProcedencia = Convert.ToString(reader["descripcion_procedencia"]),
-                            IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_procedencia"]),
-                            NombreBenficioUbicacion = Convert.ToString(reader["nombre_benficio_ubicacion"]),
-                            IdSocioProcedencia = Convert.ToInt32(reader["id_socio_procedencia"]),
-                            NombreSocioProcedencia = Convert.ToString(reader["nombre_socio_procedencia"]),
-                            IdMaquinaria = Convert.ToInt32(reader["id_maquinaria_procedencia"]),
-                            NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria_procedencia"])
+                            NombreBenficioUbicacion = (reader["nombre_benficio_ubicacion"]) is DBNull ? "" : Convert.ToString(reader["nombre_benficio_ubicacion"]),
+                            NombreSocioProcedencia = (reader["nombre_socio_procedencia"]) is DBNull ? "" : Convert.ToString(reader["nombre_socio_procedencia"]),
+                            NombreMaquinaria = (reader["nombre_maquinaria_procedencia"]) is DBNull ? "" : Convert.ToString(reader["nombre_maquinaria_procedencia"]),
+                            IdBenficioUbicacion = (reader["id_benficio_ubicacion_procedencia"]) is DBNull ? 0 : Convert.ToInt32(reader["id_benficio_ubicacion_procedencia"]),
+                            IdSocioProcedencia = (reader["id_socio_procedencia"]) is DBNull ? 0 : Convert.ToInt32(reader["id_socio_procedencia"]),
+                            IdMaquinaria = (reader["id_maquinaria_procedencia"]) is DBNull ? 0 : Convert.ToInt32(reader["id_maquinaria_procedencia"])
                         };
 
                         procedencias.Add(procedencia);
@@ -367,6 +421,47 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return procedencias;
         }
+
+        //
+        public ProcedenciaDestino CountProcedencia()
+        {
+            ProcedenciaDestino proce = null;
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalProcedencia FROM Procedencia_Destino_Cafe";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            proce = new ProcedenciaDestino()
+                            {
+                                CountProcedencia = Convert.ToInt32(reader["TotalProcedencia"])
+                            };
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return proce;
+        }
+
 
     }
 }
