@@ -34,6 +34,14 @@ namespace sistema_modular_cafe_majada.views
 
             dtg_claseUva.CellPainting += dtgv_claseUva_CellPainting;
 
+            txb_id.ReadOnly = true;
+            txb_id.Enabled = false;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            TipoCafeController cal = new TipoCafeController();
+            var count = cal.CountTipoCafe();
+            txb_id.Text = Convert.ToString(count.CountTipoCafe + 1);
+
         }
 
         private void dtgv_claseUva_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -95,6 +103,10 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Text = "";
             }
 
+            //coloca nueva mente el contador en el txb del cdigo
+            TipoCafeController cal = new TipoCafeController();
+            var count = cal.CountTipoCafe();
+            txb_id.Text = Convert.ToString(count.CountTipoCafe + 1);
         }
 
         public void ConvertFirstCharacter(TextBox[] textBoxes)
@@ -126,6 +138,24 @@ namespace sistema_modular_cafe_majada.views
 
                     // Asignar el valor modificado de vuelta al TextBox
                     textBox.Text = result;
+                }
+            }
+        }
+
+        public void ConvertAllUppercase(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a mayúsculas
+                    string upperCaseInput = input.ToUpper();
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = upperCaseInput;
                 }
             }
         }
@@ -162,7 +192,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 //muestra un mensaje de error o excepción
-                MessageBox.Show("No se ha seleccionado conrrectamente el dato");
+                MessageBox.Show("No se ha seleccionado conrrectamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -197,11 +227,13 @@ namespace sistema_modular_cafe_majada.views
                 // Mostrar un mensaje de error o lanzar una excepción
                 MessageBox.Show("No se ha seleccionado correctamente las caracteristicas del Tipo de Cafe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            ClearDataTxb();
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
+            imagenClickeada = false;
         }
 
         private void btn_SaveUva_Click(object sender, EventArgs e)
@@ -217,8 +249,10 @@ namespace sistema_modular_cafe_majada.views
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
 
-            TextBox[] textBoxes = { txb_claseUva };
+            TextBox[] textBoxes = { txb_descripcion };
             ConvertFirstCharacter(textBoxes);
+            TextBox[] textBoxesM = { txb_claseUva };
+            ConvertFirstCharacter(textBoxesM);
 
             if (string.IsNullOrWhiteSpace(txb_descripcion.Text))
             {
@@ -238,6 +272,7 @@ namespace sistema_modular_cafe_majada.views
                 // Crear una instancia de la clase Tipo de Cafe con los valores obtenidos
                 TipoCafe tipoInsert = new TipoCafe()
                 {
+                    IdTipoCafe = Convert.ToInt32(txb_id),
                     NombreTipoCafe = name,
                     DescripcionTipoCafe = description
                 };
@@ -250,7 +285,7 @@ namespace sistema_modular_cafe_majada.views
 
                     if (!exito)
                     {
-                        MessageBox.Show("Error al agregar el Tipo de Cafe. Verifica los datos e intenta nuevamente.");
+                        MessageBox.Show("Error al agregar el Tipo de Cafe. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 

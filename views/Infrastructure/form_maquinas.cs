@@ -31,6 +31,14 @@ namespace sistema_modular_cafe_majada.views
         {
             InitializeComponent();
 
+            txb_id.ReadOnly = true;
+            txb_id.Enabled = false;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            MaquinariaController ben = new MaquinariaController();
+            var count = ben.CountMaquinaria();
+            txb_id.Text = Convert.ToString(count.CountMaquina + 1);
+
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dtg_maquina.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -119,6 +127,11 @@ namespace sistema_modular_cafe_majada.views
             {
                 textBox.Clear();
             }
+
+            //coloca nueva mente el contador en el txb del cdigo
+            MaquinariaController ben = new MaquinariaController();
+            var count = ben.CountMaquinaria();
+            txb_id.Text = Convert.ToString(count.CountMaquina + 1);
         }
 
         //
@@ -154,6 +167,25 @@ namespace sistema_modular_cafe_majada.views
 
                     // Asignar el valor modificado de vuelta al TextBox
                     textBox.Text = result;
+                }
+            }
+        }
+
+        //
+        public void ConvertAllUppercase(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a mayúsculas
+                    string upperCaseInput = input.ToUpper();
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = upperCaseInput;
                 }
             }
         }
@@ -248,22 +280,17 @@ namespace sistema_modular_cafe_majada.views
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
 
-            TextBox[] textBoxes = { txb_beneficio, txb_maquina,txb_modelMaquina,txb_numContrato,txb_numSerie,txb_proveedor,txb_proveedorDireccion,txb_proveedorTelefono };
-            //TextBox[] textBoxesLetter = { txb_maxCapacidad };
+            TextBox[] textBoxes = { txb_beneficio,txb_modelMaquina,txb_numContrato,txb_numSerie,txb_proveedor,txb_proveedorDireccion,txb_proveedorTelefono };
+            TextBox[] textBoxesLetter = { txb_maquina };
             ConvertFirstCharacter(textBoxes);
-            //ConvertFirstLetter(textBoxesLetter);
+            ConvertAllUppercase(textBoxesLetter);
 
             //se obtiene los valores ingresados por el usuario
             string nameMaquina = txb_maquina.Text;
             string numSerie = txb_numSerie.Text;
             string modelo = txb_modelMaquina.Text;
             double capMaxima;
-
-            if (double.TryParse(txb_maxCapacidad.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out capMaxima))
-            {
-                // El parseo se realizó con éxito, el valor de capacidad contiene el número parseado
-
-            }
+            if (double.TryParse(txb_maxCapacidad.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out capMaxima)){}
             
             string proveedor = txb_proveedor.Text;
             string direccionProv = txb_proveedorDireccion.Text;
@@ -274,6 +301,7 @@ namespace sistema_modular_cafe_majada.views
             //Se crea una instancia de la clase Bodega
             Maquinaria maquinaInsert = new Maquinaria()
             {
+                IdMaquinaria = Convert.ToInt32(txb_id.Text),
                 NombreMaquinaria = nameMaquina,
                 NumeroSerieMaquinaria = numSerie,
                 ModeloMaquinaria = modelo,
@@ -293,7 +321,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Maquina agregada correctamente.");
+                    MessageBox.Show("Maquina agregada correctamente.", "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -312,7 +340,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar la Maquina. Verifique los datos ingresados");
+                    MessageBox.Show("Error al agregar la Maquina. Verifique los datos ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -323,7 +351,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Maquina actualizada correctamente.");
+                    MessageBox.Show("Maquina actualizada correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -343,7 +371,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar la Bodega, Verifique los datos ingresados.");
+                    MessageBox.Show("Error al actualizar la Bodega, Verifique los datos ingresados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 imagenClickeada = false;
@@ -414,10 +442,11 @@ namespace sistema_modular_cafe_majada.views
                     //verificar el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Maquina", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la Maquina " + maquinaSeleccionada.NombreMaquinaria + " en la base de datos");
 
-                    MessageBox.Show("Bodega Eliminada correctamente.");
+                    MessageBox.Show("Bodega Eliminada correctamente.", "Eliminacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
                     ShowMaquinasGrid();
+                    ClearDataTxb();
                 }
             }
             else

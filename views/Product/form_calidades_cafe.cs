@@ -30,33 +30,39 @@ namespace sistema_modular_cafe_majada.views
         {
             InitializeComponent();
 
-            //ShowCalidadCafeGid();
+            txb_id.ReadOnly = true;
+            txb_id.Enabled = false;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            CCafeController cal = new CCafeController();
+            var count = cal.CountCalidad();
+            txb_id.Text = Convert.ToString(count.CountCalidad + 1);
+
+            //auto ajustar el contenido de los datos al área establecido para el datagrid
+            dtg_calidadCafe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void form_calidades_cafe_Load(object sender, EventArgs e)
         {
-            //se verifica si ya se agregaron columnas al DataGrid
-            //if(dtg_calidadCafe.Columns.Count == 0)
-            //{
-            //    //Se crea una nueva columna
-            //    dtg_calidadCafe.Columns.Add(new DataGridViewTextBoxColumn()
-            //    {
-            //        DataPropertyName = "ID",
-            //        DisplayIndex = 0
-            //    });
-            //    dtg_calidadCafe.Columns.Add(new DataGridViewTextBoxColumn()
-            //    {
-            //        DataPropertyName = "Calidad",
-            //        DisplayIndex = 1
-            //    });
-            //    dtg_calidadCafe.Columns.Add(new DataGridViewTextBoxColumn()
-            //    {
-            //        DataPropertyName = "Descrip",
-            //        DisplayIndex = 2
-            //    });
-            //}
-
             ShowCalidadCafeGid();
+        }
+
+        public void ConvertAllUppercase(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a mayúsculas
+                    string upperCaseInput = input.ToUpper();
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = upperCaseInput;
+                }
+            }
         }
 
         private void btn_SaveCalidad_Click(object sender, EventArgs e)
@@ -67,14 +73,15 @@ namespace sistema_modular_cafe_majada.views
                 return;
             }
 
-
             CCafeController cCafeController = new CCafeController();
             LogController log = new LogController();
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
 
-            TextBox[] textBoxes = { txb_nameCalidad };
+            TextBox[] textBoxes = { txb_desCalidad };
             ConvertFirstCharacter(textBoxes);
+            TextBox[] textBoxesM = { txb_nameCalidad };
+            ConvertAllUppercase(textBoxesM);
 
             //se obtiene los valores ingresados por el usuario
             string nameCalidad = txb_nameCalidad.Text;
@@ -83,6 +90,7 @@ namespace sistema_modular_cafe_majada.views
             //Se crea una instancia de la clase Calidades_cafe
             CalidadCafe calidadCafe = new CalidadCafe()
             {
+                IdCalidad = Convert.ToInt32(txb_id.Text),
                 NombreCalidad = nameCalidad,
                 DescripcionCalidad = description
             };
@@ -105,7 +113,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if(exito)
                 {
-                    MessageBox.Show("Calidad de Café agregada correctamente.");
+                    MessageBox.Show("Calidad de Café agregada correctamente.", "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -124,7 +132,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar la calidad del café. Verifique los datos ingresados");
+                    MessageBox.Show("Error al agregar la calidad del café. Verifique los datos ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -134,7 +142,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Calidad de Café actualizada correctamente.");
+                    MessageBox.Show("Calidad de Café actualizada correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -154,7 +162,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar la calidad de café, Verifique los datos ingresados.");
+                    MessageBox.Show("Error al actualizar la calidad de café, Verifique los datos ingresados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 imagenClickeada = false;
@@ -183,13 +191,12 @@ namespace sistema_modular_cafe_majada.views
                     //se asignanlos registros a los cuadros de texto
                     txb_nameCalidad.Text = calidadSeleccionada.NombreCalidad;
                     txb_desCalidad.Text = calidadSeleccionada.DescripcionCalidad;
-                    
                 }
             }
             else
             {
                 //muestra un mensaje de error o excepción
-                MessageBox.Show("No se ha seleccionado conrrectamente el dato");
+                MessageBox.Show("No se ha seleccionado conrrectamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -213,7 +220,7 @@ namespace sistema_modular_cafe_majada.views
                     //verifica el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de calidad de café", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de Calidad de Café " + calidadSeleccionada.NombreCalidad + " en la base de datos");
 
-                    MessageBox.Show("Calidad de Café Eliminada correctamente");
+                    MessageBox.Show("Calidad de Café Eliminada correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     ShowCalidadCafeGid();
                     calidadSeleccionada = null;
@@ -221,9 +228,13 @@ namespace sistema_modular_cafe_majada.views
                 else
                 {
                     //muestra un mensaje de erro o excepcion
-                    MessageBox.Show("No se ha seleccionado correctamente el dato");
+                    MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //coloca nueva mente el contador en el txb del cdigo
+            CCafeController cal = new CCafeController();
+            var count = cal.CountCalidad();
+            txb_id.Text = Convert.ToString(count.CountCalidad + 1);
         }
 
         public void ShowCalidadCafeGid()
@@ -284,12 +295,15 @@ namespace sistema_modular_cafe_majada.views
             {
                 textBox.Clear();
             }
+
+            //coloca nueva mente el contador en el txb del cdigo
+            CCafeController cal = new CCafeController();
+            var count = cal.CountCalidad();
+            txb_id.Text = Convert.ToString(count.CountCalidad + 1);
         }
 
         private void dtg_calidadCafe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("depurador - evento click img update: " + imagenClickeada);
-
             //obtener la fila a la celda que se realizo el evento dobleClick
             DataGridViewRow filaSeleccionada = dtg_calidadCafe.Rows[e.RowIndex];
             calidadSeleccionada = new CalidadCafe();
@@ -297,9 +311,6 @@ namespace sistema_modular_cafe_majada.views
             calidadSeleccionada.IdCalidad = Convert.ToInt32(filaSeleccionada.Cells["Codigo"].Value);
             calidadSeleccionada.NombreCalidad = filaSeleccionada.Cells["Calidad"].Value.ToString();
             calidadSeleccionada.DescripcionCalidad = filaSeleccionada.Cells["Descripcion"].Value.ToString();
-
-
-            Console.WriteLine("depuracion - capturar datos dobleclick; nombre de calidad de café: " + calidadSeleccionada.NombreCalidad);
         }
 
         private void dtg_calidadCafe_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)

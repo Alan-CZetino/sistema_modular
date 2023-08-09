@@ -154,6 +154,6 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
 
             return beneficio;
         }
-
+        
     }
 }

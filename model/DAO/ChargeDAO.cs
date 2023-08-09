@@ -174,6 +174,44 @@ namespace sistema_modular_cafe_majada.model.DAO
             return Cargo;
         }
 
+
+        //
+        public Charge CountCargo()
+        {
+            Charge cargo = null;
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalCargo FROM Cargo";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.Read())
+                    {
+                        cargo = new Charge()
+                        {
+                            CountCargo = Convert.ToInt32(reader["TotalCargo"])
+                        };
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return cargo;
+        }
+
         public void EliminarCargo(int idCargo)
         {
             try

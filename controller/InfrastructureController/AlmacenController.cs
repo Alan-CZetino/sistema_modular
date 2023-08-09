@@ -286,6 +286,20 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
             }
         }
 
+        public Almacen CountAlmacen()
+        {
+            try
+            {
+                //se realiza el llamado al metodo DAO para obtener las existencias de los almacenes
+                return almacenDAO.CountAlmacen();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener la lista total de Existencias de almacen: " + ex.Message);
+                return null;
+            }
+        }
+
 
     }
 }

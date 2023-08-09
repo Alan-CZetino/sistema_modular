@@ -11,6 +11,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Acces
         public int IdCargo { get; set; }
         public string NombreCargo { get; set; }
         public string DescripcionCargo { get; set; }
+        public int CountCargo { get; set; }
 
     }
 }

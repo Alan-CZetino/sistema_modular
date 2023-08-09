@@ -84,6 +84,7 @@ namespace sistema_modular_cafe_majada.views
             txb_bodega.ReadOnly = true;
             txb_finca.Enabled = false;
             txb_finca.ReadOnly = true;
+
         }
 
         //
@@ -100,10 +101,6 @@ namespace sistema_modular_cafe_majada.views
                     {
                         if (icosechaCambio != CosechaActual.ICosechaActual || string.IsNullOrWhiteSpace(txb_numTrilla.Text))
                         {
-                            countTr = new TrillaController();
-                            var tril = countTr.CountTrilla(CosechaActual.ICosechaActual);
-                            //
-                            txb_numTrilla.Text = Convert.ToInt32(tril.CountTrilla + 1).ToString();
                             icosechaCambio = CosechaActual.ICosechaActual;
                         }
                         txb_cosecha.Text = CosechaActual.NombreCosechaActual;
@@ -313,6 +310,11 @@ namespace sistema_modular_cafe_majada.views
             dtp_fechaTrilla.Value = DateTime.Now;
             rb_cafeTrilla.Checked = false;
             rb_subProducto.Checked = false;
+
+            countTr = new TrillaController();
+            var tril = countTr.CountTrilla(CosechaActual.ICosechaActual);
+            //
+            txb_numTrilla.Text = Convert.ToString(tril.CountTrilla + 1);
         }
 
         //

@@ -99,10 +99,6 @@ namespace sistema_modular_cafe_majada.views
                     {
                         if (icosechaCambio != CosechaActual.ICosechaActual || string.IsNullOrWhiteSpace(txb_numSalida.Text))
                         {
-                            countSl = new SalidaController();
-                            var sald = countSl.CountSalida(CosechaActual.ICosechaActual);
-                            //
-                            txb_numSalida.Text = Convert.ToInt32(sald.CountSalida + 1).ToString();
                             icosechaCambio = CosechaActual.ICosechaActual;
                         }
                         txb_cosecha.Text = CosechaActual.NombreCosechaActual;
@@ -220,6 +216,11 @@ namespace sistema_modular_cafe_majada.views
             rb_export.Checked = false;
             rb_otros.Checked = false;
             rb_torreFactor.Checked = false;
+
+            countSl = new SalidaController();
+            var sald = countSl.CountSalida(CosechaActual.ICosechaActual);
+            //
+            txb_numSalida.Text = Convert.ToInt32(sald.CountSalida + 1).ToString();
         }
 
         //

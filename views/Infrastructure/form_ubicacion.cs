@@ -32,6 +32,14 @@ namespace sistema_modular_cafe_majada.views
 
             RestrictTextBoxNum(txbRestrict);
 
+            txb_id.ReadOnly = true;
+            txb_id.Enabled = false;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            AlmacenController ben = new AlmacenController();
+            var count = ben.CountAlmacen();
+            txb_id.Text = Convert.ToString(count.CountAlmacen + 1);
+
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dtg_ubicacion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -152,7 +160,7 @@ namespace sistema_modular_cafe_majada.views
                     //verificar el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Almacen", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos del Almacen " + almacenSeleccionado.NombreAlmacen + " en la base de datos");
 
-                    MessageBox.Show("Almacen Eliminada correctamente.");
+                    MessageBox.Show("Almacen Eliminada correctamente.", "Eliminacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
                     ShowAlmacenGrid();
@@ -184,6 +192,11 @@ namespace sistema_modular_cafe_majada.views
             }
 
             cbx_bodega.Items.Clear();
+
+            //coloca nueva mente el contador en el txb del cdigo
+            AlmacenController ben = new AlmacenController();
+            var count = ben.CountAlmacen();
+            txb_id.Text = Convert.ToString(count.CountAlmacen + 1);
         }
 
         //
@@ -219,6 +232,24 @@ namespace sistema_modular_cafe_majada.views
 
                     // Asignar el valor modificado de vuelta al TextBox
                     textBox.Text = result;
+                }
+            }
+        }
+
+        public void ConvertAllUppercase(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a mayúsculas
+                    string upperCaseInput = input.ToUpper();
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = upperCaseInput;
                 }
             }
         }
@@ -326,8 +357,12 @@ namespace sistema_modular_cafe_majada.views
 
             if (string.IsNullOrWhiteSpace(txb_ubicacion.Text))
             {
-                MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                DialogResult result = MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+                txb_ubicacion.Text = ".";
             }
 
             if (string.IsNullOrWhiteSpace(txb_capacidad.Text))
@@ -358,9 +393,11 @@ namespace sistema_modular_cafe_majada.views
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
 
-            TextBox[] textBoxes = { txb_nombreAlmacen, txb_ubicacion };
+            TextBox[] textBoxes = { txb_ubicacion };
+            TextBox[] textBoxesM = { txb_nombreAlmacen };
             TextBox[] textBoxesLetter = { txb_descripcion };
             ConvertFirstCharacter(textBoxes);
+            ConvertAllUppercase(textBoxesM);
             ConvertFirstLetter(textBoxesLetter);
 
             // Obtener el valor numérico seleccionado
@@ -396,6 +433,7 @@ namespace sistema_modular_cafe_majada.views
             //Se crea una instancia de la clase Almacen
             Almacen AlmacenInsert = new Almacen()
             {
+                IdAlmacen = Convert.ToInt32(txb_id.Text),
                 NombreAlmacen = nameAlmacen,
                 DescripcionAlmacen = description,
                 UbicacionAlmacen = ubicacion,
@@ -411,7 +449,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Almacen agregada correctamente.");
+                    MessageBox.Show("Almacen agregada correctamente.", "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -430,7 +468,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar la Almacen. Verifique los datos ingresados");
+                    MessageBox.Show("Error al agregar la Almacen. Verifique los datos ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -440,7 +478,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Almacen actualizada correctamente.");
+                    MessageBox.Show("Almacen actualizada correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -460,7 +498,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar la Almacen, Verifique los datos ingresados.");
+                    MessageBox.Show("Error al actualizar la Almacen, Verifique los datos ingresados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 imagenClickeada = false;

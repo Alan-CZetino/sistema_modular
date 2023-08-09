@@ -245,8 +245,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Crear la consulta SQL para obtener el rol
                 string consulta = @"SELECT s.*, p.nombres_persona, f.nombre_finca
                             FROM Socio s
-                            INNER JOIN Persona p ON s.id_persona_resp_socio = p.id_persona
-                            INNER JOIN Finca f ON s.id_finca_socio = f.id_finca";
+                            LEFT JOIN Persona p ON s.id_persona_resp_socio = p.id_persona
+                            LEFT JOIN Finca f ON s.id_finca_socio = f.id_finca";
 
                 conexion.CrearComando(consulta);
 
@@ -260,10 +260,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                             NombreSocio = Convert.ToString(reader["nombre_socio"]),
                             DescripcionSocio = Convert.ToString(reader["descripcion_socio"]),
                             UbicacionSocio = Convert.ToString(reader["ubicacion_socio"]),
-                            IdPersonaRespSocio = Convert.ToInt32(reader["id_persona_resp_socio"]),
                             NombrePersonaResp = Convert.ToString(reader["nombres_persona"]),
-                            IdFincaSocio = Convert.ToInt32(reader["id_finca_socio"]),
-                            NombreFinca = Convert.ToString(reader["nombre_finca"])
+                            IdFincaSocio = (reader["id_finca_socio"]) is DBNull ? 0 : Convert.ToInt32(reader["id_finca_socio"]),
+                            NombreFinca = (reader["nombre_finca"]) is DBNull ? "" : Convert.ToString(reader["nombre_finca"])
                         };
 
                         socios.Add(socio);
@@ -385,6 +384,43 @@ namespace sistema_modular_cafe_majada.model.DAO
             return socio;
         }
 
+
+        //
+        public Socio CountSocio()
+        {
+            Socio socio = null;
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalSocio FROM Socio";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.Read())
+                    {
+                        socio = new Socio()
+                        {
+                            CountSocio = Convert.ToInt32(reader["TotalSocio"])
+                        };
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return socio;
+        }
 
     }
 }

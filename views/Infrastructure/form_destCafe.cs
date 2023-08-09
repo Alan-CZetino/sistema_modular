@@ -36,6 +36,14 @@ namespace sistema_modular_cafe_majada.views
 
             txb_beneficio.ReadOnly = true;
             txb_beneficio.Enabled = false;
+            txb_id.ReadOnly = true;
+            txb_id.Enabled = false;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            BodegaController cal = new BodegaController();
+            var count = cal.CountBodega();
+            txb_id.Text = Convert.ToString(count.CountBodega + 1);
+
         }
 
         private void btn_tBeneficio_Click(object sender, EventArgs e)
@@ -136,10 +144,11 @@ namespace sistema_modular_cafe_majada.views
                     //verificar el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Bodega", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la Bodega " + bodegaSeleccionado.NombreBodega + " en la base de datos");
 
-                    MessageBox.Show("Bodega Eliminada correctamente.");
+                    MessageBox.Show("Bodega Eliminada correctamente.", "Eliminacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
                     ShowBodegaGrid();
+                    ClearDataTxb();
                 }
             }
             else
@@ -164,6 +173,10 @@ namespace sistema_modular_cafe_majada.views
             {
                 textBox.Clear();
             }
+            //coloca nueva mente el contador en el txb del cdigo
+            BodegaController cal = new BodegaController();
+            var count = cal.CountBodega();
+            txb_id.Text = Convert.ToString(count.CountBodega + 1);
         }
 
         //
@@ -199,6 +212,25 @@ namespace sistema_modular_cafe_majada.views
 
                     // Asignar el valor modificado de vuelta al TextBox
                     textBox.Text = result;
+                }
+            }
+        }
+
+        //
+        public void ConvertAllUppercase(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a mayúsculas
+                    string upperCaseInput = input.ToUpper();
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = upperCaseInput;
                 }
             }
         }
@@ -279,8 +311,12 @@ namespace sistema_modular_cafe_majada.views
 
             if (string.IsNullOrWhiteSpace(txb_ubicacion.Text))
             {
-                MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                DialogResult result = MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+                txb_ubicacion.Text = ".";
             }
             
             if (string.IsNullOrWhiteSpace(txb_beneficio.Text))
@@ -304,10 +340,12 @@ namespace sistema_modular_cafe_majada.views
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
 
-            TextBox[] textBoxes = { txb_nombre, txb_ubicacion };
+            TextBox[] textBoxes = { txb_ubicacion };
+            TextBox[] textBoxesM = { txb_nombre };
             TextBox[] textBoxesLetter = { txb_descripcion };
             ConvertFirstCharacter(textBoxes);
             ConvertFirstLetter(textBoxesLetter);
+            ConvertAllUppercase(textBoxesM);
 
             //se obtiene los valores ingresados por el usuario
             string nameBodega = txb_nombre.Text;
@@ -317,6 +355,7 @@ namespace sistema_modular_cafe_majada.views
             //Se crea una instancia de la clase Bodega
             Bodega bodegaInsert = new Bodega()
             {
+                IdBodega = Convert.ToInt32(txb_id.Text),
                 NombreBodega = nameBodega,
                 DescripcionBodega = description,
                 UbicacionBodega = ubicacion,
@@ -331,7 +370,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Bodega agregada correctamente.");
+                    MessageBox.Show("Bodega agregada correctamente.", "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -350,7 +389,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar la Bodega. Verifique los datos ingresados");
+                    MessageBox.Show("Error al agregar la Bodega. Verifique los datos ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -360,7 +399,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Bodega actualizada correctamente.");
+                    MessageBox.Show("Bodega actualizada correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -380,7 +419,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar la Bodega, Verifique los datos ingresados.");
+                    MessageBox.Show("Error al actualizar la Bodega, Verifique los datos ingresados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 imagenClickeada = false;

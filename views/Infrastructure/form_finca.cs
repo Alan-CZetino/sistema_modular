@@ -28,7 +28,15 @@ namespace sistema_modular_cafe_majada.views
         public form_finca()
         {
             InitializeComponent();
-            
+
+            txb_id.ReadOnly = true;
+            txb_id.Enabled = false;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            FincaController fc = new FincaController();
+            var count = fc.CountFincas();
+            txb_id.Text = Convert.ToString(count.CountFinca + 1);
+
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dtg_fincas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -57,6 +65,25 @@ namespace sistema_modular_cafe_majada.views
             dtg_fincas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
+        //
+        public void ConvertAllUppercase(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a mayúsculas
+                    string upperCaseInput = input.ToUpper();
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = upperCaseInput;
+                }
+            }
+        }
+
         private void btn_SaveFinca_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txb_nombreFinca.Text))
@@ -66,18 +93,21 @@ namespace sistema_modular_cafe_majada.views
             }
             if (string.IsNullOrWhiteSpace(txb_ubiFinca.Text))
             {
-                MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                DialogResult result = MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+                txb_ubiFinca.Text = ".";
             }
-
 
             FincaController fincaController = new FincaController();
             LogController log = new LogController();
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
 
-            /*TextBox[] textBoxes = {txb_nombreFinca };
-            ConvertFirstCharacter(textBoxes);*/
+            TextBox[] textBoxes = {txb_nombreFinca };
+            ConvertAllUppercase(textBoxes);
 
             //se obtiene los valores ingresados por el usuario
             string namefinca = txb_nombreFinca.Text;
@@ -86,6 +116,7 @@ namespace sistema_modular_cafe_majada.views
             //Se crea una instancia de la clase Calidades_cafe
             Finca fincas = new Finca()
             {
+                IdFinca = Convert.ToInt32(txb_id.Text),
                 nombreFinca = namefinca,
                 ubicacionFinca = ubicFinca
             };
@@ -98,7 +129,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Finca agregada correctamente.");
+                    MessageBox.Show("Finca agregada correctamente.", "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -117,7 +148,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar la finca. Verifique los datos ingresados");
+                    MessageBox.Show("Error al agregar la finca. Verifique los datos ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -127,7 +158,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Finca actualizada correctamente.");
+                    MessageBox.Show("Finca actualizada correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -147,7 +178,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar la finca, Verifique los datos ingresados.");
+                    MessageBox.Show("Error al actualizar la finca, Verifique los datos ingresados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 imagenClickeada = false;
@@ -179,7 +210,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 //muestra un mensaje de error o excepción
-                MessageBox.Show("No se ha seleccionado correctamente el dato");
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -203,15 +234,16 @@ namespace sistema_modular_cafe_majada.views
                     //verifica el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de finca", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de finca " + fincaSeleccionada.nombreFinca + " en la base de datos");
 
-                    MessageBox.Show("Calidad de Café Eliminada correctamente");
+                    MessageBox.Show("Calidad de Café Eliminada correctamente", "Eliminacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     ShowFincaGrid();
+                    ClearDataTxb();
                     fincaSeleccionada = null;
                 }
                 else
                 {
                     //muestra un mensaje de erro o excepcion
-                    MessageBox.Show("No se ha seleccionado correctamente el dato");
+                    MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -224,6 +256,10 @@ namespace sistema_modular_cafe_majada.views
             {
                 textBox.Clear();
             }
+            //coloca nueva mente el contador en el txb del cdigo
+            FincaController fc = new FincaController();
+            var count = fc.CountFincas();
+            txb_id.Text = Convert.ToString(count.CountFinca + 1);
         }
 
         private void dtg_fincas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

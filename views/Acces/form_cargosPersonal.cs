@@ -30,6 +30,15 @@ namespace sistema_modular_cafe_majada.views
             InitializeComponent();
 
             ShowCargoGrid();
+
+            txb_id.ReadOnly = true;
+            txb_id.Enabled = false;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            ChargeController ben = new ChargeController();
+            var count = ben.CountCargo();
+            txb_id.Text = Convert.ToString(count.CountCargo + 1);
+
         }
 
         private void dtg_cargosPersonal_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -74,6 +83,11 @@ namespace sistema_modular_cafe_majada.views
             {
                 textBox.Clear();
             }
+
+            //coloca nueva mente el contador en el txb del cdigo
+            ChargeController ben = new ChargeController();
+            var count = ben.CountCargo();
+            txb_id.Text = Convert.ToString(count.CountCargo + 1);
         }
 
         public void ShowCargoGrid()
@@ -119,7 +133,6 @@ namespace sistema_modular_cafe_majada.views
                 return;
             }
 
-
             ChargeController cargoController = new ChargeController();
             LogController log = new LogController();
             var userControl = new UserController();
@@ -135,6 +148,7 @@ namespace sistema_modular_cafe_majada.views
             //Se crea una instancia de la clase Calidades_cafe
             Charge cargo = new Charge()
             {
+                IdCargo = Convert.ToInt32(txb_id.Text),
                 NombreCargo = namecargo,
                 DescripcionCargo = descripcion
             };
@@ -147,7 +161,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Cargo agregado correctamente.");
+                    MessageBox.Show("Cargo agregado correctamente.", "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -166,7 +180,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar el cargo. Verifique los datos ingresados");
+                    MessageBox.Show("Error al agregar el cargo. Verifique los datos ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -176,7 +190,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Cargo actualizado correctamente.");
+                    MessageBox.Show("Cargo actualizado correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -196,7 +210,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar la finca, Verifique los datos ingresados.");
+                    MessageBox.Show("Error al actualizar la finca, Verifique los datos ingresados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 imagenClickeada = false;
@@ -229,15 +243,16 @@ namespace sistema_modular_cafe_majada.views
                     //verifica el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de Cargo", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de cargo " + cargoSeleccionada.NombreCargo + " en la base de datos");
 
-                    MessageBox.Show("Cargo Eliminado correctamente");
+                    MessageBox.Show("Cargo Eliminado correctamente", "Eliminacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     ShowCargoGrid();
+                    ClearDataTxb();
                     cargoSeleccionada = null;
                 }
                 else
                 {
                     //muestra un mensaje de erro o excepcion
-                    MessageBox.Show("No se ha seleccionado correctamente el dato");
+                    MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -261,7 +276,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 //muestra un mensaje de error o excepción
-                MessageBox.Show("No se ha seleccionado correctamente el dato");
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

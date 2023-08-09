@@ -114,10 +114,6 @@ namespace sistema_modular_cafe_majada.views
                     {
                         if (icosechaCambio != CosechaActual.ICosechaActual || string.IsNullOrWhiteSpace(txb_numTraslado.Text))
                         {
-                            countTrl = new TrasladoController();
-                            var sald = countTrl.CountTraslado(CosechaActual.ICosechaActual);
-                            //
-                            txb_numTraslado.Text = Convert.ToInt32(sald.CountTraslado + 1).ToString();
                             icosechaCambio = CosechaActual.ICosechaActual;
                         }
                         txb_cosecha.Text = CosechaActual.NombreCosechaActual;
@@ -228,6 +224,11 @@ namespace sistema_modular_cafe_majada.views
             AlmacenBodegaClick.IBodega = 0;
             dtp_fechaTraslado.Value = DateTime.Now;
             cbx_subProducto.SelectedIndex = -1;
+
+            countTrl = new TrasladoController();
+            var sald = countTrl.CountTraslado(CosechaActual.ICosechaActual);
+            //
+            txb_numTraslado.Text = Convert.ToString(sald.CountTraslado + 1);
         }
 
         //

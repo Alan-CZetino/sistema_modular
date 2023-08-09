@@ -47,6 +47,14 @@ namespace sistema_modular_cafe_majada.views
             txb_nombreFinca.Enabled = false;
             txb_nombrePersona.ReadOnly = true;
             txb_nombrePersona.Enabled = false;
+            txb_id.ReadOnly = true;
+            txb_id.Enabled = false;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            SocioController cal = new SocioController();
+            var count = cal.CountSocio();
+            txb_id.Text = Convert.ToString(count.CountSocio + 1);
+
         }
 
         private void dtgv_socios_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -112,7 +120,10 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Text = "";
             }
 
-
+            //coloca nueva mente el contador en el txb del cdigo
+            SocioController cal = new SocioController();
+            var count = cal.CountSocio();
+            txb_id.Text = Convert.ToString(count.CountSocio + 1);
         }
 
         //
@@ -145,6 +156,25 @@ namespace sistema_modular_cafe_majada.views
 
                     // Asignar el valor modificado de vuelta al TextBox
                     textBox.Text = result;
+                }
+            }
+        }
+
+        //
+        public void ConvertAllUppercase(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a mayúsculas
+                    string upperCaseInput = input.ToUpper();
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = upperCaseInput;
                 }
             }
         }
@@ -243,6 +273,7 @@ namespace sistema_modular_cafe_majada.views
                     //se actualiza la tabla
                     ShowSociosGrid();
                     socioSeleccionado = null;
+                    ClearDataTxb();
                 }
             }
             else
@@ -256,6 +287,7 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
+            imagenClickeada = false;
         }
 
         private void btn_tFinca_Click(object sender, EventArgs e)
@@ -305,8 +337,11 @@ namespace sistema_modular_cafe_majada.views
 
             if (string.IsNullOrWhiteSpace(txb_ubicacion.Text))
             {
-                MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                DialogResult result = MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
             }
             
             if (string.IsNullOrWhiteSpace(txb_nombrePersona.Text))
@@ -340,8 +375,10 @@ namespace sistema_modular_cafe_majada.views
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
 
-            TextBox[] textBoxes = { txb_nombre, txb_ubicacion };
+            TextBox[] textBoxes = { txb_ubicacion };
             ConvertFirstCharacter(textBoxes);
+            TextBox[] textBoxesM = { txb_nombre };
+            ConvertAllUppercase(textBoxesM);
             TextBox[] textBoxesLetter = { txb_descripcion };
             ConvertFirstLetter(textBoxesLetter);
 
@@ -372,7 +409,7 @@ namespace sistema_modular_cafe_majada.views
 
                     if (!exito)
                     {
-                        MessageBox.Show("Error al agregar el Socio. Verifica los datos e intenta nuevamente.");
+                        MessageBox.Show("Error al agregar el Socio. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 

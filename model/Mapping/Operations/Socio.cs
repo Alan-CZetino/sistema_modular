@@ -16,6 +16,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public string NombrePersonaResp { get; set; }
         public int IdFincaSocio { get; set; }
         public string NombreFinca { get; set; }
+        public int CountSocio { get; set; }
     }
 
     public static class TablaSeleccionada

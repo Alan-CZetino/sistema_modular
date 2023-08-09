@@ -438,5 +438,43 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
         }
 
+
+        //
+        public Maquinaria CountMaquinaria()
+        {
+            Maquinaria maquina = null;
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalMaquinaria FROM Maquinaria";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.Read())
+                    {
+                        maquina = new Maquinaria()
+                        {
+                            CountMaquina = Convert.ToInt32(reader["TotalMaquinaria"])
+                        };
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return maquina;
+        }
+
     }
 }

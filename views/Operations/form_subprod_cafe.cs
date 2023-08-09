@@ -38,6 +38,14 @@ namespace sistema_modular_cafe_majada.views
             
             txb_calidadCafe.ReadOnly = true;
             txb_calidadCafe.Enabled = false;
+            txb_id.ReadOnly = true;
+            txb_id.Enabled = false;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            SubProductoController sp = new SubProductoController();
+            var count = sp.CountSubProducto();
+            txb_id.Text = Convert.ToString(count.CountSubProducto + 1);
+
         }
 
         private void dataGrid_SubProduct_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -166,10 +174,11 @@ namespace sistema_modular_cafe_majada.views
                     //verificar el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato SubProducto", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos del SubProducto " + subProdcSeleccionado.NombreSubProducto + " en la base de datos");
 
-                    MessageBox.Show("SubProducto Eliminada correctamente.");
+                    MessageBox.Show("SubProducto Eliminada correctamente.", "Eliminacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
                     ShowSubProductGrid();
+                    ClearDataTxb();
                 }
             }
             else
@@ -194,6 +203,10 @@ namespace sistema_modular_cafe_majada.views
             {
                 textBox.Clear();
             }
+            //coloca nueva mente el contador en el txb del cdigo
+            SubProductoController sp = new SubProductoController();
+            var count = sp.CountSubProducto();
+            txb_id.Text = Convert.ToString(count.CountSubProducto + 1);
         }
 
         //
@@ -229,6 +242,25 @@ namespace sistema_modular_cafe_majada.views
 
                     // Asignar el valor modificado de vuelta al TextBox
                     textBox.Text = result;
+                }
+            }
+        }
+
+        //
+        public void ConvertAllUppercase(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a mayúsculas
+                    string upperCaseInput = input.ToUpper();
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = upperCaseInput;
                 }
             }
         }
@@ -288,7 +320,7 @@ namespace sistema_modular_cafe_majada.views
 
             TextBox[] textBoxes = { txb_subProdCafe };
             TextBox[] textBoxesLetter = { txb_descripcion };
-            ConvertFirstCharacter(textBoxes);
+            ConvertAllUppercase(textBoxes);
             ConvertFirstLetter(textBoxesLetter);
 
             //se obtiene los valores ingresados por el usuario
@@ -298,7 +330,7 @@ namespace sistema_modular_cafe_majada.views
             //Se crea una instancia de la clase SubProducto
             SubProducto subPro = new SubProducto()
             {
-                IdSubProducto = (subProdcSeleccionado != null) ? subProdcSeleccionado.IdSubProducto : 0,
+                IdSubProducto = Convert.ToInt32(txb_id.Text),
                 NombreSubProducto = nameSubProducto,
                 DescripcionSubProducto = description,
                 IdCalidadCafe = CalidadSeleccionada.ICalidadSeleccionada
@@ -322,7 +354,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("SubProducto agregada correctamente.");
+                    MessageBox.Show("SubProducto agregada correctamente.", "Insercion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -341,7 +373,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar el SubProducto. Verifique los datos ingresados");
+                    MessageBox.Show("Error al agregar el SubProducto. Verifique los datos ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -351,7 +383,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("SubProducto actualizada correctamente.");
+                    MessageBox.Show("SubProducto actualizada correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     try
                     {
@@ -371,7 +403,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar el SubProducto, Verifique los datos ingresados.");
+                    MessageBox.Show("Error al actualizar el SubProducto, Verifique los datos ingresados.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 imagenClickeada = false;

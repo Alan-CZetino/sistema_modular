@@ -27,6 +27,14 @@ namespace sistema_modular_cafe_majada.views
         {
             InitializeComponent();
 
+            txb_id.ReadOnly = true;
+            txb_id.Enabled = false;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            BeneficioController ben = new BeneficioController();
+            var count = ben.CountBeneficio();
+            txb_id.Text = Convert.ToString(count.CountBeneficio + 1);
+
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dtg_beneficios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -87,13 +95,17 @@ namespace sistema_modular_cafe_majada.views
 
         public void ClearDataTxb()
         {
-            List<TextBox> txb = new List<TextBox> { txb_nombreBeneficio, txb_Ubicacion };
+            List<TextBox> txb = new List<TextBox> { txb_nombreBeneficio, txb_Ubicacion, txb_id };
 
             foreach (TextBox textBox in txb)
             {
                 textBox.Text = "";
             }
 
+            //coloca nueva mente el contador en el txb del cdigo
+            BeneficioController ben = new BeneficioController();
+            var count = ben.CountBeneficio();
+            txb_id.Text = Convert.ToString(count.CountBeneficio + 1);
         }
 
         public void ConvertFirstCharacter(TextBox[] textBoxes)
@@ -129,6 +141,24 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        public void ConvertAllUppercase(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                string input = textBox.Text; // Obtener el valor ingresado por el usuario desde el TextBox
+
+                // Verificar si la cadena no está vacía
+                if (!string.IsNullOrEmpty(input))
+                {
+                    // Convertir toda la cadena a mayúsculas
+                    string upperCaseInput = input.ToUpper();
+
+                    // Asignar el valor modificado de vuelta al TextBox
+                    textBox.Text = upperCaseInput;
+                }
+            }
+        }
+
         private void btn_updateBeneficio_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -139,6 +169,7 @@ namespace sistema_modular_cafe_majada.views
                 imagenClickeada = true;
 
                 // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
+                txb_id.Text = Convert.ToString(beneficioSeleccionado.IdBeneficio);
                 txb_nombreBeneficio.Text = beneficioSeleccionado.NombreBeneficio;
                 txb_Ubicacion.Text = beneficioSeleccionado.UbicacionBeneficio;
             }
@@ -180,6 +211,11 @@ namespace sistema_modular_cafe_majada.views
                 // Mostrar un mensaje de error o lanzar una excepción
                 MessageBox.Show("No se ha seleccionado correctamente las caracteristicas del Beneficio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            //coloca nueva mente el contador en el txb del cdigo
+            BeneficioController ben = new BeneficioController();
+            var count = ben.CountBeneficio();
+            txb_id.Text = Convert.ToString(count.CountBeneficio + 1);
         }
 
         private void dtg_beneficios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -198,6 +234,7 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
+            imagenClickeada = false;
         }
 
         private void btn_SaveBeneficio_Click(object sender, EventArgs e)
@@ -209,8 +246,12 @@ namespace sistema_modular_cafe_majada.views
             }
             if (string.IsNullOrWhiteSpace(txb_Ubicacion.Text))
             {
-                MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                DialogResult result = MessageBox.Show("El campo Ubicacion, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+                txb_Ubicacion.Text = ".";
             }
 
             BeneficioController beneficioController = new BeneficioController();
@@ -219,7 +260,9 @@ namespace sistema_modular_cafe_majada.views
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
 
             TextBox[] textBoxes = { txb_nombreBeneficio };
-            ConvertFirstCharacter(textBoxes);
+            TextBox[] textBoxesF = { txb_Ubicacion };
+            ConvertFirstCharacter(textBoxesF);
+            ConvertAllUppercase(textBoxes);
 
             try
             {
@@ -229,6 +272,7 @@ namespace sistema_modular_cafe_majada.views
                 // Crear una instancia de la clase Beneficio con los valores obtenidos
                 Beneficio beneficioInsert = new Beneficio()
                 {
+                    IdBeneficio = Convert.ToInt32(txb_id.Text),
                     NombreBeneficio = name,
                     UbicacionBeneficio = location
                 };

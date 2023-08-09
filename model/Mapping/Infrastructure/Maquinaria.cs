@@ -19,6 +19,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Infrastructure
         public string ContratoServicioMaquinaria { get; set; }
         public int IdBeneficio { get; set; }
         public string NombreBeneficio { get; set; }
+        public int CountMaquina{ get; set; }
     }
 
 }

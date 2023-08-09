@@ -144,6 +144,45 @@ namespace sistema_modular_cafe_majada.model.DAO
             return bodega;
         }
 
+
+        //
+        public Bodega CountBodega()
+        {
+            Bodega bodega = null;
+
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalBodega FROM Bodega_Cafe";
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.Read())
+                    {
+                        bodega = new Bodega()
+                        {
+                            CountBodega = Convert.ToInt32(reader["TotalBodega"])
+                        };
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return bodega;
+        }
+
+
         //obtener la Bodega en especifico mediante el id del beneficio en la BD
         public Bodega ObtenerBodegaNombre(string nombreBodega)
         {

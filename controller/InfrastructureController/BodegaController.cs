@@ -62,6 +62,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 return null;
             }
         }
+        
+        //
+        public Bodega CountBodega()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener cantidad Bodegas
+                return bodegaDAO.CountBodega();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la Bodegas: " + ex.Message);
+                return null;
+            }
+        }
 
         //
         public Bodega ObtenerNombreBodega(string nombodega)

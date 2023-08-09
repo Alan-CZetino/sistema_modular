@@ -273,7 +273,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear la consulta SQL para obtener el rol
-                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega
+                string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega,
                                         a.cantidad_actual_saco_almacen, a.cantidad_actual_almacen
                                         FROM Almacen a
                                         INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega";
@@ -880,6 +880,47 @@ namespace sistema_modular_cafe_majada.model.DAO
                             almacen = new Almacen()
                             {
                                 CountExistenceCoffe = (reader["TotalExistencia"] is DBNull ? 0 : Convert.ToInt32(reader["TotalExistencia"]))
+                            };
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                //se cierra la conexion a la base de datos
+                conexion.Desconectar();
+            }
+            return almacen;
+        }
+        
+        //
+        public Almacen CountAlmacen()
+        {
+            Almacen almacen = null;
+            try
+            {
+                //Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT COUNT(*) AS TotalExistencia 
+                                    FROM Almacen ";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            almacen = new Almacen()
+                            {
+                                CountAlmacen = (reader["TotalExistencia"] is DBNull ? 0 : Convert.ToInt32(reader["TotalExistencia"]))
                             };
                         }
                     }

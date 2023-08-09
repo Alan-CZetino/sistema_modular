@@ -62,6 +62,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 return null;
             }
         }
+        
+        //
+        public Maquinaria CountMaquinaria()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la Maquinaria
+                return maquinariaDAO.CountMaquinaria();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la Maquinaria: " + ex.Message);
+                return null;
+            }
+        }
 
         //
         public bool InsertarMaquinaria(Maquinaria Maquinaria)
