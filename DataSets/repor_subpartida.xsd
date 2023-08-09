@@ -12,7 +12,7 @@
   <xs:element name="repor_subpartida" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="repor_subpartida" msprop:Generator_UserDSName="repor_subpartida">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="repor_subpartida" msprop:Generator_TableClassName="repor_subpartidaDataTable" msprop:Generator_TableVarName="tablerepor_subpartida" msprop:Generator_RowChangedName="repor_subpartidaRowChanged" msprop:Generator_TablePropName="_repor_subpartida" msprop:Generator_RowDeletingName="repor_subpartidaRowDeleting" msprop:Generator_RowChangingName="repor_subpartidaRowChanging" msprop:Generator_RowEvHandlerName="repor_subpartidaRowChangeEventHandler" msprop:Generator_RowDeletedName="repor_subpartidaRowDeleted" msprop:Generator_RowClassName="repor_subpartidaRow" msprop:Generator_UserTableName="repor_subpartida" msprop:Generator_RowEvArgName="repor_subpartidaRowChangeEvent">
+        <xs:element name="repor_subpartida" msprop:Generator_TableClassName="repor_subpartidaDataTable" msprop:Generator_TableVarName="tablerepor_subpartida" msprop:Generator_TablePropName="_repor_subpartida" msprop:Generator_RowDeletingName="repor_subpartidaRowDeleting" msprop:Generator_RowChangingName="repor_subpartidaRowChanging" msprop:Generator_RowEvHandlerName="repor_subpartidaRowChangeEventHandler" msprop:Generator_RowDeletedName="repor_subpartidaRowDeleted" msprop:Generator_UserTableName="repor_subpartida" msprop:Generator_RowChangedName="repor_subpartidaRowChanged" msprop:Generator_RowEvArgName="repor_subpartidaRowChangeEvent" msprop:Generator_RowClassName="repor_subpartidaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NombreCosecha" msdata:Caption="nombre_cosecha" msprop:Generator_ColumnVarNameInTable="columnNombreCosecha" msprop:Generator_ColumnPropNameInRow="NombreCosecha" msprop:Generator_ColumnPropNameInTable="NombreCosechaColumn" msprop:Generator_UserColumnName="NombreCosecha" type="xs:string" minOccurs="0" />
@@ -38,6 +38,7 @@
               <xs:element name="FechaIni" msprop:Generator_ColumnVarNameInTable="columnFechaIni" msprop:Generator_ColumnPropNameInRow="FechaIni" msprop:Generator_ColumnPropNameInTable="FechaIniColumn" msprop:Generator_UserColumnName="FechaIni" type="xs:string" minOccurs="0" />
               <xs:element name="FechaFin" msprop:Generator_ColumnVarNameInTable="columnFechaFin" msprop:Generator_ColumnPropNameInRow="FechaFin" msprop:Generator_ColumnPropNameInTable="FechaFinColumn" msprop:Generator_UserColumnName="FechaFin" type="xs:string" minOccurs="0" />
               <xs:element name="Partida" msprop:Generator_ColumnVarNameInTable="columnPartida" msprop:Generator_ColumnPropNameInRow="Partida" msprop:Generator_ColumnPropNameInTable="PartidaColumn" msprop:Generator_UserColumnName="Partida" type="xs:string" minOccurs="0" />
+              <xs:element name="nombre_persona" msprop:Generator_ColumnVarNameInTable="columnnombre_persona" msprop:Generator_ColumnPropNameInRow="nombre_persona" msprop:Generator_ColumnPropNameInTable="nombre_personaColumn" msprop:Generator_UserColumnName="nombre_persona" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

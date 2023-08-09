@@ -12,9 +12,22 @@ namespace sistema_modular_cafe_majada.views
 {
     public partial class form_opcReportExistencias : Form
     {
-        public form_opcReportExistencias()
+        public string ReportPath;
+        public form_opcReportExistencias( string ReportPF)
         {
             InitializeComponent();
+            ReportPath = ReportPF;
+            CargarInforme();
+        }
+        public void CargarInforme()
+        {
+      
+            reportViewerDetallado.Reset();
+            // Código para cargar el informe en el ReportViewer usando el OrigenPath
+            // Ejemplo: reportViewer1.LocalReport.ReportPath = OrigenPath;
+            reportViewerDetallado.LocalReport.ReportPath = ReportPath;
+            
+            reportViewerDetallado.RefreshReport();
         }
 
         private void btn_close_Click(object sender, EventArgs e)
@@ -24,8 +37,9 @@ namespace sistema_modular_cafe_majada.views
 
         private void form_opcReportExistencias_Load(object sender, EventArgs e)
         {
-
-            this.reportViewer1.RefreshReport();
+      
+            
         }
+
     }
 }

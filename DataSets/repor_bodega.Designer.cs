@@ -291,6 +291,8 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             private global::System.Data.DataColumn columnfecha;
             
+            private global::System.Data.DataColumn columnnombre_persona;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public repor_bodegaDataTable() {
@@ -374,6 +376,14 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nombre_personaColumn {
+                get {
+                    return this.columnnombre_persona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +419,7 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public repor_bodegaRow Addrepor_bodegaRow(string nombre_cosecha, string nombre_bodega, string calidad_cafe, string total_sacos, string total_qqspunto, string fecha) {
+            public repor_bodegaRow Addrepor_bodegaRow(string nombre_cosecha, string nombre_bodega, string calidad_cafe, string total_sacos, string total_qqspunto, string fecha, string nombre_persona) {
                 repor_bodegaRow rowrepor_bodegaRow = ((repor_bodegaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nombre_cosecha,
@@ -417,7 +427,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                         calidad_cafe,
                         total_sacos,
                         total_qqspunto,
-                        fecha};
+                        fecha,
+                        nombre_persona};
                 rowrepor_bodegaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrepor_bodegaRow);
                 return rowrepor_bodegaRow;
@@ -446,6 +457,7 @@ namespace sistema_modular_cafe_majada.DataSets {
                 this.columntotal_sacos = base.Columns["total_sacos"];
                 this.columntotal_qqspunto = base.Columns["total_qqspunto"];
                 this.columnfecha = base.Columns["fecha"];
+                this.columnnombre_persona = base.Columns["nombre_persona"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -463,6 +475,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                 base.Columns.Add(this.columntotal_qqspunto);
                 this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfecha);
+                this.columnnombre_persona = new global::System.Data.DataColumn("nombre_persona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombre_persona);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_repor_bodega");
                 this.ExtendedProperties.Add("Generator_UserTableName", "repor_bodega");
             }
@@ -703,6 +717,22 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nombre_persona {
+                get {
+                    try {
+                        return ((string)(this[this.tablerepor_bodega.nombre_personaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre_persona\' de la tabla \'repor_bodega\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerepor_bodega.nombre_personaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isnombre_cosechaNull() {
                 return this.IsNull(this.tablerepor_bodega.nombre_cosechaColumn);
             }
@@ -771,6 +801,18 @@ namespace sistema_modular_cafe_majada.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetfechaNull() {
                 this[this.tablerepor_bodega.fechaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isnombre_personaNull() {
+                return this.IsNull(this.tablerepor_bodega.nombre_personaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setnombre_personaNull() {
+                this[this.tablerepor_bodega.nombre_personaColumn] = global::System.Convert.DBNull;
             }
         }
         

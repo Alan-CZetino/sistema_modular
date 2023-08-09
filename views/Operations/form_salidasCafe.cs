@@ -808,8 +808,9 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfSalida_Click(object sender, EventArgs e)
         {
-            form_opcReportExistencias reportSalida = new form_opcReportExistencias();
-            reportSalida.ShowDialog();
+            string reportPR = "../../views/Reports/report_numsubpartida.rdlc";
+            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR);
+            reportSPartida.ShowDialog();
         }
     }
 }

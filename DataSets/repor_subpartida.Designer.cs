@@ -325,6 +325,8 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             private global::System.Data.DataColumn columnPartida;
             
+            private global::System.Data.DataColumn columnnombre_persona;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public repor_subpartidaDataTable() {
@@ -544,6 +546,14 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nombre_personaColumn {
+                get {
+                    return this.columnnombre_persona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -602,7 +612,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                         string FechaSecado, 
                         string FechaIni, 
                         string FechaFin, 
-                        string Partida) {
+                        string Partida, 
+                        string nombre_persona) {
                 repor_subpartidaRow rowrepor_subpartidaRow = ((repor_subpartidaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NombreCosecha,
@@ -627,7 +638,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                         FechaSecado,
                         FechaIni,
                         FechaFin,
-                        Partida};
+                        Partida,
+                        nombre_persona};
                 rowrepor_subpartidaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrepor_subpartidaRow);
                 return rowrepor_subpartidaRow;
@@ -673,6 +685,7 @@ namespace sistema_modular_cafe_majada.DataSets {
                 this.columnFechaIni = base.Columns["FechaIni"];
                 this.columnFechaFin = base.Columns["FechaFin"];
                 this.columnPartida = base.Columns["Partida"];
+                this.columnnombre_persona = base.Columns["nombre_persona"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -724,6 +737,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                 base.Columns.Add(this.columnFechaFin);
                 this.columnPartida = new global::System.Data.DataColumn("Partida", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPartida);
+                this.columnnombre_persona = new global::System.Data.DataColumn("nombre_persona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombre_persona);
                 this.columnNombreCosecha.Caption = "nombre_cosecha";
                 this.ExtendedProperties.Add("Generator_TablePropName", "_repor_subpartida");
                 this.ExtendedProperties.Add("Generator_UserTableName", "repor_subpartida");
@@ -1237,6 +1252,23 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nombre_persona {
+                get {
+                    try {
+                        return ((string)(this[this.tablerepor_subpartida.nombre_personaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre_persona\' de la tabla \'repor_subpartida\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tablerepor_subpartida.nombre_personaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNombreCosechaNull() {
                 return this.IsNull(this.tablerepor_subpartida.NombreCosechaColumn);
             }
@@ -1509,6 +1541,18 @@ namespace sistema_modular_cafe_majada.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPartidaNull() {
                 this[this.tablerepor_subpartida.PartidaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isnombre_personaNull() {
+                return this.IsNull(this.tablerepor_subpartida.nombre_personaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setnombre_personaNull() {
+                this[this.tablerepor_subpartida.nombre_personaColumn] = global::System.Convert.DBNull;
             }
         }
         

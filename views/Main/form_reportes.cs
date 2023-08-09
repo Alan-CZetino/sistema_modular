@@ -32,10 +32,10 @@ namespace sistema_modular_cafe_majada.views
         int id_Cosecha = CosechaActual.ICosechaActual;
         string Nombre_cosecha = CosechaActual.NombreCosechaActual;
         private ReportesController reportesController = new ReportesController();
-        readonly string RutaReportSubpda = "../../views/repor_subpartida.rdlc";
-        readonly string RutaReportBodega = "../../views/repor_bodega.rdlc";
-        readonly string RutaReportCCalidad = "../../views/repor_ccalidad.rdlc";
-        readonly string RutaReportCafeBodega = "../../views/repor_cafebodega.rdlc";
+        readonly string RutaReportSubpda = "../../views/Reports/repor_subpartida.rdlc";
+        readonly string RutaReportBodega = "../../views/Reports/repor_bodega.rdlc";
+        readonly string RutaReportCCalidad = "../../views/Reports/repor_ccalidad.rdlc";
+        readonly string RutaReportCafeBodega = "../../views/Reports/repor_cafebodega.rdlc";
 
         public form_reportes()
         {
@@ -59,6 +59,7 @@ namespace sistema_modular_cafe_majada.views
                     {
                         id_Cosecha = CosechaActual.ICosechaActual;
                         Nombre_cosecha = CosechaActual.NombreCosechaActual;
+
                     }
                 }));
             }
@@ -201,7 +202,7 @@ namespace sistema_modular_cafe_majada.views
             // Refresca el visor de informes reportViewer1 para mostrar el informe con la nueva fuente de datos y el archivo de definición especificados.
             // Después de agregar o cambiar la fuente de datos y la definición del informe, esta línea es necesaria para mostrar los cambios en el visor.
             reportViewer1.RefreshReport();
-
+           
         }
     }
 }

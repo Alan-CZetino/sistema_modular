@@ -1419,10 +1419,10 @@
           <Source>Embedded</Source>
           <Value>Logo__majada</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>0.21731cm</Top>
-          <Left>0.2855cm</Left>
-          <Height>1.66123cm</Height>
-          <Width>2.5cm</Width>
+          <Top>0.03669cm</Top>
+          <Left>0.3175cm</Left>
+          <Height>1.84185cm</Height>
+          <Width>2.77542cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1436,7 +1436,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>COOPERATIVA LA MAJADA, DE R.L.</Value>
+                  <Value>Sociedad Cooperativa de Cafetaleros de San José la Majada de R.L.</Value>
                   <Style>
                     <FontWeight>ExtraBold</FontWeight>
                   </Style>
@@ -1446,10 +1446,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.21731cm</Top>
-          <Left>2.96189cm</Left>
+          <Top>0.25118cm</Top>
+          <Left>8.64086cm</Left>
           <Height>0.52944cm</Height>
-          <Width>11.33708cm</Width>
+          <Width>12.07791cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1480,8 +1480,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.80849cm</Top>
-          <Left>2.96189cm</Left>
+          <Top>0.84236cm</Top>
+          <Left>22.92836cm</Left>
           <Height>0.54061cm</Height>
           <Width>2.14722cm</Width>
           <ZIndex>2</ZIndex>
@@ -1500,7 +1500,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>PERIODO:</Value>
+                  <Value>El reporte se genera a la fecha:</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>arial</FontFamily>
@@ -1512,10 +1512,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.78203cm</Top>
-          <Left>7.82078cm</Left>
+          <Top>1.41825cm</Top>
+          <Left>3.45503cm</Left>
           <Height>0.52944cm</Height>
-          <Width>2.03257cm</Width>
+          <Width>5.46334cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border />
@@ -1542,8 +1542,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox101</rd:DefaultName>
-          <Top>0.80849cm</Top>
-          <Left>5.14439cm</Left>
+          <Top>0.84236cm</Top>
+          <Left>25.11086cm</Left>
           <Height>0.54061cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>4</ZIndex>
@@ -1576,11 +1576,109 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.78439cm</Top>
-          <Left>9.88862cm</Left>
+          <Top>1.41825cm</Top>
+          <Left>9.0242cm</Left>
           <Height>0.52944cm</Height>
-          <Width>1.98333cm</Width>
+          <Width>2.19165cm</Width>
           <ZIndex>5</ZIndex>
+          <Style>
+            <Border />
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox16">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Reporte de: auxiliar de subpartidas</Value>
+                  <Style>
+                    <FontWeight>ExtraBold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox7</rd:DefaultName>
+          <Top>0.85353cm</Top>
+          <Left>3.45503cm</Left>
+          <Height>0.52944cm</Height>
+          <Width>11.33708cm</Width>
+          <ZIndex>6</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox13">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!nombre_persona.Value, "repor_subpartida")</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>arial</FontFamily>
+                    <FontWeight>ExtraBold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox7</rd:DefaultName>
+          <Top>1.4888cm</Top>
+          <Left>23.09731cm</Left>
+          <Height>0.52944cm</Height>
+          <Width>4.51113cm</Width>
+          <ZIndex>7</ZIndex>
+          <Style>
+            <Border />
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox14">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Elaborado por:</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>arial</FontFamily>
+                    <FontWeight>ExtraBold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox7</rd:DefaultName>
+          <Top>1.45353cm</Top>
+          <Left>20.03287cm</Left>
+          <Height>0.54061cm</Height>
+          <Width>2.99389cm</Width>
+          <ZIndex>8</ZIndex>
           <Style>
             <Border />
             <PaddingLeft>2pt</PaddingLeft>
@@ -1608,11 +1706,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.78203cm</Top>
-          <Left>11.87196cm</Left>
+          <Top>1.41966cm</Top>
+          <Left>11.25113cm</Left>
           <Height>0.52944cm</Height>
-          <Width>0.61235cm</Width>
-          <ZIndex>6</ZIndex>
+          <Width>0.62068cm</Width>
+          <ZIndex>9</ZIndex>
           <Style>
             <Border />
             <PaddingLeft>2pt</PaddingLeft>
@@ -1621,7 +1719,7 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Textbox13">
+        <Textbox Name="Textbox17">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -1640,45 +1738,13 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.78203cm</Top>
-          <Left>12.48431cm</Left>
+          <Top>1.41825cm</Top>
+          <Left>11.90708cm</Left>
           <Height>0.52944cm</Height>
-          <Width>2.27672cm</Width>
-          <ZIndex>7</ZIndex>
+          <Width>2.9682cm</Width>
+          <ZIndex>10</ZIndex>
           <Style>
             <Border />
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox14">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>REPORTE AUXILIAR DE SUBPARTIDAS</Value>
-                  <Style>
-                    <FontWeight>ExtraBold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>1.41966cm</Top>
-          <Left>2.96189cm</Left>
-          <Height>0.52944cm</Height>
-          <Width>11.33708cm</Width>
-          <ZIndex>8</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -1693,7 +1759,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>2.54cm</Height>
+      <Height>1.33313cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1714,7 +1780,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox42</rd:DefaultName>
-          <Top>1.05609cm</Top>
+          <Top>0.42109cm</Top>
           <Left>26.36386cm</Left>
           <Height>0.6cm</Height>
           <Width>1.43672cm</Width>
@@ -1739,11 +1805,13 @@
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox12</rd:DefaultName>
-          <Top>1.05609cm</Top>
+          <Top>0.42109cm</Top>
           <Left>24.17147cm</Left>
           <Height>0.6cm</Height>
           <Width>1.75731cm</Width>
@@ -1775,7 +1843,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox12</rd:DefaultName>
-          <Top>1.05609cm</Top>
+          <Top>0.42109cm</Top>
           <Left>25.92607cm</Left>
           <Height>0.6cm</Height>
           <Width>0.40251cm</Width>
@@ -1800,8 +1868,10 @@
     </PageFooter>
     <PageHeight>21.59cm</PageHeight>
     <PageWidth>27.94cm</PageWidth>
-    <TopMargin>1cm</TopMargin>
-    <BottomMargin>1cm</BottomMargin>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0.5cm</TopMargin>
+    <BottomMargin>0.5cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>
@@ -1912,6 +1982,10 @@
         </Field>
         <Field Name="Partida">
           <DataField>Partida</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nombre_persona">
+          <DataField>nombre_persona</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

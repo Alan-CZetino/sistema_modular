@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.75861cm</Width>
+              <Width>1.77489cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.09153cm</Width>
+              <Width>2.10781cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -205,7 +205,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Sum(Fields!total_sacosE.Value-Fields!total_sacosS.Value-Fields!total_sacosT.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -217,6 +217,7 @@
                         <Border>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#caeebf</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -234,7 +235,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Sum(Fields!total_qqspuntoE.Value-Fields!total_qqspuntoS.Value-Fields!total_qqspuntoT.Value)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -246,6 +247,7 @@
                         <Border>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#caeebf</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -337,7 +339,7 @@
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>1.86998cm</Size>
+                <Size>1.88626cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox83">
                     <CanGrow>true</CanGrow>
@@ -382,7 +384,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>1.47684cm</Size>
+                    <Size>1.49312cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox84">
                         <CanGrow>true</CanGrow>
@@ -427,7 +429,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>0.84107cm</Size>
+                        <Size>0.85735cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox85">
                             <CanGrow>true</CanGrow>
@@ -472,7 +474,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>3.32522cm</Size>
+                            <Size>3.3415cm</Size>
                             <CellContents>
                               <Textbox Name="Textbox86">
                                 <CanGrow>true</CanGrow>
@@ -517,7 +519,7 @@
                           <TablixMembers>
                             <TablixMember>
                               <TablixHeader>
-                                <Size>3.07767cm</Size>
+                                <Size>3.09395cm</Size>
                                 <CellContents>
                                   <Textbox Name="Textbox87">
                                     <CanGrow>true</CanGrow>
@@ -562,7 +564,7 @@
                               <TablixMembers>
                                 <TablixMember>
                                   <TablixHeader>
-                                    <Size>3.70997cm</Size>
+                                    <Size>3.74253cm</Size>
                                     <CellContents>
                                       <Textbox Name="Textbox12">
                                         <CanGrow>true</CanGrow>
@@ -602,7 +604,7 @@
                                   <TablixMembers>
                                     <TablixMember>
                                       <TablixHeader>
-                                        <Size>3.62236cm</Size>
+                                        <Size>3.65492cm</Size>
                                         <CellContents>
                                           <Textbox Name="Textbox13">
                                             <CanGrow>true</CanGrow>
@@ -642,7 +644,7 @@
                                       <TablixMembers>
                                         <TablixMember>
                                           <TablixHeader>
-                                            <Size>3.67491cm</Size>
+                                            <Size>3.70747cm</Size>
                                             <CellContents>
                                               <Textbox Name="Textbox15">
                                                 <CanGrow>true</CanGrow>
@@ -697,7 +699,7 @@
             </TablixMember>
             <TablixMember>
               <TablixHeader>
-                <Size>3.34682cm</Size>
+                <Size>3.37938cm</Size>
                 <CellContents>
                   <Textbox Name="nombre_calidad4">
                     <CanGrow>true</CanGrow>
@@ -732,7 +734,7 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>0.84107cm</Size>
+                    <Size>0.85735cm</Size>
                     <CellContents>
                       <Textbox Name="nombre_subproducto4">
                         <CanGrow>true</CanGrow>
@@ -743,7 +745,7 @@
                               <TextRun>
                                 <Value>COD</Value>
                                 <Style>
-                                  <FontSize>9pt</FontSize>
+                                  <FontSize>8pt</FontSize>
                                   <FontWeight>Bold</FontWeight>
                                 </Style>
                               </TextRun>
@@ -767,7 +769,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>3.32522cm</Size>
+                        <Size>3.3415cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox39">
                             <CanGrow>true</CanGrow>
@@ -800,7 +802,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>3.07767cm</Size>
+                            <Size>3.09395cm</Size>
                             <CellContents>
                               <Textbox Name="almacenado_en4">
                                 <CanGrow>true</CanGrow>
@@ -833,7 +835,7 @@
                           <TablixMembers>
                             <TablixMember>
                               <TablixHeader>
-                                <Size>1.63253cm</Size>
+                                <Size>1.64881cm</Size>
                                 <CellContents>
                                   <Textbox Name="total_sacos16">
                                     <CanGrow>true</CanGrow>
@@ -868,7 +870,7 @@
                               <TablixMembers>
                                 <TablixMember>
                                   <TablixHeader>
-                                    <Size>2.07744cm</Size>
+                                    <Size>2.09372cm</Size>
                                     <CellContents>
                                       <Textbox Name="total_qqspunto14">
                                         <CanGrow>true</CanGrow>
@@ -903,7 +905,7 @@
                                   <TablixMembers>
                                     <TablixMember>
                                       <TablixHeader>
-                                        <Size>1.54835cm</Size>
+                                        <Size>1.56463cm</Size>
                                         <CellContents>
                                           <Textbox Name="total_sacos17">
                                             <CanGrow>true</CanGrow>
@@ -938,7 +940,7 @@
                                       <TablixMembers>
                                         <TablixMember>
                                           <TablixHeader>
-                                            <Size>2.07401cm</Size>
+                                            <Size>2.09029cm</Size>
                                             <CellContents>
                                               <Textbox Name="total_qqspunto15">
                                                 <CanGrow>true</CanGrow>
@@ -973,7 +975,7 @@
                                           <TablixMembers>
                                             <TablixMember>
                                               <TablixHeader>
-                                                <Size>1.61843cm</Size>
+                                                <Size>1.63471cm</Size>
                                                 <CellContents>
                                                   <Textbox Name="total_sacos18">
                                                     <CanGrow>true</CanGrow>
@@ -1008,7 +1010,7 @@
                                               <TablixMembers>
                                                 <TablixMember>
                                                   <TablixHeader>
-                                                    <Size>2.05648cm</Size>
+                                                    <Size>2.07276cm</Size>
                                                     <CellContents>
                                                       <Textbox Name="total_qqspunto16">
                                                         <CanGrow>true</CanGrow>
@@ -1075,7 +1077,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>1.86998cm</Size>
+                <Size>1.88626cm</Size>
                 <CellContents>
                   <Textbox Name="nombre_bodega2">
                     <CanGrow>true</CanGrow>
@@ -1117,7 +1119,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>1.47684cm</Size>
+                    <Size>1.49312cm</Size>
                     <CellContents>
                       <Textbox Name="nombre_almacen2">
                         <CanGrow>true</CanGrow>
@@ -1159,7 +1161,7 @@
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>0.84107cm</Size>
+                        <Size>0.85735cm</Size>
                         <CellContents>
                           <Textbox Name="id_calidad2">
                             <CanGrow>true</CanGrow>
@@ -1201,7 +1203,7 @@
                             </SortExpression>
                           </SortExpressions>
                           <TablixHeader>
-                            <Size>3.32522cm</Size>
+                            <Size>3.3415cm</Size>
                             <CellContents>
                               <Textbox Name="nombre_calidad2">
                                 <CanGrow>true</CanGrow>
@@ -1243,7 +1245,7 @@
                                 </SortExpression>
                               </SortExpressions>
                               <TablixHeader>
-                                <Size>3.07767cm</Size>
+                                <Size>3.09395cm</Size>
                                 <CellContents>
                                   <Textbox Name="nombre_subproducto2">
                                     <CanGrow>true</CanGrow>
@@ -1285,7 +1287,7 @@
                                     </SortExpression>
                                   </SortExpressions>
                                   <TablixHeader>
-                                    <Size>1.63253cm</Size>
+                                    <Size>1.64881cm</Size>
                                     <CellContents>
                                       <Textbox Name="total_sacosE2">
                                         <CanGrow>true</CanGrow>
@@ -1329,7 +1331,7 @@
                                         </SortExpression>
                                       </SortExpressions>
                                       <TablixHeader>
-                                        <Size>2.07744cm</Size>
+                                        <Size>2.09372cm</Size>
                                         <CellContents>
                                           <Textbox Name="total_qqspuntoE2">
                                             <CanGrow>true</CanGrow>
@@ -1373,7 +1375,7 @@
                                             </SortExpression>
                                           </SortExpressions>
                                           <TablixHeader>
-                                            <Size>1.54835cm</Size>
+                                            <Size>1.56463cm</Size>
                                             <CellContents>
                                               <Textbox Name="total_sacosS2">
                                                 <CanGrow>true</CanGrow>
@@ -1417,7 +1419,7 @@
                                                 </SortExpression>
                                               </SortExpressions>
                                               <TablixHeader>
-                                                <Size>2.07401cm</Size>
+                                                <Size>2.09029cm</Size>
                                                 <CellContents>
                                                   <Textbox Name="total_qqspuntoS2">
                                                     <CanGrow>true</CanGrow>
@@ -1461,7 +1463,7 @@
                                                     </SortExpression>
                                                   </SortExpressions>
                                                   <TablixHeader>
-                                                    <Size>1.61843cm</Size>
+                                                    <Size>1.63471cm</Size>
                                                     <CellContents>
                                                       <Textbox Name="total_sacosT2">
                                                         <CanGrow>true</CanGrow>
@@ -1505,7 +1507,7 @@
                                                         </SortExpression>
                                                       </SortExpressions>
                                                       <TablixHeader>
-                                                        <Size>2.05648cm</Size>
+                                                        <Size>2.07276cm</Size>
                                                         <CellContents>
                                                           <Textbox Name="total_qqspuntoT2">
                                                             <CanGrow>true</CanGrow>
@@ -1562,7 +1564,7 @@
                 </TablixMember>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>8.7208cm</Size>
+                    <Size>19.89084cm</Size>
                     <CellContents>
                       <Textbox Name="Textbox126">
                         <CanGrow>true</CanGrow>
@@ -1572,7 +1574,9 @@
                             <TextRuns>
                               <TextRun>
                                 <Value>TOTAL BODEGA</Value>
-                                <Style />
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -1593,219 +1597,13 @@
                       </Textbox>
                     </CellContents>
                   </TablixHeader>
-                  <TablixMembers>
-                    <TablixMember>
-                      <TablixHeader>
-                        <Size>1.63253cm</Size>
-                        <CellContents>
-                          <Textbox Name="Textbox130">
-                            <CanGrow>true</CanGrow>
-                            <KeepTogether>true</KeepTogether>
-                            <Paragraphs>
-                              <Paragraph>
-                                <TextRuns>
-                                  <TextRun>
-                                    <Value>=Sum(Fields!total_sacosE.Value)</Value>
-                                    <Style>
-                                      <FontSize>9pt</FontSize>
-                                    </Style>
-                                  </TextRun>
-                                </TextRuns>
-                                <Style />
-                              </Paragraph>
-                            </Paragraphs>
-                            <rd:DefaultName>Textbox130</rd:DefaultName>
-                            <Style>
-                              <Border>
-                                <Style>Solid</Style>
-                              </Border>
-                              <PaddingLeft>2pt</PaddingLeft>
-                              <PaddingRight>2pt</PaddingRight>
-                              <PaddingTop>2pt</PaddingTop>
-                              <PaddingBottom>2pt</PaddingBottom>
-                            </Style>
-                          </Textbox>
-                        </CellContents>
-                      </TablixHeader>
-                      <TablixMembers>
-                        <TablixMember>
-                          <TablixHeader>
-                            <Size>2.07744cm</Size>
-                            <CellContents>
-                              <Textbox Name="Textbox131">
-                                <CanGrow>true</CanGrow>
-                                <KeepTogether>true</KeepTogether>
-                                <Paragraphs>
-                                  <Paragraph>
-                                    <TextRuns>
-                                      <TextRun>
-                                        <Value />
-                                        <Style />
-                                      </TextRun>
-                                    </TextRuns>
-                                    <Style />
-                                  </Paragraph>
-                                </Paragraphs>
-                                <rd:DefaultName>Textbox131</rd:DefaultName>
-                                <Style>
-                                  <Border>
-                                    <Style>Solid</Style>
-                                  </Border>
-                                  <PaddingLeft>2pt</PaddingLeft>
-                                  <PaddingRight>2pt</PaddingRight>
-                                  <PaddingTop>2pt</PaddingTop>
-                                  <PaddingBottom>2pt</PaddingBottom>
-                                </Style>
-                              </Textbox>
-                            </CellContents>
-                          </TablixHeader>
-                          <TablixMembers>
-                            <TablixMember>
-                              <TablixHeader>
-                                <Size>1.54835cm</Size>
-                                <CellContents>
-                                  <Textbox Name="Textbox132">
-                                    <CanGrow>true</CanGrow>
-                                    <KeepTogether>true</KeepTogether>
-                                    <Paragraphs>
-                                      <Paragraph>
-                                        <TextRuns>
-                                          <TextRun>
-                                            <Value />
-                                            <Style />
-                                          </TextRun>
-                                        </TextRuns>
-                                        <Style />
-                                      </Paragraph>
-                                    </Paragraphs>
-                                    <rd:DefaultName>Textbox132</rd:DefaultName>
-                                    <Style>
-                                      <Border>
-                                        <Style>Solid</Style>
-                                      </Border>
-                                      <PaddingLeft>2pt</PaddingLeft>
-                                      <PaddingRight>2pt</PaddingRight>
-                                      <PaddingTop>2pt</PaddingTop>
-                                      <PaddingBottom>2pt</PaddingBottom>
-                                    </Style>
-                                  </Textbox>
-                                </CellContents>
-                              </TablixHeader>
-                              <TablixMembers>
-                                <TablixMember>
-                                  <TablixHeader>
-                                    <Size>2.07401cm</Size>
-                                    <CellContents>
-                                      <Textbox Name="Textbox133">
-                                        <CanGrow>true</CanGrow>
-                                        <KeepTogether>true</KeepTogether>
-                                        <Paragraphs>
-                                          <Paragraph>
-                                            <TextRuns>
-                                              <TextRun>
-                                                <Value />
-                                                <Style />
-                                              </TextRun>
-                                            </TextRuns>
-                                            <Style />
-                                          </Paragraph>
-                                        </Paragraphs>
-                                        <rd:DefaultName>Textbox133</rd:DefaultName>
-                                        <Style>
-                                          <Border>
-                                            <Style>Solid</Style>
-                                          </Border>
-                                          <PaddingLeft>2pt</PaddingLeft>
-                                          <PaddingRight>2pt</PaddingRight>
-                                          <PaddingTop>2pt</PaddingTop>
-                                          <PaddingBottom>2pt</PaddingBottom>
-                                        </Style>
-                                      </Textbox>
-                                    </CellContents>
-                                  </TablixHeader>
-                                  <TablixMembers>
-                                    <TablixMember>
-                                      <TablixHeader>
-                                        <Size>1.61843cm</Size>
-                                        <CellContents>
-                                          <Textbox Name="Textbox134">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value />
-                                                    <Style />
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style />
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>Textbox134</rd:DefaultName>
-                                            <Style>
-                                              <Border>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixHeader>
-                                      <TablixMembers>
-                                        <TablixMember>
-                                          <TablixHeader>
-                                            <Size>2.05648cm</Size>
-                                            <CellContents>
-                                              <Textbox Name="Textbox135">
-                                                <CanGrow>true</CanGrow>
-                                                <KeepTogether>true</KeepTogether>
-                                                <Paragraphs>
-                                                  <Paragraph>
-                                                    <TextRuns>
-                                                      <TextRun>
-                                                        <Value />
-                                                        <Style />
-                                                      </TextRun>
-                                                    </TextRuns>
-                                                    <Style />
-                                                  </Paragraph>
-                                                </Paragraphs>
-                                                <rd:DefaultName>Textbox135</rd:DefaultName>
-                                                <Style>
-                                                  <Border>
-                                                    <Style>Solid</Style>
-                                                  </Border>
-                                                  <PaddingLeft>2pt</PaddingLeft>
-                                                  <PaddingRight>2pt</PaddingRight>
-                                                  <PaddingTop>2pt</PaddingTop>
-                                                  <PaddingBottom>2pt</PaddingBottom>
-                                                </Style>
-                                              </Textbox>
-                                            </CellContents>
-                                          </TablixHeader>
-                                        </TablixMember>
-                                      </TablixMembers>
-                                    </TablixMember>
-                                  </TablixMembers>
-                                </TablixMember>
-                              </TablixMembers>
-                            </TablixMember>
-                          </TablixMembers>
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixMember>
-                  </TablixMembers>
                   <KeepWithGroup>Before</KeepWithGroup>
                 </TablixMember>
               </TablixMembers>
             </TablixMember>
             <TablixMember>
               <TablixHeader>
-                <Size>10.59078cm</Size>
+                <Size>21.7771cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox111">
                     <CanGrow>true</CanGrow>
@@ -1815,11 +1613,13 @@
                         <TextRuns>
                           <TextRun>
                             <Value>TOTALES</Value>
-                            <Style />
+                            <Style>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
                           </TextRun>
                         </TextRuns>
                         <Style>
-                          <TextAlign>Center</TextAlign>
+                          <TextAlign>Right</TextAlign>
                         </Style>
                       </Paragraph>
                     </Paragraphs>
@@ -1836,230 +1636,15 @@
                   </Textbox>
                 </CellContents>
               </TablixHeader>
-              <TablixMembers>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>1.63253cm</Size>
-                    <CellContents>
-                      <Textbox Name="Textbox117">
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>=Sum(Fields!total_sacosE.Value)</Value>
-                                <Style>
-                                  <FontSize>9pt</FontSize>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style />
-                          </Paragraph>
-                        </Paragraphs>
-                        <rd:DefaultName>Textbox117</rd:DefaultName>
-                        <Style>
-                          <Border>
-                            <Style>Solid</Style>
-                          </Border>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                        </Style>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                  <TablixMembers>
-                    <TablixMember>
-                      <TablixHeader>
-                        <Size>2.07744cm</Size>
-                        <CellContents>
-                          <Textbox Name="Textbox118">
-                            <CanGrow>true</CanGrow>
-                            <KeepTogether>true</KeepTogether>
-                            <Paragraphs>
-                              <Paragraph>
-                                <TextRuns>
-                                  <TextRun>
-                                    <Value>=Sum(Fields!total_qqspuntoE.Value)</Value>
-                                    <Style>
-                                      <FontSize>9pt</FontSize>
-                                    </Style>
-                                  </TextRun>
-                                </TextRuns>
-                                <Style />
-                              </Paragraph>
-                            </Paragraphs>
-                            <rd:DefaultName>Textbox118</rd:DefaultName>
-                            <Style>
-                              <Border>
-                                <Style>Solid</Style>
-                              </Border>
-                              <PaddingLeft>2pt</PaddingLeft>
-                              <PaddingRight>2pt</PaddingRight>
-                              <PaddingTop>2pt</PaddingTop>
-                              <PaddingBottom>2pt</PaddingBottom>
-                            </Style>
-                          </Textbox>
-                        </CellContents>
-                      </TablixHeader>
-                      <TablixMembers>
-                        <TablixMember>
-                          <TablixHeader>
-                            <Size>1.54835cm</Size>
-                            <CellContents>
-                              <Textbox Name="Textbox119">
-                                <CanGrow>true</CanGrow>
-                                <KeepTogether>true</KeepTogether>
-                                <Paragraphs>
-                                  <Paragraph>
-                                    <TextRuns>
-                                      <TextRun>
-                                        <Value>=Sum(Fields!total_sacosS.Value)</Value>
-                                        <Style>
-                                          <FontSize>9pt</FontSize>
-                                        </Style>
-                                      </TextRun>
-                                    </TextRuns>
-                                    <Style />
-                                  </Paragraph>
-                                </Paragraphs>
-                                <rd:DefaultName>Textbox119</rd:DefaultName>
-                                <Style>
-                                  <Border>
-                                    <Style>Solid</Style>
-                                  </Border>
-                                  <PaddingLeft>2pt</PaddingLeft>
-                                  <PaddingRight>2pt</PaddingRight>
-                                  <PaddingTop>2pt</PaddingTop>
-                                  <PaddingBottom>2pt</PaddingBottom>
-                                </Style>
-                              </Textbox>
-                            </CellContents>
-                          </TablixHeader>
-                          <TablixMembers>
-                            <TablixMember>
-                              <TablixHeader>
-                                <Size>2.07401cm</Size>
-                                <CellContents>
-                                  <Textbox Name="Textbox120">
-                                    <CanGrow>true</CanGrow>
-                                    <KeepTogether>true</KeepTogether>
-                                    <Paragraphs>
-                                      <Paragraph>
-                                        <TextRuns>
-                                          <TextRun>
-                                            <Value>=Sum(Fields!total_qqspuntoS.Value)</Value>
-                                            <Style>
-                                              <FontSize>9pt</FontSize>
-                                            </Style>
-                                          </TextRun>
-                                        </TextRuns>
-                                        <Style />
-                                      </Paragraph>
-                                    </Paragraphs>
-                                    <rd:DefaultName>Textbox120</rd:DefaultName>
-                                    <Style>
-                                      <Border>
-                                        <Style>Solid</Style>
-                                      </Border>
-                                      <PaddingLeft>2pt</PaddingLeft>
-                                      <PaddingRight>2pt</PaddingRight>
-                                      <PaddingTop>2pt</PaddingTop>
-                                      <PaddingBottom>2pt</PaddingBottom>
-                                    </Style>
-                                  </Textbox>
-                                </CellContents>
-                              </TablixHeader>
-                              <TablixMembers>
-                                <TablixMember>
-                                  <TablixHeader>
-                                    <Size>1.61843cm</Size>
-                                    <CellContents>
-                                      <Textbox Name="Textbox121">
-                                        <CanGrow>true</CanGrow>
-                                        <KeepTogether>true</KeepTogether>
-                                        <Paragraphs>
-                                          <Paragraph>
-                                            <TextRuns>
-                                              <TextRun>
-                                                <Value>=Sum(Fields!total_sacosT.Value)</Value>
-                                                <Style>
-                                                  <FontSize>9pt</FontSize>
-                                                </Style>
-                                              </TextRun>
-                                            </TextRuns>
-                                            <Style />
-                                          </Paragraph>
-                                        </Paragraphs>
-                                        <rd:DefaultName>Textbox121</rd:DefaultName>
-                                        <Style>
-                                          <Border>
-                                            <Style>Solid</Style>
-                                          </Border>
-                                          <PaddingLeft>2pt</PaddingLeft>
-                                          <PaddingRight>2pt</PaddingRight>
-                                          <PaddingTop>2pt</PaddingTop>
-                                          <PaddingBottom>2pt</PaddingBottom>
-                                        </Style>
-                                      </Textbox>
-                                    </CellContents>
-                                  </TablixHeader>
-                                  <TablixMembers>
-                                    <TablixMember>
-                                      <TablixHeader>
-                                        <Size>2.05648cm</Size>
-                                        <CellContents>
-                                          <Textbox Name="Textbox122">
-                                            <CanGrow>true</CanGrow>
-                                            <KeepTogether>true</KeepTogether>
-                                            <Paragraphs>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>=Sum(Fields!total_qqspuntoT.Value)</Value>
-                                                    <Style>
-                                                      <FontSize>9pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style />
-                                              </Paragraph>
-                                            </Paragraphs>
-                                            <rd:DefaultName>Textbox122</rd:DefaultName>
-                                            <Style>
-                                              <Border>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <PaddingLeft>2pt</PaddingLeft>
-                                              <PaddingRight>2pt</PaddingRight>
-                                              <PaddingTop>2pt</PaddingTop>
-                                              <PaddingBottom>2pt</PaddingBottom>
-                                            </Style>
-                                          </Textbox>
-                                        </CellContents>
-                                      </TablixHeader>
-                                    </TablixMember>
-                                  </TablixMembers>
-                                </TablixMember>
-                              </TablixMembers>
-                            </TablixMember>
-                          </TablixMembers>
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixMember>
-                  </TablixMembers>
-                </TablixMember>
-              </TablixMembers>
               <KeepWithGroup>Before</KeepWithGroup>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>repor_cafebodega</DataSetName>
         <Top>0.12912cm</Top>
+        <Left>0.37111cm</Left>
         <Height>3cm</Height>
-        <Width>25.44818cm</Width>
+        <Width>25.6598cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2067,13 +1652,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.35694in</Height>
+    <Height>1.96111in</Height>
     <Style />
   </Body>
-  <Width>10.03981in</Width>
+  <Width>10.40494in</Width>
   <Page>
     <PageHeader>
-      <Height>1.82562cm</Height>
+      <Height>1.98155cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -2081,9 +1666,8 @@
           <Source>Embedded</Source>
           <Value>Logo__majada</Value>
           <Sizing>FitProportional</Sizing>
-          <Left>3.85408cm</Left>
-          <Height>1.66123cm</Height>
-          <Width>2.5cm</Width>
+          <Height>1.60831cm</Height>
+          <Width>2.7225cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -2097,7 +1681,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>COOPERATIVA LA MAJADA, DE R.L.</Value>
+                  <Value>Sociedad Cooperativa de Cafetaleros de San José la Majada de R.L.</Value>
                   <Style>
                     <FontWeight>ExtraBold</FontWeight>
                   </Style>
@@ -2107,9 +1691,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Left>6.53047cm</Left>
+          <Top>0.21449cm</Top>
+          <Left>7.90833cm</Left>
           <Height>0.52944cm</Height>
-          <Width>11.33708cm</Width>
+          <Width>12.07791cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -2140,10 +1725,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.59118cm</Top>
-          <Left>6.53047cm</Left>
+          <Top>0.80567cm</Top>
+          <Left>21.56083cm</Left>
           <Height>0.54061cm</Height>
-          <Width>2.38493cm</Width>
+          <Width>2.14722cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border />
@@ -2160,7 +1745,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>FECHA:</Value>
+                  <Value>El reporte se genera a la fecha:</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>arial</FontFamily>
@@ -2172,10 +1757,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.59118cm</Top>
-          <Left>11.35408cm</Left>
+          <Top>1.38156cm</Top>
+          <Left>2.7225cm</Left>
           <Height>0.52944cm</Height>
-          <Width>1.5475cm</Width>
+          <Width>5.46334cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border />
@@ -2202,10 +1787,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox101</rd:DefaultName>
-          <Top>0.59118cm</Top>
-          <Left>8.98595cm</Left>
+          <Top>0.80567cm</Top>
+          <Left>23.74333cm</Left>
           <Height>0.54061cm</Height>
-          <Width>2.36813cm</Width>
+          <Width>2.5cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -2236,10 +1821,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.59118cm</Top>
-          <Left>12.97214cm</Left>
+          <Top>1.38156cm</Top>
+          <Left>8.29167cm</Left>
           <Height>0.52944cm</Height>
-          <Width>1.92506cm</Width>
+          <Width>2.92333cm</Width>
           <ZIndex>5</ZIndex>
           <Style>
             <Border />
@@ -2256,7 +1841,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>REPORTE DE EXISTENCIAS DE CAFÉ EN BODEGAS</Value>
+                  <Value>Reporte de: Existencia de café por bodegas</Value>
                   <Style>
                     <FontWeight>ExtraBold</FontWeight>
                   </Style>
@@ -2266,11 +1851,182 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>1.16706cm</Top>
-          <Left>6.53047cm</Left>
+          <Top>0.81684cm</Top>
+          <Left>2.7225cm</Left>
           <Height>0.52944cm</Height>
           <Width>11.33708cm</Width>
           <ZIndex>6</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox14">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!nombre_persona.Value, "repor_cafebodega")</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>arial</FontFamily>
+                    <FontWeight>ExtraBold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox7</rd:DefaultName>
+          <Top>1.45211cm</Top>
+          <Left>21.72978cm</Left>
+          <Height>0.52944cm</Height>
+          <Width>4.51113cm</Width>
+          <ZIndex>7</ZIndex>
+          <Style>
+            <Border />
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox17">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Elaborado por:</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>arial</FontFamily>
+                    <FontWeight>ExtraBold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox7</rd:DefaultName>
+          <Top>1.41684cm</Top>
+          <Left>18.66534cm</Left>
+          <Height>0.54061cm</Height>
+          <Width>2.99389cm</Width>
+          <ZIndex>8</ZIndex>
+          <Style>
+            <Border />
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
+    <PageFooter>
+      <Height>1.21708cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox1">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!TotalPages</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>0.30502cm</Top>
+          <Left>25.01333cm</Left>
+          <Height>0.6cm</Height>
+          <Width>1.30938cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!PageNumber</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>0.30502cm</Top>
+          <Left>23.19318cm</Left>
+          <Height>0.6cm</Height>
+          <Width>1.36626cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>-</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>0.30502cm</Top>
+          <Left>24.59472cm</Left>
+          <Height>0.6cm</Height>
+          <Width>0.38333cm</Width>
+          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -2287,23 +2043,13 @@
           <Style>None</Style>
         </Border>
       </Style>
-    </PageHeader>
-    <PageFooter>
-      <Height>2.54cm</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
-      <PrintOnLastPage>true</PrintOnLastPage>
-      <Style>
-        <Border>
-          <Style>None</Style>
-        </Border>
-      </Style>
     </PageFooter>
     <PageHeight>21.59cm</PageHeight>
     <PageWidth>27.94cm</PageWidth>
-    <LeftMargin>1cm</LeftMargin>
-    <RightMargin>1cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
-    <BottomMargin>2cm</BottomMargin>
+    <LeftMargin>0.5cm</LeftMargin>
+    <RightMargin>0.5cm</RightMargin>
+    <TopMargin>0.5cm</TopMargin>
+    <BottomMargin>0.5cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>
@@ -2374,6 +2120,14 @@
         </Field>
         <Field Name="total_qqspuntoT">
           <DataField>total_qqspuntoT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nombre_persona">
+          <DataField>nombre_persona</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DataColumn2">
+          <DataField>DataColumn2</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

@@ -303,6 +303,8 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             private global::System.Data.DataColumn columntotal_qqspuntoT;
             
+            private global::System.Data.DataColumn columnnombre_persona;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public repor_ccalidadDataTable() {
@@ -434,6 +436,14 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nombre_personaColumn {
+                get {
+                    return this.columnnombre_persona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -469,7 +479,7 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public repor_ccalidadRow Addrepor_ccalidadRow(string nombre_cosecha, string nombre_calidad, string nombre_subproducto, string almacenado_en, string total_sacosE, string total_qqspuntoE, string fecha, string id_nombre_calidad, string total_sacosS, string total_qqspuntoS, string total_sacosT, string total_qqspuntoT) {
+            public repor_ccalidadRow Addrepor_ccalidadRow(string nombre_cosecha, string nombre_calidad, string nombre_subproducto, string almacenado_en, string total_sacosE, string total_qqspuntoE, string fecha, string id_nombre_calidad, string total_sacosS, string total_qqspuntoS, string total_sacosT, string total_qqspuntoT, string nombre_persona) {
                 repor_ccalidadRow rowrepor_ccalidadRow = ((repor_ccalidadRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nombre_cosecha,
@@ -483,7 +493,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                         total_sacosS,
                         total_qqspuntoS,
                         total_sacosT,
-                        total_qqspuntoT};
+                        total_qqspuntoT,
+                        nombre_persona};
                 rowrepor_ccalidadRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrepor_ccalidadRow);
                 return rowrepor_ccalidadRow;
@@ -518,6 +529,7 @@ namespace sistema_modular_cafe_majada.DataSets {
                 this.columntotal_qqspuntoS = base.Columns["total_qqspuntoS"];
                 this.columntotal_sacosT = base.Columns["total_sacosT"];
                 this.columntotal_qqspuntoT = base.Columns["total_qqspuntoT"];
+                this.columnnombre_persona = base.Columns["nombre_persona"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -547,6 +559,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                 base.Columns.Add(this.columntotal_sacosT);
                 this.columntotal_qqspuntoT = new global::System.Data.DataColumn("total_qqspuntoT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotal_qqspuntoT);
+                this.columnnombre_persona = new global::System.Data.DataColumn("nombre_persona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombre_persona);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_repor_ccalidad");
                 this.ExtendedProperties.Add("Generator_UserTableName", "repor_ccalidad");
             }
@@ -885,6 +899,22 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nombre_persona {
+                get {
+                    try {
+                        return ((string)(this[this.tablerepor_ccalidad.nombre_personaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre_persona\' de la tabla \'repor_ccalidad\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerepor_ccalidad.nombre_personaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isnombre_cosechaNull() {
                 return this.IsNull(this.tablerepor_ccalidad.nombre_cosechaColumn);
             }
@@ -1025,6 +1055,18 @@ namespace sistema_modular_cafe_majada.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Settotal_qqspuntoTNull() {
                 this[this.tablerepor_ccalidad.total_qqspuntoTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isnombre_personaNull() {
+                return this.IsNull(this.tablerepor_ccalidad.nombre_personaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setnombre_personaNull() {
+                this[this.tablerepor_ccalidad.nombre_personaColumn] = global::System.Convert.DBNull;
             }
         }
         

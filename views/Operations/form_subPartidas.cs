@@ -1,4 +1,5 @@
-﻿using sistema_modular_cafe_majada.controller.InfrastructureController;
+﻿using Microsoft.Reporting.WinForms;
+using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
@@ -1097,8 +1098,12 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfSPartida_Click(object sender, EventArgs e)
         {
-            form_opcReportExistencias reportSPartida = new form_opcReportExistencias();
+
+            string reportPR = "../../views/Reports/report_numsubpartida.rdlc";
+            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR);
             reportSPartida.ShowDialog();
+
         }
+
     }
 }

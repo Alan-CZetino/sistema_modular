@@ -12,7 +12,7 @@
   <xs:element name="repor_ccalidad" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="repor_ccalidad" msprop:Generator_UserDSName="repor_ccalidad">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="repor_ccalidad" msprop:Generator_TableClassName="repor_ccalidadDataTable" msprop:Generator_TableVarName="tablerepor_ccalidad" msprop:Generator_TablePropName="_repor_ccalidad" msprop:Generator_RowDeletingName="repor_ccalidadRowDeleting" msprop:Generator_RowChangingName="repor_ccalidadRowChanging" msprop:Generator_RowEvHandlerName="repor_ccalidadRowChangeEventHandler" msprop:Generator_RowDeletedName="repor_ccalidadRowDeleted" msprop:Generator_UserTableName="repor_ccalidad" msprop:Generator_RowChangedName="repor_ccalidadRowChanged" msprop:Generator_RowEvArgName="repor_ccalidadRowChangeEvent" msprop:Generator_RowClassName="repor_ccalidadRow">
+        <xs:element name="repor_ccalidad" msprop:Generator_TableClassName="repor_ccalidadDataTable" msprop:Generator_TableVarName="tablerepor_ccalidad" msprop:Generator_RowChangedName="repor_ccalidadRowChanged" msprop:Generator_TablePropName="_repor_ccalidad" msprop:Generator_RowDeletingName="repor_ccalidadRowDeleting" msprop:Generator_RowChangingName="repor_ccalidadRowChanging" msprop:Generator_RowEvHandlerName="repor_ccalidadRowChangeEventHandler" msprop:Generator_RowDeletedName="repor_ccalidadRowDeleted" msprop:Generator_RowClassName="repor_ccalidadRow" msprop:Generator_UserTableName="repor_ccalidad" msprop:Generator_RowEvArgName="repor_ccalidadRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="nombre_cosecha" msprop:Generator_ColumnVarNameInTable="columnnombre_cosecha" msprop:Generator_ColumnPropNameInRow="nombre_cosecha" msprop:Generator_ColumnPropNameInTable="nombre_cosechaColumn" msprop:Generator_UserColumnName="nombre_cosecha" type="xs:string" minOccurs="0" />
@@ -27,6 +27,7 @@
               <xs:element name="total_qqspuntoS" msprop:Generator_ColumnVarNameInTable="columntotal_qqspuntoS" msprop:Generator_ColumnPropNameInRow="total_qqspuntoS" msprop:Generator_ColumnPropNameInTable="total_qqspuntoSColumn" msprop:Generator_UserColumnName="total_qqspuntoS" type="xs:string" minOccurs="0" />
               <xs:element name="total_sacosT" msprop:Generator_ColumnVarNameInTable="columntotal_sacosT" msprop:Generator_ColumnPropNameInRow="total_sacosT" msprop:Generator_ColumnPropNameInTable="total_sacosTColumn" msprop:Generator_UserColumnName="total_sacosT" type="xs:string" minOccurs="0" />
               <xs:element name="total_qqspuntoT" msprop:Generator_ColumnVarNameInTable="columntotal_qqspuntoT" msprop:Generator_ColumnPropNameInRow="total_qqspuntoT" msprop:Generator_ColumnPropNameInTable="total_qqspuntoTColumn" msprop:Generator_UserColumnName="total_qqspuntoT" type="xs:string" minOccurs="0" />
+              <xs:element name="nombre_persona" msprop:Generator_ColumnVarNameInTable="columnnombre_persona" msprop:Generator_ColumnPropNameInRow="nombre_persona" msprop:Generator_ColumnPropNameInTable="nombre_personaColumn" msprop:Generator_UserColumnName="nombre_persona" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
