@@ -48,18 +48,6 @@ namespace sistema_modular_cafe_majada.views
 
         }
 
-        private void btn_lavadaCafe_Click(object sender, EventArgs e)
-        {
-            form_lavadaCafe form_Lavada = new form_lavadaCafe();
-            AddFormulario(form_Lavada);
-        }
-
-        private void btn_despulpaCafe_Click(object sender, EventArgs e)
-        {
-            form_despulpaCafe form_Despulpa = new form_despulpaCafe();
-            AddFormulario(form_Despulpa);
-        }
-
         private void btn_trillaCafe_Click(object sender, EventArgs e)
         {
             form_trillaCafe form_Trilla = new form_trillaCafe();
