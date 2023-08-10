@@ -265,15 +265,24 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_fincas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("depurador - evento click img update: " + imagenClickeada);
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_fincas.Rows.Count)
+            {
+                Console.WriteLine("depurador - evento click img update: " + imagenClickeada);
 
-            //obtener la fila a la celda que se realizo el evento dobleClick
-            DataGridViewRow filaSeleccionada = dtg_fincas.Rows[e.RowIndex];
-            fincaSeleccionada = new Finca();
+                //obtener la fila a la celda que se realizo el evento dobleClick
+                DataGridViewRow filaSeleccionada = dtg_fincas.Rows[e.RowIndex];
+                fincaSeleccionada = new Finca();
 
-            fincaSeleccionada.IdFinca = Convert.ToInt32(filaSeleccionada.Cells["codigoFinca"].Value);
-            fincaSeleccionada.nombreFinca = filaSeleccionada.Cells["nomFinca"].Value.ToString();
-            fincaSeleccionada.ubicacionFinca = filaSeleccionada.Cells["ubiFinca"].Value.ToString();
+                fincaSeleccionada.IdFinca = Convert.ToInt32(filaSeleccionada.Cells["codigoFinca"].Value);
+                fincaSeleccionada.nombreFinca = filaSeleccionada.Cells["nomFinca"].Value.ToString();
+                fincaSeleccionada.ubicacionFinca = filaSeleccionada.Cells["ubiFinca"].Value.ToString();
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 

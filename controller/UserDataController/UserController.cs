@@ -76,7 +76,19 @@ namespace sistema_modular_cafe_majada.controller.UserDataController
                 return null;
             }
         }
-
+        //
+        public Usuario ObtenerUsuariosNombresID(int Id_Usuario)
+        {
+            try
+            {
+                return usuarioDAO.ObtenerUsuariosNombresID(Id_Usuario);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener nombre del usuario: " + ex.Message);
+                return null;
+            }
+        }
         //
         public List<Usuario> ObtenerTodosUsuariosNombresID()
         {

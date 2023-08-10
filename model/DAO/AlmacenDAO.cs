@@ -29,7 +29,7 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 //se crea script SQL para insertar
                 string consulta = @"INSERT INTO Almacen ( id_almacen, nombre_almacen, descripcion_almacen, capacidad_almacen, cantidad_actual_almacen, cantidad_actual_saco_almacen,  
-                                            ,ubicacion_almacen, id_bodega_ubicacion_almacen)
+                                            ubicacion_almacen, id_bodega_ubicacion_almacen)
                                     VALUES ( @id, @nombre, @descrip, @capacidad, @capacidadAct, @capacidadSacoAct, @ubicacion, @iBodega)";
                 conexion.CrearComando(consulta);
 
@@ -80,8 +80,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         Almacen Almacens = new Almacen()
                         {
                             IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
-                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
-                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
                             CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
@@ -129,8 +129,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         Almacen = new Almacen()
                         {
                             IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
-                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
-                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            DescripcionAlmacen = (reader["descripcion_almacen"])is DBNull ? "" : Convert.ToString(reader["descripcion_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
                             CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
@@ -181,8 +181,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         Almacen = new Almacen()
                         {
                             IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
-                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
-                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
                             CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
@@ -234,8 +234,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         Almacen almacen = new Almacen()
                         {
                             IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
-                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
-                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
@@ -289,8 +289,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         Almacen almacen = new Almacen()
                         {
                             IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
-                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
-                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
                             CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
@@ -401,8 +401,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         Almacen almacen = new Almacen()
                         {
                             IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
-                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
-                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
@@ -767,8 +767,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         Almacen almacen = new Almacen()
                         {
                             IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
-                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
-                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
@@ -827,8 +827,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                         Almacen almacen = new Almacen()
                         {
                             IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
-                            NombreAlmacen = Convert.ToString(reader["descripcion_almacen"]),
-                            DescripcionAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            NombreAlmacen = Convert.ToString(reader["nombre_almacen"]),
+                            DescripcionAlmacen = Convert.ToString(reader["descripcion_almacen"]),
                             CapacidadAlmacen = Convert.ToDouble(reader["capacidad_almacen"]),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),

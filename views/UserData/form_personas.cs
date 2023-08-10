@@ -574,23 +574,32 @@ namespace sistema_modular_cafe_majada.views
 
         private void dataGrid_PersonView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("depurador - evento click img update: " + imagenClickeada);
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dataGrid_PersonView.Rows[e.RowIndex];
-            personaSeleccionada = new Persona();
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dataGrid_PersonView.Rows.Count)
+            {
+                Console.WriteLine("depurador - evento click img update: " + imagenClickeada);
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dataGrid_PersonView.Rows[e.RowIndex];
+                personaSeleccionada = new Persona();
 
-            // Obtener los valores de las celdas de la fila seleccionada
-            personaSeleccionada.IdPersona = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            personaSeleccionada.NombresPersona = filaSeleccionada.Cells["Nombres"].Value.ToString();
-            personaSeleccionada.ApellidosPersona = filaSeleccionada.Cells["Apellidos"].Value.ToString();
-            personaSeleccionada.DireccionPersona = filaSeleccionada.Cells["Dirección"].Value.ToString();
-            personaSeleccionada.FechaNacimientoPersona = Convert.ToDateTime(filaSeleccionada.Cells["Fecha_Nacimiento"].Value);
-            personaSeleccionada.DuiPersona = filaSeleccionada.Cells["DUI"].Value.ToString();
-            personaSeleccionada.NitPersona = filaSeleccionada.Cells["NIT"].Value != null ? filaSeleccionada.Cells["NIT"].Value.ToString() : null;
-            personaSeleccionada.Telefono1Persona = filaSeleccionada.Cells["Teléfono"].Value.ToString();
-            personaSeleccionada.Telefono2Persona = filaSeleccionada.Cells["Teléfono_Secundario"].Value != null ? filaSeleccionada.Cells["Teléfono_Secundario"].Value.ToString() : null;
+                // Obtener los valores de las celdas de la fila seleccionada
+                personaSeleccionada.IdPersona = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                personaSeleccionada.NombresPersona = filaSeleccionada.Cells["Nombres"].Value.ToString();
+                personaSeleccionada.ApellidosPersona = filaSeleccionada.Cells["Apellidos"].Value.ToString();
+                personaSeleccionada.DireccionPersona = filaSeleccionada.Cells["Dirección"].Value.ToString();
+                personaSeleccionada.FechaNacimientoPersona = Convert.ToDateTime(filaSeleccionada.Cells["Fecha_Nacimiento"].Value);
+                personaSeleccionada.DuiPersona = filaSeleccionada.Cells["DUI"].Value.ToString();
+                personaSeleccionada.NitPersona = filaSeleccionada.Cells["NIT"].Value != null ? filaSeleccionada.Cells["NIT"].Value.ToString() : null;
+                personaSeleccionada.Telefono1Persona = filaSeleccionada.Cells["Teléfono"].Value.ToString();
+                personaSeleccionada.Telefono2Persona = filaSeleccionada.Cells["Teléfono_Secundario"].Value != null ? filaSeleccionada.Cells["Teléfono_Secundario"].Value.ToString() : null;
 
-            Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + personaSeleccionada.NombresPersona);
+                Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + personaSeleccionada.NombresPersona);
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void txb_Nit_Leave(object sender, EventArgs e)

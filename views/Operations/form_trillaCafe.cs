@@ -84,6 +84,7 @@ namespace sistema_modular_cafe_majada.views
             txb_bodega.ReadOnly = true;
             txb_finca.Enabled = false;
             txb_finca.ReadOnly = true;
+            cbx_subProducto.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
 
@@ -218,8 +219,9 @@ namespace sistema_modular_cafe_majada.views
                     BodegaController bodegaController = new BodegaController();
                     Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
 
-                    txb_bodega.Text = datoB.NombreBodega;
-                    iBodega = datoB.IdBodega;
+                    //
+                    /*txb_bodega.Text = datoB.NombreBodega;
+                    iBodega = datoB.IdBodega;*/
                     imgClickBodega = false;
                 }
                 iAlmacen = AlmacenSeleccionado.IAlmacen;
@@ -246,10 +248,12 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 txb_bodega.Text = BodegaSeleccionada.NombreBodega;
-                txb_almacen.Text = null;
+                Console.WriteLine("depuracion - id Bodega obtenida " + BodegaSeleccionada.IdBodega);
+                Console.WriteLine("depuracion2 - id Bodega obtenida " + iBodega);
+                /*txb_almacen.Text = null;
                 iAlmacen = 0;
                 AlmacenSeleccionado.NombreAlmacen = null;
-                AlmacenSeleccionado.IAlmacen = 0;
+                AlmacenSeleccionado.IAlmacen = 0;*/
             }
         }
 

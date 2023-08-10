@@ -593,6 +593,7 @@
       <DependentUpon>form_personal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Reports\report_numsubpartida.rdlc" />
+    <EmbeddedResource Include="views\Reports\repor_grafico.rdlc" />
     <EmbeddedResource Include="views\Reports\repor_trillado.rdlc" />
     <EmbeddedResource Include="views\UserData\form_personas.resx">
       <DependentUpon>form_personas.cs</DependentUpon>

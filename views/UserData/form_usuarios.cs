@@ -45,6 +45,8 @@ namespace sistema_modular_cafe_majada.views
             StyleChekedListBox();
 
             txb_Name.ReadOnly = true;
+            cbx_role.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbx_userStatus.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
 
@@ -107,23 +109,32 @@ namespace sistema_modular_cafe_majada.views
 
         private void dataGrid_UserView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dataGrid_UserView.Rows[e.RowIndex];
-            usuarioSeleccionado = new Usuario();
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dataGrid_UserView.Rows.Count)
+            {
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dataGrid_UserView.Rows[e.RowIndex];
+                usuarioSeleccionado = new Usuario();
 
-            // Obtener los valores de las celdas de la fila seleccionada
-            usuarioSeleccionado.IdUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            usuarioSeleccionado.NombreUsuario = filaSeleccionada.Cells["Usuario"].Value.ToString();
-            usuarioSeleccionado.EmailUsuario = filaSeleccionada.Cells["Email"].Value.ToString();
-            usuarioSeleccionado.ClaveUsuario = filaSeleccionada.Cells["Clave_Usuario"].Value.ToString();
-            usuarioSeleccionado.EstadoUsuario = filaSeleccionada.Cells["Estado"].Value.ToString();
-            usuarioSeleccionado.FechaCreacionUsuario = Convert.ToDateTime(filaSeleccionada.Cells["Fecha_Creacion"].Value);
-            // Obtener el valor de la celda
-            object valorCelda = filaSeleccionada.Cells["Fecha_Baja"].Value;
-            // Verificar si el valor de la celda es nulo y asignar el valor correspondiente a la propiedad
-            usuarioSeleccionado.FechaBajaUsuario = valorCelda != null ? Convert.ToDateTime(valorCelda) : (DateTime?)null;
-            usuarioSeleccionado.NombreRol = Convert.ToString(filaSeleccionada.Cells["Rol"].Value);
-            usuarioSeleccionado.NombrePersonaUsuario = Convert.ToString(filaSeleccionada.Cells["Persona"].Value);
+                // Obtener los valores de las celdas de la fila seleccionada
+                usuarioSeleccionado.IdUsuario = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                usuarioSeleccionado.NombreUsuario = filaSeleccionada.Cells["Usuario"].Value.ToString();
+                usuarioSeleccionado.EmailUsuario = filaSeleccionada.Cells["Email"].Value.ToString();
+                usuarioSeleccionado.ClaveUsuario = filaSeleccionada.Cells["Clave_Usuario"].Value.ToString();
+                usuarioSeleccionado.EstadoUsuario = filaSeleccionada.Cells["Estado"].Value.ToString();
+                usuarioSeleccionado.FechaCreacionUsuario = Convert.ToDateTime(filaSeleccionada.Cells["Fecha_Creacion"].Value);
+                // Obtener el valor de la celda
+                object valorCelda = filaSeleccionada.Cells["Fecha_Baja"].Value;
+                // Verificar si el valor de la celda es nulo y asignar el valor correspondiente a la propiedad
+                usuarioSeleccionado.FechaBajaUsuario = valorCelda != null ? Convert.ToDateTime(valorCelda) : (DateTime?)null;
+                usuarioSeleccionado.NombreRol = Convert.ToString(filaSeleccionada.Cells["Rol"].Value);
+                usuarioSeleccionado.NombrePersonaUsuario = Convert.ToString(filaSeleccionada.Cells["Persona"].Value);
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 

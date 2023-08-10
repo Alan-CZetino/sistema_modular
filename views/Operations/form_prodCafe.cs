@@ -290,18 +290,27 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_proceCafe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_proceCafe.Rows[e.RowIndex];
-            proceSeleccionado = new ProcedenciaDestino();
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_proceCafe.Rows.Count)
+            {
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtg_proceCafe.Rows[e.RowIndex];
+                proceSeleccionado = new ProcedenciaDestino();
 
-            // Obtener los valores de las celdas de la fila seleccionada
-            proceSeleccionado.IdProcedencia = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            ProcedenciaSeleccionada.IProcedencia = proceSeleccionado.IdProcedencia;
-            proceSeleccionado.NombreProcedencia = filaSeleccionada.Cells["Nombre"].Value.ToString();
-            proceSeleccionado.DescripcionProcedencia = filaSeleccionada.Cells["Descripcion"].Value.ToString();
-            proceSeleccionado.NombreBenficioUbicacion = filaSeleccionada.Cells["NombreBeneficio"].Value.ToString();
-            proceSeleccionado.NombreSocioProcedencia = filaSeleccionada.Cells["NombreSocio"].Value.ToString();
-            proceSeleccionado.NombreMaquinaria = filaSeleccionada.Cells["Maquinaria"].Value.ToString();
+                // Obtener los valores de las celdas de la fila seleccionada
+                proceSeleccionado.IdProcedencia = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                ProcedenciaSeleccionada.IProcedencia = proceSeleccionado.IdProcedencia;
+                proceSeleccionado.NombreProcedencia = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                proceSeleccionado.DescripcionProcedencia = filaSeleccionada.Cells["Descripcion"].Value.ToString();
+                proceSeleccionado.NombreBenficioUbicacion = filaSeleccionada.Cells["NombreBeneficio"].Value.ToString();
+                proceSeleccionado.NombreSocioProcedencia = filaSeleccionada.Cells["NombreSocio"].Value.ToString();
+                proceSeleccionado.NombreMaquinaria = filaSeleccionada.Cells["Maquinaria"].Value.ToString();
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)

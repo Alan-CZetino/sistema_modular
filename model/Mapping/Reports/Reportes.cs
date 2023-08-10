@@ -31,6 +31,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Reports
         public string FechaSecado { get; set; }
         public string FechaIni { get; set; }
         public string FechaFin { get; set; }
+        public string nombre_persona { get; set; }
     }
 
     class ReportesBodegas
@@ -44,6 +45,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Reports
         
         public double total_qqspunto { get; set; }
         public string fecha { get; set; }
+        public string nombre_persona { get; set; }
 
     }
     class ReportesCCaliadades
@@ -60,6 +62,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Reports
         public double total_sacosT { get; set; }
         public double total_qqspuntoT { get; set; }
         public string fecha { get; set; }
+        public string nombre_persona { get; set; }
 
     }
 
@@ -78,6 +81,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Reports
         public double total_sacosT { get; set; }
         public double total_qqspuntoT { get; set; }
         public string fecha { get; set; }
+        public string nombre_persona { get; set; }
 
     }
 

@@ -111,16 +111,25 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_subProdCafe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_subProdCafe.Rows[e.RowIndex];
-            subProdcSeleccionado = new SubProducto();
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_subProdCafe.Rows.Count)
+            {
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtg_subProdCafe.Rows[e.RowIndex];
+                subProdcSeleccionado = new SubProducto();
 
-            // Obtener los valores de las celdas de la fila seleccionada
-            subProdcSeleccionado.IdSubProducto = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            subProdcSeleccionado.NombreSubProducto = filaSeleccionada.Cells["Nombre"].Value.ToString();
-            subProdcSeleccionado.DescripcionSubProducto = filaSeleccionada.Cells["Descripcion"].Value.ToString();
-            subProdcSeleccionado.NombreCalidadCafe = filaSeleccionada.Cells["Calidad_Cafe"].Value.ToString();
-            CalidadSeleccionada.NombreCalidadSeleccionada = subProdcSeleccionado.NombreCalidadCafe;
+                // Obtener los valores de las celdas de la fila seleccionada
+                subProdcSeleccionado.IdSubProducto = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                subProdcSeleccionado.NombreSubProducto = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                subProdcSeleccionado.DescripcionSubProducto = filaSeleccionada.Cells["Descripcion"].Value.ToString();
+                subProdcSeleccionado.NombreCalidadCafe = filaSeleccionada.Cells["Calidad_Cafe"].Value.ToString();
+                CalidadSeleccionada.NombreCalidadSeleccionada = subProdcSeleccionado.NombreCalidadCafe;
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btn_modSubProdCafe_Click(object sender, EventArgs e)

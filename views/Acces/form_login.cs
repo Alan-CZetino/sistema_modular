@@ -25,7 +25,8 @@ namespace sistema_modular_cafe_majada
             InitializeComponent();
 
             txb_username.TextChanged += txb_username_TextChanged;
-            
+            cb_modulos.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
 
         //variable de tipo global para manejo de intentos fallidos en el login

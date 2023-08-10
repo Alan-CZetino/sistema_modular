@@ -1,4 +1,4 @@
-﻿
+
 namespace sistema_modular_cafe_majada.views
 {
     partial class form_subPartidas
@@ -1328,6 +1328,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.TextBox txb_fechaPartd1;
         private System.Windows.Forms.Button btn_deleteSPartida;
         private System.Windows.Forms.Button btn_pdfSPartida;
-        private System.Windows.Forms.DateTimePicker dtp_fechaSalidaSecad;
+        private System.Windows.Forms.DateTimePicker dtp_fechaSalidaSecad;
     }
 }

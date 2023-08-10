@@ -567,93 +567,102 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_opcTraslado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_opcTraslado.Rows[e.RowIndex];
-
-            int opc = TablaSeleccionadaTraslado.ITable;
-
-            switch (opc)
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_opcTraslado.Rows.Count)
             {
-                case 1:
-                    //Traslado
-                    {
-                        TrasladoSeleccionado.clickImg = true;
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        TrasladoSeleccionado.ITraslado = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        TrasladoSeleccionado.NumTraslado = Convert.ToInt32(filaSeleccionada.Cells["Numero_TrasladoCafe"].Value);
-                    }
-                    break;
-                case 2:
-                    //Almacen Procedencia
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        AlmacenSeleccionado.IAlmacen = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        AlmacenSeleccionado.NombreAlmacen = filaSeleccionada.Cells["Nombre"].Value.ToString();
-                    }
-                    break;
-                case 3:
-                    //Ubicacion Bodega Procedencia
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        BodegaSeleccionada.IdBodega = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        BodegaSeleccionada.NombreBodega = filaSeleccionada.Cells["Nombre"].Value.ToString();
-                    }
-                    break;
-                case 4:
-                    //Procedencia Procedencia
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        ProcedenciaSeleccionada.IProcedencia = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        ProcedenciaSeleccionada.NombreProcedencia = filaSeleccionada.Cells["Nombre"].Value.ToString();
-                    }
-                    break;
-                case 5:
-                    //Almacen Destino
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        AlmacenSeleccionado.IAlmacenDestino = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        AlmacenSeleccionado.NombreAlmacenDestino = filaSeleccionada.Cells["Nombre"].Value.ToString();
-                    }
-                    break;
-                case 6:
-                    //Ubicacion Bodega Destino
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        BodegaSeleccionada.IdBodegaDestino = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        BodegaSeleccionada.NombreBodegaDestino = filaSeleccionada.Cells["Nombre"].Value.ToString();
-                    }
-                    break;
-                case 7:
-                    //Procedencia Destino
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        ProcedenciaSeleccionada.IProcedenciaDestino = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        ProcedenciaSeleccionada.NombreProcedenciaDestino = filaSeleccionada.Cells["Nombre"].Value.ToString();
-                    }
-                    break;
-                case 8:
-                    //Calidad Cafe
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        CalidadSeleccionada.ICalidadSeleccionada = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        CalidadSeleccionada.NombreCalidadSeleccionada = filaSeleccionada.Cells["Calidad"].Value.ToString();
-                    }
-                    break;
-                case 9:
-                    //Pesador
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        PersonalSeleccionado.IPersonalPesador = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        PersonalSeleccionado.NombrePersonalPesador = filaSeleccionada.Cells["Nombre"].Value.ToString();
-                    }
-                    break;
-                default:
-                    MessageBox.Show("Ocurrio un Error. La tabla que desea acceder no exite. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-            }
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtg_opcTraslado.Rows[e.RowIndex];
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                int opc = TablaSeleccionadaTraslado.ITable;
+
+                switch (opc)
+                {
+                    case 1:
+                        //Traslado
+                        {
+                            TrasladoSeleccionado.clickImg = true;
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            TrasladoSeleccionado.ITraslado = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            TrasladoSeleccionado.NumTraslado = Convert.ToInt32(filaSeleccionada.Cells["Numero_TrasladoCafe"].Value);
+                        }
+                        break;
+                    case 2:
+                        //Almacen Procedencia
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            AlmacenSeleccionado.IAlmacen = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            AlmacenSeleccionado.NombreAlmacen = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                        }
+                        break;
+                    case 3:
+                        //Ubicacion Bodega Procedencia
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            BodegaSeleccionada.IdBodega = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            BodegaSeleccionada.NombreBodega = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                        }
+                        break;
+                    case 4:
+                        //Procedencia Procedencia
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            ProcedenciaSeleccionada.IProcedencia = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            ProcedenciaSeleccionada.NombreProcedencia = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                        }
+                        break;
+                    case 5:
+                        //Almacen Destino
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            AlmacenSeleccionado.IAlmacenDestino = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            AlmacenSeleccionado.NombreAlmacenDestino = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                        }
+                        break;
+                    case 6:
+                        //Ubicacion Bodega Destino
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            BodegaSeleccionada.IdBodegaDestino = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            BodegaSeleccionada.NombreBodegaDestino = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                        }
+                        break;
+                    case 7:
+                        //Procedencia Destino
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            ProcedenciaSeleccionada.IProcedenciaDestino = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            ProcedenciaSeleccionada.NombreProcedenciaDestino = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                        }
+                        break;
+                    case 8:
+                        //Calidad Cafe
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            CalidadSeleccionada.ICalidadSeleccionada = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            CalidadSeleccionada.NombreCalidadSeleccionada = filaSeleccionada.Cells["Calidad"].Value.ToString();
+                        }
+                        break;
+                    case 9:
+                        //Pesador
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            PersonalSeleccionado.IPersonalPesador = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            PersonalSeleccionado.NombrePersonalPesador = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                        }
+                        break;
+                    default:
+                        MessageBox.Show("Ocurrio un Error. La tabla que desea acceder no exite. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-﻿using Microsoft.Reporting.WinForms;
+using Microsoft.Reporting.WinForms;
 using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.SecurityData;
@@ -97,6 +97,7 @@ namespace sistema_modular_cafe_majada.views
             txb_ubicadoBodega.ReadOnly = true;
             txb_almacenSiloPiña.Enabled = false;
             txb_almacenSiloPiña.ReadOnly = true;
+            cbx_subProducto.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         //
@@ -418,10 +419,10 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 txb_ubicadoBodega.Text = BodegaSeleccionada.NombreBodega;
-                txb_almacenSiloPiña.Text = null;
-                iAlmacen = 0;
-                AlmacenSeleccionado.NombreAlmacen = null;
-                AlmacenSeleccionado.IAlmacen = 0;
+                //txb_almacenSiloPiña.Text = null;
+                //iAlmacen = 0;
+                //AlmacenSeleccionado.NombreAlmacen = null;
+                //AlmacenSeleccionado.IAlmacen = 0;
             }
         }
         
@@ -444,9 +445,11 @@ namespace sistema_modular_cafe_majada.views
                     txb_ubicadoBodega.Text = datoB.NombreBodega;
                     iBodega = datoB.IdBodega;
                     imgClickBodega = false;
+                    Console.WriteLine("depuracion - id almacen nombre " + AlmacenSeleccionado.IAlmacen + AlmacenSeleccionado.NombreAlmacen);
                 }
                 iAlmacen = AlmacenSeleccionado.IAlmacen;
                 txb_almacenSiloPiña.Text = AlmacenSeleccionado.NombreAlmacen;
+                Console.WriteLine("depuracion - id almacen nombre " + AlmacenSeleccionado.IAlmacen + AlmacenSeleccionado.NombreAlmacen);
             }
         }
 
@@ -1033,6 +1036,10 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
+            txb_horaInicio.Text = "00:00:00";
+            txb_horaSalida.Text = "00:00:00";
+            txb_tiempoSecad.Text = "00:00:00";
+
             AlmacenSeleccionado.IAlmacen = 0;
             BodegaSeleccionada.IdBodega = 0;
             AlmacenBodegaClick.IBodega = 0;
@@ -1060,7 +1067,6 @@ namespace sistema_modular_cafe_majada.views
             imagenClickeadaSP = false;
             imgClickAlmacen = false;
             SubPartidaSeleccionado.clickImg = false;
-            this.Close();
         }
 
         private void btn_deleteSPartida_Click(object sender, EventArgs e)
@@ -1106,5 +1112,14 @@ namespace sistema_modular_cafe_majada.views
 
         }
 
+        private void txb_horaInicio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
     }
 }

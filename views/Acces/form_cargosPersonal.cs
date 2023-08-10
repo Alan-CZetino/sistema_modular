@@ -114,15 +114,24 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_cargosPersonal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("depurador - evento click img update: " + imagenClickeada);
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_cargosPersonal.Rows.Count)
+            {
+                Console.WriteLine("depurador - evento click img update: " + imagenClickeada);
 
-            //obtener la fila a la celda que se realizo el evento dobleClick
-            DataGridViewRow filaSeleccionada = dtg_cargosPersonal.Rows[e.RowIndex];
-            cargoSeleccionada = new Charge();
+                //obtener la fila a la celda que se realizo el evento dobleClick
+                DataGridViewRow filaSeleccionada = dtg_cargosPersonal.Rows[e.RowIndex];
+                cargoSeleccionada = new Charge();
 
-            cargoSeleccionada.IdCargo = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            cargoSeleccionada.NombreCargo = filaSeleccionada.Cells["nombre"].Value.ToString();
-            cargoSeleccionada.DescripcionCargo = filaSeleccionada.Cells["descripcion"].Value.ToString();
+                cargoSeleccionada.IdCargo = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                cargoSeleccionada.NombreCargo = filaSeleccionada.Cells["nombre"].Value.ToString();
+                cargoSeleccionada.DescripcionCargo = filaSeleccionada.Cells["descripcion"].Value.ToString();
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btn_SaveCargo_Click(object sender, EventArgs e)

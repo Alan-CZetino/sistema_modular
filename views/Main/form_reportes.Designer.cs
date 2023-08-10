@@ -114,6 +114,7 @@ namespace sistema_modular_cafe_majada.views
             this.label5.TabIndex = 3;
             this.label5.Text = "Existencias de Café\r\nAcumulado.";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label5.Click += new System.EventHandler(this.btn_rptCafeAcumulado_Click);
             // 
             // pictureBox5
             // 
@@ -126,6 +127,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.btn_rptCafeAcumulado_Click);
             // 
             // btn_rptCFinca
             // 
@@ -138,6 +140,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_rptCFinca.Name = "btn_rptCFinca";
             this.btn_rptCFinca.Size = new System.Drawing.Size(186, 154);
             this.btn_rptCFinca.TabIndex = 8;
+            this.btn_rptCFinca.Click += new System.EventHandler(this.btn_rptGrafica_Click);
             // 
             // label4
             // 
@@ -147,10 +150,11 @@ namespace sistema_modular_cafe_majada.views
             this.label4.Location = new System.Drawing.Point(78, 58);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 48);
+            this.label4.Size = new System.Drawing.Size(88, 24);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Existencias de Café\r\npor Finca.";
+            this.label4.Text = "Informe Gráfico";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label4.Click += new System.EventHandler(this.btn_rptGrafica_Click);
             // 
             // pictureBox4
             // 
@@ -163,6 +167,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.btn_rptGrafica_Click);
             // 
             // btn_rptCBodegas
             // 
@@ -189,6 +194,7 @@ namespace sistema_modular_cafe_majada.views
             this.label3.TabIndex = 3;
             this.label3.Text = "Existencias de Café\r\npor bodega.";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label3.Click += new System.EventHandler(this.btn_rptCafeBodegas_Click);
             // 
             // pictureBox3
             // 
@@ -201,6 +207,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.btn_rptCafeBodegas_Click);
             // 
             // btn_rptCCalidades
             // 
@@ -227,6 +234,7 @@ namespace sistema_modular_cafe_majada.views
             this.label1.TabIndex = 3;
             this.label1.Text = "Existencias de Café\r\npor calidades.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Click += new System.EventHandler(this.btn_rptCCalidades_Click);
             // 
             // pictureBox1
             // 
@@ -239,6 +247,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.btn_rptCCalidades_Click);
             // 
             // btn_rptSubPartida
             // 
@@ -265,6 +274,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2.TabIndex = 3;
             this.label2.Text = "Auxiliar de Sub\r\nPartidas.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Click += new System.EventHandler(this.btn_rptSubpartidas_Click);
             // 
             // pictureBox2
             // 
@@ -277,6 +287,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.btn_rptSubpartidas_Click);
             // 
             // panel1
             // 
