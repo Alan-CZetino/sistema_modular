@@ -181,7 +181,53 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return usuarios;
         }
-        
+
+        //
+        public Usuario ObtenerUsuariosNombresID(int Id_Usuario)
+        {
+            Usuario usuario = null;
+
+            try
+            {
+                // Abre la conexión a la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT CONCAT(
+                                        SUBSTRING_INDEX(p.nombres_persona, ' ', 1), ' ', 
+                                        SUBSTRING_INDEX(p.apellidos_persona, ' ', 1)
+                                    ) AS Nombre_Completo  
+                                    FROM Usuario u
+                                    INNER JOIN Persona p ON u.id_persona_usuario = p.id_persona
+                                    WHERE id_usuario = @Id_Usuario;
+                                    ";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id_Usuario", Id_Usuario);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        usuario = new Usuario()
+                        {
+
+                            ApellidoPersonaUsuario = Convert.ToString(reader["Nombre_Completo"]),
+
+                        };
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener los usuarios: " + ex.Message);
+            }
+            finally
+            {
+                // Cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return usuario;
+        }
         //
         public List<Usuario> ObtenerTodosUsuariosNombresID()
         {

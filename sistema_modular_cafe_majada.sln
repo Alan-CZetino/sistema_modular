@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.33529.622
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema_modular_cafe_majada", "sistema_modular_cafe_majada.csproj", "{B14872F3-47EA-4C56-8695-768D00F0429A}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstaladorPrueba", "..\InstaladorPrueba\InstaladorPrueba.vdproj", "{7D792966-4210-4D9E-A12E-8CA6B19128F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B14872F3-47EA-4C56-8695-768D00F0429A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B14872F3-47EA-4C56-8695-768D00F0429A}.Release|x86.ActiveCfg = Release|x86
 		{B14872F3-47EA-4C56-8695-768D00F0429A}.Release|x86.Build.0 = Release|x86
+		{7D792966-4210-4D9E-A12E-8CA6B19128F4}.Debug|Any CPU.ActiveCfg = Debug
+		{7D792966-4210-4D9E-A12E-8CA6B19128F4}.Debug|x86.ActiveCfg = Debug
+		{7D792966-4210-4D9E-A12E-8CA6B19128F4}.Release|Any CPU.ActiveCfg = Release
+		{7D792966-4210-4D9E-A12E-8CA6B19128F4}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

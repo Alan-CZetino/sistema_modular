@@ -114,6 +114,7 @@ namespace sistema_modular_cafe_majada.views
             this.label5.TabIndex = 3;
             this.label5.Text = "Existencias de Café\r\nAcumulado.";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label5.Click += new System.EventHandler(this.btn_rptCafeAcumulado_Click);
             // 
             // pictureBox5
             // 
@@ -126,6 +127,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.btn_rptCafeAcumulado_Click);
             // 
             // btn_rptCFinca
             // 
@@ -189,6 +191,7 @@ namespace sistema_modular_cafe_majada.views
             this.label3.TabIndex = 3;
             this.label3.Text = "Existencias de Café\r\npor bodega.";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label3.Click += new System.EventHandler(this.btn_rptCafeBodegas_Click);
             // 
             // pictureBox3
             // 
@@ -201,6 +204,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.btn_rptCafeBodegas_Click);
             // 
             // btn_rptCCalidades
             // 
@@ -227,6 +231,7 @@ namespace sistema_modular_cafe_majada.views
             this.label1.TabIndex = 3;
             this.label1.Text = "Existencias de Café\r\npor calidades.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Click += new System.EventHandler(this.btn_rptCCalidades_Click);
             // 
             // pictureBox1
             // 
@@ -239,6 +244,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.btn_rptCCalidades_Click);
             // 
             // btn_rptSubPartida
             // 
@@ -265,6 +271,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2.TabIndex = 3;
             this.label2.Text = "Auxiliar de Sub\r\nPartidas.";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Click += new System.EventHandler(this.btn_rptSubpartidas_Click);
             // 
             // pictureBox2
             // 
@@ -277,6 +284,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.btn_rptSubpartidas_Click);
             // 
             // panel1
             // 

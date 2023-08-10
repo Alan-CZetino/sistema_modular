@@ -212,6 +212,7 @@ namespace sistema_modular_cafe_majada.views
             }
 
             AlmacenBodegaClick.IBodega = 0;
+            SalidaSeleccionado.clickImg = false;
             dtp_fechaSalida.Value = DateTime.Now;
             rb_export.Checked = false;
             rb_otros.Checked = false;
@@ -309,9 +310,9 @@ namespace sistema_modular_cafe_majada.views
                     BodegaController bodegaController = new BodegaController();
                     Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
 
-                    txb_bodega.Text = datoB.NombreBodega;
+                    /*txb_bodega.Text = datoB.NombreBodega;
                     iBodega = datoB.IdBodega;
-                    BodegaSeleccionada.IdBodega = iBodega;
+                    BodegaSeleccionada.IdBodega = iBodega;*/
                     imgClickBodega = false;
                 }
                 iAlmacen = AlmacenSeleccionado.IAlmacen;
@@ -338,10 +339,10 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 txb_bodega.Text = BodegaSeleccionada.NombreBodega;
-                txb_almacen.Text = null;
+                /*txb_almacen.Text = null;
                 iAlmacen = 0;
                 AlmacenSeleccionado.NombreAlmacen = null;
-                AlmacenSeleccionado.IAlmacen = 0;
+                AlmacenSeleccionado.IAlmacen = 0;*/
             }
         }
 

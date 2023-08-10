@@ -329,9 +329,9 @@ namespace sistema_modular_cafe_majada.views
                     BodegaController bodegaController = new BodegaController();
                     Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
 
-                    txb_bodegaPr.Text = datoB.NombreBodega;
+                    /*txb_bodegaPr.Text = datoB.NombreBodega;
                     iBodegaProce = datoB.IdBodega;
-                    BodegaSeleccionada.IdBodega = iBodegaProce;
+                    BodegaSeleccionada.IdBodega = iBodegaProce;*/
                     imgClickBodegaP = false;
                 }
                 iAlmacenProce = AlmacenSeleccionado.IAlmacen;
@@ -358,10 +358,10 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 txb_bodegaPr.Text = BodegaSeleccionada.NombreBodega;
-                txb_almacenPr.Text = null;
+                /*txb_almacenPr.Text = null;
                 iAlmacenProce = 0;
                 AlmacenSeleccionado.NombreAlmacen = null;
-                AlmacenSeleccionado.IAlmacen = 0;
+                AlmacenSeleccionado.IAlmacen = 0;*/
             }
         }
 

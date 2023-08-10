@@ -418,10 +418,10 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 txb_ubicadoBodega.Text = BodegaSeleccionada.NombreBodega;
-                txb_almacenSiloPiña.Text = null;
-                iAlmacen = 0;
-                AlmacenSeleccionado.NombreAlmacen = null;
-                AlmacenSeleccionado.IAlmacen = 0;
+                //txb_almacenSiloPiña.Text = null;
+                //iAlmacen = 0;
+                //AlmacenSeleccionado.NombreAlmacen = null;
+                //AlmacenSeleccionado.IAlmacen = 0;
             }
         }
         
@@ -444,9 +444,11 @@ namespace sistema_modular_cafe_majada.views
                     txb_ubicadoBodega.Text = datoB.NombreBodega;
                     iBodega = datoB.IdBodega;
                     imgClickBodega = false;
+                    Console.WriteLine("depuracion - id almacen nombre " + AlmacenSeleccionado.IAlmacen + AlmacenSeleccionado.NombreAlmacen);
                 }
                 iAlmacen = AlmacenSeleccionado.IAlmacen;
                 txb_almacenSiloPiña.Text = AlmacenSeleccionado.NombreAlmacen;
+                Console.WriteLine("depuracion - id almacen nombre " + AlmacenSeleccionado.IAlmacen + AlmacenSeleccionado.NombreAlmacen);
             }
         }
 

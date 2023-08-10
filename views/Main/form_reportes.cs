@@ -30,6 +30,7 @@ namespace sistema_modular_cafe_majada.views
         private string fechaActual;
         private System.Timers.Timer refreshTimer;
         int id_Cosecha = CosechaActual.ICosechaActual;
+        UserController userC = new UserController();
         string Nombre_cosecha = CosechaActual.NombreCosechaActual;
         private ReportesController reportesController = new ReportesController();
         readonly string RutaReportSubpda = "../../views/Reports/repor_subpartida.rdlc";
@@ -40,30 +41,10 @@ namespace sistema_modular_cafe_majada.views
         public form_reportes()
         {
             InitializeComponent();
-            // Configurar el temporizador para que se dispare cada cierto intervalo (por ejemplo, cada 5 segundos).
-            refreshTimer = new System.Timers.Timer();
-            refreshTimer.Interval = 1000; // Intervalo en milisegundos (1 segundo en este caso).
-            refreshTimer.Elapsed += RefreshTimer_Elapsed;
-            refreshTimer.Start();
-        }
-        private void RefreshTimer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            // Utilizar Invoke para actualizar los controles de la interfaz de usuario desde el hilo del temporizador.
-            if (!this.IsDisposed && this.InvokeRequired)
-            {
-                this.Invoke(new Action(() =>
-                {
-                    // Aquí se puede escribir la lógica para refrescar el formulario, actualizar los datos.
-                    // Por ejemplo, si queremos actualizar datos desde una base de datos o un servicio, lo haríamos aquí.
-                    if (!this.IsDisposed)
-                    {
-                        id_Cosecha = CosechaActual.ICosechaActual;
-                        Nombre_cosecha = CosechaActual.NombreCosechaActual;
+            dtFechaInicial.Value = new DateTime(2023, 1, 1);
 
-                    }
-                }));
-            }
         }
+
 
         private void form_reportes_Load(object sender, EventArgs e)
         {
@@ -74,15 +55,19 @@ namespace sistema_modular_cafe_majada.views
         {
             try
             {
+                // Se obtiene el nombre de usuario
+                var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
+
                 // Se obtiene la fecha inicial seleccionada en el control dtFechaInicial y se formatea como una cadena con el formato "dd/MM/yyyy".
                 string fechaInicial = dtFechaInicial.Value.Date.ToString("dd/MM/yyyy");
+
                 // Se obtiene la fecha final seleccionada en el control dtFechaFinal y se formatea como una cadena con el formato "dd/MM/yyyy".
                 string fechaFinal = dtFechaFinal.Value.Date.ToString("dd/MM/yyyy");
 
                 // Se llama al método GetSubpartidaData del controlador de reportes reportesController,
                 // pasando como argumentos el id de cosecha (id_Cosecha), la fecha inicial y la fecha final obtenidas anteriormente.
                 // Esto devuelve una lista de objetos ReportesSubpartida, que se almacena en la variable data.
-                List<ReportesSubpartida> data = reportesController.GetSubpartidaData(id_Cosecha, fechaInicial, fechaFinal);
+                List<ReportesSubpartida> data = reportesController.GetSubpartidaData(CosechaActual.ICosechaActual, fechaInicial, fechaFinal);
 
                 // Se recorre la lista data mediante un bucle foreach.
                 foreach (ReportesSubpartida reporte in data)
@@ -91,7 +76,8 @@ namespace sistema_modular_cafe_majada.views
                     // y se establece el nombre de la cosecha en el campo NombreCosecha.
                     reporte.FechaIni = fechaInicial;
                     reporte.FechaFin = fechaFinal;
-                    reporte.NombreCosecha = Nombre_cosecha;
+                    reporte.NombreCosecha = CosechaActual.NombreCosechaActual;
+                    reporte.nombre_persona = Nombre_Usuario.ApellidoPersonaUsuario;
                 }
 
                 // Se crea una nueva fuente de datos para el informe utilizando la lista data y se le asigna el nombre de "repor_subpartida".
@@ -117,13 +103,15 @@ namespace sistema_modular_cafe_majada.views
         }
         private void btn_rptCafeAcumulado_Click(object sender, EventArgs e)
         {
+            var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             // Obtener la fecha actual y asignarla a la variable global
             fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
             List<ReportesBodegas> data = reportesController.GetBodegaData(id_Cosecha);
             foreach (ReportesBodegas reporte in data)
             {
                 reporte.nombre_cosecha = Nombre_cosecha;
-                reporte.fecha = fechaActual;               
+                reporte.fecha = fechaActual;
+                reporte.nombre_persona = Nombre_Usuario.ApellidoPersonaUsuario;
             }
             ReportDataSource reportDataSource = new ReportDataSource("repor_bodega", data);
             LocalReport reportBodega = new LocalReport();
@@ -134,6 +122,7 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_rptCCalidades_Click(object sender, EventArgs e)
         {
+            var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             // Obtener la fecha actual y asignarla a la variable global fechaActual
             fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
 
@@ -151,6 +140,7 @@ namespace sistema_modular_cafe_majada.views
 
                 // También se establece el nombre de la cosecha en el campo nombre_cosecha del objeto ReportesCCaliadades
                 reporte.nombre_cosecha = Nombre_cosecha;
+                reporte.nombre_persona = Nombre_Usuario.ApellidoPersonaUsuario;
             }
 
             // Se crea un nuevo informe local (LocalReport) y se establece la ruta del archivo de definición del informe utilizando la variable RutaReportCCalidad
@@ -166,7 +156,7 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_rptCafeBodegas_Click(object sender, EventArgs e)
         {
-
+            var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             List<ReportesCafeBodegas> data = reportesController.GetCafeBodegaData(id_Cosecha);
             foreach (ReportesCafeBodegas reporte in data)
             {
@@ -175,6 +165,7 @@ namespace sistema_modular_cafe_majada.views
 
                 // También se establece el nombre de la cosecha en el campo nombre_cosecha del objeto ReportesCafeBodegas
                 reporte.nombre_cosecha = Nombre_cosecha;
+                reporte.nombre_persona = Nombre_Usuario.ApellidoPersonaUsuario;
             }
             ReportDataSource reportDataSource = new ReportDataSource("repor_cafebodega", data);
             LocalReport reportCCalidad = new LocalReport();
