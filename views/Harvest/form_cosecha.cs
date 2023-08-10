@@ -22,6 +22,7 @@ namespace sistema_modular_cafe_majada.views
         private bool imagenClickeada = false;
         //instancia de la clase mapeo beneficio para capturar los datos seleccionado por el usuario
         private Cosecha cosechaSeleccionado;
+        private List<TextBox> txbRestrict;
 
         public form_cosecha()
         {
@@ -29,6 +30,10 @@ namespace sistema_modular_cafe_majada.views
 
             txb_id.ReadOnly = true;
             txb_id.Enabled = false;
+
+            txbRestrict = new List<TextBox> { txb_nombre };
+
+            RestrictTextBoxNum(txbRestrict);
 
             //coloca nueva mente el contador en el txb del cdigo
             CosechaController cosec = new CosechaController();
@@ -43,32 +48,36 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtgv_cosechas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
+            var configDTG = dtg_cosechas;
+
             //auto ajustar el contenido de los datos al área establecido para el datagrid
-            dtg_cosechas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtg_cosechas.BorderStyle = BorderStyle.None;
-
+            configDTG.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            configDTG.BorderStyle = BorderStyle.None;
+            configDTG.AllowUserToResizeColumns = false;
+            configDTG.AllowUserToOrderColumns = false;
+            configDTG.AllowUserToAddRows = false;
+            configDTG.AllowUserToResizeRows = false;
+            configDTG.MultiSelect = false;
             //configuracion de la fila de encabezado en el datagrid
-            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
-            dtg_cosechas.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
-            dtg_cosechas.ColumnHeadersDefaultCellStyle.Font = customFonten;
-            dtg_cosechas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dtg_cosechas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
-            dtg_cosechas.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
-            dtg_cosechas.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            Font customFonten = new Font("Segoe UI", 10f, FontStyle.Bold);
+            configDTG.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            configDTG.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            configDTG.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            configDTG.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            configDTG.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            configDTG.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //configuracion de las filas por defecto en el datagrid
-            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+            Font customFontdef = new Font("Segoe UI", 10f, FontStyle.Regular);
 
-            dtg_cosechas.DefaultCellStyle.BackColor = Color.White;
-            dtg_cosechas.DefaultCellStyle.Font = customFontdef;
-            dtg_cosechas.DefaultCellStyle.ForeColor = Color.Black;
-            dtg_cosechas.DefaultCellStyle.SelectionBackColor = Color.White;
-            dtg_cosechas.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dtg_cosechas.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
+            configDTG.DefaultCellStyle.BackColor = Color.White;
+            configDTG.DefaultCellStyle.Font = customFontdef;
+            configDTG.DefaultCellStyle.ForeColor = Color.Black;
+            configDTG.DefaultCellStyle.SelectionBackColor = Color.White;
+            configDTG.DefaultCellStyle.SelectionForeColor = Color.Black;
+            configDTG.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             //configuracion de las filas que son seleccionadas
-            dtg_cosechas.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
-            dtg_cosechas.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+            configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public void ShowCosechaGrid()
@@ -109,6 +118,27 @@ namespace sistema_modular_cafe_majada.views
             txb_id.Text = Convert.ToString(count.CountCosecha + 1);
 
             cosechaSeleccionado = null;
+        }
+
+        //
+        public void RestrictTextBoxNum(List<TextBox> textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.KeyPress += (sender, e) =>
+                {
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '/')
+                    {
+                        e.Handled = true; // Cancela el evento KeyPress si no es un dígito o el carácter '/'
+                    }
+
+                    // Permite solo un '/' en el TextBox
+                    if (e.KeyChar == '/' && (textBox.Text.Contains("/")))
+                    {
+                        e.Handled = true; // Cancela el evento KeyPress si ya hay un '/' en el TextBox
+                    }
+                };
+            }
         }
 
         private void dtg_cosechas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -298,6 +328,16 @@ namespace sistema_modular_cafe_majada.views
             var count = cosec.CountCosecha();
             txb_id.Text = Convert.ToString(count.CountCosecha + 1);
             this.Close();
+        }
+
+        private void txb_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 5;
+
+            if (txb_nombre.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
     }
 }

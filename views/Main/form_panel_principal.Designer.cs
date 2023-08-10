@@ -29,15 +29,15 @@ namespace sistema_modular_cafe_majada
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_beneficios = new System.Windows.Forms.Panel();
@@ -130,7 +130,7 @@ namespace sistema_modular_cafe_majada
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(960, 16);
             this.panel1.TabIndex = 0;
@@ -151,7 +151,7 @@ namespace sistema_modular_cafe_majada
             this.tableLayoutPanel1.Controls.Add(this.pnl_subProd, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnl_calCafe, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(11, 41);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -168,7 +168,7 @@ namespace sistema_modular_cafe_majada
             this.pnl_beneficios.Controls.Add(this.panel13);
             this.pnl_beneficios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_beneficios.Location = new System.Drawing.Point(594, 2);
-            this.pnl_beneficios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_beneficios.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_beneficios.Name = "pnl_beneficios";
             this.pnl_beneficios.Size = new System.Drawing.Size(145, 77);
             this.pnl_beneficios.TabIndex = 12;
@@ -179,12 +179,13 @@ namespace sistema_modular_cafe_majada
             this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox5.Image = global::sistema_modular_cafe_majada.Properties.Resources.beneficio64px;
             this.pictureBox5.Location = new System.Drawing.Point(12, 23);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(48, 52);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 4;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pnl_beneficios_Click);
             // 
             // lbl_beneficio
             // 
@@ -197,6 +198,7 @@ namespace sistema_modular_cafe_majada
             this.lbl_beneficio.Size = new System.Drawing.Size(31, 21);
             this.lbl_beneficio.TabIndex = 2;
             this.lbl_beneficio.Text = "999";
+            this.lbl_beneficio.Click += new System.EventHandler(this.pnl_beneficios_Click);
             // 
             // label11
             // 
@@ -208,13 +210,14 @@ namespace sistema_modular_cafe_majada
             this.label11.Size = new System.Drawing.Size(68, 21);
             this.label11.TabIndex = 1;
             this.label11.Text = "Beneficios";
+            this.label11.Click += new System.EventHandler(this.pnl_beneficios_Click);
             // 
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
             this.panel13.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel13.Location = new System.Drawing.Point(0, 0);
-            this.panel13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel13.Margin = new System.Windows.Forms.Padding(2);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(4, 77);
             this.panel13.TabIndex = 0;
@@ -228,7 +231,7 @@ namespace sistema_modular_cafe_majada
             this.pnl_fincas.Controls.Add(this.panel11);
             this.pnl_fincas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_fincas.Location = new System.Drawing.Point(446, 2);
-            this.pnl_fincas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_fincas.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_fincas.Name = "pnl_fincas";
             this.pnl_fincas.Size = new System.Drawing.Size(144, 77);
             this.pnl_fincas.TabIndex = 11;
@@ -239,12 +242,13 @@ namespace sistema_modular_cafe_majada
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox4.Image = global::sistema_modular_cafe_majada.Properties.Resources.finca64px;
             this.pictureBox4.Location = new System.Drawing.Point(12, 23);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(48, 52);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 4;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pnl_fincas_Click);
             // 
             // lbl_finca
             // 
@@ -257,6 +261,7 @@ namespace sistema_modular_cafe_majada
             this.lbl_finca.Size = new System.Drawing.Size(31, 21);
             this.lbl_finca.TabIndex = 2;
             this.lbl_finca.Text = "999";
+            this.lbl_finca.Click += new System.EventHandler(this.pnl_fincas_Click);
             // 
             // label9
             // 
@@ -268,13 +273,14 @@ namespace sistema_modular_cafe_majada
             this.label9.Size = new System.Drawing.Size(46, 21);
             this.label9.TabIndex = 1;
             this.label9.Text = "Fincas";
+            this.label9.Click += new System.EventHandler(this.pnl_fincas_Click);
             // 
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel11.Location = new System.Drawing.Point(0, 0);
-            this.panel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel11.Margin = new System.Windows.Forms.Padding(2);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(4, 77);
             this.panel11.TabIndex = 0;
@@ -288,7 +294,7 @@ namespace sistema_modular_cafe_majada
             this.pnl_Uva.Controls.Add(this.panel9);
             this.pnl_Uva.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_Uva.Location = new System.Drawing.Point(298, 2);
-            this.pnl_Uva.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_Uva.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_Uva.Name = "pnl_Uva";
             this.pnl_Uva.Size = new System.Drawing.Size(144, 77);
             this.pnl_Uva.TabIndex = 10;
@@ -299,12 +305,13 @@ namespace sistema_modular_cafe_majada
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox3.Image = global::sistema_modular_cafe_majada.Properties.Resources.clase_uva64px;
             this.pictureBox3.Location = new System.Drawing.Point(12, 23);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(48, 52);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pnl_Uva_Click);
             // 
             // lbl_tipo
             // 
@@ -317,6 +324,7 @@ namespace sistema_modular_cafe_majada
             this.lbl_tipo.Size = new System.Drawing.Size(31, 21);
             this.lbl_tipo.TabIndex = 2;
             this.lbl_tipo.Text = "999";
+            this.lbl_tipo.Click += new System.EventHandler(this.pnl_Uva_Click);
             // 
             // label7
             // 
@@ -328,13 +336,14 @@ namespace sistema_modular_cafe_majada
             this.label7.Size = new System.Drawing.Size(87, 21);
             this.label7.TabIndex = 1;
             this.label7.Text = "Clases de Uva";
+            this.label7.Click += new System.EventHandler(this.pnl_Uva_Click);
             // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
             this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(4, 77);
             this.panel9.TabIndex = 0;
@@ -348,7 +357,7 @@ namespace sistema_modular_cafe_majada
             this.pnl_subProd.Controls.Add(this.panel5);
             this.pnl_subProd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_subProd.Location = new System.Drawing.Point(150, 2);
-            this.pnl_subProd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_subProd.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_subProd.Name = "pnl_subProd";
             this.pnl_subProd.Size = new System.Drawing.Size(144, 77);
             this.pnl_subProd.TabIndex = 9;
@@ -359,12 +368,13 @@ namespace sistema_modular_cafe_majada
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox2.Image = global::sistema_modular_cafe_majada.Properties.Resources.sub_productos_64px;
             this.pictureBox2.Location = new System.Drawing.Point(12, 23);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(48, 52);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pnl_subProd_Click);
             // 
             // lbl_subProduct
             // 
@@ -377,6 +387,7 @@ namespace sistema_modular_cafe_majada
             this.lbl_subProduct.Size = new System.Drawing.Size(31, 21);
             this.lbl_subProduct.TabIndex = 2;
             this.lbl_subProduct.Text = "999";
+            this.lbl_subProduct.Click += new System.EventHandler(this.pnl_subProd_Click);
             // 
             // label5
             // 
@@ -388,13 +399,14 @@ namespace sistema_modular_cafe_majada
             this.label5.Size = new System.Drawing.Size(92, 21);
             this.label5.TabIndex = 1;
             this.label5.Text = "Sub Productos";
+            this.label5.Click += new System.EventHandler(this.pnl_subProd_Click);
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(4, 77);
             this.panel5.TabIndex = 0;
@@ -408,7 +420,7 @@ namespace sistema_modular_cafe_majada
             this.pnl_calCafe.Controls.Add(this.panel7);
             this.pnl_calCafe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_calCafe.Location = new System.Drawing.Point(2, 2);
-            this.pnl_calCafe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_calCafe.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_calCafe.Name = "pnl_calCafe";
             this.pnl_calCafe.Size = new System.Drawing.Size(144, 77);
             this.pnl_calCafe.TabIndex = 8;
@@ -419,12 +431,13 @@ namespace sistema_modular_cafe_majada
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox1.Image = global::sistema_modular_cafe_majada.Properties.Resources.control_de_calidad_64px;
             this.pictureBox1.Location = new System.Drawing.Point(12, 23);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(48, 52);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pnl_calCafe_Click);
             // 
             // lbl_calidad
             // 
@@ -437,6 +450,7 @@ namespace sistema_modular_cafe_majada
             this.lbl_calidad.Size = new System.Drawing.Size(31, 21);
             this.lbl_calidad.TabIndex = 2;
             this.lbl_calidad.Text = "999";
+            this.lbl_calidad.Click += new System.EventHandler(this.pnl_calCafe_Click);
             // 
             // label2
             // 
@@ -448,13 +462,14 @@ namespace sistema_modular_cafe_majada
             this.label2.Size = new System.Drawing.Size(109, 21);
             this.label2.TabIndex = 1;
             this.label2.Text = "Calidades de Café";
+            this.label2.Click += new System.EventHandler(this.pnl_calCafe_Click);
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(4, 77);
             this.panel7.TabIndex = 0;
@@ -463,7 +478,7 @@ namespace sistema_modular_cafe_majada
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 569);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(960, 16);
             this.panel2.TabIndex = 4;
@@ -476,7 +491,7 @@ namespace sistema_modular_cafe_majada
             this.flowLayoutPanel1.Controls.Add(this.panel4);
             this.flowLayoutPanel1.Controls.Add(this.panel6);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(757, 41);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(184, 349);
             this.flowLayoutPanel1.TabIndex = 6;
@@ -487,7 +502,7 @@ namespace sistema_modular_cafe_majada
             this.panel14.Controls.Add(this.label16);
             this.panel14.ForeColor = System.Drawing.Color.White;
             this.panel14.Location = new System.Drawing.Point(2, 2);
-            this.panel14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel14.Margin = new System.Windows.Forms.Padding(2);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(182, 81);
             this.panel14.TabIndex = 0;
@@ -516,7 +531,7 @@ namespace sistema_modular_cafe_majada
             this.panel20.Controls.Add(this.label17);
             this.panel20.ForeColor = System.Drawing.Color.White;
             this.panel20.Location = new System.Drawing.Point(2, 87);
-            this.panel20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel20.Margin = new System.Windows.Forms.Padding(2);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(182, 81);
             this.panel20.TabIndex = 1;
@@ -525,7 +540,7 @@ namespace sistema_modular_cafe_majada
             // 
             this.pictureBox6.Image = global::sistema_modular_cafe_majada.Properties.Resources.grano_de_cafe_64px;
             this.pictureBox6.Location = new System.Drawing.Point(4, 7);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(48, 52);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -581,7 +596,7 @@ namespace sistema_modular_cafe_majada
             this.panel4.Controls.Add(this.label18);
             this.panel4.ForeColor = System.Drawing.Color.White;
             this.panel4.Location = new System.Drawing.Point(2, 172);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(182, 81);
             this.panel4.TabIndex = 2;
@@ -590,7 +605,7 @@ namespace sistema_modular_cafe_majada
             // 
             this.pictureBox7.Image = global::sistema_modular_cafe_majada.Properties.Resources.grano_de_cafe_64px;
             this.pictureBox7.Location = new System.Drawing.Point(4, 7);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(48, 52);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -646,7 +661,7 @@ namespace sistema_modular_cafe_majada
             this.panel6.Controls.Add(this.label21);
             this.panel6.ForeColor = System.Drawing.Color.White;
             this.panel6.Location = new System.Drawing.Point(2, 257);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(182, 81);
             this.panel6.TabIndex = 3;
@@ -655,7 +670,7 @@ namespace sistema_modular_cafe_majada
             // 
             this.pictureBox8.Image = global::sistema_modular_cafe_majada.Properties.Resources.grano_de_cafe_64px;
             this.pictureBox8.Location = new System.Drawing.Point(4, 7);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(48, 52);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -709,7 +724,7 @@ namespace sistema_modular_cafe_majada
             this.panel26.BackColor = System.Drawing.Color.White;
             this.panel26.Controls.Add(this.tableLayoutPanel2);
             this.panel26.Location = new System.Drawing.Point(11, 126);
-            this.panel26.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel26.Margin = new System.Windows.Forms.Padding(2);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(741, 264);
             this.panel26.TabIndex = 9;
@@ -726,7 +741,7 @@ namespace sistema_modular_cafe_majada
             this.tableLayoutPanel2.Controls.Add(this.panel10, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel8, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -740,7 +755,7 @@ namespace sistema_modular_cafe_majada
             this.panel12.Controls.Add(this.chart3);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(492, 2);
-            this.panel12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel12.Margin = new System.Windows.Forms.Padding(2);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(242, 254);
             this.panel12.TabIndex = 2;
@@ -748,18 +763,18 @@ namespace sistema_modular_cafe_majada
             // chart3
             // 
             this.chart3.BackColor = System.Drawing.Color.WhiteSmoke;
-            chartArea4.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea1);
             this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.chart3.Legends.Add(legend4);
+            legend1.Name = "Legend1";
+            this.chart3.Legends.Add(legend1);
             this.chart3.Location = new System.Drawing.Point(0, 0);
-            this.chart3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart3.Margin = new System.Windows.Forms.Padding(2);
             this.chart3.Name = "chart3";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart3.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart3.Series.Add(series1);
             this.chart3.Size = new System.Drawing.Size(242, 254);
             this.chart3.TabIndex = 1;
             this.chart3.Text = "chart3";
@@ -770,7 +785,7 @@ namespace sistema_modular_cafe_majada
             this.panel10.Controls.Add(this.chart2);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(247, 2);
-            this.panel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel10.Margin = new System.Windows.Forms.Padding(2);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(241, 254);
             this.panel10.TabIndex = 1;
@@ -778,18 +793,18 @@ namespace sistema_modular_cafe_majada
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.WhiteSmoke;
-            chartArea5.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea5);
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Name = "Legend1";
-            this.chart2.Legends.Add(legend5);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(0, 0);
-            this.chart2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart2.Margin = new System.Windows.Forms.Padding(2);
             this.chart2.Name = "chart2";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chart2.Series.Add(series5);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(241, 254);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
@@ -800,7 +815,7 @@ namespace sistema_modular_cafe_majada
             this.panel8.Controls.Add(this.chart1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(2, 2);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(241, 254);
             this.panel8.TabIndex = 0;
@@ -808,18 +823,18 @@ namespace sistema_modular_cafe_majada
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.WhiteSmoke;
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(0, 0);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chart1.Series.Add(series6);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(241, 254);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -829,7 +844,7 @@ namespace sistema_modular_cafe_majada
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(945, 16);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(15, 553);
             this.panel3.TabIndex = 5;
@@ -853,7 +868,7 @@ namespace sistema_modular_cafe_majada
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox9.Image = global::sistema_modular_cafe_majada.Properties.Resources.coffee_cup;
             this.pictureBox9.Location = new System.Drawing.Point(11, 396);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(929, 168);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -876,7 +891,7 @@ namespace sistema_modular_cafe_majada
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1350, 821);
             this.Name = "form_panel_principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

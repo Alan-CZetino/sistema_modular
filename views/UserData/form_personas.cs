@@ -122,32 +122,36 @@ namespace sistema_modular_cafe_majada.views
         // Evento CellPainting para personalizar el encabezado del DataGridView
         private void dataGrid_PersonView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
+            var configDTG = dataGrid_PersonView;
+
             //auto ajustar el contenido de los datos al área establecido para el datagrid
-            dataGrid_PersonView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGrid_PersonView.BorderStyle = BorderStyle.None;
-
+            configDTG.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            configDTG.BorderStyle = BorderStyle.None;
+            configDTG.AllowUserToResizeColumns = false;
+            configDTG.AllowUserToOrderColumns = false;
+            configDTG.AllowUserToAddRows = false;
+            configDTG.AllowUserToResizeRows = false;
+            configDTG.MultiSelect = false;
             //configuracion de la fila de encabezado en el datagrid
-            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
-            dataGrid_PersonView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
-            dataGrid_PersonView.ColumnHeadersDefaultCellStyle.Font = customFonten;
-            dataGrid_PersonView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGrid_PersonView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
-            dataGrid_PersonView.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
-            dataGrid_PersonView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            Font customFonten = new Font("Segoe UI", 10f, FontStyle.Bold);
+            configDTG.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            configDTG.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            configDTG.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            configDTG.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            configDTG.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            configDTG.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //configuracion de las filas por defecto en el datagrid
-            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+            Font customFontdef = new Font("Segoe UI", 10f, FontStyle.Regular);
 
-            dataGrid_PersonView.DefaultCellStyle.BackColor = Color.White;
-            dataGrid_PersonView.DefaultCellStyle.Font = customFontdef;
-            dataGrid_PersonView.DefaultCellStyle.ForeColor = Color.Black;
-            dataGrid_PersonView.DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGrid_PersonView.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dataGrid_PersonView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
+            configDTG.DefaultCellStyle.BackColor = Color.White;
+            configDTG.DefaultCellStyle.Font = customFontdef;
+            configDTG.DefaultCellStyle.ForeColor = Color.Black;
+            configDTG.DefaultCellStyle.SelectionBackColor = Color.White;
+            configDTG.DefaultCellStyle.SelectionForeColor = Color.Black;
+            configDTG.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             //configuracion de las filas que son seleccionadas
-            dataGrid_PersonView.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
-            dataGrid_PersonView.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+            configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         private void SavePerson_Click(object sender, EventArgs e)

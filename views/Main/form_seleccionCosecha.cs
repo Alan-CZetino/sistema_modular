@@ -23,6 +23,7 @@ namespace sistema_modular_cafe_majada.views
             formularioMain = mainForm; // Almacena la referencia de form_main en el campo privado
 
             CbxCosecha();
+            cbx_cosecha.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void btn_close_Click(object sender, EventArgs e)

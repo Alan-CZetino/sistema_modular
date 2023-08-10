@@ -43,32 +43,36 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_cargosPersonal_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
+            var configDTG = dtg_cargosPersonal;
+
             //auto ajustar el contenido de los datos al área establecido para el datagrid
-            dtg_cargosPersonal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtg_cargosPersonal.BorderStyle = BorderStyle.None;
-
+            configDTG.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            configDTG.BorderStyle = BorderStyle.None;
+            configDTG.AllowUserToResizeColumns = false;
+            configDTG.AllowUserToOrderColumns = false;
+            configDTG.AllowUserToAddRows = false;
+            configDTG.AllowUserToResizeRows = false;
+            configDTG.MultiSelect = false;
             //configuracion de la fila de encabezado en el datagrid
-            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
-            dtg_cargosPersonal.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
-            dtg_cargosPersonal.ColumnHeadersDefaultCellStyle.Font = customFonten;
-            dtg_cargosPersonal.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dtg_cargosPersonal.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
-            dtg_cargosPersonal.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
-            dtg_cargosPersonal.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            Font customFonten = new Font("Segoe UI", 10f, FontStyle.Bold);
+            configDTG.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            configDTG.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            configDTG.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            configDTG.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            configDTG.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            configDTG.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //configuracion de las filas por defecto en el datagrid
-            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+            Font customFontdef = new Font("Segoe UI", 10f, FontStyle.Regular);
 
-            dtg_cargosPersonal.DefaultCellStyle.BackColor = Color.WhiteSmoke;
-            dtg_cargosPersonal.DefaultCellStyle.Font = customFontdef;
-            dtg_cargosPersonal.DefaultCellStyle.ForeColor = Color.Black;
-            dtg_cargosPersonal.DefaultCellStyle.SelectionBackColor = Color.WhiteSmoke;
-            dtg_cargosPersonal.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dtg_cargosPersonal.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
+            configDTG.DefaultCellStyle.BackColor = Color.White;
+            configDTG.DefaultCellStyle.Font = customFontdef;
+            configDTG.DefaultCellStyle.ForeColor = Color.Black;
+            configDTG.DefaultCellStyle.SelectionBackColor = Color.White;
+            configDTG.DefaultCellStyle.SelectionForeColor = Color.Black;
+            configDTG.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             //configuracion de las filas que son seleccionadas
-            dtg_cargosPersonal.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
-            dtg_cargosPersonal.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+            configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         private void btn_close_Click(object sender, EventArgs e)

@@ -56,32 +56,36 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_proceCafe_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
+            var configDTG = dtg_proceCafe;
+
             //auto ajustar el contenido de los datos al área establecido para el datagrid
-            dtg_proceCafe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtg_proceCafe.BorderStyle = BorderStyle.None;
-
+            configDTG.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            configDTG.BorderStyle = BorderStyle.None;
+            configDTG.AllowUserToResizeColumns = false;
+            configDTG.AllowUserToOrderColumns = false;
+            configDTG.AllowUserToAddRows = false;
+            configDTG.AllowUserToResizeRows = false;
+            configDTG.MultiSelect = false;
             //configuracion de la fila de encabezado en el datagrid
-            Font customFonten = new Font("Oswald", 9f, FontStyle.Bold);
-            dtg_proceCafe.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
-            dtg_proceCafe.ColumnHeadersDefaultCellStyle.Font = customFonten;
-            dtg_proceCafe.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dtg_proceCafe.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
-            dtg_proceCafe.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
-            dtg_proceCafe.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            Font customFonten = new Font("Segoe UI", 10f, FontStyle.Bold);
+            configDTG.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(184, 89, 89);
+            configDTG.ColumnHeadersDefaultCellStyle.Font = customFonten;
+            configDTG.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            configDTG.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(184, 89, 89);
+            configDTG.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.White;
+            configDTG.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //configuracion de las filas por defecto en el datagrid
-            Font customFontdef = new Font("Oswald Light", 10.2f, FontStyle.Regular);
+            Font customFontdef = new Font("Segoe UI", 10f, FontStyle.Regular);
 
-            dtg_proceCafe.DefaultCellStyle.BackColor = Color.White;
-            dtg_proceCafe.DefaultCellStyle.Font = customFontdef;
-            dtg_proceCafe.DefaultCellStyle.ForeColor = Color.Black;
-            dtg_proceCafe.DefaultCellStyle.SelectionBackColor = Color.White;
-            dtg_proceCafe.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dtg_proceCafe.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
+            configDTG.DefaultCellStyle.BackColor = Color.White;
+            configDTG.DefaultCellStyle.Font = customFontdef;
+            configDTG.DefaultCellStyle.ForeColor = Color.Black;
+            configDTG.DefaultCellStyle.SelectionBackColor = Color.White;
+            configDTG.DefaultCellStyle.SelectionForeColor = Color.Black;
+            configDTG.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             //configuracion de las filas que son seleccionadas
-            dtg_proceCafe.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
-            dtg_proceCafe.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+            configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
+            configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public void ShowProcedenciaGrid()
