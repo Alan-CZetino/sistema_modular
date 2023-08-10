@@ -29,6 +29,7 @@ namespace sistema_modular_cafe_majada.views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_subPartidas));
             this.label1 = new System.Windows.Forms.Label();
             this.txb_cosecha = new System.Windows.Forms.TextBox();
             this.txb_subPartida = new System.Windows.Forms.TextBox();
@@ -169,7 +170,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_sPartida.FlatAppearance.BorderSize = 0;
             this.btn_sPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_sPartida.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_sPartida.Image = global::sistema_modular_cafe_majada.Properties.Resources.editar_24px;
             this.btn_sPartida.Location = new System.Drawing.Point(280, 33);
             this.btn_sPartida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_sPartida.Name = "btn_sPartida";
@@ -272,7 +273,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_CCafe.FlatAppearance.BorderSize = 0;
             this.btn_CCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_CCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_CCafe.Image = ((System.Drawing.Image)(resources.GetObject("btn_CCafe.Image")));
             this.btn_CCafe.Location = new System.Drawing.Point(383, 74);
             this.btn_CCafe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_CCafe.Name = "btn_CCafe";
@@ -285,7 +286,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_prodCafe.FlatAppearance.BorderSize = 0;
             this.btn_prodCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_prodCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_prodCafe.Image = ((System.Drawing.Image)(resources.GetObject("btn_prodCafe.Image")));
             this.btn_prodCafe.Location = new System.Drawing.Point(159, 71);
             this.btn_prodCafe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_prodCafe.Name = "btn_prodCafe";
@@ -555,7 +556,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_puntero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_puntero.FlatAppearance.BorderSize = 0;
             this.btn_puntero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_puntero.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_puntero.Image = ((System.Drawing.Image)(resources.GetObject("btn_puntero.Image")));
             this.btn_puntero.Location = new System.Drawing.Point(556, 226);
             this.btn_puntero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_puntero.Name = "btn_puntero";
@@ -788,7 +789,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_catador.FlatAppearance.BorderSize = 0;
             this.btn_catador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_catador.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_catador.Image = ((System.Drawing.Image)(resources.GetObject("btn_catador.Image")));
             this.btn_catador.Location = new System.Drawing.Point(711, 44);
             this.btn_catador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_catador.Name = "btn_catador";
@@ -917,7 +918,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_ubiFisicaCafe.FlatAppearance.BorderSize = 0;
             this.btn_ubiFisicaCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ubiFisicaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_ubiFisicaCafe.Image = ((System.Drawing.Image)(resources.GetObject("btn_ubiFisicaCafe.Image")));
             this.btn_ubiFisicaCafe.Location = new System.Drawing.Point(517, 95);
             this.btn_ubiFisicaCafe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_ubiFisicaCafe.Name = "btn_ubiFisicaCafe";
@@ -930,7 +931,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_ubicacionCafe.FlatAppearance.BorderSize = 0;
             this.btn_ubicacionCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ubicacionCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_ubicacionCafe.Image = ((System.Drawing.Image)(resources.GetObject("btn_ubicacionCafe.Image")));
             this.btn_ubicacionCafe.Location = new System.Drawing.Point(517, 43);
             this.btn_ubicacionCafe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_ubicacionCafe.Name = "btn_ubicacionCafe";
@@ -944,7 +945,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_pesador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_pesador.FlatAppearance.BorderSize = 0;
             this.btn_pesador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_pesador.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_pesador.Image = ((System.Drawing.Image)(resources.GetObject("btn_pesador.Image")));
             this.btn_pesador.Location = new System.Drawing.Point(1192, 43);
             this.btn_pesador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_pesador.Name = "btn_pesador";

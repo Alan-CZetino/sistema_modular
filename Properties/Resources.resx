@@ -127,11 +127,11 @@
   <data name="impresora" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\impresora.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="clase_uva64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clase_uva64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="x__1___1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\x (1) (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo_oficial_majada" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo oficial majada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pdf_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pdf 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,6 +154,9 @@
   <data name="icono_majada64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono-majada64px.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="admin_1_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\admin 1 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,6 +169,9 @@
   <data name="editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="modulo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\modulo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Despulpa 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Despulpa 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -174,9 +180,6 @@
   </data>
   <data name="grano-de-cafe 24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\grano-de-cafe 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="falla 64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\falla 64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="panel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\panel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,8 +202,11 @@
   <data name="lupa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lupa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="calendario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calendario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="buscar 24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buscar 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sub_productos_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sub_productos 64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btn_eliminar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btn_eliminar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,8 +214,8 @@
   <data name="administracion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\administracion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sub_productos_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sub_productos 64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_guardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_guardar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Logo_majada_claro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo_majada_claro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,8 +232,11 @@
   <data name="personas_45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\personas 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cuadrado__2_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cuadrado (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="reporte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reporte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cerrar_sesion1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cerrar_sesion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="almacen_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\almacen 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,29 +244,26 @@
   <data name="trabajadores_45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trabajadores 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="trilla 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\trilla 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="usuario_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usuario 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btn_guardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btn_guardar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tablas_45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tablas 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lupa 24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lupa 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="falla 64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\falla 64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="excel_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\excel 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cargos 32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cargos 32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="coffee-cup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coffee-cup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="reporte" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reporte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Salida 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Salida 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lupa 32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lupa 32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="admin_2_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\admin 2 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -265,14 +271,14 @@
   <data name="calendario 128px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendario 128px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cerrar_sesion1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cerrar_sesion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lupa 24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lupa 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="grano-de-cafe 64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\grano-de-cafe 64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="clase_uva64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\clase_uva64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo_oficial_majada" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo oficial majada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cose45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cose45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -280,28 +286,28 @@
   <data name="finca64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\finca64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Salida 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Salida 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cargos 32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cargos 32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="modulo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\modulo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_eliminar 24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_eliminar 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tablas_45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tablas 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cuadrado__2_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cuadrado (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Barra de busqueda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Barra de busqueda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="usuario_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usuario 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="calendario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lupa 32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lupa 32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="trilla 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trilla 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SubPartida 45px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SubPartida 45px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btn_eliminar 24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btn_eliminar 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="editar 24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editar 24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

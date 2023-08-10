@@ -1060,6 +1060,7 @@ namespace sistema_modular_cafe_majada.views
             imagenClickeadaSP = false;
             imgClickAlmacen = false;
             SubPartidaSeleccionado.clickImg = false;
+            this.Close();
         }
 
         private void btn_deleteSPartida_Click(object sender, EventArgs e)

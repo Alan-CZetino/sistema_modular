@@ -288,6 +288,7 @@ namespace sistema_modular_cafe_majada.views
         {
             ClearDataTxb();
             imagenClickeada = false;
+            this.Close();
         }
 
         private void btn_tFinca_Click(object sender, EventArgs e)

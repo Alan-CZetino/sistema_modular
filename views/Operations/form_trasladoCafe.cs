@@ -473,6 +473,7 @@ namespace sistema_modular_cafe_majada.views
             TrasladoSeleccionado.clickImg = false;
             imgClickBodegaD = false;
             imgClickAlmacenD = false;
+            this.Close();
         }
 
         //

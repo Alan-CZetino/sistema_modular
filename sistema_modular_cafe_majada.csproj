@@ -289,12 +289,6 @@
     <Compile Include="views\Harvest\form_cosecha.Designer.cs">
       <DependentUpon>form_cosecha.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\form_despulpaCafe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\form_despulpaCafe.Designer.cs">
-      <DependentUpon>form_despulpaCafe.cs</DependentUpon>
-    </Compile>
     <Compile Include="views\Infrastructure\form_destCafe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,12 +360,6 @@
     </Compile>
     <Compile Include="views\Infrastructure\form_finca.Designer.cs">
       <DependentUpon>form_finca.cs</DependentUpon>
-    </Compile>
-    <Compile Include="views\form_lavadaCafe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\form_lavadaCafe.Designer.cs">
-      <DependentUpon>form_lavadaCafe.cs</DependentUpon>
     </Compile>
     <Compile Include="views\Acces\form_login.cs">
       <SubType>Form</SubType>
@@ -531,9 +519,6 @@
     <EmbeddedResource Include="views\Harvest\form_cosecha.resx">
       <DependentUpon>form_cosecha.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\form_despulpaCafe.resx">
-      <DependentUpon>form_despulpaCafe.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="views\Infrastructure\form_destCafe.resx">
       <DependentUpon>form_destCafe.cs</DependentUpon>
     </EmbeddedResource>
@@ -572,9 +557,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\Infrastructure\form_finca.resx">
       <DependentUpon>form_finca.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="views\form_lavadaCafe.resx">
-      <DependentUpon>form_lavadaCafe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Acces\form_login.resx">
       <DependentUpon>form_login.cs</DependentUpon>
@@ -727,6 +709,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\buscar 24px.png" />
+    <None Include="Resources\editar 24px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

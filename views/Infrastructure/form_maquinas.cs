@@ -384,6 +384,7 @@ namespace sistema_modular_cafe_majada.views
             ClearDataTxb();
             imagenClickeada = false;
             maquinaSeleccionada = null;
+            this.Close();
         }
 
         private void btn_modMaquina_Click(object sender, EventArgs e)

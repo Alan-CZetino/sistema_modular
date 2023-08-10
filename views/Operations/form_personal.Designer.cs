@@ -342,7 +342,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_tablePerson.FlatAppearance.BorderSize = 0;
             this.btn_tablePerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tablePerson.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tablePerson.Image = global::sistema_modular_cafe_majada.Properties.Resources.buscar_24px;
             this.btn_tablePerson.Location = new System.Drawing.Point(253, 110);
             this.btn_tablePerson.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_tablePerson.Name = "btn_tablePerson";

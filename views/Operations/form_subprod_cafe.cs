@@ -193,6 +193,7 @@ namespace sistema_modular_cafe_majada.views
             ClearDataTxb();
             imagenClickeada = false;
             subProdcSeleccionado = null;
+            this.Close();
         }
 
         public void ClearDataTxb()

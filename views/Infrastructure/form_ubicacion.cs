@@ -180,6 +180,7 @@ namespace sistema_modular_cafe_majada.views
             ClearDataTxb();
             imagenClickeada = false;
             almacenSeleccionado = null;
+            this.Close();
         }
 
         public void ClearDataTxb()

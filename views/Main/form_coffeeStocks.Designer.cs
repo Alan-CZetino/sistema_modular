@@ -30,8 +30,6 @@ namespace sistema_modular_cafe_majada.views
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_despulpaCafe = new System.Windows.Forms.Button();
-            this.btn_lavadaCafe = new System.Windows.Forms.Button();
             this.btn_subPartida = new System.Windows.Forms.Button();
             this.btn_trillaCafe = new System.Windows.Forms.Button();
             this.btn_entradaCafe = new System.Windows.Forms.Button();
@@ -44,15 +42,13 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.Controls.Add(this.btn_despulpaCafe, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_lavadaCafe, 4, 0);
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btn_subPartida, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_trillaCafe, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_entradaCafe, 2, 0);
@@ -61,47 +57,8 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(837, 100);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // btn_despulpaCafe
-            // 
-            this.btn_despulpaCafe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_despulpaCafe.Enabled = false;
-            this.btn_despulpaCafe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btn_despulpaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
-            this.btn_despulpaCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_despulpaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_despulpaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Despulpa_45px;
-            this.btn_despulpaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_despulpaCafe.Location = new System.Drawing.Point(698, 3);
-            this.btn_despulpaCafe.Name = "btn_despulpaCafe";
-            this.btn_despulpaCafe.Size = new System.Drawing.Size(136, 94);
-            this.btn_despulpaCafe.TabIndex = 1;
-            this.btn_despulpaCafe.Text = "Despulpa";
-            this.btn_despulpaCafe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_despulpaCafe.UseVisualStyleBackColor = true;
-            this.btn_despulpaCafe.Click += new System.EventHandler(this.btn_despulpaCafe_Click);
-            // 
-            // btn_lavadaCafe
-            // 
-            this.btn_lavadaCafe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_lavadaCafe.Enabled = false;
-            this.btn_lavadaCafe.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(218)))), ((int)(((byte)(218)))));
-            this.btn_lavadaCafe.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(249)))));
-            this.btn_lavadaCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_lavadaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_lavadaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.lavar_45px;
-            this.btn_lavadaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_lavadaCafe.Location = new System.Drawing.Point(559, 3);
-            this.btn_lavadaCafe.Name = "btn_lavadaCafe";
-            this.btn_lavadaCafe.Size = new System.Drawing.Size(133, 94);
-            this.btn_lavadaCafe.TabIndex = 0;
-            this.btn_lavadaCafe.Text = "Lavada";
-            this.btn_lavadaCafe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_lavadaCafe.UseVisualStyleBackColor = true;
-            this.btn_lavadaCafe.Click += new System.EventHandler(this.btn_lavadaCafe_Click);
             // 
             // btn_subPartida
             // 
@@ -114,7 +71,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_subPartida.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_subPartida.Location = new System.Drawing.Point(3, 3);
             this.btn_subPartida.Name = "btn_subPartida";
-            this.btn_subPartida.Size = new System.Drawing.Size(133, 94);
+            this.btn_subPartida.Size = new System.Drawing.Size(203, 94);
             this.btn_subPartida.TabIndex = 3;
             this.btn_subPartida.Text = "Sub Partida";
             this.btn_subPartida.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -130,9 +87,9 @@ namespace sistema_modular_cafe_majada.views
             this.btn_trillaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_trillaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.trilla_45px;
             this.btn_trillaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_trillaCafe.Location = new System.Drawing.Point(142, 3);
+            this.btn_trillaCafe.Location = new System.Drawing.Point(212, 3);
             this.btn_trillaCafe.Name = "btn_trillaCafe";
-            this.btn_trillaCafe.Size = new System.Drawing.Size(133, 94);
+            this.btn_trillaCafe.Size = new System.Drawing.Size(203, 94);
             this.btn_trillaCafe.TabIndex = 2;
             this.btn_trillaCafe.Text = "Trilla";
             this.btn_trillaCafe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -148,9 +105,9 @@ namespace sistema_modular_cafe_majada.views
             this.btn_entradaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_entradaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Entrada_45px;
             this.btn_entradaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_entradaCafe.Location = new System.Drawing.Point(281, 3);
+            this.btn_entradaCafe.Location = new System.Drawing.Point(421, 3);
             this.btn_entradaCafe.Name = "btn_entradaCafe";
-            this.btn_entradaCafe.Size = new System.Drawing.Size(133, 94);
+            this.btn_entradaCafe.Size = new System.Drawing.Size(203, 94);
             this.btn_entradaCafe.TabIndex = 4;
             this.btn_entradaCafe.Text = "Traslado";
             this.btn_entradaCafe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -166,9 +123,9 @@ namespace sistema_modular_cafe_majada.views
             this.btn_salidaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_salidaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Salida_45px;
             this.btn_salidaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_salidaCafe.Location = new System.Drawing.Point(420, 3);
+            this.btn_salidaCafe.Location = new System.Drawing.Point(630, 3);
             this.btn_salidaCafe.Name = "btn_salidaCafe";
-            this.btn_salidaCafe.Size = new System.Drawing.Size(133, 94);
+            this.btn_salidaCafe.Size = new System.Drawing.Size(204, 94);
             this.btn_salidaCafe.TabIndex = 5;
             this.btn_salidaCafe.Text = "Salida";
             this.btn_salidaCafe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -214,7 +171,5 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Button btn_entradaCafe;
         private System.Windows.Forms.Button btn_subPartida;
         private System.Windows.Forms.Button btn_trillaCafe;
-        private System.Windows.Forms.Button btn_despulpaCafe;
-        private System.Windows.Forms.Button btn_lavadaCafe;
     }
 }

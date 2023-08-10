@@ -741,6 +741,7 @@ namespace sistema_modular_cafe_majada.views
             imagenClickeadaSL = false;
             imgClickAlmacen = false;
             SalidaSeleccionado.clickImg = false;
+            this.Close();
         }
 
         private void btn_deleteSalida_Click(object sender, EventArgs e)

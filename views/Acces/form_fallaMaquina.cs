@@ -327,6 +327,7 @@ namespace sistema_modular_cafe_majada.views
             ClearDataTxb();
             imagenClickeada = false;
             fallaSeleccionada = null;
+            this.Close();
         }
 
         private void btn_modFalla_Click(object sender, EventArgs e)

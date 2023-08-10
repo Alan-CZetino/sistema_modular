@@ -288,6 +288,7 @@ namespace sistema_modular_cafe_majada.views
             CosechaController cosec = new CosechaController();
             var count = cosec.CountCosecha();
             txb_id.Text = Convert.ToString(count.CountCosecha + 1);
+            this.Close();
         }
     }
 }

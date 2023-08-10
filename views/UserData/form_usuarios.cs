@@ -675,6 +675,7 @@ namespace sistema_modular_cafe_majada.views
             txb_Password.ReadOnly = false;
             txb_PassConfirm.ReadOnly = false;
             CbxRoles();
+            this.Close();
         }
 
         private void form_usuarios_Load(object sender, EventArgs e)

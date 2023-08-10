@@ -313,6 +313,7 @@ namespace sistema_modular_cafe_majada.views
             ProcedenciaDestinoController proceC = new ProcedenciaDestinoController();
             var count = proceC.CountProcedencia();
             txb_id.Text = Convert.ToString(count.CountProcedencia + 1);
+            this.Close();
         }
 
         private void btn_deletePorceCafe_Click(object sender, EventArgs e)

@@ -22,9 +22,7 @@ namespace sistema_modular_cafe_majada.views
             originalColors = new Dictionary<Button, Color>();
 
             //SE LLAMA LA FUNCION ASIGNAR COLOR ORIGINAL
-            AsignarColorOriginal(btn_despulpaCafe);
             AsignarColorOriginal(btn_entradaCafe);
-            AsignarColorOriginal(btn_lavadaCafe);
             AsignarColorOriginal(btn_salidaCafe);
             AsignarColorOriginal(btn_subPartida);
             AsignarColorOriginal(btn_trillaCafe);

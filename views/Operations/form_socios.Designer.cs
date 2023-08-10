@@ -29,14 +29,13 @@ namespace sistema_modular_cafe_majada.views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_socios));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.txb_id = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.btn_tfinca = new System.Windows.Forms.Button();
             this.txb_nombreFinca = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,6 +51,8 @@ namespace sistema_modular_cafe_majada.views
             this.panel7 = new System.Windows.Forms.Panel();
             this.btn_SaveLote = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.txb_id = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_updateLote = new System.Windows.Forms.PictureBox();
@@ -142,33 +143,11 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Size = new System.Drawing.Size(279, 380);
             this.panel8.TabIndex = 9;
             // 
-            // txb_id
-            // 
-            this.txb_id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txb_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_id.Location = new System.Drawing.Point(801, 23);
-            this.txb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txb_id.Name = "txb_id";
-            this.txb_id.Size = new System.Drawing.Size(45, 27);
-            this.txb_id.TabIndex = 20;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(726, 23);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 18);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Codigo";
-            // 
             // btn_tfinca
             // 
             this.btn_tfinca.FlatAppearance.BorderSize = 0;
             this.btn_tfinca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tfinca.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tfinca.Image = ((System.Drawing.Image)(resources.GetObject("btn_tfinca.Image")));
             this.btn_tfinca.Location = new System.Drawing.Point(235, 302);
             this.btn_tfinca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_tfinca.Name = "btn_tfinca";
@@ -215,7 +194,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_tPersona.FlatAppearance.BorderSize = 0;
             this.btn_tPersona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tPersona.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tPersona.Image = ((System.Drawing.Image)(resources.GetObject("btn_tPersona.Image")));
             this.btn_tPersona.Location = new System.Drawing.Point(235, 238);
             this.btn_tPersona.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_tPersona.Name = "btn_tPersona";
@@ -355,6 +334,28 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
+            // txb_id
+            // 
+            this.txb_id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_id.Location = new System.Drawing.Point(801, 23);
+            this.txb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txb_id.Name = "txb_id";
+            this.txb_id.Size = new System.Drawing.Size(45, 27);
+            this.txb_id.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(726, 23);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(62, 18);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Codigo";
             // 
             // panel5
             // 

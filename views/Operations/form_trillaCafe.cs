@@ -739,6 +739,7 @@ namespace sistema_modular_cafe_majada.views
             imagenClickeadaTR = false;
             imgClickAlmacen = false;
             TrillaSeleccionado.clickImg = false;
+            this.Close();
         }
 
         private void btn_deleteTrilla_Click(object sender, EventArgs e)

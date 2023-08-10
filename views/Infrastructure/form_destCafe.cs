@@ -163,6 +163,7 @@ namespace sistema_modular_cafe_majada.views
             ClearDataTxb();
             imagenClickeada = false;
             bodegaSeleccionado = null;
+            this.Close();
         }
 
         public void ClearDataTxb()

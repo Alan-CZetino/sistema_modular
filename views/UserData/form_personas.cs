@@ -277,6 +277,7 @@ namespace sistema_modular_cafe_majada.views
         {
             ClearDataTxb();
             imagenClickeada = false;
+            this.Close();
         }
 
         public void ClearDataTxb()

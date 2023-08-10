@@ -218,6 +218,7 @@ namespace sistema_modular_cafe_majada.views
         {
             ClearDataTxb();
             rolSeleccionado = null;
+            this.Close();
         }
 
         public void ShowLevelRole()

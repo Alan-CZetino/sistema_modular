@@ -177,6 +177,7 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
+            this.Close();
         }
 
         //

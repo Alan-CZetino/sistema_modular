@@ -29,6 +29,7 @@ namespace sistema_modular_cafe_majada.views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_trillaCafe));
             this.btn_tTrillas = new System.Windows.Forms.Button();
             this.txb_numTrilla = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,7 +80,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_tTrillas.FlatAppearance.BorderSize = 0;
             this.btn_tTrillas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tTrillas.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tTrillas.Image = global::sistema_modular_cafe_majada.Properties.Resources.editar_24px;
             this.btn_tTrillas.Location = new System.Drawing.Point(281, 34);
             this.btn_tTrillas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_tTrillas.Name = "btn_tTrillas";
@@ -203,7 +204,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_tCCafe.FlatAppearance.BorderSize = 0;
             this.btn_tCCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tCCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tCCafe.Image = ((System.Drawing.Image)(resources.GetObject("btn_tCCafe.Image")));
             this.btn_tCCafe.Location = new System.Drawing.Point(277, 43);
             this.btn_tCCafe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_tCCafe.Name = "btn_tCCafe";
@@ -310,7 +311,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_tProcedencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_tProcedencia.FlatAppearance.BorderSize = 0;
             this.btn_tProcedencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tProcedencia.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tProcedencia.Image = ((System.Drawing.Image)(resources.GetObject("btn_tProcedencia.Image")));
             this.btn_tProcedencia.Location = new System.Drawing.Point(569, 203);
             this.btn_tProcedencia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_tProcedencia.Name = "btn_tProcedencia";
@@ -324,7 +325,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_tUbicacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_tUbicacion.FlatAppearance.BorderSize = 0;
             this.btn_tUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tUbicacion.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tUbicacion.Image = ((System.Drawing.Image)(resources.GetObject("btn_tUbicacion.Image")));
             this.btn_tUbicacion.Location = new System.Drawing.Point(569, 121);
             this.btn_tUbicacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_tUbicacion.Name = "btn_tUbicacion";
@@ -338,7 +339,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_tAlmacen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_tAlmacen.FlatAppearance.BorderSize = 0;
             this.btn_tAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tAlmacen.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tAlmacen.Image = ((System.Drawing.Image)(resources.GetObject("btn_tAlmacen.Image")));
             this.btn_tAlmacen.Location = new System.Drawing.Point(569, 41);
             this.btn_tAlmacen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_tAlmacen.Name = "btn_tAlmacen";
@@ -438,7 +439,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_tPesador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_tPesador.FlatAppearance.BorderSize = 0;
             this.btn_tPesador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tPesador.Image = global::sistema_modular_cafe_majada.Properties.Resources.tablas_24px;
+            this.btn_tPesador.Image = ((System.Drawing.Image)(resources.GetObject("btn_tPesador.Image")));
             this.btn_tPesador.Location = new System.Drawing.Point(1215, 39);
             this.btn_tPesador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_tPesador.Name = "btn_tPesador";
