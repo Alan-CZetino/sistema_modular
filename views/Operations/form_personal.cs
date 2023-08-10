@@ -157,20 +157,29 @@ namespace sistema_modular_cafe_majada.views
         //
         private void dtg_personal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_personal.Rows[e.RowIndex];
-            personalSeleccionado = new Personal();
-            var cargo = new ChargeController();
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_personal.Rows.Count)
+            {
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtg_personal.Rows[e.RowIndex];
+                personalSeleccionado = new Personal();
+                var cargo = new ChargeController();
 
-            // Obtener los valores de las celdas de la fila seleccionada
-            personalSeleccionado.IdPersonal = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            personalSeleccionado.IdPersona = Convert.ToInt32(filaSeleccionada.Cells["ID_Persona"].Value);
-            personalSeleccionado.NombrePersonal = filaSeleccionada.Cells["Nombre"].Value.ToString();
-            personalSeleccionado.NombreCargo = filaSeleccionada.Cells["Cargo"].Value.ToString();
-            personalSeleccionado.Descripcion = filaSeleccionada.Cells["Descripcion"].Value.ToString();
+                // Obtener los valores de las celdas de la fila seleccionada
+                personalSeleccionado.IdPersonal = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                personalSeleccionado.IdPersona = Convert.ToInt32(filaSeleccionada.Cells["ID_Persona"].Value);
+                personalSeleccionado.NombrePersonal = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                personalSeleccionado.NombreCargo = filaSeleccionada.Cells["Cargo"].Value.ToString();
+                personalSeleccionado.Descripcion = filaSeleccionada.Cells["Descripcion"].Value.ToString();
 
-            Charge iCargo = cargo.ObtenerNombreCargo(personalSeleccionado.NombreCargo);
-            personalSeleccionado.ICargo = iCargo.IdCargo;
+                Charge iCargo = cargo.ObtenerNombreCargo(personalSeleccionado.NombreCargo);
+                personalSeleccionado.ICargo = iCargo.IdCargo;
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //

@@ -33,6 +33,7 @@ namespace sistema_modular_cafe_majada.views
             ShowFallasGrid();
 
             CbxMaquinas();
+            cbx_fallaMaquina.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void btn_close_Click(object sender, EventArgs e)
@@ -174,18 +175,27 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_fallas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_fallas.Rows[e.RowIndex];
-            fallaSeleccionada = new Fallas();
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_fallas.Rows.Count)
+            {
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtg_fallas.Rows[e.RowIndex];
+                fallaSeleccionada = new Fallas();
 
-            // Obtener los valores de las celdas de la fila seleccionada
-            fallaSeleccionada.IdFalla = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            fallaSeleccionada.DescripcionFalla = filaSeleccionada.Cells["Descripcion"].Value.ToString();
-            fallaSeleccionada.PiezaReemplazada = filaSeleccionada.Cells["Pieza"].Value.ToString();
-            fallaSeleccionada.FechaFalla = Convert.ToDateTime(filaSeleccionada.Cells["fecha"].Value);
-            fallaSeleccionada.AccionesTomadas = filaSeleccionada.Cells["Acciones"].Value.ToString();
-            fallaSeleccionada.NombreMaquinaria = filaSeleccionada.Cells["Maquinas"].Value.ToString();
-            fallaSeleccionada.ObservacionFalla = filaSeleccionada.Cells["observaciones"].Value.ToString();
+                // Obtener los valores de las celdas de la fila seleccionada
+                fallaSeleccionada.IdFalla = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                fallaSeleccionada.DescripcionFalla = filaSeleccionada.Cells["Descripcion"].Value.ToString();
+                fallaSeleccionada.PiezaReemplazada = filaSeleccionada.Cells["Pieza"].Value.ToString();
+                fallaSeleccionada.FechaFalla = Convert.ToDateTime(filaSeleccionada.Cells["fecha"].Value);
+                fallaSeleccionada.AccionesTomadas = filaSeleccionada.Cells["Acciones"].Value.ToString();
+                fallaSeleccionada.NombreMaquinaria = filaSeleccionada.Cells["Maquinas"].Value.ToString();
+                fallaSeleccionada.ObservacionFalla = filaSeleccionada.Cells["observaciones"].Value.ToString();
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btn_SaveFalla_Click(object sender, EventArgs e)

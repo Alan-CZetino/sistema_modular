@@ -97,6 +97,7 @@ namespace sistema_modular_cafe_majada.views
             txb_bodegaDes.ReadOnly = true;
             txb_fincaDes.Enabled = false;
             txb_fincaDes.ReadOnly = true;
+            cbx_subProducto.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
 

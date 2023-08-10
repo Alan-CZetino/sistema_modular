@@ -124,38 +124,47 @@ namespace sistema_modular_cafe_majada.views
         //
         private void dtg_tableOpc_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_tableOpc.Rows[e.RowIndex];
-
-            int opc = TablaSeleccionada.ITable;
-
-            switch (opc)
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_tableOpc.Rows.Count)
             {
-                case 1:
-                    //finca
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        FincaSeleccionada.IFincaSeleccionada = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        FincaSeleccionada.NombreFincaSeleccionada = filaSeleccionada.Cells["Nombres"].Value.ToString();
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtg_tableOpc.Rows[e.RowIndex];
 
-                    }
-                    break;
-                case 2:
-                    //Persona
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        PersonSelect.IdPerson = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        PersonSelect.NamePerson = filaSeleccionada.Cells["Nombres"].Value.ToString();
+                int opc = TablaSeleccionada.ITable;
 
-                    }
-                    break;
-                default:
-                    MessageBox.Show("Ocurrio un Error. La tabla que desea acceder no exite. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-            }
+                switch (opc)
+                {
+                    case 1:
+                        //finca
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            FincaSeleccionada.IFincaSeleccionada = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            FincaSeleccionada.NombreFincaSeleccionada = filaSeleccionada.Cells["Nombres"].Value.ToString();
+
+                        }
+                        break;
+                    case 2:
+                        //Persona
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            PersonSelect.IdPerson = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            PersonSelect.NamePerson = filaSeleccionada.Cells["Nombres"].Value.ToString();
+
+                        }
+                        break;
+                    default:
+                        MessageBox.Show("Ocurrio un Error. La tabla que desea acceder no exite. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
             
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void form_opcLote_KeyDown(object sender, KeyEventArgs e)

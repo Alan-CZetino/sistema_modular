@@ -91,29 +91,38 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_tOpc_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_tOpc.Rows[e.RowIndex];
-
-            int opc = TablaSeleccionadabodega.ITable;
-
-            switch (opc)
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_tOpc.Rows.Count)
             {
-                case 1:
-                    //beneficio
-                    {
-                        // Obtener los valores de las celdas de la fila seleccionada
-                        BeneficioSeleccionado.IdBeneficioSleccionado = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-                        BeneficioSeleccionado.NombreBeneficioSeleccionado = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtg_tOpc.Rows[e.RowIndex];
 
-                    }
-                    break;
-                default:
-                    MessageBox.Show("Ocurrio un Error. La tabla que desea acceder no exite. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                int opc = TablaSeleccionadabodega.ITable;
+
+                switch (opc)
+                {
+                    case 1:
+                        //beneficio
+                        {
+                            // Obtener los valores de las celdas de la fila seleccionada
+                            BeneficioSeleccionado.IdBeneficioSleccionado = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                            BeneficioSeleccionado.NombreBeneficioSeleccionado = filaSeleccionada.Cells["Nombre"].Value.ToString();
+
+                        }
+                        break;
+                    default:
+                        MessageBox.Show("Ocurrio un Error. La tabla que desea acceder no exite. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
 

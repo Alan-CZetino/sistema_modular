@@ -97,6 +97,7 @@ namespace sistema_modular_cafe_majada.views
             txb_ubicadoBodega.ReadOnly = true;
             txb_almacenSiloPiña.Enabled = false;
             txb_almacenSiloPiña.ReadOnly = true;
+            cbx_subProducto.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         //
@@ -1035,6 +1036,10 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
+            txb_horaInicio.Text = "00:00:00";
+            txb_horaSalida.Text = "00:00:00";
+            txb_tiempoSecad.Text = "00:00:00";
+
             AlmacenSeleccionado.IAlmacen = 0;
             BodegaSeleccionada.IdBodega = 0;
             AlmacenBodegaClick.IBodega = 0;
@@ -1107,5 +1112,14 @@ namespace sistema_modular_cafe_majada.views
 
         }
 
+        private void txb_horaInicio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
     }
 }

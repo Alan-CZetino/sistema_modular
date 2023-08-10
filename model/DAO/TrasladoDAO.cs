@@ -28,14 +28,29 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Se crea el script SQL para insertar
-                string consulta = @"INSERT INTO Traslado_Cafe (
-                                    id_cosecha_traslado, num_traslado, id_procedencia_procedencia_traslado, id_procedencia_destino_traslado, 
-                                    id_almacen_procedencia_traslado, id_bodega_procedencia_traslado, id_almacen_destino_traslado, id_bodega_destino_traslado, 
-                                    id_calidad_cafe_traslado, id_subproducto_traslado, cantidad_traslado_qqs_cafe, cantidad_traslado_sacos_cafe, fecha_trasladoCafe,
-                                    id_personal_traslado, observacion_traslado)
-                                VALUES (
-                                    @idCosecha, @numTraslado, @idProcedenciaP, @idProcedenciaD, @iAlmacenP, @iBodegaP, @iAlmacenD, @iBodegaD, @idCalidadCafe, 
-                                    @idSubProducto, @cantidadQQs, @cantidadSacos, @fechaTraslado, @idPersonal, @observacion)";
+                string consulta = @"INSERT INTO Traslado_Cafe SET 
+                                    id_cosecha_traslado = @idCosecha, 
+                                    num_traslado = @numTraslado,";
+                                    if (traslado.IdProcedencia != 0)
+                                    {
+                                        consulta += "id_procedencia_procedencia_traslado = @idProcedenciaP,";
+                                    }
+                                    consulta += @"";
+                                    if (traslado.IdProcedenciaDestino != 0)
+                                    {
+                                        consulta += "id_procedencia_destino_traslado = @idProcedenciaD,";
+                                    }
+                                    consulta += @"id_almacen_procedencia_traslado = @iAlmacenP,
+                                    id_bodega_procedencia_traslado = @iBodegaP,
+                                    id_almacen_destino_traslado = @iAlmacenD,
+                                    id_bodega_destino_traslado = @iBodegaD,
+                                    id_calidad_cafe_traslado = @idCalidadCafe, 
+                                    id_subproducto_traslado = @idSubProducto,
+                                    cantidad_traslado_qqs_cafe = @cantidadQQs,
+                                    cantidad_traslado_sacos_cafe = @cantidadSacos,
+                                    fecha_trasladoCafe = @fechaTraslado, 
+                                    id_personal_traslado = @idPersonal,
+                                    observacion_traslado = @observacion";
 
                 conexion.CrearComando(consulta);
 

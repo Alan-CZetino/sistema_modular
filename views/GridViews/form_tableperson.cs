@@ -102,17 +102,26 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_tablePerson_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_tablePerson.Rows[e.RowIndex];
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_tablePerson.Rows.Count)
+            {
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtg_tablePerson.Rows[e.RowIndex];
 
-            // Obtener los valores de las celdas de la fila seleccionada
-            PersonSelect.IdPerson = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            PersonSelect.NamePerson = filaSeleccionada.Cells["Nombres"].Value.ToString();
+                // Obtener los valores de las celdas de la fila seleccionada
+                PersonSelect.IdPerson = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                PersonSelect.NamePerson = filaSeleccionada.Cells["Nombres"].Value.ToString();
             
-            Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + PersonSelect.IdPerson);
+                Console.WriteLine("depuracion - capturar datos dobleClick campo; nombre persona: " + PersonSelect.IdPerson);
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void txb_buscarPer_Enter(object sender, EventArgs e)

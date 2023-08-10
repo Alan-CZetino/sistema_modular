@@ -83,6 +83,7 @@ namespace sistema_modular_cafe_majada.views
             txb_bodega.ReadOnly = true;
             txb_finca.Enabled = false;
             txb_finca.ReadOnly = true;
+            cbx_subProducto.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         //
@@ -527,7 +528,7 @@ namespace sistema_modular_cafe_majada.views
                         FechaMovimiento = fechaSalida,
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = pesoQQs,
-                        CantidadCafeSaco = pesoQQs,
+                        CantidadCafeSaco = pesoSaco,
                         TipoMovimiento = "Salida Cafe No.SalidaCafe " + numSalida,
                         IdAlmacenSiloPiña = iAlmacen
                     };
@@ -543,7 +544,7 @@ namespace sistema_modular_cafe_majada.views
 
                     if (exito)
                     {
-                        MessageBox.Show("Salida de Cafe agregada correctamente.");
+                        MessageBox.Show("Salida de Cafe agregada correctamente.", "Insercion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         double resultCa = actcantidad - pesoQQs;
                         double resultCaSaco = actcantidadSaco - pesoSaco;
@@ -569,7 +570,7 @@ namespace sistema_modular_cafe_majada.views
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar la Salida de Cafe. Verifica los datos e intenta nuevamente.");
+                        MessageBox.Show("Error al agregar la Salida de Cafe. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -634,7 +635,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (!exito)
                 {
-                    MessageBox.Show("Error al actualizar la Salida de Cafe. Verifica los datos e intenta nuevamente.");
+                    MessageBox.Show("Error al actualizar la Salida de Cafe. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -708,7 +709,7 @@ namespace sistema_modular_cafe_majada.views
 
                 }
 
-                MessageBox.Show("Salida de Cafe Actualizada correctamente.");
+                MessageBox.Show("Salida de Cafe Actualizada correctamente.", "Actualizacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 try
                 {
                     //verificar el departamento
@@ -792,7 +793,7 @@ namespace sistema_modular_cafe_majada.views
                     //verificar el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Salida Cafe", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la Salida No: " + SalidaSeleccionado.NumSalida + " del ID en la BD: " + SalidaSeleccionado.ISalida + " en la base de datos");
 
-                    MessageBox.Show("Salida de Cafe Eliminada correctamente.");
+                    MessageBox.Show("Salida de Cafe Eliminada correctamente.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
                     ClearDataTxb();

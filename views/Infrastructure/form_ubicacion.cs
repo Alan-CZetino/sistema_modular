@@ -34,6 +34,7 @@ namespace sistema_modular_cafe_majada.views
 
             txb_id.ReadOnly = true;
             txb_id.Enabled = false;
+            cbx_bodega.DropDownStyle = ComboBoxStyle.DropDownList;
 
             //coloca nueva mente el contador en el txb del cdigo
             AlmacenController ben = new AlmacenController();
@@ -109,18 +110,27 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_Almacen_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_ubicacion.Rows[e.RowIndex];
-            almacenSeleccionado = new Almacen();
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_ubicacion.Rows.Count)
+            {
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtg_ubicacion.Rows[e.RowIndex];
+                almacenSeleccionado = new Almacen();
 
-            // Obtener los valores de las celdas de la fila seleccionada
-            almacenSeleccionado.IdAlmacen = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            almacenSeleccionado.NombreAlmacen = filaSeleccionada.Cells["Nombre"].Value.ToString();
-            almacenSeleccionado.DescripcionAlmacen = filaSeleccionada.Cells["Descripcion"].Value.ToString();
-            almacenSeleccionado.CapacidadAlmacen = Convert.ToDouble(filaSeleccionada.Cells["Capacidad"].Value);
-            almacenSeleccionado.UbicacionAlmacen = filaSeleccionada.Cells["Ubicacion"].Value.ToString();
-            almacenSeleccionado.NombreBodegaUbicacion = filaSeleccionada.Cells["Bodega_Ubicacion"].Value.ToString();
-            BodegaSeleccionada.NombreBodega = almacenSeleccionado.NombreBodegaUbicacion;
+                // Obtener los valores de las celdas de la fila seleccionada
+                almacenSeleccionado.IdAlmacen = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                almacenSeleccionado.NombreAlmacen = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                almacenSeleccionado.DescripcionAlmacen = filaSeleccionada.Cells["Descripcion"].Value.ToString();
+                almacenSeleccionado.CapacidadAlmacen = Convert.ToDouble(filaSeleccionada.Cells["Capacidad"].Value);
+                almacenSeleccionado.UbicacionAlmacen = filaSeleccionada.Cells["Ubicacion"].Value.ToString();
+                almacenSeleccionado.NombreBodegaUbicacion = filaSeleccionada.Cells["Bodega_Ubicacion"].Value.ToString();
+                BodegaSeleccionada.NombreBodega = almacenSeleccionado.NombreBodegaUbicacion;
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void CbxBodega()

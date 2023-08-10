@@ -303,14 +303,22 @@ namespace sistema_modular_cafe_majada.views
         }
 
         private void dtg_calidadCafe_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //obtener la fila a la celda que se realizo el evento dobleClick
-            DataGridViewRow filaSeleccionada = dtg_calidadCafe.Rows[e.RowIndex];
-            calidadSeleccionada = new CalidadCafe();
+        {// Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_calidadCafe.Rows.Count)
+            {
+                //obtener la fila a la celda que se realizo el evento dobleClick
+                DataGridViewRow filaSeleccionada = dtg_calidadCafe.Rows[e.RowIndex];
+                calidadSeleccionada = new CalidadCafe();
 
-            calidadSeleccionada.IdCalidad = Convert.ToInt32(filaSeleccionada.Cells["Codigo"].Value);
-            calidadSeleccionada.NombreCalidad = filaSeleccionada.Cells["Calidad"].Value.ToString();
-            calidadSeleccionada.DescripcionCalidad = filaSeleccionada.Cells["Descripcion"].Value.ToString();
+                calidadSeleccionada.IdCalidad = Convert.ToInt32(filaSeleccionada.Cells["Codigo"].Value);
+                calidadSeleccionada.NombreCalidad = filaSeleccionada.Cells["Calidad"].Value.ToString();
+                calidadSeleccionada.DescripcionCalidad = filaSeleccionada.Cells["Descripcion"].Value.ToString();
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void dtg_calidadCafe_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)

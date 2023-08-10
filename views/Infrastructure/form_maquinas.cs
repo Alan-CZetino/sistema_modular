@@ -91,21 +91,30 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtg_maquina_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtg_maquina.Rows[e.RowIndex];
-            maquinaSeleccionada = new Maquinaria();
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtg_maquina.Rows.Count)
+            {
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtg_maquina.Rows[e.RowIndex];
+                maquinaSeleccionada = new Maquinaria();
 
-            // Obtener los valores de las celdas de la fila seleccionada
-            maquinaSeleccionada.IdMaquinaria = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            maquinaSeleccionada.NombreMaquinaria = filaSeleccionada.Cells["Nombre"].Value.ToString();
-            maquinaSeleccionada.NumeroSerieMaquinaria = filaSeleccionada.Cells["NoSerie"].Value.ToString();
-            maquinaSeleccionada.ModeloMaquinaria = filaSeleccionada.Cells["Modelo"].Value.ToString();
-            maquinaSeleccionada.CapacidadMaxMaquinaria = Convert.ToDouble(filaSeleccionada.Cells["CapMaxima"].Value);
-            maquinaSeleccionada.ProveedorMaquinaria = filaSeleccionada.Cells["Proveedor"].Value.ToString();
-            maquinaSeleccionada.DireccionProveedorMaquinaria = filaSeleccionada.Cells["Direccion"].Value.ToString();
-            maquinaSeleccionada.TelefonoProveedorMaquinaria = filaSeleccionada.Cells["Telefono"].Value.ToString();
-            maquinaSeleccionada.ContratoServicioMaquinaria = filaSeleccionada.Cells["Nocontrato"].Value.ToString();
-            maquinaSeleccionada.NombreBeneficio = filaSeleccionada.Cells["Beneficio"].Value.ToString();
+                // Obtener los valores de las celdas de la fila seleccionada
+                maquinaSeleccionada.IdMaquinaria = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                maquinaSeleccionada.NombreMaquinaria = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                maquinaSeleccionada.NumeroSerieMaquinaria = filaSeleccionada.Cells["NoSerie"].Value.ToString();
+                maquinaSeleccionada.ModeloMaquinaria = filaSeleccionada.Cells["Modelo"].Value.ToString();
+                maquinaSeleccionada.CapacidadMaxMaquinaria = Convert.ToDouble(filaSeleccionada.Cells["CapMaxima"].Value);
+                maquinaSeleccionada.ProveedorMaquinaria = filaSeleccionada.Cells["Proveedor"].Value.ToString();
+                maquinaSeleccionada.DireccionProveedorMaquinaria = filaSeleccionada.Cells["Direccion"].Value.ToString();
+                maquinaSeleccionada.TelefonoProveedorMaquinaria = filaSeleccionada.Cells["Telefono"].Value.ToString();
+                maquinaSeleccionada.ContratoServicioMaquinaria = filaSeleccionada.Cells["Nocontrato"].Value.ToString();
+                maquinaSeleccionada.NombreBeneficio = filaSeleccionada.Cells["Beneficio"].Value.ToString();
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btn_tBeneficioM_Click(object sender, EventArgs e)

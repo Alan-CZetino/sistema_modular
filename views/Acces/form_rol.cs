@@ -31,6 +31,7 @@ namespace sistema_modular_cafe_majada.views
 
             ShowRolGrid();
             ShowLevelRole();
+            cbx_access.DropDownStyle = ComboBoxStyle.DropDownList;
 
             dtgv_roles.CellPainting += dtgv_roles_CellPainting;
 
@@ -335,15 +336,24 @@ namespace sistema_modular_cafe_majada.views
 
         private void dtgv_roles_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Obtener la fila correspondiente a la celda en la que se hizo doble clic
-            DataGridViewRow filaSeleccionada = dtgv_roles.Rows[e.RowIndex];
-            rolSeleccionado = new Role();
+            // Verificar si el índice de fila es válido (mayor o igual a 0 y dentro del rango de filas con datos)
+            if (e.RowIndex >= 0 && e.RowIndex < dtgv_roles.Rows.Count)
+            {
+                // Obtener la fila correspondiente a la celda en la que se hizo doble clic
+                DataGridViewRow filaSeleccionada = dtgv_roles.Rows[e.RowIndex];
+                rolSeleccionado = new Role();
 
-            // Obtener los valores de las celdas de la fila seleccionada
-            rolSeleccionado.IdRol = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
-            rolSeleccionado.NombreRol = filaSeleccionada.Cells["Nombre"].Value.ToString();
-            rolSeleccionado.DescripcionRol = filaSeleccionada.Cells["Descripcion"].Value.ToString();
-            rolSeleccionado.PermisosRol = filaSeleccionada.Cells["Permiso"].Value.ToString();
+                // Obtener los valores de las celdas de la fila seleccionada
+                rolSeleccionado.IdRol = Convert.ToInt32(filaSeleccionada.Cells["ID"].Value);
+                rolSeleccionado.NombreRol = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                rolSeleccionado.DescripcionRol = filaSeleccionada.Cells["Descripcion"].Value.ToString();
+                rolSeleccionado.PermisosRol = filaSeleccionada.Cells["Permiso"].Value.ToString();
+            }
+            else
+            {
+                // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
+                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 

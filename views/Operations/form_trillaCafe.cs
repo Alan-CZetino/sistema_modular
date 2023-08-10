@@ -84,6 +84,7 @@ namespace sistema_modular_cafe_majada.views
             txb_bodega.ReadOnly = true;
             txb_finca.Enabled = false;
             txb_finca.ReadOnly = true;
+            cbx_subProducto.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
 
