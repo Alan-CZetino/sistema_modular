@@ -37,6 +37,7 @@ namespace sistema_modular_cafe_majada.views
         readonly string RutaReportBodega = "../../views/Reports/repor_bodega.rdlc";
         readonly string RutaReportCCalidad = "../../views/Reports/repor_ccalidad.rdlc";
         readonly string RutaReportCafeBodega = "../../views/Reports/repor_cafebodega.rdlc";
+        readonly string RutaReportGraficas = "../../views/Reports/repor_grafico.rdlc";
 
         public form_reportes()
         {
@@ -174,6 +175,27 @@ namespace sistema_modular_cafe_majada.views
             ShowReportInViewer(reportCCalidad, "repor_cafebodega");
         }
 
+        private void btn_rptGrafica_Click(object sender, EventArgs e)
+        {
+            var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
+            // Obtener la fecha actual y asignarla a la variable global
+            fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
+            List<ReportesBodegas> data = reportesController.GetBodegaData(id_Cosecha);
+            foreach (ReportesBodegas reporte in data)
+            {
+                reporte.nombre_cosecha = Nombre_cosecha;
+                reporte.fecha = fechaActual;
+                reporte.nombre_persona = Nombre_Usuario.ApellidoPersonaUsuario;
+            }
+            ReportDataSource reportDataSource = new ReportDataSource("repor_bodega", data);
+            LocalReport reportGrafico = new LocalReport();
+            reportGrafico.ReportPath = RutaReportGraficas;
+            reportGrafico.DataSources.Add(reportDataSource);
+            ShowReportInViewer(reportGrafico, "repor_grafico");
+        }
+
+
+
         private void ShowReportInViewer(LocalReport report, string datasetName)
         {
             // Limpia cualquier fuente de datos que esté actualmente asignada al informe que se va a mostrar en el visor de informes reportViewer1.
@@ -195,5 +217,6 @@ namespace sistema_modular_cafe_majada.views
             reportViewer1.RefreshReport();
            
         }
+
     }
 }

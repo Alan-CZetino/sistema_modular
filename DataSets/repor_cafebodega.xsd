@@ -12,7 +12,7 @@
   <xs:element name="repor_cafebodega" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="repor_cafebodega" msprop:Generator_UserDSName="repor_cafebodega">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="repor_cafebodega" msprop:Generator_TableClassName="repor_cafebodegaDataTable" msprop:Generator_TableVarName="tablerepor_cafebodega" msprop:Generator_RowChangedName="repor_cafebodegaRowChanged" msprop:Generator_TablePropName="_repor_cafebodega" msprop:Generator_RowDeletingName="repor_cafebodegaRowDeleting" msprop:Generator_RowChangingName="repor_cafebodegaRowChanging" msprop:Generator_RowEvHandlerName="repor_cafebodegaRowChangeEventHandler" msprop:Generator_RowDeletedName="repor_cafebodegaRowDeleted" msprop:Generator_RowClassName="repor_cafebodegaRow" msprop:Generator_UserTableName="repor_cafebodega" msprop:Generator_RowEvArgName="repor_cafebodegaRowChangeEvent">
+        <xs:element name="repor_cafebodega" msprop:Generator_TableClassName="repor_cafebodegaDataTable" msprop:Generator_TableVarName="tablerepor_cafebodega" msprop:Generator_TablePropName="_repor_cafebodega" msprop:Generator_RowDeletingName="repor_cafebodegaRowDeleting" msprop:Generator_RowChangingName="repor_cafebodegaRowChanging" msprop:Generator_RowEvHandlerName="repor_cafebodegaRowChangeEventHandler" msprop:Generator_RowDeletedName="repor_cafebodegaRowDeleted" msprop:Generator_UserTableName="repor_cafebodega" msprop:Generator_RowChangedName="repor_cafebodegaRowChanged" msprop:Generator_RowEvArgName="repor_cafebodegaRowChangeEvent" msprop:Generator_RowClassName="repor_cafebodegaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="nombre_bodega" msprop:Generator_ColumnVarNameInTable="columnnombre_bodega" msprop:Generator_ColumnPropNameInRow="nombre_bodega" msprop:Generator_ColumnPropNameInTable="nombre_bodegaColumn" msprop:Generator_UserColumnName="nombre_bodega" type="xs:string" minOccurs="0" />
@@ -29,7 +29,6 @@
               <xs:element name="total_sacosT" msprop:Generator_ColumnVarNameInTable="columntotal_sacosT" msprop:Generator_ColumnPropNameInRow="total_sacosT" msprop:Generator_ColumnPropNameInTable="total_sacosTColumn" msprop:Generator_UserColumnName="total_sacosT" type="xs:string" minOccurs="0" />
               <xs:element name="total_qqspuntoT" msprop:Generator_ColumnVarNameInTable="columntotal_qqspuntoT" msprop:Generator_ColumnPropNameInRow="total_qqspuntoT" msprop:Generator_ColumnPropNameInTable="total_qqspuntoTColumn" msprop:Generator_UserColumnName="total_qqspuntoT" type="xs:string" minOccurs="0" />
               <xs:element name="nombre_persona" msprop:Generator_ColumnVarNameInTable="columnnombre_persona" msprop:Generator_ColumnPropNameInRow="nombre_persona" msprop:Generator_ColumnPropNameInTable="nombre_personaColumn" msprop:Generator_UserColumnName="nombre_persona" type="xs:string" minOccurs="0" />
-              <xs:element name="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnDataColumn2" msprop:Generator_ColumnPropNameInRow="DataColumn2" msprop:Generator_ColumnPropNameInTable="DataColumn2Column" msprop:Generator_UserColumnName="DataColumn2" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

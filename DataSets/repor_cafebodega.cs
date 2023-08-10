@@ -7,5 +7,9 @@
         partial class repor_cafebodegaDataTable
         {
         }
+
+        partial class repor_cafebodegaDataTable
+        {
+        }
     }
 }

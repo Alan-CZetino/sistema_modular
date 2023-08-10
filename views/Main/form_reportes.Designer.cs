@@ -140,6 +140,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_rptCFinca.Name = "btn_rptCFinca";
             this.btn_rptCFinca.Size = new System.Drawing.Size(186, 154);
             this.btn_rptCFinca.TabIndex = 8;
+            this.btn_rptCFinca.Click += new System.EventHandler(this.btn_rptGrafica_Click);
             // 
             // label4
             // 
@@ -149,10 +150,11 @@ namespace sistema_modular_cafe_majada.views
             this.label4.Location = new System.Drawing.Point(78, 58);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 48);
+            this.label4.Size = new System.Drawing.Size(88, 24);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Existencias de Café\r\npor Finca.";
+            this.label4.Text = "Informe Gráfico";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label4.Click += new System.EventHandler(this.btn_rptGrafica_Click);
             // 
             // pictureBox4
             // 
@@ -165,6 +167,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.btn_rptGrafica_Click);
             // 
             // btn_rptCBodegas
             // 

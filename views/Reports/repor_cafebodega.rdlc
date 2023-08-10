@@ -2126,10 +2126,6 @@
           <DataField>nombre_persona</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="DataColumn2">
-          <DataField>DataColumn2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>repor_cafebodega</rd:DataSetName>
