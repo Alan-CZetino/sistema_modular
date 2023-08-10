@@ -29,35 +29,20 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Se crea el script SQL para insertar
                 string consulta = @"
-                INSERT INTO Trilla (
-                    id_cosecha_trilla,
-                    num_trilla,
-                    tipo_movimiento_trilla,
-                    id_calidad_cafe_trilla,
-                    id_subproducto_trilla,
-                    cantidad_trilla_qqs_cafe,
-                    cantidad_trilla_sacos_cafe,
-                    id_procedencia_trilla,
-                    id_almacen_trilla,
-                    id_bodega_trilla,
-                    fecha_trillaCafe,
-                    id_personal_trilla,
-                    observacion_trilla
-                ) VALUES (
-                    @idCosecha,
-                    @numTrilla,
-                    @tipoMovimientoTrilla,
-                    @idCalidadCafe,
-                    @idSubProducto,
-                    @cantidadTrillaQQs,
-                    @cantidadTrillaSacos,
-                    @idProcedencia,
-                    @iAlmacen,
-                    @iBodega,
-                    @fechaTrillaCafe,
-                    @idPersonal,
-                    @observacionTrilla
-                )";
+                INSERT INTO Trilla SET
+                    id_cosecha_trilla = @idCosecha,
+                    num_trilla = @numTrilla,
+                    tipo_movimiento_trilla = @tipoMovimientoTrilla,
+                    id_calidad_cafe_trilla = @idCalidadCafe,
+                    id_subproducto_trilla = @idSubProducto,
+                    cantidad_trilla_qqs_cafe = @cantidadTrillaQQs,
+                    cantidad_trilla_sacos_cafe = @cantidadTrillaSacos,";
+                    if (trilla.IdProcedencia != 0){ consulta += "id_procedencia_trilla = @idProcedencia,"; }
+                    if (trilla.IdAlmacen != 0){ consulta += "id_almacen_trilla = @iAlmacen,"; }
+                    if (trilla.IdAlmacen != 0){ consulta += "id_bodega_trilla = @iBodega,"; }
+                consulta += @"fecha_trillaCafe = @fechaTrillaCafe,
+                    id_personal_trilla = @idPersonal,
+                    observacion_trilla = @observacionTrilla";
 
                 conexion.CrearComando(consulta);
 
