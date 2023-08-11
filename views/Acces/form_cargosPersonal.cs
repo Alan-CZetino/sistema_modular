@@ -137,7 +137,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -301,6 +301,7 @@ namespace sistema_modular_cafe_majada.views
                     imagenClickeada = true;
 
                     //se asignanlos registros a los cuadros de texto
+                    txb_id.Text = Convert.ToString(cargoSeleccionada.IdCargo);
                     txb_cargo.Text = cargoSeleccionada.NombreCargo;
                     txb_descripCargo.Text = cargoSeleccionada.DescripcionCargo;
                 }
@@ -312,6 +313,34 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 7;
 
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_cargo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 45;
+
+            if (txb_cargo.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_descripCargo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 220;
+
+            if (txb_descripCargo.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
     }
 }

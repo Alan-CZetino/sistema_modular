@@ -704,7 +704,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         Usuario usuario = new Usuario();
                         usuario.IdUsuario = Convert.ToInt32(reader["id_usuario"]);
                         usuario.NombreUsuario = Convert.ToString(reader["nombre_usuario"]);
-                        EmailUsuario = (reader["email_usuario"]) is DBNull ? "" : Convert.ToString(reader["email_usuario"]),
+                        usuario.EmailUsuario = (reader["email_usuario"]) is DBNull ? "" : Convert.ToString(reader["email_usuario"]);
                         usuario.ClaveUsuario = Convert.ToString(reader["clave_usuario"]);
                         usuario.EstadoUsuario = Convert.ToString(reader["estado_usuario"]);
                         usuario.FechaCreacionUsuario = Convert.ToDateTime(reader["fecha_creacion_usuario"]);

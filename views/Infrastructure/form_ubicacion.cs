@@ -322,6 +322,7 @@ namespace sistema_modular_cafe_majada.views
                     var name = bodegaC.ObtenerNombreBodega(BodegaSeleccionada.NombreBodega);
                     ibodega = name.IdBodega;
 
+                    txb_id.Text = Convert.ToString(almacenSeleccionado.IdAlmacen);
                     txb_nombreAlmacen.Text = almacenSeleccionado.NombreAlmacen;
                     txb_descripcion.Text = almacenSeleccionado.DescripcionAlmacen;
                     txb_ubicacion.Text = almacenSeleccionado.UbicacionAlmacen;
@@ -554,6 +555,46 @@ namespace sistema_modular_cafe_majada.views
             int maxLength = 8;
 
             if (txb_capacidad.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 7;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_nombreAlmacen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 90;
+
+            if (txb_nombreAlmacen.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_descripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 190;
+
+            if (txb_descripcion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_ubicacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 190;
+
+            if (txb_ubicacion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }

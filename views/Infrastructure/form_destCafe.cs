@@ -301,6 +301,7 @@ namespace sistema_modular_cafe_majada.views
                     var name = benefC.ObtenerBeneficioNombre(BeneficioSeleccionado.NombreBeneficioSeleccionado);
                     ibenef = name.IdBeneficio;
 
+                    txb_id.Text = Convert.ToString(bodegaSeleccionado.IdBodega);
                     txb_nombre.Text = bodegaSeleccionado.NombreBodega;
                     txb_descripcion.Text = bodegaSeleccionado.DescripcionBodega;
                     txb_ubicacion.Text = bodegaSeleccionado.UbicacionBodega;
@@ -454,6 +455,46 @@ namespace sistema_modular_cafe_majada.views
                 imagenClickeada = false;
             }
 
+        }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 7;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 98;
+
+            if (txb_nombre.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_descripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 195;
+
+            if (txb_descripcion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_ubicacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 175;
+
+            if (txb_ubicacion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
     }
 }

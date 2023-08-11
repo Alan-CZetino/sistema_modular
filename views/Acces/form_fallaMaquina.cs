@@ -413,5 +413,45 @@ namespace sistema_modular_cafe_majada.views
             configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
             configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
         }
+
+        private void txb_desFalla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 250;
+
+            if (txb_desFalla.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_piezaFalla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 125;
+
+            if (txb_piezaFalla.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_accionesFalla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 245;
+
+            if (txb_accionesFalla.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_obsFalla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 245;
+
+            if (txb_obsFalla.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
     }
 }

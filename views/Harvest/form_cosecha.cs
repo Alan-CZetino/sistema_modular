@@ -157,7 +157,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -350,6 +350,16 @@ namespace sistema_modular_cafe_majada.views
             int maxLength = 5;
 
             if (txb_nombre.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 6;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }

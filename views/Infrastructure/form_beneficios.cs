@@ -377,5 +377,35 @@ namespace sistema_modular_cafe_majada.views
             }
 
         }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 7;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_nombreBeneficio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 72;
+
+            if (txb_nombreBeneficio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_Ubicacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 98;
+
+            if (txb_Ubicacion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
     }
 }
