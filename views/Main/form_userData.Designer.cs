@@ -149,7 +149,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_savePass.ForeColor = System.Drawing.Color.White;
             this.btn_savePass.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_savePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_savePass.Location = new System.Drawing.Point(5, 188);
+            this.btn_savePass.Location = new System.Drawing.Point(5, 226);
             this.btn_savePass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_savePass.Name = "btn_savePass";
             this.btn_savePass.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
@@ -173,6 +173,7 @@ namespace sistema_modular_cafe_majada.views
             // txb_UDpassConf
             // 
             this.txb_UDpassConf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_UDpassConf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_UDpassConf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDpassConf.Location = new System.Drawing.Point(109, 146);
             this.txb_UDpassConf.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -208,6 +209,7 @@ namespace sistema_modular_cafe_majada.views
             // txb_UDpassActual
             // 
             this.txb_UDpassActual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_UDpassActual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_UDpassActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDpassActual.Location = new System.Drawing.Point(109, 53);
             this.txb_UDpassActual.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -220,6 +222,7 @@ namespace sistema_modular_cafe_majada.views
             // txb_UDpassNew
             // 
             this.txb_UDpassNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_UDpassNew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_UDpassNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDpassNew.Location = new System.Drawing.Point(109, 100);
             this.txb_UDpassNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -251,10 +254,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_editProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editProfile.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_editProfile.ForeColor = System.Drawing.Color.White;
-            this.btn_editProfile.Location = new System.Drawing.Point(835, 2);
+            this.btn_editProfile.Location = new System.Drawing.Point(782, 2);
             this.btn_editProfile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_editProfile.Name = "btn_editProfile";
-            this.btn_editProfile.Size = new System.Drawing.Size(163, 39);
+            this.btn_editProfile.Size = new System.Drawing.Size(216, 39);
             this.btn_editProfile.TabIndex = 3;
             this.btn_editProfile.Text = "Editar perfil";
             this.btn_editProfile.UseVisualStyleBackColor = false;
@@ -284,6 +287,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_UDrol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_UDrol.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_UDrol.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDrol.Location = new System.Drawing.Point(103, 201);
             this.txb_UDrol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -297,6 +301,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_UDemail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_UDemail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_UDemail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDemail.Location = new System.Drawing.Point(103, 155);
             this.txb_UDemail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -310,6 +315,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_UDname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_UDname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_UDname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDname.Location = new System.Drawing.Point(103, 98);
             this.txb_UDname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -323,6 +329,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_UDnameuser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_UDnameuser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_UDnameuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_UDnameuser.Location = new System.Drawing.Point(103, 50);
             this.txb_UDnameuser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -380,12 +387,12 @@ namespace sistema_modular_cafe_majada.views
             this.btn_editPass.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(94)))), ((int)(((byte)(215)))));
             this.btn_editPass.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(94)))), ((int)(((byte)(215)))));
             this.btn_editPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_editPass.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editPass.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_editPass.ForeColor = System.Drawing.Color.White;
-            this.btn_editPass.Location = new System.Drawing.Point(835, 50);
+            this.btn_editPass.Location = new System.Drawing.Point(782, 50);
             this.btn_editPass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_editPass.Name = "btn_editPass";
-            this.btn_editPass.Size = new System.Drawing.Size(163, 39);
+            this.btn_editPass.Size = new System.Drawing.Size(216, 39);
             this.btn_editPass.TabIndex = 4;
             this.btn_editPass.Text = "Cambiar contraseña";
             this.btn_editPass.UseVisualStyleBackColor = false;

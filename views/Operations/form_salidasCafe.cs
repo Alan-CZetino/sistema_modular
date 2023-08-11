@@ -84,6 +84,8 @@ namespace sistema_modular_cafe_majada.views
             txb_finca.Enabled = false;
             txb_finca.ReadOnly = true;
             cbx_subProducto.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            AsignarFuente();
         }
 
         //
@@ -815,6 +817,28 @@ namespace sistema_modular_cafe_majada.views
             string reportPR = "../../views/Reports/report_numsubpartida.rdlc";
             form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR);
             reportSPartida.ShowDialog();
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label1, label2,label3,label4, label5,label6,label7, label8,label9,label10,
+                                label11,label12,label13};
+            TextBox[] textBoxes = { txb_almacen, txb_bodega, txb_calidadCafe,txb_cosecha,txb_finca,txb_numSalida,txb_observacion,
+                                    txb_personal,txb_pesoQQs,txb_pesoSaco};
+            Button[] buttons = { btn_SaveSalida, btn_Cancel };
+            DateTimePicker[] dateTimePickers = { dtp_fechaSalida };
+            ComboBox[] comboBoxes = { cbx_subProducto };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al combox
+            FontViews.ComboBoxStyle(comboBoxes);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
+            //se asigna a fechas
+            FontViews.DateStyle(dateTimePickers);
         }
     }
 }

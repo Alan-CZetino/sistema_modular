@@ -49,6 +49,8 @@ namespace sistema_modular_cafe_majada
             refreshTimer.Elapsed += RefreshTimer_Elapsed;
             refreshTimer.Start();
 
+            AsignarFuente();
+
         }
 
         private void RefreshTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -264,6 +266,18 @@ namespace sistema_modular_cafe_majada
         {
             // Se Detiene el temporizador antes de cerrar el formulario.
             refreshTimer.Stop();
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] encabezados = { label1,label2, label5, label7, label9,label11,label16,label17,label18,label21};
+            Label[] info = { lbl_beneficio,lbl_cafeCS,lbl_cafeHG,lbl_cafeSHG,lbl_calidad,lbl_finca,
+                            lbl_subProduct,lbl_tipo };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStylePanelEncabezado(encabezados);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStylePanelInfo(info);
         }
     }
 }

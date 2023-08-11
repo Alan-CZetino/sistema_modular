@@ -38,7 +38,6 @@ namespace sistema_modular_cafe_majada
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_login = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cb_modulos = new System.Windows.Forms.ComboBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -155,20 +154,6 @@ namespace sistema_modular_cafe_majada
             this.btn_login.UseVisualStyleBackColor = false;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Oswald Light", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.DimGray;
-            this.linkLabel1.Location = new System.Drawing.Point(458, 354);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(114, 22);
-            this.linkLabel1.TabIndex = 0;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "¿Olvido su contraseña?";
-            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Black;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(166)))), ((int)(((byte)(33)))));
@@ -252,7 +237,6 @@ namespace sistema_modular_cafe_majada
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.panel3);
@@ -270,6 +254,7 @@ namespace sistema_modular_cafe_majada
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "form_login";
+            this.Load += new System.EventHandler(this.form_login_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.form_login_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -293,7 +278,6 @@ namespace sistema_modular_cafe_majada
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.PictureBox btn_exit;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;

@@ -24,6 +24,8 @@ namespace sistema_modular_cafe_majada.views
 
             CbxCosecha();
             cbx_cosecha.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            AsignarFuente();
         }
 
         private void btn_close_Click(object sender, EventArgs e)
@@ -80,6 +82,20 @@ namespace sistema_modular_cafe_majada.views
             formularioMain.Refresh();
 
             this.Close();
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2, label1, };
+            Button[] buttons = { btn_aplicar };
+            ComboBox[] comboBoxes = { cbx_cosecha};
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStylePanelEncabezado(labels);
+            //se asigna al combobox
+            FontViews.ComboBoxStyle(comboBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleLogin(buttons);
         }
     }
 }

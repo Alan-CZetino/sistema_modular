@@ -48,6 +48,8 @@ namespace sistema_modular_cafe_majada.views
             cbx_role.DropDownStyle = ComboBoxStyle.DropDownList;
             cbx_userStatus.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            AsignarFuente();
+
         }
 
         private void dataGrid_UserView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -761,6 +763,26 @@ namespace sistema_modular_cafe_majada.views
             {
                 txb_Password.PasswordChar = '\0';
             }
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2,label3,label4, label5,label6,label7, label8,label9,label10 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_Email, txb_Name, txb_NameUser,txb_PassConfirm,txb_Password };
+            Button[] buttons = { btn_SaveUser, btn_Cancel };
+            ComboBox[] comboBoxes = { cbx_role, cbx_userStatus };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
+            //se asogna a combox
+            FontViews.ComboBoxStyle(comboBoxes);
         }
     }
 }

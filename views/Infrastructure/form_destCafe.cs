@@ -44,6 +44,8 @@ namespace sistema_modular_cafe_majada.views
             var count = cal.CountBodega();
             txb_id.Text = Convert.ToString(count.CountBodega + 1);
 
+            AsignarFuente();
+
         }
 
         private void btn_tBeneficio_Click(object sender, EventArgs e)
@@ -439,6 +441,23 @@ namespace sistema_modular_cafe_majada.views
                 imagenClickeada = false;
             }
 
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2,label3,label4, label5, label6,label7 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_beneficio, txb_descripcion, txb_id,txb_nombre,txb_ubicacion };
+            Button[] buttons = { btn_SaveDestino, btn_Cancel };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
         }
     }
 }

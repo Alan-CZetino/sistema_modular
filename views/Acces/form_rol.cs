@@ -35,6 +35,8 @@ namespace sistema_modular_cafe_majada.views
 
             dtgv_roles.CellPainting += dtgv_roles_CellPainting;
 
+            AsignarFuente();
+
         }
 
         private void dtgv_roles_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -365,6 +367,26 @@ namespace sistema_modular_cafe_majada.views
         private void txb_NameRol_Leave(object sender, EventArgs e)
         {
             ShowLevelRole();
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2, label3, label4,label5,label6 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_Description, txb_Nombre, txb_permits };
+            Button[] buttons = { btn_SaveRol, btn_Cancel };
+            ComboBox[] comboBoxes = { cbx_access };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
+            //se asigna a combobox
+            FontViews.ComboBoxStyle(comboBoxes);
         }
     }
 }

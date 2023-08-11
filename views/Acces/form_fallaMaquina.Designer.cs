@@ -215,9 +215,9 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_accionesFalla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_accionesFalla.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_accionesFalla.Location = new System.Drawing.Point(323, 112);
+            this.txb_accionesFalla.Location = new System.Drawing.Point(327, 112);
             this.txb_accionesFalla.Name = "txb_accionesFalla";
-            this.txb_accionesFalla.Size = new System.Drawing.Size(385, 33);
+            this.txb_accionesFalla.Size = new System.Drawing.Size(381, 33);
             this.txb_accionesFalla.TabIndex = 13;
             // 
             // label6

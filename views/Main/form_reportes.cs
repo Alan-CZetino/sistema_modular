@@ -44,6 +44,8 @@ namespace sistema_modular_cafe_majada.views
             InitializeComponent();
             dtFechaInicial.Value = new DateTime(2023, 1, 1);
 
+            AsignarFuente();
+
         }
 
 
@@ -216,6 +218,18 @@ namespace sistema_modular_cafe_majada.views
             // Después de agregar o cambiar la fuente de datos y la definición del informe, esta línea es necesaria para mostrar los cambios en el visor.
             reportViewer1.RefreshReport();
            
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = {label1, label2,label3,label4, label5,label6,label7, label8 };
+            DateTimePicker[] dateTimePickers = { dtFechaInicial,dtFechaFinal};
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna a textbox
+            FontViews.DateStyle(dateTimePickers);
+            //se asigna a botones
         }
 
     }

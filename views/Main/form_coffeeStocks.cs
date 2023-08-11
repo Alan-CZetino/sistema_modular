@@ -26,6 +26,8 @@ namespace sistema_modular_cafe_majada.views
             AsignarColorOriginal(btn_salidaCafe);
             AsignarColorOriginal(btn_subPartida);
             AsignarColorOriginal(btn_trillaCafe);
+
+            AsignarFuente();
         }
 
         //FUNCION PARA IR AGREGANDO Y REMOVIENDO FORMULARIOS
@@ -106,6 +108,15 @@ namespace sistema_modular_cafe_majada.views
             button.ForeColor = Color.Black;
             button.FlatAppearance.BorderColor = Color.FromArgb(218, 218, 218);
             button.FlatAppearance.BorderSize = 1;
+        }
+
+        private void AsignarFuente()
+        {
+          
+            Button[] buttons = { btn_entradaCafe, btn_salidaCafe,btn_subPartida,btn_trillaCafe };
+
+            //se asigna a botones
+            FontViews.ButtonStyle(buttons);
         }
     }
 }

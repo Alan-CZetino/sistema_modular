@@ -34,6 +34,8 @@ namespace sistema_modular_cafe_majada.views
 
             CbxMaquinas();
             cbx_fallaMaquina.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            AsignarFuente();
         }
 
         private void btn_close_Click(object sender, EventArgs e)
@@ -406,6 +408,29 @@ namespace sistema_modular_cafe_majada.views
             //configuracion de las filas que son seleccionadas
             configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
             configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2, label3, label6,label5,label7,label4 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_accionesFalla, txb_desFalla, txb_obsFalla,txb_piezaFalla };
+            Button[] buttons = { btn_SaveFalla, btn_Cancel };
+            ComboBox[] comboBoxes = { cbx_fallaMaquina };
+            DateTimePicker[] dateTimePickers = { dtp_fechaFalla};
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
+            //se asigna a Combobox
+            FontViews.ComboBoxStyle(comboBoxes);
+            //se asigna a fechas
+            FontViews.DateStyle(dateTimePickers);
         }
     }
 }

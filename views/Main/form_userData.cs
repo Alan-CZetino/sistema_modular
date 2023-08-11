@@ -36,6 +36,8 @@ namespace sistema_modular_cafe_majada.views
         {
             ReadOnlyTextbox(true);
             ShowDataUser();
+
+            AsignarFuente();
         }
 
         public void ReadOnlyTextbox(bool verific)
@@ -295,6 +297,26 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Enabled = !verific;
                 verificTxbPassReadOnly = verific;
             }
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2, label4, label5,label1,label7,label8,label9 };
+            Label[] labeltitle = { label6,label10 };
+            TextBox[] textBoxes = { txb_UDemail, txb_UDname, txb_UDnameuser,txb_UDpassActual,txb_UDpassConf,
+                                    txb_UDpassNew,txb_UDrol};
+            Button[] buttons = { btn_savePass, btn_saveperfil };
+            Button[] buttonsedit = { btn_editProfile, btn_editPass };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleLogin(buttons);
+            FontViews.ButtonStyleLogin(buttonsedit);
         }
     }
 }

@@ -98,6 +98,8 @@ namespace sistema_modular_cafe_majada.views
             txb_almacenSiloPiña.Enabled = false;
             txb_almacenSiloPiña.ReadOnly = true;
             cbx_subProducto.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            AsignarFuente();
         }
 
         //
@@ -1067,6 +1069,7 @@ namespace sistema_modular_cafe_majada.views
             imagenClickeadaSP = false;
             imgClickAlmacen = false;
             SubPartidaSeleccionado.clickImg = false;
+            this.Close();
         }
 
         private void btn_deleteSPartida_Click(object sender, EventArgs e)
@@ -1120,6 +1123,35 @@ namespace sistema_modular_cafe_majada.views
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label1, label2,label4, label5,label6,label7, label8,label9,label10,label11,
+                                label12,label13,label14,label15,label16,label17,label18,label19,label20,label21,
+                                label22,label23,label24,label25,label26,label27,label28,label29,label30,label31,
+                                label32,label33,label34,label35,label36,label37,label38};
+            TextBox[] textBoxes = { txb_almacenSiloPiña,txb_calidad,txb_cantidadQQs,txb_CantidadSaco,txb_cosecha,txb_diasPdas1,
+                                    txb_diasPdas2,txb_diasPdas3,txb_doctoAlmacen,txb_fechaPartd1,txb_fechaPartd2,txb_fechaPartd3,
+                                    txb_horaInicio,txb_horaSalida,txb_humedad,txb_nombreCatador,txb_nombrePesador,txb_nombrePuntero,
+                                    txb_observacionCafe,txb_observacionCatador,txb_observacionPesa,txb_observacionSecad,txb_pdasSemana1,
+                                    txb_pdasSemana2,txb_pdasSemana3,txb_procedencia,txb_rendimiento,txb_resultadoCatacion,txb_subPartida,txb_tiempoSecad,
+                                    txb_ubicadoBodega};
+            Button[] buttons = { btn_SaveUser, btn_Cancel };
+            ComboBox[] comboBoxes = {cbx_subProducto };
+            DateTimePicker[] dateTimePickers = {dtp_fechaCatacion,dtp_fechaInicioSecad,dtp_fechaPesa,dtp_fechaSalidaSecad,
+                                                dtp_fechaSecado};
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
+            //se asigna a combobox
+            FontViews.ComboBoxStyle(comboBoxes);
+            //se asigna a Fechas
+            FontViews.DateStyle(dateTimePickers);
         }
     }
 }

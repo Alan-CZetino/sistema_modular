@@ -47,6 +47,8 @@ namespace sistema_modular_cafe_majada.views
             ShowPersonGrid();
 
             dataGrid_PersonView.CellPainting += dataGrid_PersonView_CellPainting;
+
+            AsignarFuente();
         }
 
         // Función para verificar si un TextBox está vacío
@@ -641,6 +643,26 @@ namespace sistema_modular_cafe_majada.views
                 Console.WriteLine("No es numero");
                 LimitDigits(txb, 18);
             }
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2,label3,label4, label5,label6,label7, label8,label10,label11 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_Apellido, txb_Direccion, txb_Dui,txb_Nit,txb_Nombre,txb_Tel1,txb_Tel2};
+            Button[] buttons = { btn_SavePerson, btn_Cancel };
+            DateTimePicker[] dateTimePickers = { dtp_FechaNac };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
+            //se asigna a botones
+            FontViews.DateStyle(dateTimePickers);
         }
     }
 }

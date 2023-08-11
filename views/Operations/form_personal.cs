@@ -42,6 +42,8 @@ namespace sistema_modular_cafe_majada.views
             cbx_cargoPer.DropDownStyle = ComboBoxStyle.DropDownList;
 
             dtg_personal.CellPainting += dtgv_personal_CellPainting;
+
+            AsignarFuente();
         }
 
         private void btn_tablePerson_Click(object sender, EventArgs e)
@@ -400,6 +402,27 @@ namespace sistema_modular_cafe_majada.views
             btn_cargosPersonal.FlatAppearance.BorderSize = 0;
             form_cargosPersonal form_Cargos = new form_cargosPersonal();
             form_Cargos.ShowDialog();
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2,label3,label4, label5 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_Descrip, txb_namePersonal };
+            Button[] buttons = { btn_SavePersonal, btn_Cancel };
+            ComboBox[] comboBoxes = { cbx_cargoPer };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
+            //se asigna a combobox
+            FontViews.ComboBoxStyle(comboBoxes);
+
         }
     }
 }

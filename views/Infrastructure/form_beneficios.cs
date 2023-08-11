@@ -41,6 +41,8 @@ namespace sistema_modular_cafe_majada.views
             ShowBeneficioGrid();
 
             dtg_beneficios.CellPainting += dtgv_beneficios_CellPainting;
+
+            AsignarFuente();
         }
 
         private void dtgv_beneficios_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -361,6 +363,23 @@ namespace sistema_modular_cafe_majada.views
                 MessageBox.Show("Error de tipo (" + ex.Message + "), verifique los datos he intenta nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2,label3,label4, label5 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_nombreBeneficio, txb_Ubicacion, txb_id };
+            Button[] buttons = { btn_SaveBeneficio, btn_Cancel };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
         }
     }
 }

@@ -35,6 +35,8 @@ namespace sistema_modular_cafe_majada.views
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.txb_id = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_modCalidad = new System.Windows.Forms.PictureBox();
             this.btn_deleteCalidad = new System.Windows.Forms.PictureBox();
@@ -42,8 +44,6 @@ namespace sistema_modular_cafe_majada.views
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.txb_id = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txb_desCalidad = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txb_nameCalidad = new System.Windows.Forms.TextBox();
@@ -115,6 +115,28 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1003, 70);
             this.panel5.TabIndex = 13;
+            // 
+            // txb_id
+            // 
+            this.txb_id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txb_id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_id.Location = new System.Drawing.Point(817, 21);
+            this.txb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txb_id.Name = "txb_id";
+            this.txb_id.Size = new System.Drawing.Size(45, 27);
+            this.txb_id.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(743, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 18);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Codigo";
             // 
             // tableLayoutPanel1
             // 
@@ -203,28 +225,6 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(296, 371);
             this.panel8.TabIndex = 7;
-            // 
-            // txb_id
-            // 
-            this.txb_id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txb_id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txb_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_id.Location = new System.Drawing.Point(817, 21);
-            this.txb_id.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txb_id.Name = "txb_id";
-            this.txb_id.Size = new System.Drawing.Size(45, 27);
-            this.txb_id.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(743, 21);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 18);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Codigo";
             // 
             // txb_desCalidad
             // 

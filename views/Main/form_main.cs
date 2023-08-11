@@ -55,6 +55,8 @@ namespace sistema_modular_cafe_majada
 
             // Código 
             this.Shown += form_main_Shown;
+
+            AsignarFuente();
             
         }
 
@@ -207,6 +209,20 @@ namespace sistema_modular_cafe_majada
         private void label2_Click(object sender, EventArgs e)
         {
             lbl_numCosecha_Click(sender, e);
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] encabezado = { label1, lbl_nameModule };
+            Label[] info = { label2,lbl_numCosecha,lbl_User };
+            Button[] buttons = { btn_admin_panel, btn_CloseSection,btn_existenciasCafe,btn_principal,btn_reportes };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyleEncabezado(encabezado);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleInfo(info);
+            //se asigna a botones
+            FontViews.ButtonStyleMain(buttons);
         }
 
         //FUNCIONES PARA CAMBIAR DE COLOR LOS BOTONES AL HACER CLICK EN ELLOS

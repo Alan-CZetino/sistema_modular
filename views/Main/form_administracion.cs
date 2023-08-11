@@ -39,6 +39,8 @@ namespace sistema_modular_cafe_majada
             AsignarColorOriginal(btn_subprod_cafe);
             AsignarColorOriginal(btn_ubicacion);
             AsignarColorOriginal(btn_usuarios);
+
+            AsignarFuente();
         }
 
         //FUNCION PARA IR AGREGANDO Y REMOVIENDO FORMULARIOS
@@ -181,6 +183,16 @@ namespace sistema_modular_cafe_majada
             button.ForeColor = Color.Black;
             button.FlatAppearance.BorderColor = Color.FromArgb(218, 218, 218);
             button.FlatAppearance.BorderSize = 1;
+        }
+
+        private void AsignarFuente()
+        {
+            //Hacemos un array de botones para luego llamarlos en la funcion que se encuentra en la clase FontViews
+            Button[] buttons = {btn_beneficios,btn_calidades_cafe,btn_clase_cafeuva,btn_cosecha,btn_dest_cafe,btn_fincas,
+                                btn_maquinas,btn_persona,btn_personal,btn_proce_cafe,btn_rol,btn_socios,btn_subprod_cafe,
+                                btn_ubicacion,btn_usuarios};
+
+            FontViews.ButtonStyle(buttons);
         }
 
     }

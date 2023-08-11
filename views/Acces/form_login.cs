@@ -15,6 +15,7 @@ using sistema_modular_cafe_majada.controller.AccesController;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.controller.HarvestController;
 using sistema_modular_cafe_majada.model.Mapping.Harvest;
+using sistema_modular_cafe_majada.views;
 
 namespace sistema_modular_cafe_majada
 {
@@ -26,6 +27,8 @@ namespace sistema_modular_cafe_majada
 
             txb_username.TextChanged += txb_username_TextChanged;
             cb_modulos.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            AsignarFuente();
 
         }
 
@@ -125,7 +128,7 @@ namespace sistema_modular_cafe_majada
             txb_password.UseSystemPasswordChar = false;
             
             this.Show();
-
+            ActiveControl = btn_login;
         }
 
         public void StartSeccionModuleCafe()
@@ -428,6 +431,28 @@ namespace sistema_modular_cafe_majada
             {
                 StartSeccionModuleCafe();
             }
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_password, txb_username };
+            Button[] buttons = { btn_login };
+            ComboBox[] comboBoxes = { cb_modulos };
+
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleLogin(buttons);
+            //se asigna a combobox
+            FontViews.ComboBoxStyle(comboBoxes);
+        }
+
+        private void form_login_Load(object sender, EventArgs e)
+        {
+            ActiveControl = btn_login;
         }
     }
 }

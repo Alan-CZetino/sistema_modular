@@ -44,6 +44,8 @@ namespace sistema_modular_cafe_majada.views
             dtg_cosechas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             ShowCosechaGrid();
+
+            AsignarFuente();
         }
 
         private void dtgv_cosechas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -338,6 +340,23 @@ namespace sistema_modular_cafe_majada.views
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2, label3 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_nombre, txb_id };
+            Button[] buttons = { btn_save, btn_Cancel };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
         }
     }
 }

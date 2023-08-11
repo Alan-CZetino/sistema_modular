@@ -40,6 +40,8 @@ namespace sistema_modular_cafe_majada.views
 
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dtg_calidadCafe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            AsignarFuente();
         }
 
         private void form_calidades_cafe_Load(object sender, EventArgs e)
@@ -354,6 +356,23 @@ namespace sistema_modular_cafe_majada.views
             //configuracion de las filas que son seleccionadas
             configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
             configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2,label3,label4, label5 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_desCalidad, txb_nameCalidad, txb_id };
+            Button[] buttons = { btn_SaveCalidad, btn_Cancel };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
         }
     }
 }

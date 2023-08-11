@@ -501,6 +501,9 @@
     <Compile Include="views\UserData\form_usuarios.Designer.cs">
       <DependentUpon>form_usuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\FontViews.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="views\Main\form_administracion.resx">
       <DependentUpon>form_administracion.cs</DependentUpon>
     </EmbeddedResource>

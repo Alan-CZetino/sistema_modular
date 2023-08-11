@@ -227,7 +227,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             // clb_module
             // 
-            this.clb_module.Font = new System.Drawing.Font("Oswald Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clb_module.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clb_module.FormattingEnabled = true;
             this.clb_module.Location = new System.Drawing.Point(15, 444);
             this.clb_module.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

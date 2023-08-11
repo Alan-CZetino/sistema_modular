@@ -43,6 +43,8 @@ namespace sistema_modular_cafe_majada.views
             dtg_maquina.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             ShowMaquinasGrid();
+
+            AsignarFuente();
         }
 
         private void btn_fallaMaquina_Click(object sender, EventArgs e)
@@ -498,6 +500,24 @@ namespace sistema_modular_cafe_majada.views
             //configuracion de las filas que son seleccionadas
             configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
             configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2,label3,label4, label5, label6,label7,label8,label9,label10,label11,label12 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_beneficio, txb_maquina, txb_id,txb_maxCapacidad,txb_modelMaquina,txb_numContrato,
+                                    txb_numSerie,txb_proveedor,txb_proveedorDireccion,txb_proveedorTelefono};
+            Button[] buttons = { btn_SaveMaquina, btn_Cancel };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
         }
     }
 }

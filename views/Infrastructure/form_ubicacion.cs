@@ -52,6 +52,8 @@ namespace sistema_modular_cafe_majada.views
 
             dtg_ubicacion.CellPainting += dataGrid_Almacen_CellPainting;
 
+            AsignarFuente();
+
         }
 
         private void dataGrid_Almacen_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -534,6 +536,26 @@ namespace sistema_modular_cafe_majada.views
         private void txb_capacidad_Enter(object sender, EventArgs e)
         {
             CbxBodega();
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2,label3,label4, label5,label6,label7, label8 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_capacidad, txb_descripcion, txb_id, txb_nombreAlmacen,txb_ubicacion};
+            Button[] buttons = { btn_SaveAlmacen, btn_Cancel };
+            ComboBox[] comboBoxes = { cbx_bodega };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
+            //se asigna a combobox
+            FontViews.ComboBoxStyle(comboBoxes);
         }
     }
 }

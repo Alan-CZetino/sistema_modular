@@ -39,6 +39,9 @@ namespace sistema_modular_cafe_majada.views
             var count = ben.CountCargo();
             txb_id.Text = Convert.ToString(count.CountCargo + 1);
 
+            //inicializamos el metodo para las fuentes
+            AsignarFuente();
+
         }
 
         private void dtg_cargosPersonal_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -294,6 +297,22 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        private void AsignarFuente()
+        {
+            Label[] labels = { label1, label5, label8 };
+            Label[] labeltitle = {label9};
+            TextBox[] textBoxes = { txb_cargo,txb_descripCargo,txb_id};
+            Button[] buttons = { btn_SaveCargo,btn_Cancel};
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
+        }
 
     }
 }

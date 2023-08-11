@@ -133,7 +133,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.groupBox1.Controls.Add(this.rb_subProducto);
             this.groupBox1.Controls.Add(this.rb_cafeTrilla);
-            this.groupBox1.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 89);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
@@ -146,11 +146,11 @@ namespace sistema_modular_cafe_majada.views
             // rb_subProducto
             // 
             this.rb_subProducto.AutoSize = true;
-            this.rb_subProducto.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_subProducto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_subProducto.Location = new System.Drawing.Point(289, 41);
             this.rb_subProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rb_subProducto.Name = "rb_subProducto";
-            this.rb_subProducto.Size = new System.Drawing.Size(171, 33);
+            this.rb_subProducto.Size = new System.Drawing.Size(178, 24);
             this.rb_subProducto.TabIndex = 1;
             this.rb_subProducto.TabStop = true;
             this.rb_subProducto.Text = "SubProductos de Trilla";
@@ -159,11 +159,11 @@ namespace sistema_modular_cafe_majada.views
             // rb_cafeTrilla
             // 
             this.rb_cafeTrilla.AutoSize = true;
-            this.rb_cafeTrilla.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_cafeTrilla.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_cafeTrilla.Location = new System.Drawing.Point(141, 41);
             this.rb_cafeTrilla.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rb_cafeTrilla.Name = "rb_cafeTrilla";
-            this.rb_cafeTrilla.Size = new System.Drawing.Size(113, 33);
+            this.rb_cafeTrilla.Size = new System.Drawing.Size(113, 24);
             this.rb_cafeTrilla.TabIndex = 0;
             this.rb_cafeTrilla.TabStop = true;
             this.rb_cafeTrilla.Text = "Café a Trillar";
@@ -180,7 +180,7 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txb_calidadCafe);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 199);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
@@ -194,10 +194,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.cbx_subProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_subProducto.FormattingEnabled = true;
-            this.cbx_subProducto.Location = new System.Drawing.Point(420, 43);
+            this.cbx_subProducto.Location = new System.Drawing.Point(434, 43);
             this.cbx_subProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbx_subProducto.Name = "cbx_subProducto";
-            this.cbx_subProducto.Size = new System.Drawing.Size(171, 26);
+            this.cbx_subProducto.Size = new System.Drawing.Size(157, 26);
             this.cbx_subProducto.TabIndex = 31;
             // 
             // btn_tCCafe
@@ -257,7 +257,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(324, 46);
+            this.label5.Location = new System.Drawing.Point(321, 46);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 29);
             this.label5.TabIndex = 2;
@@ -296,7 +296,7 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.txb_almacen);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(659, 89);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
@@ -354,10 +354,10 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_bodega.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_bodega.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_bodega.Location = new System.Drawing.Point(217, 123);
+            this.txb_bodega.Location = new System.Drawing.Point(244, 123);
             this.txb_bodega.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_bodega.Name = "txb_bodega";
-            this.txb_bodega.Size = new System.Drawing.Size(338, 27);
+            this.txb_bodega.Size = new System.Drawing.Size(311, 27);
             this.txb_bodega.TabIndex = 5;
             // 
             // label9
@@ -376,10 +376,10 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_finca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_finca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_finca.Location = new System.Drawing.Point(217, 207);
+            this.txb_finca.Location = new System.Drawing.Point(244, 207);
             this.txb_finca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_finca.Name = "txb_finca";
-            this.txb_finca.Size = new System.Drawing.Size(338, 27);
+            this.txb_finca.Size = new System.Drawing.Size(311, 27);
             this.txb_finca.TabIndex = 3;
             // 
             // label10
@@ -398,10 +398,10 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_almacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_almacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_almacen.Location = new System.Drawing.Point(217, 43);
+            this.txb_almacen.Location = new System.Drawing.Point(244, 43);
             this.txb_almacen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_almacen.Name = "txb_almacen";
-            this.txb_almacen.Size = new System.Drawing.Size(338, 27);
+            this.txb_almacen.Size = new System.Drawing.Size(311, 27);
             this.txb_almacen.TabIndex = 1;
             // 
             // label11
@@ -424,7 +424,7 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.txb_personal);
             this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 396);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
@@ -455,11 +455,11 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_observacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_observacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_observacion.Location = new System.Drawing.Point(217, 123);
+            this.txb_observacion.Location = new System.Drawing.Point(252, 123);
             this.txb_observacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_observacion.Multiline = true;
             this.txb_observacion.Name = "txb_observacion";
-            this.txb_observacion.Size = new System.Drawing.Size(983, 183);
+            this.txb_observacion.Size = new System.Drawing.Size(948, 183);
             this.txb_observacion.TabIndex = 5;
             // 
             // label8
@@ -478,10 +478,10 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_personal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_personal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_personal.Location = new System.Drawing.Point(217, 43);
+            this.txb_personal.Location = new System.Drawing.Point(252, 43);
             this.txb_personal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_personal.Name = "txb_personal";
-            this.txb_personal.Size = new System.Drawing.Size(983, 27);
+            this.txb_personal.Size = new System.Drawing.Size(948, 27);
             this.txb_personal.TabIndex = 1;
             // 
             // label13
@@ -568,7 +568,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SaveTrilla.ForeColor = System.Drawing.Color.White;
             this.btn_SaveTrilla.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_SaveTrilla.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_SaveTrilla.Location = new System.Drawing.Point(1053, 52);
+            this.btn_SaveTrilla.Location = new System.Drawing.Point(1040, 52);
             this.btn_SaveTrilla.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_SaveTrilla.Name = "btn_SaveTrilla";
             this.btn_SaveTrilla.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);

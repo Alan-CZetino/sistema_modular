@@ -133,7 +133,7 @@ namespace sistema_modular_cafe_majada.views
             // cbx_cargoPer
             // 
             this.cbx_cargoPer.FormattingEnabled = true;
-            this.cbx_cargoPer.Location = new System.Drawing.Point(11, 93);
+            this.cbx_cargoPer.Location = new System.Drawing.Point(11, 100);
             this.cbx_cargoPer.Name = "cbx_cargoPer";
             this.cbx_cargoPer.Size = new System.Drawing.Size(231, 24);
             this.cbx_cargoPer.TabIndex = 6;
@@ -142,7 +142,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_Descrip.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_Descrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_Descrip.Location = new System.Drawing.Point(13, 166);
+            this.txb_Descrip.Location = new System.Drawing.Point(13, 173);
             this.txb_Descrip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txb_Descrip.Multiline = true;
             this.txb_Descrip.Name = "txb_Descrip";
@@ -153,7 +153,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 137);
+            this.label5.Location = new System.Drawing.Point(8, 144);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 26);
             this.label5.TabIndex = 4;
@@ -163,7 +163,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Oswald SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 63);
+            this.label4.Location = new System.Drawing.Point(8, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 26);
             this.label4.TabIndex = 2;
@@ -263,7 +263,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_cargosPersonal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_cargosPersonal.FlatAppearance.BorderSize = 0;
             this.btn_cargosPersonal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cargosPersonal.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cargosPersonal.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cargosPersonal.Image = global::sistema_modular_cafe_majada.Properties.Resources.cargos_32px;
             this.btn_cargosPersonal.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_cargosPersonal.Location = new System.Drawing.Point(1063, 4);

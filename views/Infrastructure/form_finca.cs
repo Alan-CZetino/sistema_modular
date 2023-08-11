@@ -41,6 +41,8 @@ namespace sistema_modular_cafe_majada.views
             dtg_fincas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             ShowFincaGrid();
+
+            AsignarFuente();
         }
 
         public void ShowFincaGrid()
@@ -318,6 +320,23 @@ namespace sistema_modular_cafe_majada.views
             //configuracion de las filas que son seleccionadas
             configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
             configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label2, label5, label3,label4 };
+            Label[] labeltitle = { label1 };
+            TextBox[] textBoxes = { txb_nombreFinca, txb_ubiFinca, txb_id };
+            Button[] buttons = { btn_SaveFinca, btn_Cancel };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
         }
     }
 }
