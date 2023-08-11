@@ -191,6 +191,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>repor_ccalidad.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\repor_salidas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>repor_salidas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\repor_subpartida.cs">
       <DependentUpon>repor_subpartida.xsd</DependentUpon>
     </Compile>
@@ -603,6 +608,7 @@
       <DependentUpon>form_personal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Reports\report_numsubpartida.rdlc" />
+    <EmbeddedResource Include="views\Reports\repor_salidas.rdlc" />
     <EmbeddedResource Include="views\Reports\repor_traslados.rdlc" />
     <EmbeddedResource Include="views\Reports\repor_grafico.rdlc" />
     <EmbeddedResource Include="views\Reports\repor_trillado.rdlc" />
@@ -651,6 +657,17 @@
     </None>
     <None Include="DataSets\repor_ccalidad.xss">
       <DependentUpon>repor_ccalidad.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\repor_salidas.xsc">
+      <DependentUpon>repor_salidas.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\repor_salidas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>repor_salidas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\repor_salidas.xss">
+      <DependentUpon>repor_salidas.xsd</DependentUpon>
     </None>
     <None Include="DataSets\repor_subpartida.xsc">
       <DependentUpon>repor_subpartida.xsd</DependentUpon>

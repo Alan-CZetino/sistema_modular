@@ -136,7 +136,20 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return new List<Salida>();
             }
         }
-
+        //
+        public List<ReportSalida> ObtenerReporteSalida(int idSalida)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de las Trilla
+                return salidaDAO.ObtenerReporteSalida(idSalida);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la salida: " + ex.Message);
+                return new List<ReportSalida>();
+            }
+        }
         //
         public Salida ObtenerSalidasPorIDNombre(int idSalida)
         {

@@ -1,4 +1,5 @@
-﻿using sistema_modular_cafe_majada.controller.InfrastructureController;
+﻿using Microsoft.Reporting.WinForms;
+using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
@@ -30,7 +31,7 @@ namespace sistema_modular_cafe_majada.views
         private List<TextBox> txbRestrict;
         private int icosechaCambio;
         SalidaController countSl = null;
-
+        private SalidaController reportesController = new SalidaController();
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
@@ -812,9 +813,19 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfSalida_Click(object sender, EventArgs e)
         {
-            string reportPR = "../../views/Reports/report_numsubpartida.rdlc";
-            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR);
+            if (SalidaSeleccionado.ISalida != 0)
+            {
+                string reportPR = "../../views/Reports/repor_salidas.rdlc";
+            List<ReportSalida> data = reportesController.ObtenerReporteSalida(SalidaSeleccionado.ISalida);
+            ReportDataSource reportDataSource = new ReportDataSource("repor_salidas", data);
+            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR, reportDataSource);
             reportSPartida.ShowDialog();
         }
+            else
+            {
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
     }
 }
