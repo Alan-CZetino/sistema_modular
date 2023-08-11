@@ -1060,5 +1060,35 @@ namespace sistema_modular_cafe_majada.views
             form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR);
             reportSPartida.ShowDialog();
         }
+
+        private void txb_numTraslado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 4;
+
+            if (txb_numTraslado.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_pesoSaco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_pesoSaco.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_pesoQQs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_pesoQQs.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
     }
 }

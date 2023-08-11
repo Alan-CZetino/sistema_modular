@@ -31,15 +31,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"INSERT INTO Traslado_Cafe SET 
                                     id_cosecha_traslado = @idCosecha, 
                                     num_traslado = @numTraslado,";
-                                    if (traslado.IdProcedencia != 0)
-                                    {
-                                        consulta += "id_procedencia_procedencia_traslado = @idProcedenciaP,";
-                                    }
-                                    consulta += @"";
-                                    if (traslado.IdProcedenciaDestino != 0)
-                                    {
-                                        consulta += "id_procedencia_destino_traslado = @idProcedenciaD,";
-                                    }
+                                    if (traslado.IdProcedencia != 0) {consulta += "id_procedencia_procedencia_traslado = @idProcedenciaP,"; }
+                                    if (traslado.IdProcedenciaDestino != 0) {consulta += "id_procedencia_destino_traslado = @idProcedenciaD,"; }
                                     consulta += @"id_almacen_procedencia_traslado = @iAlmacenP,
                                     id_bodega_procedencia_traslado = @iBodegaP,
                                     id_almacen_destino_traslado = @iAlmacenD,
@@ -100,11 +93,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Se crea el script SQL para actualizar
                 string consulta = @"UPDATE Traslado_Cafe 
                                 SET id_cosecha_traslado = @idCosecha,
-                                    num_traslado = @numTraslado,
-                                    id_procedencia_procedencia_traslado = @idProcedenciaP,
-                                    id_almacen_procedencia_traslado = @iAlmacenP,
+                                    num_traslado = @numTraslado,";
+                                if (traslado.IdProcedencia != 0) { consulta += "id_procedencia_procedencia_traslado = @idProcedenciaP,"; }
+                                if (traslado.IdProcedenciaDestino != 0) { consulta += "id_procedencia_destino_traslado = @idProcedenciaD,"; }
+                                consulta += @"id_almacen_procedencia_traslado = @iAlmacenP,
                                     id_bodega_procedencia_traslado = @iBodegaP,
-                                    id_procedencia_destino_traslado = @idProcedenciaD,
                                     id_almacen_destino_traslado = @iAlmacenD,
                                     id_bodega_destino_traslado = @iBodegaD,
                                     id_calidad_cafe_traslado = @idCalidadCafe,
@@ -121,9 +114,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@idCosecha", traslado.IdCosecha);
                 conexion.AgregarParametro("@numTraslado", traslado.NumTraslado);
                 conexion.AgregarParametro("@idProcedenciaP", traslado.IdProcedencia);
+                conexion.AgregarParametro("@idProcedenciaD", traslado.IdProcedenciaDestino);
                 conexion.AgregarParametro("@iAlmacenP", traslado.IdAlmacenProcedencia);
                 conexion.AgregarParametro("@iBodegaP", traslado.IdBodegaProcedencia);
-                conexion.AgregarParametro("@idProcedenciaD", traslado.IdProcedenciaDestino);
                 conexion.AgregarParametro("@iAlmacenD", traslado.IdAlmacenDestino);
                 conexion.AgregarParametro("@iBodegaD", traslado.IdBodegaDestino);
                 conexion.AgregarParametro("@idCalidadCafe", traslado.IdCalidadCafe);
@@ -312,7 +305,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             Idtraslado_cafe = Convert.ToInt32(reader["id_traslado_cafe"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_traslado"]),
-                            IdProcedencia = Convert.ToInt32(reader["id_procedencia_traslado"]),
+                            IdProcedencia = (reader["id_procedencia_traslado"]) is DBNull ? 0 : Convert.ToInt32(reader["id_procedencia_traslado"]),
+                            IdProcedenciaDestino = Convert.IsDBNull(reader["id_procedencia_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_procedencia_destino_traslado"]),
+                            IdAlmacenProcedencia = Convert.IsDBNull(reader["id_almacen_procedencia_traslado"]) ? 0 : Convert.ToInt32(reader["id_almacen_procedencia_traslado"]),
+                            IdAlmacenDestino = Convert.IsDBNull(reader["id_almacen_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_almacen_destino_traslado"]),
+                            IdBodegaProcedencia = Convert.IsDBNull(reader["id_bodega_procedencia_traslado"]) ? 0 : Convert.ToInt32(reader["id_bodega_procedencia_traslado"]),
+                            IdBodegaDestino = Convert.IsDBNull(reader["id_bodega_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_bodega_destino_traslado"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_traslado"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_traslado"]),
                             CantidadTrasladoQQs = Convert.ToDouble(reader["cantidad_traslado_qqs_cafe"]),
@@ -361,7 +359,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             Idtraslado_cafe = Convert.ToInt32(reader["id_traslado_cafe"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_traslado"]),
-                            IdProcedencia = Convert.ToInt32(reader["id_procedencia_traslado"]),
+                            IdProcedencia = (reader["id_procedencia_traslado"]) is DBNull ? 0 : Convert.ToInt32(reader["id_procedencia_traslado"]),
+                            IdProcedenciaDestino = Convert.IsDBNull(reader["id_procedencia_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_procedencia_destino_traslado"]),
+                            IdAlmacenProcedencia = Convert.IsDBNull(reader["id_almacen_procedencia_traslado"]) ? 0 : Convert.ToInt32(reader["id_almacen_procedencia_traslado"]),
+                            IdAlmacenDestino = Convert.IsDBNull(reader["id_almacen_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_almacen_destino_traslado"]),
+                            IdBodegaProcedencia = Convert.IsDBNull(reader["id_bodega_procedencia_traslado"]) ? 0 : Convert.ToInt32(reader["id_bodega_procedencia_traslado"]),
+                            IdBodegaDestino = Convert.IsDBNull(reader["id_bodega_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_bodega_destino_traslado"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_traslado"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_traslado"]),
                             CantidadTrasladoQQs = Convert.ToDouble(reader["cantidad_traslado_qqs_cafe"]),
@@ -424,8 +427,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                             Idtraslado_cafe = Convert.ToInt32(reader["id_traslado_cafe"]),
                             IdCosecha = Convert.ToInt32(reader["id_cosecha_traslado"]),
                             NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
-                            IdProcedencia = Convert.ToInt32(reader["id_procedencia_traslado"]),
-                            NombreProcedencia = Convert.ToString(reader["nombre_procedencia"]),
+                            IdProcedencia = (reader["id_procedencia_traslado"]) is DBNull ? 0 : Convert.ToInt32(reader["id_procedencia_traslado"]),
+                            IdProcedenciaDestino = Convert.IsDBNull(reader["id_procedencia_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_procedencia_destino_traslado"]),
+                            IdAlmacenProcedencia = Convert.IsDBNull(reader["id_almacen_procedencia_traslado"]) ? 0 : Convert.ToInt32(reader["id_almacen_procedencia_traslado"]),
+                            IdAlmacenDestino = Convert.IsDBNull(reader["id_almacen_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_almacen_destino_traslado"]),
+                            IdBodegaProcedencia = Convert.IsDBNull(reader["id_bodega_procedencia_traslado"]) ? 0 : Convert.ToInt32(reader["id_bodega_procedencia_traslado"]),
+                            IdBodegaDestino = Convert.IsDBNull(reader["id_bodega_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_bodega_destino_traslado"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_traslado"]),
                             NombreCalidadCafe = Convert.ToString(reader["nombre_calidad_cafe"]),
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto_traslado"]),

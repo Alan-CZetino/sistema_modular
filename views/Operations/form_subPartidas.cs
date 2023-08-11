@@ -1400,5 +1400,55 @@ namespace sistema_modular_cafe_majada.views
                 txb_tiempoSecad.Text = "00:00";
             }
         }
+
+        private void txb_observacionCafe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 250;
+
+            if (txb_observacionCafe.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_observacionSecad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 250;
+
+            if (txb_observacionSecad.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_resultadoCatacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 250;
+
+            if (txb_resultadoCatacion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_observacionCatador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 250;
+
+            if (txb_observacionCatador.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_observacionPesa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 250;
+
+            if (txb_observacionPesa.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
     }
 }

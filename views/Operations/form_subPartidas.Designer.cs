@@ -422,6 +422,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_observacionCafe.Name = "txb_observacionCafe";
             this.txb_observacionCafe.Size = new System.Drawing.Size(388, 21);
             this.txb_observacionCafe.TabIndex = 15;
+            this.txb_observacionCafe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_observacionCafe_KeyPress);
             // 
             // label10
             // 
@@ -785,6 +786,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_observacionSecad.Name = "txb_observacionSecad";
             this.txb_observacionSecad.Size = new System.Drawing.Size(358, 21);
             this.txb_observacionSecad.TabIndex = 15;
+            this.txb_observacionSecad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_observacionSecad_KeyPress);
             // 
             // label23
             // 
@@ -886,6 +888,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_observacionCatador.Name = "txb_observacionCatador";
             this.txb_observacionCatador.Size = new System.Drawing.Size(294, 62);
             this.txb_observacionCatador.TabIndex = 31;
+            this.txb_observacionCatador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_observacionCatador_KeyPress);
             // 
             // label27
             // 
@@ -918,6 +921,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_resultadoCatacion.Name = "txb_resultadoCatacion";
             this.txb_resultadoCatacion.Size = new System.Drawing.Size(122, 21);
             this.txb_resultadoCatacion.TabIndex = 3;
+            this.txb_resultadoCatacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_resultadoCatacion_KeyPress);
             // 
             // label36
             // 
@@ -1026,6 +1030,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_observacionPesa.Name = "txb_observacionPesa";
             this.txb_observacionPesa.Size = new System.Drawing.Size(385, 18);
             this.txb_observacionPesa.TabIndex = 39;
+            this.txb_observacionPesa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_observacionPesa_KeyPress);
             // 
             // label37
             // 
