@@ -32,21 +32,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                                         id_procedencia = @iProce,
                                         nombre_procedencia = @nombreProcedencia,
                                         descripcion_procedencia = @descripcionProcedencia,";
-                                            if (procedenciaDestino.IdBenficioUbicacion != 0)
-                                            {
-                                                consulta += "id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,";
-                                            }
-                                            consulta += @"";
-                                            if (procedenciaDestino.IdSocioProcedencia != 0)
-                                            {
-                                                consulta += "id_socio_procedencia = @idSocio,";
-                                            }
-                                            consulta += @"";
-                                            if (procedenciaDestino.IdMaquinaria != 0)
-                                            {
-                                                consulta += "id_maquinaria_procedencia = @idMaquinaria";
-                                            }
-
+                                            if (procedenciaDestino.IdBenficioUbicacion != 0){consulta += "id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,";}
+                                            if (procedenciaDestino.IdSocioProcedencia != 0){consulta += "id_socio_procedencia = @idSocio,";}
+                                            if (procedenciaDestino.IdMaquinaria != 0){consulta += "id_maquinaria_procedencia = @idMaquinaria";}
+                                            
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@iProce", procedenciaDestino.IdProcedencia);
@@ -87,22 +76,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"UPDATE Procedencia_Destino_Cafe 
                             SET nombre_procedencia = @nombreProcedencia,
                                 descripcion_procedencia = @descripcionProcedencia,";
-                            if (procedenciaDestino.IdBenficioUbicacion != 0)
-                            {
-                                consulta += "id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,";
-                            }
-                            consulta += @"";
-                            if (procedenciaDestino.IdSocioProcedencia != 0)
-                            {
-                                consulta += "id_socio_procedencia = @idSocio,";
-                            }
-                            consulta += @"";
-                            if (procedenciaDestino.IdMaquinaria != 0)
-                            {
-                                consulta += "id_maquinaria_procedencia = @idMaquinaria";
-                            }
+                            if (procedenciaDestino.IdBenficioUbicacion != 0){consulta += "id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,";}
+                            if (procedenciaDestino.IdSocioProcedencia != 0){consulta += "id_socio_procedencia = @idSocio,";}
+                            if (procedenciaDestino.IdMaquinaria != 0){consulta += "id_maquinaria_procedencia = @idMaquinaria";}
                             consulta += @" WHERE id_procedencia = @id";
-
+                            
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@nombreProcedencia", procedenciaDestino.NombreProcedencia);

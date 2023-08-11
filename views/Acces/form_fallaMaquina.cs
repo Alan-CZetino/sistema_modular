@@ -194,7 +194,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -214,6 +214,12 @@ namespace sistema_modular_cafe_majada.views
             if (string.IsNullOrWhiteSpace(txb_accionesFalla.Text))
             {
                 MessageBox.Show("El campo Acciones, esta vacio y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            // Verificar si se ha seleccionado una maquinaria
+            if (cbx_fallaMaquina.SelectedItem == null)
+            {
+                MessageBox.Show("Debe seleccionar una maquinaria.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
