@@ -199,6 +199,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>repor_subpartida.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\repor_trillado.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>repor_trillado.xsd</DependentUpon>
+    </Compile>
     <Compile Include="model\DAO\AlmacenDAO.cs" />
     <Compile Include="model\DAO\BodegaDAO.cs" />
     <Compile Include="model\DAO\CalidadCafeDAO.cs" />
@@ -651,6 +656,17 @@
     </None>
     <None Include="DataSets\repor_subpartida.xss">
       <DependentUpon>repor_subpartida.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\repor_trillado.xsc">
+      <DependentUpon>repor_trillado.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\repor_trillado.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>repor_trillado.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\repor_trillado.xss">
+      <DependentUpon>repor_trillado.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <EmbeddedResource Include="views\Acces\form_rol.resx">

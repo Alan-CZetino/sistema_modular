@@ -525,7 +525,80 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return trilla;
         }
-        
+
+        public List<ReportesTrilla> ObtenerTrillasReports(int idTrilla)
+        {
+            List<ReportesTrilla> data = new List<ReportesTrilla>();
+
+            try
+            {
+                // Conexión a la base de datos (asegúrate de tener la clase "conexion" y los métodos correspondientes)
+                conexion.Conectar();
+
+                string consulta = @"SELECT 
+	                                    c.nombre_cosecha,
+                                        t.num_trilla,
+                                        DATE_FORMAT(t.fecha_trillaCafe, '%d/%m/%Y') AS Fecha,
+                                        t.tipo_movimiento_trilla,
+                                       pd.nombre_procedencia,
+                                       cc.nombre_calidad,
+                                       sbp.nombre_subproducto,
+                                       t.cantidad_trilla_sacos_cafe,
+                                       t.cantidad_trilla_qqs_cafe,
+                                       a.nombre_almacen,
+                                       b.nombre_bodega,
+                                       p.nombre_personal,
+                                       t.observacion_trilla
+                                    FROM Trilla t
+                                    INNER JOIN Cosecha c ON t.id_cosecha_trilla = c.id_cosecha
+                                    LEFT JOIN Procedencia_Destino_Cafe pd ON t.id_procedencia_trilla = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON t.id_calidad_cafe_trilla = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON t.id_subproducto_trilla = sbp.id_subproducto
+                                    LEFT JOIN Almacen a ON t.id_almacen_trilla = a.id_almacen
+                                    LEFT JOIN Bodega_Cafe b ON t.id_bodega_trilla = b.id_bodega
+                                    INNER JOIN Personal p ON t.id_personal_trilla = p.id_personal
+                                    WHERE id_trilla = @Id";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id", idTrilla);
+
+                MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta);
+                {
+                    while (reader.Read())
+                    {
+                        ReportesTrilla reportesTrillado = new ReportesTrilla()
+                        {
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumTrilla = Convert.ToInt32(reader["num_trilla"]),
+                            FechaTrillaCafe = Convert.ToString(reader["Fecha"]),
+                            TipoMovimientoTrilla = Convert.ToString(reader["tipo_movimiento_trilla"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            CantidadTrillaQQs = Convert.ToDouble(reader["cantidad_trilla_qqs_cafe"]),
+                            CantidadTrillaSacos = Convert.ToDouble(reader["cantidad_trilla_sacos_cafe"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionTrilla = Convert.IsDBNull(reader["observacion_trilla"]) ? null : Convert.ToString(reader["observacion_trilla"])
+                        };
+                        data.Add(reportesTrillado);
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener datos del reporte del trillado: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+
+            return data;
+        }
+
         // Función para obtener todos los registros de Trilla en la base de datos
         public Trilla ObtenerTrillasPorIDNombre(int idTrilla)
         {

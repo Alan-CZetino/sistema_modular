@@ -1,4 +1,5 @@
-﻿using sistema_modular_cafe_majada.controller.InfrastructureController;
+﻿using Microsoft.Reporting.WinForms;
+using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
@@ -30,6 +31,7 @@ namespace sistema_modular_cafe_majada.views
         private List<TextBox> txbRestrict;
         private int icosechaCambio;
         TrillaController countTr = null;
+        private TrillaController reportesController = new TrillaController();
 
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
@@ -813,9 +815,21 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfTrilla_Click(object sender, EventArgs e)
         {
-            string reportPR = "../../views/Reports/report_numsubpartida.rdlc";
-            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR);
-            reportSPartida.ShowDialog();
+            if (TrillaSeleccionado.ITrilla != 0)
+            {
+                string reportPath = "../../views/Reports/repor_trillado.rdlc";
+                List<ReportesTrilla> data = reportesController.ObtenerTrillasReports(TrillaSeleccionado.ITrilla);
+                ReportDataSource reportDataSource = new ReportDataSource("repor_trillado", data);
+
+                form_opcReportExistencias reportTrilla = new form_opcReportExistencias(reportPath, reportDataSource);
+                reportTrilla.ShowDialog();
+            }
+            else
+            {
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

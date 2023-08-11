@@ -1,4 +1,8 @@
-﻿using System;
+﻿
+using Microsoft.Reporting.WinForms;
+using sistema_modular_cafe_majada.controller.OperationsController;
+using sistema_modular_cafe_majada.model.Mapping.Operations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,33 +17,39 @@ namespace sistema_modular_cafe_majada.views
     public partial class form_opcReportExistencias : Form
     {
         public string ReportPath;
-        public form_opcReportExistencias( string ReportPF)
+        public ReportDataSource ReportDataSource; // Agregar un miembro para el ReportDataSource
+
+        public form_opcReportExistencias(string reportPath, ReportDataSource reportDataSource = null)
         {
             InitializeComponent();
-            ReportPath = ReportPF;
+            ReportPath = reportPath;
+            ReportDataSource = reportDataSource; // Asignar el ReportDataSource
+
             CargarInforme();
         }
+
         public void CargarInforme()
         {
-      
             reportViewerDetallado.Reset();
-            // Código para cargar el informe en el ReportViewer usando el OrigenPath
-            // Ejemplo: reportViewer1.LocalReport.ReportPath = OrigenPath;
             reportViewerDetallado.LocalReport.ReportPath = ReportPath;
-            
+
+            if (ReportDataSource != null)
+            {
+                reportViewerDetallado.LocalReport.DataSources.Add(ReportDataSource);
+            }
+
             reportViewerDetallado.RefreshReport();
         }
 
-        private void btn_close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void form_opcReportExistencias_Load(object sender, EventArgs e)
         {
       
             
         }
-
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

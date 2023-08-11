@@ -186,6 +186,7 @@ namespace sistema_modular_cafe_majada.views
                 reporte.nombre_cosecha = Nombre_cosecha;
                 reporte.fecha = fechaActual;
                 reporte.nombre_persona = Nombre_Usuario.ApellidoPersonaUsuario;
+    
             }
             ReportDataSource reportDataSource = new ReportDataSource("repor_bodega", data);
             LocalReport reportGrafico = new LocalReport();
