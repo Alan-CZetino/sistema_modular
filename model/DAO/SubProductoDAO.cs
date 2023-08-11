@@ -75,7 +75,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto"]),
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
-                            DescripcionSubProducto = Convert.ToString(reader["descripcion"]),
+                            DescripcionSubProducto = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_supproducto"])
                         };
 
@@ -120,7 +120,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto"]),
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
-                            DescripcionSubProducto = Convert.ToString(reader["descripcion"]),
+                            DescripcionSubProducto = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_supproducto"])
                         };
                     }
@@ -168,7 +168,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto"]),
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
-                            DescripcionSubProducto = Convert.ToString(reader["descripcion"]),
+                            DescripcionSubProducto = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_supproducto"]),
                             NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"])
                         };
@@ -252,7 +252,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto"]),
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
-                            DescripcionSubProducto = Convert.ToString(reader["descripcion"]),
+                            DescripcionSubProducto = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_supproducto"]),
                             NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"])
                         };
@@ -335,7 +335,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSubProducto = Convert.ToInt32(reader["id_subproducto"]),
                             NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
-                            DescripcionSubProducto = Convert.ToString(reader["descripcion"]),
+                            DescripcionSubProducto = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"]),
                             IdCalidadCafe = Convert.ToInt32(reader["id_calidad_supproducto"]),
                             NombreCalidadCafe = Convert.ToString(reader["nombre_calidad_cafe"])
                         };

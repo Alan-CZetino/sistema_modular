@@ -74,7 +74,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCalidad = Convert.ToInt32(reader["id_calidad"]),
                             NombreCalidad = Convert.ToString(reader["nombre_calidad"]),
-                            DescripcionCalidad = Convert.ToString(reader["descripcion"])
+                            DescripcionCalidad = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"])
                         };
 
                         calidadesCafe.Add(calCafe);
@@ -186,7 +186,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCalidad = Convert.ToInt32(reader["id_calidad"]),
                             NombreCalidad = Convert.ToString(reader["nombre_calidad"]),
-                            DescripcionCalidad = Convert.ToString(reader["descripcion"])
+                            DescripcionCalidad = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"])
                         };
 
                         calidadesCafe.Add(calCafe);
@@ -270,7 +270,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCalidad = Convert.ToInt32(reader["id_calidad"]),
                             NombreCalidad = Convert.ToString(reader["nombre_calidad"]),
-                            DescripcionCalidad = Convert.ToString(reader["descripcion"])
+                            DescripcionCalidad = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"])
                         };
                     }
                 }

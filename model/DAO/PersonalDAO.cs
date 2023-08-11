@@ -79,7 +79,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdPersonal = Convert.ToInt32(reader["id_personal"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
                             ICargo = Convert.ToInt32(reader["id_cargo_personal"]),
-                            Descripcion = Convert.ToString(reader["descripcion_personal"]),
+                            Descripcion = (reader["descripcion_personal"]) is DBNull ? "" : Convert.ToString(reader["descripcion_personal"]),
                             IdPersona = Convert.ToInt32(reader["id_persona_personal"])
                         };
 
@@ -124,7 +124,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdPersonal = Convert.ToInt32(reader["id_personal"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
                             NombreCargo = Convert.ToString(reader["nombre_cargo"]),
-                            Descripcion = Convert.ToString(reader["descripcion_personal"]),
+                            Descripcion = (reader["descripcion_personal"]) is DBNull ? "" : Convert.ToString(reader["descripcion_personal"]),
                             IdPersona = Convert.ToInt32(reader["id_persona_personal"]),
                             NombrePersona = Convert.ToString(reader["nombres_persona"])
                         };
@@ -172,7 +172,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdPersonal = Convert.ToInt32(reader["id_personal"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
                             NombreCargo = Convert.ToString(reader["nombre_cargo"]),
-                            Descripcion = Convert.ToString(reader["descripcion_personal"]),
+                            Descripcion = (reader["descripcion_personal"]) is DBNull ? "" : Convert.ToString(reader["descripcion_personal"]),
                             IdPersona = Convert.ToInt32(reader["id_persona_personal"]),
                             NombrePersona = Convert.ToString(reader["nombres_persona"])
                         };
@@ -220,7 +220,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdPersonal = Convert.ToInt32(reader["id_personal"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
                             NombreCargo = Convert.ToString(reader["nombre_cargo"]),
-                            Descripcion = Convert.ToString(reader["descripcion_personal"]),
+                            Descripcion = (reader["descripcion_personal"]) is DBNull ? "" : Convert.ToString(reader["descripcion_personal"]),
                             IdPersona = Convert.ToInt32(reader["id_persona_personal"]),
                             NombrePersona = Convert.ToString(reader["nombres_persona"])
                         };
@@ -268,7 +268,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdPersonal = Convert.ToInt32(reader["id_personal"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
                             NombreCargo = Convert.ToString(reader["nombre_cargo"]),
-                            Descripcion = Convert.ToString(reader["descripcion_personal"]),
+                            Descripcion = (reader["descripcion_personal"]) is DBNull ? "" : Convert.ToString(reader["descripcion_personal"]),
                             IdPersona = Convert.ToInt32(reader["id_persona_personal"]),
                             NombrePersona = Convert.ToString(reader["nombres_persona"])
                         };
@@ -315,7 +315,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdPersonal = Convert.ToInt32(reader["id_personal"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
                             ICargo = Convert.ToInt32(reader["id_cargo_personal"]),
-                            Descripcion = Convert.ToString(reader["descripcion_personal"]),
+                            Descripcion = (reader["descripcion_personal"]) is DBNull ? "" : Convert.ToString(reader["descripcion_personal"]),
                             IdPersona = Convert.ToInt32(reader["id_persona_personal"])
                         };
                     }
@@ -361,7 +361,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             IdPersonal = Convert.ToInt32(reader["id_personal"]),
                             NombrePersonal = Convert.ToString(reader["nombre_personal"]),
                             ICargo = Convert.ToInt32(reader["id_cargo_personal"]),
-                            Descripcion = Convert.ToString(reader["descripcion_personal"]),
+                            Descripcion = (reader["descripcion_personal"]) is DBNull ? "" : Convert.ToString(reader["descripcion_personal"]),
                             IdPersona = Convert.ToInt32(reader["id_persona_personal"])
                         };
                     }

@@ -75,7 +75,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe"]),
                             NombreTipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
-                            DescripcionTipoCafe = Convert.ToString(reader["descripcion_tipo_cafe"])
+                            DescripcionTipoCafe = (reader["descripcion_tipo_cafe"]) is DBNull ? "" : Convert.ToString(reader["descripcion_tipo_cafe"])
                         };
 
                         listaTipoCafe.Add(TipoCafes);
@@ -116,7 +116,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe"]),
                             NombreTipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
-                            DescripcionTipoCafe = Convert.ToString(reader["descripcion_tipo_cafe"])
+                            DescripcionTipoCafe = (reader["descripcion_tipo_cafe"]) is DBNull ? "" : Convert.ToString(reader["descripcion_tipo_cafe"])
                         };
 
                         listaTipoCafe.Add(TipoCafes);
@@ -235,7 +235,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe"]),
                             NombreTipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
-                            DescripcionTipoCafe = Convert.ToString(reader["descripcion_tipo_cafe"])
+                            DescripcionTipoCafe = (reader["descripcion_tipo_cafe"]) is DBNull ? "" : Convert.ToString(reader["descripcion_tipo_cafe"])
                         };
                     }
                 }
@@ -279,7 +279,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdTipoCafe = Convert.ToInt32(reader["id_tipo_cafe"]),
                             NombreTipoCafe = Convert.ToString(reader["nombre_tipo_cafe"]),
-                            DescripcionTipoCafe = Convert.ToString(reader["descripcion_tipo_cafe"])
+                            DescripcionTipoCafe = (reader["descripcion_tipo_cafe"]) is DBNull ? "" : Convert.ToString(reader["descripcion_tipo_cafe"])
                         };
                     }
                 }

@@ -243,7 +243,7 @@ namespace sistema_modular_cafe_majada.views
                 var name = proceCt.ObtenerProcedenciaDestinoPorId(ProcedenciaSeleccionada.IProcedencia);
 
                 // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                txb_id.Text = Convert.ToString(ProcedenciaSeleccionada.IProcedencia);
+                txb_id.Text = Convert.ToString(proceSeleccionado.IdProcedencia);
                 txb_procedCafe.Text = proceSeleccionado.NombreProcedencia;
                 txb_descripcion.Text = proceSeleccionado.DescripcionProcedencia;
 
@@ -536,6 +536,36 @@ namespace sistema_modular_cafe_majada.views
             ProcedenciaDestinoController proceC = new ProcedenciaDestinoController();
             var count = proceC.CountProcedencia();
             txb_id.Text = Convert.ToString(count.CountProcedencia + 1);
+        }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 7;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_procedCafe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 95;
+
+            if (txb_procedCafe.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_descripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 190;
+
+            if (txb_descripcion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
     }
 }

@@ -78,7 +78,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdBodega = Convert.ToInt32(reader["id_bodega"]),
                             NombreBodega = Convert.ToString(reader["nombre_bodega"]),
-                            DescripcionBodega = Convert.ToString(reader["descripcion_bodega"]),
+                            DescripcionBodega = (reader["descripcion_bodega"])is DBNull ? "" : Convert.ToString(reader["descripcion_bodega"]),
                             UbicacionBodega = Convert.ToString(reader["ubicacion_bodega"]),
                             IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_bodega"])
                         };
@@ -124,7 +124,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdBodega = Convert.ToInt32(reader["id_bodega"]),
                             NombreBodega = Convert.ToString(reader["nombre_bodega"]),
-                            DescripcionBodega = Convert.ToString(reader["descripcion_bodega"]),
+                            DescripcionBodega = (reader["descripcion_bodega"]) is DBNull ? "" : Convert.ToString(reader["descripcion_bodega"]),
                             UbicacionBodega = Convert.ToString(reader["ubicacion_bodega"]),
                             IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_bodega"])
                         };
@@ -212,7 +212,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdBodega = Convert.ToInt32(reader["id_bodega"]),
                             NombreBodega = Convert.ToString(reader["nombre_bodega"]),
-                            DescripcionBodega = Convert.ToString(reader["descripcion_bodega"]),
+                            DescripcionBodega = (reader["descripcion_bodega"]) is DBNull ? "" : Convert.ToString(reader["descripcion_bodega"]),
                             UbicacionBodega = Convert.ToString(reader["ubicacion_bodega"]),
                             IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_bodega"]),
                             NombreBenficioUbicacion = Convert.ToString(reader["nombre_beneficio"]),
@@ -260,7 +260,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdBodega = Convert.ToInt32(reader["id_bodega"]),
                             NombreBodega = Convert.ToString(reader["nombre_bodega"]),
-                            DescripcionBodega = Convert.ToString(reader["descripcion_bodega"]),
+                            DescripcionBodega = (reader["descripcion_bodega"]) is DBNull ? "" : Convert.ToString(reader["descripcion_bodega"]),
                             UbicacionBodega = Convert.ToString(reader["ubicacion_bodega"]),
                             IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_bodega"]),
                             NombreBenficioUbicacion = Convert.ToString(reader["nombre_beneficio"]),
@@ -310,7 +310,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdBodega = Convert.ToInt32(reader["id_bodega"]),
                             NombreBodega = Convert.ToString(reader["nombre_bodega"]),
-                            DescripcionBodega = Convert.ToString(reader["descripcion_bodega"]),
+                            DescripcionBodega = (reader["descripcion_bodega"]) is DBNull ? "" : Convert.ToString(reader["descripcion_bodega"]),
                             UbicacionBodega = Convert.ToString(reader["ubicacion_bodega"]),
                             IdBenficioUbicacion = Convert.ToInt32(reader["id_benficio_ubicacion_bodega"]),
                             NombreBenficioUbicacion = Convert.ToString(reader["nombre_beneficio"])

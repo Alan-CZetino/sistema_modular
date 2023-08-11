@@ -234,6 +234,7 @@ namespace sistema_modular_cafe_majada.views
                     imagenClickeada = true;
 
                     // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
+                    txb_id.Text = Convert.ToString(socioSeleccionado.IdSocio);
                     txb_nombre.Text = socioSeleccionado.NombreSocio;
                     txb_descripcion.Text = socioSeleccionado.DescripcionSocio;
                     txb_ubicacion.Text = socioSeleccionado.UbicacionSocio;
@@ -506,6 +507,46 @@ namespace sistema_modular_cafe_majada.views
                 MessageBox.Show("Error de tipo (" + ex.Message + "), verifique los datos he intenta nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 7;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 95;
+
+            if (txb_nombre.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_descripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 190;
+
+            if (txb_descripcion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_ubicacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 190;
+
+            if (txb_ubicacion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
     }
 }

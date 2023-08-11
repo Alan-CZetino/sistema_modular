@@ -79,10 +79,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdFalla = Convert.ToInt32(reader["id_falla"]),
                             DescripcionFalla = Convert.ToString(reader["descripcion_falla"]),
-                            PiezaReemplazada = Convert.ToString(reader["pieza_reemplazada_falla"]),
                             FechaFalla = Convert.ToDateTime(reader["fecha_falla"]),
                             AccionesTomadas = Convert.ToString(reader["acciones_tomadas_falla"]),
-                            ObservacionFalla = Convert.ToString(reader["observaciones_falla"]),
+                            PiezaReemplazada = (reader["pieza_reemplazada_falla"]) is DBNull ? "" : Convert.ToString(reader["pieza_reemplazada_falla"]),
+                            ObservacionFalla = (reader["observaciones_falla"]) is DBNull ? "" : Convert.ToString(reader["observaciones_falla"]),
                             IdMaquinaria = Convert.ToInt32(reader["id_maquinaria_falla"])
                         };
 
@@ -127,10 +127,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdFalla = Convert.ToInt32(reader["id_falla"]),
                             DescripcionFalla = Convert.ToString(reader["descripcion_falla"]),
-                            PiezaReemplazada = Convert.ToString(reader["pieza_reemplazada_falla"]),
+                            PiezaReemplazada = (reader["pieza_reemplazada_falla"]) is DBNull ? "" : Convert.ToString(reader["pieza_reemplazada_falla"]),
+                            ObservacionFalla = (reader["observaciones_falla"]) is DBNull ? "" : Convert.ToString(reader["observaciones_falla"]),
                             FechaFalla = Convert.ToDateTime(reader["fecha_falla"]),
                             AccionesTomadas = Convert.ToString(reader["acciones_tomadas_falla"]),
-                            ObservacionFalla = Convert.ToString(reader["observaciones_falla"]),
                             IdMaquinaria = Convert.ToInt32(reader["id_maquinaria_falla"])
                         };
                     }
@@ -179,10 +179,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdFalla = Convert.ToInt32(reader["id_falla"]),
                             DescripcionFalla = Convert.ToString(reader["descripcion_falla"]),
-                            PiezaReemplazada = Convert.ToString(reader["pieza_reemplazada_falla"]),
+                            PiezaReemplazada = (reader["pieza_reemplazada_falla"]) is DBNull ? "" : Convert.ToString(reader["pieza_reemplazada_falla"]),
+                            ObservacionFalla = (reader["observaciones_falla"]) is DBNull ? "" : Convert.ToString(reader["observaciones_falla"]),
                             FechaFalla = Convert.ToDateTime(reader["fecha_falla"]),
                             AccionesTomadas = Convert.ToString(reader["acciones_tomadas_falla"]),
-                            ObservacionFalla = Convert.ToString(reader["observaciones_falla"]),
                             IdMaquinaria = Convert.ToInt32(reader["id_maquinaria_falla"]),
                             NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"])
                         };
@@ -277,10 +277,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdFalla = Convert.ToInt32(reader["id_falla"]),
                             DescripcionFalla = Convert.ToString(reader["descripcion_falla"]),
-                            PiezaReemplazada = Convert.ToString(reader["pieza_reemplazada_falla"]),
+                            PiezaReemplazada = (reader["pieza_reemplazada_falla"]) is DBNull ? "" : Convert.ToString(reader["pieza_reemplazada_falla"]),
+                            ObservacionFalla = (reader["observaciones_falla"]) is DBNull ? "" : Convert.ToString(reader["observaciones_falla"]),
                             FechaFalla = Convert.ToDateTime(reader["fecha_falla"]),
                             AccionesTomadas = Convert.ToString(reader["acciones_tomadas_falla"]),
-                            ObservacionFalla = Convert.ToString(reader["observaciones_falla"]),
                             IdMaquinaria = Convert.ToInt32(reader["id_maquinaria_falla"]),
                             NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"])
                         };
@@ -330,10 +330,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdFalla = Convert.ToInt32(reader["id_falla"]),
                             DescripcionFalla = Convert.ToString(reader["descripcion_falla"]),
-                            PiezaReemplazada = Convert.ToString(reader["pieza_reemplazada_falla"]),
                             FechaFalla = Convert.ToDateTime(reader["fecha_falla"]),
                             AccionesTomadas = Convert.ToString(reader["acciones_tomadas_falla"]),
-                            ObservacionFalla = Convert.ToString(reader["observaciones_falla"]),
+                            PiezaReemplazada = (reader["pieza_reemplazada_falla"]) is DBNull ? "" : Convert.ToString(reader["pieza_reemplazada_falla"]),
+                            ObservacionFalla = (reader["observaciones_falla"]) is DBNull ? "" : Convert.ToString(reader["observaciones_falla"]),
                             IdMaquinaria = Convert.ToInt32(reader["id_maquinaria_falla"]),
                             NombreMaquinaria = Convert.ToString(reader["nombre_maquinaria"])
                         };
