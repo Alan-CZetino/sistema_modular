@@ -89,6 +89,24 @@ namespace sistema_modular_cafe_majada.controller.ProductController
 
             return tipoCafe;
         }
+        
+        //
+        public TipoCafe ObtenerUltimoId()
+        {
+            TipoCafe tipoCafe = null;
+
+            try
+            {
+                // Llamada al método del DAO para obtener el rol
+                tipoCafe = tipoCafeDAO.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener el ult id de Tipo de Cafe: " + ex.Message);
+            }
+
+            return tipoCafe;
+        }
 
         //
         public bool InsertarTipoCafe(TipoCafe tipoCafe)

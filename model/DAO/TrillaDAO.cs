@@ -253,15 +253,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                                     id_subproducto_trilla = @idSubProducto,
                                     cantidad_trilla_qqs_cafe = @cantidadTrillaQQs,
                                     cantidad_trilla_sacos_cafe = @cantidadTrillaSacos,";
-
-                                    if (trilla.IdProcedencia != 0)
-                                    {
-                                        consulta += "id_procedencia_trilla = @idProcedencia,";
-                                    }
-
-                                    consulta += @"id_almacen_trilla = @iAlmacen,
-                                    id_bodega_trilla = @iBodega,
-                                    fecha_trillaCafe = @fechaTrillaCafe,
+                                    if (trilla.IdProcedencia != 0){ consulta += "id_procedencia_trilla = @idProcedencia,"; }
+                                    if (trilla.IdAlmacen != 0){ consulta += "id_almacen_trilla = @iAlmacen,"; }
+                                    if (trilla.IdBodega != 0){ consulta += "id_bodega_trilla = @iBodega,"; }
+                                    consulta += @"fecha_trillaCafe = @fechaTrillaCafe,
                                     id_personal_trilla = @idPersonal,
                                     observacion_trilla = @observacionTrilla
                                     WHERE id_trilla = @id";

@@ -29,7 +29,6 @@ namespace sistema_modular_cafe_majada.views
         public bool imagenClickeada = false;
         public int SubSPart;
         public string SubSPartCosecha;
-        private bool imagenClickeadaSP = false;
         private bool imgClickAlmacen = false;
         private bool imgClickBodega = false;
         SubPartidaController countSP = null;
@@ -340,7 +339,6 @@ namespace sistema_modular_cafe_majada.views
         //
         private void btn_sPartida_Click(object sender, EventArgs e)
         {
-            imagenClickeadaSP = true;
             TablaSeleccionadasubPartd.ITable = 1;
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
@@ -468,18 +466,19 @@ namespace sistema_modular_cafe_majada.views
 
         public void SaveSubPartida() 
         {
-            var almacenC = new AlmacenController();
-            var cantSP = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
-            double cantMax = cantSP.CapacidadAlmacen;
-            double cantAct = cantSP.CantidadActualAlmacen;
-            double cantRest = cantMax - cantAct;
-            double cantActSaco = cantSP.CantidadActualSacoAlmacen;
-            double cantRestSaco = cantMax - cantActSaco;
 
             //SubPartida subParti = new SubPartida();
             bool verific = VerificarCamposObligatorios();
             if(verific == true)
             {
+                var almacenC = new AlmacenController();
+                var cantSP = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
+                double cantMax = cantSP.CapacidadAlmacen;
+                double cantAct = cantSP.CantidadActualAlmacen;
+                double cantRest = cantMax - cantAct;
+                double cantActSaco = cantSP.CantidadActualSacoAlmacen;
+                double cantRestSaco = cantMax - cantActSaco;
+
                 // Obtener los valores de los controles (txb, dtp, cbx)
                 int subPartida = Convert.ToInt32(txb_subPartida.Text);
                 string procedenciaNombre = txb_procedencia.Text;
@@ -734,10 +733,6 @@ namespace sistema_modular_cafe_majada.views
 
                             //borrar datos de los textbox
                             ClearDataTxb();
-                            imgClickBodega = false;
-                            imagenClickeada = false;
-                            imagenClickeadaSP = false;
-                            imgClickAlmacen = false;
                         }
                         else
                         {
@@ -855,11 +850,6 @@ namespace sistema_modular_cafe_majada.views
 
                         //borrar datos de los textbox
                         ClearDataTxb();
-                        SubPartidaSeleccionado.clickImg = false;
-                        imgClickBodega = false;
-                        imagenClickeada = false;
-                        imagenClickeadaSP = false;
-                        imgClickAlmacen = false;
                     }
                     else
                     {
@@ -1017,6 +1007,12 @@ namespace sistema_modular_cafe_majada.views
                 MessageBox.Show("El campo nombre Pesador está vacío y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
+            // Verificar campo id_pesador_subpartida
+            if (string.IsNullOrWhiteSpace(txb_doctoAlmacen.Text))
+            {
+                MessageBox.Show("El campo Documento de Almacen está vacío y es obligatorio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
 
             return true; // Si todos los campos obligatorios están completos, retornamos true
         }
@@ -1040,6 +1036,11 @@ namespace sistema_modular_cafe_majada.views
             txb_horaSalida.Text = "00:00:00";
             txb_tiempoSecad.Text = "00:00:00";
 
+            SubPartidaSeleccionado.clickImg = false;
+            imgClickBodega = false;
+            imagenClickeada = false;
+            imgClickAlmacen = false;
+
             AlmacenSeleccionado.IAlmacen = 0;
             BodegaSeleccionada.IdBodega = 0;
             AlmacenBodegaClick.IBodega = 0;
@@ -1062,11 +1063,6 @@ namespace sistema_modular_cafe_majada.views
         {
             ClearDataTxb();
             cbx_subProducto.SelectedIndex = -1;
-            imgClickBodega = false;
-            imagenClickeada = false;
-            imagenClickeadaSP = false;
-            imgClickAlmacen = false;
-            SubPartidaSeleccionado.clickImg = false;
         }
 
         private void btn_deleteSPartida_Click(object sender, EventArgs e)
@@ -1114,7 +1110,250 @@ namespace sistema_modular_cafe_majada.views
 
         private void txb_horaInicio_KeyPress(object sender, KeyPressEventArgs e)
         {
+            int maxLength = 5;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                // Agregar el dígito a la caja de texto
+                txb_horaInicio.Text += e.KeyChar;
+
+                // Verificar si ya existe un ':' en la cadena
+                bool colonExists = txb_horaInicio.Text.Contains(":");
+
+                // Agregar automáticamente un ':' si no existe y la longitud es par
+                if (!colonExists && txb_horaInicio.Text.Length == 2)
+                {
+                    txb_horaInicio.Text += ":";
+                    txb_horaInicio.SelectionStart = txb_horaInicio.Text.Length; // Mover el cursor al final
+                }
+
+                e.Handled = true; // Manejar el evento KeyPress
+            }
+        }
+
+        private void txb_humedad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 4;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_rendimiento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 4;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_CantidadSaco_KeyPress(object sender, KeyPressEventArgs e)
+        {
             int maxLength = 8;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_doctoAlmacen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 10;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_pdasSemana1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 2;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_diasPdas1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 1;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_fechaPartd1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 16;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        //
+        public void RestrictTextBoxNumTime(List<TextBox> textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.KeyPress += (sender, e) =>
+                {
+                    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '/')
+                    {
+                        e.Handled = true; // Cancela el evento KeyPress si no es un dígito o el carácter '/'
+                    }
+
+                    // Permite solo un '/' en el TextBox
+                    if (e.KeyChar == '/' && (textBox.Text.Contains("/")))
+                    {
+                        e.Handled = true; // Cancela el evento KeyPress si ya hay un '/' en el TextBox
+                    }
+                };
+            }
+        }
+
+
+        private void txb_subPartida_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 4;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_horaSalida_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 5;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                // Agregar el dígito a la caja de texto
+                txb_horaInicio.Text += e.KeyChar;
+
+                // Verificar si ya existe un ':' en la cadena
+                bool colonExists = txb_horaInicio.Text.Contains(":");
+
+                // Agregar automáticamente un ':' si no existe y la longitud es par
+                if (!colonExists && txb_horaInicio.Text.Length == 2)
+                {
+                    txb_horaInicio.Text += ":";
+                    txb_horaInicio.SelectionStart = txb_horaInicio.Text.Length; // Mover el cursor al final
+                }
+
+                e.Handled = true; // Manejar el evento KeyPress
+            }
+        }
+
+        private void txb_tiempoSecad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 5;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                // Agregar el dígito a la caja de texto
+                txb_horaInicio.Text += e.KeyChar;
+
+                // Verificar si ya existe un ':' en la cadena
+                bool colonExists = txb_horaInicio.Text.Contains(":");
+
+                // Agregar automáticamente un ':' si no existe y la longitud es par
+                if (!colonExists && txb_horaInicio.Text.Length == 2)
+                {
+                    txb_horaInicio.Text += ":";
+                    txb_horaInicio.SelectionStart = txb_horaInicio.Text.Length; // Mover el cursor al final
+                }
+
+                e.Handled = true; // Manejar el evento KeyPress
+            }
+        }
+
+        private void txb_cantidadQQs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_fechaPartd2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 16;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_fechaPartd3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 16;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_diasPdas2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 1;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_diasPdas3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 1;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_pdasSemana2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 2;
+
+            if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_pdasSemana3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 2;
 
             if (txb_horaInicio.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {

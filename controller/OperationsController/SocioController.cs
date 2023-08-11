@@ -77,6 +77,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return null;
             }
         }
+        
+        //
+        public Socio ObtenerUltimoId()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener la cantidad socio
+                return socioDAO.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el ult id Socio: " + ex.Message);
+                return null;
+            }
+        }
 
         //
         public bool InsertarSocio(Socio socio)

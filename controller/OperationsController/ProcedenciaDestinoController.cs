@@ -136,6 +136,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return null;
             }
         }
+        
+        //
+        public ProcedenciaDestino ObtenerUltimoId()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener la cantidad de las ProcedenciaDestino
+                return prodesDAO.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el ult id de las ProcedenciaDestino: " + ex.Message);
+                return null;
+            }
+        }
 
     }
 }

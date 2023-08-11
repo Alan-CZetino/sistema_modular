@@ -100,6 +100,8 @@ namespace sistema_modular_cafe_majada.views
                 Nombre = almacen.NombreAlmacen,
                 Descripcion = almacen.DescripcionAlmacen,
                 Capacidad = almacen.CapacidadAlmacen,
+                Cantidad_Saco = almacen.CantidadActualSacoAlmacen,
+                Cantidad_QQs = almacen.CantidadActualAlmacen,
                 Ubicacion = almacen.UbicacionAlmacen,
                 Bodega_Ubicacion = almacen.NombreBodegaUbicacion
             }).ToList();
@@ -133,7 +135,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -179,7 +181,7 @@ namespace sistema_modular_cafe_majada.views
                     //se actualiza la tabla
                     ShowAlmacenGrid();
                     ClearDataTxb();
-                    cbx_bodega.SelectedIndex = 0;
+                    cbx_bodega.SelectedIndex = -1;
                 }
             }
             else
@@ -192,8 +194,6 @@ namespace sistema_modular_cafe_majada.views
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
-            imagenClickeada = false;
-            almacenSeleccionado = null;
             this.Close();
         }
 
@@ -207,6 +207,8 @@ namespace sistema_modular_cafe_majada.views
             }
 
             cbx_bodega.Items.Clear();
+            imagenClickeada = false;
+            almacenSeleccionado = null;
 
             //coloca nueva mente el contador en el txb del cdigo
             AlmacenController ben = new AlmacenController();
@@ -434,15 +436,26 @@ namespace sistema_modular_cafe_majada.views
             string description = txb_descripcion.Text;
 
             double capacidad;
-            if (double.TryParse(txb_capacidad.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out capacidad))
-            {
-                // El parseo se realizó con éxito, el valor de capacidad contiene el número parseado
-                
-            }
+            if (double.TryParse(txb_capacidad.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out capacidad)){}
             else
             {
                 MessageBox.Show("El valor ingresado en el campo Capacidad no es un número válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            var lastId = subController.ObtenerUltimoId();
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            {
+                DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                if (result == DialogResult.Yes)
+                {
+                    txb_id.Enabled = true;
+                    txb_id.ReadOnly = false;
+                    return;
+                }
+                int idA = lastId.LastId + 1;
+                txb_id.Text = Convert.ToString(idA);
             }
 
             //Se crea una instancia de la clase Almacen
@@ -534,6 +547,16 @@ namespace sistema_modular_cafe_majada.views
         private void txb_capacidad_Enter(object sender, EventArgs e)
         {
             CbxBodega();
+        }
+
+        private void txb_capacidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_capacidad.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
     }
 }

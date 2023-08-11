@@ -176,6 +176,40 @@ namespace sistema_modular_cafe_majada.model.DAO
             return tipoCafe;
         }
 
+        public TipoCafe ObtenerUltimoId()
+        {
+            TipoCafe tpc = null;
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT MAX(id_tipo_cafe) AS LastId FROM Tipo_Cafe";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        tpc = new TipoCafe()
+                        {
+                            LastId = Convert.ToInt32(reader["LastId"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return tpc;
+        }
         //obtener el TipoCafe en especifico mediante el id en la BD
         public TipoCafe ObtenerIdTipoCafe(int idTip)
         {

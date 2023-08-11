@@ -274,6 +274,40 @@ namespace sistema_modular_cafe_majada.model.DAO
             return listaSubProducto;
         }
 
+        public SubProducto ObtenerUltimoId()
+        {
+            SubProducto sp = null;
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT MAX(id_subproducto) AS LastId FROM SubProducto";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        sp = new SubProducto()
+                        {
+                            LastId = Convert.ToInt32(reader["LastId"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return sp;
+        }
         //
         public List<SubProducto> BuscarSubProducto(string buscar)
         {

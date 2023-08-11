@@ -88,6 +88,9 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
+            imagenClickeada = false;
+            cargoSeleccionada = null;
+
             //coloca nueva mente el contador en el txb del cdigo
             ChargeController ben = new ChargeController();
             var count = ben.CountCargo();
@@ -157,6 +160,21 @@ namespace sistema_modular_cafe_majada.views
             //se obtiene los valores ingresados por el usuario
             string namecargo = txb_cargo.Text;
             string descripcion = txb_descripCargo.Text;
+            
+            var lastId = cargoController.ObtenrUltimoId();
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            {
+                DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                if (result == DialogResult.Yes)
+                {
+                    txb_id.Enabled = true;
+                    txb_id.ReadOnly = false;
+                    return;
+                }
+                int idA = lastId.LastId + 1;
+                txb_id.Text = Convert.ToString(idA);
+            }
 
             //Se crea una instancia de la clase Calidades_cafe
             Charge cargo = new Charge()

@@ -46,6 +46,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return new SubProducto();
             }
         }
+        
+        // Función para obtener total de los subproductos
+        public SubProducto ObtenerUltimoId()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el total de los subproductos
+                return sproductoDAO.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener el ult id de subproductos: " + ex.Message);
+                return new SubProducto();
+            }
+        }
 
         // Función para insertar un nuevo subproducto
         public bool InsertarSubProducto(SubProducto subproducto)

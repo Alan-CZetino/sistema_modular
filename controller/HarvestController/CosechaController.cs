@@ -193,6 +193,24 @@ namespace sistema_modular_cafe_majada.controller.HarvestController
 
             return cosecha;
         }
+        
+        //
+        public Cosecha ObtenerUltimoId()
+        {
+            Cosecha cosecha = null;
+
+            try
+            {
+                // Llamada al método del DAO para obtener el Cosecha
+                cosecha = cosechaDAO.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener el Cosecha: " + ex.Message);
+            }
+
+            return cosecha;
+        }
 
     }
 }

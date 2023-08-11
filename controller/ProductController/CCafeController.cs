@@ -91,6 +91,21 @@ namespace sistema_modular_cafe_majada.controller.ProductController
             }
             return calidad;
         }
+        
+        public CalidadCafe ObtenerUltimoId()
+        {
+            CalidadCafe calidad = new CalidadCafe();
+            try
+            {
+                //llamada al metodo DAO para obtener los datos
+                calidad = ccafeDAO.ObtenerUltimoId();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los ult id de calidades: " + ex.Message);
+            }
+            return calidad;
+        }
 
         public void EliminarCalidades(int idCalidades)
         {

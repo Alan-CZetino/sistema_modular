@@ -462,6 +462,39 @@ namespace sistema_modular_cafe_majada.model.DAO
             return proce;
         }
 
+        public ProcedenciaDestino ObtenerUltimoId()
+        {
+            ProcedenciaDestino pd = null;
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
 
+                string consulta = @"SELECT MAX(id_procedencia) AS LastId FROM Procedencia_Destino_Cafe";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        pd = new ProcedenciaDestino()
+                        {
+                            LastId = Convert.ToInt32(reader["LastId"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return pd;
+        }
     }
 }

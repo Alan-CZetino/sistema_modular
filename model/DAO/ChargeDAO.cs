@@ -73,7 +73,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCargo = Convert.ToInt32(reader["id_cargo"]),
                             NombreCargo = Convert.ToString(reader["nombre_cargo"]),
-                            DescripcionCargo = Convert.ToString(reader["descripcion_cargo"])
+                            DescripcionCargo = (reader["descripcion_cargo"]) is DBNull ? "" : Convert.ToString(reader["descripcion_cargo"])
                         };
 
                         cargos.Add(cargo);
@@ -158,7 +158,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCargo = Convert.ToInt32(reader["id_cargo"]),
                             NombreCargo = Convert.ToString(reader["nombre_cargo"]),
-                            DescripcionCargo = Convert.ToString(reader["descripcion_cargo"])
+                            DescripcionCargo = (reader["descripcion_cargo"]) is DBNull ? "" : Convert.ToString(reader["descripcion_cargo"])
                         };
                     }
                 }
@@ -247,5 +247,39 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
         }
 
+        public Charge ObtenerUltimoId()
+        {
+            Charge alm = null;
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT MAX(id_cargo) AS LastId FROM Cargo";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        alm = new Charge()
+                        {
+                            LastId = Convert.ToInt32(reader["LastId"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return alm;
+        }
     }
 }

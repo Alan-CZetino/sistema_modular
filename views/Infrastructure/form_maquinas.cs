@@ -113,7 +113,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -306,6 +306,21 @@ namespace sistema_modular_cafe_majada.views
             string telProveedor = txb_proveedorTelefono.Text;
             string contrato = txb_numContrato.Text;
             string beneficio = txb_beneficio.Text;
+
+            var lastId = subController.ObtenerUltimoId();
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            {
+                DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                if (result == DialogResult.Yes)
+                {
+                    txb_id.Enabled = true;
+                    txb_id.ReadOnly = false;
+                    return;
+                }
+                int idA = lastId.LastId + 1;
+                txb_id.Text = Convert.ToString(idA);
+            }
 
             //Se crea una instancia de la clase Bodega
             Maquinaria maquinaInsert = new Maquinaria()
