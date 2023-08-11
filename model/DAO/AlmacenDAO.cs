@@ -752,9 +752,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                                             b.nombre_bodega, a.id_calidad_cafe, c.nombre_calidad, a.cantidad_actual_almacen
                                         FROM Almacen a
                                         LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
-                                        LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
-                                        WHERE ((id_calidad_cafe = @id or id_calidad_cafe IS NULL) AND (cantidad_actual_almacen IS NULL OR cantidad_actual_almacen < capacidad_almacen or 0.0))
-                                            OR (id_calidad_cafe <> @id AND (cantidad_actual_almacen = 0.0 or cantidad_actual_almacen IS NULL))";
+                                        LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad";  
+                /*WHERE ((id_calidad_cafe = @id or id_calidad_cafe IS NULL) AND (cantidad_actual_almacen IS NULL OR cantidad_actual_almacen < capacidad_almacen or 0.0))
+                    OR (id_calidad_cafe <> @id AND (cantidad_actual_almacen = 0.0 or cantidad_actual_almacen IS NULL))";*/
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@id", id);
@@ -812,9 +812,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                                         FROM Almacen a
                                         LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
                                         LEFT JOIN Calidad_Cafe c ON a.id_calidad_cafe = c.id_calidad
-                                        WHERE a.id_bodega_ubicacion_almacen LIKE CONCAT('%', @search, '%')
-                                            AND ((id_calidad_cafe = @id or id_calidad_cafe IS NULL) AND (cantidad_actual_almacen IS NULL OR cantidad_actual_almacen < capacidad_almacen or 0.0))
-                                            OR (id_calidad_cafe <> @id AND (cantidad_actual_almacen = 0.0 or cantidad_actual_almacen IS NULL))";
+                                        WHERE a.id_bodega_ubicacion_almacen LIKE CONCAT('%', @search, '%')";
+                /*AND ((id_calidad_cafe = @id or id_calidad_cafe IS NULL) AND (cantidad_actual_almacen IS NULL OR cantidad_actual_almacen < capacidad_almacen or 0.0))
+                OR (id_calidad_cafe <> @id AND (cantidad_actual_almacen = 0.0 or cantidad_actual_almacen IS NULL))";*/
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@search", "%" + buscar + "%");

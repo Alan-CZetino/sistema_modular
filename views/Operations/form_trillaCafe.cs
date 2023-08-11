@@ -39,7 +39,6 @@ namespace sistema_modular_cafe_majada.views
         public double cantidaSacoUpdate = 0.00;
         public double cantidaSacoActUpdate = 0.00;
 
-        private bool imagenClickeadaTR = false;
         private bool imgClickAlmacen = false;
         private bool imgClickUpdAlmacen = false;
         private bool imgClickBodega = false;
@@ -311,7 +310,18 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
-            AlmacenBodegaClick.IBodega = 0;
+            cbx_subProducto.SelectedIndex = -1;
+            TrillaSeleccionado.ITrilla = 0;
+            TrillaSeleccionado.NumTrilla = 0;
+            TrillaSeleccionado.clickImg = false;
+            AlmacenSeleccionado.IAlmacen = 0;
+            AlmacenSeleccionado.NombreAlmacen = "";
+            BodegaSeleccionada.IdBodega = 0;
+            BodegaSeleccionada.NombreBodega = "";
+
+            imgClickBodega = false;
+            imgClickAlmacen = false;
+
             AlmacenBodegaClick.IBodega = 0;
             dtp_fechaTrilla.Value = DateTime.Now;
             rb_cafeTrilla.Checked = false;
@@ -339,7 +349,6 @@ namespace sistema_modular_cafe_majada.views
             double cantRest = cantMax - cantAct;
             double cantActSaco = cantSP.CantidadActualSacoAlmacen;
             double cantRestSaco = cantMax - cantActSaco;
-            int idAlmacenUpd;
 
             int numTrilla = Convert.ToInt32(txb_numTrilla.Text);
             string observacion = txb_observacion.Text;
@@ -505,10 +514,6 @@ namespace sistema_modular_cafe_majada.views
 
                         //borrar datos de los textbox
                         ClearDataTxb();
-                        imgClickBodega = false;
-                        imagenClickeadaTR = false;
-                        imgClickAlmacen = false;
-                        TrillaSeleccionado.clickImg = false;
                     }
                     else
                     {
@@ -665,9 +670,6 @@ namespace sistema_modular_cafe_majada.views
 
                 //borrar datos de los textbox
                 ClearDataTxb();
-                imgClickBodega = false;
-                imagenClickeadaTR = false;
-                imgClickAlmacen = false;
             }
         }
 
@@ -734,17 +736,11 @@ namespace sistema_modular_cafe_majada.views
         private void btn_SaveTrilla_Click(object sender, EventArgs e)
         {
             SaveTrilla();
-            cbx_subProducto.SelectedIndex = -1;
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
-            cbx_subProducto.SelectedIndex = -1;
-            imgClickBodega = false;
-            imagenClickeadaTR = false;
-            imgClickAlmacen = false;
-            TrillaSeleccionado.clickImg = false;
             this.Close();
         }
 
@@ -797,13 +793,10 @@ namespace sistema_modular_cafe_majada.views
                     //verificar el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Trilla", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la Trilla No: " + TrillaSeleccionado.NumTrilla + " del ID en la BD: " + TrillaSeleccionado.ITrilla + " en la base de datos");
 
-                    MessageBox.Show("Trilla Eliminada correctamente.");
+                    MessageBox.Show("Trilla Eliminada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
                     ClearDataTxb();
-                    cbx_subProducto.SelectedIndex = -1;
-                    TrillaSeleccionado.ITrilla = 0;
-                    TrillaSeleccionado.NumTrilla = 0;
                 }
             }
             else

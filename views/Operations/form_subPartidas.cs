@@ -66,7 +66,8 @@ namespace sistema_modular_cafe_majada.views
             refreshTimer.Start();
 
             txbRestrict = new List<TextBox> { txb_pdasSemana1, txb_pdasSemana2, txb_pdasSemana3, txb_diasPdas1, txb_diasPdas2, txb_diasPdas3,
-                                                txb_humedad, txb_rendimiento, txb_cantidadQQs, txb_CantidadSaco };
+                                                txb_humedad, txb_rendimiento, txb_cantidadQQs, txb_CantidadSaco, txb_horaSalida, txb_horaInicio,
+                                             txb_tiempoSecad };
 
             RestrictTextBoxNum(txbRestrict);
 
@@ -261,6 +262,48 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
+        //validar que la hora este en los formatos valdios
+        static bool ValidarHora(string horaStr)
+        {
+            try
+            {
+                int horas = int.Parse(horaStr.Substring(0, 2));
+                if (horas >= 0 && horas <= 23)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+        
+        //validacion de tiempo, verifica que el valor minutos este en el rango de los formatos
+        static bool ValidarMinuto(string minStr)
+        {
+            try
+            {
+                int minutos = int.Parse(minStr.Substring(3, 2));
+                if (minutos >= 0 && minutos <= 59)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
         //
         public void ShowSubPartidaView()
         {
@@ -404,20 +447,20 @@ namespace sistema_modular_cafe_majada.views
             {
                 iBodega = BodegaSeleccionada.IdBodega;
                 
-                if(iBodega != AlmacenBodegaClick.IBodega)
+                /*if(iBodega != AlmacenBodegaClick.IBodega)
                 {
                     imgClickAlmacen = false;
                 }
                 if (!imgClickAlmacen)
                 {
-                    AlmacenBodegaClick.IBodega = iBodega;
-                }
+                }*/
 
+                AlmacenBodegaClick.IBodega = iBodega;
                 txb_ubicadoBodega.Text = BodegaSeleccionada.NombreBodega;
-                //txb_almacenSiloPiña.Text = null;
-                //iAlmacen = 0;
-                //AlmacenSeleccionado.NombreAlmacen = null;
-                //AlmacenSeleccionado.IAlmacen = 0;
+                txb_almacenSiloPiña.Text = null;
+                iAlmacen = 0;
+                AlmacenSeleccionado.NombreAlmacen = null;
+                AlmacenSeleccionado.IAlmacen = 0;
             }
         }
         
@@ -429,19 +472,17 @@ namespace sistema_modular_cafe_majada.views
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
-                if (!imgClickBodega)
-                {
-                    // Llamar al método para obtener los datos de la base de datos
-                    AlmacenController almacenController = new AlmacenController();
-                    Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
-                    BodegaController bodegaController = new BodegaController();
-                    Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+                // Llamar al método para obtener los datos de la base de datos
+                AlmacenController almacenController = new AlmacenController();
+                Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
+                BodegaController bodegaController = new BodegaController();
+                Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
 
-                    txb_ubicadoBodega.Text = datoB.NombreBodega;
-                    iBodega = datoB.IdBodega;
-                    imgClickBodega = false;
-                    Console.WriteLine("depuracion - id almacen nombre " + AlmacenSeleccionado.IAlmacen + AlmacenSeleccionado.NombreAlmacen);
-                }
+                txb_ubicadoBodega.Text = datoB.NombreBodega;
+                iBodega = datoB.IdBodega;
+                imgClickBodega = false;
+                Console.WriteLine("depuracion - id almacen nombre " + AlmacenSeleccionado.IAlmacen + AlmacenSeleccionado.NombreAlmacen);
+                
                 iAlmacen = AlmacenSeleccionado.IAlmacen;
                 txb_almacenSiloPiña.Text = AlmacenSeleccionado.NombreAlmacen;
                 Console.WriteLine("depuracion - id almacen nombre " + AlmacenSeleccionado.IAlmacen + AlmacenSeleccionado.NombreAlmacen);
@@ -509,6 +550,35 @@ namespace sistema_modular_cafe_majada.views
                 string observacionCafe = txb_observacionCafe.Text;
                 DateTime fechaSecado = dtp_fechaSecado.Value.Date;
 
+                //se verifica el formato de la hora 
+                if (!ValidarHora(txb_horaInicio.Text))
+                {
+                    MessageBox.Show("El valor ingresado en el campo Inicio Secado no tiene un formato de hora válido. El formato es de 0 a 23 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!ValidarHora(txb_horaSalida.Text))
+                {
+                    MessageBox.Show("El valor ingresado en el campo Salida Secado no tiene un formato de hora válido. El formato es de 0 a 23 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                //se verifica el formato de los minutos 
+                if (!ValidarMinuto(txb_horaInicio.Text))
+                {
+                    MessageBox.Show("El valor ingresado en el campo Inicio Secado no tiene un formato de minuto válido. El formato es de 0 a 59 minuto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!ValidarMinuto(txb_horaSalida.Text))
+                {
+                    MessageBox.Show("El valor ingresado en el campo Salida Secado no tiene un formato de minuto válido. El formato es de 0 a 59 minuto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!ValidarMinuto(txb_tiempoSecad.Text))
+                {
+                    MessageBox.Show("El valor ingresado en el campo Tiempo de Secado no tiene un formato de minuto válido. El formato es de 0 a 59 minuto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Llamamos a la función ConvertTimeTxb y almacenamos el resultado formateado en la variable.
                 string hhend = txb_horaSalida.Text;
                 string hhstart = txb_horaInicio.Text;
@@ -527,16 +597,6 @@ namespace sistema_modular_cafe_majada.views
 
                 Console.WriteLine("Depuracion Tiempo - secado en timeSpan " + tiempoSecado);
 
-                if (inicio.Hours > 24)
-                {
-                    MessageBox.Show("El valor ingresado en el campo Inicio Secado no tiene un formato de hora válido. El formato es de 0 a 24 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if(salida.Hours > 24)
-                {
-                    MessageBox.Show("El valor ingresado en el campo Salida Secado no tiene un formato de hora válido. El formato es de 0 a 24 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 DateTime fechaInicioSecado = dtp_fechaInicioSecad.Value.Date + inicio;
 
                 DateTime fechaSalidaSecado = dtp_fechaSalidaSecad.Value.Date + salida;
@@ -630,7 +690,7 @@ namespace sistema_modular_cafe_majada.views
                     FechaPesado = fechaPesado,
                     PesaSaco = pesoSaco,
                     PesaQQs = pesoQQs,
-                    IdBodega = iBodega,
+                    IdBodega = (iBodega == 0) ? BodegaSeleccionada.IdBodega : iBodega,
                     NombreBodega = nombreBodega,
                     IdAlmacen = iAlmacen,
                     NombreAlmacen = nombreAlmacen,
@@ -701,7 +761,7 @@ namespace sistema_modular_cafe_majada.views
 
                         if (exito)
                         {
-                            MessageBox.Show("SubPartida agregada correctamente.");
+                            MessageBox.Show("SubPartida agregada correctamente.", "Insercion Satifactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             bool exitoregistroCantidad = cantidadCafeC.InsertarCantidadCafeSiloPiña(cantidad);
                             if (!exitoregistroCantidad)
@@ -1030,6 +1090,9 @@ namespace sistema_modular_cafe_majada.views
             }
 
             SubPartidaSeleccionado.clickImg = false;
+            SubPartidaSeleccionado.NumSubPartida = 0;
+            SubPartidaSeleccionado.ISubPartida = 0;
+
             imgClickBodega = false;
             imagenClickeada = false;
             imgClickAlmacen = false;
@@ -1050,6 +1113,10 @@ namespace sistema_modular_cafe_majada.views
         private void btn_SaveUser_Click(object sender, EventArgs e)
         {
             SaveSubPartida();
+            /*Console.WriteLine("Depuracion - IdAlamcen " + AlmacenSeleccionado.IAlmacen + " idAlmacen variable local " + iAlmacen);
+            Console.WriteLine("Depuracion - Nombre Alamcen " + AlmacenSeleccionado.NombreAlmacen);
+            Console.WriteLine("Depuracion - IdBodega " + BodegaSeleccionada.IdBodega + " idBodega variable local " + iBodega);
+            Console.WriteLine("Depuracion - Nombre Bodega " + BodegaSeleccionada.NombreBodega + " idBodega variable local " + iBodega);*/
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -1071,14 +1138,42 @@ namespace sistema_modular_cafe_majada.views
 
                 if (result == DialogResult.Yes)
                 {
+                    // Obtener el valor numérico seleccionado
+                    KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
+                    if (cbx_subProducto.SelectedItem is KeyValuePair<int, string> keyValue)
+                    {
+                        selectedStatus = keyValue;
+                    }
+                    else if (cbx_subProducto.SelectedItem != null)
+                    {
+                        selectedStatus = (KeyValuePair<int, string>)cbx_subProducto.SelectedItem;
+                    }
+
+                    int selectedValue = selectedStatus.Key;
+
                     //se llama la funcion delete del controlador para eliminar el registro
                     SubPartidaController controller = new SubPartidaController();
                     controller.EliminarSubPartida(SubPartidaSeleccionado.ISubPartida);
 
+                    var cantidadCafeC = new CantidadSiloPiñaController();
+                    string search = "No.SubPartida " + SubPartidaSeleccionado.NumSubPartida;
+                    var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
+
+                    var almacenC = new AlmacenController();
+                    var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
+                    double actcantidad = almCM.CantidadActualAlmacen;
+                    double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
+
+                    double resultCaUpd = actcantidad - cantidaQQsUpdate;
+                    double resultCaUpdSaco = actcantidadSaco - cantidaSacoUpdate;
+                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
+
+                    cantidadCafeC.EliminarCantidadSiloPiña(cantUpd.IdCantidadCafe);
+
                     //verificar el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato SubPartida", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la SubPartida No: " + SubPartidaSeleccionado.NumSubPartida + " en la base de datos");
 
-                    MessageBox.Show("SubPartida Eliminada correctamente.");
+                    MessageBox.Show("SubPartida Eliminada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
                     ClearDataTxb();
