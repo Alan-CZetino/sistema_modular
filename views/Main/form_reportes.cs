@@ -107,7 +107,7 @@ namespace sistema_modular_cafe_majada.views
             var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             // Obtener la fecha actual y asignarla a la variable global
             fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
-            List<ReportesBodegas> data = reportesController.GetBodegaData(id_Cosecha);
+            List<ReportesBodegas> data = reportesController.GetBodegaData(CosechaActual.ICosechaActual);
             foreach (ReportesBodegas reporte in data)
             {
                 reporte.nombre_cosecha = Nombre_cosecha;
@@ -128,7 +128,7 @@ namespace sistema_modular_cafe_majada.views
             fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
 
             // Obtener los datos de los reportes de calidad (ReportesCCaliadades) usando el controlador de reportes reportesController
-            List<ReportesCCaliadades> data = reportesController.GetCCalidadData(id_Cosecha);
+            List<ReportesCCaliadades> data = reportesController.GetCCalidadData(CosechaActual.ICosechaActual);
 
             // Crear una fuente de datos para el informe usando la lista data y asignarle el nombre "repor_ccalidad"
             ReportDataSource reportDataSource = new ReportDataSource("repor_ccalidad", data);
@@ -158,7 +158,7 @@ namespace sistema_modular_cafe_majada.views
         private void btn_rptCafeBodegas_Click(object sender, EventArgs e)
         {
             var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
-            List<ReportesCafeBodegas> data = reportesController.GetCafeBodegaData(id_Cosecha);
+            List<ReportesCafeBodegas> data = reportesController.GetCafeBodegaData(CosechaActual.ICosechaActual);
             foreach (ReportesCafeBodegas reporte in data)
             {
                 // En cada iteración, se establece la fecha actual en el campo fecha del objeto ReportesCafeBodegas
@@ -180,7 +180,7 @@ namespace sistema_modular_cafe_majada.views
             var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             // Obtener la fecha actual y asignarla a la variable global
             fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
-            List<ReportesBodegas> data = reportesController.GetBodegaData(id_Cosecha);
+            List<ReportesBodegas> data = reportesController.GetBodegaData(CosechaActual.ICosechaActual);
             foreach (ReportesBodegas reporte in data)
             {
                 reporte.nombre_cosecha = Nombre_cosecha;
