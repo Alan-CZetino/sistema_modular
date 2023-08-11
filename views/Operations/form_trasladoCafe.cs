@@ -1,4 +1,5 @@
-﻿using sistema_modular_cafe_majada.controller.InfrastructureController;
+﻿using Microsoft.Reporting.WinForms;
+using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
@@ -30,6 +31,7 @@ namespace sistema_modular_cafe_majada.views
         private List<TextBox> txbRestrict;
         private int icosechaCambio;
         TrasladoController countTrl = null;
+        private TrasladoController reportesController = new TrasladoController();
 
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
@@ -1056,9 +1058,23 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfTraslado_Click(object sender, EventArgs e)
         {
-            string reportPR = "../../views/Reports/report_numsubpartida.rdlc";
-            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR);
-            reportSPartida.ShowDialog();
+            if (TrasladoSeleccionado.ITraslado != 0)
+            {
+
+                string reportPath = "../../views/Reports/repor_traslados.rdlc";
+                
+                List<ReporteTraslado> data = reportesController.ObtenerTrasladosReports(TrasladoSeleccionado.ITraslado);
+                ReportDataSource reportDataSource = new ReportDataSource("repor_traslados", data);
+
+                form_opcReportExistencias reportTraslado = new form_opcReportExistencias(reportPath, reportDataSource);
+                reportTraslado.ShowDialog();
+            }
+            else
+            {
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private void txb_numTraslado_KeyPress(object sender, KeyPressEventArgs e)

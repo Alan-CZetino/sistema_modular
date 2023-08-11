@@ -634,7 +634,86 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return traslado;
         }
+        //
+        public List<ReporteTraslado> ObtenerTrasladoReport (int idTraslado)
+        {
+            List<ReporteTraslado> data = new List<ReporteTraslado>();
 
+            try
+            {
+                // Conexión a la base de datos (asegúrate de tener la clase "conexion" y los métodos correspondientes)
+                conexion.Conectar();
+
+                string consulta = @"SELECT 
+		                                    c.nombre_cosecha,
+		                                    t.num_traslado,
+		                                    DATE_FORMAT(t.fecha_trasladoCafe, '%d/%m/%Y') AS Fecha,
+                                            ar.nombre_almacen AS AlmacenP,
+                                           br.nombre_bodega AS BodegaP,
+                                           pdr.nombre_procedencia AS ProcedenciaP,
+	                                       ad.nombre_almacen AS AlmacenD,
+	                                       bd.nombre_bodega AS BodegaD,      
+	                                       pdd.nombre_procedencia AS ProcedenciaD,
+	                                       cc.nombre_calidad,
+	                                       sbp.nombre_subproducto,
+	                                       t.cantidad_traslado_sacos_cafe,
+                                           t.cantidad_traslado_qqs_cafe,
+	                                       p.nombre_personal,
+                                           t.observacion_traslado
+                                    FROM Traslado_Cafe t
+                                    INNER JOIN Cosecha c ON t.id_cosecha_traslado = c.id_cosecha
+                                    LEFT JOIN Procedencia_Destino_Cafe pdr ON t.id_procedencia_procedencia_traslado = pdr.id_procedencia
+                                    LEFT JOIN Procedencia_Destino_Cafe pdd ON t.id_procedencia_destino_traslado = pdd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON t.id_calidad_cafe_traslado = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON t.id_subproducto_traslado = sbp.id_subproducto
+                                    LEFT JOIN Almacen ar ON t.id_almacen_procedencia_traslado = ar.id_almacen
+                                    LEFT JOIN Bodega_Cafe br ON t.id_bodega_procedencia_traslado = br.id_bodega
+                                    LEFT JOIN Almacen ad ON t.id_almacen_destino_traslado = ad.id_almacen
+                                    LEFT JOIN Bodega_Cafe bd ON t.id_bodega_destino_traslado = bd.id_bodega
+                                    INNER JOIN Personal p ON t.id_personal_traslado = p.id_personal
+                                    WHERE t.id_traslado_cafe = @Id";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id", idTraslado);
+
+                MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta);
+                {
+                    while (reader.Read())
+                    {
+                        ReporteTraslado reporteTraslado = new ReporteTraslado()
+                        {
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumTraslado = Convert.ToInt32(reader["num_traslado"]),
+                            FechaTrasladoCafe = Convert.ToString(reader["Fecha"]),
+                            NombreAlmacenProcedencia = Convert.ToString(reader["AlmacenP"]),
+                            NombreBodegaProcedencia = Convert.ToString(reader["BodegaP"]),
+                            NombreProcedencia = Convert.ToString(reader["ProcedenciaP"]),
+                            NombreAlmacenDestino = Convert.ToString(reader["AlmacenD"]),
+                            NombreBodegaDestino = Convert.ToString(reader["BodegaD"]),
+                            NombreProcedenciaDestino = Convert.ToString(reader["ProcedenciaD"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            CantidadTrasladoSacos = Convert.ToDouble(reader["cantidad_traslado_sacos_cafe"]),
+                            CantidadTrasladoQQs = Convert.ToDouble(reader["cantidad_traslado_qqs_cafe"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionTraslado = Convert.ToString(reader["observacion_traslado"])
+                        };
+                        data.Add(reporteTraslado);
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener datos del reporte del traslado: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+
+            return data;
+        }
         //
         public Traslado CountTraslado(int idCosecha)
         {

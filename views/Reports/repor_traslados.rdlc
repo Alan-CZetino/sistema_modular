@@ -2,18 +2,18 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="repor_trillado">
+    <DataSource Name="repor_traslados">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>93ca1203-3e52-4ff8-801a-e7910249d8aa</rd:DataSourceID>
+      <rd:DataSourceID>24437e21-9ca8-4493-8832-b5b93151170b</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="repor_trillado">
+    <DataSet Name="repor_traslados">
       <Query>
-        <DataSourceName>repor_trillado</DataSourceName>
+        <DataSourceName>repor_traslados</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -21,20 +21,36 @@
           <DataField>NombreCosecha</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="NumTrilla">
-          <DataField>NumTrilla</DataField>
+        <Field Name="NumTraslado">
+          <DataField>NumTraslado</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="FechaTrillaCafe">
-          <DataField>FechaTrillaCafe</DataField>
+        <Field Name="FechaTrasladoCafe">
+          <DataField>FechaTrasladoCafe</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="TipoMovimientoTrilla">
-          <DataField>TipoMovimientoTrilla</DataField>
+        <Field Name="NombreAlmacenProcedencia">
+          <DataField>NombreAlmacenProcedencia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombreBodegaProcedencia">
+          <DataField>NombreBodegaProcedencia</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NombreProcedencia">
           <DataField>NombreProcedencia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombreAlmacenDestino">
+          <DataField>NombreAlmacenDestino</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombreBodegaDestino">
+          <DataField>NombreBodegaDestino</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombreProcedenciaDestino">
+          <DataField>NombreProcedenciaDestino</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NombreCalidadCafe">
@@ -45,35 +61,27 @@
           <DataField>NombreSubProducto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="CantidadTrillaQQs">
-          <DataField>CantidadTrillaQQs</DataField>
+        <Field Name="CantidadTrasladoSacos">
+          <DataField>CantidadTrasladoSacos</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="CantidadTrillaSacos">
-          <DataField>CantidadTrillaSacos</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="NombreAlmacen">
-          <DataField>NombreAlmacen</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="NombreBodega">
-          <DataField>NombreBodega</DataField>
+        <Field Name="CantidadTrasladoQQs">
+          <DataField>CantidadTrasladoQQs</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NombrePersonal">
           <DataField>NombrePersonal</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="ObservacionTrilla">
-          <DataField>ObservacionTrilla</DataField>
+        <Field Name="ObservacionTraslado">
+          <DataField>ObservacionTraslado</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>repor_trillado</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\sifon\Music\sistema\sistema_modular\DataSets\repor_trillado.xsd</rd:SchemaPath>
-        <rd:TableName>repor_trillado</rd:TableName>
+        <rd:DataSetName>repor_traslados</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\sifon\Music\sistema\sistema_modular\DataSets\repor_traslados.xsd</rd:SchemaPath>
+        <rd:TableName>repor_traslados</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
@@ -101,8 +109,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>0.31433cm</Top>
-            <Left>1.00031cm</Left>
+            <Left>0.3175cm</Left>
             <Height>0.6cm</Height>
             <Width>2.10312cm</Width>
             <Style>
@@ -133,8 +140,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>14.88708cm</Top>
-            <Left>1.00031cm</Left>
+            <Top>15.52525cm</Top>
+            <Left>0.3175cm</Left>
             <Height>0.6cm</Height>
             <Width>5.82021cm</Width>
             <ZIndex>1</ZIndex>
@@ -166,8 +173,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>10.73312cm</Top>
-            <Left>1.00031cm</Left>
+            <Top>1.84629cm</Top>
+            <Left>0.3175cm</Left>
             <Height>0.6cm</Height>
             <Width>7.73875cm</Width>
             <ZIndex>2</ZIndex>
@@ -199,43 +206,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>3.51cm</Top>
-            <Left>1.00031cm</Left>
+            <Top>9.86317cm</Top>
+            <Left>0.3175cm</Left>
             <Height>0.6cm</Height>
             <Width>4.7625cm</Width>
             <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox15">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>TIPO DE MOVIMIENTO</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>2.36319cm</Top>
-            <Left>1.00031cm</Left>
-            <Height>0.6cm</Height>
-            <Width>4.0475cm</Width>
-            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -263,11 +238,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>0.31433cm</Top>
-            <Left>15.23218cm</Left>
+            <Left>14.23187cm</Left>
             <Height>0.6cm</Height>
             <Width>1.5475cm</Width>
-            <ZIndex>5</ZIndex>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -285,7 +259,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>No. TRILLA</Value>
+                    <Value>No. TRASLADO</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -295,11 +269,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>1.26104cm</Top>
-            <Left>1.00031cm</Left>
+            <Top>0.94671cm</Top>
+            <Left>0.3175cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.10312cm</Width>
-            <ZIndex>6</ZIndex>
+            <Width>2.92334cm</Width>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -317,7 +291,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!NombreCosecha.Value, "repor_trillado")</Value>
+                    <Value>=First(Fields!NombreCosecha.Value, "repor_traslados")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -327,11 +301,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>0.31433cm</Top>
-            <Left>3.28865cm</Left>
+            <Left>2.60584cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>7</ZIndex>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -349,7 +322,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!ObservacionTrilla.Value, "repor_trillado")</Value>
+                    <Value>=First(Fields!ObservacionTraslado.Value, "repor_traslados")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -357,11 +330,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox19</rd:DefaultName>
-            <Top>18.12078cm</Top>
-            <Left>3.38349cm</Left>
+            <Top>18.75895cm</Top>
+            <Left>2.38318cm</Left>
             <Height>4.81859cm</Height>
             <Width>13.59432cm</Width>
-            <ZIndex>8</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -379,7 +352,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!FechaTrillaCafe.Value, "repor_trillado")</Value>
+                    <Value>=First(Fields!FechaTrasladoCafe.Value, "repor_traslados")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -389,11 +362,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>0.31433cm</Top>
-            <Left>16.77968cm</Left>
+            <Left>15.77937cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>9</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -411,7 +383,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!NumTrilla.Value, "repor_trillado")</Value>
+                    <Value>=First(Fields!NumTraslado.Value, "repor_traslados")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -423,45 +395,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>1.26104cm</Top>
-            <Left>3.28865cm</Left>
+            <Top>0.94671cm</Top>
+            <Left>3.24084cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
-            <ZIndex>10</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox22">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!TipoMovimientoTrilla.Value, "repor_trillado")</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>2.36319cm</Top>
-            <Left>5.04781cm</Left>
-            <Height>0.6cm</Height>
-            <Width>10.42187cm</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -489,11 +427,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>3.8275cm</Top>
-            <Left>7.03281cm</Left>
+            <Top>9.86317cm</Top>
+            <Left>6.35cm</Left>
             <Height>0.6cm</Height>
             <Width>4.32563cm</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -521,11 +459,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>3.8275cm</Top>
-            <Left>12.01885cm</Left>
+            <Top>9.86317cm</Top>
+            <Left>11.33604cm</Left>
             <Height>0.6cm</Height>
             <Width>4.32563cm</Width>
-            <ZIndex>13</ZIndex>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -543,7 +481,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!NombreCalidadCafe.Value, "repor_trillado")</Value>
+                    <Value>=First(Fields!NombreCalidadCafe.Value, "repor_traslados")</Value>
                     <Style>
                       <FontStyle>Italic</FontStyle>
                       <FontWeight>Bold</FontWeight>
@@ -556,11 +494,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>4.49806cm</Top>
-            <Left>7.03281cm</Left>
+            <Top>10.53373cm</Top>
+            <Left>6.35cm</Left>
             <Height>0.6cm</Height>
             <Width>4.32563cm</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -578,7 +516,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!NombreSubProducto.Value, "repor_trillado")</Value>
+                    <Value>=First(Fields!NombreSubProducto.Value, "repor_traslados")</Value>
                     <Style>
                       <FontStyle>Italic</FontStyle>
                       <FontWeight>Bold</FontWeight>
@@ -591,11 +529,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>4.49806cm</Top>
-            <Left>12.01885cm</Left>
+            <Top>10.53373cm</Top>
+            <Left>11.33604cm</Left>
             <Height>0.6cm</Height>
             <Width>4.32563cm</Width>
-            <ZIndex>15</ZIndex>
+            <ZIndex>13</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -617,20 +555,20 @@
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>Cantidad Trilla QQs</Label>
+                  <Label>Cantidad Traslado Sacos</Label>
                 </ChartMember>
                 <ChartMember>
-                  <Label>Cantidad Trilla Sacos</Label>
+                  <Label>Cantidad Traslado QQs</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
             <ChartData>
               <ChartSeriesCollection>
-                <ChartSeries Name="CantidadTrillaQQs">
+                <ChartSeries Name="CantidadTrasladoSacos">
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Sum(Fields!CantidadTrillaQQs.Value)</Y>
+                        <Y>=Sum(Fields!CantidadTrasladoSacos.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
@@ -663,11 +601,11 @@
                     <MinMovingDistance>0pt</MinMovingDistance>
                   </ChartSmartLabel>
                 </ChartSeries>
-                <ChartSeries Name="CantidadTrillaSacos">
+                <ChartSeries Name="CantidadTrasladoQQs">
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Sum(Fields!CantidadTrillaSacos.Value)</Y>
+                        <Y>=Sum(Fields!CantidadTrasladoQQs.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
@@ -981,12 +919,12 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>repor_trillado</DataSetName>
-            <Top>5.91833cm</Top>
-            <Left>5.01927cm</Left>
+            <DataSetName>repor_traslados</DataSetName>
+            <Top>11.319cm</Top>
+            <Left>4.01896cm</Left>
             <Height>4.07396cm</Height>
             <Width>9.85541cm</Width>
-            <ZIndex>16</ZIndex>
+            <ZIndex>14</ZIndex>
             <Style>
               <Border>
                 <Color>LightGrey</Color>
@@ -1003,7 +941,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!NombreAlmacen.Value, "repor_trillado")</Value>
+                    <Value>=First(Fields!NombreAlmacenProcedencia.Value, "repor_traslados")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -1015,11 +953,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>11.69885cm</Top>
-            <Left>8.5274cm</Left>
+            <Top>2.81202cm</Top>
+            <Left>9.11459cm</Left>
             <Height>0.6cm</Height>
             <Width>8.88729cm</Width>
-            <ZIndex>17</ZIndex>
+            <ZIndex>15</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1037,7 +975,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!NombrePersonal.Value, "repor_trillado")</Value>
+                    <Value>=First(Fields!NombrePersonal.Value, "repor_traslados")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -1049,11 +987,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>15.85281cm</Top>
-            <Left>8.09052cm</Left>
+            <Top>16.49098cm</Top>
+            <Left>8.67771cm</Left>
             <Height>0.6cm</Height>
             <Width>8.88729cm</Width>
-            <ZIndex>18</ZIndex>
+            <ZIndex>16</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1071,7 +1009,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!NombreBodega.Value, "repor_trillado")</Value>
+                    <Value>=First(Fields!NombreBodegaProcedencia.Value, "repor_traslados")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -1083,11 +1021,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>12.73073cm</Top>
-            <Left>8.5274cm</Left>
+            <Top>3.8439cm</Top>
+            <Left>9.14986cm</Left>
             <Height>0.6cm</Height>
             <Width>8.88729cm</Width>
-            <ZIndex>19</ZIndex>
+            <ZIndex>17</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1115,11 +1053,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>11.69885cm</Top>
-            <Left>2.27031cm</Left>
+            <Top>2.81202cm</Top>
+            <Left>2.8575cm</Left>
             <Height>0.6cm</Height>
             <Width>6.25708cm</Width>
-            <ZIndex>20</ZIndex>
+            <ZIndex>18</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1147,11 +1085,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>12.73073cm</Top>
-            <Left>2.27031cm</Left>
+            <Top>3.8439cm</Top>
+            <Left>2.8575cm</Left>
             <Height>0.6cm</Height>
             <Width>6.25708cm</Width>
-            <ZIndex>21</ZIndex>
+            <ZIndex>19</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1179,11 +1117,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>13.7626cm</Top>
-            <Left>2.27031cm</Left>
+            <Top>4.87577cm</Top>
+            <Left>2.8575cm</Left>
             <Height>0.6cm</Height>
             <Width>6.25708cm</Width>
-            <ZIndex>22</ZIndex>
+            <ZIndex>20</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1211,11 +1149,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>17.17573cm</Top>
-            <Left>2.27031cm</Left>
+            <Top>17.8139cm</Top>
+            <Left>1.5875cm</Left>
             <Height>0.6cm</Height>
             <Width>5.82021cm</Width>
-            <ZIndex>23</ZIndex>
+            <ZIndex>21</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1243,11 +1181,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
-            <Top>15.85281cm</Top>
-            <Left>2.27031cm</Left>
+            <Top>16.49098cm</Top>
+            <Left>2.8575cm</Left>
             <Height>0.6cm</Height>
             <Width>5.82021cm</Width>
-            <ZIndex>24</ZIndex>
+            <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1265,7 +1203,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!NombreProcedencia.Value, "repor_trillado")</Value>
+                    <Value>=First(Fields!NombreProcedencia.Value, "repor_traslados")</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -1277,8 +1215,75 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>13.7626cm</Top>
-            <Left>8.5274cm</Left>
+            <Top>4.87577cm</Top>
+            <Left>9.11458cm</Left>
+            <Height>0.6cm</Height>
+            <Width>8.88729cm</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox15">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>DESTINO DEL CAFÉ</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>Underline</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>5.65216cm</Top>
+            <Left>0.3175cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.73875cm</Width>
+            <ZIndex>24</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox36">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!NombreAlmacenDestino.Value, "repor_traslados")</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox18</rd:DefaultName>
+            <Top>6.61789cm</Top>
+            <Left>9.11459cm</Left>
             <Height>0.6cm</Height>
             <Width>8.88729cm</Width>
             <ZIndex>25</ZIndex>
@@ -1292,14 +1297,178 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox37">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!NombreBodegaDestino.Value, "repor_traslados")</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox18</rd:DefaultName>
+            <Top>7.64977cm</Top>
+            <Left>9.11459cm</Left>
+            <Height>0.6cm</Height>
+            <Width>8.88729cm</Width>
+            <ZIndex>26</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox38">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>UBICACIÓN DE ALMACENAMIENTO</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>6.61789cm</Top>
+            <Left>2.8575cm</Left>
+            <Height>0.6cm</Height>
+            <Width>6.25708cm</Width>
+            <ZIndex>27</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox39">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>UBICACIÓN FISICA BODEGA</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>7.64977cm</Top>
+            <Left>2.8575cm</Left>
+            <Height>0.6cm</Height>
+            <Width>6.25708cm</Width>
+            <ZIndex>28</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox40">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>FINCA DE PROCEDENCIA</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox11</rd:DefaultName>
+            <Top>8.68164cm</Top>
+            <Left>2.8575cm</Left>
+            <Height>0.6cm</Height>
+            <Width>6.25708cm</Width>
+            <ZIndex>29</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox41">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!NombreProcedenciaDestino.Value, "repor_traslados")</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox18</rd:DefaultName>
+            <Top>8.68164cm</Top>
+            <Left>9.11459cm</Left>
+            <Height>0.6cm</Height>
+            <Width>8.88729cm</Width>
+            <ZIndex>30</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>9.03125in</Height>
+        <Height>9.33458in</Height>
         <Style />
       </Body>
-      <Width>7.59043in</Width>
+      <Width>7.1966in</Width>
       <Page>
         <PageHeader>
-          <Height>1.71979cm</Height>
+          <Height>2.54cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1307,7 +1476,8 @@
               <Source>Embedded</Source>
               <Value>Logo__majada</Value>
               <Sizing>FitProportional</Sizing>
-              <Left>0.68281cm</Left>
+              <Top>0.78335cm</Top>
+              <Left>1.5675cm</Left>
               <Height>1.60831cm</Height>
               <Width>2.7225cm</Width>
               <Style>
@@ -1333,8 +1503,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
-              <Top>0.14835cm</Top>
-              <Left>3.74927cm</Left>
+              <Top>0.9317cm</Top>
+              <Left>4.63396cm</Left>
               <Height>0.52944cm</Height>
               <Width>12.07791cm</Width>
               <ZIndex>1</ZIndex>
@@ -1355,7 +1525,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Reporte de trilla</Value>
+                      <Value>Reporte de traslado</Value>
                       <Style>
                         <FontWeight>ExtraBold</FontWeight>
                       </Style>
@@ -1365,8 +1535,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
-              <Top>0.85417cm</Top>
-              <Left>3.74927cm</Left>
+              <Top>1.63752cm</Top>
+              <Left>4.63396cm</Left>
               <Height>0.52944cm</Height>
               <Width>12.07791cm</Width>
               <ZIndex>2</ZIndex>
@@ -1389,10 +1559,10 @@
         </PageHeader>
         <PageHeight>27.94cm</PageHeight>
         <PageWidth>21.59cm</PageWidth>
-        <LeftMargin>0.5cm</LeftMargin>
-        <RightMargin>0.5cm</RightMargin>
-        <TopMargin>0.5cm</TopMargin>
-        <BottomMargin>0.5cm</BottomMargin>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>
@@ -1495,5 +1665,5 @@ AAAoTAAIAAAAAIUJAAEAAACgMAEgAAAAABQmAAQAAACAwgSAAAAAAFCYABAAAAAAChMAAgAAAEBhAkAA
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>ee9cb170-8b79-4cbb-b413-c0067d4e9b3c</rd:ReportID>
+  <rd:ReportID>fec7e216-f4b1-46fc-bf15-6bbadfb1f7d3</rd:ReportID>
 </Report>

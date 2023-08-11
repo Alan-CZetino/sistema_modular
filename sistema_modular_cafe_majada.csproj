@@ -416,6 +416,11 @@
     <Compile Include="views\Operations\form_personal.Designer.cs">
       <DependentUpon>form_personal.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\repor_traslados.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>repor_traslados.xsd</DependentUpon>
+    </Compile>
     <Compile Include="views\UserData\form_personas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -598,6 +603,7 @@
       <DependentUpon>form_personal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Reports\report_numsubpartida.rdlc" />
+    <EmbeddedResource Include="views\Reports\repor_traslados.rdlc" />
     <EmbeddedResource Include="views\Reports\repor_grafico.rdlc" />
     <EmbeddedResource Include="views\Reports\repor_trillado.rdlc" />
     <EmbeddedResource Include="views\UserData\form_personas.resx">
@@ -720,6 +726,17 @@
     </Compile>
     <None Include="Settings\app.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DataSets\repor_traslados.xsc">
+      <DependentUpon>repor_traslados.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\repor_traslados.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>repor_traslados.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\repor_traslados.xss">
+      <DependentUpon>repor_traslados.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
