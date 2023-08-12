@@ -1080,5 +1080,15 @@ namespace sistema_modular_cafe_majada.views
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }
         }
+
+        private void txb_observacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 225;
+
+            if (txb_observacion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
     }
 }
