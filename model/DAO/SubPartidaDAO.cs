@@ -696,7 +696,125 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return subPartida;
         }
+        //
+        public List<ReportSubPartida> ObtenerSubPartida(int idSubPartida)
+        {
+            List<ReportSubPartida> data = new List<ReportSubPartida>();
 
+            try
+            {
+                // Conexión a la base de datos (asegúrate de tener la clase "conexion" y los métodos correspondientes)
+                conexion.Conectar();
+
+                string consulta = @"SELECT 
+	                                       pd.nombre_procedencia,
+                                           cc.nombre_calidad,
+	                                       c.nombre_cosecha,
+	                                       sp.num_subpartida,
+	                                       sp.num1_semana_subpartida,
+                                           sp.dias1_subpartida,
+                                           sp.fecha1_subpartida,
+                                           sp.observacion_cafe_subpartida,
+                                           DATE_FORMAT(sp.fecha_carga_secado_subpartida, '%d/%m/%Y') AS fecha_carga_secado_subpartida,
+                                           DATE_FORMAT(sp.inicio_secado_subpartida, '%d/%m/%Y') AS inicio_secado_subpartida,
+                                           CONCAT(HOUR(inicio_secado_subpartida), ':', MINUTE(inicio_secado_subpartida), ':', SECOND(inicio_secado_subpartida)) AS tiempo_inicio_subpartida,
+                                           DATE_FORMAT(sp.salida_punto_secado_subpartida, '%d/%m/%Y') AS salida_punto_secado_subpartida,
+                                           CONCAT(HOUR(salida_punto_secado_subpartida), ':', MINUTE(salida_punto_secado_subpartida), ':', SECOND(salida_punto_secado_subpartida)) AS tiempo_fin_subpartida,
+                                           sp.tiempo_secado_subpartida,
+                                           sp.humedad_secado_subpartida,
+                                           sp.rendimiento_subpartida,
+                                           ps.nombre_personal AS nombre_puntero_secador,
+                                           sp.observacion_secado_subpartida,
+                                           sp.resultado_catacion_subpartida,
+                                           DATE_FORMAT(sp.fecha_catacion_subpartida, '%d/%m/%Y') AS fecha_catacion_subpartida,
+                                           sp.observacion_catacion_subpartida,
+                                           DATE_FORMAT(sp.fecha_pesado_subpartida, '%d/%m/%Y') AS fecha_pesado_subpartida,
+                                           sp.peso_saco_subpartida,
+                                           sp.peso_qqs_subpartida,
+	                                       pb.nombre_bodega,
+	                                       a.nombre_almacen,
+	                                       pe.nombre_personal AS nombre_pesador,
+                                           sp.observacion_pesado_subpartida
+                                    FROM SubPartida sp
+                                    INNER JOIN Cosecha c ON sp.id_cosecha_subpartida = c.id_cosecha
+                                    INNER JOIN Procedencia_Destino_Cafe pd ON sp.id_procedencia_subpartida = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON sp.id_calidad_cafe_subpartida = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON sp.id_subproducto_subpartida = sbp.id_subproducto
+                                    INNER JOIN Personal p ON sp.id_puntero_secado_subpartida = p.id_personal
+                                    INNER JOIN Bodega_Cafe pb ON sp.id_bodega_subpartida = pb.id_bodega
+                                    INNER JOIN Almacen a ON sp.id_almacen_subpartida = a.id_almacen
+                                    INNER JOIN Personal ps ON sp.id_puntero_secado_subpartida = ps.id_personal
+                                    INNER JOIN Personal pc ON sp.id_catador_subpartida = pc.id_personal
+                                    INNER JOIN Personal pe ON sp.id_pesador_subpartida = pe.id_personal
+                                    WHERE id_subpartida = @Id";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id", idSubPartida);
+
+                MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta);
+                {
+                    while (reader.Read())
+                    {
+                        ReportSubPartida reportesSubpartida = new ReportSubPartida()
+                        {
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
+                            NombreCalidadCafe = Convert.IsDBNull(reader["nombre_calidad"]) ? null : Convert.ToString(reader["nombre_calidad"]),
+                            NombreCosecha = Convert.IsDBNull(reader["nombre_cosecha"]) ? null : Convert.ToString(reader["nombre_cosecha"]),
+                            NumeroSubpartida = Convert.ToInt32(reader["num_subpartida"]),
+                            Num1Semana = Convert.ToInt32(reader["num1_semana_subpartida"]),
+                            Dias1SubPartida = Convert.ToInt32(reader["dias1_subpartida"]),
+                           // Num2Semana = Convert.IsDBNull(reader["num2_semana_subpartida"]) ? 0 : Convert.ToInt32(reader["num2_semana_subpartida"]),
+                          //  Dias2SubPartida = Convert.IsDBNull(reader["dias2_subpartida"]) ? 0 : Convert.ToInt32(reader["dias2_subpartida"]),
+                          //  Num3Semana = Convert.IsDBNull(reader["num3_semana_subpartida"]) ? 0 : Convert.ToInt32(reader["num3_semana_subpartida"]),
+                          //  Dias3SubPartida = Convert.IsDBNull(reader["dias3_subpartida"]) ? 0 : Convert.ToInt32(reader["dias3_subpartida"]),
+                            Fecha1SubPartida = Convert.ToString(reader["fecha1_subpartida"]),
+                          //  Fecha2SubPartida = Convert.IsDBNull(reader["fecha2_subpartida"]) ? null : Convert.ToString(reader["fecha2_subpartida"]),
+                          //  Fecha3SubPartida = Convert.IsDBNull(reader["fecha3_subpartida"]) ? null : Convert.ToString(reader["fecha3_subpartida"]),
+                            ObservacionIdentificacionCafe = Convert.IsDBNull(reader["observacion_cafe_subpartida"]) ? null : Convert.ToString(reader["observacion_cafe_subpartida"]),
+                         //   NombreSubProducto = Convert.IsDBNull(reader["nombre_subproducto"]) ? null : Convert.ToString(reader["nombre_subproducto"]),
+                            FechaSecado = Convert.ToString(reader["fecha_carga_secado_subpartida"]),
+                            InicioSecado = Convert.ToString(reader["inicio_secado_subpartida"]),
+                            SalidaSecado = Convert.ToString(reader["salida_punto_secado_subpartida"]),
+                            TiempoIniSecado = TimeSpan.Parse(Convert.ToString(reader["tiempo_inicio_subpartida"])),
+                            TiempoFinSecado = TimeSpan.Parse(Convert.ToString(reader["tiempo_fin_subpartida"])),
+                            TiempoSecado = TimeSpan.Parse(Convert.ToString(reader["tiempo_secado_subpartida"])),
+                            HumedadSecado = Convert.ToDouble(reader["humedad_secado_subpartida"]),
+                            Rendimiento = Convert.ToDouble(reader["rendimiento_subpartida"]),
+                            NombrePunteroSecador = Convert.IsDBNull(reader["nombre_puntero_secador"]) ? null : Convert.ToString(reader["nombre_puntero_secador"]),
+                            ObservacionSecado = Convert.IsDBNull(reader["observacion_secado_subpartida"]) ? null : Convert.ToString(reader["observacion_secado_subpartida"]),
+                            ResultadoCatador = Convert.IsDBNull(reader["resultado_catacion_subpartida"]) ? null : Convert.ToString(reader["observacion_cafe_subpartida"]),
+                            FechaCatacion = Convert.ToString(reader["fecha_catacion_subpartida"]),
+                            ObservacionCatador = Convert.IsDBNull(reader["observacion_catacion_subpartida"]) ? null : Convert.ToString(reader["observacion_catacion_subpartida"]),
+                            FechaPesado = Convert.ToString(reader["fecha_pesado_subpartida"]),
+                            PesaSaco = Convert.ToDouble(reader["peso_saco_subpartida"]),
+                            PesaQQs = Convert.ToDouble(reader["peso_qqs_subpartida"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            NombrePunteroPesador = Convert.IsDBNull(reader["nombre_pesador"]) ? null : Convert.ToString(reader["nombre_pesador"]),
+                            ObservacionPesador = Convert.IsDBNull(reader["observacion_pesado_subpartida"]) ? null : Convert.ToString(reader["observacion_pesado_subpartida"])
+                          //  NombreCatador = Convert.IsDBNull(reader["nombre_catador"]) ? null : Convert.ToString(reader["nombre_catador"]),
+                           // DoctoAlmacen = Convert.IsDBNull(reader["docto_almacen_subpartida"]) ? null : Convert.ToString(reader["docto_almacen_subpartida"]),
+
+                            
+                            
+
+                        };
+                        data.Add(reportesSubpartida);
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener datos del reporte del trillado: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+
+            return data;
+        }
         // Función para buscar subpartidas por nombre de cosecha, procedencia, calidad de café, subproducto, tipo de movimiento o nombre de personal
         public List<SubPartida> BuscarSubPartidas(string buscar)
         {

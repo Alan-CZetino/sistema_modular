@@ -32,6 +32,7 @@ namespace sistema_modular_cafe_majada.views
         private bool imgClickAlmacen = false;
         private bool imgClickBodega = false;
         SubPartidaController countSP = null;
+        private SubPartidaController reportesController = new SubPartidaController();
         public double cantidaQQsUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
         public double cantidaSacoUpdate = 0.00;
@@ -1189,11 +1190,19 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfSPartida_Click(object sender, EventArgs e)
         {
-
-            string reportPR = "../../views/Reports/report_numsubpartida.rdlc";
-            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR);
+            if (SubPartidaSeleccionado.ISubPartida != 0)
+            {
+            string reportPath = "../../views/Reports/report_numsubpartida.rdlc";
+            List<ReportSubPartida> data = reportesController.ObtenerSubPartida(SubPartidaSeleccionado.ISubPartida);
+            ReportDataSource reportDataSource = new ReportDataSource("repor_numsubpartida", data);
+            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPath, reportDataSource);
             reportSPartida.ShowDialog();
-
+             }
+            else
+            {
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //

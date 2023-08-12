@@ -191,6 +191,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>repor_ccalidad.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\repor_numsubpartida.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>repor_numsubpartida.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\repor_salidas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -657,6 +662,17 @@
     </None>
     <None Include="DataSets\repor_ccalidad.xss">
       <DependentUpon>repor_ccalidad.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\repor_numsubpartida.xsc">
+      <DependentUpon>repor_numsubpartida.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\repor_numsubpartida.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>repor_numsubpartida.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\repor_numsubpartida.xss">
+      <DependentUpon>repor_numsubpartida.xsd</DependentUpon>
     </None>
     <None Include="DataSets\repor_salidas.xsc">
       <DependentUpon>repor_salidas.xsd</DependentUpon>
