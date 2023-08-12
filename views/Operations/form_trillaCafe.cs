@@ -38,10 +38,7 @@ namespace sistema_modular_cafe_majada.views
         public double cantidaQQsActUpdate = 0.00;
         public double cantidaSacoUpdate = 0.00;
         public double cantidaSacoActUpdate = 0.00;
-
-        private bool imgClickAlmacen = false;
         private bool imgClickUpdAlmacen = false;
-        private bool imgClickBodega = false;
 
         private int iTrilla;
         private int iProcedencia;
@@ -207,24 +204,22 @@ namespace sistema_modular_cafe_majada.views
         private void btn_tAlmacen_Click(object sender, EventArgs e)
         {
             TablaSeleccionadaTrilla.ITable = 3;
-            imgClickAlmacen = true;
             imgClickUpdAlmacen = true;
             form_opcTrilla opcTrilla = new form_opcTrilla();
             if (opcTrilla.ShowDialog() == DialogResult.OK)
             {
-                if (!imgClickBodega)
-                {
-                    // Llamar al método para obtener los datos de la base de datos
-                    AlmacenController almacenController = new AlmacenController();
-                    Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
-                    BodegaController bodegaController = new BodegaController();
-                    Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+                // Llamar al método para obtener los datos de la base de datos
+                AlmacenController almacenController = new AlmacenController();
+                Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
+                BodegaController bodegaController = new BodegaController();
+                Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
 
-                    //
-                    /*txb_bodega.Text = datoB.NombreBodega;
-                    iBodega = datoB.IdBodega;*/
-                    imgClickBodega = false;
-                }
+                //
+                txb_bodega.Text = datoB.NombreBodega;
+                iBodega = datoB.IdBodega;
+                BodegaSeleccionada.IdBodega = iBodega;
+                BodegaSeleccionada.NombreBodega = datoB.NombreBodega;
+
                 iAlmacen = AlmacenSeleccionado.IAlmacen;
                 txb_almacen.Text = AlmacenSeleccionado.NombreAlmacen;
             }
@@ -233,28 +228,18 @@ namespace sistema_modular_cafe_majada.views
         private void btn_tUbicacion_Click(object sender, EventArgs e)
         {
             TablaSeleccionadaTrilla.ITable = 4;
-            imgClickBodega = true;
             form_opcTrilla opcTrilla = new form_opcTrilla();
             if (opcTrilla.ShowDialog() == DialogResult.OK)
             {
                 iBodega = BodegaSeleccionada.IdBodega;
 
-                if (iBodega != AlmacenBodegaClick.IBodega)
-                {
-                    imgClickAlmacen = false;
-                }
-                if (!imgClickAlmacen)
-                {
-                    AlmacenBodegaClick.IBodega = iBodega;
-                }
-
+                AlmacenBodegaClick.IBodega = iBodega;
                 txb_bodega.Text = BodegaSeleccionada.NombreBodega;
-                Console.WriteLine("depuracion - id Bodega obtenida " + BodegaSeleccionada.IdBodega);
-                Console.WriteLine("depuracion2 - id Bodega obtenida " + iBodega);
-                /*txb_almacen.Text = null;
+                txb_almacen.Text = null;
+                
                 iAlmacen = 0;
                 AlmacenSeleccionado.NombreAlmacen = null;
-                AlmacenSeleccionado.IAlmacen = 0;*/
+                AlmacenSeleccionado.IAlmacen = 0;
             }
         }
 
@@ -318,9 +303,6 @@ namespace sistema_modular_cafe_majada.views
             AlmacenSeleccionado.NombreAlmacen = "";
             BodegaSeleccionada.IdBodega = 0;
             BodegaSeleccionada.NombreBodega = "";
-
-            imgClickBodega = false;
-            imgClickAlmacen = false;
 
             AlmacenBodegaClick.IBodega = 0;
             dtp_fechaTrilla.Value = DateTime.Now;

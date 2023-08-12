@@ -39,14 +39,6 @@ namespace sistema_modular_cafe_majada.views
         public double cantidaQQsActUpdate = 0.00;
         public double cantidaSacoActUpdate = 0.00;
 
-        private bool imagenClickeadaSL = false;
-        private bool imgClickAlmacenP = false;
-        private bool imgClickUpdAlmacenP = false;
-        private bool imgClickBodegaP = false;
-        private bool imgClickAlmacenD = false;
-        private bool imgClickUpdAlmacenD = false;
-        private bool imgClickBodegaD = false;
-
         private int iTraslado;
         private int isubProducto;
         private int iPesador;
@@ -224,9 +216,20 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
+            cbx_subProducto.SelectedIndex = -1;
+            TrasladoSeleccionado.clickImg = false;
+            TrasladoSeleccionado.ITraslado = 0;
+            TrasladoSeleccionado.NumTraslado = 0;
             AlmacenBodegaClick.IBodega = 0;
             dtp_fechaTraslado.Value = DateTime.Now;
-            cbx_subProducto.SelectedIndex = -1;
+            AlmacenSeleccionado.IAlmacen = 0;
+            AlmacenSeleccionado.IAlmacenDestino = 0;
+            AlmacenSeleccionado.NombreAlmacen = "";
+            AlmacenSeleccionado.NombreAlmacenDestino = "";
+            BodegaSeleccionada.IdBodega = 0;
+            BodegaSeleccionada.IdBodegaDestino = 0;
+            BodegaSeleccionada.NombreBodega = "";
+            BodegaSeleccionada.NombreBodegaDestino = "";
 
             countTrl = new TrasladoController();
             var sald = countTrl.CountTraslado(CosechaActual.ICosechaActual);
@@ -319,25 +322,29 @@ namespace sistema_modular_cafe_majada.views
         private void btn_tAlmacenP_Click(object sender, EventArgs e)
         {
             TablaSeleccionadaTraslado.ITable = 2;
-            imgClickAlmacenP = true;
-            imgClickUpdAlmacenP = true;
             form_opcTraslado opcTraslado = new form_opcTraslado();
             if (opcTraslado.ShowDialog() == DialogResult.OK)
             {
-                if (!imgClickBodegaP)
-                {
-                    // Llamar al método para obtener los datos de la base de datos
-                    AlmacenController almacenController = new AlmacenController();
-                    Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
-                    BodegaController bodegaController = new BodegaController();
-                    Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
-
-                    /*txb_bodegaPr.Text = datoB.NombreBodega;
-                    iBodegaProce = datoB.IdBodega;
-                    BodegaSeleccionada.IdBodega = iBodegaProce;*/
-                    imgClickBodegaP = false;
-                }
                 iAlmacenProce = AlmacenSeleccionado.IAlmacen;
+                if (AlmacenSeleccionado.IAlmacenDestino == AlmacenSeleccionado.IAlmacen || iAlmacenDest == iAlmacenProce)
+                {
+                    MessageBox.Show("Error, no es permitido hacer un traslado al mismo Silo/Piña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    iAlmacenProce = 0;
+                    AlmacenSeleccionado.IAlmacen = 0;
+                    AlmacenSeleccionado.NombreAlmacen = "";
+                    return;
+                }
+                // Llamar al método para obtener los datos de la base de datos
+                AlmacenController almacenController = new AlmacenController();
+                Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
+                BodegaController bodegaController = new BodegaController();
+                Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+
+                txb_bodegaPr.Text = datoB.NombreBodega;
+                iBodegaProce = datoB.IdBodega;
+                BodegaSeleccionada.IdBodega = iBodegaProce;
+                BodegaSeleccionada.NombreBodega = datoB.NombreBodega;
+                
                 txb_almacenPr.Text = AlmacenSeleccionado.NombreAlmacen;
             }
         }
@@ -345,26 +352,17 @@ namespace sistema_modular_cafe_majada.views
         private void btn_tUbicacionP_Click(object sender, EventArgs e)
         {
             TablaSeleccionadaTraslado.ITable = 3;
-            imgClickBodegaP = true;
             form_opcTraslado opcTraslado = new form_opcTraslado();
             if (opcTraslado.ShowDialog() == DialogResult.OK)
             {
                 iBodegaProce = BodegaSeleccionada.IdBodega;
 
-                if (iBodegaProce != AlmacenBodegaClick.IBodega)
-                {
-                    imgClickAlmacenP = false;
-                }
-                if (!imgClickAlmacenP)
-                {
-                    AlmacenBodegaClick.IBodega = iBodegaProce;
-                }
-
+                AlmacenBodegaClick.IBodega = iBodegaProce;
                 txb_bodegaPr.Text = BodegaSeleccionada.NombreBodega;
-                /*txb_almacenPr.Text = null;
+                txb_almacenPr.Text = null;
                 iAlmacenProce = 0;
                 AlmacenSeleccionado.NombreAlmacen = null;
-                AlmacenSeleccionado.IAlmacen = 0;*/
+                AlmacenSeleccionado.IAlmacen = 0;
             }
         }
 
@@ -393,25 +391,29 @@ namespace sistema_modular_cafe_majada.views
         private void btn_tAlmacenD_Click(object sender, EventArgs e)
         {
             TablaSeleccionadaTraslado.ITable = 5;
-            imgClickAlmacenD = true;
-            imgClickUpdAlmacenD = true;
             form_opcTraslado opcTraslado = new form_opcTraslado();
             if (opcTraslado.ShowDialog() == DialogResult.OK)
             {
-                if (!imgClickBodegaD)
-                {
-                    // Llamar al método para obtener los datos de la base de datos
-                    AlmacenController almacenController = new AlmacenController();
-                    Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacenDestino);
-                    BodegaController bodegaController = new BodegaController();
-                    Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
-
-                    txb_bodegaDes.Text = datoB.NombreBodega;
-                    iBodegaDest = datoB.IdBodega;
-                    BodegaSeleccionada.IdBodegaDestino = iBodegaDest;
-                    imgClickBodegaD = false;
-                }
                 iAlmacenDest = AlmacenSeleccionado.IAlmacenDestino;
+                if (AlmacenSeleccionado.IAlmacen == AlmacenSeleccionado.IAlmacenDestino || iAlmacenProce == iAlmacenDest)
+                {
+                    MessageBox.Show("Error, no es permitido hacer un traslado al mismo Silo/Piña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    iAlmacenDest = 0;
+                    AlmacenSeleccionado.IAlmacenDestino = 0;
+                    AlmacenSeleccionado.NombreAlmacenDestino = "";
+                    return;
+                }
+                // Llamar al método para obtener los datos de la base de datos
+                AlmacenController almacenController = new AlmacenController();
+                Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacenDestino);
+                BodegaController bodegaController = new BodegaController();
+                Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+
+                txb_bodegaDes.Text = datoB.NombreBodega;
+                iBodegaDest = datoB.IdBodega;
+                BodegaSeleccionada.IdBodegaDestino = iBodegaDest;
+                BodegaSeleccionada.NombreBodegaDestino = datoB.NombreBodega;
+
                 txb_almacenDes.Text = AlmacenSeleccionado.NombreAlmacenDestino;
             }
         }
@@ -419,21 +421,12 @@ namespace sistema_modular_cafe_majada.views
         private void btn_tUbicacionD_Click(object sender, EventArgs e)
         {
             TablaSeleccionadaTraslado.ITable = 6;
-            imgClickBodegaD = true;
             form_opcTraslado opcTraslado = new form_opcTraslado();
             if (opcTraslado.ShowDialog() == DialogResult.OK)
             {
                 iBodegaDest = BodegaSeleccionada.IdBodegaDestino;
 
-                if (iBodegaDest != AlmacenBodegaClick.IBodegaDestino)
-                {
-                    imgClickAlmacenD = false;
-                }
-                if (!imgClickAlmacenD)
-                {
-                    AlmacenBodegaClick.IBodegaDestino = iBodegaDest;
-                }
-
+                AlmacenBodegaClick.IBodegaDestino = iBodegaDest;
                 txb_bodegaDes.Text = BodegaSeleccionada.NombreBodegaDestino;
 
                 txb_almacenDes.Text = null;
@@ -469,13 +462,6 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
-            cbx_subProducto.SelectedIndex = -1;
-            imgClickBodegaP = false;
-            imagenClickeadaSL = false;
-            imgClickAlmacenP = false;
-            TrasladoSeleccionado.clickImg = false;
-            imgClickBodegaD = false;
-            imgClickAlmacenD = false;
             this.Close();
         }
 
@@ -708,12 +694,7 @@ namespace sistema_modular_cafe_majada.views
 
                         //borrar datos de los textbox
                         ClearDataTxb();
-                        imgClickBodegaP = false;
-                        imagenClickeadaSL = false;
-                        imgClickAlmacenP = false;
-                        imgClickBodegaD = false;
-                        imgClickAlmacenD = false;
-                        TrasladoSeleccionado.clickImg = false;
+                        
                     }
                     else
                     {
@@ -962,11 +943,6 @@ namespace sistema_modular_cafe_majada.views
 
                 //borrar datos de los textbox
                 ClearDataTxb();
-                imgClickBodegaP = false;
-                imgClickAlmacenP = false;
-                imgClickBodegaD = false;
-                imgClickAlmacenD = false;
-                imagenClickeadaSL = false;
             }
         }
 
@@ -1044,9 +1020,7 @@ namespace sistema_modular_cafe_majada.views
 
                     //se actualiza la tabla
                     ClearDataTxb();
-                    cbx_subProducto.SelectedIndex = -1;
-                    TrasladoSeleccionado.ITraslado = 0;
-                    TrasladoSeleccionado.NumTraslado = 0;
+                    
                 }
             }
             else

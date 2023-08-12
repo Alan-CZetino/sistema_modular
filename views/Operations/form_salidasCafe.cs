@@ -38,11 +38,7 @@ namespace sistema_modular_cafe_majada.views
         public double cantidaSacoUpdate = 0.00;
         public double cantidaSacoActUpdate = 0.00;
 
-        private bool imagenClickeadaSL = false;
-        private bool imgClickAlmacen = false;
         private bool imgClickUpdAlmacen = false;
-        private bool imgClickBodega = false;
-
         private int iSalida;
         private int iProcedencia;
         private int iPesador;
@@ -213,8 +209,15 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
+            cbx_subProducto.SelectedIndex = -1;
+            SalidaSeleccionado.ISalida = 0;
+            SalidaSeleccionado.NumSalida = 0;
             AlmacenBodegaClick.IBodega = 0;
             SalidaSeleccionado.clickImg = false;
+            AlmacenSeleccionado.IAlmacen = 0;
+            AlmacenSeleccionado.NombreAlmacen = "";
+            BodegaSeleccionada.IdBodega = 0;
+            BodegaSeleccionada.NombreBodega = "";
             dtp_fechaSalida.Value = DateTime.Now;
             rb_export.Checked = false;
             rb_otros.Checked = false;
@@ -299,24 +302,19 @@ namespace sistema_modular_cafe_majada.views
         private void btn_tAlmacen_Click(object sender, EventArgs e)
         {
             TablaSeleccionadaSalida.ITable = 2;
-            imgClickAlmacen = true;
             imgClickUpdAlmacen = true;
             form_opcSalida opcSalida = new form_opcSalida();
             if (opcSalida.ShowDialog() == DialogResult.OK)
             {
-                if (!imgClickBodega)
-                {
-                    // Llamar al método para obtener los datos de la base de datos
-                    AlmacenController almacenController = new AlmacenController();
-                    Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
-                    BodegaController bodegaController = new BodegaController();
-                    Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+                // Llamar al método para obtener los datos de la base de datos
+                AlmacenController almacenController = new AlmacenController();
+                Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
+                BodegaController bodegaController = new BodegaController();
+                Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
 
-                    /*txb_bodega.Text = datoB.NombreBodega;
-                    iBodega = datoB.IdBodega;
-                    BodegaSeleccionada.IdBodega = iBodega;*/
-                    imgClickBodega = false;
-                }
+                txb_bodega.Text = datoB.NombreBodega;
+                iBodega = datoB.IdBodega;
+                BodegaSeleccionada.IdBodega = iBodega;
                 iAlmacen = AlmacenSeleccionado.IAlmacen;
                 txb_almacen.Text = AlmacenSeleccionado.NombreAlmacen;
             }
@@ -325,26 +323,17 @@ namespace sistema_modular_cafe_majada.views
         private void btn_tUbicacion_Click(object sender, EventArgs e)
         {
             TablaSeleccionadaSalida.ITable = 3;
-            imgClickBodega = true;
             form_opcSalida opcSalida = new form_opcSalida();
             if (opcSalida.ShowDialog() == DialogResult.OK)
             {
                 iBodega = BodegaSeleccionada.IdBodega;
 
-                if (iBodega != AlmacenBodegaClick.IBodega)
-                {
-                    imgClickAlmacen = false;
-                }
-                if (!imgClickAlmacen)
-                {
-                    AlmacenBodegaClick.IBodega = iBodega;
-                }
-
+                AlmacenBodegaClick.IBodega = iBodega;
                 txb_bodega.Text = BodegaSeleccionada.NombreBodega;
-                /*txb_almacen.Text = null;
+                txb_almacen.Text = null;
                 iAlmacen = 0;
                 AlmacenSeleccionado.NombreAlmacen = null;
-                AlmacenSeleccionado.IAlmacen = 0;*/
+                AlmacenSeleccionado.IAlmacen = 0;
             }
         }
 
@@ -398,7 +387,6 @@ namespace sistema_modular_cafe_majada.views
             double cantRest = cantMax - cantAct;
             double cantActSaco = cantSP.CantidadActualSacoAlmacen;
             double cantRestSaco = cantMax - cantActSaco;
-            int idAlmacenUpd;
 
             int numSalida = Convert.ToInt32(txb_numSalida.Text);
             string observacion = txb_observacion.Text;
@@ -564,10 +552,6 @@ namespace sistema_modular_cafe_majada.views
 
                         //borrar datos de los textbox
                         ClearDataTxb();
-                        imgClickBodega = false;
-                        imagenClickeadaSL = false;
-                        imgClickAlmacen = false;
-                        SalidaSeleccionado.clickImg = false;
                     }
                     else
                     {
@@ -724,26 +708,23 @@ namespace sistema_modular_cafe_majada.views
 
                 //borrar datos de los textbox
                 ClearDataTxb();
-                imgClickBodega = false;
-                imagenClickeadaSL = false;
-                imgClickAlmacen = false;
             }
         }
 
         private void btn_SaveSalida_Click(object sender, EventArgs e)
         {
             SaveSalida();
-            cbx_subProducto.SelectedIndex = -1;
+            /*Console.WriteLine("============================================================================================");
+            Console.WriteLine("Depuracion - img clikeado Salida " + SalidaSeleccionado.clickImg);
+            Console.WriteLine("Depuracion - id Alamcen  " + AlmacenSeleccionado.IAlmacen + " id Almacen variable local " + iAlmacen);
+            Console.WriteLine("Depuracion - Nombre Almacen  " + AlmacenSeleccionado.NombreAlmacen);
+            Console.WriteLine("Depuracion - id Bodega  " + BodegaSeleccionada.IdBodega + " id Bodega variable local " + iBodega);
+            Console.WriteLine("Depuracion - Nombre Bodega  " + BodegaSeleccionada.NombreBodega);*/
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
-            cbx_subProducto.SelectedIndex = -1;
-            imgClickBodega = false;
-            imagenClickeadaSL = false;
-            imgClickAlmacen = false;
-            SalidaSeleccionado.clickImg = false;
             this.Close();
         }
 
@@ -799,9 +780,6 @@ namespace sistema_modular_cafe_majada.views
 
                     //se actualiza la tabla
                     ClearDataTxb();
-                    cbx_subProducto.SelectedIndex = -1;
-                    SalidaSeleccionado.ISalida = 0;
-                    SalidaSeleccionado.NumSalida = 0;
                 }
             }
             else
@@ -827,5 +805,45 @@ namespace sistema_modular_cafe_majada.views
                 MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 }
+
+        private void txb_pesoSaco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_pesoSaco.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_pesoQQs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_pesoQQs.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_observacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 225;
+
+            if (txb_observacion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_numSalida_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 5;
+
+            if (txb_numSalida.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
     }
 }
