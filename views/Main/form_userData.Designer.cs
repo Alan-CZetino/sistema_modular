@@ -110,7 +110,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_saveperfil.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_saveperfil.Location = new System.Drawing.Point(11, 252);
             this.btn_saveperfil.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_saveperfil.MaximumSize = new System.Drawing.Size(500, 39);
+            this.btn_saveperfil.MaximumSize = new System.Drawing.Size(700, 39);
             this.btn_saveperfil.MinimumSize = new System.Drawing.Size(385, 39);
             this.btn_saveperfil.Name = "btn_saveperfil";
             this.btn_saveperfil.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
