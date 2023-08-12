@@ -71,6 +71,7 @@ namespace sistema_modular_cafe_majada.views
             countTrl = new TrasladoController();
             var sald = countTrl.CountTraslado(CosechaActual.ICosechaActual);
             //
+            TrasladoSeleccionado.ITraslado = 0;
             txb_numTraslado.Text = Convert.ToInt32(sald.CountTraslado + 1).ToString();
             txb_personal.Enabled = false;
             txb_personal.ReadOnly = true;

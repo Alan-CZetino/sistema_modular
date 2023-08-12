@@ -77,6 +77,7 @@ namespace sistema_modular_cafe_majada.views
             countSP = new SubPartidaController();
             var subSPa = countSP.CountSubPartida(CosechaActual.ICosechaActual);
             //
+            SubPartidaSeleccionado.ISubPartida = 0;
             txb_subPartida.Text = Convert.ToInt32(subSPa.CountSubPartida + 1 ).ToString();
             txb_nombreCatador.Enabled = false;
             txb_nombreCatador.ReadOnly = true;

@@ -68,6 +68,7 @@ namespace sistema_modular_cafe_majada.views
             countTr = new TrillaController();
             var trll = countTr.CountTrilla(CosechaActual.ICosechaActual);
             //
+            TrillaSeleccionado.ITrilla = 0;
             txb_numTrilla.Text = Convert.ToInt32(trll.CountTrilla + 1).ToString();
             txb_personal.Enabled = false;
             txb_personal.ReadOnly = true;

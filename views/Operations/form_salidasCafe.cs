@@ -66,6 +66,7 @@ namespace sistema_modular_cafe_majada.views
             countSl = new SalidaController();
             var sald = countSl.CountSalida(CosechaActual.ICosechaActual);
             //
+            SalidaSeleccionado.ISalida = 0;
             txb_numSalida.Text = Convert.ToInt32(sald.CountSalida + 1).ToString();
             txb_personal.Enabled = false;
             txb_personal.ReadOnly = true;
