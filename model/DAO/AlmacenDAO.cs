@@ -856,7 +856,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //
-        public Almacen CountExistenceCofee(string buscar)
+        public Almacen CountExistenceCofee(string buscar, int id)
         {
             Almacen almacen = null;
             try
@@ -867,10 +867,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"SELECT SUM(a.cantidad_actual_almacen) AS TotalExistencia 
                                     FROM Almacen a
                                     INNER JOIN Calidad_Cafe cc ON a.id_calidad_cafe = cc.id_calidad
-                                    WHERE cc.nombre_calidad LIKE CONCAT('%', @search)";
+                                    WHERE cc.nombre_calidad LIKE CONCAT('%', @search) OR a.id_almacen LIKE CONCAT('%', @id, '%')";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@search", buscar);
+                conexion.AgregarParametro("@id", id);
 
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
                 {

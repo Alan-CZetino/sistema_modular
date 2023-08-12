@@ -166,6 +166,7 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 Console.WriteLine("Ocurrió un error al eliminar la SubPartida: " + ex.Message);
             }
         }
+
         //
         public List<ReportSubPartida> ObtenerSubPartida(int idSubPartida)
         {
@@ -178,6 +179,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
             {
                 Console.WriteLine("Ocurrió un error al obtener la lista de SubPartida: " + ex.Message);
                 return new List<ReportSubPartida>();
+            }
+        }
+
+        //
+        public List<GraficSubPartida> ObtenerCalidadQQsOro(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener las SubPartida
+                return subPartidaDAO.ObtenerCalidadQQsOro(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de SubPartida: " + ex.Message);
+                return new List<GraficSubPartida>();
             }
         }
         //

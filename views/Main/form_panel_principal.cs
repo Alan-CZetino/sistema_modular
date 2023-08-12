@@ -14,6 +14,7 @@ using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.ProductController;
 using sistema_modular_cafe_majada.model.Mapping;
+using sistema_modular_cafe_majada.model.Mapping.Harvest;
 using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
 using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.Mapping.Product;
@@ -105,15 +106,15 @@ namespace sistema_modular_cafe_majada
             Almacen almacen = new Almacen();
 
             //cantidad SHG
-            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen("S.H.G.");
+            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen("S.H.G.", 1);
             lbl_cafeSHG.Text = Convert.ToString(almacen.CountExistenceCoffe);
 
             //cantidad HG
-            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen("H.G.");
+            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen("H.G.", 2);
             lbl_cafeHG.Text = Convert.ToString(almacen.CountExistenceCoffe);
 
             //cantidad CS
-            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen("C.S.");
+            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen("C.S.", 3);
             lbl_cafeCS.Text = Convert.ToString(almacen.CountExistenceCoffe);
         }
 
@@ -154,35 +155,54 @@ namespace sistema_modular_cafe_majada
         //Configuracion para la grafica 2
         private void ConfigurarGrafico2()
         {
+            // Obtener los datos de la base de datos
+            SubPartidaController spC = new SubPartidaController();
+            List<GraficSubPartida> datos = spC.ObtenerCalidadQQsOro(CosechaActual.ICosechaActual);
+
+            // Obtener el mes del primer resultado
+            string mes = datos.Count > 0 ? datos[0].Mes : string.Empty;
+
             // Configurar el tipo de gráfico (en este caso, será un gráfico de columnas, vertical)
             chart2.Series.Clear();
-            chart2.Series.Add("Ventas");
-            chart2.Series["Ventas"].ChartType = SeriesChartType.Line; // Cambiar a Column para gráfico vertical
+            // Título del gráfico con el mes
+            chart2.Titles.Add($"Cafe QQs Oro del mes de {mes}");
 
-            // Agregar algunos datos al gráfico (esto podría obtenerse de una base de datos o una fuente externa)
-            chart2.Series["Ventas"].Points.AddXY("Producto A", 100);
-            chart2.Series["Ventas"].Points.AddXY("Producto B", 200);
-            chart2.Series["Ventas"].Points.AddXY("Producto C", 150);
+            // Crear una nueva serie para QQs Oro
+            Series serieQQsOro = new Series("QQs Oro");
+            serieQQsOro.ChartType = SeriesChartType.Line;
 
-            // Mostrar los valores en las barras
-            chart2.Series["Ventas"].IsValueShownAsLabel = true;
+            // Asignar la propiedad de tooltip para la serie
+            serieQQsOro.ToolTip = "#VALX: #VALY"; // Muestra el valor X (Calidad) y el valor Y (Cantidad)
+
+            // Recorrer los datos y agregarlos a la serie
+            foreach (GraficSubPartida sp in datos)
+            {
+                serieQQsOro.Points.AddXY(sp.Calidad, sp.cantidad);
+                mes = sp.Mes;
+            }
+
+            // Agregar la serie al gráfico
+            chart2.Series.Add(serieQQsOro);
 
             // Etiquetas de los ejes
-            chart2.ChartAreas[0].AxisX.Title = "Productos";
-            chart2.ChartAreas[0].AxisY.Title = "Ventas";
-
-            // Título del gráfico
-            chart2.Titles.Add("Ventas por Producto");
-
-            // Rotar el texto del eje X para que sea vertical
-            //chart2.ChartAreas[0].AxisX.LabelStyle.Angle = -90;
+            chart2.ChartAreas[0].AxisX.Title = "Calidad Cafe";
+            chart2.ChartAreas[0].AxisY.Title = "QQs Oro";
 
             // Configurar la leyenda y su posición
             chart2.Legends.Clear();
             Legend legend = new Legend("MiLeyenda");
             chart2.Legends.Add(legend);
-            chart2.Series["Ventas"].Legend = "MiLeyenda"; // Asociar la serie "Ventas" a la leyenda correcta
+            chart2.Series["QQs Oro"].Legend = "MiLeyenda"; // Asociar la serie "Ventas" a la leyenda correcta
             chart2.Legends["MiLeyenda"].Docking = Docking.Bottom;
+
+            serieQQsOro.Color = Color.Blue;
+            serieQQsOro.BorderWidth = 2;
+            serieQQsOro.MarkerStyle = MarkerStyle.Circle;
+            serieQQsOro.MarkerSize = 8;
+
+            // Refrescar la gráfica
+            chart2.Invalidate();
+
         }
 
         //Configuracion para la grafica 3

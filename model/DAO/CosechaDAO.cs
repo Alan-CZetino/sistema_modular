@@ -32,9 +32,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                                     VALUES (@id, @nombre, @fecha)";
                 conexion.CrearComando(consulta);
 
+                DateTime fecha = DateTime.Today;
+
                 conexion.AgregarParametro("@id", cosecha.IdCosecha);
                 conexion.AgregarParametro("@nombre", cosecha.NombreCosecha);
-                conexion.AgregarParametro("@fecha", cosecha.FechaCosecha);
+                conexion.AgregarParametro("@fecha", fecha);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
 
@@ -312,12 +314,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea el script SQL 
-                string consulta = @"UPDATE Cosecha SET nombre_cosecha = @Nombre, fecha_cosecha = @Fecha
+                string consulta = @"UPDATE Cosecha SET nombre_cosecha = @Nombre
                                     WHERE id_cosecha = @id";
                 conexion.CrearComando(consulta);
-                DateTime fecha = DateTime.Today;
+                
                 conexion.AgregarParametro("@Nombre", nombre);
-                conexion.AgregarParametro("@Fecha", fecha);
                 conexion.AgregarParametro("@id", id);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();

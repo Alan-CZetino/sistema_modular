@@ -1009,6 +1009,54 @@ namespace sistema_modular_cafe_majada.model.DAO
             return existeSubPartida;
         }
 
+        //
+        public List<GraficSubPartida> ObtenerCalidadQQsOro(int idCosecha)
+        {
+            List<GraficSubPartida> sps = new List<GraficSubPartida>();
 
+            try
+            {
+                conexion.Conectar();
+
+                string consulta = @"SET lc_time_names = 'es_ES';
+
+                                    SELECT cc.nombre_calidad, 
+                                            MONTHNAME(sp.salida_punto_secado_subpartida) AS mes,
+                                            SUM(sp.peso_qqs_subpartida / sp.rendimiento_subpartida) AS QQs_Oro
+                                    FROM subpartida sp
+                                    JOIN Calidad_Cafe cc ON sp.id_calidad_cafe_subpartida = cc.id_calidad
+                                    WHERE MONTH(sp.salida_punto_secado_subpartida) = MONTH(CURDATE()) AND sp.id_cosecha_subpartida = @id
+                                    GROUP BY cc.nombre_calidad, mes;
+
+                                    SET lc_time_names = 'en_US';";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", idCosecha);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        GraficSubPartida sp = new GraficSubPartida()
+                        {
+                            Mes = Convert.ToString(reader["mes"]),
+                            Calidad = Convert.ToString(reader["nombre_calidad"]),
+                            cantidad = Convert.ToDouble(reader["QQs_Oro"])
+                        };
+
+                        sps.Add(sp);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+            return sps;
+        }
     }
 }

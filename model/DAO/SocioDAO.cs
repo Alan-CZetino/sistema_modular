@@ -33,8 +33,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                                         nombre_socio = @nombre,
                                         descripcion_socio = @descripcion,
                                         ubicacion_socio = @ubicacion,
-                                        id_persona_resp_socio = @idPersonaResp,";
-                                    if (socio.IdFincaSocio != 0) { consulta += "id_finca_socio = @ifinca"; }
+                                        id_persona_resp_socio = @idPersonaResp";
+                                    if (socio.IdFincaSocio != 0) { consulta += @",id_finca_socio = @ifinca"; }
                 conexion.CrearComando(consulta);
 
                 // Agregar los parámetros a la consulta
@@ -164,8 +164,8 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Crear el script SQL para actualizar
                 string consulta = @"UPDATE Socio SET nombre_socio = @nombre, descripcion_socio = @descripcion,
-                                                    ubicacion_socio = @ubicacion, id_persona_resp_socio = @idPersonaResp,"; 
-                                                if (ifinca != 0) { consulta += "id_finca_socio = @ifinca"; }
+                                                    ubicacion_socio = @ubicacion, id_persona_resp_socio = @idPersonaResp"; 
+                                                if (ifinca != 0) { consulta += ",id_finca_socio = @ifinca"; }
                                                 consulta += " WHERE id_socio = @id";
 
                 conexion.CrearComando(consulta);

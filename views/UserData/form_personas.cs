@@ -35,11 +35,6 @@ namespace sistema_modular_cafe_majada.views
             RestrictTextBoxNum(textBoxListN);
             RestrictTextBoxCharacter(textBoxListC);
 
-            LimitDigits(txb_Dui, 9);
-            LimitDigits(txb_Nit, 9);
-            LimitDigits(txb_Nombre, 35);
-            LimitDigits(txb_Apellido, 35);
-
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dataGrid_PersonView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -221,7 +216,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Persona agregada correctamente.");
+                    MessageBox.Show("Persona agregada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     try
                     {
                         //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
@@ -242,7 +237,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.");
+                    MessageBox.Show("Error al agregar la persona. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -252,7 +247,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (exito)
                 {
-                    MessageBox.Show("Persona actualizada correctamente.");
+                    MessageBox.Show("Persona actualizada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     try
                     {
                         //verificar el departamento
@@ -270,7 +265,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
-                    MessageBox.Show("Error al actualizar la persona. Verifica los datos e intenta nuevamente.");
+                    MessageBox.Show("Error al actualizar la persona. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 imagenClickeada = false;
             }
@@ -539,7 +534,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // Mostrar un mensaje de error o lanzar una excepción
-                MessageBox.Show("No se ha seleccionado correctamente el dato");
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -562,7 +557,7 @@ namespace sistema_modular_cafe_majada.views
                     //verificar el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Persona", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la persona " + personaSeleccionada.NombresPersona + " en la base de datos");
 
-                    MessageBox.Show("Persona Eliminada correctamente.");
+                    MessageBox.Show("Persona Eliminada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
                     ShowPersonGrid();
@@ -572,7 +567,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // Mostrar un mensaje de error o lanzar una excepción
-                MessageBox.Show("No se ha seleccionado correctamente el dato");
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -602,7 +597,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -668,6 +663,26 @@ namespace sistema_modular_cafe_majada.views
             int maxLength = 72;
 
             if (txb_Direccion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_Dui_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 9;
+
+            if (txb_Dui.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_Nit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 9;
+
+            if (txb_Nit.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }

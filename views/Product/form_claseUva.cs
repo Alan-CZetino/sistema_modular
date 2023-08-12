@@ -287,22 +287,25 @@ namespace sistema_modular_cafe_majada.views
                 var lastId = tipoController.ObtenerUltimoId();
                 if (lastId.LastId == Convert.ToInt32(txb_id.Text))
                 {
-                    DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-
-                    if (result == DialogResult.Yes)
+                    if (!imagenClickeada)
                     {
-                        txb_id.Enabled = true;
-                        txb_id.ReadOnly = false;
-                        return;
+                        DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            txb_id.Enabled = true;
+                            txb_id.ReadOnly = false;
+                            return;
+                        }
+                        int idA = lastId.LastId + 1;
+                        txb_id.Text = Convert.ToString(idA);
                     }
-                    int idA = lastId.LastId + 1;
-                    txb_id.Text = Convert.ToString(idA);
                 }
 
                 // Crear una instancia de la clase Tipo de Cafe con los valores obtenidos
                 TipoCafe tipoInsert = new TipoCafe()
                 {
-                    IdTipoCafe = Convert.ToInt32(txb_id),
+                    IdTipoCafe = Convert.ToInt32(txb_id.Text),
                     NombreTipoCafe = name,
                     DescripcionTipoCafe = description
                 };

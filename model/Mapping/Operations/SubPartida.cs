@@ -57,6 +57,12 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public int CountSubPartida { get; set; }
     }
 
+    class GraficSubPartida
+    {
+        public string Mes { get; set; }
+        public string Calidad { get; set; }
+        public double cantidad { get; set; }
+    }
 
     public static class TablaSeleccionadasubPartd
     {
