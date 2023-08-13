@@ -275,9 +275,10 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Crear la consulta SQL para obtener el rol
                 string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega,
-                                        a.cantidad_actual_saco_almacen, a.cantidad_actual_almacen
+                                        a.cantidad_actual_saco_almacen, a.cantidad_actual_almacen, cc.nombre_calidad
                                         FROM Almacen a
-                                        INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega";
+                                        INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        INNER JOIN Calidad_Cafe cc ON a.id_calidad_cafe = cc.id_calidad";
 
                 conexion.CrearComando(consulta);
 
@@ -295,6 +296,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
                             CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
                             IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
                             NombreBodegaUbicacion = Convert.ToString(reader["nombre_bodega"])
                         };
@@ -856,7 +858,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         }
 
         //
-        public Almacen CountExistenceCofee(string buscar, int id)
+        public Almacen CountExistenceCofee(int id)
         {
             Almacen almacen = null;
             try
@@ -864,13 +866,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                 //Se conecta con la base de datos
                 conexion.Conectar();
 
-                string consulta = @"SELECT SUM(a.cantidad_actual_almacen) AS TotalExistencia 
+                string consulta = @"SELECT SUM(a.cantidad_actual_almacen) AS TotalExistencia, cc.nombre_calidad 
                                     FROM Almacen a
                                     INNER JOIN Calidad_Cafe cc ON a.id_calidad_cafe = cc.id_calidad
-                                    WHERE cc.nombre_calidad LIKE CONCAT('%', @search) OR a.id_almacen LIKE CONCAT('%', @id, '%')";
+                                    WHERE cc.id_calidad = @id";
 
                 conexion.CrearComando(consulta);
-                conexion.AgregarParametro("@search", buscar);
                 conexion.AgregarParametro("@id", id);
 
                 using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
@@ -881,6 +882,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             almacen = new Almacen()
                             {
+                                NombreCalidadCafe = (reader["nombre_calidad"]) is DBNull ? "" : Convert.ToString(reader["nombre_calidad"]),
                                 CountExistenceCoffe = (reader["TotalExistencia"] is DBNull ? 0 : Convert.ToInt32(reader["TotalExistencia"]))
                             };
                         }

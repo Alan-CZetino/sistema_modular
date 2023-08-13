@@ -102,8 +102,9 @@ namespace sistema_modular_cafe_majada.views
                 Capacidad = almacen.CapacidadAlmacen,
                 Cantidad_Saco = almacen.CantidadActualSacoAlmacen,
                 Cantidad_QQs = almacen.CantidadActualAlmacen,
+                Calidad_Cafe = almacen.NombreCalidadCafe,
                 Ubicacion = almacen.UbicacionAlmacen,
-                Bodega_Ubicacion = almacen.NombreBodegaUbicacion
+                Bodega = almacen.NombreBodegaUbicacion
             }).ToList();
 
             // Asignar los datos al DataGridView

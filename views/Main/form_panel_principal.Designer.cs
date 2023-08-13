@@ -73,17 +73,17 @@ namespace sistema_modular_cafe_majada
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lbl_cafeSHG = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.lbl_existCafe1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.lbl_cafeHG = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lbl_existCafe2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
             this.lbl_cafeCS = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.lbl_existCafe3 = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -528,7 +528,7 @@ namespace sistema_modular_cafe_majada
             this.panel20.Controls.Add(this.pictureBox6);
             this.panel20.Controls.Add(this.label13);
             this.panel20.Controls.Add(this.lbl_cafeSHG);
-            this.panel20.Controls.Add(this.label17);
+            this.panel20.Controls.Add(this.lbl_existCafe1);
             this.panel20.ForeColor = System.Drawing.Color.White;
             this.panel20.Location = new System.Drawing.Point(2, 87);
             this.panel20.Margin = new System.Windows.Forms.Padding(2);
@@ -574,18 +574,18 @@ namespace sistema_modular_cafe_majada
             this.lbl_cafeSHG.Text = "999,999.99";
             this.lbl_cafeSHG.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label17
+            // lbl_existCafe1
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(76, 7);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(112, 24);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Pergamino S.H.G";
+            this.lbl_existCafe1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_existCafe1.AutoSize = true;
+            this.lbl_existCafe1.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_existCafe1.ForeColor = System.Drawing.Color.Black;
+            this.lbl_existCafe1.Location = new System.Drawing.Point(76, 7);
+            this.lbl_existCafe1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_existCafe1.Name = "lbl_existCafe1";
+            this.lbl_existCafe1.Size = new System.Drawing.Size(112, 24);
+            this.lbl_existCafe1.TabIndex = 0;
+            this.lbl_existCafe1.Text = "Pergamino S.H.G";
             // 
             // panel4
             // 
@@ -593,7 +593,7 @@ namespace sistema_modular_cafe_majada
             this.panel4.Controls.Add(this.pictureBox7);
             this.panel4.Controls.Add(this.label14);
             this.panel4.Controls.Add(this.lbl_cafeHG);
-            this.panel4.Controls.Add(this.label18);
+            this.panel4.Controls.Add(this.lbl_existCafe2);
             this.panel4.ForeColor = System.Drawing.Color.White;
             this.panel4.Location = new System.Drawing.Point(2, 172);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
@@ -639,18 +639,18 @@ namespace sistema_modular_cafe_majada
             this.lbl_cafeHG.Text = "999,999.99";
             this.lbl_cafeHG.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label18
+            // lbl_existCafe2
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(86, 7);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(100, 24);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Pergamino H.G";
+            this.lbl_existCafe2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_existCafe2.AutoSize = true;
+            this.lbl_existCafe2.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_existCafe2.ForeColor = System.Drawing.Color.Black;
+            this.lbl_existCafe2.Location = new System.Drawing.Point(86, 7);
+            this.lbl_existCafe2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_existCafe2.Name = "lbl_existCafe2";
+            this.lbl_existCafe2.Size = new System.Drawing.Size(100, 24);
+            this.lbl_existCafe2.TabIndex = 0;
+            this.lbl_existCafe2.Text = "Pergamino H.G";
             // 
             // panel6
             // 
@@ -658,7 +658,7 @@ namespace sistema_modular_cafe_majada
             this.panel6.Controls.Add(this.pictureBox8);
             this.panel6.Controls.Add(this.label19);
             this.panel6.Controls.Add(this.lbl_cafeCS);
-            this.panel6.Controls.Add(this.label21);
+            this.panel6.Controls.Add(this.lbl_existCafe3);
             this.panel6.ForeColor = System.Drawing.Color.White;
             this.panel6.Location = new System.Drawing.Point(2, 257);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
@@ -704,18 +704,18 @@ namespace sistema_modular_cafe_majada
             this.lbl_cafeCS.Text = "999,999.99";
             this.lbl_cafeCS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label21
+            // lbl_existCafe3
             // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(86, 7);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(99, 24);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Pergamino C.S";
+            this.lbl_existCafe3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_existCafe3.AutoSize = true;
+            this.lbl_existCafe3.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_existCafe3.ForeColor = System.Drawing.Color.Black;
+            this.lbl_existCafe3.Location = new System.Drawing.Point(86, 7);
+            this.lbl_existCafe3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_existCafe3.Name = "lbl_existCafe3";
+            this.lbl_existCafe3.Size = new System.Drawing.Size(99, 24);
+            this.lbl_existCafe3.TabIndex = 0;
+            this.lbl_existCafe3.Text = "Pergamino C.S";
             // 
             // panel26
             // 
@@ -951,7 +951,7 @@ namespace sistema_modular_cafe_majada
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel20;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lbl_existCafe1;
         private System.Windows.Forms.Panel panel26;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnl_beneficios;
@@ -985,12 +985,12 @@ namespace sistema_modular_cafe_majada
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lbl_cafeHG;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lbl_existCafe2;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lbl_cafeCS;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label lbl_existCafe3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel10;

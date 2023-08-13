@@ -1021,7 +1021,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"SET lc_time_names = 'es_ES';
 
                                     SELECT cc.nombre_calidad, 
-                                            MONTHNAME(sp.salida_punto_secado_subpartida) AS mes,
+                                            CONCAT(UCASE(LEFT(MONTHNAME(sp.salida_punto_secado_subpartida), 1)), 
+                                                    LOWER(SUBSTRING(MONTHNAME(sp.salida_punto_secado_subpartida), 2))) AS mes,
                                             SUM(sp.peso_qqs_subpartida / sp.rendimiento_subpartida) AS QQs_Oro
                                     FROM subpartida sp
                                     JOIN Calidad_Cafe cc ON sp.id_calidad_cafe_subpartida = cc.id_calidad
@@ -1041,7 +1042,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             Mes = Convert.ToString(reader["mes"]),
                             Calidad = Convert.ToString(reader["nombre_calidad"]),
-                            cantidad = Convert.ToDouble(reader["QQs_Oro"])
+                            cantidad = Math.Round(Convert.ToDouble(reader["QQs_Oro"]), 3) // Redondear a 3 decimales
                         };
 
                         sps.Add(sp);

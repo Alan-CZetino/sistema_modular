@@ -272,12 +272,12 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
             }
         }
 
-        public Almacen CountExistenceCofeeAlmacen(string buscar, int id)
+        public Almacen CountExistenceCofeeAlmacen(int id)
         {
             try
             {
                 //se realiza el llamado al metodo DAO para obtener las existencias de cafe por calidad en los almacenes
-                return almacenDAO.CountExistenceCofee(buscar, id);
+                return almacenDAO.CountExistenceCofee(id);
             }
             catch (Exception ex)
             {
