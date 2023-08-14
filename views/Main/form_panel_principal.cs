@@ -323,7 +323,7 @@ namespace sistema_modular_cafe_majada
 
         private void AsignarFuente()
         {
-            Label[] encabezados = { label1,label2, label5, label7, label9,label11,label16,label17,label18,label21};
+            Label[] encabezados = { label1,label2, label5, label7, label9,label11,label16,lbl_cafeSHG,lbl_cafeHG,lbl_cafeCS};
             Label[] info = { lbl_beneficio,lbl_cafeCS,lbl_cafeHG,lbl_cafeSHG,lbl_calidad,lbl_finca,
                             lbl_subProduct,lbl_tipo };
 

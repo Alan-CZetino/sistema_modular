@@ -348,5 +348,22 @@ namespace sistema_modular_cafe_majada.views
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }
         }
+
+        private void AsignarFuente()
+        {
+            Label[] labels = { label1, label5, label8 };
+            Label[] labeltitle = { label9 };
+            TextBox[] textBoxes = { txb_cargo, txb_descripCargo, txb_id };
+            Button[] buttons = { btn_SaveCargo, btn_Cancel };
+
+            //se asigna a los label de encaebzado
+            FontViews.LabelStyle(labels);
+            //se asigna al label de titulo de formulario
+            FontViews.LabelStyleTitle(labeltitle);
+            //se asigna a textbox
+            FontViews.TextBoxStyle(textBoxes);
+            //se asigna a botones
+            FontViews.ButtonStyleGC(buttons);
+        }
     }
 }
