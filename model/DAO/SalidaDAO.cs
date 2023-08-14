@@ -571,7 +571,79 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return salida;
         }
+        //
+        public List<ReportSalida> ObtenerReporteSalida(int idSalida)
+        {
+            List<ReportSalida> data = new List<ReportSalida>();
 
+            try
+            {
+                // Conexión a la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT 
+		                                    c.nombre_cosecha,
+                                            s.num_salida,
+                                            DATE_FORMAT(s.fecha_salidaCafe, '%d/%m/%Y') AS Fecha,
+                                            s.tipo_salida,
+                                            a.nombre_almacen,
+                                            b.nombre_bodega,
+	                                       pd.nombre_procedencia,
+	                                       cc.nombre_calidad,
+                                           sbp.nombre_subproducto,
+                                           s.cantidad_salida_sacos_cafe,
+                                           s.cantidad_salida_qqs_cafe,
+	                                       p.nombre_personal,
+                                           s.observacion_salida
+                                    FROM Salida_Cafe s
+                                    INNER JOIN Cosecha c ON s.id_cosecha_salida = c.id_cosecha
+                                    LEFT JOIN Procedencia_Destino_Cafe pd ON s.id_procedencia_salida = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON s.id_calidad_cafe_salida = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON s.id_subproducto_salida = sbp.id_subproducto
+                                    LEFT JOIN Almacen a ON s.id_almacen_salida = a.id_almacen
+                                    LEFT JOIN Bodega_Cafe b ON s.id_bodega_salida = b.id_bodega
+                                    INNER JOIN Personal p ON s.id_personal_salida = p.id_personal
+                                    WHERE s.id_salida_cafe = @Id";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id", idSalida);
+
+                MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta);
+                {
+                    while (reader.Read())
+                    {
+                        ReportSalida reporteSalida = new ReportSalida()
+                        {
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumSalida_cafe = Convert.ToInt32(reader["num_salida"]),
+                            FechaSalidaCafe = Convert.ToString(reader["Fecha"]),
+                            TipoSalida = Convert.ToString(reader["tipo_salida"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            CantidadSalidaQQs = Convert.ToDouble(reader["cantidad_salida_qqs_cafe"]),
+                            CantidadSalidaSacos = Convert.ToDouble(reader["cantidad_salida_sacos_cafe"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionSalida = Convert.IsDBNull(reader["observacion_salida"]) ? null : Convert.ToString(reader["observacion_salida"])
+                        };
+                        data.Add(reporteSalida);
+                    }
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener datos del reporte del traslado: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+
+            return data;
+        }
         //
         public Salida CountSalida(int idCosecha)
         {

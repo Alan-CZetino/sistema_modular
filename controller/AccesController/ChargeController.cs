@@ -75,6 +75,21 @@ namespace sistema_modular_cafe_majada.controller.AccesController
             }
             return cargo;
         }
+        
+        public Charge ObtenrUltimoId()
+        {
+            Charge cargo = new Charge();
+            try
+            {
+                //llamada al metodo DAO para obtener los datos
+                cargo = cargoDAO.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error la obtener los datos: " + ex.Message);
+            }
+            return cargo;
+        }
 
         public void EliminarCargos(int idCargos)
         {

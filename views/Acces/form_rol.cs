@@ -1,4 +1,4 @@
-﻿using sistema_modular_cafe_majada.controller.AccesController;
+using sistema_modular_cafe_majada.controller.AccesController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
@@ -367,6 +367,36 @@ namespace sistema_modular_cafe_majada.views
         private void txb_NameRol_Leave(object sender, EventArgs e)
         {
             ShowLevelRole();
+        }
+
+        private void txb_Nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 24;
+
+            if (txb_Nombre.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_Description_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 74;
+
+            if (txb_Description.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_permits_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 124;
+
+            if (txb_permits.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
 
         private void AsignarFuente()

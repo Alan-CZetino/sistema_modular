@@ -74,7 +74,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCalidad = Convert.ToInt32(reader["id_calidad"]),
                             NombreCalidad = Convert.ToString(reader["nombre_calidad"]),
-                            DescripcionCalidad = Convert.ToString(reader["descripcion"])
+                            DescripcionCalidad = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"])
                         };
 
                         calidadesCafe.Add(calCafe);
@@ -93,6 +93,40 @@ namespace sistema_modular_cafe_majada.model.DAO
             return calidadesCafe;
         }
 
+        public CalidadCafe ObtenerUltimoId()
+        {
+            CalidadCafe cc = null;
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT MAX(id_calidad) AS LastId FROM Calidad_Cafe";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        cc = new CalidadCafe()
+                        {
+                            LastId = Convert.ToInt32(reader["LastId"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return cc;
+        }
         //
         public CalidadCafe CountCalidades()
         {
@@ -152,7 +186,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCalidad = Convert.ToInt32(reader["id_calidad"]),
                             NombreCalidad = Convert.ToString(reader["nombre_calidad"]),
-                            DescripcionCalidad = Convert.ToString(reader["descripcion"])
+                            DescripcionCalidad = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"])
                         };
 
                         calidadesCafe.Add(calCafe);
@@ -236,7 +270,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdCalidad = Convert.ToInt32(reader["id_calidad"]),
                             NombreCalidad = Convert.ToString(reader["nombre_calidad"]),
-                            DescripcionCalidad = Convert.ToString(reader["descripcion"])
+                            DescripcionCalidad = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"])
                         };
                     }
                 }

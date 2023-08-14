@@ -1,4 +1,4 @@
-﻿using sistema_modular_cafe_majada.controller.InfrastructureController;
+using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
@@ -245,7 +245,7 @@ namespace sistema_modular_cafe_majada.views
                 var name = proceCt.ObtenerProcedenciaDestinoPorId(ProcedenciaSeleccionada.IProcedencia);
 
                 // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                txb_id.Text = Convert.ToString(ProcedenciaSeleccionada.IProcedencia);
+                txb_id.Text = Convert.ToString(proceSeleccionado.IdProcedencia);
                 txb_procedCafe.Text = proceSeleccionado.NombreProcedencia;
                 txb_descripcion.Text = proceSeleccionado.DescripcionProcedencia;
 
@@ -315,7 +315,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -428,6 +428,24 @@ namespace sistema_modular_cafe_majada.views
                 int selectedValueM = selectedStatusM.Key;
                 int selectedValueS = selectedStatusS.Key;
 
+                var lastId = proceController.ObtenerUltimoId();
+                if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+                {
+                    if (!imagenClickeada)
+                    {
+                        DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            txb_id.Enabled = true;
+                            txb_id.ReadOnly = false;
+                            return;
+                        }
+                        int idA = lastId.LastId + 1;
+                        txb_id.Text = Convert.ToString(idA);
+                    }
+                }
+
                 // Crear una instancia de la clase Beneficio con los valores obtenidos
                 ProcedenciaDestino ProcedenciaInsert = new ProcedenciaDestino()
                 {
@@ -472,8 +490,19 @@ namespace sistema_modular_cafe_majada.views
                 }
                 else
                 {
+                    // Crear una instancia de la clase Beneficio con los valores obtenidos
+                    ProcedenciaDestino ProcedenciaUpdate = new ProcedenciaDestino()
+                    {
+                        IdProcedencia = proceSeleccionado.IdProcedencia,
+                        NombreProcedencia = name,
+                        DescripcionProcedencia = descripcion,
+                        IdBenficioUbicacion = selectedValueB,
+                        IdMaquinaria = selectedValueM,
+                        IdSocioProcedencia = selectedValueS,
+                    };
+
                     // Código que se ejecutará si se ha hecho clic en la imagen update
-                    bool exito = proceController.ActualizarProcedenciaDestino(ProcedenciaInsert);
+                    bool exito = proceController.ActualizarProcedenciaDestino(ProcedenciaUpdate);
 
                     if (!exito)
                     {
@@ -512,6 +541,36 @@ namespace sistema_modular_cafe_majada.views
             ProcedenciaDestinoController proceC = new ProcedenciaDestinoController();
             var count = proceC.CountProcedencia();
             txb_id.Text = Convert.ToString(count.CountProcedencia + 1);
+        }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 7;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_procedCafe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 95;
+
+            if (txb_procedCafe.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_descripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 190;
+
+            if (txb_descripcion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
 
         private void AsignarFuente()

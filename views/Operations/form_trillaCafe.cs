@@ -1,4 +1,5 @@
-﻿using sistema_modular_cafe_majada.controller.InfrastructureController;
+using Microsoft.Reporting.WinForms;
+using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
@@ -30,17 +31,14 @@ namespace sistema_modular_cafe_majada.views
         private List<TextBox> txbRestrict;
         private int icosechaCambio;
         TrillaController countTr = null;
+        private TrillaController reportesController = new TrillaController();
 
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
         public double cantidaSacoUpdate = 0.00;
         public double cantidaSacoActUpdate = 0.00;
-
-        private bool imagenClickeadaTR = false;
-        private bool imgClickAlmacen = false;
         private bool imgClickUpdAlmacen = false;
-        private bool imgClickBodega = false;
 
         private int iTrilla;
         private int iProcedencia;
@@ -70,6 +68,7 @@ namespace sistema_modular_cafe_majada.views
             countTr = new TrillaController();
             var trll = countTr.CountTrilla(CosechaActual.ICosechaActual);
             //
+            TrillaSeleccionado.ITrilla = 0;
             txb_numTrilla.Text = Convert.ToInt32(trll.CountTrilla + 1).ToString();
             txb_personal.Enabled = false;
             txb_personal.ReadOnly = true;
@@ -208,24 +207,22 @@ namespace sistema_modular_cafe_majada.views
         private void btn_tAlmacen_Click(object sender, EventArgs e)
         {
             TablaSeleccionadaTrilla.ITable = 3;
-            imgClickAlmacen = true;
             imgClickUpdAlmacen = true;
             form_opcTrilla opcTrilla = new form_opcTrilla();
             if (opcTrilla.ShowDialog() == DialogResult.OK)
             {
-                if (!imgClickBodega)
-                {
-                    // Llamar al método para obtener los datos de la base de datos
-                    AlmacenController almacenController = new AlmacenController();
-                    Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
-                    BodegaController bodegaController = new BodegaController();
-                    Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+                // Llamar al método para obtener los datos de la base de datos
+                AlmacenController almacenController = new AlmacenController();
+                Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
+                BodegaController bodegaController = new BodegaController();
+                Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
 
-                    //
-                    /*txb_bodega.Text = datoB.NombreBodega;
-                    iBodega = datoB.IdBodega;*/
-                    imgClickBodega = false;
-                }
+                //
+                txb_bodega.Text = datoB.NombreBodega;
+                iBodega = datoB.IdBodega;
+                BodegaSeleccionada.IdBodega = iBodega;
+                BodegaSeleccionada.NombreBodega = datoB.NombreBodega;
+
                 iAlmacen = AlmacenSeleccionado.IAlmacen;
                 txb_almacen.Text = AlmacenSeleccionado.NombreAlmacen;
             }
@@ -234,28 +231,18 @@ namespace sistema_modular_cafe_majada.views
         private void btn_tUbicacion_Click(object sender, EventArgs e)
         {
             TablaSeleccionadaTrilla.ITable = 4;
-            imgClickBodega = true;
             form_opcTrilla opcTrilla = new form_opcTrilla();
             if (opcTrilla.ShowDialog() == DialogResult.OK)
             {
                 iBodega = BodegaSeleccionada.IdBodega;
 
-                if (iBodega != AlmacenBodegaClick.IBodega)
-                {
-                    imgClickAlmacen = false;
-                }
-                if (!imgClickAlmacen)
-                {
-                    AlmacenBodegaClick.IBodega = iBodega;
-                }
-
+                AlmacenBodegaClick.IBodega = iBodega;
                 txb_bodega.Text = BodegaSeleccionada.NombreBodega;
-                Console.WriteLine("depuracion - id Bodega obtenida " + BodegaSeleccionada.IdBodega);
-                Console.WriteLine("depuracion2 - id Bodega obtenida " + iBodega);
-                /*txb_almacen.Text = null;
+                txb_almacen.Text = null;
+                
                 iAlmacen = 0;
                 AlmacenSeleccionado.NombreAlmacen = null;
-                AlmacenSeleccionado.IAlmacen = 0;*/
+                AlmacenSeleccionado.IAlmacen = 0;
             }
         }
 
@@ -311,7 +298,15 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
-            AlmacenBodegaClick.IBodega = 0;
+            cbx_subProducto.SelectedIndex = -1;
+            TrillaSeleccionado.ITrilla = 0;
+            TrillaSeleccionado.NumTrilla = 0;
+            TrillaSeleccionado.clickImg = false;
+            AlmacenSeleccionado.IAlmacen = 0;
+            AlmacenSeleccionado.NombreAlmacen = "";
+            BodegaSeleccionada.IdBodega = 0;
+            BodegaSeleccionada.NombreBodega = "";
+
             AlmacenBodegaClick.IBodega = 0;
             dtp_fechaTrilla.Value = DateTime.Now;
             rb_cafeTrilla.Checked = false;
@@ -339,7 +334,6 @@ namespace sistema_modular_cafe_majada.views
             double cantRest = cantMax - cantAct;
             double cantActSaco = cantSP.CantidadActualSacoAlmacen;
             double cantRestSaco = cantMax - cantActSaco;
-            int idAlmacenUpd;
 
             int numTrilla = Convert.ToInt32(txb_numTrilla.Text);
             string observacion = txb_observacion.Text;
@@ -505,10 +499,6 @@ namespace sistema_modular_cafe_majada.views
 
                         //borrar datos de los textbox
                         ClearDataTxb();
-                        imgClickBodega = false;
-                        imagenClickeadaTR = false;
-                        imgClickAlmacen = false;
-                        TrillaSeleccionado.clickImg = false;
                     }
                     else
                     {
@@ -665,9 +655,6 @@ namespace sistema_modular_cafe_majada.views
 
                 //borrar datos de los textbox
                 ClearDataTxb();
-                imgClickBodega = false;
-                imagenClickeadaTR = false;
-                imgClickAlmacen = false;
             }
         }
 
@@ -734,17 +721,11 @@ namespace sistema_modular_cafe_majada.views
         private void btn_SaveTrilla_Click(object sender, EventArgs e)
         {
             SaveTrilla();
-            cbx_subProducto.SelectedIndex = -1;
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
-            cbx_subProducto.SelectedIndex = -1;
-            imgClickBodega = false;
-            imagenClickeadaTR = false;
-            imgClickAlmacen = false;
-            TrillaSeleccionado.clickImg = false;
             this.Close();
         }
 
@@ -797,13 +778,10 @@ namespace sistema_modular_cafe_majada.views
                     //verificar el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Trilla", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la Trilla No: " + TrillaSeleccionado.NumTrilla + " del ID en la BD: " + TrillaSeleccionado.ITrilla + " en la base de datos");
 
-                    MessageBox.Show("Trilla Eliminada correctamente.");
+                    MessageBox.Show("Trilla Eliminada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
                     ClearDataTxb();
-                    cbx_subProducto.SelectedIndex = -1;
-                    TrillaSeleccionado.ITrilla = 0;
-                    TrillaSeleccionado.NumTrilla = 0;
                 }
             }
             else
@@ -815,9 +793,61 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfTrilla_Click(object sender, EventArgs e)
         {
-            string reportPR = "../../views/Reports/report_numsubpartida.rdlc";
-            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR);
-            reportSPartida.ShowDialog();
+            if (TrillaSeleccionado.ITrilla != 0)
+            {
+                string reportPath = "../../views/Reports/repor_trillado.rdlc";
+                List<ReportesTrilla> data = reportesController.ObtenerTrillasReports(TrillaSeleccionado.ITrilla);
+                ReportDataSource reportDataSource = new ReportDataSource("repor_trillado", data);
+
+                form_opcReportExistencias reportTrilla = new form_opcReportExistencias(reportPath, reportDataSource);
+                reportTrilla.ShowDialog();
+            }
+            else
+            {
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente el dato", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void txb_numTrilla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 4;
+
+            if (txb_numTrilla.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_pesoSaco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_pesoSaco.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_pesoQQs_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_pesoQQs.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_observacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 250;
+
+            if (txb_observacion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
 
         private void AsignarFuente()

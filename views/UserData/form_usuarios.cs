@@ -45,6 +45,7 @@ namespace sistema_modular_cafe_majada.views
             StyleChekedListBox();
 
             txb_Name.ReadOnly = true;
+            txb_Name.Enabled = false;
             cbx_role.DropDownStyle = ComboBoxStyle.DropDownList;
             cbx_userStatus.DropDownStyle = ComboBoxStyle.DropDownList;
 
@@ -139,7 +140,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -762,6 +763,46 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 txb_Password.PasswordChar = '\0';
+            }
+        }
+
+        private void txb_NameUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 24;
+
+            if (txb_NameUser.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_Email_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 72;
+
+            if (txb_Email.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_Password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 64;
+
+            if (txb_Password.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_PassConfirm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 64;
+
+            if (txb_PassConfirm.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }
         }
 

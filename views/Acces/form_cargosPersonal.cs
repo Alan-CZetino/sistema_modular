@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -91,6 +91,9 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
+            imagenClickeada = false;
+            cargoSeleccionada = null;
+
             //coloca nueva mente el contador en el txb del cdigo
             ChargeController ben = new ChargeController();
             var count = ben.CountCargo();
@@ -137,7 +140,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -160,6 +163,24 @@ namespace sistema_modular_cafe_majada.views
             //se obtiene los valores ingresados por el usuario
             string namecargo = txb_cargo.Text;
             string descripcion = txb_descripCargo.Text;
+            
+            var lastId = cargoController.ObtenrUltimoId();
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            {
+                if (!imagenClickeada)
+                {
+                    DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        txb_id.Enabled = true;
+                        txb_id.ReadOnly = false;
+                        return;
+                    }
+                    int idA = lastId.LastId + 1;
+                    txb_id.Text = Convert.ToString(idA);
+                }
+            }
 
             //Se crea una instancia de la clase Calidades_cafe
             Charge cargo = new Charge()
@@ -286,6 +307,7 @@ namespace sistema_modular_cafe_majada.views
                     imagenClickeada = true;
 
                     //se asignanlos registros a los cuadros de texto
+                    txb_id.Text = Convert.ToString(cargoSeleccionada.IdCargo);
                     txb_cargo.Text = cargoSeleccionada.NombreCargo;
                     txb_descripCargo.Text = cargoSeleccionada.DescripcionCargo;
                 }
@@ -297,22 +319,34 @@ namespace sistema_modular_cafe_majada.views
             }
         }
 
-        private void AsignarFuente()
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Label[] labels = { label1, label5, label8 };
-            Label[] labeltitle = {label9};
-            TextBox[] textBoxes = { txb_cargo,txb_descripCargo,txb_id};
-            Button[] buttons = { btn_SaveCargo,btn_Cancel};
+            int maxLength = 7;
 
-            //se asigna a los label de encaebzado
-            FontViews.LabelStyle(labels);
-            //se asigna al label de titulo de formulario
-            FontViews.LabelStyleTitle(labeltitle);
-            //se asigna a textbox
-            FontViews.TextBoxStyle(textBoxes);
-            //se asigna a botones
-            FontViews.ButtonStyleGC(buttons);
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
 
+        private void txb_cargo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 45;
+
+            if (txb_cargo.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_descripCargo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 220;
+
+            if (txb_descripCargo.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Infrastructure
         public string NombreSubProducto { get; set; }
         public int CountExistenceCoffe { get; set; }
         public int CountAlmacen { get; set; }
+        public int LastId { get; set; }
     }
 
     public static class AlmacenSeleccionado

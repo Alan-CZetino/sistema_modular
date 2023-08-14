@@ -1,4 +1,4 @@
-﻿using sistema_modular_cafe_majada.controller.ProductController;
+using sistema_modular_cafe_majada.controller.ProductController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
@@ -183,7 +183,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -200,6 +200,7 @@ namespace sistema_modular_cafe_majada.views
                     imagenClickeada = true;
 
                     //se asignanlos registros a los cuadros de texto
+                    txb_id.Text = Convert.ToString(tipoCafeSeleccionado.IdTipoCafe);
                     txb_claseUva.Text = tipoCafeSeleccionado.NombreTipoCafe;
                     txb_descripcion.Text = tipoCafeSeleccionado.DescripcionTipoCafe;
                 }
@@ -285,10 +286,28 @@ namespace sistema_modular_cafe_majada.views
                 string name = txb_claseUva.Text;
                 string description = txb_descripcion.Text;
 
+                var lastId = tipoController.ObtenerUltimoId();
+                if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+                {
+                    if (!imagenClickeada)
+                    {
+                        DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            txb_id.Enabled = true;
+                            txb_id.ReadOnly = false;
+                            return;
+                        }
+                        int idA = lastId.LastId + 1;
+                        txb_id.Text = Convert.ToString(idA);
+                    }
+                }
+
                 // Crear una instancia de la clase Tipo de Cafe con los valores obtenidos
                 TipoCafe tipoInsert = new TipoCafe()
                 {
-                    IdTipoCafe = Convert.ToInt32(txb_id),
+                    IdTipoCafe = Convert.ToInt32(txb_id.Text),
                     NombreTipoCafe = name,
                     DescripcionTipoCafe = description
                 };
@@ -362,6 +381,36 @@ namespace sistema_modular_cafe_majada.views
                 MessageBox.Show("Error de tipo (" + ex.Message + "), verifique los datos he intenta nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 7;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_claseUva_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 72;
+
+            if (txb_claseUva.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_descripcion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 120;
+
+            if (txb_descripcion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
 
         private void AsignarFuente()

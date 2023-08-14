@@ -77,6 +77,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 return null;
             }
         }
+        
+        //
+        public Maquinaria ObtenerUltimoId()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la Maquinaria
+                return maquinariaDAO.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la Maquinaria: " + ex.Message);
+                return null;
+            }
+        }
 
         //
         public bool InsertarMaquinaria(Maquinaria Maquinaria)

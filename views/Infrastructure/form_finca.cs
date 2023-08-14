@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -115,6 +115,24 @@ namespace sistema_modular_cafe_majada.views
             string namefinca = txb_nombreFinca.Text;
             string ubicFinca = txb_ubiFinca.Text;
 
+            var lastId = fincaController.ObtenerUltimoId();
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            {
+                if (!imagenClickeada)
+                {
+                    DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        txb_id.Enabled = true;
+                        txb_id.ReadOnly = false;
+                        return;
+                    }
+                    int idA = lastId.LastId + 1;
+                    txb_id.Text = Convert.ToString(idA);
+                }
+            }
+
             //Se crea una instancia de la clase Calidades_cafe
             Finca fincas = new Finca()
             {
@@ -206,6 +224,7 @@ namespace sistema_modular_cafe_majada.views
                     imagenClickeada = true;
 
                     //se asignanlos registros a los cuadros de texto
+                    txb_id.Text = Convert.ToString(fincaSeleccionada.IdFinca);
                     txb_nombreFinca.Text = fincaSeleccionada.nombreFinca;
                     txb_ubiFinca.Text = fincaSeleccionada.ubicacionFinca;
                 }
@@ -283,7 +302,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -320,6 +339,36 @@ namespace sistema_modular_cafe_majada.views
             //configuracion de las filas que son seleccionadas
             configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
             configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 7;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_nombreFinca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 72;
+
+            if (txb_nombreFinca.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_ubiFinca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 95;
+
+            if (txb_ubiFinca.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
 
         private void AsignarFuente()

@@ -94,6 +94,19 @@ namespace sistema_modular_cafe_majada.controller
             }
         }
 
+        public Finca ObtenerUltimoId()
+        {
+            try
+            {
+                //se realiza el llamado al metodo DAO para obtener fincas
+                return fincaDao.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener el ultimo id de Fincas: " + ex.Message);
+                return null;
+            }
+        }
 
         public bool ActualizarFincas(int id,string nomFinca,string ubiFinca)
         {

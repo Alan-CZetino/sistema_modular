@@ -32,21 +32,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                                         id_procedencia = @iProce,
                                         nombre_procedencia = @nombreProcedencia,
                                         descripcion_procedencia = @descripcionProcedencia,";
-                                            if (procedenciaDestino.IdBenficioUbicacion != 0)
-                                            {
-                                                consulta += "id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,";
-                                            }
-                                            consulta += @"";
-                                            if (procedenciaDestino.IdSocioProcedencia != 0)
-                                            {
-                                                consulta += "id_socio_procedencia = @idSocio,";
-                                            }
-                                            consulta += @"";
-                                            if (procedenciaDestino.IdMaquinaria != 0)
-                                            {
-                                                consulta += "id_maquinaria_procedencia = @idMaquinaria";
-                                            }
-
+                                            if (procedenciaDestino.IdBenficioUbicacion != 0){consulta += "id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,";}
+                                            if (procedenciaDestino.IdSocioProcedencia != 0){consulta += "id_socio_procedencia = @idSocio,";}
+                                            if (procedenciaDestino.IdMaquinaria != 0){consulta += "id_maquinaria_procedencia = @idMaquinaria";}
+                                            
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@iProce", procedenciaDestino.IdProcedencia);
@@ -87,22 +76,11 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"UPDATE Procedencia_Destino_Cafe 
                             SET nombre_procedencia = @nombreProcedencia,
                                 descripcion_procedencia = @descripcionProcedencia,";
-                            if (procedenciaDestino.IdBenficioUbicacion != 0)
-                            {
-                                consulta += "id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,";
-                            }
-                            consulta += @"";
-                            if (procedenciaDestino.IdSocioProcedencia != 0)
-                            {
-                                consulta += "id_socio_procedencia = @idSocio,";
-                            }
-                            consulta += @"";
-                            if (procedenciaDestino.IdMaquinaria != 0)
-                            {
-                                consulta += "id_maquinaria_procedencia = @idMaquinaria";
-                            }
+                            if (procedenciaDestino.IdBenficioUbicacion != 0){consulta += "id_benficio_ubicacion_procedencia = @idBeneficioUbicacion,";}
+                            if (procedenciaDestino.IdSocioProcedencia != 0){consulta += "id_socio_procedencia = @idSocio,";}
+                            if (procedenciaDestino.IdMaquinaria != 0){consulta += "id_maquinaria_procedencia = @idMaquinaria";}
                             consulta += @" WHERE id_procedencia = @id";
-
+                            
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@nombreProcedencia", procedenciaDestino.NombreProcedencia);
@@ -462,6 +440,39 @@ namespace sistema_modular_cafe_majada.model.DAO
             return proce;
         }
 
+        public ProcedenciaDestino ObtenerUltimoId()
+        {
+            ProcedenciaDestino pd = null;
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
 
+                string consulta = @"SELECT MAX(id_procedencia) AS LastId FROM Procedencia_Destino_Cafe";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        pd = new ProcedenciaDestino()
+                        {
+                            LastId = Convert.ToInt32(reader["LastId"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return pd;
+        }
     }
 }

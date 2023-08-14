@@ -272,12 +272,12 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
             }
         }
 
-        public Almacen CountExistenceCofeeAlmacen(string buscar)
+        public Almacen CountExistenceCofeeAlmacen(int id)
         {
             try
             {
                 //se realiza el llamado al metodo DAO para obtener las existencias de cafe por calidad en los almacenes
-                return almacenDAO.CountExistenceCofee(buscar);
+                return almacenDAO.CountExistenceCofee(id);
             }
             catch (Exception ex)
             {
@@ -296,6 +296,20 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
             catch (Exception ex)
             {
                 Console.WriteLine("Ocurrio un error al obtener la lista total de Existencias de almacen: " + ex.Message);
+                return null;
+            }
+        }
+        
+        public Almacen ObtenerUltimoId()
+        {
+            try
+            {
+                //se realiza el llamado al metodo DAO para obtener las existencias de los almacenes
+                return almacenDAO.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener el ultimo id de almacen: " + ex.Message);
                 return null;
             }
         }

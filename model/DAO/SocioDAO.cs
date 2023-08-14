@@ -28,8 +28,13 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 // Crear script SQL para insertar
-                string consulta = @"INSERT INTO Socio (id_socio,nombre_socio, descripcion_socio, ubicacion_socio, id_persona_resp_socio, id_finca_socio)
-                            VALUES (@id,@nombre, @descripcion, @ubicacion, @idPersonaResp, @ifinca)";
+                string consulta = @"INSERT INTO Socio SET
+                                        id_socio = @id,
+                                        nombre_socio = @nombre,
+                                        descripcion_socio = @descripcion,
+                                        ubicacion_socio = @ubicacion,
+                                        id_persona_resp_socio = @idPersonaResp";
+                                    if (socio.IdFincaSocio != 0) { consulta += @",id_finca_socio = @ifinca"; }
                 conexion.CrearComando(consulta);
 
                 // Agregar los parámetros a la consulta
@@ -126,10 +131,10 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSocio = Convert.ToInt32(reader["id_socio"]),
                             NombreSocio = Convert.ToString(reader["nombre_socio"]),
-                            DescripcionSocio = Convert.ToString(reader["descripcion_socio"]),
+                            DescripcionSocio = (reader["descripcion_socio"]) is DBNull ? "" : Convert.ToString(reader["descripcion_socio"]),
                             UbicacionSocio = Convert.ToString(reader["ubicacion_socio"]),
                             IdPersonaRespSocio = Convert.ToInt32(reader["id_persona_resp_socio"]),
-                            IdFincaSocio = Convert.ToInt32(reader["id_finca_socio"])
+                            IdFincaSocio = (reader["id_finca_socio"]) is DBNull ? 0 : Convert.ToInt32(reader["id_finca_socio"])
                         };
                     }
                 }
@@ -159,8 +164,9 @@ namespace sistema_modular_cafe_majada.model.DAO
 
                 // Crear el script SQL para actualizar
                 string consulta = @"UPDATE Socio SET nombre_socio = @nombre, descripcion_socio = @descripcion,
-                            ubicacion_socio = @ubicacion, id_persona_resp_socio = @idPersonaResp, id_finca_socio = @iFinca
-                            WHERE id_socio = @id";
+                                                    ubicacion_socio = @ubicacion, id_persona_resp_socio = @idPersonaResp"; 
+                                                if (ifinca != 0) { consulta += ",id_finca_socio = @ifinca"; }
+                                                consulta += " WHERE id_socio = @id";
 
                 conexion.CrearComando(consulta);
 
@@ -168,7 +174,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@descripcion", descripcion);
                 conexion.AgregarParametro("@ubicacion", ubicacion);
                 conexion.AgregarParametro("@idPersonaResp", idPersonaResp);
-                conexion.AgregarParametro("@iFinca", ifinca);
+                conexion.AgregarParametro("@ifinca", ifinca);
                 conexion.AgregarParametro("@id", idSocio);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();
@@ -259,8 +265,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSocio = Convert.ToInt32(reader["id_socio"]),
                             NombreSocio = Convert.ToString(reader["nombre_socio"]),
-                            DescripcionSocio = Convert.ToString(reader["descripcion_socio"]),
+                            DescripcionSocio = (reader["descripcion_socio"]) is DBNull ? "" : Convert.ToString(reader["descripcion_socio"]),
                             UbicacionSocio = Convert.ToString(reader["ubicacion_socio"]),
+                            IdPersonaRespSocio = Convert.ToInt32(reader["id_persona_resp_socio"]),
                             NombrePersonaResp = Convert.ToString(reader["nombres_persona"]),
                             IdFincaSocio = (reader["id_finca_socio"]) is DBNull ? 0 : Convert.ToInt32(reader["id_finca_socio"]),
                             NombreFinca = (reader["nombre_finca"]) is DBNull ? "" : Convert.ToString(reader["nombre_finca"])
@@ -311,12 +318,12 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSocio = Convert.ToInt32(reader["id_socio"]),
                             NombreSocio = Convert.ToString(reader["nombre_socio"]),
-                            DescripcionSocio = Convert.ToString(reader["descripcion_socio"]),
+                            DescripcionSocio = (reader["descripcion_socio"]) is DBNull ? "" : Convert.ToString(reader["descripcion_socio"]),
                             UbicacionSocio = Convert.ToString(reader["ubicacion_socio"]),
                             IdPersonaRespSocio = Convert.ToInt32(reader["id_persona_resp_socio"]),
                             NombrePersonaResp = Convert.ToString(reader["nombres_persona"]),
-                            IdFincaSocio = Convert.ToInt32(reader["id_finca_socio"]),
-                            NombreFinca = Convert.ToString(reader["nombre_finca"])
+                            IdFincaSocio = (reader["id_finca_socio"]) is DBNull ? 0 : Convert.ToInt32(reader["id_finca_socio"]),
+                            NombreFinca = (reader["nombre_finca"]) is DBNull ? "" : Convert.ToString(reader["nombre_finca"])
                         };
 
                         socios.Add(socio);
@@ -363,7 +370,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                         {
                             IdSocio = Convert.ToInt32(reader["id_socio"]),
                             NombreSocio = Convert.ToString(reader["nombre_socio"]),
-                            DescripcionSocio = Convert.ToString(reader["descripcion_socio"]),
+                            DescripcionSocio = (reader["descripcion_socio"]) is DBNull ? "" : Convert.ToString(reader["descripcion_socio"]),
                             UbicacionSocio = Convert.ToString(reader["ubicacion_socio"]),
                             IdPersonaRespSocio = Convert.ToInt32(reader["id_persona_resp_socio"]),
                             NombrePersonaResp = Convert.ToString(reader["nombres_persona"]),
@@ -423,5 +430,39 @@ namespace sistema_modular_cafe_majada.model.DAO
             return socio;
         }
 
+        public Socio ObtenerUltimoId()
+        {
+            Socio so = null;
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT MAX(id_almacen) AS LastId FROM Almacen";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        so = new Socio()
+                        {
+                            LastId = Convert.ToInt32(reader["LastId"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return so;
+        }
     }
 }

@@ -175,6 +175,41 @@ namespace sistema_modular_cafe_majada.model.DAO
             return finca;
         }
 
+        public Finca ObtenerUltimoId()
+        {
+            Finca fm = null;
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT MAX(id_finca) AS LastId FROM Finca";
+
+                conexion.CrearComando(consulta);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        fm = new Finca()
+                        {
+                            LastId = Convert.ToInt32(reader["LastId"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+            return fm;
+        }
+
         //
         public Finca ObtenerNombreFinca(string nombre)
         {

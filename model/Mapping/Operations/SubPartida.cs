@@ -57,6 +57,12 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public int CountSubPartida { get; set; }
     }
 
+    class GraficSubPartida
+    {
+        public string Mes { get; set; }
+        public string Calidad { get; set; }
+        public double cantidad { get; set; }
+    }
 
     public static class TablaSeleccionadasubPartd
     {
@@ -70,4 +76,47 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public static string NombreSubParti { get; set; }
         public static bool clickImg { get; set; }
     }
+    //
+    class ReportSubPartida
+    {
+        public int NumeroSubpartida { get; set; }
+        public string NombreCosecha { get; set; }
+        public string NombreProcedencia { get; set; }
+        public string NombreCalidadCafe { get; set; }
+        public string NombreSubProducto { get; set; }
+        public int Num1Semana { get; set; }
+        public int Dias1SubPartida { get; set; }
+        public string Fecha1SubPartida { get; set; }
+        public string ObservacionIdentificacionCafe { get; set; }
+        public string FechaSecado { get; set; }
+        public string InicioSecado { get; set; }
+        public TimeSpan TiempoIniSecado { get; set; }
+        public string SalidaSecado { get; set; }
+        public TimeSpan TiempoFinSecado { get; set; }
+        public TimeSpan TiempoSecado { get; set; }
+        public double HumedadSecado { get; set; }
+        public double Rendimiento { get; set; }
+        public string NombrePunteroSecador { get; set; }
+        public string ObservacionSecado { get; set; }
+        public string NombreCatador { get; set; }
+        public string ResultadoCatador { get; set; }
+        public string FechaCatacion { get; set; }
+        public string ObservacionCatador { get; set; }
+        //falta ver ubicacion
+        public string FechaPesado { get; set; }
+        public double PesaSaco { get; set; }
+        public double PesaQQs { get; set; }
+        public string NombreBodega { get; set; }
+        public string NombreAlmacen { get; set; }
+        public string DoctoAlmacen { get; set; }
+        public string NombrePunteroPesador { get; set; }
+        public string ObservacionPesador { get; set; }
+        public int Num2Semana { get; set; }
+        public int Num3Semana { get; set; }
+        public int Dias2SubPartida { get; set; }
+        public int Dias3SubPartida { get; set; }
+        public string Fecha2SubPartida { get; set; }
+        public string Fecha3SubPartida { get; set; }
+    }
+    //
 }

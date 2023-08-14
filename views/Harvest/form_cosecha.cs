@@ -1,4 +1,4 @@
-﻿using sistema_modular_cafe_majada.controller.HarvestController;
+using sistema_modular_cafe_majada.controller.HarvestController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
@@ -119,6 +119,8 @@ namespace sistema_modular_cafe_majada.views
             var count = cosec.CountCosecha();
             txb_id.Text = Convert.ToString(count.CountCosecha + 1);
 
+
+            imagenClickeada = false;
             cosechaSeleccionado = null;
         }
 
@@ -159,7 +161,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -238,6 +240,24 @@ namespace sistema_modular_cafe_majada.views
             {
                 string name = txb_nombre.Text;
 
+                var lastId = cosController.ObtenerUltimoId();
+                if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+                {
+                    if (!imagenClickeada)
+                    {
+                        DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            txb_id.Enabled = true;
+                            txb_id.ReadOnly = false;
+                            return;
+                        }
+                        int idA = lastId.LastId + 1;
+                        txb_id.Text = Convert.ToString(idA);
+                    }
+                }
+
                 // Crear una instancia de la clase Beneficio con los valores obtenidos
                 Cosecha cosecha = new Cosecha()
                 {
@@ -300,12 +320,7 @@ namespace sistema_modular_cafe_majada.views
 
                     //funcion para actualizar los datos en el dataGrid
                     ShowCosechaGrid();
-
                     ClearDataTxb();
-
-                    imagenClickeada = false;
-                    cosechaSeleccionado = null;
-
                 }
             }
             catch (Exception ex)
@@ -337,6 +352,16 @@ namespace sistema_modular_cafe_majada.views
             int maxLength = 5;
 
             if (txb_nombre.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 6;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }

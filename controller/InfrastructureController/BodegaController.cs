@@ -77,6 +77,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 return null;
             }
         }
+        
+        //
+        public Bodega ObtenerUltimoId()
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener cantidad Bodegas
+                return bodegaDAO.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el ultimo id de la Bodega: " + ex.Message);
+                return null;
+            }
+        }
 
         //
         public Bodega ObtenerNombreBodega(string nombodega)

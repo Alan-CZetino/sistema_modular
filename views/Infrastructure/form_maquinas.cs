@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -115,7 +115,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -309,6 +309,24 @@ namespace sistema_modular_cafe_majada.views
             string contrato = txb_numContrato.Text;
             string beneficio = txb_beneficio.Text;
 
+            var lastId = subController.ObtenerUltimoId();
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            {
+                if (!imagenClickeada)
+                {
+                    DialogResult result = MessageBox.Show("El Codigo ingresado ya existe, esto es debido a que se ha eliminado un registro ¿Desea agregar manualmente el codigo o seguir en el correlativo siguiente?. para cambiar el numero del campo codigo se encuentra en la parte superior derecha.", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        txb_id.Enabled = true;
+                        txb_id.ReadOnly = false;
+                        return;
+                    }
+                    int idA = lastId.LastId + 1;
+                    txb_id.Text = Convert.ToString(idA);
+                }
+            }
+
             //Se crea una instancia de la clase Bodega
             Maquinaria maquinaInsert = new Maquinaria()
             {
@@ -416,6 +434,7 @@ namespace sistema_modular_cafe_majada.views
                     var name = benefC.ObtenerBeneficioNombre(maquinaSeleccionada.NombreBeneficio);
                     iben = name.IdBeneficio;
 
+                    txb_id.Text = Convert.ToString(maquinaSeleccionada.IdMaquinaria);
                     txb_maquina.Text = maquinaSeleccionada.NombreMaquinaria;
                     txb_numSerie.Text=maquinaSeleccionada.NumeroSerieMaquinaria;
                     txb_modelMaquina.Text=maquinaSeleccionada.ModeloMaquinaria;
@@ -500,6 +519,96 @@ namespace sistema_modular_cafe_majada.views
             //configuracion de las filas que son seleccionadas
             configDTG.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 199, 199);
             configDTG.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+
+        private void txb_id_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 7;
+
+            if (txb_id.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_maquina_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 120;
+
+            if (txb_maquina.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_numSerie_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 70;
+
+            if (txb_numSerie.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_modelMaquina_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 70;
+
+            if (txb_modelMaquina.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_maxCapacidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 8;
+
+            if (txb_maxCapacidad.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_proveedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 145;
+
+            if (txb_proveedor.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_proveedorDireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 145;
+
+            if (txb_proveedorDireccion.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_proveedorTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 11;
+
+            if (txb_proveedorTelefono.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_numContrato_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int maxLength = 200;
+
+            if (txb_numContrato.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
         }
 
         private void AsignarFuente()

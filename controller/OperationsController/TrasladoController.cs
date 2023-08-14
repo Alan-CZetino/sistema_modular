@@ -47,7 +47,20 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return null;
             }
         }
-
+        //
+        public List<ReporteTraslado> ObtenerTrasladosReports(int idTaslado)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de las Trilla
+                return trasladoDAO.ObtenerTrasladoReport(idTaslado);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener la lista de Traslado: " + ex.Message);
+                return new List<ReporteTraslado>();
+            }
+        }
         //
         public bool InsertarTrasladoCafe(Traslado traslado)
         {

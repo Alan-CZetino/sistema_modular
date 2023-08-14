@@ -20,6 +20,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Infrastructure
         public int IdBeneficio { get; set; }
         public string NombreBeneficio { get; set; }
         public int CountMaquina{ get; set; }
+        public int LastId{ get; set; }
     }
 
 }

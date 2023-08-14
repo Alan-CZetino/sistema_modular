@@ -149,7 +149,25 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ocurrió un error al obtener el rol: " + ex.Message);
+                Console.WriteLine("Ocurrió un error al obtener el Beneficio: " + ex.Message);
+            }
+
+            return beneficio;
+        }
+        
+        //
+        public Beneficio ObtenerUltimoId()
+        {
+            Beneficio beneficio = null;
+
+            try
+            {
+                // Llamada al método del DAO para obtener el rol
+                beneficio = beneficioDAO.ObtenerUltimoId();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener el Beneficio: " + ex.Message);
             }
 
             return beneficio;
