@@ -122,6 +122,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 return false;
             }
         }
+        
+        //
+        public bool ExisteBodega(string bodega, int idBenef)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return bodegaDAO.ExisteBodega(bodega, idBenef);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion de Bodega en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
 
         //
         public List<Bodega> BuscarBodegas(string buscar)

@@ -1679,39 +1679,76 @@ namespace sistema_modular_cafe_majada.views
         {
             string fechaTexto = txb_fechaPartd1.Text.Trim();
 
-            // Intenta convertir el texto a una fecha
-            if (fechaTexto.Contains(" al "))
+            if (!string.IsNullOrEmpty(txb_fechaPartd1.Text))
             {
-                string[] partesFecha = fechaTexto.Split(new string[] { " al " }, StringSplitOptions.None);
-                if (partesFecha.Length == 2 &&
-                    DateTime.TryParseExact(partesFecha[1].Trim(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fechaFin))
+                // Intenta convertir el texto a una fecha
+                if (fechaTexto.Contains(" al "))
                 {
-                    // Aquí puedes usar la fecha fechaFin como necesites
-                    if (fechaFin > DateTime.Now)
+                    string[] partesFecha = fechaTexto.Split(new string[] { " al " }, StringSplitOptions.None);
+                    if (partesFecha.Length == 2 &&
+                        DateTime.TryParseExact(partesFecha[1].Trim(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fechaFin))
+                    {
+                        // Verifica si el primer valor antes de "al" es un día válido (entre 01 y 31)
+                        if (int.TryParse(partesFecha[0], out int diaInicio) && diaInicio >= 1 && diaInicio <= 31)
+                        {
+                            // Verifica si el día de inicio es válido para el mes y año proporcionados
+                            int añoActual = DateTime.Now.Year;
+                            int mesActual = DateTime.Now.Month;
+
+                            if (diaInicio <= DateTime.DaysInMonth(fechaFin.Year, fechaFin.Month) &&
+                                fechaFin.Year <= añoActual && fechaFin.Month <= mesActual)
+                            {
+                                // Crea una nueva fecha con el día corregido y valida si es futura
+                                DateTime fechaInicio = new DateTime(fechaFin.Year, fechaFin.Month, diaInicio);
+                                if (fechaInicio > DateTime.Now)
+                                {
+                                    e.Cancel = true;
+                                    MessageBox.Show("La fecha de inicio no puede ser futura.");
+                                }
+                            }
+                            else
+                            {
+                                e.Cancel = true;
+                                MessageBox.Show("La fecha de inicio no es válida para el mes y año proporcionados.");
+                            }
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                            MessageBox.Show("El día de inicio debe ser un número válido entre 01 y 31.");
+                        }
+                    }
+                    else
                     {
                         e.Cancel = true;
-                        MessageBox.Show("La fecha de fin no puede ser futura.");
+                        MessageBox.Show("Formato de fecha incorrecto. Debe ser dd/MM/yyyy o dd al dd/MM/yyyy.");
                     }
                 }
                 else
                 {
-                    e.Cancel = true;
-                    MessageBox.Show("Formato de fecha incorrecto. Debe ser dd/MM/yyyy o dd al dd/MM/yyyy.");
+                    if (!DateTime.TryParseExact(fechaTexto, new string[] { "dd/MM/yyyy", "dd al dd/MM/yyyy" },
+                                                null, System.Globalization.DateTimeStyles.None, out DateTime fecha))
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Formato de fecha incorrecto. Debe ser dd/MM/yyyy o dd al dd/MM/yyyy.");
+                    }
+                    else if (fecha > DateTime.Now)
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("La fecha no puede ser futura.");
+                    }
+                    else if (fecha.Day < 1 || fecha.Day > DateTime.DaysInMonth(fecha.Year, fecha.Month))
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Día no válido para el mes seleccionado.");
+                    }
+                    else if (fecha.Month < 1 || fecha.Month > 12)
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Mes no válido. Debe estar entre 01 y 12.");
+                    }
                 }
-            }
-            else
-            {
-                if (!DateTime.TryParseExact(fechaTexto, new string[] { "dd/MM/yyyy", "dd al dd/MM/yyyy" },
-                                            null, System.Globalization.DateTimeStyles.None, out DateTime fecha))
-                {
-                    e.Cancel = true;
-                    MessageBox.Show("Formato de fecha incorrecto. Debe ser dd/MM/yyyy o dd al dd/MM/yyyy.");
-                }
-                else if (fecha > DateTime.Now)
-                {
-                    e.Cancel = true;
-                    MessageBox.Show("La fecha no puede ser futura.");
-                }
+
             }
         }
 
@@ -1742,6 +1779,160 @@ namespace sistema_modular_cafe_majada.views
             FontViews.ComboBoxStyle(comboBoxes);
             //se asigna a Fechas
             FontViews.DateStyle(dateTimePickers);
+        }
+
+        private void txb_fechaPartd2_Validating(object sender, CancelEventArgs e)
+        {
+            string fechaTexto = txb_fechaPartd2.Text.Trim();
+
+            if (!string.IsNullOrEmpty(txb_fechaPartd2.Text))
+            {
+                // Intenta convertir el texto a una fecha
+                if (fechaTexto.Contains(" al "))
+                {
+                    string[] partesFecha = fechaTexto.Split(new string[] { " al " }, StringSplitOptions.None);
+                    if (partesFecha.Length == 2 &&
+                        DateTime.TryParseExact(partesFecha[1].Trim(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fechaFin))
+                    {
+                        // Verifica si el primer valor antes de "al" es un día válido (entre 01 y 31)
+                        if (int.TryParse(partesFecha[0], out int diaInicio) && diaInicio >= 1 && diaInicio <= 31)
+                        {
+                            // Verifica si el día de inicio es válido para el mes y año proporcionados
+                            int añoActual = DateTime.Now.Year;
+                            int mesActual = DateTime.Now.Month;
+
+                            if (diaInicio <= DateTime.DaysInMonth(fechaFin.Year, fechaFin.Month) &&
+                                fechaFin.Year <= añoActual && fechaFin.Month <= mesActual)
+                            {
+                                // Crea una nueva fecha con el día corregido y valida si es futura
+                                DateTime fechaInicio = new DateTime(fechaFin.Year, fechaFin.Month, diaInicio);
+                                if (fechaInicio > DateTime.Now)
+                                {
+                                    e.Cancel = true;
+                                    MessageBox.Show("La fecha de inicio no puede ser futura.");
+                                }
+                            }
+                            else
+                            {
+                                e.Cancel = true;
+                                MessageBox.Show("La fecha de inicio no es válida para el mes y año proporcionados.");
+                            }
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                            MessageBox.Show("El día de inicio debe ser un número válido entre 01 y 31.");
+                        }
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Formato de fecha incorrecto. Debe ser dd/MM/yyyy o dd al dd/MM/yyyy.");
+                    }
+                }
+                else
+                {
+                    if (!DateTime.TryParseExact(fechaTexto, new string[] { "dd/MM/yyyy", "dd al dd/MM/yyyy" },
+                                                null, System.Globalization.DateTimeStyles.None, out DateTime fecha))
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Formato de fecha incorrecto. Debe ser dd/MM/yyyy o dd al dd/MM/yyyy.");
+                    }
+                    else if (fecha > DateTime.Now)
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("La fecha no puede ser futura.");
+                    }
+                    else if (fecha.Day < 1 || fecha.Day > DateTime.DaysInMonth(fecha.Year, fecha.Month))
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Día no válido para el mes seleccionado.");
+                    }
+                    else if (fecha.Month < 1 || fecha.Month > 12)
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Mes no válido. Debe estar entre 01 y 12.");
+                    }
+                }
+
+            }
+        }
+
+        private void txb_fechaPartd3_Validating(object sender, CancelEventArgs e)
+        {
+            string fechaTexto = txb_fechaPartd3.Text.Trim();
+
+            if (!string.IsNullOrEmpty(txb_fechaPartd3.Text))
+            {
+                // Intenta convertir el texto a una fecha
+                if (fechaTexto.Contains(" al "))
+                {
+                    string[] partesFecha = fechaTexto.Split(new string[] { " al " }, StringSplitOptions.None);
+                    if (partesFecha.Length == 2 &&
+                        DateTime.TryParseExact(partesFecha[1].Trim(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fechaFin))
+                    {
+                        // Verifica si el primer valor antes de "al" es un día válido (entre 01 y 31)
+                        if (int.TryParse(partesFecha[0], out int diaInicio) && diaInicio >= 1 && diaInicio <= 31)
+                        {
+                            // Verifica si el día de inicio es válido para el mes y año proporcionados
+                            int añoActual = DateTime.Now.Year;
+                            int mesActual = DateTime.Now.Month;
+
+                            if (diaInicio <= DateTime.DaysInMonth(fechaFin.Year, fechaFin.Month) &&
+                                fechaFin.Year <= añoActual && fechaFin.Month <= mesActual)
+                            {
+                                // Crea una nueva fecha con el día corregido y valida si es futura
+                                DateTime fechaInicio = new DateTime(fechaFin.Year, fechaFin.Month, diaInicio);
+                                if (fechaInicio > DateTime.Now)
+                                {
+                                    e.Cancel = true;
+                                    MessageBox.Show("La fecha de inicio no puede ser futura.");
+                                }
+                            }
+                            else
+                            {
+                                e.Cancel = true;
+                                MessageBox.Show("La fecha de inicio no es válida para el mes y año proporcionados.");
+                            }
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                            MessageBox.Show("El día de inicio debe ser un número válido entre 01 y 31.");
+                        }
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Formato de fecha incorrecto. Debe ser dd/MM/yyyy o dd al dd/MM/yyyy.");
+                    }
+                }
+                else
+                {
+                    if (!DateTime.TryParseExact(fechaTexto, new string[] { "dd/MM/yyyy", "dd al dd/MM/yyyy" },
+                                                null, System.Globalization.DateTimeStyles.None, out DateTime fecha))
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Formato de fecha incorrecto. Debe ser dd/MM/yyyy o dd al dd/MM/yyyy.");
+                    }
+                    else if (fecha > DateTime.Now)
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("La fecha no puede ser futura.");
+                    }
+                    else if (fecha.Day < 1 || fecha.Day > DateTime.DaysInMonth(fecha.Year, fecha.Month))
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Día no válido para el mes seleccionado.");
+                    }
+                    else if (fecha.Month < 1 || fecha.Month > 12)
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("Mes no válido. Debe estar entre 01 y 12.");
+                    }
+                }
+
+            }
         }
     }
 }

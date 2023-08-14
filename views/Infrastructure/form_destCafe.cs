@@ -357,6 +357,15 @@ namespace sistema_modular_cafe_majada.views
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
 
+            //verifica si ya exite un nombre identico
+            var existeB = subController.ExisteBodega(txb_nombre.Text, BeneficioSeleccionado.IdBeneficioSleccionado);
+
+            if (existeB)
+            {
+                MessageBox.Show("Ya existe una bodega con el mismo nombre en el beneficio ( "+BeneficioSeleccionado.NombreBeneficioSeleccionado+" ). Por favor, elija un nombre diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             TextBox[] textBoxes = { txb_ubicacion };
             TextBox[] textBoxesM = { txb_nombre };
             TextBox[] textBoxesLetter = { txb_descripcion };

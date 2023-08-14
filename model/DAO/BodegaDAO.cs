@@ -332,6 +332,36 @@ namespace sistema_modular_cafe_majada.model.DAO
             return bodegas;
         }
 
+        //
+        public bool ExisteBodega(string nombreBodega, int id)
+        {
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para verificar si existe una bodega con el mismo nombre
+                string consulta = "SELECT COUNT(*) FROM Bodega_Cafe WHERE nombre_bodega = @nombreBodega AND id_benficio_ubicacion_bodega = @benef";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@nombreBodega", nombreBodega);
+                conexion.AgregarParametro("@benef", id);
+
+                int count = Convert.ToInt32(conexion.EjecutarConsultaEscalar());
+
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia de la bodega: " + ex.Message);
+                return false; 
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+        }
+
         //funcion para actualizar un registro en la base de datos
         public bool ActualizarBodega(int idBodega, string nombre, string descripcion, string ubicacion, int idBeneficio)
         {

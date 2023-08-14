@@ -167,21 +167,30 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_mod_cosecha_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (cosechaSeleccionado != null)
+            { 
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
-            {
-                // El usuario seleccionó "Sí"
-                imagenClickeada = true;
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario seleccionó "Sí"
+                    imagenClickeada = true;
 
-                // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                txb_id.Text = Convert.ToString(cosechaSeleccionado.IdCosecha);
-                txb_nombre.Text = cosechaSeleccionado.NombreCosecha;
+                    // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
+                    txb_id.Text = Convert.ToString(cosechaSeleccionado.IdCosecha);
+                    txb_nombre.Text = cosechaSeleccionado.NombreCosecha;
 
+                }
+                else
+                {
+                    // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                }
             }
             else
             {
-                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente las caracteristicas de la Cosecha", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -354,6 +363,23 @@ namespace sistema_modular_cafe_majada.views
             if (txb_nombre.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                // Agregar el dígito a la caja de texto
+                txb_nombre.Text += e.KeyChar;
+
+                // Verificar si ya existe un '/' en la cadena
+                bool colonExists = txb_nombre.Text.Contains("/");
+
+                // Agregar automáticamente un '/' si no existe y la longitud es par
+                if (!colonExists && txb_nombre.Text.Length == 2)
+                {
+                    txb_nombre.Text += "/";
+                    txb_nombre.SelectionStart = txb_nombre.Text.Length; // Mover el cursor al final
+                }
+
+                e.Handled = true; // Manejar el evento KeyPress
             }
         }
 

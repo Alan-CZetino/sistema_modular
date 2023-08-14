@@ -299,7 +299,22 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
                 return null;
             }
         }
-        
+
+        //
+        public bool ExisteAlmacen(string almacen, int idB)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return almacenDAO.ExisteAlmacen(almacen, idB);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion del Almacen en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
+
         public Almacen ObtenerUltimoId()
         {
             try

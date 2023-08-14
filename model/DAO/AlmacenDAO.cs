@@ -277,8 +277,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"SELECT a.id_almacen, a.nombre_almacen, a.descripcion_almacen, a.capacidad_almacen, a.ubicacion_almacen, a.id_bodega_ubicacion_almacen, b.nombre_bodega,
                                         a.cantidad_actual_saco_almacen, a.cantidad_actual_almacen, cc.nombre_calidad
                                         FROM Almacen a
-                                        INNER JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
-                                        INNER JOIN Calidad_Cafe cc ON a.id_calidad_cafe = cc.id_calidad";
+                                        LEFT JOIN Bodega_Cafe b ON a.id_bodega_ubicacion_almacen = b.id_bodega
+                                        LEFT JOIN Calidad_Cafe cc ON a.id_calidad_cafe = cc.id_calidad";
 
                 conexion.CrearComando(consulta);
 
@@ -945,6 +945,35 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
             return almacen;
+        }
+        //
+        public bool ExisteAlmacen(string nombre, int id)
+        {
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para verificar si existe una bodega con el mismo nombre
+                string consulta = "SELECT COUNT(*) FROM Almacen WHERE nombre_almacen = @nombre AND id_bodega_ubicacion_almacen = @ib";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@nombre", nombre);
+                conexion.AgregarParametro("@ib", id);
+
+                int count = Convert.ToInt32(conexion.EjecutarConsultaEscalar());
+
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia del Almacen: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
         }
 
         public Almacen ObtenerUltimoId()

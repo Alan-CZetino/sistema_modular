@@ -433,11 +433,21 @@ namespace sistema_modular_cafe_majada.views
             }
 
             int selectedValue = selectedStatus.Key;
+            string selectedValueName = selectedStatus.Value;
 
             //se obtiene los valores ingresados por el usuario
             string nameAlmacen = txb_nombreAlmacen.Text;
             string ubicacion = txb_ubicacion.Text;
             string description = txb_descripcion.Text;
+
+            //verifica si ya exite un nombre identico
+            var existeA = subController.ExisteAlmacen(txb_nombreAlmacen.Text, selectedValue);
+
+            if (existeA)
+            {
+                MessageBox.Show("Ya existe un Almacen con el mismo nombre en la Bodega ( " + selectedValueName + " ). Por favor, elija un nombre diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             double capacidad;
             if (double.TryParse(txb_capacidad.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out capacidad)){}

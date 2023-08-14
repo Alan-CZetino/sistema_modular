@@ -204,8 +204,6 @@ namespace sistema_modular_cafe_majada.views
                         ShowRolGrid();
                         ClearDataTxb();
 
-                        imagenClickeada = false;
-                        rolSeleccionado = null;
                     }
                 }
                 else
@@ -249,6 +247,8 @@ namespace sistema_modular_cafe_majada.views
             cbx_access.Items.Clear(); // Eliminar todos los elementos del ComboBox
             cbx_access.Text = ""; // Deseleccionar cualquier elemento seleccionado previamente
 
+            imagenClickeada = false;
+            rolSeleccionado = null;
         }
 
         public void ConvertFirstCharacter(ComboBox[] comboBoxes)
@@ -286,24 +286,33 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_mod_rol_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (rolSeleccionado != null)
             {
-                // El usuario seleccionó "Sí"
-                imagenClickeada = true;
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                txb_Nombre.Text = rolSeleccionado.NombreRol;
-                txb_Description.Text = rolSeleccionado.DescripcionRol;
-                txb_permits.Text = rolSeleccionado.PermisosRol;
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario seleccionó "Sí"
+                    imagenClickeada = true;
 
-                ShowLevelRole();
+                    // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
+                    txb_Nombre.Text = rolSeleccionado.NombreRol;
+                    txb_Description.Text = rolSeleccionado.DescripcionRol;
+                    txb_permits.Text = rolSeleccionado.PermisosRol;
 
+                    ShowLevelRole();
+
+                }
+                else
+                {
+                    // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                }
             }
             else
             {
-                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente las caracteristicas del Rol", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -330,7 +339,7 @@ namespace sistema_modular_cafe_majada.views
 
                     //se actualiza la tabla
                     ShowRolGrid();
-                    rolSeleccionado = null;
+                    ClearDataTxb();
                 }
             }
             else

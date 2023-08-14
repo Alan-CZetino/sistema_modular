@@ -392,10 +392,10 @@ namespace sistema_modular_cafe_majada.views
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
 
-            TextBox[] textBoxes = { txb_ubicacion };
+            TextBox[] textBoxes = { txb_ubicacion, txb_nombre };
             ConvertFirstCharacter(textBoxes);
-            TextBox[] textBoxesM = { txb_nombre };
-            ConvertAllUppercase(textBoxesM);
+            //TextBox[] textBoxesM = {  };
+            //ConvertAllUppercase(textBoxesM);
             TextBox[] textBoxesLetter = { txb_descripcion };
             ConvertFirstLetter(textBoxesLetter);
 

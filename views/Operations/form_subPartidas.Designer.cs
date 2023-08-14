@@ -236,6 +236,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_fechaPartd3.Size = new System.Drawing.Size(110, 21);
             this.txb_fechaPartd3.TabIndex = 47;
             this.txb_fechaPartd3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_fechaPartd3_KeyPress);
+            this.txb_fechaPartd3.Validating += new System.ComponentModel.CancelEventHandler(this.txb_fechaPartd3_Validating);
             // 
             // txb_fechaPartd2
             // 
@@ -249,6 +250,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_fechaPartd2.Size = new System.Drawing.Size(110, 21);
             this.txb_fechaPartd2.TabIndex = 46;
             this.txb_fechaPartd2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_fechaPartd2_KeyPress);
+            this.txb_fechaPartd2.Validating += new System.ComponentModel.CancelEventHandler(this.txb_fechaPartd2_Validating);
             // 
             // txb_fechaPartd1
             // 
@@ -309,7 +311,7 @@ namespace sistema_modular_cafe_majada.views
             this.label14.Location = new System.Drawing.Point(302, 189);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 17);
+            this.label14.Size = new System.Drawing.Size(85, 17);
             this.label14.TabIndex = 26;
             this.label14.Text = "Fecha de partida";
             // 
@@ -353,7 +355,7 @@ namespace sistema_modular_cafe_majada.views
             this.label16.Location = new System.Drawing.Point(4, 187);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(86, 17);
+            this.label16.Size = new System.Drawing.Size(61, 17);
             this.label16.TabIndex = 22;
             this.label16.Text = "Semana N°";
             // 
@@ -364,7 +366,7 @@ namespace sistema_modular_cafe_majada.views
             this.label11.Location = new System.Drawing.Point(302, 147);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 17);
+            this.label11.Size = new System.Drawing.Size(85, 17);
             this.label11.TabIndex = 20;
             this.label11.Text = "Fecha de partida";
             // 
@@ -408,7 +410,7 @@ namespace sistema_modular_cafe_majada.views
             this.label13.Location = new System.Drawing.Point(4, 145);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(86, 17);
+            this.label13.Size = new System.Drawing.Size(61, 17);
             this.label13.TabIndex = 16;
             this.label13.Text = "Semana N°";
             // 
@@ -443,7 +445,7 @@ namespace sistema_modular_cafe_majada.views
             this.label9.Location = new System.Drawing.Point(302, 105);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 17);
+            this.label9.Size = new System.Drawing.Size(85, 17);
             this.label9.TabIndex = 12;
             this.label9.Text = "Fecha de partida";
             // 
@@ -487,7 +489,7 @@ namespace sistema_modular_cafe_majada.views
             this.label7.Location = new System.Drawing.Point(4, 102);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 17);
+            this.label7.Size = new System.Drawing.Size(61, 17);
             this.label7.TabIndex = 8;
             this.label7.Text = "Semana N°";
             // 
@@ -511,6 +513,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_calidad.Name = "txb_calidad";
             this.txb_calidad.Size = new System.Drawing.Size(114, 21);
             this.txb_calidad.TabIndex = 5;
+            this.txb_calidad.Click += new System.EventHandler(this.btn_CCafe_Click);
             // 
             // label5
             // 

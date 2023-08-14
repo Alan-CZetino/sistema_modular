@@ -174,10 +174,17 @@ namespace sistema_modular_cafe_majada.views
             }
 
             proceSeleccionado = null;
+            imagenClickeada = false;
 
             cbx_beneficio.SelectedIndex = -1;
             cbx_maquinaria.SelectedIndex = -1;
             cbx_socio.SelectedIndex = -1;
+
+            //coloca nueva mente el contador en el txb del cdigo
+            ProcedenciaDestinoController proceC = new ProcedenciaDestinoController();
+            var count = proceC.CountProcedencia();
+            txb_id.Text = Convert.ToString(count.CountProcedencia + 1);
+            this.Close();
         }
 
         public void ConvertFirstCharacter(TextBox[] textBoxes)
@@ -233,63 +240,71 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_updateProcedencia_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (proceSeleccionado != null)
             {
-                Console.WriteLine("id prcedencia " + ProcedenciaSeleccionada.IProcedencia);
-                // El usuario seleccionó "Sí"
-                imagenClickeada = true;
-                ProcedenciaDestinoController proceCt = new ProcedenciaDestinoController();
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Console.WriteLine("id prcedencia " + ProcedenciaSeleccionada.IProcedencia);
+                    // El usuario seleccionó "Sí"
+                    imagenClickeada = true;
+                    ProcedenciaDestinoController proceCt = new ProcedenciaDestinoController();
 
-                var name = proceCt.ObtenerProcedenciaDestinoPorId(ProcedenciaSeleccionada.IProcedencia);
+                    var name = proceCt.ObtenerProcedenciaDestinoPorId(ProcedenciaSeleccionada.IProcedencia);
 
-                // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                txb_id.Text = Convert.ToString(proceSeleccionado.IdProcedencia);
-                txb_procedCafe.Text = proceSeleccionado.NombreProcedencia;
-                txb_descripcion.Text = proceSeleccionado.DescripcionProcedencia;
+                    // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
+                    txb_id.Text = Convert.ToString(proceSeleccionado.IdProcedencia);
+                    txb_procedCafe.Text = proceSeleccionado.NombreProcedencia;
+                    txb_descripcion.Text = proceSeleccionado.DescripcionProcedencia;
 
-                //cbxBeneficio
-                cbx_beneficio.Items.Clear();
-                CbxBeneficio();
+                    //cbxBeneficio
+                    cbx_beneficio.Items.Clear();
+                    CbxBeneficio();
 
-                //cbxMaquinaria
-                cbx_maquinaria.Items.Clear();
-                CbxMaquinaria();
+                    //cbxMaquinaria
+                    cbx_maquinaria.Items.Clear();
+                    CbxMaquinaria();
 
-                //cbxSocio
-                cbx_socio.Items.Clear();
-                CbxSocio();
+                    //cbxSocio
+                    cbx_socio.Items.Clear();
+                    CbxSocio();
                 
-                if (!string.IsNullOrWhiteSpace(proceSeleccionado.NombreSocioProcedencia))
-                {
-                    SocioController socC = new SocioController();
-                    var soc = socC.ObtenerSocioNombre(proceSeleccionado.NombreSocioProcedencia);
-                    isocio = soc.IdSocio;
-                    int iso = isocio - 1;
-                    cbx_socio.SelectedIndex = iso;
-                }
-                if (!string.IsNullOrWhiteSpace(proceSeleccionado.NombreMaquinaria))
-                {
-                    MaquinariaController mac = new MaquinariaController();
-                    var ma = mac.ObtenerNombreMaquinaria(proceSeleccionado.NombreMaquinaria);
-                    imaquina = Convert.ToInt32(ma.IdMaquinaria);
-                    int ima = imaquina - 1;
-                    cbx_maquinaria.SelectedIndex = ima;
-                }
-                if (!string.IsNullOrWhiteSpace(proceSeleccionado.NombreBenficioUbicacion))
-                {
-                    BeneficioController benC = new BeneficioController();
-                    var ben = benC.ObtenerBeneficioNombre(proceSeleccionado.NombreBenficioUbicacion);
-                    ibeneficio = ben.IdBeneficio;
-                    int ibg = ibeneficio - 1;
-                    cbx_beneficio.SelectedIndex = ibg;
-                }
+                    if (!string.IsNullOrWhiteSpace(proceSeleccionado.NombreSocioProcedencia))
+                    {
+                        SocioController socC = new SocioController();
+                        var soc = socC.ObtenerSocioNombre(proceSeleccionado.NombreSocioProcedencia);
+                        isocio = soc.IdSocio;
+                        int iso = isocio - 1;
+                        cbx_socio.SelectedIndex = iso;
+                    }
+                    if (!string.IsNullOrWhiteSpace(proceSeleccionado.NombreMaquinaria))
+                    {
+                        MaquinariaController mac = new MaquinariaController();
+                        var ma = mac.ObtenerNombreMaquinaria(proceSeleccionado.NombreMaquinaria);
+                        imaquina = Convert.ToInt32(ma.IdMaquinaria);
+                        int ima = imaquina - 1;
+                        cbx_maquinaria.SelectedIndex = ima;
+                    }
+                    if (!string.IsNullOrWhiteSpace(proceSeleccionado.NombreBenficioUbicacion))
+                    {
+                        BeneficioController benC = new BeneficioController();
+                        var ben = benC.ObtenerBeneficioNombre(proceSeleccionado.NombreBenficioUbicacion);
+                        ibeneficio = ben.IdBeneficio;
+                        int ibg = ibeneficio - 1;
+                        cbx_beneficio.SelectedIndex = ibg;
+                    }
 
+                }
+                else
+                {
+                    // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                }
             }
             else
             {
-                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente las caracteristicas de la Procedencia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -322,13 +337,7 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
-            imagenClickeada = false;
-
-            //coloca nueva mente el contador en el txb del cdigo
-            ProcedenciaDestinoController proceC = new ProcedenciaDestinoController();
-            var count = proceC.CountProcedencia();
-            txb_id.Text = Convert.ToString(count.CountProcedencia + 1);
-            this.Close();
+            
         }
 
         private void btn_deletePorceCafe_Click(object sender, EventArgs e)
@@ -354,7 +363,7 @@ namespace sistema_modular_cafe_majada.views
 
                     //se actualiza la tabla
                     ShowProcedenciaGrid();
-                    proceSeleccionado = null;
+                    ClearDataTxb();
                 }
             }
             else
@@ -362,11 +371,6 @@ namespace sistema_modular_cafe_majada.views
                 // Mostrar un mensaje de error o lanzar una excepción
                 MessageBox.Show("No se ha seleccionado correctamente las caracteristicas de la Procedencia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            //coloca nueva mente el contador en el txb del cdigo
-            ProcedenciaDestinoController proceC = new ProcedenciaDestinoController();
-            var count = proceC.CountProcedencia();
-            txb_id.Text = Convert.ToString(count.CountProcedencia + 1);
         }
 
         private void btn_SaveProceCafe_Click(object sender, EventArgs e)
@@ -536,11 +540,6 @@ namespace sistema_modular_cafe_majada.views
                 Console.WriteLine("Error - " + ex.Message);
                 MessageBox.Show("Error de tipo (" + ex.Message + "), verifique los datos he intenta nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            //coloca nueva mente el contador en el txb del cdigo
-            ProcedenciaDestinoController proceC = new ProcedenciaDestinoController();
-            var count = proceC.CountProcedencia();
-            txb_id.Text = Convert.ToString(count.CountProcedencia + 1);
         }
 
         private void txb_id_KeyPress(object sender, KeyPressEventArgs e)

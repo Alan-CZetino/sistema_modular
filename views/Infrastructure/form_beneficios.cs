@@ -107,6 +107,8 @@ namespace sistema_modular_cafe_majada.views
             {
                 textBox.Text = "";
             }
+            imagenClickeada = false;
+            beneficioSeleccionado = null;
 
             //coloca nueva mente el contador en el txb del cdigo
             BeneficioController ben = new BeneficioController();
@@ -167,23 +169,31 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_updateBeneficio_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //condicion para verificar si los datos seleccionados van nulos, para evitar error
+            if (beneficioSeleccionado != null)
+            { 
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas actualizar el registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
-            {
-                // El usuario seleccionó "Sí"
-                imagenClickeada = true;
+                if (result == DialogResult.Yes)
+                {
+                    // El usuario seleccionó "Sí"
+                    imagenClickeada = true;
 
-                // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
-                txb_id.Text = Convert.ToString(beneficioSeleccionado.IdBeneficio);
-                txb_nombreBeneficio.Text = beneficioSeleccionado.NombreBeneficio;
-                txb_Ubicacion.Text = beneficioSeleccionado.UbicacionBeneficio;
+                    // Asignar los valores a los cuadros de texto solo si no se ha hecho clic en la imagen
+                    txb_id.Text = Convert.ToString(beneficioSeleccionado.IdBeneficio);
+                    txb_nombreBeneficio.Text = beneficioSeleccionado.NombreBeneficio;
+                    txb_Ubicacion.Text = beneficioSeleccionado.UbicacionBeneficio;
+                }
+                else
+                {
+                    // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                }
             }
             else
             {
-                // El usuario seleccionó "No" o cerró el cuadro de diálogo
+                // Mostrar un mensaje de error o lanzar una excepción
+                MessageBox.Show("No se ha seleccionado correctamente las caracteristicas del Beneficio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void btn_deleteBeneficio_Click(object sender, EventArgs e)
@@ -209,7 +219,7 @@ namespace sistema_modular_cafe_majada.views
 
                     //se actualiza la tabla
                     ShowBeneficioGrid();
-                    beneficioSeleccionado = null;
+                    ClearDataTxb();
                 }
             }
             else
@@ -249,7 +259,6 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
-            imagenClickeada = false;
             this.Close();
         }
 
@@ -369,9 +378,6 @@ namespace sistema_modular_cafe_majada.views
                     ShowBeneficioGrid();
 
                     ClearDataTxb();
-
-                    imagenClickeada = false;
-                    beneficioSeleccionado = null;
 
                 }
             }
