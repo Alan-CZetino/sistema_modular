@@ -113,10 +113,6 @@ namespace sistema_modular_cafe_majada.views
                     {
                         if (icosechaCambio != CosechaActual.ICosechaActual || string.IsNullOrWhiteSpace(txb_subPartida.Text))
                         {
-                            countSP = new SubPartidaController();
-                            var subSPa = countSP.CountSubPartida(CosechaActual.ICosechaActual);
-                            //
-                            txb_subPartida.Text = Convert.ToInt32(subSPa.CountSubPartida + 1).ToString();
                             icosechaCambio = CosechaActual.ICosechaActual;
                         }
                         txb_cosecha.Text = CosechaActual.NombreCosechaActual;
@@ -269,6 +265,12 @@ namespace sistema_modular_cafe_majada.views
         {
             try
             {
+                if (horaStr.Length < 3)
+                {
+                    // La cadena no tiene el formato adecuado
+                    return false;
+                }
+
                 int horas = int.Parse(horaStr.Substring(0, 2));
                 if (horas >= 0 && horas <= 23)
                 {
@@ -290,6 +292,12 @@ namespace sistema_modular_cafe_majada.views
         {
             try
             {
+                if (minStr.Length < 5)
+                {
+                    // La cadena no tiene el formato adecuado
+                    return false;
+                }
+
                 int minutos = int.Parse(minStr.Substring(3, 2));
                 if (minutos >= 0 && minutos <= 59)
                 {
@@ -555,29 +563,29 @@ namespace sistema_modular_cafe_majada.views
                 //se verifica el formato de la hora 
                 if (!ValidarHora(txb_horaInicio.Text))
                 {
-                    MessageBox.Show("El valor ingresado en el campo Inicio Secado no tiene un formato de hora válido. El formato es de 0 a 23 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor ingresado en el campo Inicio Secado no tiene un formato de hora válido. El formato es de 00 a 23 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (!ValidarHora(txb_horaSalida.Text))
                 {
-                    MessageBox.Show("El valor ingresado en el campo Salida Secado no tiene un formato de hora válido. El formato es de 0 a 23 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor ingresado en el campo Salida Secado no tiene un formato de hora válido. El formato es de 00 a 23 horas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 //se verifica el formato de los minutos 
                 if (!ValidarMinuto(txb_horaInicio.Text))
                 {
-                    MessageBox.Show("El valor ingresado en el campo Inicio Secado no tiene un formato de minuto válido. El formato es de 0 a 59 minuto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor ingresado en el campo Inicio Secado no tiene un formato de minuto válido. El formato es de 00 a 59 minuto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (!ValidarMinuto(txb_horaSalida.Text))
                 {
-                    MessageBox.Show("El valor ingresado en el campo Salida Secado no tiene un formato de minuto válido. El formato es de 0 a 59 minuto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor ingresado en el campo Salida Secado no tiene un formato de minuto válido. El formato es de 00 a 59 minuto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (!ValidarMinuto(txb_tiempoSecad.Text))
                 {
-                    MessageBox.Show("El valor ingresado en el campo Tiempo de Secado no tiene un formato de minuto válido. El formato es de 0 a 59 minuto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El valor ingresado en el campo Tiempo de Secado no tiene un formato de minuto válido. El formato es de 00 a 59 minuto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -795,7 +803,7 @@ namespace sistema_modular_cafe_majada.views
                         }
                         else
                         {
-                            MessageBox.Show("Error al agregar la SubPartida. Verifica los datos e intenta nuevamente.");
+                            MessageBox.Show("Error al agregar la SubPartida. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -853,8 +861,6 @@ namespace sistema_modular_cafe_majada.views
                             MessageBox.Show("Error, Ocurrio un problema en la actualizacion de la cantidad de cafe verifique los campos QQs ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
-
-                        
                     }
 
                     bool exito = subPartController.ActualizarSubPartida(subPart);
@@ -894,7 +900,7 @@ namespace sistema_modular_cafe_majada.views
                             }
                         }
 
-                        MessageBox.Show("SubPartida Actualizada correctamente.");
+                        MessageBox.Show("SubPartida Actualizada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         try
                         {
                             //Console.WriteLine("el ID obtenido del usuario "+usuario.IdUsuario);
@@ -912,7 +918,7 @@ namespace sistema_modular_cafe_majada.views
                     }
                     else
                     {
-                        MessageBox.Show("Error al actualizar la SubPartida. Verifica los datos e intenta nuevamente.");
+                        MessageBox.Show("Error al actualizar la SubPartida. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -1091,6 +1097,7 @@ namespace sistema_modular_cafe_majada.views
                 textBox.Clear();
             }
 
+            cbx_subProducto.SelectedIndex = -1;
             SubPartidaSeleccionado.clickImg = false;
             SubPartidaSeleccionado.NumSubPartida = 0;
             SubPartidaSeleccionado.ISubPartida = 0;
@@ -1110,6 +1117,11 @@ namespace sistema_modular_cafe_majada.views
             dtp_fechaSalidaSecad.Value = DateTime.Now;
             dtp_fechaCatacion.Value = DateTime.Now;
             dtp_fechaPesa.Value = DateTime.Now;
+
+            countSP = new SubPartidaController();
+            var tril = countSP.CountSubPartida(CosechaActual.ICosechaActual);
+            //
+            txb_subPartida.Text = Convert.ToString(tril.CountSubPartida + 1);
         }
 
         private void btn_SaveUser_Click(object sender, EventArgs e)
@@ -1124,7 +1136,7 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
-            cbx_subProducto.SelectedIndex = -1;
+            this.Close();
         }
 
         private void btn_deleteSPartida_Click(object sender, EventArgs e)
@@ -1366,15 +1378,50 @@ namespace sistema_modular_cafe_majada.views
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                int digit = int.Parse(e.KeyChar.ToString());
+
+                if (digit < 1 || digit > 7)
+                {
+                    e.Handled = true; // Cancelar la entrada si el dígito no está en el rango 1 al 7
+                }
+            }
+            else if (!char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la entrada de caracteres no numéricos y no de control
+            }
         }
 
         private void txb_fechaPartd1_KeyPress(object sender, KeyPressEventArgs e)
         {
             int maxLength = 16;
+            string currentText = txb_fechaPartd1.Text;
 
             if (txb_fechaPartd1.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+            else if (e.KeyChar == '/' ||
+             e.KeyChar == 'a' && !currentText.Contains("a") ||
+             e.KeyChar == 'l' && !currentText.Contains("l") ||
+             char.IsDigit(e.KeyChar) ||
+             e.KeyChar == ' ' ||
+             e.KeyChar == (char)Keys.Back)
+            {
+                // Verificar si se está intentando ingresar un segundo espacio
+                if (e.KeyChar == ' ' && currentText.EndsWith(" "))
+                {
+                    e.Handled = true; // Cancelar entrada si se intenta ingresar un segundo espacio
+                    return;
+                }
+
+                // Permitir entrada de dígitos, diagonales, 'a', 'l', espacios y tecla de retroceso
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true; // Cancelar entrada de otros caracteres
             }
         }
 
@@ -1401,20 +1448,64 @@ namespace sistema_modular_cafe_majada.views
         private void txb_fechaPartd2_KeyPress(object sender, KeyPressEventArgs e)
         {
             int maxLength = 16;
+            string currentText = txb_fechaPartd2.Text;
 
             if (txb_fechaPartd2.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+            else if (e.KeyChar == '/' ||
+             e.KeyChar == 'a' && !currentText.Contains("a") ||
+             e.KeyChar == 'l' && !currentText.Contains("l") ||
+             char.IsDigit(e.KeyChar) ||
+             e.KeyChar == ' ' ||
+             e.KeyChar == (char)Keys.Back)
+            {
+                // Verificar si se está intentando ingresar un segundo espacio
+                if (e.KeyChar == ' ' && currentText.EndsWith(" "))
+                {
+                    e.Handled = true; // Cancelar entrada si se intenta ingresar un segundo espacio
+                    return;
+                }
+
+                // Permitir entrada de dígitos, diagonales, 'a', 'l', espacios y tecla de retroceso
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true; // Cancelar entrada de otros caracteres
             }
         }
 
         private void txb_fechaPartd3_KeyPress(object sender, KeyPressEventArgs e)
         {
             int maxLength = 16;
+            string currentText = txb_fechaPartd3.Text;
 
             if (txb_fechaPartd3.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+            else if (e.KeyChar == '/' ||
+             e.KeyChar == 'a' && !currentText.Contains("a") ||
+             e.KeyChar == 'l' && !currentText.Contains("l") ||
+             char.IsDigit(e.KeyChar) ||
+             e.KeyChar == ' ' ||
+             e.KeyChar == (char)Keys.Back)
+            {
+                // Verificar si se está intentando ingresar un segundo espacio
+                if (e.KeyChar == ' ' && currentText.EndsWith(" "))
+                {
+                    e.Handled = true; // Cancelar entrada si se intenta ingresar un segundo espacio
+                    return;
+                }
+
+                // Permitir entrada de dígitos, diagonales, 'a', 'l', espacios y tecla de retroceso
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true; // Cancelar entrada de otros caracteres
             }
         }
 
@@ -1426,6 +1517,19 @@ namespace sistema_modular_cafe_majada.views
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
             }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                int digit = int.Parse(e.KeyChar.ToString());
+
+                if (digit < 1 || digit > 7)
+                {
+                    e.Handled = true; // Cancelar la entrada si el dígito no está en el rango 1 al 7
+                }
+            }
+            else if (!char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la entrada de caracteres no numéricos y no de control
+            }
         }
 
         private void txb_diasPdas3_KeyPress(object sender, KeyPressEventArgs e)
@@ -1435,6 +1539,19 @@ namespace sistema_modular_cafe_majada.views
             if (txb_diasPdas3.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                int digit = int.Parse(e.KeyChar.ToString());
+
+                if (digit < 1 || digit > 7)
+                {
+                    e.Handled = true; // Cancelar la entrada si el dígito no está en el rango 1 al 7
+                }
+            }
+            else if (!char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar la entrada de caracteres no numéricos y no de control
             }
         }
 
@@ -1553,6 +1670,46 @@ namespace sistema_modular_cafe_majada.views
             if (txb_observacionPesa.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // Cancelar la entrada si se alcanza la longitud máxima
+            }
+        }
+
+        private void txb_fechaPartd1_Validating(object sender, CancelEventArgs e)
+        {
+            string fechaTexto = txb_fechaPartd1.Text.Trim();
+
+            // Intenta convertir el texto a una fecha
+            if (fechaTexto.Contains(" al "))
+            {
+                string[] partesFecha = fechaTexto.Split(new string[] { " al " }, StringSplitOptions.None);
+                if (partesFecha.Length == 2 &&
+                    DateTime.TryParseExact(partesFecha[1].Trim(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime fechaFin))
+                {
+                    // Aquí puedes usar la fecha fechaFin como necesites
+                    if (fechaFin > DateTime.Now)
+                    {
+                        e.Cancel = true;
+                        MessageBox.Show("La fecha de fin no puede ser futura.");
+                    }
+                }
+                else
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Formato de fecha incorrecto. Debe ser dd/MM/yyyy o dd al dd/MM/yyyy.");
+                }
+            }
+            else
+            {
+                if (!DateTime.TryParseExact(fechaTexto, new string[] { "dd/MM/yyyy", "dd al dd/MM/yyyy" },
+                                            null, System.Globalization.DateTimeStyles.None, out DateTime fecha))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Formato de fecha incorrecto. Debe ser dd/MM/yyyy o dd al dd/MM/yyyy.");
+                }
+                else if (fecha > DateTime.Now)
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("La fecha no puede ser futura.");
+                }
             }
         }
     }

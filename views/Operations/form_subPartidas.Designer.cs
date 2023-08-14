@@ -262,6 +262,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_fechaPartd1.Size = new System.Drawing.Size(110, 21);
             this.txb_fechaPartd1.TabIndex = 45;
             this.txb_fechaPartd1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_fechaPartd1_KeyPress);
+            this.txb_fechaPartd1.Validating += new System.ComponentModel.CancelEventHandler(this.txb_fechaPartd1_Validating);
             // 
             // cbx_subProducto
             // 
@@ -627,6 +628,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_horaSalida.Name = "txb_horaSalida";
             this.txb_horaSalida.Size = new System.Drawing.Size(82, 21);
             this.txb_horaSalida.TabIndex = 33;
+            this.txb_horaSalida.Text = "00:00";
             this.txb_horaSalida.Enter += new System.EventHandler(this.txb_horaSalida_Enter);
             this.txb_horaSalida.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_horaSalida_KeyPress);
             this.txb_horaSalida.Leave += new System.EventHandler(this.txb_horaSalida_Leave);
@@ -651,6 +653,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_horaInicio.Name = "txb_horaInicio";
             this.txb_horaInicio.Size = new System.Drawing.Size(82, 21);
             this.txb_horaInicio.TabIndex = 31;
+            this.txb_horaInicio.Text = "00:00";
             this.txb_horaInicio.Enter += new System.EventHandler(this.txb_horaInicio_Enter);
             this.txb_horaInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_horaInicio_KeyPress);
             this.txb_horaInicio.Leave += new System.EventHandler(this.txb_horaInicio_Leave);
@@ -762,6 +765,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_tiempoSecad.Name = "txb_tiempoSecad";
             this.txb_tiempoSecad.Size = new System.Drawing.Size(55, 21);
             this.txb_tiempoSecad.TabIndex = 17;
+            this.txb_tiempoSecad.Text = "00:00";
             this.txb_tiempoSecad.Enter += new System.EventHandler(this.txb_tiempoSecad_Enter);
             this.txb_tiempoSecad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_tiempoSecad_KeyPress);
             this.txb_tiempoSecad.Leave += new System.EventHandler(this.txb_tiempoSecad_Leave);

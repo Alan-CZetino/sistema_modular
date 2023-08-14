@@ -210,11 +210,12 @@ namespace sistema_modular_cafe_majada.views
                 Nombre = almacen.NombreAlmacen,
                 Descripcion = almacen.DescripcionAlmacen,
                 Capacidad = almacen.CapacidadAlmacen,
-                Cantidad_ActualQQs = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
-                Cantidad_Saco = string.IsNullOrWhiteSpace(almacen.CantidadActualSacoAlmacen.ToString()) ? 0.0 : almacen.CantidadActualSacoAlmacen,
+                CantidadQQs = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
+                CantidadSaco = string.IsNullOrWhiteSpace(almacen.CantidadActualSacoAlmacen.ToString()) ? 0.0 : almacen.CantidadActualSacoAlmacen,
                 Ubicacion = almacen.UbicacionAlmacen,
-                Nombre_Calidad = almacen.NombreCalidadCafe ?? "",
-                Bodega_Ubicacion = almacen.NombreBodegaUbicacion
+                Calidad = almacen.NombreCalidadCafe ?? "",
+                SubProducto = almacen.NombreSubProducto ?? "",
+                Bodega = almacen.NombreBodegaUbicacion
             }).ToList();
 
             // Asignar los datos al DataGridView
@@ -320,7 +321,7 @@ namespace sistema_modular_cafe_majada.views
             else
             {
                 // El índice de fila no es válido, se muestra un mensaje para evitar realizar la acción de error.
-                MessageBox.Show("Seleccione una fila válida antes de hacer doble clic en el encabezado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Seleccione una fila válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -432,11 +433,12 @@ namespace sistema_modular_cafe_majada.views
                                 Nombre = almacen.NombreAlmacen,
                                 Descripcion = almacen.DescripcionAlmacen,
                                 Capacidad = almacen.CapacidadAlmacen,
-                                Cantidad_ActualQQs = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
-                                Cantidad_Saco = string.IsNullOrWhiteSpace(almacen.CantidadActualSacoAlmacen.ToString()) ? 0.0 : almacen.CantidadActualSacoAlmacen,
+                                CantidadQQs = string.IsNullOrWhiteSpace(almacen.CantidadActualAlmacen.ToString()) ? 0.0 : almacen.CantidadActualAlmacen,
+                                CantidadSaco = string.IsNullOrWhiteSpace(almacen.CantidadActualSacoAlmacen.ToString()) ? 0.0 : almacen.CantidadActualSacoAlmacen,
                                 Ubicacion = almacen.UbicacionAlmacen,
-                                Nombre_Calidad = almacen.NombreCalidadCafe ?? "",
-                                Bodega_Ubicacion = almacen.NombreBodegaUbicacion
+                                Calidad = almacen.NombreCalidadCafe ?? "",
+                                SubProducto = almacen.NombreSubProducto ?? "",
+                                Bodega = almacen.NombreBodegaUbicacion
                             }).ToList();
 
                             // Asignar los datos al DataGridView

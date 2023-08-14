@@ -253,7 +253,7 @@ namespace sistema_modular_cafe_majada
                 double porcentaje = (sp.cantidad / sumaTotal) * 100;
                 point.SetValueY(porcentaje); // Porcentaje como valor de cantidad
                 point.ToolTip = $"{sp.Calidad}: {sp.cantidad}"; // Tooltip con el nombre de calidad y cantidad
-
+                
                 // Agregar el punto a la serie
                 serieQQsOro.Points.Add(point);
             }
