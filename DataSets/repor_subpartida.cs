@@ -6,6 +6,10 @@
     {
         partial class repor_subpartidaDataTable
         {
+        }
+
+        partial class repor_subpartidaDataTable
+        {
 
         }
 

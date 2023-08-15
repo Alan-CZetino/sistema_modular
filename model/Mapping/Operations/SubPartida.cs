@@ -117,6 +117,7 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public int Dias3SubPartida { get; set; }
         public string Fecha2SubPartida { get; set; }
         public string Fecha3SubPartida { get; set; }
+        public string nombre_persona { get; set; }
     }
     //
 }

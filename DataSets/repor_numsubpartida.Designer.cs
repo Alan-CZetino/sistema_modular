@@ -335,6 +335,8 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             private global::System.Data.DataColumn columnObservacionPesador;
             
+            private global::System.Data.DataColumn columnnombre_persona;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public repor_numsubpartidaDataTable() {
@@ -594,6 +596,14 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nombre_personaColumn {
+                get {
+                    return this.columnnombre_persona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -657,7 +667,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                         string NombreBodega, 
                         string NombreAlmacen, 
                         string NombrePunteroPesador, 
-                        string ObservacionPesador) {
+                        string ObservacionPesador, 
+                        string nombre_persona) {
                 repor_numsubpartidaRow rowrepor_numsubpartidaRow = ((repor_numsubpartidaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NombreProcedencia,
@@ -687,7 +698,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                         NombreBodega,
                         NombreAlmacen,
                         NombrePunteroPesador,
-                        ObservacionPesador};
+                        ObservacionPesador,
+                        nombre_persona};
                 rowrepor_numsubpartidaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrepor_numsubpartidaRow);
                 return rowrepor_numsubpartidaRow;
@@ -738,6 +750,7 @@ namespace sistema_modular_cafe_majada.DataSets {
                 this.columnNombreAlmacen = base.Columns["NombreAlmacen"];
                 this.columnNombrePunteroPesador = base.Columns["NombrePunteroPesador"];
                 this.columnObservacionPesador = base.Columns["ObservacionPesador"];
+                this.columnnombre_persona = base.Columns["nombre_persona"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -799,6 +812,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                 base.Columns.Add(this.columnNombrePunteroPesador);
                 this.columnObservacionPesador = new global::System.Data.DataColumn("ObservacionPesador", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObservacionPesador);
+                this.columnnombre_persona = new global::System.Data.DataColumn("nombre_persona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombre_persona);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_repor_numsubpartida");
                 this.ExtendedProperties.Add("Generator_UserTableName", "repor_numsubpartida");
             }
@@ -1416,6 +1431,23 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nombre_persona {
+                get {
+                    try {
+                        return ((string)(this[this.tablerepor_numsubpartida.nombre_personaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre_persona\' de la tabla \'repor_numsubpartida\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tablerepor_numsubpartida.nombre_personaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNombreProcedenciaNull() {
                 return this.IsNull(this.tablerepor_numsubpartida.NombreProcedenciaColumn);
             }
@@ -1748,6 +1780,18 @@ namespace sistema_modular_cafe_majada.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetObservacionPesadorNull() {
                 this[this.tablerepor_numsubpartida.ObservacionPesadorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isnombre_personaNull() {
+                return this.IsNull(this.tablerepor_numsubpartida.nombre_personaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setnombre_personaNull() {
+                this[this.tablerepor_numsubpartida.nombre_personaColumn] = global::System.Convert.DBNull;
             }
         }
         

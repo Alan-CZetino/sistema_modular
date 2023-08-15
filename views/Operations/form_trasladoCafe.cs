@@ -32,7 +32,8 @@ namespace sistema_modular_cafe_majada.views
         private int icosechaCambio;
         TrasladoController countTrl = null;
         private TrasladoController reportesController = new TrasladoController();
-
+        private string fechaActual;
+        UserController userC = new UserController();
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
         public double cantidaSacoUpdate = 0.00;
@@ -1037,12 +1038,18 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfTraslado_Click(object sender, EventArgs e)
         {
+            var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             if (TrasladoSeleccionado.ITraslado != 0)
             {
 
-                string reportPath = "repor_traslados.rdlc";
-                
+                string reportPath = "../../views/Reports/repor_traslados.rdlc";
+
                 List<ReporteTraslado> data = reportesController.ObtenerTrasladosReports(TrasladoSeleccionado.ITraslado);
+                foreach (ReporteTraslado reporte in data)
+                {
+                    reporte.nombre_persona = Nombre_Usuario.ApellidoPersonaUsuario;
+
+                }
                 ReportDataSource reportDataSource = new ReportDataSource("repor_traslados", data);
 
                 form_opcReportExistencias reportTraslado = new form_opcReportExistencias(reportPath, reportDataSource);

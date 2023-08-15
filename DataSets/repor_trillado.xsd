@@ -12,7 +12,7 @@
   <xs:element name="repor_trillado" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="repor_trillado" msprop:Generator_UserDSName="repor_trillado">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="repor_trillado" msprop:Generator_TableClassName="repor_trilladoDataTable" msprop:Generator_TableVarName="tablerepor_trillado" msprop:Generator_RowChangedName="repor_trilladoRowChanged" msprop:Generator_TablePropName="_repor_trillado" msprop:Generator_RowDeletingName="repor_trilladoRowDeleting" msprop:Generator_RowChangingName="repor_trilladoRowChanging" msprop:Generator_RowEvHandlerName="repor_trilladoRowChangeEventHandler" msprop:Generator_RowDeletedName="repor_trilladoRowDeleted" msprop:Generator_RowClassName="repor_trilladoRow" msprop:Generator_UserTableName="repor_trillado" msprop:Generator_RowEvArgName="repor_trilladoRowChangeEvent">
+        <xs:element name="repor_trillado" msprop:Generator_TableClassName="repor_trilladoDataTable" msprop:Generator_TableVarName="tablerepor_trillado" msprop:Generator_TablePropName="_repor_trillado" msprop:Generator_RowDeletingName="repor_trilladoRowDeleting" msprop:Generator_RowChangingName="repor_trilladoRowChanging" msprop:Generator_RowEvHandlerName="repor_trilladoRowChangeEventHandler" msprop:Generator_RowDeletedName="repor_trilladoRowDeleted" msprop:Generator_UserTableName="repor_trillado" msprop:Generator_RowChangedName="repor_trilladoRowChanged" msprop:Generator_RowEvArgName="repor_trilladoRowChangeEvent" msprop:Generator_RowClassName="repor_trilladoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NombreCosecha" msprop:Generator_ColumnVarNameInTable="columnNombreCosecha" msprop:Generator_ColumnPropNameInRow="NombreCosecha" msprop:Generator_ColumnPropNameInTable="NombreCosechaColumn" msprop:Generator_UserColumnName="NombreCosecha" type="xs:string" minOccurs="0" />
@@ -28,6 +28,7 @@
               <xs:element name="NombreBodega" msprop:Generator_ColumnVarNameInTable="columnNombreBodega" msprop:Generator_ColumnPropNameInRow="NombreBodega" msprop:Generator_ColumnPropNameInTable="NombreBodegaColumn" msprop:Generator_UserColumnName="NombreBodega" type="xs:string" minOccurs="0" />
               <xs:element name="NombrePersonal" msprop:Generator_ColumnVarNameInTable="columnNombrePersonal" msprop:Generator_ColumnPropNameInRow="NombrePersonal" msprop:Generator_ColumnPropNameInTable="NombrePersonalColumn" msprop:Generator_UserColumnName="NombrePersonal" type="xs:string" minOccurs="0" />
               <xs:element name="ObservacionTrilla" msprop:Generator_ColumnVarNameInTable="columnObservacionTrilla" msprop:Generator_ColumnPropNameInRow="ObservacionTrilla" msprop:Generator_ColumnPropNameInTable="ObservacionTrillaColumn" msprop:Generator_UserColumnName="ObservacionTrilla" type="xs:string" minOccurs="0" />
+              <xs:element name="nombre_persona" msprop:Generator_ColumnVarNameInTable="columnnombre_persona" msprop:Generator_ColumnPropNameInRow="nombre_persona" msprop:Generator_ColumnPropNameInTable="nombre_personaColumn" msprop:Generator_UserColumnName="nombre_persona" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

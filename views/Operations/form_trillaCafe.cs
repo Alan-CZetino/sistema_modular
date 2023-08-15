@@ -32,7 +32,7 @@ namespace sistema_modular_cafe_majada.views
         private int icosechaCambio;
         TrillaController countTr = null;
         private TrillaController reportesController = new TrillaController();
-
+        UserController userC = new UserController();
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
@@ -794,10 +794,17 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfTrilla_Click(object sender, EventArgs e)
         {
+            var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             if (TrillaSeleccionado.ITrilla != 0)
             {
-                string reportPath = "repor_trillado.rdlc";
+                string reportPath = "../../views/Reports/repor_trillado.rdlc";
                 List<ReportesTrilla> data = reportesController.ObtenerTrillasReports(TrillaSeleccionado.ITrilla);
+                foreach (ReportesTrilla reporte in data)
+                {
+
+                    reporte.nombre_persona = Nombre_Usuario.ApellidoPersonaUsuario;
+
+                }
                 ReportDataSource reportDataSource = new ReportDataSource("repor_trillado", data);
 
                 form_opcReportExistencias reportTrilla = new form_opcReportExistencias(reportPath, reportDataSource);

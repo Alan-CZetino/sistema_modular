@@ -76,6 +76,6 @@ namespace sistema_modular_cafe_majada.model.Mapping.Operations
         public int IdPersonal { get; set; }
         public string NombrePersonal { get; set; }
         public string ObservacionTraslado { get; set; }
-        public int CountTraslado { get; set; }
+        public string nombre_persona { get; set; }
     }
 }

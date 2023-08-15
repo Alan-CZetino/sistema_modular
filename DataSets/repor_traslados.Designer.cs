@@ -309,6 +309,8 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             private global::System.Data.DataColumn columnObservacionTraslado;
             
+            private global::System.Data.DataColumn columnnombre_persona;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public repor_trasladosDataTable() {
@@ -464,6 +466,14 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nombre_personaColumn {
+                get {
+                    return this.columnnombre_persona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -499,7 +509,23 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public repor_trasladosRow Addrepor_trasladosRow(string NombreCosecha, string NumTraslado, string FechaTrasladoCafe, string NombreAlmacenProcedencia, string NombreBodegaProcedencia, string NombreProcedencia, string NombreAlmacenDestino, string NombreBodegaDestino, string NombreProcedenciaDestino, string NombreCalidadCafe, string NombreSubProducto, string CantidadTrasladoSacos, string CantidadTrasladoQQs, string NombrePersonal, string ObservacionTraslado) {
+            public repor_trasladosRow Addrepor_trasladosRow(
+                        string NombreCosecha, 
+                        string NumTraslado, 
+                        string FechaTrasladoCafe, 
+                        string NombreAlmacenProcedencia, 
+                        string NombreBodegaProcedencia, 
+                        string NombreProcedencia, 
+                        string NombreAlmacenDestino, 
+                        string NombreBodegaDestino, 
+                        string NombreProcedenciaDestino, 
+                        string NombreCalidadCafe, 
+                        string NombreSubProducto, 
+                        string CantidadTrasladoSacos, 
+                        string CantidadTrasladoQQs, 
+                        string NombrePersonal, 
+                        string ObservacionTraslado, 
+                        string nombre_persona) {
                 repor_trasladosRow rowrepor_trasladosRow = ((repor_trasladosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NombreCosecha,
@@ -516,7 +542,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                         CantidadTrasladoSacos,
                         CantidadTrasladoQQs,
                         NombrePersonal,
-                        ObservacionTraslado};
+                        ObservacionTraslado,
+                        nombre_persona};
                 rowrepor_trasladosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrepor_trasladosRow);
                 return rowrepor_trasladosRow;
@@ -554,6 +581,7 @@ namespace sistema_modular_cafe_majada.DataSets {
                 this.columnCantidadTrasladoQQs = base.Columns["CantidadTrasladoQQs"];
                 this.columnNombrePersonal = base.Columns["NombrePersonal"];
                 this.columnObservacionTraslado = base.Columns["ObservacionTraslado"];
+                this.columnnombre_persona = base.Columns["nombre_persona"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -589,6 +617,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                 base.Columns.Add(this.columnNombrePersonal);
                 this.columnObservacionTraslado = new global::System.Data.DataColumn("ObservacionTraslado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObservacionTraslado);
+                this.columnnombre_persona = new global::System.Data.DataColumn("nombre_persona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombre_persona);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_repor_traslados");
                 this.ExtendedProperties.Add("Generator_UserTableName", "repor_traslados");
             }
@@ -985,6 +1015,22 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nombre_persona {
+                get {
+                    try {
+                        return ((string)(this[this.tablerepor_traslados.nombre_personaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre_persona\' de la tabla \'repor_traslados\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerepor_traslados.nombre_personaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNombreCosechaNull() {
                 return this.IsNull(this.tablerepor_traslados.NombreCosechaColumn);
             }
@@ -1161,6 +1207,18 @@ namespace sistema_modular_cafe_majada.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetObservacionTrasladoNull() {
                 this[this.tablerepor_traslados.ObservacionTrasladoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isnombre_personaNull() {
+                return this.IsNull(this.tablerepor_traslados.nombre_personaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setnombre_personaNull() {
+                this[this.tablerepor_traslados.nombre_personaColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -33,6 +33,8 @@ namespace sistema_modular_cafe_majada.views
         private bool imgClickBodega = false;
         SubPartidaController countSP = null;
         private SubPartidaController reportesController = new SubPartidaController();
+        private string fechaActual;
+        UserController userC = new UserController();
         public double cantidaQQsUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
         public double cantidaSacoUpdate = 0.00;
@@ -1207,11 +1209,17 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfSPartida_Click(object sender, EventArgs e)
         {
+            var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             if (SubPartidaSeleccionado.ISubPartida != 0)
             {
-            string reportPath = "report_numsubpartida.rdlc";
+            string reportPath = "../../views/Reports/report_numsubpartida.rdlc";
             List<ReportSubPartida> data = reportesController.ObtenerSubPartida(SubPartidaSeleccionado.ISubPartida);
-            ReportDataSource reportDataSource = new ReportDataSource("repor_numsubpartida", data);
+                foreach (ReportSubPartida reporte in data)
+                {
+                    reporte.nombre_persona = Nombre_Usuario.ApellidoPersonaUsuario;
+
+                }
+                ReportDataSource reportDataSource = new ReportDataSource("repor_numsubpartida", data);
             form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPath, reportDataSource);
             reportSPartida.ShowDialog();
              }

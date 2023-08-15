@@ -2423,7 +2423,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.635cm</Top>
+          <Top>0.3175cm</Top>
           <Left>3.06646cm</Left>
           <Height>0.52944cm</Height>
           <Width>12.07791cm</Width>
@@ -2453,7 +2453,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox152</rd:DefaultName>
-          <Top>1.22273cm</Top>
+          <Top>0.90523cm</Top>
           <Left>13.91391cm</Left>
           <Height>0.6cm</Height>
           <Width>2.92333cm</Width>
@@ -2485,11 +2485,77 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox152</rd:DefaultName>
-          <Top>1.22273cm</Top>
+          <Top>0.90523cm</Top>
           <Left>16.83724cm</Left>
           <Height>0.6cm</Height>
           <Width>1.62687cm</Width>
           <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox166">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Reporte elaborador por:</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox152</rd:DefaultName>
+          <Top>0.90523cm</Top>
+          <Left>3.06646cm</Left>
+          <Height>0.6cm</Height>
+          <Width>4.2727cm</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox167">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!nombre_persona.Value, "repor_numsubpartida")</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox152</rd:DefaultName>
+          <Top>0.90523cm</Top>
+          <Left>7.33916cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.81318cm</Width>
+          <ZIndex>5</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -2643,6 +2709,10 @@
         </Field>
         <Field Name="ObservacionPesador">
           <DataField>ObservacionPesador</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nombre_persona">
+          <DataField>nombre_persona</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

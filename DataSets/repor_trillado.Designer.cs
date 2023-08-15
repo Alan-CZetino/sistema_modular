@@ -305,6 +305,8 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             private global::System.Data.DataColumn columnObservacionTrilla;
             
+            private global::System.Data.DataColumn columnnombre_persona;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public repor_trilladoDataTable() {
@@ -444,6 +446,14 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn nombre_personaColumn {
+                get {
+                    return this.columnnombre_persona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +489,7 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public repor_trilladoRow Addrepor_trilladoRow(string NombreCosecha, string NumTrilla, string FechaTrillaCafe, string TipoMovimientoTrilla, string NombreProcedencia, string NombreCalidadCafe, string NombreSubProducto, string CantidadTrillaQQs, string CantidadTrillaSacos, string NombreAlmacen, string NombreBodega, string NombrePersonal, string ObservacionTrilla) {
+            public repor_trilladoRow Addrepor_trilladoRow(string NombreCosecha, string NumTrilla, string FechaTrillaCafe, string TipoMovimientoTrilla, string NombreProcedencia, string NombreCalidadCafe, string NombreSubProducto, string CantidadTrillaQQs, string CantidadTrillaSacos, string NombreAlmacen, string NombreBodega, string NombrePersonal, string ObservacionTrilla, string nombre_persona) {
                 repor_trilladoRow rowrepor_trilladoRow = ((repor_trilladoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NombreCosecha,
@@ -494,7 +504,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                         NombreAlmacen,
                         NombreBodega,
                         NombrePersonal,
-                        ObservacionTrilla};
+                        ObservacionTrilla,
+                        nombre_persona};
                 rowrepor_trilladoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowrepor_trilladoRow);
                 return rowrepor_trilladoRow;
@@ -530,6 +541,7 @@ namespace sistema_modular_cafe_majada.DataSets {
                 this.columnNombreBodega = base.Columns["NombreBodega"];
                 this.columnNombrePersonal = base.Columns["NombrePersonal"];
                 this.columnObservacionTrilla = base.Columns["ObservacionTrilla"];
+                this.columnnombre_persona = base.Columns["nombre_persona"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -561,6 +573,8 @@ namespace sistema_modular_cafe_majada.DataSets {
                 base.Columns.Add(this.columnNombrePersonal);
                 this.columnObservacionTrilla = new global::System.Data.DataColumn("ObservacionTrilla", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObservacionTrilla);
+                this.columnnombre_persona = new global::System.Data.DataColumn("nombre_persona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombre_persona);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_repor_trillado");
                 this.ExtendedProperties.Add("Generator_UserTableName", "repor_trillado");
             }
@@ -920,6 +934,22 @@ namespace sistema_modular_cafe_majada.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string nombre_persona {
+                get {
+                    try {
+                        return ((string)(this[this.tablerepor_trillado.nombre_personaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre_persona\' de la tabla \'repor_trillado\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablerepor_trillado.nombre_personaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNombreCosechaNull() {
                 return this.IsNull(this.tablerepor_trillado.NombreCosechaColumn);
             }
@@ -1072,6 +1102,18 @@ namespace sistema_modular_cafe_majada.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetObservacionTrillaNull() {
                 this[this.tablerepor_trillado.ObservacionTrillaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isnombre_personaNull() {
+                return this.IsNull(this.tablerepor_trillado.nombre_personaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setnombre_personaNull() {
+                this[this.tablerepor_trillado.nombre_personaColumn] = global::System.Convert.DBNull;
             }
         }
         

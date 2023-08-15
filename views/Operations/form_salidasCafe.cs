@@ -32,6 +32,7 @@ namespace sistema_modular_cafe_majada.views
         private int icosechaCambio;
         SalidaController countSl = null;
         private SalidaController reportesController = new SalidaController();
+        UserController userC = new UserController();
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
@@ -795,11 +796,17 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_pdfSalida_Click(object sender, EventArgs e)
         {
+            var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             if (SalidaSeleccionado.ISalida != 0)
             {
-                string reportPR = "repor_salidas.rdlc";
-            List<ReportSalida> data = reportesController.ObtenerReporteSalida(SalidaSeleccionado.ISalida);
-            ReportDataSource reportDataSource = new ReportDataSource("repor_salidas", data);
+                string reportPR = "../../views/Reports/repor_salidas.rdlc";
+                List<ReportSalida> data = reportesController.ObtenerReporteSalida(SalidaSeleccionado.ISalida);
+                foreach (ReportSalida reporte in data)
+                {
+                    reporte.nombre_persona = Nombre_Usuario.ApellidoPersonaUsuario;
+
+                }
+                ReportDataSource reportDataSource = new ReportDataSource("repor_salidas", data);
             form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR, reportDataSource);
             reportSPartida.ShowDialog();
         }

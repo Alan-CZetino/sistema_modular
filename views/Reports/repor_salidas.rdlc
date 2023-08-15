@@ -69,6 +69,10 @@
           <DataField>ObservacionSalida</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="nombre_persona">
+          <DataField>nombre_persona</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>repor_salidas</rd:DataSetName>
@@ -1304,7 +1308,7 @@
               <Value>Logo__majada</Value>
               <Sizing>FitProportional</Sizing>
               <Top>0.46585cm</Top>
-              <Left>1.5675cm</Left>
+              <Left>0.9325cm</Left>
               <Height>1.60831cm</Height>
               <Width>2.7225cm</Width>
               <Style>
@@ -1330,7 +1334,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
-              <Top>0.6142cm</Top>
+              <Top>0.2967cm</Top>
               <Left>4.63396cm</Left>
               <Height>0.52944cm</Height>
               <Width>12.07791cm</Width>
@@ -1362,11 +1366,77 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox7</rd:DefaultName>
-              <Top>1.32002cm</Top>
+              <Top>1.00252cm</Top>
               <Left>4.63396cm</Left>
               <Height>0.52944cm</Height>
               <Width>12.07791cm</Width>
               <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox166">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Reporte elaborador por:</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox152</rd:DefaultName>
+              <Top>1.67307cm</Top>
+              <Left>4.63396cm</Left>
+              <Height>0.6cm</Height>
+              <Width>4.2727cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox167">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!nombre_persona.Value, "repor_salidas")</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox152</rd:DefaultName>
+              <Top>1.67307cm</Top>
+              <Left>8.90666cm</Left>
+              <Height>0.6cm</Height>
+              <Width>3.81318cm</Width>
+              <ZIndex>4</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
