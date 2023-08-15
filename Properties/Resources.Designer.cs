@@ -103,6 +103,16 @@ namespace sistema_modular_cafe_majada.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap apoyo {
+            get {
+                object obj = ResourceManager.GetObject("apoyo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Barra_de_busqueda {
             get {
                 object obj = ResourceManager.GetObject("Barra de busqueda", resourceCulture);

@@ -53,6 +53,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_editPass = new System.Windows.Forms.Button();
+            this.btn_backup = new System.Windows.Forms.Button();
             this.pnl_userData.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -398,12 +399,35 @@ namespace sistema_modular_cafe_majada.views
             this.btn_editPass.UseVisualStyleBackColor = false;
             this.btn_editPass.Click += new System.EventHandler(this.btn_editPass_Click);
             // 
+            // btn_backup
+            // 
+            this.btn_backup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_backup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btn_backup.FlatAppearance.BorderSize = 0;
+            this.btn_backup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(99)))), ((int)(((byte)(106)))));
+            this.btn_backup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(99)))), ((int)(((byte)(106)))));
+            this.btn_backup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_backup.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_backup.ForeColor = System.Drawing.Color.White;
+            this.btn_backup.Image = global::sistema_modular_cafe_majada.Properties.Resources.apoyo;
+            this.btn_backup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_backup.Location = new System.Drawing.Point(771, 620);
+            this.btn_backup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_backup.Name = "btn_backup";
+            this.btn_backup.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btn_backup.Size = new System.Drawing.Size(246, 66);
+            this.btn_backup.TabIndex = 5;
+            this.btn_backup.Text = "Generar Backup de\r\nla base de datos";
+            this.btn_backup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_backup.UseVisualStyleBackColor = false;
+            // 
             // form_userData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1029, 697);
+            this.Controls.Add(this.btn_backup);
             this.Controls.Add(this.pnl_userData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -447,5 +471,6 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_savePass;
         private System.Windows.Forms.Button btn_saveperfil;
+        private System.Windows.Forms.Button btn_backup;
     }
 }
