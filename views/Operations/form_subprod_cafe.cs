@@ -160,7 +160,7 @@ namespace sistema_modular_cafe_majada.views
                     txb_subProdCafe.Text = subProdcSeleccionado.NombreSubProducto;
                     txb_descripcion.Text = subProdcSeleccionado.DescripcionSubProducto;
                     txb_calidadCafe.Text = subProdcSeleccionado.NombreCalidadCafe;
-
+                    
                 }
             }
             else
@@ -419,7 +419,7 @@ namespace sistema_modular_cafe_majada.views
                     IdSubProducto = subProdcSeleccionado.IdSubProducto,
                     NombreSubProducto = nameSubProducto,
                     DescripcionSubProducto = description,
-                    IdCalidadCafe = CalidadSeleccionada.ICalidadSeleccionada
+                    IdCalidadCafe = iccafe
                 };
                 
                 // Código que se ejecutará si se ha hecho clic en la imagen update

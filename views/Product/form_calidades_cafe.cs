@@ -42,6 +42,8 @@ namespace sistema_modular_cafe_majada.views
             dtg_calidadCafe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             AsignarFuente();
+
+            ResponsiveConfig();
         }
 
         private void form_calidades_cafe_Load(object sender, EventArgs e)
@@ -422,6 +424,13 @@ namespace sistema_modular_cafe_majada.views
             FontViews.TextBoxStyle(textBoxes);
             //se asigna a botones
             FontViews.ButtonStyleGC(buttons);
+        }
+
+        private void ResponsiveConfig()
+        {
+            this.Size = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1280, 490);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
         }
     }
 }

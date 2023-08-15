@@ -357,15 +357,6 @@ namespace sistema_modular_cafe_majada.views
             var userControl = new UserController();
             var usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
 
-            //verifica si ya exite un nombre identico
-            var existeB = subController.ExisteBodega(txb_nombre.Text, BeneficioSeleccionado.IdBeneficioSleccionado);
-
-            if (existeB)
-            {
-                MessageBox.Show("Ya existe una bodega con el mismo nombre en el beneficio ( "+BeneficioSeleccionado.NombreBeneficioSeleccionado+" ). Por favor, elija un nombre diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             TextBox[] textBoxes = { txb_ubicacion };
             TextBox[] textBoxesM = { txb_nombre };
             TextBox[] textBoxesLetter = { txb_descripcion };
@@ -408,6 +399,15 @@ namespace sistema_modular_cafe_majada.views
 
             if (!imagenClickeada)
             {
+                //verifica si ya exite un nombre identico
+                var existeB = subController.ExisteBodega(txb_nombre.Text, BeneficioSeleccionado.IdBeneficioSleccionado);
+
+                if (existeB)
+                {
+                    MessageBox.Show("Ya existe una bodega con el mismo nombre en el beneficio ( " + BeneficioSeleccionado.NombreBeneficioSeleccionado + " ). Por favor, elija un nombre diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Código que se ejecutará si no se ha hecho clic en la imagen update
                 // Llamar al controlador para insertar en la base de datos
                 bool exito = subController.InsertarBodega(bodegaInsert);

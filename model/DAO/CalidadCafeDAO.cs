@@ -111,7 +111,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                     {
                         cc = new CalidadCafe()
                         {
-                            LastId = Convert.ToInt32(reader["LastId"])
+                            LastId = (reader["LastId"]) is DBNull ? 0 : Convert.ToInt32(reader["LastId"])
                         };
                     }
                 }

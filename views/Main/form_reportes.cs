@@ -33,11 +33,11 @@ namespace sistema_modular_cafe_majada.views
         UserController userC = new UserController();
         string Nombre_cosecha = CosechaActual.NombreCosechaActual;
         private ReportesController reportesController = new ReportesController();
-        readonly string RutaReportSubpda = "../../views/Reports/repor_subpartida.rdlc";
-        readonly string RutaReportBodega = "../../views/Reports/repor_bodega.rdlc";
-        readonly string RutaReportCCalidad = "../../views/Reports/repor_ccalidad.rdlc";
-        readonly string RutaReportCafeBodega = "../../views/Reports/repor_cafebodega.rdlc";
-        readonly string RutaReportGraficas = "../../views/Reports/repor_grafico.rdlc";
+        readonly string RutaReportSubpda = "repor_subpartida.rdlc";
+        readonly string RutaReportBodega = "repor_bodega.rdlc";
+        readonly string RutaReportCCalidad = "repor_ccalidad.rdlc";
+        readonly string RutaReportCafeBodega = "repor_cafebodega.rdlc";
+        readonly string RutaReportGraficas = "repor_grafico.rdlc";
 
         public form_reportes()
         {

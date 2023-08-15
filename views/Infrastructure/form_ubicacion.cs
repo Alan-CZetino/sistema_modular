@@ -132,7 +132,7 @@ namespace sistema_modular_cafe_majada.views
                 almacenSeleccionado.DescripcionAlmacen = filaSeleccionada.Cells["Descripcion"].Value.ToString();
                 almacenSeleccionado.CapacidadAlmacen = Convert.ToDouble(filaSeleccionada.Cells["Capacidad"].Value);
                 almacenSeleccionado.UbicacionAlmacen = filaSeleccionada.Cells["Ubicacion"].Value.ToString();
-                almacenSeleccionado.NombreBodegaUbicacion = filaSeleccionada.Cells["Bodega_Ubicacion"].Value.ToString();
+                almacenSeleccionado.NombreBodegaUbicacion = filaSeleccionada.Cells["Bodega"].Value.ToString();
                 BodegaSeleccionada.NombreBodega = almacenSeleccionado.NombreBodegaUbicacion;
             }
             else
@@ -440,15 +440,6 @@ namespace sistema_modular_cafe_majada.views
             string ubicacion = txb_ubicacion.Text;
             string description = txb_descripcion.Text;
 
-            //verifica si ya exite un nombre identico
-            var existeA = subController.ExisteAlmacen(txb_nombreAlmacen.Text, selectedValue);
-
-            if (existeA)
-            {
-                MessageBox.Show("Ya existe un Almacen con el mismo nombre en la Bodega ( " + selectedValueName + " ). Por favor, elija un nombre diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             double capacidad;
             if (double.TryParse(txb_capacidad.Text, NumberStyles.Float, CultureInfo.GetCultureInfo("en-US"), out capacidad)){}
             else
@@ -488,6 +479,15 @@ namespace sistema_modular_cafe_majada.views
 
             if (!imagenClickeada)
             {
+                //verifica si ya exite un nombre identico
+                var existeA = subController.ExisteAlmacen(txb_nombreAlmacen.Text, selectedValue);
+
+                if (existeA)
+                {
+                    MessageBox.Show("Ya existe un Almacen con el mismo nombre en la Bodega ( " + selectedValueName + " ). Por favor, elija un nombre diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Código que se ejecutará si no se ha hecho clic en la imagen update
                 // Llamar al controlador para insertar en la base de datos
                 bool exito = subController.InsertarAlmacen(AlmacenInsert);

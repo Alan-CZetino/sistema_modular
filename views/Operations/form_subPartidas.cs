@@ -99,6 +99,8 @@ namespace sistema_modular_cafe_majada.views
             cbx_subProducto.DropDownStyle = ComboBoxStyle.DropDownList;
 
             AsignarFuente();
+
+            ResponsiveConfig();
         }
 
         //
@@ -1207,7 +1209,7 @@ namespace sistema_modular_cafe_majada.views
         {
             if (SubPartidaSeleccionado.ISubPartida != 0)
             {
-            string reportPath = "../../views/Reports/report_numsubpartida.rdlc";
+            string reportPath = "report_numsubpartida.rdlc";
             List<ReportSubPartida> data = reportesController.ObtenerSubPartida(SubPartidaSeleccionado.ISubPartida);
             ReportDataSource reportDataSource = new ReportDataSource("repor_numsubpartida", data);
             form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPath, reportDataSource);
@@ -1933,6 +1935,13 @@ namespace sistema_modular_cafe_majada.views
                 }
 
             }
+        }
+
+        private void ResponsiveConfig()
+        {
+            this.Size = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1280, 490);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
         }
     }
 }

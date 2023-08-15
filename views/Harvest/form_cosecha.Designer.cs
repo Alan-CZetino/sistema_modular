@@ -81,7 +81,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(753, 1);
+            this.panel3.Location = new System.Drawing.Point(1004, 1);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1, 489);
@@ -91,7 +91,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(1, 397);
+            this.panel4.Location = new System.Drawing.Point(1, 489);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1003, 1);
@@ -115,7 +115,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.txb_id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txb_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_id.Location = new System.Drawing.Point(610, 18);
+            this.txb_id.Location = new System.Drawing.Point(814, 20);
             this.txb_id.Margin = new System.Windows.Forms.Padding(2);
             this.txb_id.Name = "txb_id";
             this.txb_id.Size = new System.Drawing.Size(48, 27);
@@ -127,7 +127,7 @@ namespace sistema_modular_cafe_majada.views
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(739, 27);
+            this.label4.Location = new System.Drawing.Point(747, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 18);
             this.label4.TabIndex = 4;
@@ -142,7 +142,7 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btn_mod_cosecha, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_delete_cosecha, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(651, 6);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(866, 7);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -157,7 +157,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_mod_cosecha.Location = new System.Drawing.Point(2, 2);
             this.btn_mod_cosecha.Margin = new System.Windows.Forms.Padding(2);
             this.btn_mod_cosecha.Name = "btn_mod_cosecha";
-            this.btn_mod_cosecha.Size = new System.Drawing.Size(57, 51);
+            this.btn_mod_cosecha.Size = new System.Drawing.Size(59, 51);
             this.btn_mod_cosecha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_mod_cosecha.TabIndex = 1;
             this.btn_mod_cosecha.TabStop = false;
@@ -167,10 +167,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.btn_delete_cosecha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_delete_cosecha.Image = global::sistema_modular_cafe_majada.Properties.Resources.boton_eliminar;
-            this.btn_delete_cosecha.Location = new System.Drawing.Point(49, 2);
+            this.btn_delete_cosecha.Location = new System.Drawing.Point(65, 2);
             this.btn_delete_cosecha.Margin = new System.Windows.Forms.Padding(2);
             this.btn_delete_cosecha.Name = "btn_delete_cosecha";
-            this.btn_delete_cosecha.Size = new System.Drawing.Size(58, 51);
+            this.btn_delete_cosecha.Size = new System.Drawing.Size(60, 51);
             this.btn_delete_cosecha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_delete_cosecha.TabIndex = 2;
             this.btn_delete_cosecha.TabStop = false;
@@ -203,7 +203,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel6.Controls.Add(this.txb_nombre);
             this.panel6.Controls.Add(this.label3);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(1, 58);
+            this.panel6.Location = new System.Drawing.Point(1, 71);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(296, 418);
@@ -220,7 +220,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.ForeColor = System.Drawing.Color.White;
             this.btn_Cancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
             this.btn_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Cancel.Location = new System.Drawing.Point(8, 109);
+            this.btn_Cancel.Location = new System.Drawing.Point(154, 74);
             this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -277,7 +277,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.panel7.Controls.Add(this.dtg_cosechas);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(223, 58);
+            this.panel7.Location = new System.Drawing.Point(297, 71);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(707, 418);

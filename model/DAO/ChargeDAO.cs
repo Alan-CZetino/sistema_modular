@@ -265,7 +265,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                     {
                         alm = new Charge()
                         {
-                            LastId = Convert.ToInt32(reader["LastId"])
+                            LastId = (reader["LastId"]) is DBNull ? 0 : Convert.ToInt32(reader["LastId"])
                         };
                     }
                 }

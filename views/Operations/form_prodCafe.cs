@@ -184,7 +184,7 @@ namespace sistema_modular_cafe_majada.views
             ProcedenciaDestinoController proceC = new ProcedenciaDestinoController();
             var count = proceC.CountProcedencia();
             txb_id.Text = Convert.ToString(count.CountProcedencia + 1);
-            this.Close();
+            
         }
 
         public void ConvertFirstCharacter(TextBox[] textBoxes)
@@ -337,7 +337,7 @@ namespace sistema_modular_cafe_majada.views
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             ClearDataTxb();
-            
+            this.Close();
         }
 
         private void btn_deletePorceCafe_Click(object sender, EventArgs e)

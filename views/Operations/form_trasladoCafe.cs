@@ -96,6 +96,8 @@ namespace sistema_modular_cafe_majada.views
 
             //
             AsignarFuente();
+
+            ResponsiveConfig();
         }
 
         //
@@ -1038,7 +1040,7 @@ namespace sistema_modular_cafe_majada.views
             if (TrasladoSeleccionado.ITraslado != 0)
             {
 
-                string reportPath = "../../views/Reports/repor_traslados.rdlc";
+                string reportPath = "repor_traslados.rdlc";
                 
                 List<ReporteTraslado> data = reportesController.ObtenerTrasladosReports(TrasladoSeleccionado.ITraslado);
                 ReportDataSource reportDataSource = new ReportDataSource("repor_traslados", data);
@@ -1114,6 +1116,13 @@ namespace sistema_modular_cafe_majada.views
             FontViews.ButtonStyleGC(buttons);
             //se asigna a fechas
             FontViews.DateStyle(dateTimePickers);
+        }
+
+        private void ResponsiveConfig()
+        {
+            this.Size = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1280, 490);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
         }
     }
 }

@@ -797,7 +797,7 @@ namespace sistema_modular_cafe_majada.views
         {
             if (SalidaSeleccionado.ISalida != 0)
             {
-                string reportPR = "../../views/Reports/repor_salidas.rdlc";
+                string reportPR = "repor_salidas.rdlc";
             List<ReportSalida> data = reportesController.ObtenerReporteSalida(SalidaSeleccionado.ISalida);
             ReportDataSource reportDataSource = new ReportDataSource("repor_salidas", data);
             form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR, reportDataSource);
