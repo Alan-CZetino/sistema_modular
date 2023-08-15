@@ -290,7 +290,7 @@ namespace sistema_modular_cafe_majada
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.btn_persona);
+            this.panel5.Controls.Add(this.btn_cosecha);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(337, 2);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -322,7 +322,7 @@ namespace sistema_modular_cafe_majada
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.btn_rol);
+            this.panel4.Controls.Add(this.btn_personal);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(170, 2);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -386,7 +386,7 @@ namespace sistema_modular_cafe_majada
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btn_personal);
+            this.panel2.Controls.Add(this.btn_rol);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(504, 2);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -418,7 +418,7 @@ namespace sistema_modular_cafe_majada
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btn_cosecha);
+            this.panel1.Controls.Add(this.btn_persona);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
