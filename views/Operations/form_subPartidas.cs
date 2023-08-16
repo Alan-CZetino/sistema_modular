@@ -61,7 +61,7 @@ namespace sistema_modular_cafe_majada.views
         public form_subPartidas()
         {
             InitializeComponent();
-
+            ClearDataTxb();
             // Configurar el temporizador para que se dispare cada cierto intervalo (por ejemplo, cada 5 segundos).
             refreshTimer = new System.Timers.Timer();
             refreshTimer.Interval = 5000; // Intervalo en milisegundos (5 segundos en este caso).
