@@ -322,14 +322,17 @@ namespace sistema_modular_cafe_majada.views
             
             var sub = new SubPartida();
 
+            Console.WriteLine("Depuracion - numSubpartida " + txb_subPartida.Text);
             if (SubPartidaSeleccionado.ISubPartida != 0)
             {
+                Console.WriteLine("Depuracion - numSubpartida " + txb_subPartida.Text + " SubPartidaSeleccionada " + SubPartidaSeleccionado.NumSubPartida);
                 sub = subPC.ObtenerSubPartidaPorID(SubPartidaSeleccionado.ISubPartida);
                 txb_subPartida.Text = Convert.ToString(SubPartidaSeleccionado.NumSubPartida);
                 iSubPartida = SubPartidaSeleccionado.ISubPartida;
             }
             else
             {
+                Console.WriteLine("Depuracion - numSubpartida " + txb_subPartida.Text + " SubPartidaSeleccionada " + SubPartidaSeleccionado.NumSubPartida);
                 sub = subPC.ObtenerSubPartidasPorNombreAndCosecha(txb.Text, CosechaActual.NombreCosechaActual);
                 txb_subPartida.Text = Convert.ToString(txb.Text);
                 iSubPartida = sub.IdSubpartida;
@@ -2005,6 +2008,8 @@ namespace sistema_modular_cafe_majada.views
                 e.Handled = true; // Evitar que se genere el "ding" de sonido de Windows
 
                 int numS = Convert.ToInt32(txb_subPartida.Text);
+                ClearDataTxb();
+                txb_subPartida.Text = Convert.ToString(numS);
                 countSP = new SubPartidaController();
                 bool verificexisten = countSP.VerificarExistenciaSubPartida(CosechaActual.ICosechaActual, Convert.ToInt32(txb_subPartida.Text));
 

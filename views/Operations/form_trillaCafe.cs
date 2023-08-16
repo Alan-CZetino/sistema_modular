@@ -947,6 +947,8 @@ namespace sistema_modular_cafe_majada.views
                     e.Handled = true; // Evitar que se genere el "ding" de sonido de Windows
 
                     int numS = Convert.ToInt32(txb_numTrilla.Text);
+                    ClearDataTxb();
+                    txb_numTrilla.Text = Convert.ToString(numS);
                     var Tr = new TrillaController();
                     bool verificexisten = Tr.VerificarExistenciaTrilla(CosechaActual.ICosechaActual, Convert.ToInt32(txb_numTrilla.Text));
 

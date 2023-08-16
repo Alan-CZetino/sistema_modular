@@ -1181,6 +1181,8 @@ namespace sistema_modular_cafe_majada.views
                     e.Handled = true; // Evitar que se genere el "ding" de sonido de Windows
 
                     int numS = Convert.ToInt32(txb_numTraslado.Text);
+                    ClearDataTxb();
+                    txb_numTraslado.Text = Convert.ToString(numS);
                     var Tr = new TrasladoController();
                     bool verificexisten = Tr.VerificarExistenciaTraslado(CosechaActual.ICosechaActual, Convert.ToInt32(txb_numTraslado.Text));
 
@@ -1195,6 +1197,7 @@ namespace sistema_modular_cafe_majada.views
                         if (result == DialogResult.Yes)
                         {
                             ClearDataTxb();
+                            txb_numTraslado.Text = Convert.ToString(numS);
                         }
                     }
                 }

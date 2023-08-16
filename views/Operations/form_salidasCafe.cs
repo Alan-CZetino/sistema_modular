@@ -935,6 +935,8 @@ namespace sistema_modular_cafe_majada.views
                     e.Handled = true; // Evitar que se genere el "ding" de sonido de Windows
 
                     int numS = Convert.ToInt32(txb_numSalida.Text);
+                    ClearDataTxb();
+                    txb_numSalida.Text = Convert.ToString(numS);
                     countSl = new SalidaController();
                     bool verificexisten = countSl.VerificarExistenciaSalida(CosechaActual.ICosechaActual, Convert.ToInt32(txb_numSalida.Text));
 
