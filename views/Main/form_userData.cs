@@ -370,7 +370,7 @@ namespace sistema_modular_cafe_majada.views
                     }
 
                     // Mostrar mensaje de éxito
-                    MessageBox.Show("Respaldo generado exitosamente.");
+                    MessageBox.Show("Respaldo generado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
