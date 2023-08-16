@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sistema_modular_cafe_majada.Settings;
 
 namespace sistema_modular_cafe_majada.model.Connection
 {
@@ -17,8 +18,28 @@ namespace sistema_modular_cafe_majada.model.Connection
 
         public ConnectionDB()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["cadena_conexion"].ConnectionString;
-            conexion = new MySqlConnection(connectionString);
+            string key = "CooperativaAdmin"; 
+
+            text configuracion = new text(key);
+
+            try
+            {
+                // Descifrar los valores cifrados
+                string servidorDescifrado = EncryptionUtility.DecryptString(configuracion.servidorCifrado, key);
+                string usuarioDescifrado = EncryptionUtility.DecryptString(configuracion.usuarioCifrado, key);
+                string contrasenaDescifrada = EncryptionUtility.DecryptString(configuracion.contrasenaCifrada, key);
+                string baseDeDatosDescifrada = EncryptionUtility.DecryptString(configuracion.baseDeDatosCifrada, key);
+
+                // Construir la cadena de conexión con los valores descifrados
+                string connectionString = $"Server={servidorDescifrado};Database={baseDeDatosDescifrada};User Id={usuarioDescifrado};Password={contrasenaDescifrada};";
+
+                conexion = new MySqlConnection(connectionString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al descifrar: " + ex.Message);
+                // Manejar el error adecuadamente
+            }
         }
 
         //private MySqlConnection connection;

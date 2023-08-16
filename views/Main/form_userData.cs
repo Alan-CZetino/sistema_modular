@@ -3,10 +3,12 @@ using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
 using sistema_modular_cafe_majada.model.UserData;
+using sistema_modular_cafe_majada.Settings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -318,5 +320,65 @@ namespace sistema_modular_cafe_majada.views
             FontViews.ButtonStyleLogin(buttons);
             FontViews.ButtonStyleLogin(buttonsedit);
         }
+
+        private void btn_backup_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                // Configurar el cuadro de diálogo para guardar el respaldo
+                saveFileDialog.Filter = "Archivos SQL (*.sql)|*.sql|Todos los archivos (*.*)|*.*";
+                saveFileDialog.Title = "Guardar Respaldo";
+                saveFileDialog.FileName = $"respaldo_BDCooperativa-{DateTime.Now:yyyyMMddHH}.sql";
+
+                // Si el usuario selecciona una ubicación y hace clic en Guardar
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    string key = "CooperativaAdmin"; 
+
+                    // Crear una instancia de la clase text para obtener los valores cifrados
+                    text configuracion = new text(key);
+
+                    try
+                    {
+                        // Descifrar los valores cifrados
+                        string servidorDescifrado = EncryptionUtility.DecryptString(configuracion.servidorCifrado, key);
+                        string usuarioDescifrado = EncryptionUtility.DecryptString(configuracion.usuarioCifrado, key);
+                        string contrasenaDescifrada = EncryptionUtility.DecryptString(configuracion.contrasenaCifrada, key);
+                        string baseDeDatosDescifrada = EncryptionUtility.DecryptString(configuracion.baseDeDatosCifrada, key);
+
+                        // Generar el comando para realizar el respaldo utilizando los valores descifrados
+                        string rutaRespaldos = saveFileDialog.FileName;
+                        string rutaMySqlDump = @"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump.exe";
+                        string comando = $"\"{rutaMySqlDump}\" --user={usuarioDescifrado} --password={contrasenaDescifrada} --host={servidorDescifrado} {baseDeDatosDescifrada} > \"{rutaRespaldos}\"";
+
+                        // Ejecutar el comando en el proceso de la línea de comandos
+                        ProcessStartInfo psi = new ProcessStartInfo("cmd.exe")
+                        {
+                            RedirectStandardInput = true,
+                            UseShellExecute = false,
+                            CreateNoWindow = true
+                        };
+                        Process process = Process.Start(psi);
+                        process.StandardInput.WriteLine(comando);
+                        process.StandardInput.Close();
+                        process.WaitForExit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error al descifrar: " + ex.Message);
+                    }
+
+                    // Mostrar mensaje de éxito
+                    MessageBox.Show("Respaldo generado exitosamente.");
+                }
+            }
+        }
+
+
+
+
+
+
     }
 }
