@@ -571,6 +571,83 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return salida;
         }
+        
+        // Función para obtener todos los registros de la Salida en la base de datos
+        public Salida ObtenerSalidasPorCosechaIDNombre(int numSalida, int iCosecha)
+        {
+            Salida salida = null;
+
+            try
+            {
+                // Conexión a la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT s.*,
+                                            c.nombre_cosecha,
+                                           pd.nombre_procedencia,
+                                           cc.nombre_calidad,
+                                           sbp.nombre_subproducto,
+                                           a.nombre_almacen,
+                                           b.nombre_bodega,
+                                           p.nombre_personal
+                                    FROM Salida_Cafe s
+                                    INNER JOIN Cosecha c ON s.id_cosecha_salida = c.id_cosecha
+                                    LEFT JOIN Procedencia_Destino_Cafe pd ON s.id_procedencia_salida = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON s.id_calidad_cafe_salida = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON s.id_subproducto_salida = sbp.id_subproducto
+                                    LEFT JOIN Almacen a ON s.id_almacen_salida = a.id_almacen
+                                    LEFT JOIN Bodega_Cafe b ON s.id_bodega_salida = b.id_bodega
+                                    INNER JOIN Personal p ON s.id_personal_salida = p.id_personal
+                                    WHERE s.num_salida = @Id AND s.id_cosecha_salida = @ICosecha";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id", numSalida);
+                conexion.AgregarParametro("@ICosecha", iCosecha);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        salida = new Salida()
+                        {
+                            IdSalida_cafe = Convert.ToInt32(reader["id_salida_cafe"]),
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha_salida"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumSalida_cafe = Convert.ToInt32(reader["num_salida"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_salida"]) ? 0 : Convert.ToInt32(reader["id_procedencia_salida"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
+                            IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_salida"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
+                            IdSubProducto = Convert.ToInt32(reader["id_subproducto_salida"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_salida"]) ? 0 : Convert.ToInt32(reader["id_almacen_salida"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_salida"]) ? 0 : Convert.ToInt32(reader["id_bodega_salida"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            TipoSalida = Convert.ToString(reader["tipo_salida"]),
+                            CantidadSalidaQQs = Convert.ToDouble(reader["cantidad_salida_qqs_cafe"]),
+                            CantidadSalidaSacos = Convert.ToDouble(reader["cantidad_salida_sacos_cafe"]),
+                            FechaSalidaCafe = Convert.ToDateTime(reader["fecha_salidaCafe"]),
+                            IdPersonal = Convert.ToInt32(reader["id_personal_salida"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionSalida = Convert.IsDBNull(reader["observacion_salida"]) ? null : Convert.ToString(reader["observacion_salida"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return salida;
+        }
+
         //
         public List<ReportSalida> ObtenerReporteSalida(int idSalida)
         {

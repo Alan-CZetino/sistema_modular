@@ -64,11 +64,10 @@ namespace sistema_modular_cafe_majada.views
 
             CbxSubProducto();
 
-            countSl = new SalidaController();
-            var sald = countSl.CountSalida(CosechaActual.ICosechaActual);
             //
-            SalidaSeleccionado.ISalida = 0;
-            txb_numSalida.Text = Convert.ToInt32(sald.CountSalida + 1).ToString();
+            CountNumSalida();
+
+            //
             txb_personal.Enabled = false;
             txb_personal.ReadOnly = true;
             txb_cosecha.Enabled = false;
@@ -111,11 +110,32 @@ namespace sistema_modular_cafe_majada.views
         }
 
         //
-        public void ShowSalidaView()
+        public void ShowSalidaView(TextBox txb)
         {
             var sld = new SalidaController();
             SubProductoController subPro = new SubProductoController();
-            var sub = sld.ObtenerSalidasPorIDNombre(SalidaSeleccionado.ISalida);
+            var sub = new Salida();
+
+            if (SalidaSeleccionado.ISalida != 0)
+            {
+                sub = sld.ObtenerSalidasPorIDNombre(SalidaSeleccionado.ISalida);
+                txb_numSalida.Text = Convert.ToString(SalidaSeleccionado.NumSalida);
+                iSalida = SalidaSeleccionado.ISalida;
+            }
+            else
+            {
+                sub = sld.ObtenerSalidasPorCosechaIDNombre(Convert.ToInt32(txb.Text),CosechaActual.ICosechaActual);
+                txb_numSalida.Text = Convert.ToString(txb.Text);
+                iSalida = sub.IdSalida_cafe;
+                SalidaSeleccionado.NumSalida = sub.NumSalida_cafe;
+                SalidaSeleccionado.ISalida = sub.IdSalida_cafe;
+            }
+
+            AlmacenController almCtrl = new AlmacenController();
+            var calidad = almCtrl.ObtenerAlmacenNombreCalidad(sub.IdCalidadCafe);
+            CalidadSeleccionada.ICalidadSeleccionada = (int)calidad.IdCalidadCafe;
+            CalidadSeleccionada.NombreCalidadSeleccionada = calidad.NombreCalidadCafe;
+
             var name = subPro.ObtenerSubProductoPorNombre(sub.NombreSubProducto);
             isubProducto = name.IdSubProducto;
 
@@ -128,8 +148,6 @@ namespace sistema_modular_cafe_majada.views
             DateTime fechaSalida = sub.FechaSalidaCafe.Date;
 
             dtp_fechaSalida.Value = fechaSalida;
-            iSalida = SalidaSeleccionado.ISalida;
-            txb_numSalida.Text = Convert.ToString(SalidaSeleccionado.NumSalida);
             txb_calidadCafe.Text = sub.NombreCalidadCafe;
             iCalidad = sub.IdCalidadCafe;
             iCalidadNoUpd = sub.IdCalidadCafe;
@@ -223,11 +241,19 @@ namespace sistema_modular_cafe_majada.views
             AlmacenSeleccionado.NombreAlmacen = "";
             BodegaSeleccionada.IdBodega = 0;
             BodegaSeleccionada.NombreBodega = "";
+            CalidadSeleccionada.ICalidadSeleccionada = 0;
+            CalidadSeleccionada.NombreCalidadSeleccionada = "";
+            iSalida = 0;
             dtp_fechaSalida.Value = DateTime.Now;
             rb_export.Checked = false;
             rb_otros.Checked = false;
             rb_torreFactor.Checked = false;
 
+        }
+
+        //
+        private void CountNumSalida()
+        {
             countSl = new SalidaController();
             var sald = countSl.CountSalida(CosechaActual.ICosechaActual);
             //
@@ -300,7 +326,7 @@ namespace sistema_modular_cafe_majada.views
             form_opcSalida opcSalida = new form_opcSalida();
             if (opcSalida.ShowDialog() == DialogResult.OK)
             {
-                ShowSalidaView();
+                ShowSalidaView(txb_numSalida);
             }
         }
 
@@ -505,6 +531,9 @@ namespace sistema_modular_cafe_majada.views
                     {
                         MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a dar Salida es " + almNCM.NombreCalidadCafe +" y a seleccionado la calidad "
                             + CalidadSeleccionada.NombreCalidadSeleccionada + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txb_calidadCafe.Text = null;
+                        CalidadSeleccionada.ICalidadSeleccionada = 0;
+                        CalidadSeleccionada.NombreCalidadSeleccionada = "";
                         return;
                     }
 
@@ -557,6 +586,7 @@ namespace sistema_modular_cafe_majada.views
 
                         //borrar datos de los textbox
                         ClearDataTxb();
+                        CountNumSalida();
                     }
                     else
                     {
@@ -611,6 +641,9 @@ namespace sistema_modular_cafe_majada.views
                 {
                     MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a dar Salida es " + almNCM.NombreCalidadCafe + " y a seleccionado la calidad "
                         + CalidadSeleccionada.NombreCalidadSeleccionada + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txb_calidadCafe.Text = null;
+                    CalidadSeleccionada.ICalidadSeleccionada = 0;
+                    CalidadSeleccionada.NombreCalidadSeleccionada = "";
                     return;
                 }
 
@@ -713,18 +746,13 @@ namespace sistema_modular_cafe_majada.views
 
                 //borrar datos de los textbox
                 ClearDataTxb();
+                CountNumSalida();
             }
         }
 
         private void btn_SaveSalida_Click(object sender, EventArgs e)
         {
             SaveSalida();
-            /*Console.WriteLine("============================================================================================");
-            Console.WriteLine("Depuracion - img clikeado Salida " + SalidaSeleccionado.clickImg);
-            Console.WriteLine("Depuracion - id Alamcen  " + AlmacenSeleccionado.IAlmacen + " id Almacen variable local " + iAlmacen);
-            Console.WriteLine("Depuracion - Nombre Almacen  " + AlmacenSeleccionado.NombreAlmacen);
-            Console.WriteLine("Depuracion - id Bodega  " + BodegaSeleccionada.IdBodega + " id Bodega variable local " + iBodega);
-            Console.WriteLine("Depuracion - Nombre Bodega  " + BodegaSeleccionada.NombreBodega);*/
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -736,55 +764,74 @@ namespace sistema_modular_cafe_majada.views
         private void btn_deleteSalida_Click(object sender, EventArgs e)
         {
             //condicion para verificar si los datos seleccionados van nulos, para evitar error
-            if (SalidaSeleccionado.NumSalida != 0)
+            if (SalidaSeleccionado.NumSalida != 0 || Convert.ToInt32(txb_numSalida.Text) != 0 || !string.IsNullOrEmpty(txb_numSalida.Text))
             {
-                LogController log = new LogController();
-                UserController userControl = new UserController();
+                countSl = new SalidaController();
+                bool verificexisten = countSl.VerificarExistenciaSalida(CosechaActual.ICosechaActual, Convert.ToInt32(txb_numSalida.Text));
 
-                Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro Salida No: " + SalidaSeleccionado.NumSalida + ", de la cosecha: " + CosechaActual.NombreCosechaActual + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
+                if (verificexisten)
                 {
-                    // Obtener el valor numérico seleccionado
-                    KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
-                    if (cbx_subProducto.SelectedItem is KeyValuePair<int, string> keyValue)
+                    LogController log = new LogController();
+                    UserController userControl = new UserController();
+                    
+                    if(SalidaSeleccionado.ISalida == 0)
                     {
-                        selectedStatus = keyValue;
+                        SalidaSeleccionado.NumSalida = Convert.ToInt32(txb_numSalida.Text);
+                        SalidaSeleccionado.ISalida = iSalida;
                     }
-                    else if (cbx_subProducto.SelectedItem != null)
+                    
+                    Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                    DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro Salida No: " + SalidaSeleccionado.NumSalida + ", de la cosecha: " + CosechaActual.NombreCosechaActual + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
                     {
-                        selectedStatus = (KeyValuePair<int, string>)cbx_subProducto.SelectedItem;
+                        // Obtener el valor numérico seleccionado
+                        KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
+                        if (cbx_subProducto.SelectedItem is KeyValuePair<int, string> keyValue)
+                        {
+                            selectedStatus = keyValue;
+                        }
+                        else if (cbx_subProducto.SelectedItem != null)
+                        {
+                            selectedStatus = (KeyValuePair<int, string>)cbx_subProducto.SelectedItem;
+                        }
+
+                        int selectedValue = selectedStatus.Key;
+
+                        //se llama la funcion delete del controlador para eliminar el registro
+                        SalidaController controller = new SalidaController();
+                        controller.EliminarSalidaCafe(SalidaSeleccionado.ISalida);
+
+                        var cantidadCafeC = new CantidadSiloPiñaController();
+                        string search = "No.SalidaCafe " + SalidaSeleccionado.NumSalida;
+                        var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
+
+                        var almacenC = new AlmacenController();
+                        var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
+                        double actcantidad = almCM.CantidadActualAlmacen;
+                        double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
+
+                        double resultCaUpd = actcantidad + cantidaQQsUpdate;
+                        double resultCaUpdSaco = actcantidadSaco + cantidaSacoUpdate;
+                        almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
+
+                        cantidadCafeC.EliminarCantidadSiloPiña(cantUpd.IdCantidadCafe);
+
+                        //verificar el departamento del log
+                        log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Salida Cafe", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la Salida No: " + SalidaSeleccionado.NumSalida + " del ID en la BD: " + SalidaSeleccionado.ISalida + " en la base de datos");
+
+                        MessageBox.Show("Salida de Cafe Eliminada correctamente.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //se actualiza la tabla
+                        ClearDataTxb();
+                        CountNumSalida();
                     }
-
-                    int selectedValue = selectedStatus.Key;
-
-                    //se llama la funcion delete del controlador para eliminar el registro
-                    SalidaController controller = new SalidaController();
-                    controller.EliminarSalidaCafe(SalidaSeleccionado.ISalida);
-
-                    var cantidadCafeC = new CantidadSiloPiñaController();
-                    string search = "No.SalidaCafe " + SalidaSeleccionado.NumSalida;
-                    var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
-
-                    var almacenC = new AlmacenController();
-                    var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
-                    double actcantidad = almCM.CantidadActualAlmacen;
-                    double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
-
-                    double resultCaUpd = actcantidad + cantidaQQsUpdate;
-                    double resultCaUpdSaco = actcantidadSaco + cantidaSacoUpdate;
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
-
-                    cantidadCafeC.EliminarCantidadSiloPiña(cantUpd.IdCantidadCafe);
-
-                    //verificar el departamento del log
-                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Salida Cafe", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la Salida No: " + SalidaSeleccionado.NumSalida + " del ID en la BD: " + SalidaSeleccionado.ISalida + " en la base de datos");
-
-                    MessageBox.Show("Salida de Cafe Eliminada correctamente.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    //se actualiza la tabla
-                    ClearDataTxb();
+                    else
+                    {
+                        ClearDataTxb();
+                        CountNumSalida();
+                        return;
+                    }
                 }
             }
             else
@@ -877,6 +924,37 @@ namespace sistema_modular_cafe_majada.views
             FontViews.ButtonStyleGC(buttons);
             //se asigna a fechas
             FontViews.DateStyle(dateTimePickers);
+        }
+
+        private void txb_numSalida_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txb_numSalida.Text))
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.Handled = true; // Evitar que se genere el "ding" de sonido de Windows
+
+                    int numS = Convert.ToInt32(txb_numSalida.Text);
+                    countSl = new SalidaController();
+                    bool verificexisten = countSl.VerificarExistenciaSalida(CosechaActual.ICosechaActual, Convert.ToInt32(txb_numSalida.Text));
+
+                    if (verificexisten)
+                    {
+                        ShowSalidaView(txb_numSalida); // Llamar a la función de búsqueda que desees
+                        SalidaSeleccionado.clickImg = true;
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("Desea Agregar una nueva Salida", "¿Agregar Salida?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            ClearDataTxb();
+                            txb_numSalida.Text = Convert.ToString(numS);
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

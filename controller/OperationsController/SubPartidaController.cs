@@ -49,6 +49,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
         }
         
         //
+        public SubPartida ObtenerSubPartidaPorCosechaIDSp(int numSubPartida, int iCosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la SubPartida
+                return subPartidaDAO.ObtenerSubPartidaPorCosechaIDSp(numSubPartida, iCosecha);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la SubPartida: " + ex.Message);
+                return null;
+            }
+        }
+        
+        //
         public SubPartida ObtenerSubPartidasPorNombreAndCosecha(string nombre, string cosecha)
         {
             try

@@ -150,6 +150,7 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return new List<ReportSalida>();
             }
         }
+
         //
         public Salida ObtenerSalidasPorIDNombre(int idSalida)
         {
@@ -157,6 +158,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
             {
                 // Llamada al método del DAO para obtener el nombre de la Salida
                 return salidaDAO.ObtenerSalidasPorIDNombre(idSalida);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la Salida: " + ex.Message);
+                return null;
+            }
+        }
+        
+        //
+        public Salida ObtenerSalidasPorCosechaIDNombre(int numSalida, int icosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la Salida
+                return salidaDAO.ObtenerSalidasPorCosechaIDNombre(numSalida, icosecha);
             }
             catch (Exception ex)
             {

@@ -26,6 +26,7 @@ namespace sistema_modular_cafe_majada.model.UserData
     {
         public static int IUsuario { get; set; }
         public static string NombreUsuario { get; set; }
+        public static int RolUsuario { get; set; }
     }
 
     public static class UsuarioSeleccionado

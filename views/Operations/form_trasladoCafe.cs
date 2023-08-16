@@ -124,11 +124,28 @@ namespace sistema_modular_cafe_majada.views
         }
 
         //
-        public void ShowTrasladoView()
+        public void ShowTrasladoView(TextBox txb)
         {
             var trl = new TrasladoController();
             SubProductoController subPro = new SubProductoController();
-            var sub = trl.ObtenerTrasladoPorIDNombre(TrasladoSeleccionado.ITraslado);
+            
+            var sub = new Traslado();
+
+            if (TrasladoSeleccionado.ITraslado != 0)
+            {
+                sub = trl.ObtenerTrasladoPorIDNombre(TrasladoSeleccionado.ITraslado);
+                txb_numTraslado.Text = Convert.ToString(TrasladoSeleccionado.NumTraslado);
+                iTraslado = TrasladoSeleccionado.ITraslado;
+            }
+            else
+            {
+                sub = trl.ObtenerTrasladoPorCosechaIDNombre(Convert.ToInt32(txb.Text), CosechaActual.ICosechaActual);
+                txb_numTraslado.Text = Convert.ToString(txb.Text);
+                iTraslado = sub.Idtraslado_cafe;
+                TrasladoSeleccionado.NumTraslado = sub.NumTraslado;
+                TrasladoSeleccionado.ITraslado = sub.Idtraslado_cafe;
+            }
+
             var name = subPro.ObtenerSubProductoPorNombre(sub.NombreSubProducto);
             isubProducto = name.IdSubProducto;
 
@@ -140,9 +157,12 @@ namespace sistema_modular_cafe_majada.views
             // Obtener la fecha y la hora por separado
             DateTime fechaTraslado = sub.FechaTrasladoCafe.Date;
 
+            AlmacenController almCtrl = new AlmacenController();
+            var calidad = almCtrl.ObtenerAlmacenNombreCalidad(sub.IdCalidadCafe);
+            CalidadSeleccionada.ICalidadSeleccionada = (int)calidad.IdCalidadCafe;
+            CalidadSeleccionada.NombreCalidadSeleccionada = calidad.NombreCalidadCafe;
+
             dtp_fechaTraslado.Value = fechaTraslado;
-            iTraslado = TrasladoSeleccionado.ITraslado;
-            txb_numTraslado.Text = Convert.ToString(TrasladoSeleccionado.NumTraslado);
             txb_calidadCafe.Text = sub.NombreCalidadCafe;
             iCalidad = sub.IdCalidadCafe;
             iCalidadNoUpd = sub.IdCalidadCafe;
@@ -236,6 +256,9 @@ namespace sistema_modular_cafe_majada.views
             BodegaSeleccionada.IdBodegaDestino = 0;
             BodegaSeleccionada.NombreBodega = "";
             BodegaSeleccionada.NombreBodegaDestino = "";
+            CalidadSeleccionada.ICalidadSeleccionada = 0;
+            CalidadSeleccionada.NombreCalidadSeleccionada = "";
+            iTraslado = 0;
 
             countTrl = new TrasladoController();
             var sald = countTrl.CountTraslado(CosechaActual.ICosechaActual);
@@ -321,7 +344,7 @@ namespace sistema_modular_cafe_majada.views
             form_opcTraslado opcTraslado = new form_opcTraslado();
             if (opcTraslado.ShowDialog() == DialogResult.OK)
             {
-                ShowTrasladoView();
+                ShowTrasladoView(txb_numTraslado);
             }
         }
 
@@ -960,73 +983,90 @@ namespace sistema_modular_cafe_majada.views
         private void btn_deleteTraslado_Click(object sender, EventArgs e)
         {
             //condicion para verificar si los datos seleccionados van nulos, para evitar error
-            if (TrasladoSeleccionado.NumTraslado != 0)
+            if (TrasladoSeleccionado.NumTraslado != 0 || Convert.ToInt32(txb_numTraslado.Text) != 0 || !string.IsNullOrEmpty(txb_numTraslado.Text))
             {
-                LogController log = new LogController();
-                var userControl = new UserController();
+                var Sl = new TrasladoController();
+                bool verificexisten = Sl.VerificarExistenciaTraslado(CosechaActual.ICosechaActual, Convert.ToInt32(txb_numTraslado.Text));
 
-                Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro Traslado No: " + TrasladoSeleccionado.NumTraslado + ", de la cosecha: " + CosechaActual.NombreCosechaActual + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
+                if (verificexisten)
                 {
-                    //se llama la funcion delete del controlador para eliminar el registro
-                    TrasladoController controller = new TrasladoController();
-                    controller.EliminarTraslado(TrasladoSeleccionado.ITraslado);
+                    LogController log = new LogController();
+                    UserController userControl = new UserController();
 
-                    var cantidadCafeC = new CantidadSiloPiñaController();
-                    string searchPr = "Procedencia No.TrasladoCafe " + TrasladoSeleccionado.NumTraslado;
-                    string searchDes = "Destino No.TrasladoCafe " + TrasladoSeleccionado.NumTraslado;
-                    
-                    //Procedencia
-                    var cantUpdPr = cantidadCafeC.BuscarCantidadSiloPiñaSub(searchPr);
-                    //Destino
-                    var cantUpdDes = cantidadCafeC.BuscarCantidadSiloPiñaSub(searchDes);
-
-                    var almacenC = new AlmacenController();
-
-                    // Obtener el valor numérico seleccionado
-                    KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
-                    if (cbx_subProducto.SelectedItem is KeyValuePair<int, string> keyValue)
+                    if (TrasladoSeleccionado.ITraslado == 0)
                     {
-                        selectedStatus = keyValue;
-                    }
-                    else if (cbx_subProducto.SelectedItem != null)
-                    {
-                        selectedStatus = (KeyValuePair<int, string>)cbx_subProducto.SelectedItem;
+                        TrasladoSeleccionado.NumTraslado = Convert.ToInt32(txb_numTraslado.Text);
+                        TrasladoSeleccionado.ITraslado = iTraslado;
                     }
 
-                    int selectedValue = selectedStatus.Key;
+                    Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                    DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro Traslado No: " + TrasladoSeleccionado.NumTraslado + ", de la cosecha: " + CosechaActual.NombreCosechaActual + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                    //Almacen Procedencia
-                    var almCMP = almacenC.ObtenerCantidadCafeAlmacen(iAlmacenProce);
-                    double actcantidadPr = almCMP.CantidadActualAlmacen;
-                    double actcantidadSacoPr = almCMP.CantidadActualSacoAlmacen;
+                    if (result == DialogResult.Yes)
+                    {
+                        //se llama la funcion delete del controlador para eliminar el registro
+                        TrasladoController controller = new TrasladoController();
+                        controller.EliminarTraslado(TrasladoSeleccionado.ITraslado);
 
-                    double resultCaUpdPr = actcantidadPr + cantidaQQsActUpdate;
-                    double resultCaUpdSacoPr = actcantidadSacoPr + cantidaSacoActUpdate;
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacenProce, resultCaUpdPr, resultCaUpdSacoPr, iCalidad, selectedValue);
-                    
-                    //Almacen Destino
-                    var almCMD = almacenC.ObtenerCantidadCafeAlmacen(iAlmacenDest);
-                    double actcantidadDes = almCMD.CantidadActualAlmacen;
-                    double actcantidadSacoDes = almCMD.CantidadActualSacoAlmacen;
+                        var cantidadCafeC = new CantidadSiloPiñaController();
+                        string searchPr = "Procedencia No.TrasladoCafe " + TrasladoSeleccionado.NumTraslado;
+                        string searchDes = "Destino No.TrasladoCafe " + TrasladoSeleccionado.NumTraslado;
 
-                    double resultCaUpdDes = actcantidadDes - cantidaQQsActUpdate;
-                    double resultCaUpdSacoDes = actcantidadSacoDes - cantidaSacoActUpdate;
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacenDest, resultCaUpdDes, resultCaUpdSacoDes, iCalidad, selectedValue);
+                        //Procedencia
+                        var cantUpdPr = cantidadCafeC.BuscarCantidadSiloPiñaSub(searchPr);
+                        //Destino
+                        var cantUpdDes = cantidadCafeC.BuscarCantidadSiloPiñaSub(searchDes);
 
-                    cantidadCafeC.EliminarCantidadSiloPiña(cantUpdPr.IdCantidadCafe);
-                    cantidadCafeC.EliminarCantidadSiloPiña(cantUpdDes.IdCantidadCafe);
+                        var almacenC = new AlmacenController();
 
-                    //verificar el departamento del log
-                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Traslado Cafe", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos del Traslado No: " + TrasladoSeleccionado.NumTraslado + " del ID en la BD: " + TrasladoSeleccionado.ITraslado + " en la base de datos");
+                        // Obtener el valor numérico seleccionado
+                        KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
+                        if (cbx_subProducto.SelectedItem is KeyValuePair<int, string> keyValue)
+                        {
+                            selectedStatus = keyValue;
+                        }
+                        else if (cbx_subProducto.SelectedItem != null)
+                        {
+                            selectedStatus = (KeyValuePair<int, string>)cbx_subProducto.SelectedItem;
+                        }
 
-                    MessageBox.Show("Traslado de Cafe Eliminada correctamente.");
+                        int selectedValue = selectedStatus.Key;
 
-                    //se actualiza la tabla
-                    ClearDataTxb();
-                    
+                        //Almacen Procedencia
+                        var almCMP = almacenC.ObtenerCantidadCafeAlmacen(iAlmacenProce);
+                        double actcantidadPr = almCMP.CantidadActualAlmacen;
+                        double actcantidadSacoPr = almCMP.CantidadActualSacoAlmacen;
+
+                        double resultCaUpdPr = actcantidadPr + cantidaQQsActUpdate;
+                        double resultCaUpdSacoPr = actcantidadSacoPr + cantidaSacoActUpdate;
+                        almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacenProce, resultCaUpdPr, resultCaUpdSacoPr, iCalidad, selectedValue);
+
+                        //Almacen Destino
+                        var almCMD = almacenC.ObtenerCantidadCafeAlmacen(iAlmacenDest);
+                        double actcantidadDes = almCMD.CantidadActualAlmacen;
+                        double actcantidadSacoDes = almCMD.CantidadActualSacoAlmacen;
+
+                        double resultCaUpdDes = actcantidadDes - cantidaQQsActUpdate;
+                        double resultCaUpdSacoDes = actcantidadSacoDes - cantidaSacoActUpdate;
+                        almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacenDest, resultCaUpdDes, resultCaUpdSacoDes, iCalidad, selectedValue);
+
+                        cantidadCafeC.EliminarCantidadSiloPiña(cantUpdPr.IdCantidadCafe);
+                        cantidadCafeC.EliminarCantidadSiloPiña(cantUpdDes.IdCantidadCafe);
+
+                        //verificar el departamento del log
+                        log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Traslado Cafe", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos del Traslado No: " + TrasladoSeleccionado.NumTraslado + " del ID en la BD: " + TrasladoSeleccionado.ITraslado + " en la base de datos");
+
+                        MessageBox.Show("Traslado de Cafe Eliminada correctamente.");
+
+                        //se actualiza la tabla
+                        ClearDataTxb();
+
+                    }
+                    else
+                    {
+                        ClearDataTxb();
+                        return;
+                    }
                 }
             }
             else
@@ -1130,6 +1170,35 @@ namespace sistema_modular_cafe_majada.views
             this.Size = new System.Drawing.Size(1280, 720);
             this.MinimumSize = new System.Drawing.Size(1280, 490);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
+        }
+
+        private void txb_numTraslado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txb_numTraslado.Text))
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.Handled = true; // Evitar que se genere el "ding" de sonido de Windows
+
+                    int numS = Convert.ToInt32(txb_numTraslado.Text);
+                    var Tr = new TrasladoController();
+                    bool verificexisten = Tr.VerificarExistenciaTraslado(CosechaActual.ICosechaActual, Convert.ToInt32(txb_numTraslado.Text));
+
+                    if (verificexisten)
+                    {
+                        ShowTrasladoView(txb_numTraslado); // Llamar a la función de búsqueda que desees
+                        TrasladoSeleccionado.clickImg = true;
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("Desea Agregar un nuevo Traslado", "¿Agregar Traslado?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            ClearDataTxb();
+                        }
+                    }
+                }
+            }
         }
     }
 }

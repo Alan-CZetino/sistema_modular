@@ -149,6 +149,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return null;
             }
         }
+        
+        //
+        public Traslado ObtenerTrasladoPorCosechaIDNombre(int numTraslado, int iCosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre del Traslado
+                return trasladoDAO.ObtenerTrasladoPorCosechaIDNombre(numTraslado, iCosecha);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el Traslado: " + ex.Message);
+                return null;
+            }
+        }
 
         //
         public List<Traslado> ObtenerTrasladoPorCosecha(int iCosecha)

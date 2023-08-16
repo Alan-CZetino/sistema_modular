@@ -673,6 +673,82 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return trilla;
         }
+        
+        // Función para obtener todos los registros de Trilla en la base de datos
+        public Trilla ObtenerTrillasPorCosechaIDNombre(int numTrilla, int iCosecha)
+        {
+            Trilla trilla = null;
+
+            try
+            {
+                // Conexión a la base de datos (asegúrate de tener la clase "conexion" y los métodos correspondientes)
+                conexion.Conectar();
+
+                string consulta = @"SELECT t.*,
+                                            c.nombre_cosecha,
+                                           pd.nombre_procedencia,
+                                           cc.nombre_calidad,
+                                           sbp.nombre_subproducto,
+                                           a.nombre_almacen,
+                                           b.nombre_bodega,
+                                           p.nombre_personal
+                                    FROM Trilla t
+                                    INNER JOIN Cosecha c ON t.id_cosecha_trilla = c.id_cosecha
+                                    LEFT JOIN Procedencia_Destino_Cafe pd ON t.id_procedencia_trilla = pd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON t.id_calidad_cafe_trilla = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON t.id_subproducto_trilla = sbp.id_subproducto
+                                    LEFT JOIN Almacen a ON t.id_almacen_trilla = a.id_almacen
+                                    LEFT JOIN Bodega_Cafe b ON t.id_bodega_trilla = b.id_bodega
+                                    INNER JOIN Personal p ON t.id_personal_trilla = p.id_personal
+                                    WHERE t.num_trilla = @Id AND t.id_cosecha_trilla = @ICosecha";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id", numTrilla);
+                conexion.AgregarParametro("@ICosecha", iCosecha);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        trilla = new Trilla()
+                        {
+                            IdTrilla_cafe = Convert.ToInt32(reader["id_trilla"]),
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha_trilla"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumTrilla = Convert.ToInt32(reader["num_trilla"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_trilla"]) ? 0 : Convert.ToInt32(reader["id_procedencia_trilla"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["nombre_procedencia"]) ? null : Convert.ToString(reader["nombre_procedencia"]),
+                            IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_trilla"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
+                            IdSubProducto = Convert.ToInt32(reader["id_subproducto_trilla"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacen = Convert.IsDBNull(reader["id_almacen_trilla"]) ? 0 : Convert.ToInt32(reader["id_almacen_trilla"]),
+                            NombreAlmacen = Convert.IsDBNull(reader["nombre_almacen"]) ? null : Convert.ToString(reader["nombre_almacen"]),
+                            IdBodega = Convert.IsDBNull(reader["id_bodega_trilla"]) ? 0 : Convert.ToInt32(reader["id_bodega_trilla"]),
+                            NombreBodega = Convert.IsDBNull(reader["nombre_bodega"]) ? null : Convert.ToString(reader["nombre_bodega"]),
+                            TipoMovimientoTrilla = Convert.ToString(reader["tipo_movimiento_trilla"]),
+                            CantidadTrillaQQs = Convert.ToDouble(reader["cantidad_trilla_qqs_cafe"]),
+                            CantidadTrillaSacos = Convert.ToDouble(reader["cantidad_trilla_sacos_cafe"]),
+                            FechaTrillaCafe = Convert.ToDateTime(reader["fecha_trillaCafe"]),
+                            IdPersonal = Convert.ToInt32(reader["id_personal_trilla"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionTrilla = Convert.IsDBNull(reader["observacion_trilla"]) ? null : Convert.ToString(reader["observacion_trilla"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return trilla;
+        }
 
         //
         public Trilla CountTrilla(int idCosecha)

@@ -76,11 +76,9 @@ namespace sistema_modular_cafe_majada.views
 
             CbxSubProducto();
 
-            countSP = new SubPartidaController();
-            var subSPa = countSP.CountSubPartida(CosechaActual.ICosechaActual);
             //
-            SubPartidaSeleccionado.ISubPartida = 0;
-            txb_subPartida.Text = Convert.ToInt32(subSPa.CountSubPartida + 1 ).ToString();
+            CountNumSubPartida();
+
             txb_nombreCatador.Enabled = false;
             txb_nombreCatador.ReadOnly = true;
             txb_nombrePesador.Enabled = false;
@@ -161,7 +159,7 @@ namespace sistema_modular_cafe_majada.views
                 horaCompleta = horas < 10 ? "0" + horas : horas.ToString();
 
                 // Añadimos los minutos y segundos con valor 00.
-                horaCompleta += ":00:00";
+                horaCompleta += ":00";
             }
             else if (partesHora.Length == 2 && int.TryParse(partesHora[0], out int horas2) && int.TryParse(partesHora[1], out int minutos))
             {
@@ -173,8 +171,6 @@ namespace sistema_modular_cafe_majada.views
                 // Ajuste para los minutos: Si la parte de los minutos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
                 horaCompleta += ":" + (minutos < 10 ? "0" + minutos : minutos.ToString());
 
-                // Añadimos los segundos con valor 00.
-                horaCompleta += ":00";
             }
             else if (partesHora.Length == 3 && int.TryParse(partesHora[0], out int horas3) && int.TryParse(partesHora[1], out int minutos3) && int.TryParse(partesHora[2], out int segundos))
             {
@@ -186,8 +182,6 @@ namespace sistema_modular_cafe_majada.views
                 // Ajuste para los minutos: Si la parte de los minutos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
                 horaCompleta += ":" + (minutos3 < 10 ? "0" + minutos3 : minutos3.ToString());
 
-                // Ajuste para los segundos: Si la parte de los segundos tiene un solo dígito y es menor a 10, se añade un cero a la izquierda.
-                horaCompleta += ":" + (segundos < 10 ? "0" + segundos : segundos.ToString());
             }
             else
             {
@@ -252,9 +246,9 @@ namespace sistema_modular_cafe_majada.views
                 // Calcular el total de horas (días * 24 + horas)
                 int totalHoras = tiempoOriginal.Days * 24 + tiempoOriginal.Hours;
                 int min = tiempoOriginal.Minutes;
-                int seg = tiempoOriginal.Seconds;
 
-                string tiempoNuevo = Convert.ToString(totalHoras + ":" + tiempoOriginal.Minutes);
+                // Usar string.Format() para formatear los minutos con ceros a la izquierda
+                string tiempoNuevo = string.Format("{0:D2}:{1:D2}", totalHoras, min);
 
                 return tiempoNuevo;
             }
@@ -321,13 +315,36 @@ namespace sistema_modular_cafe_majada.views
         }
 
         //
-        public void ShowSubPartidaView()
+        public void ShowSubPartidaView(TextBox txb)
         {
             var subPC = new SubPartidaController();
             SubProductoController subProC = new SubProductoController();
-            var sub = subPC.ObtenerSubPartidaPorID(SubPartidaSeleccionado.ISubPartida);
+            
+            var sub = new SubPartida();
+
+            if (SubPartidaSeleccionado.ISubPartida != 0)
+            {
+                sub = subPC.ObtenerSubPartidaPorID(SubPartidaSeleccionado.ISubPartida);
+                txb_subPartida.Text = Convert.ToString(SubPartidaSeleccionado.NumSubPartida);
+                iSubPartida = SubPartidaSeleccionado.ISubPartida;
+            }
+            else
+            {
+                sub = subPC.ObtenerSubPartidasPorNombreAndCosecha(txb.Text, CosechaActual.NombreCosechaActual);
+                txb_subPartida.Text = Convert.ToString(txb.Text);
+                iSubPartida = sub.IdSubpartida;
+                SubPartidaSeleccionado.NumSubPartida = sub.NumeroSubpartida;
+                SubPartidaSeleccionado.NombreSubParti = Convert.ToString(sub.NumeroSubpartida);
+                SubPartidaSeleccionado.ISubPartida = sub.IdSubpartida;
+            }
+
             var name = subProC.ObtenerSubProductoPorNombre(sub.NombreSubProducto);
             isubProducto = name.IdSubProducto;
+
+            AlmacenController almCtrl = new AlmacenController();
+            var calidad = almCtrl.ObtenerAlmacenNombreCalidad(sub.IdCalidadCafe);
+            CalidadSeleccionada.ICalidadSeleccionada = (int)calidad.IdCalidadCafe;
+            CalidadSeleccionada.NombreCalidadSeleccionada = calidad.NombreCalidadCafe;
 
             string tiempoSec = ConvertToHHMMSS(sub.TiempoSecado.ToString());
             //cbx
@@ -342,8 +359,6 @@ namespace sistema_modular_cafe_majada.views
             DateTime fechaSalida = sub.SalidaSecado.Date;
             TimeSpan horaSalida = sub.SalidaSecado.TimeOfDay;
 
-            iSubPartida = SubPartidaSeleccionado.ISubPartida;
-            txb_subPartida.Text = SubPartidaSeleccionado.NombreSubParti;
             txb_procedencia.Text = sub.NombreProcedencia;
             iProcedencia = sub.IdProcedencia;
             txb_calidad.Text = sub.NombreCalidadCafe;
@@ -399,7 +414,7 @@ namespace sistema_modular_cafe_majada.views
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
-                ShowSubPartidaView();
+                ShowSubPartidaView(txb_subPartida);
             }
         }
 
@@ -751,6 +766,9 @@ namespace sistema_modular_cafe_majada.views
                         {
                             MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a Agregar al almacen es " + almNCM.NombreCalidadCafe + " y a seleccionado la calidad "
                                 + CalidadSeleccionada.NombreCalidadSeleccionada + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txb_calidad.Text = null;
+                            CalidadSeleccionada.ICalidadSeleccionada = 0;
+                            CalidadSeleccionada.NombreCalidadSeleccionada = "";
                             return;
                         }
 
@@ -806,6 +824,7 @@ namespace sistema_modular_cafe_majada.views
 
                             //borrar datos de los textbox
                             ClearDataTxb();
+                            CountNumSubPartida();
                         }
                         else
                         {
@@ -849,6 +868,9 @@ namespace sistema_modular_cafe_majada.views
                         {
                             MessageBox.Show("La calidad cafe que desea actualizar en el almacen no es permitido ya que contiene otra calidad. Calidad Actual "
                                 +almNCM.NombreCalidadCafe+ " Calidad a actualizar "+txb_calidad.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txb_calidad.Text = null;
+                            CalidadSeleccionada.ICalidadSeleccionada = 0;
+                            CalidadSeleccionada.NombreCalidadSeleccionada = "";
                             return;
                         }
                     }
@@ -921,6 +943,7 @@ namespace sistema_modular_cafe_majada.views
 
                         //borrar datos de los textbox
                         ClearDataTxb();
+                        CountNumSubPartida();
                     }
                     else
                     {
@@ -1116,7 +1139,9 @@ namespace sistema_modular_cafe_majada.views
             BodegaSeleccionada.IdBodega = 0;
             AlmacenBodegaClick.IBodega = 0;
             CalidadSeleccionada.ICalidadSeleccionada = 0;
+            CalidadSeleccionada.NombreCalidadSeleccionada = "";
             ProcedenciaSeleccionada.IProcedencia = 0;
+            iSubPartida = 0;
             iBodega = 0;
             dtp_fechaSecado.Value = DateTime.Now;
             dtp_fechaInicioSecad.Value = DateTime.Now;
@@ -1124,19 +1149,21 @@ namespace sistema_modular_cafe_majada.views
             dtp_fechaCatacion.Value = DateTime.Now;
             dtp_fechaPesa.Value = DateTime.Now;
 
+        }
+
+        //
+        private void CountNumSubPartida()
+        {
             countSP = new SubPartidaController();
             var tril = countSP.CountSubPartida(CosechaActual.ICosechaActual);
             //
             txb_subPartida.Text = Convert.ToString(tril.CountSubPartida + 1);
         }
 
+        //
         private void btn_SaveUser_Click(object sender, EventArgs e)
         {
             SaveSubPartida();
-            /*Console.WriteLine("Depuracion - IdAlamcen " + AlmacenSeleccionado.IAlmacen + " idAlmacen variable local " + iAlmacen);
-            Console.WriteLine("Depuracion - Nombre Alamcen " + AlmacenSeleccionado.NombreAlmacen);
-            Console.WriteLine("Depuracion - IdBodega " + BodegaSeleccionada.IdBodega + " idBodega variable local " + iBodega);
-            Console.WriteLine("Depuracion - Nombre Bodega " + BodegaSeleccionada.NombreBodega + " idBodega variable local " + iBodega);*/
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -1148,56 +1175,75 @@ namespace sistema_modular_cafe_majada.views
         private void btn_deleteSPartida_Click(object sender, EventArgs e)
         {
             //condicion para verificar si los datos seleccionados van nulos, para evitar error
-            if (SubPartidaSeleccionado.NumSubPartida != 0)
+            if (SubPartidaSeleccionado.NumSubPartida != 0 || Convert.ToInt32(txb_subPartida.Text) != 0 || !string.IsNullOrEmpty(txb_subPartida.Text))
             {
-                LogController log = new LogController();
-                UserController userControl = new UserController();
+                countSP = new SubPartidaController();
+                bool verificexisten = countSP.VerificarExistenciaSubPartida(CosechaActual.ICosechaActual, Convert.ToInt32(txb_subPartida.Text));
 
-                Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro SubPartida No: " + SubPartidaSeleccionado.NumSubPartida + ", de la cosecha: " + CosechaActual.NombreCosechaActual + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
+                if (verificexisten)
                 {
-                    // Obtener el valor numérico seleccionado
-                    KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
-                    if (cbx_subProducto.SelectedItem is KeyValuePair<int, string> keyValue)
+                    LogController log = new LogController();
+                    UserController userControl = new UserController();
+
+                    if (SubPartidaSeleccionado.ISubPartida == 0)
                     {
-                        selectedStatus = keyValue;
-                    }
-                    else if (cbx_subProducto.SelectedItem != null)
-                    {
-                        selectedStatus = (KeyValuePair<int, string>)cbx_subProducto.SelectedItem;
+                        SubPartidaSeleccionado.NumSubPartida = Convert.ToInt32(txb_subPartida.Text);
+                        SubPartidaSeleccionado.ISubPartida = iSubPartida;
                     }
 
-                    int selectedValue = selectedStatus.Key;
+                    Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                    DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro SubPartida No: " + SubPartidaSeleccionado.NumSubPartida + ", de la cosecha: " + CosechaActual.NombreCosechaActual + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                    //se llama la funcion delete del controlador para eliminar el registro
-                    SubPartidaController controller = new SubPartidaController();
-                    controller.EliminarSubPartida(SubPartidaSeleccionado.ISubPartida);
+                    if (result == DialogResult.Yes)
+                    {
+                        // Obtener el valor numérico seleccionado
+                        KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
+                        if (cbx_subProducto.SelectedItem is KeyValuePair<int, string> keyValue)
+                        {
+                            selectedStatus = keyValue;
+                        }
+                        else if (cbx_subProducto.SelectedItem != null)
+                        {
+                            selectedStatus = (KeyValuePair<int, string>)cbx_subProducto.SelectedItem;
+                        }
 
-                    var cantidadCafeC = new CantidadSiloPiñaController();
-                    string search = "No.SubPartida " + SubPartidaSeleccionado.NumSubPartida;
-                    var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
+                        int selectedValue = selectedStatus.Key;
 
-                    var almacenC = new AlmacenController();
-                    var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
-                    double actcantidad = almCM.CantidadActualAlmacen;
-                    double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
+                        //se llama la funcion delete del controlador para eliminar el registro
+                        SubPartidaController controller = new SubPartidaController();
+                        controller.EliminarSubPartida(SubPartidaSeleccionado.ISubPartida);
 
-                    double resultCaUpd = actcantidad - cantidaQQsUpdate;
-                    double resultCaUpdSaco = actcantidadSaco - cantidaSacoUpdate;
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
+                        var cantidadCafeC = new CantidadSiloPiñaController();
+                        string search = "No.SubPartida " + SubPartidaSeleccionado.NumSubPartida;
+                        var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
 
-                    cantidadCafeC.EliminarCantidadSiloPiña(cantUpd.IdCantidadCafe);
+                        var almacenC = new AlmacenController();
+                        var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
+                        double actcantidad = almCM.CantidadActualAlmacen;
+                        double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
 
-                    //verificar el departamento del log
-                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato SubPartida", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la SubPartida No: " + SubPartidaSeleccionado.NumSubPartida + " en la base de datos");
+                        double resultCaUpd = actcantidad - cantidaQQsUpdate;
+                        double resultCaUpdSaco = actcantidadSaco - cantidaSacoUpdate;
+                        almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
 
-                    MessageBox.Show("SubPartida Eliminada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cantidadCafeC.EliminarCantidadSiloPiña(cantUpd.IdCantidadCafe);
 
-                    //se actualiza la tabla
-                    ClearDataTxb();
-                    cbx_subProducto.SelectedIndex = -1;
+                        //verificar el departamento del log
+                        log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato SubPartida", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la SubPartida No: " + SubPartidaSeleccionado.NumSubPartida + " en la base de datos");
+
+                        MessageBox.Show("SubPartida Eliminada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //se actualiza la tabla
+                        ClearDataTxb();
+                        cbx_subProducto.SelectedIndex = -1;
+                        CountNumSubPartida();
+                    }
+                    else
+                    {
+                        ClearDataTxb();
+                        CountNumSubPartida();
+                        return;
+                    }
                 }
             }
             else
@@ -1950,6 +1996,33 @@ namespace sistema_modular_cafe_majada.views
             this.Size = new System.Drawing.Size(1280, 720);
             this.MinimumSize = new System.Drawing.Size(1280, 490);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
+        }
+
+        private void txb_subPartida_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true; // Evitar que se genere el "ding" de sonido de Windows
+
+                int numS = Convert.ToInt32(txb_subPartida.Text);
+                countSP = new SubPartidaController();
+                bool verificexisten = countSP.VerificarExistenciaSubPartida(CosechaActual.ICosechaActual, Convert.ToInt32(txb_subPartida.Text));
+
+                if (verificexisten)
+                {
+                    ShowSubPartidaView(txb_subPartida); // Llamar a la función de búsqueda que desees
+                    SubPartidaSeleccionado.clickImg = true;
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Desea Agregar una nueva SubPartida", "¿Agregar SubPartida?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if(result == DialogResult.Yes)
+                    {
+                        ClearDataTxb();
+                        txb_subPartida.Text = Convert.ToString(numS);
+                    }
+                }
+            }
         }
     }
 }
