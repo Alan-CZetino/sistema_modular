@@ -27,6 +27,8 @@ namespace sistema_modular_cafe_majada
         //variable para refrescar el formulario cad cierto tiempo
         private System.Timers.Timer refreshTimer;
 
+        private int idExitCalidad = 0;
+
         private int iTabla;
         public int Itabla
         {
@@ -105,20 +107,31 @@ namespace sistema_modular_cafe_majada
         public void ShowCountExistenciaBDCard()
         {
             var almacenExistenciaC = new AlmacenController();
+            CCafeController ccafeC = new CCafeController();
+
+            var calidad = ccafeC.ObtenerUltimoId();
             Almacen almacen = new Almacen();
 
+            if (calidad.IdCalidad == idExitCalidad)
+            {
+                idExitCalidad = 0;
+            }
+
             //cantidad SHG
-            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen(1);
+            idExitCalidad++;
+            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen(idExitCalidad);
             lbl_existCafe1.Text = almacen.NombreCalidadCafe; 
             lbl_cafeSHG.Text = Convert.ToString(almacen.CountExistenceCoffe);
 
             //cantidad HG
-            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen(2);
+            idExitCalidad++;
+            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen(idExitCalidad);
             lbl_existCafe2.Text = almacen.NombreCalidadCafe; 
             lbl_cafeHG.Text = Convert.ToString(almacen.CountExistenceCoffe);
 
             //cantidad CS
-            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen(3);
+            idExitCalidad++;
+            almacen = almacenExistenciaC.CountExistenceCofeeAlmacen(idExitCalidad);
             lbl_existCafe3.Text = almacen.NombreCalidadCafe; 
             lbl_cafeCS.Text = Convert.ToString(almacen.CountExistenceCoffe);
         }

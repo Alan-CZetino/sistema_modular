@@ -634,6 +634,94 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return traslado;
         }
+
+        // Función para obtener todos los registros del Traslado en la base de datos
+        public Traslado ObtenerTrasladoPorCosechaIDNombre(int numTraslado, int iCosecha)
+        {
+            Traslado traslado = null;
+
+            try
+            {
+                // Conexión a la base de datos
+                conexion.Conectar();
+
+                string consulta = @"SELECT t.*,
+                                            c.nombre_cosecha,
+                                           pdr.nombre_procedencia AS ProcedenciaP,
+                                           pdd.nombre_procedencia AS ProcedenciaD,
+                                           cc.nombre_calidad,
+                                           sbp.nombre_subproducto,
+                                           ar.nombre_almacen AS AlmacenP,
+                                           br.nombre_bodega AS BodegaP,
+                                           ad.nombre_almacen AS AlmacenD,
+                                           bd.nombre_bodega AS BodegaD,
+                                           p.nombre_personal
+                                    FROM Traslado_Cafe t
+                                    INNER JOIN Cosecha c ON t.id_cosecha_traslado = c.id_cosecha
+                                    LEFT JOIN Procedencia_Destino_Cafe pdr ON t.id_procedencia_procedencia_traslado = pdr.id_procedencia
+                                    LEFT JOIN Procedencia_Destino_Cafe pdd ON t.id_procedencia_destino_traslado = pdd.id_procedencia
+                                    INNER JOIN Calidad_Cafe cc ON t.id_calidad_cafe_traslado = cc.id_calidad
+                                    INNER JOIN SubProducto sbp ON t.id_subproducto_traslado = sbp.id_subproducto
+                                    LEFT JOIN Almacen ar ON t.id_almacen_procedencia_traslado = ar.id_almacen
+                                    LEFT JOIN Bodega_Cafe br ON t.id_bodega_procedencia_traslado = br.id_bodega
+                                    LEFT JOIN Almacen ad ON t.id_almacen_destino_traslado = ad.id_almacen
+                                    LEFT JOIN Bodega_Cafe bd ON t.id_bodega_destino_traslado = bd.id_bodega
+                                    INNER JOIN Personal p ON t.id_personal_traslado = p.id_personal
+                                    WHERE t.num_traslado = @Id AND t.id_cosecha_traslado = @iCosecha";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id", numTraslado);
+                conexion.AgregarParametro("@iCosecha", iCosecha);
+
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if (reader.HasRows && reader.Read())
+                    {
+                        traslado = new Traslado()
+                        {
+                            Idtraslado_cafe = Convert.ToInt32(reader["id_traslado_cafe"]),
+                            IdCosecha = Convert.ToInt32(reader["id_cosecha_traslado"]),
+                            NombreCosecha = Convert.ToString(reader["nombre_cosecha"]),
+                            NumTraslado = Convert.ToInt32(reader["num_traslado"]),
+                            IdProcedencia = Convert.IsDBNull(reader["id_procedencia_procedencia_traslado"]) ? 0 : Convert.ToInt32(reader["id_procedencia_procedencia_traslado"]),
+                            NombreProcedencia = Convert.IsDBNull(reader["ProcedenciaP"]) ? null : Convert.ToString(reader["ProcedenciaP"]),
+                            IdProcedenciaDestino = Convert.IsDBNull(reader["id_procedencia_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_procedencia_destino_traslado"]),
+                            NombreProcedenciaDestino = Convert.IsDBNull(reader["ProcedenciaD"]) ? null : Convert.ToString(reader["ProcedenciaD"]),
+                            IdCalidadCafe = Convert.ToInt32(reader["id_calidad_cafe_traslado"]),
+                            NombreCalidadCafe = Convert.ToString(reader["nombre_calidad"]),
+                            IdSubProducto = Convert.ToInt32(reader["id_subproducto_traslado"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            IdAlmacenProcedencia = Convert.IsDBNull(reader["id_almacen_procedencia_traslado"]) ? 0 : Convert.ToInt32(reader["id_almacen_procedencia_traslado"]),
+                            NombreAlmacenProcedencia = Convert.IsDBNull(reader["AlmacenP"]) ? null : Convert.ToString(reader["AlmacenP"]),
+                            IdAlmacenDestino = Convert.IsDBNull(reader["id_almacen_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_almacen_destino_traslado"]),
+                            NombreAlmacenDestino = Convert.IsDBNull(reader["AlmacenD"]) ? null : Convert.ToString(reader["AlmacenD"]),
+                            IdBodegaProcedencia = Convert.IsDBNull(reader["id_bodega_procedencia_traslado"]) ? 0 : Convert.ToInt32(reader["id_bodega_procedencia_traslado"]),
+                            NombreBodegaProcedencia = Convert.IsDBNull(reader["BodegaP"]) ? null : Convert.ToString(reader["BodegaP"]),
+                            IdBodegaDestino = Convert.IsDBNull(reader["id_bodega_destino_traslado"]) ? 0 : Convert.ToInt32(reader["id_bodega_destino_traslado"]),
+                            NombreBodegaDestino = Convert.IsDBNull(reader["BodegaD"]) ? null : Convert.ToString(reader["BodegaD"]),
+                            CantidadTrasladoQQs = Convert.ToDouble(reader["cantidad_traslado_qqs_cafe"]),
+                            CantidadTrasladoSacos = Convert.ToDouble(reader["cantidad_traslado_sacos_cafe"]),
+                            FechaTrasladoCafe = Convert.ToDateTime(reader["fecha_trasladoCafe"]),
+                            IdPersonal = Convert.ToInt32(reader["id_personal_traslado"]),
+                            NombrePersonal = Convert.ToString(reader["nombre_personal"]),
+                            ObservacionTraslado = Convert.IsDBNull(reader["observacion_traslado"]) ? null : Convert.ToString(reader["observacion_traslado"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return traslado;
+        }
+
         //
         public List<ReporteTraslado> ObtenerTrasladoReport (int idTraslado)
         {

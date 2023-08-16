@@ -168,12 +168,15 @@ namespace sistema_modular_cafe_majada
                             // Inicio de sesión exitoso, realiza las acciones necesarias
                             // Navega a otra ventana, muestra un mensaje, etc.
                             // MessageBox.Show("Inicio de sesión exitoso");
-                            form_main formPrin = new form_main();
-                            formPrin.NombreUsuario = user;
                             UsuarioActual.NombreUsuario = user;
                             UsuarioActual.IUsuario = usuario.IdUsuario;
+                            UsuarioActual.RolUsuario = usuario.IdRolUsuario;
                             CosechaActual.NombreCosechaActual = cosecha.NombreCosecha;
                             CosechaActual.ICosechaActual = cosecha.IdCosecha;
+
+                            //administrador
+                            form_main formPrin = new form_main();
+                            formPrin.NombreUsuario = user;
                             formPrin.NombreCosecha = CosechaActual.NombreCosechaActual;
 
                             LimpiarComboBox();
@@ -182,6 +185,24 @@ namespace sistema_modular_cafe_majada
                             //buca en la vista main el evento close del form 
                             formPrin.FormClosed += Logout;
                             this.Hide();
+                            
+                            /*switch (UsuarioActual.RolUsuario)
+                            {
+                                case 1:
+                                    break;
+                                case 2:
+                                    //consultor
+                                    form_reportes report = new form_reportes();
+                                    LimpiarComboBox();
+                                    report.Show();
+
+                                    //buca en la vista main el evento close del form 
+                                    report.FormClosed += Logout;
+                                    this.Hide();
+                                    break;
+                                default:
+                                    break;
+                            }*/
 
                             contador = 0;
                         }

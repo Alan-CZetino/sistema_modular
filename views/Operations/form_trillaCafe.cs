@@ -65,11 +65,8 @@ namespace sistema_modular_cafe_majada.views
 
             CbxSubProducto();
 
-            countTr = new TrillaController();
-            var trll = countTr.CountTrilla(CosechaActual.ICosechaActual);
-            //
-            TrillaSeleccionado.ITrilla = 0;
-            txb_numTrilla.Text = Convert.ToInt32(trll.CountTrilla + 1).ToString();
+            CountNumTrilla();
+
             txb_personal.Enabled = false;
             txb_personal.ReadOnly = true;
             txb_cosecha.Enabled = false;
@@ -136,11 +133,33 @@ namespace sistema_modular_cafe_majada.views
         }
         
         //
-        public void ShowTrillaView()
+        public void ShowTrillaView(TextBox txb)
         {
             var Trll = new TrillaController();
             SubProductoController subPro = new SubProductoController();
-            var sub = Trll.ObtenerTrillasPorIDNombre(TrillaSeleccionado.ITrilla);
+
+            var sub = new Trilla();
+
+            if (TrillaSeleccionado.ITrilla != 0)
+            {
+                sub = Trll.ObtenerTrillasPorIDNombre(TrillaSeleccionado.ITrilla);
+                txb_numTrilla.Text = Convert.ToString(TrillaSeleccionado.NumTrilla);
+                iTrilla = SalidaSeleccionado.ISalida;
+            }
+            else
+            {
+                sub = Trll.ObtenerTrillasPorCosechaIDNombre(Convert.ToInt32(txb.Text), CosechaActual.ICosechaActual);
+                txb_numTrilla.Text = Convert.ToString(txb.Text);
+                iTrilla = sub.IdTrilla_cafe;
+                TrillaSeleccionado.NumTrilla = sub.NumTrilla;
+                TrillaSeleccionado.ITrilla = sub.IdTrilla_cafe;
+            }
+
+            AlmacenController almCtrl = new AlmacenController();
+            var calidad = almCtrl.ObtenerAlmacenNombreCalidad(sub.IdCalidadCafe);
+            CalidadSeleccionada.ICalidadSeleccionada = (int)calidad.IdCalidadCafe;
+            CalidadSeleccionada.NombreCalidadSeleccionada = calidad.NombreCalidadCafe;
+
             var name = subPro.ObtenerSubProductoPorNombre(sub.NombreSubProducto);
             isubProducto = name.IdSubProducto;
 
@@ -153,8 +172,6 @@ namespace sistema_modular_cafe_majada.views
             DateTime fechaTrilla = sub.FechaTrillaCafe.Date;
 
             dtp_fechaTrilla.Value = fechaTrilla;
-            iTrilla = TrillaSeleccionado.ITrilla;
-            txb_numTrilla.Text = Convert.ToString(TrillaSeleccionado.NumTrilla);
             txb_calidadCafe.Text = sub.NombreCalidadCafe;
             iCalidad = sub.IdCalidadCafe;
             iCalidadNoUpd = sub.IdCalidadCafe;
@@ -189,7 +206,7 @@ namespace sistema_modular_cafe_majada.views
             form_opcTrilla opcTrilla = new form_opcTrilla();
             if (opcTrilla.ShowDialog() == DialogResult.OK)
             {
-                ShowTrillaView();
+                ShowTrillaView(txb_numTrilla);
             }
         }
 
@@ -307,12 +324,19 @@ namespace sistema_modular_cafe_majada.views
             AlmacenSeleccionado.NombreAlmacen = "";
             BodegaSeleccionada.IdBodega = 0;
             BodegaSeleccionada.NombreBodega = "";
-
+            CalidadSeleccionada.ICalidadSeleccionada = 0;
+            CalidadSeleccionada.NombreCalidadSeleccionada = "";
+            iTrilla = 0;
             AlmacenBodegaClick.IBodega = 0;
             dtp_fechaTrilla.Value = DateTime.Now;
             rb_cafeTrilla.Checked = false;
             rb_subProducto.Checked = false;
 
+        }
+
+        //
+        private void CountNumTrilla()
+        {
             countTr = new TrillaController();
             var tril = countTr.CountTrilla(CosechaActual.ICosechaActual);
             //
@@ -443,6 +467,9 @@ namespace sistema_modular_cafe_majada.views
                     {
                         MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a dar Salida es " + almNCM.NombreCalidadCafe + " y a seleccionado la calidad "
                             + CalidadSeleccionada.NombreCalidadSeleccionada + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txb_calidadCafe.Text = null;
+                        CalidadSeleccionada.ICalidadSeleccionada = 0;
+                        CalidadSeleccionada.NombreCalidadSeleccionada = "";
                         return;
                     }
 
@@ -500,6 +527,7 @@ namespace sistema_modular_cafe_majada.views
 
                         //borrar datos de los textbox
                         ClearDataTxb();
+                        CountNumTrilla();
                     }
                     else
                     {
@@ -554,6 +582,9 @@ namespace sistema_modular_cafe_majada.views
                 {
                     MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a dar Salida es " + almNCM.NombreCalidadCafe + " y a seleccionado la calidad "
                         + CalidadSeleccionada.NombreCalidadSeleccionada + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txb_calidadCafe.Text = null;
+                    CalidadSeleccionada.ICalidadSeleccionada = 0;
+                    CalidadSeleccionada.NombreCalidadSeleccionada = "";
                     return;
                 }
 
@@ -656,6 +687,7 @@ namespace sistema_modular_cafe_majada.views
 
                 //borrar datos de los textbox
                 ClearDataTxb();
+                CountNumTrilla();
             }
         }
 
@@ -733,56 +765,75 @@ namespace sistema_modular_cafe_majada.views
         private void btn_deleteTrilla_Click(object sender, EventArgs e)
         {
             //condicion para verificar si los datos seleccionados van nulos, para evitar error
-            if (TrillaSeleccionado.NumTrilla != 0)
+            if (TrillaSeleccionado.NumTrilla != 0 || Convert.ToInt32(txb_numTrilla.Text) != 0 || !string.IsNullOrEmpty(txb_numTrilla.Text))
             {
-                LogController log = new LogController();
-                UserController userControl = new UserController();
+                var Sl = new TrillaController();
+                bool verificexisten = Sl.VerificarExistenciaTrilla(CosechaActual.ICosechaActual, Convert.ToInt32(txb_numTrilla.Text));
 
-                Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro Trilla No: " + TrillaSeleccionado.NumTrilla + ", de la cosecha: " + CosechaActual.NombreCosechaActual + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
+                if (verificexisten)
                 {
-                    // Obtener el valor numérico seleccionado
-                    KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
-                    if (cbx_subProducto.SelectedItem is KeyValuePair<int, string> keyValue)
+                    LogController log = new LogController();
+                    UserController userControl = new UserController();
+
+                    if (TrillaSeleccionado.ITrilla == 0)
                     {
-                        selectedStatus = keyValue;
-                    }
-                    else if (cbx_subProducto.SelectedItem != null)
-                    {
-                        selectedStatus = (KeyValuePair<int, string>)cbx_subProducto.SelectedItem;
+                        TrillaSeleccionado.NumTrilla = Convert.ToInt32(txb_numTrilla.Text);
+                        TrillaSeleccionado.ITrilla = iTrilla;
                     }
 
-                    int selectedValue = selectedStatus.Key;
+                    Usuario usuario = userControl.ObtenerUsuario(UsuarioActual.NombreUsuario); // Asignar el resultado de ObtenerUsuario
+                    DialogResult result = MessageBox.Show("¿Estás seguro de que deseas eliminar el registro Trilla No: " + TrillaSeleccionado.NumTrilla + ", de la cosecha: " + CosechaActual.NombreCosechaActual + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                    //se llama la funcion delete del controlador para eliminar el registro
-                    TrillaController controller = new TrillaController();
-                    controller.EliminarTrilla(TrillaSeleccionado.ITrilla);
+                    if (result == DialogResult.Yes)
+                    {
+                        // Obtener el valor numérico seleccionado
+                        KeyValuePair<int, string> selectedStatus = new KeyValuePair<int, string>();
+                        if (cbx_subProducto.SelectedItem is KeyValuePair<int, string> keyValue)
+                        {
+                            selectedStatus = keyValue;
+                        }
+                        else if (cbx_subProducto.SelectedItem != null)
+                        {
+                            selectedStatus = (KeyValuePair<int, string>)cbx_subProducto.SelectedItem;
+                        }
 
-                    DateTime fechaTrilla = dtp_fechaTrilla.Value.Date;
-                    var cantidadCafeC = new CantidadSiloPiñaController();
-                    string search = "No.Trilla " + TrillaSeleccionado.NumTrilla;
-                    var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
+                        int selectedValue = selectedStatus.Key;
 
-                    var almacenC = new AlmacenController();
-                    var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
-                    double actcantidad = almCM.CantidadActualAlmacen;
-                    double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
+                        //se llama la funcion delete del controlador para eliminar el registro
+                        TrillaController controller = new TrillaController();
+                        controller.EliminarTrilla(TrillaSeleccionado.ITrilla);
 
-                    double resultCaUpd = actcantidad + cantidaQQsUpdate;
-                    double resultCaUpdSaco = actcantidadSaco + cantidaSacoUpdate;
-                    almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
+                        DateTime fechaTrilla = dtp_fechaTrilla.Value.Date;
+                        var cantidadCafeC = new CantidadSiloPiñaController();
+                        string search = "No.Trilla " + TrillaSeleccionado.NumTrilla;
+                        var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
 
-                    cantidadCafeC.EliminarCantidadSiloPiña(cantUpd.IdCantidadCafe);
+                        var almacenC = new AlmacenController();
+                        var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
+                        double actcantidad = almCM.CantidadActualAlmacen;
+                        double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
+
+                        double resultCaUpd = actcantidad + cantidaQQsUpdate;
+                        double resultCaUpdSaco = actcantidadSaco + cantidaSacoUpdate;
+                        almacenC.ActualizarCantidadEntradaCafeUpdateSubPartidaAlmacen(iAlmacen, resultCaUpd, resultCaUpdSaco, iCalidad, selectedValue);
+
+                        cantidadCafeC.EliminarCantidadSiloPiña(cantUpd.IdCantidadCafe);
                     
-                    //verificar el departamento del log
-                    log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Trilla", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la Trilla No: " + TrillaSeleccionado.NumTrilla + " del ID en la BD: " + TrillaSeleccionado.ITrilla + " en la base de datos");
+                        //verificar el departamento del log
+                        log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Trilla", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos de la Trilla No: " + TrillaSeleccionado.NumTrilla + " del ID en la BD: " + TrillaSeleccionado.ITrilla + " en la base de datos");
 
-                    MessageBox.Show("Trilla Eliminada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Trilla Eliminada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    //se actualiza la tabla
-                    ClearDataTxb();
+                        //se actualiza la tabla
+                        ClearDataTxb();
+                        CountNumTrilla();
+                    }
+                    else
+                    {
+                        ClearDataTxb();
+                        CountNumTrilla();
+                        return;
+                    }
                 }
             }
             else
@@ -885,6 +936,36 @@ namespace sistema_modular_cafe_majada.views
             this.Size = new System.Drawing.Size(1280, 720);
             this.MinimumSize = new System.Drawing.Size(1280, 490);
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
+        }
+
+        private void txb_numTrilla_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txb_numTrilla.Text))
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.Handled = true; // Evitar que se genere el "ding" de sonido de Windows
+
+                    int numS = Convert.ToInt32(txb_numTrilla.Text);
+                    var Tr = new TrillaController();
+                    bool verificexisten = Tr.VerificarExistenciaTrilla(CosechaActual.ICosechaActual, Convert.ToInt32(txb_numTrilla.Text));
+
+                    if (verificexisten)
+                    {
+                        ShowTrillaView(txb_numTrilla); // Llamar a la función de búsqueda que desees
+                        TrillaSeleccionado.clickImg = true;
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("Desea Agregar una nueva Trilla", "¿Agregar Trilla?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            ClearDataTxb();
+                            txb_numTrilla.Text = Convert.ToString(numS);
+                        }
+                    }
+                }
+            }
         }
     }
 }

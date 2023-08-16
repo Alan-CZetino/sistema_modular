@@ -75,6 +75,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return null;
             }
         }
+        
+        //
+        public Trilla ObtenerTrillasPorCosechaIDNombre(int numTrilla, int icosecha)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el nombre de la Trilla
+                return trillaDAO.ObtenerTrillasPorCosechaIDNombre(numTrilla, icosecha);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la Trilla: " + ex.Message);
+                return null;
+            }
+        }
 
         //
         public bool InsertarTrilla(Trilla trilla)
