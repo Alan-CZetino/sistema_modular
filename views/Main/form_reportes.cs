@@ -44,6 +44,7 @@ namespace sistema_modular_cafe_majada.views
             InitializeComponent();
             dtFechaInicial.Value = new DateTime(2023, 1, 1);
 
+            FormConfig();
             AsignarFuente();
 
         }
@@ -232,6 +233,14 @@ namespace sistema_modular_cafe_majada.views
             FontViews.DateStyle(dateTimePickers);
             //se asigna a botones
         }
+
+        //funcion para quitar bordes de formularios
+        private void FormConfig()
+        {
+            //al inciar el formulario estara sin bordes
+            this.FormBorderStyle = FormBorderStyle.None;
+        }
+
 
     }
 }

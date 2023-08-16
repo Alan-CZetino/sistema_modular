@@ -40,6 +40,7 @@ namespace sistema_modular_cafe_majada
             AsignarColorOriginal(btn_ubicacion);
             AsignarColorOriginal(btn_usuarios);
 
+            FormConfig();
             AsignarFuente();
         }
 
@@ -195,5 +196,10 @@ namespace sistema_modular_cafe_majada
             FontViews.ButtonStyle(buttons);
         }
 
+        private void FormConfig()
+        {
+            //al inciar el formulario estara sin bordes
+            this.FormBorderStyle = FormBorderStyle.None;
+        }
     }
 }

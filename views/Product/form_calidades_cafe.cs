@@ -41,9 +41,8 @@ namespace sistema_modular_cafe_majada.views
             //auto ajustar el contenido de los datos al área establecido para el datagrid
             dtg_calidadCafe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            FormConfig();
             AsignarFuente();
-
-            ResponsiveConfig();
         }
 
         private void form_calidades_cafe_Load(object sender, EventArgs e)
@@ -426,11 +425,12 @@ namespace sistema_modular_cafe_majada.views
             FontViews.ButtonStyleGC(buttons);
         }
 
-        private void ResponsiveConfig()
+        //funcion para quitar bordes de formularios
+        private void FormConfig()
         {
-            this.Size = new System.Drawing.Size(1280, 720);
-            this.MinimumSize = new System.Drawing.Size(1280, 490);
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            //al inciar el formulario estara sin bordes
+            this.FormBorderStyle = FormBorderStyle.None;
         }
+
     }
 }

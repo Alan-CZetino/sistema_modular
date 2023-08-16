@@ -29,7 +29,6 @@ namespace sistema_modular_cafe_majada.views
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_rptCAcumulado = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -52,7 +51,9 @@ namespace sistema_modular_cafe_majada.views
             this.dtFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btn_rptCAcumulado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.btn_rptCFinca.SuspendLayout();
@@ -64,30 +65,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_rptSubPartida.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.btn_rptCAcumulado, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_rptCFinca, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_rptCBodegas, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_rptCCalidades, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_rptSubPartida, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 14);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1251, 194);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btn_rptCAcumulado
             // 
@@ -95,19 +76,18 @@ namespace sistema_modular_cafe_majada.views
             this.btn_rptCAcumulado.Controls.Add(this.label5);
             this.btn_rptCAcumulado.Controls.Add(this.pictureBox5);
             this.btn_rptCAcumulado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_rptCAcumulado.Location = new System.Drawing.Point(753, 2);
+            this.btn_rptCAcumulado.Location = new System.Drawing.Point(759, 2);
             this.btn_rptCAcumulado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_rptCAcumulado.Name = "btn_rptCAcumulado";
-            this.btn_rptCAcumulado.Size = new System.Drawing.Size(244, 190);
+            this.btn_rptCAcumulado.Size = new System.Drawing.Size(246, 166);
             this.btn_rptCAcumulado.TabIndex = 9;
             this.btn_rptCAcumulado.Click += new System.EventHandler(this.btn_rptCafeAcumulado_Click);
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(93, 71);
+            this.label5.Location = new System.Drawing.Point(112, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 58);
             this.label5.TabIndex = 3;
@@ -119,10 +99,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.pictureBox5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox5.Image = global::sistema_modular_cafe_majada.Properties.Resources.reporte;
-            this.pictureBox5.Location = new System.Drawing.Point(3, 34);
+            this.pictureBox5.Location = new System.Drawing.Point(3, 37);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(171, 135);
+            this.pictureBox5.Size = new System.Drawing.Size(103, 87);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
@@ -134,19 +114,18 @@ namespace sistema_modular_cafe_majada.views
             this.btn_rptCFinca.Controls.Add(this.label4);
             this.btn_rptCFinca.Controls.Add(this.pictureBox4);
             this.btn_rptCFinca.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_rptCFinca.Location = new System.Drawing.Point(1003, 2);
+            this.btn_rptCFinca.Location = new System.Drawing.Point(1011, 2);
             this.btn_rptCFinca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_rptCFinca.Name = "btn_rptCFinca";
-            this.btn_rptCFinca.Size = new System.Drawing.Size(245, 190);
+            this.btn_rptCFinca.Size = new System.Drawing.Size(246, 166);
             this.btn_rptCFinca.TabIndex = 8;
             this.btn_rptCFinca.Click += new System.EventHandler(this.btn_rptGrafica_Click);
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(94, 71);
+            this.label4.Location = new System.Drawing.Point(136, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 29);
             this.label4.TabIndex = 3;
@@ -158,10 +137,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox4.Image = global::sistema_modular_cafe_majada.Properties.Resources.reporte;
-            this.pictureBox4.Location = new System.Drawing.Point(3, 34);
+            this.pictureBox4.Location = new System.Drawing.Point(3, 37);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(171, 135);
+            this.pictureBox4.Size = new System.Drawing.Size(121, 87);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
@@ -173,19 +152,18 @@ namespace sistema_modular_cafe_majada.views
             this.btn_rptCBodegas.Controls.Add(this.label3);
             this.btn_rptCBodegas.Controls.Add(this.pictureBox3);
             this.btn_rptCBodegas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_rptCBodegas.Location = new System.Drawing.Point(503, 2);
+            this.btn_rptCBodegas.Location = new System.Drawing.Point(507, 2);
             this.btn_rptCBodegas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_rptCBodegas.Name = "btn_rptCBodegas";
-            this.btn_rptCBodegas.Size = new System.Drawing.Size(244, 190);
+            this.btn_rptCBodegas.Size = new System.Drawing.Size(246, 166);
             this.btn_rptCBodegas.TabIndex = 7;
             this.btn_rptCBodegas.Click += new System.EventHandler(this.btn_rptCafeBodegas_Click);
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(93, 71);
+            this.label3.Location = new System.Drawing.Point(112, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(131, 58);
             this.label3.TabIndex = 3;
@@ -197,10 +175,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox3.Image = global::sistema_modular_cafe_majada.Properties.Resources.reporte;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 34);
+            this.pictureBox3.Location = new System.Drawing.Point(3, 37);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(171, 135);
+            this.pictureBox3.Size = new System.Drawing.Size(103, 87);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
@@ -209,22 +187,22 @@ namespace sistema_modular_cafe_majada.views
             // btn_rptCCalidades
             // 
             this.btn_rptCCalidades.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_rptCCalidades.Controls.Add(this.pictureBox6);
             this.btn_rptCCalidades.Controls.Add(this.label1);
             this.btn_rptCCalidades.Controls.Add(this.pictureBox1);
             this.btn_rptCCalidades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_rptCCalidades.Location = new System.Drawing.Point(3, 2);
             this.btn_rptCCalidades.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_rptCCalidades.Name = "btn_rptCCalidades";
-            this.btn_rptCCalidades.Size = new System.Drawing.Size(244, 190);
+            this.btn_rptCCalidades.Size = new System.Drawing.Size(246, 166);
             this.btn_rptCCalidades.TabIndex = 6;
             this.btn_rptCCalidades.Click += new System.EventHandler(this.btn_rptCCalidades_Click);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(85, 71);
+            this.label1.Location = new System.Drawing.Point(112, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 58);
             this.label1.TabIndex = 3;
@@ -236,10 +214,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox1.Image = global::sistema_modular_cafe_majada.Properties.Resources.reporte;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 34);
+            this.pictureBox1.Location = new System.Drawing.Point(3, -243);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(171, 135);
+            this.pictureBox1.Size = new System.Drawing.Size(101, 109);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -251,19 +229,18 @@ namespace sistema_modular_cafe_majada.views
             this.btn_rptSubPartida.Controls.Add(this.label2);
             this.btn_rptSubPartida.Controls.Add(this.pictureBox2);
             this.btn_rptSubPartida.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_rptSubPartida.Location = new System.Drawing.Point(253, 2);
+            this.btn_rptSubPartida.Location = new System.Drawing.Point(255, 2);
             this.btn_rptSubPartida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_rptSubPartida.Name = "btn_rptSubPartida";
-            this.btn_rptSubPartida.Size = new System.Drawing.Size(244, 190);
+            this.btn_rptSubPartida.Size = new System.Drawing.Size(246, 166);
             this.btn_rptSubPartida.TabIndex = 5;
             this.btn_rptSubPartida.Click += new System.EventHandler(this.btn_rptSubpartidas_Click);
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(122, 71);
+            this.label2.Location = new System.Drawing.Point(138, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 58);
             this.label2.TabIndex = 3;
@@ -275,10 +252,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox2.Image = global::sistema_modular_cafe_majada.Properties.Resources.reporte;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 34);
+            this.pictureBox2.Location = new System.Drawing.Point(3, 37);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(171, 135);
+            this.pictureBox2.Size = new System.Drawing.Size(129, 87);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -295,10 +272,10 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.Controls.Add(this.dtFechaInicial);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(13, 215);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(10, 187);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1251, 490);
+            this.panel1.Size = new System.Drawing.Size(1260, 523);
             this.panel1.TabIndex = 1;
             // 
             // reportViewer1
@@ -307,17 +284,17 @@ namespace sistema_modular_cafe_majada.views
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.reportViewer1.Location = new System.Drawing.Point(5, 37);
-            this.reportViewer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(4);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1239, 449);
+            this.reportViewer1.Size = new System.Drawing.Size(1248, 523);
             this.reportViewer1.TabIndex = 5;
             // 
             // dtFechaFinal
             // 
             this.dtFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFechaFinal.Location = new System.Drawing.Point(465, 5);
-            this.dtFechaFinal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtFechaFinal.Margin = new System.Windows.Forms.Padding(4);
             this.dtFechaFinal.Name = "dtFechaFinal";
             this.dtFechaFinal.Size = new System.Drawing.Size(117, 22);
             this.dtFechaFinal.TabIndex = 4;
@@ -336,7 +313,7 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.dtFechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFechaInicial.Location = new System.Drawing.Point(271, 5);
-            this.dtFechaInicial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtFechaInicial.Margin = new System.Windows.Forms.Padding(4);
             this.dtFechaInicial.Name = "dtFechaInicial";
             this.dtFechaInicial.Size = new System.Drawing.Size(117, 22);
             this.dtFechaInicial.TabIndex = 2;
@@ -361,46 +338,83 @@ namespace sistema_modular_cafe_majada.views
             this.label6.TabIndex = 0;
             this.label6.Text = "Seleccione el rango de fecha:";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.tableLayoutPanel2);
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(10);
+            this.panel2.Size = new System.Drawing.Size(1280, 720);
+            this.panel2.TabIndex = 2;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.btn_rptCFinca, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_rptCAcumulado, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_rptCCalidades, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_rptSubPartida, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_rptCBodegas, 2, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 10);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1260, 170);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox6.Image = global::sistema_modular_cafe_majada.Properties.Resources.reporte;
+            this.pictureBox6.Location = new System.Drawing.Point(3, 37);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(103, 87);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 4;
+            this.pictureBox6.TabStop = false;
+            // 
             // form_reportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(1800, 1010);
+            this.MinimumSize = new System.Drawing.Size(1030, 696);
             this.Name = "form_reportes";
             this.Text = "form_reportes";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.form_reportes_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.btn_rptCAcumulado.ResumeLayout(false);
-            this.btn_rptCAcumulado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.btn_rptCFinca.ResumeLayout(false);
-            this.btn_rptCFinca.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.btn_rptCBodegas.ResumeLayout(false);
-            this.btn_rptCBodegas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.btn_rptCCalidades.ResumeLayout(false);
-            this.btn_rptCCalidades.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.btn_rptSubPartida.ResumeLayout(false);
-            this.btn_rptSubPartida.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel btn_rptSubPartida;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -423,5 +437,8 @@ namespace sistema_modular_cafe_majada.views
         private System.Windows.Forms.DateTimePicker dtFechaInicial;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }
