@@ -47,17 +47,18 @@ namespace sistema_modular_cafe_majada.views
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.Controls.Add(this.btn_subPartida, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_trillaCafe, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_entradaCafe, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_salidaCafe, 3, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 11);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(837, 100);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(628, 81);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btn_subPartida
@@ -69,10 +70,12 @@ namespace sistema_modular_cafe_majada.views
             this.btn_subPartida.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_subPartida.Image = global::sistema_modular_cafe_majada.Properties.Resources.SubPartida_45px;
             this.btn_subPartida.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_subPartida.Location = new System.Drawing.Point(3, 3);
+            this.btn_subPartida.Location = new System.Drawing.Point(2, 2);
+            this.btn_subPartida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_subPartida.Name = "btn_subPartida";
-            this.btn_subPartida.Size = new System.Drawing.Size(203, 94);
+            this.btn_subPartida.Size = new System.Drawing.Size(153, 77);
             this.btn_subPartida.TabIndex = 3;
+            this.btn_subPartida.TabStop = false;
             this.btn_subPartida.Text = "Sub Partida";
             this.btn_subPartida.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_subPartida.UseVisualStyleBackColor = true;
@@ -87,10 +90,12 @@ namespace sistema_modular_cafe_majada.views
             this.btn_trillaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_trillaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.trilla_45px;
             this.btn_trillaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_trillaCafe.Location = new System.Drawing.Point(212, 3);
+            this.btn_trillaCafe.Location = new System.Drawing.Point(159, 2);
+            this.btn_trillaCafe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_trillaCafe.Name = "btn_trillaCafe";
-            this.btn_trillaCafe.Size = new System.Drawing.Size(203, 94);
+            this.btn_trillaCafe.Size = new System.Drawing.Size(153, 77);
             this.btn_trillaCafe.TabIndex = 2;
+            this.btn_trillaCafe.TabStop = false;
             this.btn_trillaCafe.Text = "Trilla";
             this.btn_trillaCafe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_trillaCafe.UseVisualStyleBackColor = true;
@@ -105,10 +110,12 @@ namespace sistema_modular_cafe_majada.views
             this.btn_entradaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_entradaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Entrada_45px;
             this.btn_entradaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_entradaCafe.Location = new System.Drawing.Point(421, 3);
+            this.btn_entradaCafe.Location = new System.Drawing.Point(316, 2);
+            this.btn_entradaCafe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_entradaCafe.Name = "btn_entradaCafe";
-            this.btn_entradaCafe.Size = new System.Drawing.Size(203, 94);
+            this.btn_entradaCafe.Size = new System.Drawing.Size(153, 77);
             this.btn_entradaCafe.TabIndex = 4;
+            this.btn_entradaCafe.TabStop = false;
             this.btn_entradaCafe.Text = "Traslado";
             this.btn_entradaCafe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_entradaCafe.UseVisualStyleBackColor = true;
@@ -123,10 +130,12 @@ namespace sistema_modular_cafe_majada.views
             this.btn_salidaCafe.Font = new System.Drawing.Font("Oswald", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_salidaCafe.Image = global::sistema_modular_cafe_majada.Properties.Resources.Salida_45px;
             this.btn_salidaCafe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_salidaCafe.Location = new System.Drawing.Point(630, 3);
+            this.btn_salidaCafe.Location = new System.Drawing.Point(473, 2);
+            this.btn_salidaCafe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_salidaCafe.Name = "btn_salidaCafe";
-            this.btn_salidaCafe.Size = new System.Drawing.Size(204, 94);
+            this.btn_salidaCafe.Size = new System.Drawing.Size(153, 77);
             this.btn_salidaCafe.TabIndex = 5;
+            this.btn_salidaCafe.TabStop = false;
             this.btn_salidaCafe.Text = "Salida";
             this.btn_salidaCafe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_salidaCafe.UseVisualStyleBackColor = true;
@@ -140,21 +149,23 @@ namespace sistema_modular_cafe_majada.views
             this.pnl_opcStock.BackColor = System.Drawing.Color.White;
             this.pnl_opcStock.BackgroundImage = global::sistema_modular_cafe_majada.Properties.Resources.servicio_al_cliente_1;
             this.pnl_opcStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_opcStock.Location = new System.Drawing.Point(13, 120);
+            this.pnl_opcStock.Location = new System.Drawing.Point(10, 98);
+            this.pnl_opcStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnl_opcStock.Name = "pnl_opcStock";
-            this.pnl_opcStock.Size = new System.Drawing.Size(1255, 588);
+            this.pnl_opcStock.Size = new System.Drawing.Size(941, 478);
             this.pnl_opcStock.TabIndex = 1;
             // 
             // form_coffeeStocks
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ClientSize = new System.Drawing.Size(960, 585);
             this.Controls.Add(this.pnl_opcStock);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(1800, 1010);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(1350, 821);
             this.Name = "form_coffeeStocks";
             this.Text = "form_subpatidas";
             this.Load += new System.EventHandler(this.form_coffeeStocks_Load);

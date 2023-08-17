@@ -133,7 +133,7 @@ namespace sistema_modular_cafe_majada.views
             this.label1.Location = new System.Drawing.Point(8, 6);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 17);
+            this.label1.Size = new System.Drawing.Size(45, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cosecha";
             // 
@@ -142,20 +142,20 @@ namespace sistema_modular_cafe_majada.views
             this.txb_cosecha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_cosecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_cosecha.Location = new System.Drawing.Point(11, 31);
-            this.txb_cosecha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_cosecha.Margin = new System.Windows.Forms.Padding(2);
             this.txb_cosecha.Name = "txb_cosecha";
             this.txb_cosecha.Size = new System.Drawing.Size(88, 21);
-            this.txb_cosecha.TabIndex = 1;
+            this.txb_cosecha.TabIndex = 0;
             // 
             // txb_subPartida
             // 
             this.txb_subPartida.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_subPartida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_subPartida.Location = new System.Drawing.Point(117, 31);
-            this.txb_subPartida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_subPartida.Margin = new System.Windows.Forms.Padding(2);
             this.txb_subPartida.Name = "txb_subPartida";
             this.txb_subPartida.Size = new System.Drawing.Size(88, 21);
-            this.txb_subPartida.TabIndex = 3;
+            this.txb_subPartida.TabIndex = 1;
             this.txb_subPartida.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txb_subPartida_KeyDown);
             this.txb_subPartida.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_subPartida_KeyPress);
             // 
@@ -166,7 +166,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2.Location = new System.Drawing.Point(113, 6);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
+            this.label2.Size = new System.Drawing.Size(72, 21);
             this.label2.TabIndex = 2;
             this.label2.Text = "N° SubPartida";
             // 
@@ -176,10 +176,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_sPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_sPartida.Image = global::sistema_modular_cafe_majada.Properties.Resources.editar_24px;
             this.btn_sPartida.Location = new System.Drawing.Point(210, 27);
-            this.btn_sPartida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_sPartida.Margin = new System.Windows.Forms.Padding(2);
             this.btn_sPartida.Name = "btn_sPartida";
             this.btn_sPartida.Size = new System.Drawing.Size(26, 28);
-            this.btn_sPartida.TabIndex = 4;
+            this.btn_sPartida.TabIndex = 2;
             this.btn_sPartida.UseVisualStyleBackColor = true;
             this.btn_sPartida.Click += new System.EventHandler(this.btn_sPartida_Click);
             // 
@@ -217,9 +217,9 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 60);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(486, 258);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
@@ -232,10 +232,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_fechaPartd3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_fechaPartd3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_fechaPartd3.Location = new System.Drawing.Point(388, 186);
-            this.txb_fechaPartd3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_fechaPartd3.Margin = new System.Windows.Forms.Padding(2);
             this.txb_fechaPartd3.Name = "txb_fechaPartd3";
             this.txb_fechaPartd3.Size = new System.Drawing.Size(88, 21);
-            this.txb_fechaPartd3.TabIndex = 47;
+            this.txb_fechaPartd3.TabIndex = 15;
             this.txb_fechaPartd3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_fechaPartd3_KeyPress);
             this.txb_fechaPartd3.Validating += new System.ComponentModel.CancelEventHandler(this.txb_fechaPartd3_Validating);
             // 
@@ -246,10 +246,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_fechaPartd2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_fechaPartd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_fechaPartd2.Location = new System.Drawing.Point(388, 146);
-            this.txb_fechaPartd2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_fechaPartd2.Margin = new System.Windows.Forms.Padding(2);
             this.txb_fechaPartd2.Name = "txb_fechaPartd2";
             this.txb_fechaPartd2.Size = new System.Drawing.Size(88, 21);
-            this.txb_fechaPartd2.TabIndex = 46;
+            this.txb_fechaPartd2.TabIndex = 12;
             this.txb_fechaPartd2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_fechaPartd2_KeyPress);
             this.txb_fechaPartd2.Validating += new System.ComponentModel.CancelEventHandler(this.txb_fechaPartd2_Validating);
             // 
@@ -260,10 +260,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_fechaPartd1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_fechaPartd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_fechaPartd1.Location = new System.Drawing.Point(388, 101);
-            this.txb_fechaPartd1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_fechaPartd1.Margin = new System.Windows.Forms.Padding(2);
             this.txb_fechaPartd1.Name = "txb_fechaPartd1";
             this.txb_fechaPartd1.Size = new System.Drawing.Size(88, 21);
-            this.txb_fechaPartd1.TabIndex = 45;
+            this.txb_fechaPartd1.TabIndex = 9;
             this.txb_fechaPartd1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_fechaPartd1_KeyPress);
             this.txb_fechaPartd1.Validating += new System.ComponentModel.CancelEventHandler(this.txb_fechaPartd1_Validating);
             // 
@@ -274,10 +274,10 @@ namespace sistema_modular_cafe_majada.views
             this.cbx_subProducto.Font = new System.Drawing.Font("Oswald", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_subProducto.FormattingEnabled = true;
             this.cbx_subProducto.Location = new System.Drawing.Point(340, 62);
-            this.cbx_subProducto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbx_subProducto.Margin = new System.Windows.Forms.Padding(2);
             this.cbx_subProducto.Name = "cbx_subProducto";
-            this.cbx_subProducto.Size = new System.Drawing.Size(134, 25);
-            this.cbx_subProducto.TabIndex = 44;
+            this.cbx_subProducto.Size = new System.Drawing.Size(134, 29);
+            this.cbx_subProducto.TabIndex = 6;
             // 
             // btn_CCafe
             // 
@@ -285,10 +285,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_CCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CCafe.Image = ((System.Drawing.Image)(resources.GetObject("btn_CCafe.Image")));
             this.btn_CCafe.Location = new System.Drawing.Point(287, 60);
-            this.btn_CCafe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_CCafe.Margin = new System.Windows.Forms.Padding(2);
             this.btn_CCafe.Name = "btn_CCafe";
             this.btn_CCafe.Size = new System.Drawing.Size(26, 28);
-            this.btn_CCafe.TabIndex = 39;
+            this.btn_CCafe.TabIndex = 5;
             this.btn_CCafe.UseVisualStyleBackColor = true;
             this.btn_CCafe.Click += new System.EventHandler(this.btn_CCafe_Click);
             // 
@@ -298,10 +298,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_prodCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_prodCafe.Image = ((System.Drawing.Image)(resources.GetObject("btn_prodCafe.Image")));
             this.btn_prodCafe.Location = new System.Drawing.Point(119, 58);
-            this.btn_prodCafe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_prodCafe.Margin = new System.Windows.Forms.Padding(2);
             this.btn_prodCafe.Name = "btn_prodCafe";
             this.btn_prodCafe.Size = new System.Drawing.Size(26, 28);
-            this.btn_prodCafe.TabIndex = 38;
+            this.btn_prodCafe.TabIndex = 4;
             this.btn_prodCafe.UseVisualStyleBackColor = true;
             this.btn_prodCafe.Click += new System.EventHandler(this.btn_prodCafe_Click);
             // 
@@ -312,7 +312,7 @@ namespace sistema_modular_cafe_majada.views
             this.label14.Location = new System.Drawing.Point(288, 190);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(85, 17);
+            this.label14.Size = new System.Drawing.Size(82, 21);
             this.label14.TabIndex = 26;
             this.label14.Text = "Fecha de partida";
             // 
@@ -321,10 +321,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_diasPdas3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_diasPdas3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_diasPdas3.Location = new System.Drawing.Point(210, 188);
-            this.txb_diasPdas3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_diasPdas3.Margin = new System.Windows.Forms.Padding(2);
             this.txb_diasPdas3.Name = "txb_diasPdas3";
             this.txb_diasPdas3.Size = new System.Drawing.Size(74, 21);
-            this.txb_diasPdas3.TabIndex = 25;
+            this.txb_diasPdas3.TabIndex = 14;
             this.txb_diasPdas3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_diasPdas3_KeyPress);
             // 
             // label15
@@ -334,7 +334,7 @@ namespace sistema_modular_cafe_majada.views
             this.label15.Location = new System.Drawing.Point(135, 192);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(71, 17);
+            this.label15.Size = new System.Drawing.Size(67, 21);
             this.label15.TabIndex = 24;
             this.label15.Text = "Dias Partidas";
             // 
@@ -343,10 +343,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_pdasSemana3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_pdasSemana3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_pdasSemana3.Location = new System.Drawing.Point(85, 187);
-            this.txb_pdasSemana3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_pdasSemana3.Margin = new System.Windows.Forms.Padding(2);
             this.txb_pdasSemana3.Name = "txb_pdasSemana3";
             this.txb_pdasSemana3.Size = new System.Drawing.Size(46, 21);
-            this.txb_pdasSemana3.TabIndex = 23;
+            this.txb_pdasSemana3.TabIndex = 13;
             this.txb_pdasSemana3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_pdasSemana3_KeyPress);
             // 
             // label16
@@ -356,7 +356,7 @@ namespace sistema_modular_cafe_majada.views
             this.label16.Location = new System.Drawing.Point(4, 187);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(61, 17);
+            this.label16.Size = new System.Drawing.Size(58, 21);
             this.label16.TabIndex = 22;
             this.label16.Text = "Semana N°";
             // 
@@ -367,7 +367,7 @@ namespace sistema_modular_cafe_majada.views
             this.label11.Location = new System.Drawing.Point(288, 148);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 17);
+            this.label11.Size = new System.Drawing.Size(82, 21);
             this.label11.TabIndex = 20;
             this.label11.Text = "Fecha de partida";
             // 
@@ -376,10 +376,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_diasPdas2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_diasPdas2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_diasPdas2.Location = new System.Drawing.Point(210, 145);
-            this.txb_diasPdas2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_diasPdas2.Margin = new System.Windows.Forms.Padding(2);
             this.txb_diasPdas2.Name = "txb_diasPdas2";
             this.txb_diasPdas2.Size = new System.Drawing.Size(74, 21);
-            this.txb_diasPdas2.TabIndex = 19;
+            this.txb_diasPdas2.TabIndex = 11;
             this.txb_diasPdas2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_diasPdas2_KeyPress);
             // 
             // label12
@@ -389,7 +389,7 @@ namespace sistema_modular_cafe_majada.views
             this.label12.Location = new System.Drawing.Point(135, 148);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(71, 17);
+            this.label12.Size = new System.Drawing.Size(67, 21);
             this.label12.TabIndex = 18;
             this.label12.Text = "Dias Partidas";
             // 
@@ -398,10 +398,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_pdasSemana2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_pdasSemana2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_pdasSemana2.Location = new System.Drawing.Point(85, 145);
-            this.txb_pdasSemana2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_pdasSemana2.Margin = new System.Windows.Forms.Padding(2);
             this.txb_pdasSemana2.Name = "txb_pdasSemana2";
             this.txb_pdasSemana2.Size = new System.Drawing.Size(46, 21);
-            this.txb_pdasSemana2.TabIndex = 17;
+            this.txb_pdasSemana2.TabIndex = 10;
             this.txb_pdasSemana2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_pdasSemana2_KeyPress);
             // 
             // label13
@@ -411,7 +411,7 @@ namespace sistema_modular_cafe_majada.views
             this.label13.Location = new System.Drawing.Point(4, 145);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 17);
+            this.label13.Size = new System.Drawing.Size(58, 21);
             this.label13.TabIndex = 16;
             this.label13.Text = "Semana N°";
             // 
@@ -422,10 +422,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_observacionCafe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_observacionCafe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_observacionCafe.Location = new System.Drawing.Point(105, 225);
-            this.txb_observacionCafe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_observacionCafe.Margin = new System.Windows.Forms.Padding(2);
             this.txb_observacionCafe.Name = "txb_observacionCafe";
             this.txb_observacionCafe.Size = new System.Drawing.Size(368, 21);
-            this.txb_observacionCafe.TabIndex = 15;
+            this.txb_observacionCafe.TabIndex = 16;
             this.txb_observacionCafe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_observacionCafe_KeyPress);
             // 
             // label10
@@ -435,7 +435,7 @@ namespace sistema_modular_cafe_majada.views
             this.label10.Location = new System.Drawing.Point(13, 225);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 17);
+            this.label10.Size = new System.Drawing.Size(71, 21);
             this.label10.TabIndex = 14;
             this.label10.Text = "Observaciones";
             // 
@@ -446,7 +446,7 @@ namespace sistema_modular_cafe_majada.views
             this.label9.Location = new System.Drawing.Point(288, 106);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 17);
+            this.label9.Size = new System.Drawing.Size(82, 21);
             this.label9.TabIndex = 12;
             this.label9.Text = "Fecha de partida";
             // 
@@ -455,10 +455,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_diasPdas1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_diasPdas1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_diasPdas1.Location = new System.Drawing.Point(210, 103);
-            this.txb_diasPdas1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_diasPdas1.Margin = new System.Windows.Forms.Padding(2);
             this.txb_diasPdas1.Name = "txb_diasPdas1";
             this.txb_diasPdas1.Size = new System.Drawing.Size(74, 21);
-            this.txb_diasPdas1.TabIndex = 11;
+            this.txb_diasPdas1.TabIndex = 8;
             this.txb_diasPdas1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_diasPdas1_KeyPress);
             // 
             // label8
@@ -468,7 +468,7 @@ namespace sistema_modular_cafe_majada.views
             this.label8.Location = new System.Drawing.Point(135, 106);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 17);
+            this.label8.Size = new System.Drawing.Size(67, 21);
             this.label8.TabIndex = 10;
             this.label8.Text = "Dias Partidas";
             // 
@@ -477,10 +477,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_pdasSemana1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_pdasSemana1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_pdasSemana1.Location = new System.Drawing.Point(85, 102);
-            this.txb_pdasSemana1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_pdasSemana1.Margin = new System.Windows.Forms.Padding(2);
             this.txb_pdasSemana1.Name = "txb_pdasSemana1";
             this.txb_pdasSemana1.Size = new System.Drawing.Size(46, 21);
-            this.txb_pdasSemana1.TabIndex = 9;
+            this.txb_pdasSemana1.TabIndex = 7;
             this.txb_pdasSemana1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_pdasSemana1_KeyPress);
             // 
             // label7
@@ -490,7 +490,7 @@ namespace sistema_modular_cafe_majada.views
             this.label7.Location = new System.Drawing.Point(4, 102);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 17);
+            this.label7.Size = new System.Drawing.Size(58, 21);
             this.label7.TabIndex = 8;
             this.label7.Text = "Semana N°";
             // 
@@ -501,7 +501,7 @@ namespace sistema_modular_cafe_majada.views
             this.label6.Location = new System.Drawing.Point(337, 38);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(105, 17);
+            this.label6.Size = new System.Drawing.Size(100, 21);
             this.label6.TabIndex = 6;
             this.label6.Text = "SubProducto de Café";
             // 
@@ -510,10 +510,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_calidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_calidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_calidad.Location = new System.Drawing.Point(170, 62);
-            this.txb_calidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_calidad.Margin = new System.Windows.Forms.Padding(2);
             this.txb_calidad.Name = "txb_calidad";
             this.txb_calidad.Size = new System.Drawing.Size(114, 21);
-            this.txb_calidad.TabIndex = 5;
+            this.txb_calidad.TabIndex = 0;
             this.txb_calidad.Click += new System.EventHandler(this.btn_CCafe_Click);
             // 
             // label5
@@ -523,7 +523,7 @@ namespace sistema_modular_cafe_majada.views
             this.label5.Location = new System.Drawing.Point(170, 38);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 17);
+            this.label5.Size = new System.Drawing.Size(86, 21);
             this.label5.TabIndex = 4;
             this.label5.Text = "Calidades de Café";
             // 
@@ -532,10 +532,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_procedencia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_procedencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_procedencia.Location = new System.Drawing.Point(4, 62);
-            this.txb_procedencia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_procedencia.Margin = new System.Windows.Forms.Padding(2);
             this.txb_procedencia.Name = "txb_procedencia";
             this.txb_procedencia.Size = new System.Drawing.Size(111, 21);
-            this.txb_procedencia.TabIndex = 3;
+            this.txb_procedencia.TabIndex = 0;
             // 
             // label4
             // 
@@ -544,7 +544,7 @@ namespace sistema_modular_cafe_majada.views
             this.label4.Location = new System.Drawing.Point(4, 38);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 17);
+            this.label4.Size = new System.Drawing.Size(98, 21);
             this.label4.TabIndex = 2;
             this.label4.Text = "Procedencia de Café";
             // 
@@ -574,9 +574,9 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox2.Controls.Add(this.label29);
             this.groupBox2.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(502, 60);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(447, 258);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
@@ -589,10 +589,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_puntero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_puntero.Image = ((System.Drawing.Image)(resources.GetObject("btn_puntero.Image")));
             this.btn_puntero.Location = new System.Drawing.Point(417, 184);
-            this.btn_puntero.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_puntero.Margin = new System.Windows.Forms.Padding(2);
             this.btn_puntero.Name = "btn_puntero";
             this.btn_puntero.Size = new System.Drawing.Size(26, 28);
-            this.btn_puntero.TabIndex = 45;
+            this.btn_puntero.TabIndex = 25;
             this.btn_puntero.UseVisualStyleBackColor = true;
             this.btn_puntero.Click += new System.EventHandler(this.btn_puntero_Click);
             // 
@@ -600,38 +600,38 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.dtp_fechaSalidaSecad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_fechaSalidaSecad.Location = new System.Drawing.Point(109, 99);
-            this.dtp_fechaSalidaSecad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_fechaSalidaSecad.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_fechaSalidaSecad.Name = "dtp_fechaSalidaSecad";
             this.dtp_fechaSalidaSecad.Size = new System.Drawing.Size(110, 21);
-            this.dtp_fechaSalidaSecad.TabIndex = 44;
+            this.dtp_fechaSalidaSecad.TabIndex = 20;
             // 
             // dtp_fechaInicioSecad
             // 
             this.dtp_fechaInicioSecad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_fechaInicioSecad.Location = new System.Drawing.Point(109, 67);
-            this.dtp_fechaInicioSecad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_fechaInicioSecad.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_fechaInicioSecad.Name = "dtp_fechaInicioSecad";
             this.dtp_fechaInicioSecad.Size = new System.Drawing.Size(110, 21);
-            this.dtp_fechaInicioSecad.TabIndex = 43;
+            this.dtp_fechaInicioSecad.TabIndex = 18;
             // 
             // dtp_fechaSecado
             // 
             this.dtp_fechaSecado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_fechaSecado.Location = new System.Drawing.Point(109, 35);
-            this.dtp_fechaSecado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_fechaSecado.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_fechaSecado.Name = "dtp_fechaSecado";
             this.dtp_fechaSecado.Size = new System.Drawing.Size(110, 21);
-            this.dtp_fechaSecado.TabIndex = 42;
+            this.dtp_fechaSecado.TabIndex = 17;
             // 
             // txb_horaSalida
             // 
             this.txb_horaSalida.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_horaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_horaSalida.Location = new System.Drawing.Point(359, 100);
-            this.txb_horaSalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_horaSalida.Margin = new System.Windows.Forms.Padding(2);
             this.txb_horaSalida.Name = "txb_horaSalida";
             this.txb_horaSalida.Size = new System.Drawing.Size(82, 21);
-            this.txb_horaSalida.TabIndex = 33;
+            this.txb_horaSalida.TabIndex = 21;
             this.txb_horaSalida.Text = "00:00";
             this.txb_horaSalida.Enter += new System.EventHandler(this.txb_horaSalida_Enter);
             this.txb_horaSalida.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_horaSalida_KeyPress);
@@ -644,7 +644,7 @@ namespace sistema_modular_cafe_majada.views
             this.label24.Location = new System.Drawing.Point(328, 100);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(31, 17);
+            this.label24.Size = new System.Drawing.Size(31, 21);
             this.label24.TabIndex = 32;
             this.label24.Text = "Hora";
             // 
@@ -653,10 +653,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_horaInicio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_horaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_horaInicio.Location = new System.Drawing.Point(359, 71);
-            this.txb_horaInicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_horaInicio.Margin = new System.Windows.Forms.Padding(2);
             this.txb_horaInicio.Name = "txb_horaInicio";
             this.txb_horaInicio.Size = new System.Drawing.Size(82, 21);
-            this.txb_horaInicio.TabIndex = 31;
+            this.txb_horaInicio.TabIndex = 19;
             this.txb_horaInicio.Text = "00:00";
             this.txb_horaInicio.Enter += new System.EventHandler(this.txb_horaInicio_Enter);
             this.txb_horaInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_horaInicio_KeyPress);
@@ -669,7 +669,7 @@ namespace sistema_modular_cafe_majada.views
             this.label25.Location = new System.Drawing.Point(328, 71);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(31, 17);
+            this.label25.Size = new System.Drawing.Size(31, 21);
             this.label25.TabIndex = 30;
             this.label25.Text = "Hora";
             // 
@@ -680,7 +680,7 @@ namespace sistema_modular_cafe_majada.views
             this.label20.Location = new System.Drawing.Point(4, 100);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(75, 17);
+            this.label20.Size = new System.Drawing.Size(73, 21);
             this.label20.TabIndex = 28;
             this.label20.Text = "Salio de Punto";
             // 
@@ -691,7 +691,7 @@ namespace sistema_modular_cafe_majada.views
             this.label18.Location = new System.Drawing.Point(4, 71);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(83, 17);
+            this.label18.Size = new System.Drawing.Size(81, 21);
             this.label18.TabIndex = 26;
             this.label18.Text = "Inicio de Secado";
             // 
@@ -700,10 +700,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_rendimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_rendimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_rendimiento.Location = new System.Drawing.Point(383, 145);
-            this.txb_rendimiento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_rendimiento.Margin = new System.Windows.Forms.Padding(2);
             this.txb_rendimiento.Name = "txb_rendimiento";
             this.txb_rendimiento.Size = new System.Drawing.Size(61, 21);
-            this.txb_rendimiento.TabIndex = 25;
+            this.txb_rendimiento.TabIndex = 24;
             this.txb_rendimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_rendimiento_KeyPress);
             // 
             // label17
@@ -713,7 +713,7 @@ namespace sistema_modular_cafe_majada.views
             this.label17.Location = new System.Drawing.Point(298, 143);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(67, 17);
+            this.label17.Size = new System.Drawing.Size(64, 21);
             this.label17.TabIndex = 24;
             this.label17.Text = "Rendimiento";
             // 
@@ -722,10 +722,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_nombrePuntero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_nombrePuntero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_nombrePuntero.Location = new System.Drawing.Point(145, 188);
-            this.txb_nombrePuntero.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_nombrePuntero.Margin = new System.Windows.Forms.Padding(2);
             this.txb_nombrePuntero.Name = "txb_nombrePuntero";
             this.txb_nombrePuntero.Size = new System.Drawing.Size(270, 21);
-            this.txb_nombrePuntero.TabIndex = 23;
+            this.txb_nombrePuntero.TabIndex = 0;
             // 
             // label19
             // 
@@ -734,7 +734,7 @@ namespace sistema_modular_cafe_majada.views
             this.label19.Location = new System.Drawing.Point(4, 187);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(100, 17);
+            this.label19.Size = new System.Drawing.Size(96, 21);
             this.label19.TabIndex = 22;
             this.label19.Text = "Nombre del Puntero";
             // 
@@ -743,10 +743,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_humedad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_humedad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_humedad.Location = new System.Drawing.Point(241, 145);
-            this.txb_humedad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_humedad.Margin = new System.Windows.Forms.Padding(2);
             this.txb_humedad.Name = "txb_humedad";
             this.txb_humedad.Size = new System.Drawing.Size(54, 21);
-            this.txb_humedad.TabIndex = 19;
+            this.txb_humedad.TabIndex = 23;
             this.txb_humedad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_humedad_KeyPress);
             // 
             // label21
@@ -756,7 +756,7 @@ namespace sistema_modular_cafe_majada.views
             this.label21.Location = new System.Drawing.Point(161, 145);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(75, 17);
+            this.label21.Size = new System.Drawing.Size(71, 21);
             this.label21.TabIndex = 18;
             this.label21.Text = "Humedad (%)";
             // 
@@ -765,10 +765,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_tiempoSecad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_tiempoSecad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_tiempoSecad.Location = new System.Drawing.Point(109, 145);
-            this.txb_tiempoSecad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_tiempoSecad.Margin = new System.Windows.Forms.Padding(2);
             this.txb_tiempoSecad.Name = "txb_tiempoSecad";
             this.txb_tiempoSecad.Size = new System.Drawing.Size(40, 21);
-            this.txb_tiempoSecad.TabIndex = 17;
+            this.txb_tiempoSecad.TabIndex = 22;
             this.txb_tiempoSecad.Text = "00:00";
             this.txb_tiempoSecad.Enter += new System.EventHandler(this.txb_tiempoSecad_Enter);
             this.txb_tiempoSecad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_tiempoSecad_KeyPress);
@@ -781,7 +781,7 @@ namespace sistema_modular_cafe_majada.views
             this.label22.Location = new System.Drawing.Point(4, 145);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(91, 17);
+            this.label22.Size = new System.Drawing.Size(88, 21);
             this.label22.TabIndex = 16;
             this.label22.Text = "Tiempo de Secado";
             // 
@@ -790,10 +790,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_observacionSecad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_observacionSecad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_observacionSecad.Location = new System.Drawing.Point(131, 225);
-            this.txb_observacionSecad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_observacionSecad.Margin = new System.Windows.Forms.Padding(2);
             this.txb_observacionSecad.Name = "txb_observacionSecad";
             this.txb_observacionSecad.Size = new System.Drawing.Size(312, 21);
-            this.txb_observacionSecad.TabIndex = 15;
+            this.txb_observacionSecad.TabIndex = 26;
             this.txb_observacionSecad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_observacionSecad_KeyPress);
             // 
             // label23
@@ -803,7 +803,7 @@ namespace sistema_modular_cafe_majada.views
             this.label23.Location = new System.Drawing.Point(13, 225);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(76, 17);
+            this.label23.Size = new System.Drawing.Size(71, 21);
             this.label23.TabIndex = 14;
             this.label23.Text = "Observaciones";
             // 
@@ -814,7 +814,7 @@ namespace sistema_modular_cafe_majada.views
             this.label29.Location = new System.Drawing.Point(4, 38);
             this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(77, 17);
+            this.label29.Size = new System.Drawing.Size(76, 21);
             this.label29.TabIndex = 2;
             this.label29.Text = "Fecha de Carga";
             // 
@@ -833,9 +833,9 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox3.Controls.Add(this.label36);
             this.groupBox3.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(14, 323);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(936, 89);
             this.groupBox3.TabIndex = 34;
             this.groupBox3.TabStop = false;
@@ -847,10 +847,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_catador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_catador.Image = ((System.Drawing.Image)(resources.GetObject("btn_catador.Image")));
             this.btn_catador.Location = new System.Drawing.Point(533, 36);
-            this.btn_catador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_catador.Margin = new System.Windows.Forms.Padding(2);
             this.btn_catador.Name = "btn_catador";
             this.btn_catador.Size = new System.Drawing.Size(26, 28);
-            this.btn_catador.TabIndex = 44;
+            this.btn_catador.TabIndex = 29;
             this.btn_catador.UseVisualStyleBackColor = true;
             this.btn_catador.Click += new System.EventHandler(this.btn_catador_Click);
             // 
@@ -858,20 +858,20 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.dtp_fechaCatacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_fechaCatacion.Location = new System.Drawing.Point(228, 36);
-            this.dtp_fechaCatacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_fechaCatacion.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_fechaCatacion.Name = "dtp_fechaCatacion";
             this.dtp_fechaCatacion.Size = new System.Drawing.Size(110, 21);
-            this.dtp_fechaCatacion.TabIndex = 34;
+            this.dtp_fechaCatacion.TabIndex = 28;
             // 
             // txb_nombreCatador
             // 
             this.txb_nombreCatador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_nombreCatador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_nombreCatador.Location = new System.Drawing.Point(344, 37);
-            this.txb_nombreCatador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_nombreCatador.Margin = new System.Windows.Forms.Padding(2);
             this.txb_nombreCatador.Name = "txb_nombreCatador";
             this.txb_nombreCatador.Size = new System.Drawing.Size(187, 21);
-            this.txb_nombreCatador.TabIndex = 33;
+            this.txb_nombreCatador.TabIndex = 0;
             // 
             // label38
             // 
@@ -880,7 +880,7 @@ namespace sistema_modular_cafe_majada.views
             this.label38.Location = new System.Drawing.Point(340, 14);
             this.label38.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(100, 17);
+            this.label38.Size = new System.Drawing.Size(95, 21);
             this.label38.TabIndex = 32;
             this.label38.Text = "Nombre del catador";
             // 
@@ -891,11 +891,11 @@ namespace sistema_modular_cafe_majada.views
             this.txb_observacionCatador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_observacionCatador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_observacionCatador.Location = new System.Drawing.Point(652, 17);
-            this.txb_observacionCatador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_observacionCatador.Margin = new System.Windows.Forms.Padding(2);
             this.txb_observacionCatador.Multiline = true;
             this.txb_observacionCatador.Name = "txb_observacionCatador";
             this.txb_observacionCatador.Size = new System.Drawing.Size(276, 62);
-            this.txb_observacionCatador.TabIndex = 31;
+            this.txb_observacionCatador.TabIndex = 30;
             this.txb_observacionCatador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_observacionCatador_KeyPress);
             // 
             // label27
@@ -905,7 +905,7 @@ namespace sistema_modular_cafe_majada.views
             this.label27.Location = new System.Drawing.Point(563, 33);
             this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(76, 17);
+            this.label27.Size = new System.Drawing.Size(71, 21);
             this.label27.TabIndex = 30;
             this.label27.Text = "Observaciones";
             // 
@@ -916,7 +916,7 @@ namespace sistema_modular_cafe_majada.views
             this.label30.Location = new System.Drawing.Point(190, 38);
             this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(35, 17);
+            this.label30.Size = new System.Drawing.Size(35, 21);
             this.label30.TabIndex = 26;
             this.label30.Text = "Fecha";
             // 
@@ -925,10 +925,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_resultadoCatacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_resultadoCatacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_resultadoCatacion.Location = new System.Drawing.Point(58, 36);
-            this.txb_resultadoCatacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_resultadoCatacion.Margin = new System.Windows.Forms.Padding(2);
             this.txb_resultadoCatacion.Name = "txb_resultadoCatacion";
             this.txb_resultadoCatacion.Size = new System.Drawing.Size(122, 21);
-            this.txb_resultadoCatacion.TabIndex = 3;
+            this.txb_resultadoCatacion.TabIndex = 27;
             this.txb_resultadoCatacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_resultadoCatacion_KeyPress);
             // 
             // label36
@@ -938,7 +938,7 @@ namespace sistema_modular_cafe_majada.views
             this.label36.Location = new System.Drawing.Point(4, 38);
             this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(55, 17);
+            this.label36.Size = new System.Drawing.Size(52, 21);
             this.label36.TabIndex = 2;
             this.label36.Text = "Resultado";
             // 
@@ -968,9 +968,9 @@ namespace sistema_modular_cafe_majada.views
             this.groupBox4.Controls.Add(this.label31);
             this.groupBox4.Font = new System.Drawing.Font("Oswald", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 417);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(936, 158);
             this.groupBox4.TabIndex = 35;
             this.groupBox4.TabStop = false;
@@ -982,10 +982,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_ubiFisicaCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ubiFisicaCafe.Image = ((System.Drawing.Image)(resources.GetObject("btn_ubiFisicaCafe.Image")));
             this.btn_ubiFisicaCafe.Location = new System.Drawing.Point(388, 77);
-            this.btn_ubiFisicaCafe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_ubiFisicaCafe.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ubiFisicaCafe.Name = "btn_ubiFisicaCafe";
             this.btn_ubiFisicaCafe.Size = new System.Drawing.Size(26, 28);
-            this.btn_ubiFisicaCafe.TabIndex = 43;
+            this.btn_ubiFisicaCafe.TabIndex = 35;
             this.btn_ubiFisicaCafe.UseVisualStyleBackColor = true;
             this.btn_ubiFisicaCafe.Click += new System.EventHandler(this.btn_ubiFisicaCafe_Click);
             // 
@@ -995,10 +995,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_ubicacionCafe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ubicacionCafe.Image = ((System.Drawing.Image)(resources.GetObject("btn_ubicacionCafe.Image")));
             this.btn_ubicacionCafe.Location = new System.Drawing.Point(388, 35);
-            this.btn_ubicacionCafe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_ubicacionCafe.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ubicacionCafe.Name = "btn_ubicacionCafe";
             this.btn_ubicacionCafe.Size = new System.Drawing.Size(26, 28);
-            this.btn_ubicacionCafe.TabIndex = 42;
+            this.btn_ubicacionCafe.TabIndex = 32;
             this.btn_ubicacionCafe.UseVisualStyleBackColor = true;
             this.btn_ubicacionCafe.Click += new System.EventHandler(this.btn_ubicacionCafe_Click);
             // 
@@ -1009,10 +1009,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_pesador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_pesador.Image = ((System.Drawing.Image)(resources.GetObject("btn_pesador.Image")));
             this.btn_pesador.Location = new System.Drawing.Point(894, 35);
-            this.btn_pesador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_pesador.Margin = new System.Windows.Forms.Padding(2);
             this.btn_pesador.Name = "btn_pesador";
             this.btn_pesador.Size = new System.Drawing.Size(26, 28);
-            this.btn_pesador.TabIndex = 41;
+            this.btn_pesador.TabIndex = 33;
             this.btn_pesador.UseVisualStyleBackColor = true;
             this.btn_pesador.Click += new System.EventHandler(this.btn_pesador_Click);
             // 
@@ -1020,10 +1020,10 @@ namespace sistema_modular_cafe_majada.views
             // 
             this.dtp_fechaPesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_fechaPesa.Location = new System.Drawing.Point(100, 32);
-            this.dtp_fechaPesa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_fechaPesa.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_fechaPesa.Name = "dtp_fechaPesa";
             this.dtp_fechaPesa.Size = new System.Drawing.Size(110, 21);
-            this.dtp_fechaPesa.TabIndex = 40;
+            this.dtp_fechaPesa.TabIndex = 31;
             // 
             // txb_observacionPesa
             // 
@@ -1033,11 +1033,11 @@ namespace sistema_modular_cafe_majada.views
             this.txb_observacionPesa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_observacionPesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_observacionPesa.Location = new System.Drawing.Point(536, 129);
-            this.txb_observacionPesa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_observacionPesa.Margin = new System.Windows.Forms.Padding(2);
             this.txb_observacionPesa.Multiline = true;
             this.txb_observacionPesa.Name = "txb_observacionPesa";
             this.txb_observacionPesa.Size = new System.Drawing.Size(354, 18);
-            this.txb_observacionPesa.TabIndex = 39;
+            this.txb_observacionPesa.TabIndex = 38;
             this.txb_observacionPesa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_observacionPesa_KeyPress);
             // 
             // label37
@@ -1047,7 +1047,7 @@ namespace sistema_modular_cafe_majada.views
             this.label37.Location = new System.Drawing.Point(433, 129);
             this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(76, 17);
+            this.label37.Size = new System.Drawing.Size(71, 21);
             this.label37.TabIndex = 38;
             this.label37.Text = "Observaciones";
             // 
@@ -1058,10 +1058,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_doctoAlmacen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_doctoAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_doctoAlmacen.Location = new System.Drawing.Point(536, 80);
-            this.txb_doctoAlmacen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_doctoAlmacen.Margin = new System.Windows.Forms.Padding(2);
             this.txb_doctoAlmacen.Name = "txb_doctoAlmacen";
             this.txb_doctoAlmacen.Size = new System.Drawing.Size(354, 21);
-            this.txb_doctoAlmacen.TabIndex = 37;
+            this.txb_doctoAlmacen.TabIndex = 36;
             this.txb_doctoAlmacen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_doctoAlmacen_KeyPress);
             // 
             // label35
@@ -1071,7 +1071,7 @@ namespace sistema_modular_cafe_majada.views
             this.label35.Location = new System.Drawing.Point(425, 81);
             this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(80, 17);
+            this.label35.Size = new System.Drawing.Size(77, 21);
             this.label35.TabIndex = 36;
             this.label35.Text = "Docto. Almacen";
             // 
@@ -1082,10 +1082,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_nombrePesador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_nombrePesador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_nombrePesador.Location = new System.Drawing.Point(536, 38);
-            this.txb_nombrePesador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_nombrePesador.Margin = new System.Windows.Forms.Padding(2);
             this.txb_nombrePesador.Name = "txb_nombrePesador";
             this.txb_nombrePesador.Size = new System.Drawing.Size(354, 21);
-            this.txb_nombrePesador.TabIndex = 35;
+            this.txb_nombrePesador.TabIndex = 0;
             // 
             // label34
             // 
@@ -1094,7 +1094,7 @@ namespace sistema_modular_cafe_majada.views
             this.label34.Location = new System.Drawing.Point(433, 38);
             this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(72, 17);
+            this.label34.Size = new System.Drawing.Size(68, 21);
             this.label34.TabIndex = 34;
             this.label34.Text = "Nom. Pesador";
             // 
@@ -1103,10 +1103,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_almacenSiloPiña.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_almacenSiloPiña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_almacenSiloPiña.Location = new System.Drawing.Point(292, 80);
-            this.txb_almacenSiloPiña.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_almacenSiloPiña.Margin = new System.Windows.Forms.Padding(2);
             this.txb_almacenSiloPiña.Name = "txb_almacenSiloPiña";
             this.txb_almacenSiloPiña.Size = new System.Drawing.Size(91, 21);
-            this.txb_almacenSiloPiña.TabIndex = 33;
+            this.txb_almacenSiloPiña.TabIndex = 0;
             // 
             // label32
             // 
@@ -1115,7 +1115,7 @@ namespace sistema_modular_cafe_majada.views
             this.label32.Location = new System.Drawing.Point(223, 80);
             this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(52, 17);
+            this.label32.Size = new System.Drawing.Size(50, 21);
             this.label32.TabIndex = 32;
             this.label32.Text = "Silo/Piña";
             // 
@@ -1124,10 +1124,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_ubicadoBodega.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_ubicadoBodega.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_ubicadoBodega.Location = new System.Drawing.Point(292, 38);
-            this.txb_ubicadoBodega.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_ubicadoBodega.Margin = new System.Windows.Forms.Padding(2);
             this.txb_ubicadoBodega.Name = "txb_ubicadoBodega";
             this.txb_ubicadoBodega.Size = new System.Drawing.Size(91, 21);
-            this.txb_ubicadoBodega.TabIndex = 31;
+            this.txb_ubicadoBodega.TabIndex = 0;
             // 
             // label33
             // 
@@ -1136,7 +1136,7 @@ namespace sistema_modular_cafe_majada.views
             this.label33.Location = new System.Drawing.Point(223, 38);
             this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(62, 17);
+            this.label33.Size = new System.Drawing.Size(61, 21);
             this.label33.TabIndex = 30;
             this.label33.Text = "Ubicado en ";
             // 
@@ -1145,10 +1145,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_cantidadQQs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_cantidadQQs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_cantidadQQs.Location = new System.Drawing.Point(100, 119);
-            this.txb_cantidadQQs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_cantidadQQs.Margin = new System.Windows.Forms.Padding(2);
             this.txb_cantidadQQs.Name = "txb_cantidadQQs";
             this.txb_cantidadQQs.Size = new System.Drawing.Size(108, 21);
-            this.txb_cantidadQQs.TabIndex = 29;
+            this.txb_cantidadQQs.TabIndex = 37;
             this.txb_cantidadQQs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_cantidadQQs_KeyPress);
             // 
             // label26
@@ -1158,7 +1158,7 @@ namespace sistema_modular_cafe_majada.views
             this.label26.Location = new System.Drawing.Point(4, 119);
             this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(74, 17);
+            this.label26.Size = new System.Drawing.Size(72, 21);
             this.label26.TabIndex = 28;
             this.label26.Text = "Pesas en Q.Q.S";
             // 
@@ -1167,10 +1167,10 @@ namespace sistema_modular_cafe_majada.views
             this.txb_CantidadSaco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_CantidadSaco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txb_CantidadSaco.Location = new System.Drawing.Point(100, 77);
-            this.txb_CantidadSaco.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txb_CantidadSaco.Margin = new System.Windows.Forms.Padding(2);
             this.txb_CantidadSaco.Name = "txb_CantidadSaco";
             this.txb_CantidadSaco.Size = new System.Drawing.Size(108, 21);
-            this.txb_CantidadSaco.TabIndex = 27;
+            this.txb_CantidadSaco.TabIndex = 34;
             this.txb_CantidadSaco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_CantidadSaco_KeyPress);
             // 
             // label28
@@ -1180,7 +1180,7 @@ namespace sistema_modular_cafe_majada.views
             this.label28.Location = new System.Drawing.Point(4, 77);
             this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(68, 17);
+            this.label28.Size = new System.Drawing.Size(63, 21);
             this.label28.TabIndex = 26;
             this.label28.Text = "Pesas/Sacos";
             // 
@@ -1191,7 +1191,7 @@ namespace sistema_modular_cafe_majada.views
             this.label31.Location = new System.Drawing.Point(4, 35);
             this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(84, 17);
+            this.label31.Size = new System.Drawing.Size(81, 21);
             this.label31.TabIndex = 24;
             this.label31.Text = "Fecha de Pesado";
             // 
@@ -1208,11 +1208,11 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SaveUser.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_SaveUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_SaveUser.Location = new System.Drawing.Point(782, 37);
-            this.btn_SaveUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_SaveUser.Margin = new System.Windows.Forms.Padding(2);
             this.btn_SaveUser.Name = "btn_SaveUser";
             this.btn_SaveUser.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.btn_SaveUser.Size = new System.Drawing.Size(79, 32);
-            this.btn_SaveUser.TabIndex = 45;
+            this.btn_SaveUser.TabIndex = 39;
             this.btn_SaveUser.Text = "Guardar";
             this.btn_SaveUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SaveUser.UseVisualStyleBackColor = false;
@@ -1230,11 +1230,12 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar;
             this.btn_Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Cancel.Location = new System.Drawing.Point(872, 37);
-            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.btn_Cancel.Size = new System.Drawing.Size(79, 32);
-            this.btn_Cancel.TabIndex = 46;
+            this.btn_Cancel.TabIndex = 0;
+            this.btn_Cancel.TabStop = false;
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
@@ -1246,10 +1247,10 @@ namespace sistema_modular_cafe_majada.views
             this.btn_deleteSPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_deleteSPartida.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_eliminar_24px;
             this.btn_deleteSPartida.Location = new System.Drawing.Point(241, 27);
-            this.btn_deleteSPartida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_deleteSPartida.Margin = new System.Windows.Forms.Padding(2);
             this.btn_deleteSPartida.Name = "btn_deleteSPartida";
             this.btn_deleteSPartida.Size = new System.Drawing.Size(26, 28);
-            this.btn_deleteSPartida.TabIndex = 47;
+            this.btn_deleteSPartida.TabIndex = 3;
             this.btn_deleteSPartida.UseVisualStyleBackColor = true;
             this.btn_deleteSPartida.Click += new System.EventHandler(this.btn_deleteSPartida_Click);
             // 
@@ -1265,11 +1266,12 @@ namespace sistema_modular_cafe_majada.views
             this.btn_pdfSPartida.Image = global::sistema_modular_cafe_majada.Properties.Resources.pdf_24px;
             this.btn_pdfSPartida.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_pdfSPartida.Location = new System.Drawing.Point(789, 2);
-            this.btn_pdfSPartida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_pdfSPartida.Margin = new System.Windows.Forms.Padding(2);
             this.btn_pdfSPartida.Name = "btn_pdfSPartida";
             this.btn_pdfSPartida.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.btn_pdfSPartida.Size = new System.Drawing.Size(162, 32);
-            this.btn_pdfSPartida.TabIndex = 48;
+            this.btn_pdfSPartida.TabIndex = 0;
+            this.btn_pdfSPartida.TabStop = false;
             this.btn_pdfSPartida.Text = "Generar PDF";
             this.btn_pdfSPartida.UseVisualStyleBackColor = false;
             this.btn_pdfSPartida.Click += new System.EventHandler(this.btn_pdfSPartida_Click);
@@ -1294,7 +1296,7 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.txb_cosecha);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1350, 821);
             this.Name = "form_subPartidas";
             this.Text = "form_subPartidas";
