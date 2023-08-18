@@ -50,7 +50,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel1.Controls.Add(this.btn_close);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(488, 24);
             this.panel1.TabIndex = 17;
@@ -62,7 +62,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.Image = global::sistema_modular_cafe_majada.Properties.Resources.x__1___1_;
             this.btn_close.Location = new System.Drawing.Point(466, 0);
-            this.btn_close.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_close.Margin = new System.Windows.Forms.Padding(2);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(22, 24);
             this.btn_close.TabIndex = 0;
@@ -77,7 +77,7 @@ namespace sistema_modular_cafe_majada.views
             this.label1.Location = new System.Drawing.Point(276, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 24);
+            this.label1.Size = new System.Drawing.Size(155, 27);
             this.label1.TabIndex = 19;
             this.label1.Text = "Seleccione una Cosecha";
             // 
@@ -86,10 +86,10 @@ namespace sistema_modular_cafe_majada.views
             this.cbx_cosecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_cosecha.FormattingEnabled = true;
             this.cbx_cosecha.Location = new System.Drawing.Point(203, 97);
-            this.cbx_cosecha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbx_cosecha.Margin = new System.Windows.Forms.Padding(2);
             this.cbx_cosecha.Name = "cbx_cosecha";
             this.cbx_cosecha.Size = new System.Drawing.Size(276, 23);
-            this.cbx_cosecha.TabIndex = 20;
+            this.cbx_cosecha.TabIndex = 1;
             // 
             // label2
             // 
@@ -98,7 +98,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2.Location = new System.Drawing.Point(203, 71);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 21);
+            this.label2.Size = new System.Drawing.Size(52, 24);
             this.label2.TabIndex = 21;
             this.label2.Text = "Cosecha";
             // 
@@ -114,11 +114,11 @@ namespace sistema_modular_cafe_majada.views
             this.btn_aplicar.Image = global::sistema_modular_cafe_majada.Properties.Resources.btn_guardar;
             this.btn_aplicar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_aplicar.Location = new System.Drawing.Point(203, 160);
-            this.btn_aplicar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_aplicar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_aplicar.Name = "btn_aplicar";
             this.btn_aplicar.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.btn_aplicar.Size = new System.Drawing.Size(274, 32);
-            this.btn_aplicar.TabIndex = 22;
+            this.btn_aplicar.TabIndex = 2;
             this.btn_aplicar.Text = "Aplicar";
             this.btn_aplicar.UseVisualStyleBackColor = false;
             this.btn_aplicar.Click += new System.EventHandler(this.btn_aplicar_Click);
@@ -128,7 +128,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 24);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 179);
             this.panel2.TabIndex = 23;
@@ -138,7 +138,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel3.BackColor = System.Drawing.Color.Black;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(486, 24);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(2, 179);
             this.panel3.TabIndex = 24;
@@ -148,7 +148,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(2, 201);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(484, 2);
             this.panel4.TabIndex = 24;
@@ -158,7 +158,7 @@ namespace sistema_modular_cafe_majada.views
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = global::sistema_modular_cafe_majada.Properties.Resources.calendario_128px;
             this.pictureBox1.Location = new System.Drawing.Point(2, 24);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(197, 177);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -182,7 +182,7 @@ namespace sistema_modular_cafe_majada.views
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(488, 256);
             this.MinimumSize = new System.Drawing.Size(488, 203);
             this.Name = "form_seleccionCosecha";

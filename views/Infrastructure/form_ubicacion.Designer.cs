@@ -136,7 +136,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(222, 306);
-            this.panel8.TabIndex = 7;
+            this.panel8.TabIndex = 1;
             // 
             // cbx_bodega
             // 
@@ -146,7 +146,7 @@ namespace sistema_modular_cafe_majada.views
             this.cbx_bodega.Margin = new System.Windows.Forms.Padding(2);
             this.cbx_bodega.Name = "cbx_bodega";
             this.cbx_bodega.Size = new System.Drawing.Size(174, 25);
-            this.cbx_bodega.TabIndex = 9;
+            this.cbx_bodega.TabIndex = 5;
             // 
             // label7
             // 
@@ -155,7 +155,7 @@ namespace sistema_modular_cafe_majada.views
             this.label7.Location = new System.Drawing.Point(8, 245);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 17);
+            this.label7.Size = new System.Drawing.Size(47, 21);
             this.label7.TabIndex = 8;
             this.label7.Text = "Bodega";
             // 
@@ -167,7 +167,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_ubicacion.Margin = new System.Windows.Forms.Padding(2);
             this.txb_ubicacion.Name = "txb_ubicacion";
             this.txb_ubicacion.Size = new System.Drawing.Size(174, 23);
-            this.txb_ubicacion.TabIndex = 7;
+            this.txb_ubicacion.TabIndex = 4;
             this.txb_ubicacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_ubicacion_KeyPress);
             // 
             // label6
@@ -177,7 +177,7 @@ namespace sistema_modular_cafe_majada.views
             this.label6.Location = new System.Drawing.Point(8, 183);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 17);
+            this.label6.Size = new System.Drawing.Size(59, 21);
             this.label6.TabIndex = 6;
             this.label6.Text = "Ubicación";
             // 
@@ -189,7 +189,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_capacidad.Margin = new System.Windows.Forms.Padding(2);
             this.txb_capacidad.Name = "txb_capacidad";
             this.txb_capacidad.Size = new System.Drawing.Size(174, 23);
-            this.txb_capacidad.TabIndex = 5;
+            this.txb_capacidad.TabIndex = 3;
             this.txb_capacidad.Enter += new System.EventHandler(this.txb_capacidad_Enter);
             this.txb_capacidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_capacidad_KeyPress);
             // 
@@ -200,7 +200,7 @@ namespace sistema_modular_cafe_majada.views
             this.label5.Location = new System.Drawing.Point(8, 126);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 17);
+            this.label5.Size = new System.Drawing.Size(62, 21);
             this.label5.TabIndex = 4;
             this.label5.Text = "Capacidad";
             // 
@@ -212,7 +212,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_descripcion.Margin = new System.Windows.Forms.Padding(2);
             this.txb_descripcion.Name = "txb_descripcion";
             this.txb_descripcion.Size = new System.Drawing.Size(174, 23);
-            this.txb_descripcion.TabIndex = 3;
+            this.txb_descripcion.TabIndex = 2;
             this.txb_descripcion.Enter += new System.EventHandler(this.txb_descripcion_Enter);
             this.txb_descripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_descripcion_KeyPress);
             // 
@@ -223,7 +223,7 @@ namespace sistema_modular_cafe_majada.views
             this.label4.Location = new System.Drawing.Point(8, 67);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 17);
+            this.label4.Size = new System.Drawing.Size(69, 21);
             this.label4.TabIndex = 2;
             this.label4.Text = "Descripción";
             // 
@@ -246,7 +246,7 @@ namespace sistema_modular_cafe_majada.views
             this.label3.Location = new System.Drawing.Point(8, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(178, 17);
+            this.label3.Size = new System.Drawing.Size(159, 21);
             this.label3.TabIndex = 0;
             this.label3.Text = "Ubicación del Café (Silo/Piña)";
             // 
@@ -259,7 +259,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(222, 38);
-            this.panel7.TabIndex = 6;
+            this.panel7.TabIndex = 2;
             // 
             // btn_SaveAlmacen
             // 
@@ -278,7 +278,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SaveAlmacen.Name = "btn_SaveAlmacen";
             this.btn_SaveAlmacen.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.btn_SaveAlmacen.Size = new System.Drawing.Size(82, 32);
-            this.btn_SaveAlmacen.TabIndex = 2;
+            this.btn_SaveAlmacen.TabIndex = 6;
             this.btn_SaveAlmacen.Text = "Guardar";
             this.btn_SaveAlmacen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SaveAlmacen.UseVisualStyleBackColor = false;
@@ -300,7 +300,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.btn_Cancel.Size = new System.Drawing.Size(82, 32);
-            this.btn_Cancel.TabIndex = 3;
+            this.btn_Cancel.TabIndex = 7;
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
@@ -342,7 +342,7 @@ namespace sistema_modular_cafe_majada.views
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(739, 57);
-            this.panel5.TabIndex = 25;
+            this.panel5.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -394,7 +394,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2.Location = new System.Drawing.Point(4, 29);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(517, 17);
+            this.label2.Size = new System.Drawing.Size(488, 21);
             this.label2.TabIndex = 1;
             this.label2.Text = "*LLene los campos que se le solicitan a continuación. (En este formulario se regi" +
     "strara Datos como Silo/Piña...)";
@@ -406,7 +406,7 @@ namespace sistema_modular_cafe_majada.views
             this.label1.Location = new System.Drawing.Point(5, 3);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(333, 22);
+            this.label1.Size = new System.Drawing.Size(305, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Formulario de Registro de Ubicaciones del Café";
             // 
@@ -429,7 +429,8 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_ubicacion.RowHeadersWidth = 51;
             this.dtg_ubicacion.RowTemplate.Height = 24;
             this.dtg_ubicacion.Size = new System.Drawing.Size(502, 327);
-            this.dtg_ubicacion.TabIndex = 27;
+            this.dtg_ubicacion.TabIndex = 0;
+            this.dtg_ubicacion.TabStop = false;
             this.dtg_ubicacion.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_Almacen_CellDoubleClick);
             // 
             // form_ubicacion

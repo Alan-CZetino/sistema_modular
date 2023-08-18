@@ -142,7 +142,8 @@ namespace sistema_modular_cafe_majada.views
             this.txb_id.Margin = new System.Windows.Forms.Padding(2);
             this.txb_id.Name = "txb_id";
             this.txb_id.Size = new System.Drawing.Size(73, 23);
-            this.txb_id.TabIndex = 21;
+            this.txb_id.TabIndex = 0;
+            this.txb_id.TabStop = false;
             this.txb_id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_id_KeyPress);
             // 
             // label1
@@ -188,7 +189,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_cargo.Margin = new System.Windows.Forms.Padding(2);
             this.txb_cargo.Name = "txb_cargo";
             this.txb_cargo.Size = new System.Drawing.Size(166, 23);
-            this.txb_cargo.TabIndex = 18;
+            this.txb_cargo.TabIndex = 1;
             this.txb_cargo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_cargo_KeyPress);
             // 
             // btn_SaveCargo
@@ -208,7 +209,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_SaveCargo.Name = "btn_SaveCargo";
             this.btn_SaveCargo.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.btn_SaveCargo.Size = new System.Drawing.Size(82, 32);
-            this.btn_SaveCargo.TabIndex = 16;
+            this.btn_SaveCargo.TabIndex = 3;
             this.btn_SaveCargo.Text = "Guardar";
             this.btn_SaveCargo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SaveCargo.UseVisualStyleBackColor = false;
@@ -230,7 +231,7 @@ namespace sistema_modular_cafe_majada.views
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.btn_Cancel.Size = new System.Drawing.Size(82, 32);
-            this.btn_Cancel.TabIndex = 17;
+            this.btn_Cancel.TabIndex = 4;
             this.btn_Cancel.Text = "Cancelar";
             this.btn_Cancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Cancel.UseVisualStyleBackColor = false;
@@ -244,7 +245,7 @@ namespace sistema_modular_cafe_majada.views
             this.txb_descripCargo.Margin = new System.Windows.Forms.Padding(2);
             this.txb_descripCargo.Name = "txb_descripCargo";
             this.txb_descripCargo.Size = new System.Drawing.Size(166, 23);
-            this.txb_descripCargo.TabIndex = 10;
+            this.txb_descripCargo.TabIndex = 2;
             this.txb_descripCargo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_descripCargo_KeyPress);
             // 
             // label5
@@ -276,7 +277,7 @@ namespace sistema_modular_cafe_majada.views
             this.label9.Location = new System.Drawing.Point(4, 2);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(244, 24);
+            this.label9.Size = new System.Drawing.Size(235, 27);
             this.label9.TabIndex = 4;
             this.label9.Text = "Formulario de Cargos de Personal";
             // 
@@ -325,7 +326,8 @@ namespace sistema_modular_cafe_majada.views
             this.dtg_cargosPersonal.RowTemplate.Height = 24;
             this.dtg_cargosPersonal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_cargosPersonal.Size = new System.Drawing.Size(920, 386);
-            this.dtg_cargosPersonal.TabIndex = 27;
+            this.dtg_cargosPersonal.TabIndex = 0;
+            this.dtg_cargosPersonal.TabStop = false;
             this.dtg_cargosPersonal.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_cargosPersonal_CellDoubleClick);
             this.dtg_cargosPersonal.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dtg_cargosPersonal_CellPainting);
             // 
