@@ -18,6 +18,7 @@ using sistema_modular_cafe_majada.model.Mapping.Harvest;
 using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
 using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.Mapping.Product;
+using sistema_modular_cafe_majada.model.UserData;
 using sistema_modular_cafe_majada.views;
 
 namespace sistema_modular_cafe_majada
@@ -43,7 +44,7 @@ namespace sistema_modular_cafe_majada
             ShowCountBDCard();
             ShowCountExistenciaBDCard();
             ConfigurarGrafico1();
-            ConfigurarGrafico2();
+            //ConfigurarGrafico2();
             ConfigurarGrafico3();
 
             // Configurar el temporizador para que se dispare cada cierto intervalo (por ejemplo, cada 5 segundos).
@@ -187,7 +188,7 @@ namespace sistema_modular_cafe_majada
         }
 
         //Configuracion para la grafica 2
-        private void ConfigurarGrafico2()
+        /*private void ConfigurarGrafico2()
         {
             // Obtener los datos de la base de datos
             SubPartidaController spC = new SubPartidaController();
@@ -237,7 +238,7 @@ namespace sistema_modular_cafe_majada
             // Refrescar la gráfica
             chart2.Invalidate();
 
-        }
+        }*/
 
         //Configuracion para la grafica 3
         private void ConfigurarGrafico3()
@@ -295,37 +296,52 @@ namespace sistema_modular_cafe_majada
 
         private void pnl_calCafe_Click(object sender, EventArgs e)
         {
-            iTabla = 1;
-            form_opcGeneralData form_Opc = new form_opcGeneralData(this);
-            form_Opc.ShowDialog();
+            if(UsuarioActual.RolUsuario == 1 || UsuarioActual.RolUsuario == 2)
+            {
+                iTabla = 1;
+                form_opcGeneralData form_Opc = new form_opcGeneralData(this);
+                form_Opc.ShowDialog();
+            }
         }
 
         private void pnl_subProd_Click(object sender, EventArgs e)
         {
-            iTabla = 2;
-            form_opcGeneralData form_Opc = new form_opcGeneralData(this);
-            form_Opc.ShowDialog();
+            if (UsuarioActual.RolUsuario == 1 || UsuarioActual.RolUsuario == 2)
+            {
+                iTabla = 2;
+                form_opcGeneralData form_Opc = new form_opcGeneralData(this);
+                form_Opc.ShowDialog();
+            }
         }
 
         private void pnl_Uva_Click(object sender, EventArgs e)
         {
-            iTabla = 3;
-            form_opcGeneralData form_Opc = new form_opcGeneralData(this);
-            form_Opc.ShowDialog();
+            if (UsuarioActual.RolUsuario == 1 || UsuarioActual.RolUsuario == 2)
+            {
+                iTabla = 3;
+                form_opcGeneralData form_Opc = new form_opcGeneralData(this);
+                form_Opc.ShowDialog();
+            }
         }
 
         private void pnl_fincas_Click(object sender, EventArgs e)
         {
-            iTabla = 4;
-            form_opcGeneralData form_Opc = new form_opcGeneralData(this);
-            form_Opc.ShowDialog();
+            if (UsuarioActual.RolUsuario == 1 || UsuarioActual.RolUsuario == 2)
+            {
+                iTabla = 4;
+                form_opcGeneralData form_Opc = new form_opcGeneralData(this);
+                form_Opc.ShowDialog();
+            }
         }
 
         private void pnl_beneficios_Click(object sender, EventArgs e)
         {
-            iTabla = 5;
-            form_opcGeneralData form_Opc = new form_opcGeneralData(this);
-            form_Opc.ShowDialog();
+            if (UsuarioActual.RolUsuario == 1 || UsuarioActual.RolUsuario == 2)
+            {
+                iTabla = 5;
+                form_opcGeneralData form_Opc = new form_opcGeneralData(this);
+                form_Opc.ShowDialog();
+            }
         }
 
         private void form_panel_principal_FormClosing(object sender, FormClosingEventArgs e)

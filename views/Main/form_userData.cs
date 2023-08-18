@@ -31,6 +31,10 @@ namespace sistema_modular_cafe_majada.views
         public form_userData(form_main mainForm)
         {
             InitializeComponent();
+
+            //
+            RolUser();
+
             formularioMain = mainForm; // Almacena la referencia de form_main en el campo privado
         }
 
@@ -48,6 +52,47 @@ namespace sistema_modular_cafe_majada.views
             verificTxbPassReadOnly = verific;
             SetEnabledState(this, !verific);
         }
+
+        //
+        private void RolUser()
+        {
+
+            switch (UsuarioActual.RolUsuario)
+            {
+                case 1:
+                    {
+                        //administrador
+                        //sin restricciones 
+                    }
+                    break;
+                case 2:
+                    {
+                        //consultor
+                        btn_backup.Visible = false;
+                    }
+                    break;
+                case 3:
+                    {
+                        //Digitador
+                        btn_backup.Visible = false;
+                    }
+                    break;
+                case 4:
+                    {
+                        //Invitado
+                        btn_backup.Visible = false;
+                    }
+                    break;
+                default:
+                    {
+                        MessageBox.Show("Su rol actual no tiene autoridad para acceder a ciertas funciones en el sistema. Por favor, póngase en contacto con el administrador para obtener más información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        
+                    }
+                    break;
+
+            }
+        }
+
 
         private void SetEnabledState(Control control, bool enabled)
         {

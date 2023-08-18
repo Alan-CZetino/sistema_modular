@@ -56,8 +56,55 @@ namespace sistema_modular_cafe_majada
             // Código 
             this.Shown += form_main_Shown;
 
+            //
+            RolUser();
+
             AsignarFuente();
             
+        }
+
+        //
+        private void RolUser()
+        {
+
+            switch (UsuarioActual.RolUsuario)
+            {
+                case 1:
+                    {
+                        //administrador
+                        //sin restricciones 
+                    }
+                    break;
+                case 2:
+                    {
+                        //consultor
+                        btn_admin_panel.Visible = false;
+                    }
+                    break;
+                case 3:
+                    {
+                        //Digitador
+                        btn_admin_panel.Visible = false;
+                        btn_reportes.Visible = false;
+                    }
+                    break;
+                case 4:
+                    {
+                        //Invitado
+                        btn_admin_panel.Visible = false;
+                        btn_reportes.Visible = false;
+                    }
+                    break;
+                default:
+                    {
+                        MessageBox.Show("Su rol actual no tiene autoridad para acceder a ciertas funciones en el sistema. Por favor, póngase en contacto con el administrador para obtener más información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        btn_admin_panel.Enabled = false;
+                        btn_existenciasCafe.Enabled = false;
+                        btn_reportes.Enabled = false;
+                    }
+                    break;
+
+            }
         }
 
         private void form_main_Load(object sender, EventArgs e)
@@ -139,12 +186,12 @@ namespace sistema_modular_cafe_majada
             UserController usuarioControl = new UserController();
             var usuario = usuarioControl.ObtenerUsuario(UsuarioActual.NombreUsuario);
 
-            DialogResult result = MessageBox.Show("¿Estás seguro de cerrar seccion?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("¿Estás seguro de cerrar sesion?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 //verificar el departamento
-                log.RegistrarLog(usuario.IdUsuario, "Salio del Sistema", ModuloActual.NombreModulo, "Cierre de seccion", "El Usuario: " + _nombreUsuario + " salio del sistema");
+                log.RegistrarLog(usuario.IdUsuario, "Salio del Sistema", ModuloActual.NombreModulo, "Cierre de sesion", "El Usuario: " + _nombreUsuario + " salio del sistema");
 
                 this.Close();
 
@@ -202,12 +249,17 @@ namespace sistema_modular_cafe_majada
 
         private void lbl_numCosecha_Click(object sender, EventArgs e)
         {
+            if (UsuarioActual.RolUsuario >= 5 || UsuarioActual.RolUsuario < 0)
+            {
+                return;
+            }
             form_seleccionCosecha seleccionCosecha = new form_seleccionCosecha(this);
             seleccionCosecha.ShowDialog();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
+            
             lbl_numCosecha_Click(sender, e);
         }
 

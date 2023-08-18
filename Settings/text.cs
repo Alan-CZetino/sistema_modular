@@ -19,8 +19,8 @@
             // Valores originales sin cifrar
             string servidor = "localhost"; // Cambia esto a tu servidor MySQL
             string usuario = "root"; // Cambia esto a tu nombre de usuario MySQL
-            string contrasena = "admin"; // Cambia esto a tu contraseña MySQL
-            string baseDeDatos = "dbmajadademo"; // Cambia esto a tu nombre de base de datos MySQL
+            string contrasena = "2001"; // Cambia esto a tu contraseña MySQL
+            string baseDeDatos = "Cooperativa_Prueba0"; // Cambia esto a tu nombre de base de datos MySQL
 
             // Cifra los datos individualmente usando EncryptString y la misma clave
             servidorCifrado = EncryptionUtility.EncryptString(servidor, key);

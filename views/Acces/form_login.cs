@@ -186,24 +186,6 @@ namespace sistema_modular_cafe_majada
                             formPrin.FormClosed += Logout;
                             this.Hide();
                             
-                            /*switch (UsuarioActual.RolUsuario)
-                            {
-                                case 1:
-                                    break;
-                                case 2:
-                                    //consultor
-                                    form_reportes report = new form_reportes();
-                                    LimpiarComboBox();
-                                    report.Show();
-
-                                    //buca en la vista main el evento close del form 
-                                    report.FormClosed += Logout;
-                                    this.Hide();
-                                    break;
-                                default:
-                                    break;
-                            }*/
-
                             contador = 0;
                         }
                         catch (Exception ex)

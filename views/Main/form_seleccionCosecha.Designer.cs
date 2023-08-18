@@ -77,7 +77,7 @@ namespace sistema_modular_cafe_majada.views
             this.label1.Location = new System.Drawing.Point(276, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 27);
+            this.label1.Size = new System.Drawing.Size(158, 24);
             this.label1.TabIndex = 19;
             this.label1.Text = "Seleccione una Cosecha";
             // 
@@ -98,7 +98,7 @@ namespace sistema_modular_cafe_majada.views
             this.label2.Location = new System.Drawing.Point(203, 71);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 24);
+            this.label2.Size = new System.Drawing.Size(57, 21);
             this.label2.TabIndex = 21;
             this.label2.Text = "Cosecha";
             // 
@@ -188,6 +188,7 @@ namespace sistema_modular_cafe_majada.views
             this.Name = "form_seleccionCosecha";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "form_seleccionCosecha";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.form_seleccionCosecha_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

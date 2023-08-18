@@ -61,6 +61,9 @@ namespace sistema_modular_cafe_majada.views
         public form_subPartidas()
         {
             InitializeComponent();
+
+            RolUser();
+
             ClearDataTxb();
             // Configurar el temporizador para que se dispare cada cierto intervalo (por ejemplo, cada 5 segundos).
             refreshTimer = new System.Timers.Timer();
@@ -123,6 +126,93 @@ namespace sistema_modular_cafe_majada.views
                     }
                 }));
             }
+        }
+
+        //
+        private void RolUser()
+        {
+
+            switch (UsuarioActual.RolUsuario)
+            {
+                case 1:
+                    {
+                        //administrador
+                        //sin restricciones 
+                    }
+                    break;
+                case 2:
+                    {
+                        //consultor
+                        BlockEventsComponents();
+                        txb_subPartida.Enabled = true;
+                        btn_sPartida.Click += btn_sPartida_Click;
+                    }
+                    break;
+                case 3:
+                    {
+                        //Digitador
+                        btn_deleteSPartida.Click -= btn_deleteSPartida_Click;
+                    }
+                    break;
+                case 4:
+                    {
+                        //Invitado
+                        BlockEventsComponents();
+                    }
+                    break;
+                default:
+                    {
+                        MessageBox.Show("Su rol actual no tiene autoridad para acceder a ciertas funciones en el sistema. Por favor, póngase en contacto con el administrador para obtener más información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        BlockEventsComponents();
+                        btn_pdfSPartida.Click -= btn_pdfSPartida_Click;
+                    }
+                    break;
+
+            }
+        }
+
+        //
+        private void BlockEventsComponents()
+        {
+            cbx_subProducto.Enabled = false;
+            txb_subPartida.Enabled = false;
+            txb_pdasSemana1.Enabled = false;
+            txb_pdasSemana2.Enabled = false;
+            txb_pdasSemana3.Enabled = false;
+            txb_diasPdas1.Enabled = false;
+            txb_diasPdas2.Enabled = false;
+            txb_diasPdas3.Enabled = false;
+            txb_fechaPartd1.Enabled = false;
+            txb_fechaPartd2.Enabled = false;
+            txb_fechaPartd3.Enabled = false;
+            txb_observacionCafe.Enabled = false;
+            txb_resultadoCatacion.Enabled = false;
+            txb_observacionCatador.Enabled = false;
+            txb_CantidadSaco.Enabled = false;
+            txb_cantidadQQs.Enabled = false;
+            txb_doctoAlmacen.Enabled = false;
+            txb_observacionPesa.Enabled = false;
+            txb_horaInicio.Enabled = false;
+            txb_horaSalida.Enabled = false;
+            txb_tiempoSecad.Enabled = false;
+            txb_humedad.Enabled = false;
+            txb_rendimiento.Enabled = false;
+            txb_observacionSecad.Enabled = false;
+            dtp_fechaSecado.Enabled = false;
+            dtp_fechaInicioSecad.Enabled = false;
+            dtp_fechaSalidaSecad.Enabled = false;
+            dtp_fechaPesa.Enabled = false;
+            dtp_fechaCatacion.Enabled = false;
+            btn_deleteSPartida.Click -= btn_deleteSPartida_Click;
+            btn_sPartida.Click -= btn_sPartida_Click;
+            btn_SaveUser.Click -= btn_SaveUser_Click;
+            btn_puntero.Click -= btn_puntero_Click;
+            btn_pesador.Click -= btn_pesador_Click;
+            btn_catador.Click -= btn_catador_Click;
+            btn_ubicacionCafe.Click -= btn_ubicacionCafe_Click;
+            btn_ubiFisicaCafe.Click -= btn_ubiFisicaCafe_Click;
+            btn_CCafe.Click -= btn_CCafe_Click;
+            btn_prodCafe.Click -= btn_prodCafe_Click;
         }
 
         //

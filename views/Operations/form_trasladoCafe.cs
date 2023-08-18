@@ -57,6 +57,9 @@ namespace sistema_modular_cafe_majada.views
         {
             InitializeComponent();
 
+            //
+            RolUser();
+
             // Configurar el temporizador para que se dispare cada cierto intervalo (por ejemplo, cada 5 segundos).
             refreshTimer = new System.Timers.Timer();
             refreshTimer.Interval = 5000; // Intervalo en milisegundos (5 segundos en este caso).
@@ -121,6 +124,72 @@ namespace sistema_modular_cafe_majada.views
                     }
                 }));
             }
+        }
+
+        //
+        private void RolUser()
+        {
+
+            switch (UsuarioActual.RolUsuario)
+            {
+                case 1:
+                    {
+                        //administrador
+                        //sin restricciones 
+                    }
+                    break;
+                case 2:
+                    {
+                        //consultor
+                        BlockEventsComponents();
+                        txb_numTraslado.Enabled = true;
+                        btn_tTraslado.Click += btn_tTraslado_Click;
+                        btn_pdfTraslado.Click += btn_pdfTraslado_Click;
+                    }
+                    break;
+                case 3:
+                    {
+                        //Digitador
+                        btn_deleteTraslado.Click -= btn_deleteTraslado_Click;
+                    }
+                    break;
+                case 4:
+                    {
+                        //Invitado
+                        BlockEventsComponents();
+                    }
+                    break;
+                default:
+                    {
+                        MessageBox.Show("Su rol actual no tiene autoridad para acceder a ciertas funciones en el sistema. Por favor, póngase en contacto con el administrador para obtener más información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        BlockEventsComponents();
+                    }
+                    break;
+
+            }
+        }
+
+        //
+        private void BlockEventsComponents()
+        {
+            txb_numTraslado.Enabled = false;
+            txb_pesoSaco.Enabled = false;
+            txb_pesoQQs.Enabled = false;
+            cbx_subProducto.Enabled = false;
+            txb_observacion.Enabled = false;
+            dtp_fechaTraslado.Enabled = false;
+            btn_tTraslado.Click -= btn_tTraslado_Click;
+            btn_deleteTraslado.Click -= btn_deleteTraslado_Click;
+            btn_tAlmacenP.Click -= btn_tAlmacenP_Click;
+            btn_tUbicacionP.Click -= btn_tUbicacionP_Click;
+            btn_tFincaP.Click -= btn_tFincaP_Click;
+            btn_tAlmacenD.Click -= btn_tAlmacenD_Click;
+            btn_tUbicacionD.Click -= btn_tAlmacenD_Click;
+            btn_tFincaD.Click -= btn_tFincaD_Click;
+            btn_tCCafe.Click -= btn_tCCafe_Click;
+            btn_tPesadores.Click -= btn_tPesadores_Click;
+            btn_SaveTraslado.Click -= btn_SaveTraslado_Click;
+            btn_pdfTraslado.Click -= btn_pdfTraslado_Click;
         }
 
         //

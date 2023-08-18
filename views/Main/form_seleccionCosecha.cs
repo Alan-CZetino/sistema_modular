@@ -22,6 +22,8 @@ namespace sistema_modular_cafe_majada.views
             InitializeComponent();
             formularioMain = mainForm; // Almacena la referencia de form_main en el campo privado
 
+            this.KeyPreview = true; // Habilita la captura de eventos de teclado para el formulario
+
             CbxCosecha();
             cbx_cosecha.DropDownStyle = ComboBoxStyle.DropDownList;
 
@@ -96,6 +98,14 @@ namespace sistema_modular_cafe_majada.views
             FontViews.ComboBoxStyle(comboBoxes);
             //se asigna a botones
             FontViews.ButtonStyleLogin(buttons);
+        }
+
+        private void form_seleccionCosecha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close(); // Cierra el formulario actual
+            }
         }
     }
 }
