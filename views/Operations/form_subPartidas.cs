@@ -835,7 +835,7 @@ namespace sistema_modular_cafe_majada.views
                 var almNCM = almacenC.ObtenerAlmacenNombreCalidad(iAlmacen);
                 double actcantidad = almCM.CantidadActualAlmacen;
                 double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
-
+                
                 Console.WriteLine("depuracion - img cliqueada " + imagenClickeada);
                 if (!SubPartidaSeleccionado.clickImg)
                 {
@@ -952,7 +952,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
+                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña,
+                        TipoMovimiento = "Entrada Cafe No.SubPartida " + Convert.ToInt32(txb_subPartida.Text)
                     };
 
                     if (iCalidadNoUpd != CalidadSeleccionada.ICalidadSeleccionada && CalidadSeleccionada.ICalidadSeleccionada != 0)
@@ -968,7 +969,7 @@ namespace sistema_modular_cafe_majada.views
                         }
                     }
 
-                    if (cantidaQQsUpdate != cantidaQQsActUpdate)
+                    if (cantidaQQsUpdate != cantidaQQsActUpdate || Convert.ToInt32(txb_subPartida.Text) != SubPartidaSeleccionado.NumSubPartida)
                     {
                         if (cantRest < pesoQQs)
                         {
@@ -1306,10 +1307,11 @@ namespace sistema_modular_cafe_majada.views
                         SubPartidaController controller = new SubPartidaController();
                         controller.EliminarSubPartida(SubPartidaSeleccionado.ISubPartida);
 
+                        Console.WriteLine("numero de subpartida " + SubPartidaSeleccionado.NumSubPartida);
                         var cantidadCafeC = new CantidadSiloPiñaController();
                         string search = "No.SubPartida " + SubPartidaSeleccionado.NumSubPartida;
                         var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
-
+                        Console.WriteLine("cantidad silo/piña a eliminar es " + search + " del numero de subpartida " + SubPartidaSeleccionado.NumSubPartida);
                         var almacenC = new AlmacenController();
                         var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
                         double actcantidad = almCM.CantidadActualAlmacen;

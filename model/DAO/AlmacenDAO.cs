@@ -580,6 +580,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                     {
                         almacen = new Almacen()
                         {
+                            IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
                             IdCalidadCafe = (reader["id_calidad_cafe"]) is DBNull ? 0 : Convert.ToInt32(reader["id_calidad_cafe"]),
                             NombreCalidadCafe = (reader["nombre_calidad"]) is DBNull ? "" : Convert.ToString(reader["nombre_calidad"]),
                             IdSubProducto = (reader["id_subproducto_cafe"]) is DBNull ? 0 : Convert.ToInt32(reader["id_subproducto_cafe"]),

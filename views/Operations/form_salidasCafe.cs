@@ -231,6 +231,7 @@ namespace sistema_modular_cafe_majada.views
             iBodega = sub.IdBodega;
             txb_almacen.Text = sub.NombreAlmacen;
             iAlmacen = sub.IdAlmacen;
+            AlmacenSeleccionado.IAlmacen = sub.IdAlmacen;
             txb_personal.Text = sub.NombrePersonal;
             iPesador = sub.IdPersonal;
             txb_finca.Text = sub.NombreProcedencia;
@@ -766,7 +767,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = iAlmacen
+                        IdAlmacenSiloPiña = iAlmacen,
+                        TipoMovimiento = "Salida Cafe No.SalidaCafe " + numSalida
                     };
 
                     bool exitoUpdateCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidadUpd);
@@ -790,7 +792,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
+                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña,
+                        TipoMovimiento = "Salida Cafe No.SalidaCafe " + numSalida
                     };
 
                     bool exitoactualizarCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidad);

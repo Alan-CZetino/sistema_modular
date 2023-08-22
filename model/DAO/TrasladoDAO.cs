@@ -493,7 +493,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                                     LEFT JOIN Bodega_Cafe br ON t.id_bodega_procedencia_traslado = br.id_bodega
                                     LEFT JOIN Almacen ad ON t.id_almacen_destino_traslado = ad.id_almacen
                                     LEFT JOIN Bodega_Cafe bd ON t.id_bodega_destino_traslado = bd.id_bodega
-                                    INNER JOIN Personal p ON t.id_personal_traslado = p.id_personal";
+                                    INNER JOIN Personal p ON t.id_personal_traslado = p.id_personal
+                                    WHERE t.id_cosecha_traslado = @id";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@id", iCosecha);

@@ -39,7 +39,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                     cantidad_trilla_sacos_cafe = @cantidadTrillaSacos,";
                     if (trilla.IdProcedencia != 0){ consulta += "id_procedencia_trilla = @idProcedencia,"; }
                     if (trilla.IdAlmacen != 0){ consulta += "id_almacen_trilla = @iAlmacen,"; }
-                    if (trilla.IdAlmacen != 0){ consulta += "id_bodega_trilla = @iBodega,"; }
+                    if (trilla.IdBodega != 0){ consulta += "id_bodega_trilla = @iBodega,"; }
                 consulta += @"fecha_trillaCafe = @fechaTrillaCafe,
                     id_personal_trilla = @idPersonal,
                     observacion_trilla = @observacionTrilla";
@@ -421,7 +421,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                                     INNER JOIN SubProducto sbp ON t.id_subproducto_trilla = sbp.id_subproducto
                                     LEFT JOIN Almacen a ON t.id_almacen_trilla = a.id_almacen
                                     LEFT JOIN Bodega_Cafe b ON t.id_bodega_trilla = b.id_bodega
-                                    INNER JOIN Personal p ON t.id_personal_trilla = p.id_personal";
+                                    INNER JOIN Personal p ON t.id_personal_trilla = p.id_personal
+                                    WHERE id_cosecha_trilla = @id";
+
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@id", iCosecha);
 
