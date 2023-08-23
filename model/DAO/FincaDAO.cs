@@ -266,7 +266,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"UPDATE finca SET nombre_finca=@nFinca,ubicacion_finca=@ufinca
                                     WHERE id_finca=@id";
                 conexion.CrearComando(consulta);
-
+                conexion.AgregarParametro("@id", idf);
                 conexion.AgregarParametro("@nFinca", nomFinca);
                 conexion.AgregarParametro("@uFinca", ubiFinca);
 
