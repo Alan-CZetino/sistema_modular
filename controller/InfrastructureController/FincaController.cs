@@ -134,5 +134,21 @@ namespace sistema_modular_cafe_majada.controller
                 Console.WriteLine("Ocurrio un error al eliminar una finca" + ex.Message);
             }
         }
+
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return fincaDao.ExisteId(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion de la Finca en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
+
     }
 }

@@ -39,6 +39,7 @@ namespace sistema_modular_cafe_majada.views
         public double cantidaSacoUpdate = 0.00;
         public double cantidaSacoActUpdate = 0.00;
         private bool imgClickUpdAlmacen = false;
+        private bool imgClickCalidad = false;
 
         private int iTrilla;
         private int iProcedencia;
@@ -287,6 +288,8 @@ namespace sistema_modular_cafe_majada.views
             {
                 iCalidad = CalidadSeleccionada.ICalidadSeleccionada;
                 txb_calidadCafe.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
+                imgClickCalidad = true;
+                CbxSubProducto();
             }
             
         }
@@ -360,8 +363,16 @@ namespace sistema_modular_cafe_majada.views
         public void CbxSubProducto()
         {
             SubProductoController subPro = new SubProductoController();
-            List<SubProducto> datoSubPro = subPro.ObtenerSubProductos();
+            List<SubProducto> datoSubPro;
 
+            if (imgClickCalidad)
+            {
+                datoSubPro = subPro.ObtenerSubProductoPorIdCalidad(CalidadSeleccionada.ICalidadSeleccionada);
+            }
+            else
+            {
+                datoSubPro = subPro.ObtenerSubProductos();
+            }
             cbx_subProducto.Items.Clear();
 
             // Asignar los valores numéricos a los elementos del ComboBox
@@ -400,6 +411,8 @@ namespace sistema_modular_cafe_majada.views
             dtp_fechaTrilla.Value = DateTime.Now;
             rb_cafeTrilla.Checked = false;
             rb_subProducto.Checked = false;
+            imgClickCalidad = false;
+            imgClickUpdAlmacen = false;
 
         }
 

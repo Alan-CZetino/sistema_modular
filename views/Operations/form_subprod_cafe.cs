@@ -155,6 +155,7 @@ namespace sistema_modular_cafe_majada.views
                     CCafeController cCafe = new CCafeController();
                     var name = cCafe.ObtenerNombreCalidad(CalidadSeleccionada.NombreCalidadSeleccionada);
                     iccafe = name.IdCalidad;
+                    CalidadSeleccionada.ICalidadSeleccionada = iccafe;
 
                     txb_id.Text = Convert.ToString(subProdcSeleccionado.IdSubProducto);
                     txb_subProdCafe.Text = subProdcSeleccionado.NombreSubProducto;
@@ -345,7 +346,8 @@ namespace sistema_modular_cafe_majada.views
             string description = txb_descripcion.Text;
 
             var lastId = subController.ObtenerUltimoId();
-            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            bool existe = subController.ExisteId(Convert.ToInt32(txb_id.Text));
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
             {
                 if (!imagenClickeada)
                 {
@@ -384,6 +386,16 @@ namespace sistema_modular_cafe_majada.views
             if (!imagenClickeada)
             {
                 // Código que se ejecutará si no se ha hecho clic en la imagen update
+
+                //verifica si ya exite un nombre identico
+                var existeSP = subController.ExisteSubProducto(txb_subProdCafe.Text, CalidadSeleccionada.ICalidadSeleccionada);
+
+                if (existeSP)
+                {
+                    MessageBox.Show("Ya existe un SubProducto con el mismo nombre de la Calidad Cafe ( " + CalidadSeleccionada.NombreCalidadSeleccionada + " ). Por favor, elija un nombre diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Llamar al controlador para insertar en la base de datos
                 bool exito = subController.InsertarSubProducto(subPro);
 
@@ -419,9 +431,18 @@ namespace sistema_modular_cafe_majada.views
                     IdSubProducto = subProdcSeleccionado.IdSubProducto,
                     NombreSubProducto = nameSubProducto,
                     DescripcionSubProducto = description,
-                    IdCalidadCafe = iccafe
+                    IdCalidadCafe = CalidadSeleccionada.ICalidadSeleccionada
                 };
-                
+
+                //verifica si ya exite un nombre identico
+                var existeSP = subController.ExisteSubProducto(txb_subProdCafe.Text, CalidadSeleccionada.ICalidadSeleccionada);
+
+                if (existeSP && Convert.ToInt32(txb_id.Text) != subProdcSeleccionado.IdSubProducto)
+                {
+                    MessageBox.Show("Ya existe un SubProducto con el mismo nombre de la Calidad Cafe ( " + CalidadSeleccionada.NombreCalidadSeleccionada + " ). Por favor, elija un nombre diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Código que se ejecutará si se ha hecho clic en la imagen update
                 bool exito = subController.ActualizarSubProducto(subProUpd);
 

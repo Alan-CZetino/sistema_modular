@@ -29,7 +29,7 @@ namespace sistema_modular_cafe_majada.views
         public bool imagenClickeada = false;
         public int SubSPart;
         public string SubSPartCosecha;
-        private bool imgClickAlmacen = false;
+        private bool imgClickCalidad = false;
         private bool imgClickBodega = false;
         SubPartidaController countSP = null;
         private SubPartidaController reportesController = new SubPartidaController();
@@ -219,7 +219,16 @@ namespace sistema_modular_cafe_majada.views
         public void CbxSubProducto()
         {
             SubProductoController subPro = new SubProductoController();
-            List<SubProducto> datoSubPro = subPro.ObtenerSubProductos();
+            List<SubProducto> datoSubPro;
+
+            if (imgClickCalidad)
+            {
+                datoSubPro = subPro.ObtenerSubProductoPorIdCalidad(CalidadSeleccionada.ICalidadSeleccionada);
+            }
+            else
+            {
+                datoSubPro = subPro.ObtenerSubProductos();
+            }
 
             cbx_subProducto.Items.Clear();
 
@@ -528,10 +537,13 @@ namespace sistema_modular_cafe_majada.views
         {
             TablaSeleccionadasubPartd.ITable = 3;
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
+            
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
                 iCalidad = CalidadSeleccionada.ICalidadSeleccionada;
                 txb_calidad.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
+                imgClickCalidad = true;
+                CbxSubProducto();
             }
         }
 
@@ -592,7 +604,7 @@ namespace sistema_modular_cafe_majada.views
         private void btn_ubiFisicaCafe_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 7;
-            imgClickAlmacen = true;
+            //imgClickAlmacen = true;
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
@@ -1227,7 +1239,7 @@ namespace sistema_modular_cafe_majada.views
 
             imgClickBodega = false;
             imagenClickeada = false;
-            imgClickAlmacen = false;
+            imgClickCalidad = false;
 
             AlmacenSeleccionado.IAlmacen = 0;
             BodegaSeleccionada.IdBodega = 0;

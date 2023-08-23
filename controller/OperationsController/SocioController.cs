@@ -166,5 +166,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 Console.WriteLine("Ocurrió un error al eliminar el Socio: " + ex.Message);
             }
         }
+
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return socioDAO.ExisteId(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion del Socio en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
+
     }
 }

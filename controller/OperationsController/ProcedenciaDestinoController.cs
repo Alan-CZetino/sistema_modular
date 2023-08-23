@@ -152,5 +152,20 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
             }
         }
 
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return prodesDAO.ExisteId(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion de la Procedencia en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
+
     }
 }

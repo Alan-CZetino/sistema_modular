@@ -1,6 +1,7 @@
 using Microsoft.Reporting.WinForms;
 using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
+using sistema_modular_cafe_majada.controller.ProductController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
@@ -39,6 +40,7 @@ namespace sistema_modular_cafe_majada.views
         public double cantidaSacoUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
         public double cantidaSacoActUpdate = 0.00;
+        private bool imgClickCalidad = false;
 
         private int iTraslado;
         private int isubProducto;
@@ -286,8 +288,16 @@ namespace sistema_modular_cafe_majada.views
         public void CbxSubProducto()
         {
             SubProductoController subPro = new SubProductoController();
-            List<SubProducto> datoSubPro = subPro.ObtenerSubProductos();
+            List<SubProducto> datoSubPro;
 
+            if (imgClickCalidad || CalidadSeleccionada.ICalidadSeleccionada != 0)
+            {
+                datoSubPro = subPro.ObtenerSubProductoPorIdCalidad(CalidadSeleccionada.ICalidadSeleccionada);
+            }
+            else
+            {
+                datoSubPro = subPro.ObtenerSubProductos();
+            }
             cbx_subProducto.Items.Clear();
 
             // Asignar los valores numéricos a los elementos del ComboBox
@@ -327,6 +337,7 @@ namespace sistema_modular_cafe_majada.views
             BodegaSeleccionada.NombreBodegaDestino = "";
             CalidadSeleccionada.ICalidadSeleccionada = 0;
             CalidadSeleccionada.NombreCalidadSeleccionada = "";
+            imgClickCalidad = false;
             iTraslado = 0;
             iAlmacenDest = 0;
             iAlmacenProce = 0;
@@ -421,31 +432,53 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_tAlmacenP_Click(object sender, EventArgs e)
         {
-            TablaSeleccionadaTraslado.ITable = 2;
-            form_opcTraslado opcTraslado = new form_opcTraslado();
-            if (opcTraslado.ShowDialog() == DialogResult.OK)
+            try
             {
-                iAlmacenProce = AlmacenSeleccionado.IAlmacen;
-                if (AlmacenSeleccionado.IAlmacenDestino == AlmacenSeleccionado.IAlmacen || iAlmacenDest == iAlmacenProce)
+                TablaSeleccionadaTraslado.ITable = 2;
+                form_opcTraslado opcTraslado = new form_opcTraslado();
+                if (opcTraslado.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("Error, no es permitido hacer un traslado al mismo Silo/Piña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    iAlmacenProce = 0;
-                    AlmacenSeleccionado.IAlmacen = 0;
-                    AlmacenSeleccionado.NombreAlmacen = "";
-                    return;
-                }
-                // Llamar al método para obtener los datos de la base de datos
-                AlmacenController almacenController = new AlmacenController();
-                Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
-                BodegaController bodegaController = new BodegaController();
-                Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+                    iAlmacenProce = AlmacenSeleccionado.IAlmacen;
+                    if (AlmacenSeleccionado.IAlmacenDestino == AlmacenSeleccionado.IAlmacen || iAlmacenDest == iAlmacenProce)
+                    {
+                        MessageBox.Show("Error, no es permitido hacer un traslado al mismo Silo/Piña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        iAlmacenProce = 0;
+                        AlmacenSeleccionado.IAlmacen = 0;
+                        AlmacenSeleccionado.NombreAlmacen = "";
+                        return;
+                    }
+                    // Llamar al método para obtener los datos de la base de datos
+                    AlmacenController almacenController = new AlmacenController();
+                    Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
+                    BodegaController bodegaController = new BodegaController();
+                    Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+                    CCafeController ccafeC = new CCafeController();
+                    CalidadCafe ccafe = ccafeC.ObtenerIdCalidad((int)datoA.IdCalidadCafe);
+                    //datos para subproducto
+                    isubProducto = (int)datoA.IdSubProducto;
 
-                txb_bodegaPr.Text = datoB.NombreBodega;
-                iBodegaProce = datoB.IdBodega;
-                BodegaSeleccionada.IdBodega = iBodegaProce;
-                BodegaSeleccionada.NombreBodega = datoB.NombreBodega;
-                
-                txb_almacenPr.Text = AlmacenSeleccionado.NombreAlmacen;
+                    //cbx
+                    cbx_subProducto.Items.Clear();
+                    CbxSubProducto();
+                    int isP = isubProducto - 1;
+                    Console.WriteLine("Depurar - idSubpro: " + isP);
+
+                    cbx_subProducto.SelectedIndex = isP;
+                    txb_calidadCafe.Text = ccafe.NombreCalidad;
+                    CalidadSeleccionada.ICalidadSeleccionada = ccafe.IdCalidad;
+                    CalidadSeleccionada.NombreCalidadSeleccionada = ccafe.NombreCalidad;
+                    txb_bodegaPr.Text = datoB.NombreBodega;
+                    iBodegaProce = datoB.IdBodega;
+                    BodegaSeleccionada.IdBodega = iBodegaProce;
+                    BodegaSeleccionada.NombreBodega = datoB.NombreBodega;
+
+                    txb_almacenPr.Text = AlmacenSeleccionado.NombreAlmacen;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error de tipo " + ex.Message);
+                MessageBox.Show("Error de tipo " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -485,6 +518,8 @@ namespace sistema_modular_cafe_majada.views
             {
                 iCalidad = CalidadSeleccionada.ICalidadSeleccionada;
                 txb_calidadCafe.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
+                imgClickCalidad = true;
+                CbxSubProducto();
             }
         }
 

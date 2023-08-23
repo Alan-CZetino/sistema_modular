@@ -76,6 +76,21 @@ namespace sistema_modular_cafe_majada.controller.ProductController
             }
             return calidad;
         }
+        
+        public CalidadCafe ObtenerIdCalidad (int idCalidad)
+        {
+            CalidadCafe calidad = new CalidadCafe();
+            try
+            {
+                //llamada al metodo DAO para obtener los datos
+                calidad = ccafeDAO.ObtenerIdCalidad(idCalidad);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            return calidad;
+        }
 
         public CalidadCafe CountCalidad ()
         {
@@ -133,5 +148,21 @@ namespace sistema_modular_cafe_majada.controller.ProductController
                 return false;
             }
         }
+
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return ccafeDAO.ExisteId(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion de la Calidad Cafe en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
+
     }
 }

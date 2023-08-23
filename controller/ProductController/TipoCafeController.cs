@@ -176,5 +176,20 @@ namespace sistema_modular_cafe_majada.controller.ProductController
             return tipoCafe;
         }
 
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return tipoCafeDAO.ExisteId(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion del Tipo Cafe en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
+
     }
 }

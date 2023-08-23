@@ -288,7 +288,8 @@ namespace sistema_modular_cafe_majada.views
 
                 var lastId = tipoController.ObtenerUltimoId();
                 Console.WriteLine("ID " + lastId.LastId);
-                if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+                bool existe = tipoController.ExisteId(Convert.ToInt32(txb_id.Text));
+                if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
                 {
                     if (!imagenClickeada)
                     {

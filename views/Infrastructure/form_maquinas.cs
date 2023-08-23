@@ -310,7 +310,8 @@ namespace sistema_modular_cafe_majada.views
             string beneficio = txb_beneficio.Text;
 
             var lastId = subController.ObtenerUltimoId();
-            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            bool existe = subController.ExisteId(Convert.ToInt32(txb_id.Text));
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
             {
                 if (!imagenClickeada)
                 {

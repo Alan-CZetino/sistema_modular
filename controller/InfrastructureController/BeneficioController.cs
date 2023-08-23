@@ -172,6 +172,21 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
 
             return beneficio;
         }
-        
+
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return beneficioDAO.ExisteId(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion del Beneficio en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
+
     }
 }

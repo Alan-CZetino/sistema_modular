@@ -370,7 +370,8 @@ namespace sistema_modular_cafe_majada.views
             string description = txb_descripcion.Text;
 
             var lastId = subController.ObtenerUltimoId();
-            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            bool existe = subController.ExisteId(Convert.ToInt32(txb_id.Text));
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
             {
                 if (!imagenClickeada)
                 {
@@ -438,6 +439,15 @@ namespace sistema_modular_cafe_majada.views
             }
             else
             {
+                //verifica si ya exite un nombre identico
+                var existeB = subController.ExisteBodega(txb_nombre.Text, BeneficioSeleccionado.IdBeneficioSleccionado);
+
+                if (existeB && Convert.ToInt32(txb_id.Text) != bodegaSeleccionado.IdBodega)
+                {
+                    MessageBox.Show("Ya existe una bodega con el mismo nombre en el beneficio ( " + BeneficioSeleccionado.NombreBeneficioSeleccionado + " ). Por favor, elija un nombre diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Código que se ejecutará si se ha hecho clic en la imagen update
                 bool exito = subController.ActualizarBodegas(bodegaSeleccionado.IdBodega, nameBodega, description, ubicacion, ibenef);
 
