@@ -21,13 +21,16 @@ namespace sistema_modular_cafe_majada.views
             //SE INICIALIZA EL DICCIONARIO DE COLORES
             originalColors = new Dictionary<Button, Color>();
 
+            AsignarFuente();
+
             //SE LLAMA LA FUNCION ASIGNAR COLOR ORIGINAL
-            AsignarColorOriginal(btn_entradaCafe);
-            AsignarColorOriginal(btn_salidaCafe);
+
             AsignarColorOriginal(btn_subPartida);
             AsignarColorOriginal(btn_trillaCafe);
+            AsignarColorOriginal(btn_entradaCafe);
+            AsignarColorOriginal(btn_salidaCafe);
 
-            AsignarFuente();
+            
         }
 
         //FUNCION PARA IR AGREGANDO Y REMOVIENDO FORMULARIOS

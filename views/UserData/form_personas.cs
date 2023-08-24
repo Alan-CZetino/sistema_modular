@@ -692,6 +692,8 @@ namespace sistema_modular_cafe_majada.views
 
         private void AsignarFuente()
         {
+
+            this.FormBorderStyle = FormBorderStyle.None;
             Label[] labels = { label2,label3,label4, label5,label6,label7, label8,label10,label11 };
             Label[] labeltitle = { label1 };
             TextBox[] textBoxes = { txb_Apellido, txb_Direccion, txb_Dui,txb_Nit,txb_Nombre,txb_Tel1,txb_Tel2};

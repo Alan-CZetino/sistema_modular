@@ -87,7 +87,6 @@ namespace sistema_modular_cafe_majada.views
 
             AsignarFuente();
 
-            ResponsiveConfig();
         }
 
         //

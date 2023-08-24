@@ -101,7 +101,6 @@ namespace sistema_modular_cafe_majada.views
             //
             AsignarFuente();
 
-            ResponsiveConfig();
         }
 
         //
@@ -1232,13 +1231,6 @@ namespace sistema_modular_cafe_majada.views
             FontViews.ButtonStyleGC(buttons);
             //se asigna a fechas
             FontViews.DateStyle(dateTimePickers);
-        }
-
-        private void ResponsiveConfig()
-        {
-            this.Size = new System.Drawing.Size(1280, 720);
-            this.MinimumSize = new System.Drawing.Size(1280, 490);
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
         }
 
         private void txb_numTraslado_KeyDown(object sender, KeyEventArgs e)
