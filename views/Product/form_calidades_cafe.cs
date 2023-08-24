@@ -91,7 +91,8 @@ namespace sistema_modular_cafe_majada.views
             string description = txb_desCalidad.Text;
 
             var lastId = cCafeController.ObtenerUltimoId();
-            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            bool existe = cCafeController.ExisteId(Convert.ToInt32(txb_id.Text));
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
             {
                 if (!imagenClickeada)
                 {

@@ -281,5 +281,35 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             return alm;
         }
+
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para verificar si existe una bodega con el mismo nombre
+                string consulta = "SELECT COUNT(*) FROM Cargo WHERE id_cargo = @id";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", id);
+
+                int count = Convert.ToInt32(conexion.EjecutarConsultaEscalar());
+
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia del Cargo Personal: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+        }
+
     }
 }

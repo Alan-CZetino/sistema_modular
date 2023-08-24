@@ -165,7 +165,8 @@ namespace sistema_modular_cafe_majada.views
             string descripcion = txb_descripCargo.Text;
             
             var lastId = cargoController.ObtenrUltimoId();
-            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            bool existe = cargoController.ExisteId(Convert.ToInt32(txb_id.Text));
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
             {
                 if (!imagenClickeada)
                 {

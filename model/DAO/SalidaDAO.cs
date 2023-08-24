@@ -28,12 +28,20 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Conectar();
 
                 //se crea script SQL para insertar
-                string consulta = @"INSERT INTO Salida_Cafe (num_salida, id_cosecha_salida, id_procedencia_salida, id_calidad_cafe_salida,
-                                        id_subproducto_salida, tipo_salida, cantidad_salida_qqs_cafe, cantidad_salida_sacos_cafe, fecha_salidaCafe,
-                                        id_personal_salida, observacion_salida, id_almacen_salida, id_bodega_salida )
-                                    VALUES (@numSalida, @idCosecha, @idProcedencia, @idCalidadCafe, @idSubProducto, @tipoSalida,
-                                                @cantidadSalidaQQs, @cantidadSalidaSacos, @fechaSalidaCafe, @idPersonal, @observacionSalida,
-                                                @iAlmacen, @iBodega)";
+                string consulta = @"INSERT INTO Salida_Cafe SET
+                                        num_salida = @numSalida,
+                                        id_cosecha_salida = @idCosecha,";
+                                        if (salidaCafe.IdProcedencia != 0) { consulta += "id_procedencia_salida = @idProcedencia,"; }
+                                        consulta += @"id_calidad_cafe_salida = @idCalidadCafe,
+                                        id_subproducto_salida = @idSubProducto,
+                                        tipo_salida = @tipoSalida,
+                                        cantidad_salida_qqs_cafe = @cantidadSalidaQQs,
+                                        cantidad_salida_sacos_cafe = @cantidadSalidaSacos,
+                                        fecha_salidaCafe = @fechaSalidaCafe, 
+                                        id_personal_salida = @idPersonal, 
+                                        observacion_salida = @observacionSalida,
+                                        id_almacen_salida = @iAlmacen,
+                                        id_bodega_salida = @iBodega";
                 conexion.CrearComando(consulta);
 
                 conexion.AgregarParametro("@numSalida", salidaCafe.NumSalida_cafe);
@@ -238,9 +246,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                 string consulta = @"
                 UPDATE Salida_Cafe SET
                     id_cosecha_salida = @idCosecha,
-                    num_salida = @numSalida,
-                    id_procedencia_salida = @idProcedencia,
-                    id_bodega_salida = @iBodega,
+                    num_salida = @numSalida,";
+                    if (salidaCafe.IdProcedencia != 0) { consulta += "id_procedencia_salida = @idProcedencia,"; }
+                    consulta += @"id_bodega_salida = @iBodega,
                     id_almacen_salida = @iAlmacen,
                     id_calidad_cafe_salida = @idCalidadCafe,
                     id_subproducto_salida = @idSubProducto,
@@ -320,7 +328,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                                     INNER JOIN SubProducto sbp ON s.id_subproducto_salida = sbp.id_subproducto
                                     LEFT JOIN Almacen a ON s.id_almacen_salida = a.id_almacen
                                     LEFT JOIN Bodega_Cafe b ON s.id_bodega_salida = b.id_bodega
-                                    INNER JOIN Personal p ON s.id_personal_salida = p.id_personal";
+                                    INNER JOIN Personal p ON s.id_personal_salida = p.id_personal
+                                    WHERE id_cosecha_salida = @id";
 
                 conexion.CrearComando(consulta);
                 conexion.AgregarParametro("@id", iCosecha);

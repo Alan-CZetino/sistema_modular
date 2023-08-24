@@ -295,7 +295,8 @@ namespace sistema_modular_cafe_majada.views
                 string location = txb_Ubicacion.Text;
 
                 var lastId = beneficioController.ObtenerUltimoId();
-                if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+                bool existe = beneficioController.ExisteId(Convert.ToInt32(txb_id.Text));
+                if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
                 {
                     if (!imagenClickeada)
                     {

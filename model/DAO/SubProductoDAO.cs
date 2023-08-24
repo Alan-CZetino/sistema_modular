@@ -139,6 +139,51 @@ namespace sistema_modular_cafe_majada.model.DAO
 
             return subproducto;
         }
+        
+        //obtener el SubProducto en especifico mediante el id en la BD
+        public List<SubProducto> ObtenerSubProductoPorIdCalidad(int idCalidad)
+        {
+            List<SubProducto> listaSubProducto = new List<SubProducto>();
+
+            try
+            {
+                // Conectar a la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para obtener el subproducto
+                string consulta = "SELECT * FROM SubProducto WHERE id_calidad_supproducto = @Id";
+
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@Id", idCalidad);
+
+                // Ejecutar la consulta y leer el resultado
+                using (MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    while (reader.Read())
+                    {
+                        SubProducto subproducto = new SubProducto()
+                        {
+                            IdSubProducto = Convert.ToInt32(reader["id_subproducto"]),
+                            NombreSubProducto = Convert.ToString(reader["nombre_subproducto"]),
+                            DescripcionSubProducto = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"]),
+                            IdCalidadCafe = Convert.ToInt32(reader["id_calidad_supproducto"])
+                        };
+                        listaSubProducto.Add(subproducto);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el SubProducto: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión a la base de datos
+                conexion.Desconectar();
+            }
+
+            return listaSubProducto;
+        }
 
         //obtener el subproducto en especifico mediante el nombre en la BD
         public SubProducto ObtenerSubProductoPorNombre(string nombreSubProducto)
@@ -436,6 +481,65 @@ namespace sistema_modular_cafe_majada.model.DAO
             finally
             {
                 //se cierra la conexion con la base de datos
+                conexion.Desconectar();
+            }
+        }
+
+        //
+        public bool ExisteSubProducto(string nombre, int id)
+        {
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para verificar si existe una bodega con el mismo nombre
+                string consulta = "SELECT COUNT(*) FROM SubProducto WHERE nombre_subproducto = @nombre AND id_calidad_supproducto = @idc";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@nombre", nombre);
+                conexion.AgregarParametro("@idc", id);
+
+                int count = Convert.ToInt32(conexion.EjecutarConsultaEscalar());
+
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia del SubProducto: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+        }
+
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para verificar si existe una bodega con el mismo nombre
+                string consulta = "SELECT COUNT(*) FROM SubProducto WHERE id_subproducto = @id";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", id);
+
+                int count = Convert.ToInt32(conexion.EjecutarConsultaEscalar());
+
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia del SubProducto: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
                 conexion.Desconectar();
             }
         }

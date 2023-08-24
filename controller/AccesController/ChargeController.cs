@@ -118,5 +118,20 @@ namespace sistema_modular_cafe_majada.controller.AccesController
             }
         }
 
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return cargoDAO.ExisteId(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion del Cargo Personal en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
+
     }
 }

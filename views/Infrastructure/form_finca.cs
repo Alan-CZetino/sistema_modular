@@ -116,7 +116,8 @@ namespace sistema_modular_cafe_majada.views
             string ubicFinca = txb_ubiFinca.Text;
 
             var lastId = fincaController.ObtenerUltimoId();
-            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            bool existe = fincaController.ExisteId(Convert.ToInt32(txb_id.Text));
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
             {
                 if (!imagenClickeada)
                 {

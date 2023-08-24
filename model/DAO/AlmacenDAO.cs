@@ -135,7 +135,9 @@ namespace sistema_modular_cafe_majada.model.DAO
                             CantidadActualAlmacen = (reader["cantidad_actual_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_almacen"])),
                             CantidadActualSacoAlmacen = (reader["cantidad_actual_saco_almacen"] is DBNull ? 0.0 : Convert.ToDouble(reader["cantidad_actual_saco_almacen"])),
                             UbicacionAlmacen = Convert.ToString(reader["ubicacion_almacen"]),
-                            IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"])
+                            IdBodegaUbicacion = Convert.ToInt32(reader["id_bodega_ubicacion_almacen"]),
+                            IdSubProducto = (reader["id_subproducto_cafe"]) is DBNull ? 0 : Convert.ToInt32(reader["id_subproducto_cafe"]),
+                            IdCalidadCafe = (reader["id_calidad_cafe"]) is DBNull ? 0 : Convert.ToInt32(reader["id_calidad_cafe"])
                         };
                     }
                 }
@@ -580,6 +582,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                     {
                         almacen = new Almacen()
                         {
+                            IdAlmacen = Convert.ToInt32(reader["id_almacen"]),
                             IdCalidadCafe = (reader["id_calidad_cafe"]) is DBNull ? 0 : Convert.ToInt32(reader["id_calidad_cafe"]),
                             NombreCalidadCafe = (reader["nombre_calidad"]) is DBNull ? "" : Convert.ToString(reader["nombre_calidad"]),
                             IdSubProducto = (reader["id_subproducto_cafe"]) is DBNull ? 0 : Convert.ToInt32(reader["id_subproducto_cafe"]),
@@ -946,6 +949,7 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             return almacen;
         }
+
         //
         public bool ExisteAlmacen(string nombre, int id)
         {
@@ -1010,5 +1014,36 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             return alm;
         }
+
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para verificar si existe una bodega con el mismo nombre
+                string consulta = "SELECT COUNT(*) FROM Almacen WHERE id_almacen = @id";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", id);
+
+                int count = Convert.ToInt32(conexion.EjecutarConsultaEscalar());
+
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia del Almacen: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+        }
+
+
     }
 }

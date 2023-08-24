@@ -29,7 +29,7 @@ namespace sistema_modular_cafe_majada.views
         public bool imagenClickeada = false;
         public int SubSPart;
         public string SubSPartCosecha;
-        private bool imgClickAlmacen = false;
+        private bool imgClickCalidad = false;
         private bool imgClickBodega = false;
         SubPartidaController countSP = null;
         private SubPartidaController reportesController = new SubPartidaController();
@@ -218,7 +218,16 @@ namespace sistema_modular_cafe_majada.views
         public void CbxSubProducto()
         {
             SubProductoController subPro = new SubProductoController();
-            List<SubProducto> datoSubPro = subPro.ObtenerSubProductos();
+            List<SubProducto> datoSubPro;
+
+            if (imgClickCalidad)
+            {
+                datoSubPro = subPro.ObtenerSubProductoPorIdCalidad(CalidadSeleccionada.ICalidadSeleccionada);
+            }
+            else
+            {
+                datoSubPro = subPro.ObtenerSubProductos();
+            }
 
             cbx_subProducto.Items.Clear();
 
@@ -527,10 +536,13 @@ namespace sistema_modular_cafe_majada.views
         {
             TablaSeleccionadasubPartd.ITable = 3;
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
+            
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
                 iCalidad = CalidadSeleccionada.ICalidadSeleccionada;
                 txb_calidad.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
+                imgClickCalidad = true;
+                CbxSubProducto();
             }
         }
 
@@ -591,7 +603,7 @@ namespace sistema_modular_cafe_majada.views
         private void btn_ubiFisicaCafe_Click(object sender, EventArgs e)
         {
             TablaSeleccionadasubPartd.ITable = 7;
-            imgClickAlmacen = true;
+            //imgClickAlmacen = true;
             form_opcSubPartida form_OpcSub = new form_opcSubPartida();
             if (form_OpcSub.ShowDialog() == DialogResult.OK)
             {
@@ -834,7 +846,7 @@ namespace sistema_modular_cafe_majada.views
                 var almNCM = almacenC.ObtenerAlmacenNombreCalidad(iAlmacen);
                 double actcantidad = almCM.CantidadActualAlmacen;
                 double actcantidadSaco = almCM.CantidadActualSacoAlmacen;
-
+                
                 Console.WriteLine("depuracion - img cliqueada " + imagenClickeada);
                 if (!SubPartidaSeleccionado.clickImg)
                 {
@@ -951,7 +963,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
+                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña,
+                        TipoMovimiento = "Entrada Cafe No.SubPartida " + Convert.ToInt32(txb_subPartida.Text)
                     };
 
                     if (iCalidadNoUpd != CalidadSeleccionada.ICalidadSeleccionada && CalidadSeleccionada.ICalidadSeleccionada != 0)
@@ -967,7 +980,7 @@ namespace sistema_modular_cafe_majada.views
                         }
                     }
 
-                    if (cantidaQQsUpdate != cantidaQQsActUpdate)
+                    if (cantidaQQsUpdate != cantidaQQsActUpdate || Convert.ToInt32(txb_subPartida.Text) != SubPartidaSeleccionado.NumSubPartida)
                     {
                         if (cantRest < pesoQQs)
                         {
@@ -1225,7 +1238,7 @@ namespace sistema_modular_cafe_majada.views
 
             imgClickBodega = false;
             imagenClickeada = false;
-            imgClickAlmacen = false;
+            imgClickCalidad = false;
 
             AlmacenSeleccionado.IAlmacen = 0;
             BodegaSeleccionada.IdBodega = 0;
@@ -1305,10 +1318,11 @@ namespace sistema_modular_cafe_majada.views
                         SubPartidaController controller = new SubPartidaController();
                         controller.EliminarSubPartida(SubPartidaSeleccionado.ISubPartida);
 
+                        Console.WriteLine("numero de subpartida " + SubPartidaSeleccionado.NumSubPartida);
                         var cantidadCafeC = new CantidadSiloPiñaController();
                         string search = "No.SubPartida " + SubPartidaSeleccionado.NumSubPartida;
                         var cantUpd = cantidadCafeC.BuscarCantidadSiloPiñaSub(search);
-
+                        Console.WriteLine("cantidad silo/piña a eliminar es " + search + " del numero de subpartida " + SubPartidaSeleccionado.NumSubPartida);
                         var almacenC = new AlmacenController();
                         var almCM = almacenC.ObtenerCantidadCafeAlmacen(iAlmacen);
                         double actcantidad = almCM.CantidadActualAlmacen;

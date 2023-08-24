@@ -285,6 +285,42 @@ namespace sistema_modular_cafe_majada.model.DAO
             }
             return calidad;
         }
+        
+        public CalidadCafe ObtenerIdCalidad(int idCalidad)
+        {
+            CalidadCafe calidad = null;
+
+            try
+            {
+                conexion.Conectar();
+
+                string consulta = "SELECT * FROM calidad_cafe WHERE id_calidad = @iCal";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@iCal", idCalidad);
+
+                using(MySqlDataReader reader = conexion.EjecutarConsultaReader(consulta))
+                {
+                    if(reader.Read())
+                    {
+                        calidad = new CalidadCafe()
+                        {
+                            IdCalidad = Convert.ToInt32(reader["id_calidad"]),
+                            NombreCalidad = Convert.ToString(reader["nombre_calidad"]),
+                            DescripcionCalidad = (reader["descripcion"]) is DBNull ? "" : Convert.ToString(reader["descripcion"])
+                        };
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Ocurrio un error al obtener los datos: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Desconectar();
+            }
+            return calidad;
+        }
 
         public void EliminarCalidad (int idCalidad)
         {
@@ -320,5 +356,35 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.Desconectar();
             }
         }
+
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Se conecta con la base de datos
+                conexion.Conectar();
+
+                // Crear la consulta SQL para verificar si existe una bodega con el mismo nombre
+                string consulta = "SELECT COUNT(*) FROM Calidad_Cafe WHERE id_calidad = @id";
+                conexion.CrearComando(consulta);
+                conexion.AgregarParametro("@id", id);
+
+                int count = Convert.ToInt32(conexion.EjecutarConsultaEscalar());
+
+                return count > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error al verificar la existencia de la Calidad_Cafe: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                // Se cierra la conexión a la base de datos
+                conexion.Desconectar();
+            }
+        }
+
     }
 }

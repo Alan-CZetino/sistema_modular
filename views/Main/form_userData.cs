@@ -86,7 +86,6 @@ namespace sistema_modular_cafe_majada.views
                 default:
                     {
                         MessageBox.Show("Su rol actual no tiene autoridad para acceder a ciertas funciones en el sistema. Por favor, póngase en contacto con el administrador para obtener más información.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        
                     }
                     break;
 

@@ -39,6 +39,7 @@ namespace sistema_modular_cafe_majada.views
         public double cantidaSacoUpdate = 0.00;
         public double cantidaSacoActUpdate = 0.00;
         private bool imgClickUpdAlmacen = false;
+        private bool imgClickCalidad = false;
 
         private int iTrilla;
         private int iProcedencia;
@@ -252,6 +253,7 @@ namespace sistema_modular_cafe_majada.views
             iBodega = sub.IdBodega;
             txb_almacen.Text = sub.NombreAlmacen;
             iAlmacen = sub.IdAlmacen;
+            AlmacenSeleccionado.IAlmacen = sub.IdAlmacen;
             txb_personal.Text = sub.NombrePersonal;
             iPesador = sub.IdPersonal;
             txb_finca.Text = sub.NombreProcedencia;
@@ -285,6 +287,8 @@ namespace sistema_modular_cafe_majada.views
             {
                 iCalidad = CalidadSeleccionada.ICalidadSeleccionada;
                 txb_calidadCafe.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
+                imgClickCalidad = true;
+                CbxSubProducto();
             }
             
         }
@@ -358,8 +362,16 @@ namespace sistema_modular_cafe_majada.views
         public void CbxSubProducto()
         {
             SubProductoController subPro = new SubProductoController();
-            List<SubProducto> datoSubPro = subPro.ObtenerSubProductos();
+            List<SubProducto> datoSubPro;
 
+            if (imgClickCalidad)
+            {
+                datoSubPro = subPro.ObtenerSubProductoPorIdCalidad(CalidadSeleccionada.ICalidadSeleccionada);
+            }
+            else
+            {
+                datoSubPro = subPro.ObtenerSubProductos();
+            }
             cbx_subProducto.Items.Clear();
 
             // Asignar los valores numéricos a los elementos del ComboBox
@@ -398,6 +410,8 @@ namespace sistema_modular_cafe_majada.views
             dtp_fechaTrilla.Value = DateTime.Now;
             rb_cafeTrilla.Checked = false;
             rb_subProducto.Checked = false;
+            imgClickCalidad = false;
+            imgClickUpdAlmacen = false;
 
         }
 
@@ -570,7 +584,7 @@ namespace sistema_modular_cafe_majada.views
 
                     if (exito)
                     {
-                        MessageBox.Show("Trilla agregada correctamente.");
+                        MessageBox.Show("Trilla agregada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         double resultCa = actcantidad - pesoQQs;
                         double resultCaSaco = actcantidadSaco - pesoSaco;
@@ -598,7 +612,7 @@ namespace sistema_modular_cafe_majada.views
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar la Trilla. Verifica los datos e intenta nuevamente.");
+                        MessageBox.Show("Error al agregar la Trilla. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -647,7 +661,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (almNCM.IdCalidadCafe != CalidadSeleccionada.ICalidadSeleccionada)
                 {
-                    MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a dar Salida es " + almNCM.NombreCalidadCafe + " y a seleccionado la calidad "
+                    MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible. La calidad a dar Salida es " + almNCM.NombreCalidadCafe + " y a seleccionado la calidad "
                         + CalidadSeleccionada.NombreCalidadSeleccionada + ".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txb_calidadCafe.Text = null;
                     CalidadSeleccionada.ICalidadSeleccionada = 0;
@@ -666,7 +680,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (!exito)
                 {
-                    MessageBox.Show("Error al actualizar la Trilla. Verifica los datos e intenta nuevamente.");
+                    MessageBox.Show("Error al actualizar la Trilla. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -704,7 +718,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = iAlmacen
+                        IdAlmacenSiloPiña = iAlmacen,
+                        TipoMovimiento = "Salida Cafe No.Trilla " + numTrilla
                     };
 
                     bool exitoUpdateCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidadUpd);
@@ -728,7 +743,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
+                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña,
+                        TipoMovimiento = "Salida Cafe No.Trilla " + numTrilla
                     };
 
                     bool exitoactualizarCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidad);
@@ -740,7 +756,7 @@ namespace sistema_modular_cafe_majada.views
 
                 }
 
-                MessageBox.Show("Trilla Actualizada correctamente.");
+                MessageBox.Show("Trilla Actualizada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 try
                 {
                     //verificar el departamento

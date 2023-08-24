@@ -242,6 +242,7 @@ namespace sistema_modular_cafe_majada.views
                     txb_ubicacion.Text = socioSeleccionado.UbicacionSocio;
                     txb_nombrePersona.Text = socioSeleccionado.NombrePersonaResp;
                     txb_nombreFinca.Text = socioSeleccionado.NombreFinca;
+                    Console.WriteLine("id finca " + FincaSeleccionada.IFincaSeleccionada);
                 }
                 else
                 {
@@ -408,7 +409,8 @@ namespace sistema_modular_cafe_majada.views
                 string persona = txb_nombrePersona.Text;
 
                 var lastId = socioController.ObtenerUltimoId();
-                if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+                bool existe = socioController.ExisteId(Convert.ToInt32(txb_id.Text));
+                if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
                 {
                     if (!imagenClickeada)
                     {
@@ -472,17 +474,28 @@ namespace sistema_modular_cafe_majada.views
                     
                     Persona pers = new Persona();
                     Finca fin = new Finca();
-
-                    fin = fincaC.ObtenerNombreFincas(finca);
                     pers = personaC.ObtenerPersona(persona);
 
-                    // Código que se ejecutará si se ha hecho clic en la imagen update
-                    bool exito= socioController.ActualizarSocio(socioSeleccionado.IdSocio, name, descripcion, ubicacion, fin.IdFinca, pers.IdPersona);
-                    
-                    if (!exito)
+                    if (!string.IsNullOrEmpty(finca))
                     {
-                        MessageBox.Show("Error al actualizar los datos del Socio. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        fin = fincaC.ObtenerNombreFincas(finca);
+                        // Código que se ejecutará si se ha hecho clic en la imagen update
+                        bool exito= socioController.ActualizarSocio(socioSeleccionado.IdSocio, name, descripcion, ubicacion,pers.IdPersona, fin.IdFinca);
+                        if (!exito)
+                        {
+                            MessageBox.Show("Error al actualizar los datos del Socio. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+                    else
+                    {
+                        // Código que se ejecutará si se ha hecho clic en la imagen update
+                        bool exito = socioController.ActualizarSocio(socioSeleccionado.IdSocio, name, descripcion, ubicacion, pers.IdPersona, 0);
+                        if (!exito)
+                        {
+                            MessageBox.Show("Error al actualizar los datos del Socio. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+  
 
                     MessageBox.Show("Socio actualizado correctamente.", "Actualizacion Satisfactoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

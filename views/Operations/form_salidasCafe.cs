@@ -1,6 +1,7 @@
 using Microsoft.Reporting.WinForms;
 using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
+using sistema_modular_cafe_majada.controller.ProductController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
@@ -40,6 +41,7 @@ namespace sistema_modular_cafe_majada.views
         public double cantidaSacoActUpdate = 0.00;
 
         private bool imgClickUpdAlmacen = false;
+        private bool imgClickCalidad = false;
         private int iSalida;
         private int iProcedencia;
         private int iPesador;
@@ -231,6 +233,7 @@ namespace sistema_modular_cafe_majada.views
             iBodega = sub.IdBodega;
             txb_almacen.Text = sub.NombreAlmacen;
             iAlmacen = sub.IdAlmacen;
+            AlmacenSeleccionado.IAlmacen = sub.IdAlmacen;
             txb_personal.Text = sub.NombrePersonal;
             iPesador = sub.IdPersonal;
             txb_finca.Text = sub.NombreProcedencia;
@@ -277,9 +280,19 @@ namespace sistema_modular_cafe_majada.views
         public void CbxSubProducto()
         {
             SubProductoController subPro = new SubProductoController();
-            List<SubProducto> datoSubPro = subPro.ObtenerSubProductos();
+            List<SubProducto> datoSubPro;
 
             cbx_subProducto.Items.Clear();
+            Console.WriteLine("Depuracion - IdCalidad: " + CalidadSeleccionada.ICalidadSeleccionada);
+            if (imgClickCalidad || CalidadSeleccionada.ICalidadSeleccionada != 0)
+            {
+                Console.WriteLine("Depuracion - Entre - IdCalidad: " + CalidadSeleccionada.ICalidadSeleccionada);
+                datoSubPro = subPro.ObtenerSubProductoPorIdCalidad(CalidadSeleccionada.ICalidadSeleccionada);
+            }
+            else
+            {
+                datoSubPro = subPro.ObtenerSubProductos();
+            }
 
             // Asignar los valores numéricos a los elementos del ComboBox
             foreach (SubProducto subP in datoSubPro)
@@ -313,6 +326,8 @@ namespace sistema_modular_cafe_majada.views
             BodegaSeleccionada.NombreBodega = "";
             CalidadSeleccionada.ICalidadSeleccionada = 0;
             CalidadSeleccionada.NombreCalidadSeleccionada = "";
+            imgClickCalidad = false;
+            imgClickUpdAlmacen = false;
             iSalida = 0;
             dtp_fechaSalida.Value = DateTime.Now;
             rb_export.Checked = false;
@@ -402,22 +417,48 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_tAlmacen_Click(object sender, EventArgs e)
         {
-            TablaSeleccionadaSalida.ITable = 2;
-            imgClickUpdAlmacen = true;
-            form_opcSalida opcSalida = new form_opcSalida();
-            if (opcSalida.ShowDialog() == DialogResult.OK)
+            try
             {
-                // Llamar al método para obtener los datos de la base de datos
-                AlmacenController almacenController = new AlmacenController();
-                Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
-                BodegaController bodegaController = new BodegaController();
-                Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+                TablaSeleccionadaSalida.ITable = 2;
+                imgClickUpdAlmacen = true;
+                form_opcSalida opcSalida = new form_opcSalida();
+                if (opcSalida.ShowDialog() == DialogResult.OK)
+                {
+                    // Llamar al método para obtener los datos de la base de datos
+                    //datos para almacen
+                    AlmacenController almacenController = new AlmacenController();
+                    Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
+                    //datos para bodega
+                    BodegaController bodegaController = new BodegaController();
+                    Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+                    //datos para calidad
+                    CCafeController ccafeC = new CCafeController();
+                    CalidadCafe ccafe = ccafeC.ObtenerIdCalidad((int)datoA.IdCalidadCafe);
+                    //datos para subproducto
+                    isubProducto = (int)datoA.IdSubProducto;
 
-                txb_bodega.Text = datoB.NombreBodega;
-                iBodega = datoB.IdBodega;
-                BodegaSeleccionada.IdBodega = iBodega;
-                iAlmacen = AlmacenSeleccionado.IAlmacen;
-                txb_almacen.Text = AlmacenSeleccionado.NombreAlmacen;
+                    //cbx
+                    cbx_subProducto.Items.Clear();
+                    CbxSubProducto();
+                    int isP = isubProducto - 1;
+                    Console.WriteLine("Depurar - idSubpro: " + isP);
+                
+                    cbx_subProducto.SelectedIndex = isP;
+                    txb_calidadCafe.Text = ccafe.NombreCalidad;
+                    CalidadSeleccionada.ICalidadSeleccionada = ccafe.IdCalidad;
+                    CalidadSeleccionada.NombreCalidadSeleccionada = ccafe.NombreCalidad;
+                    txb_bodega.Text = datoB.NombreBodega;
+                    iBodega = datoB.IdBodega;
+                    BodegaSeleccionada.IdBodega = iBodega;
+                    iAlmacen = AlmacenSeleccionado.IAlmacen;
+                    txb_almacen.Text = AlmacenSeleccionado.NombreAlmacen;
+
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error de tipo " + ex.Message);
+                MessageBox.Show("Error de tipo " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -457,6 +498,8 @@ namespace sistema_modular_cafe_majada.views
             {
                 iCalidad = CalidadSeleccionada.ICalidadSeleccionada;
                 txb_calidadCafe.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
+                imgClickCalidad = true;
+                CbxSubProducto();
             }
         }
 
@@ -766,7 +809,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = iAlmacen
+                        IdAlmacenSiloPiña = iAlmacen,
+                        TipoMovimiento = "Salida Cafe No.SalidaCafe " + numSalida
                     };
 
                     bool exitoUpdateCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidadUpd);
@@ -790,7 +834,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña
+                        IdAlmacenSiloPiña = cantUpd.IdAlmacenSiloPiña,
+                        TipoMovimiento = "Salida Cafe No.SalidaCafe " + numSalida
                     };
 
                     bool exitoactualizarCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidad);
@@ -1027,6 +1072,11 @@ namespace sistema_modular_cafe_majada.views
                 }
             }
 
+        }
+
+        private void cbx_subProducto_Enter(object sender, EventArgs e)
+        {
+            //CbxSubProducto();
         }
     }
 }

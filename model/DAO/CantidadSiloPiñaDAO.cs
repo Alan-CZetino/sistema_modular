@@ -365,7 +365,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Se crea el script SQL 
                 string consulta = @"UPDATE CantidadCafe_Silo_Piña 
                             SET fecha_movimiento_cantidad_cafe = @fecha, id_cosecha_cantidad = @idC, cantidad_qqs_cafe = @cantidad, 
-                                cantidad_saco_cafe = @cantidadSaco, id_almacen_silo_piña = @idAlmacenSiloPiña
+                                cantidad_saco_cafe = @cantidadSaco, id_almacen_silo_piña = @idAlmacenSiloPiña, tipo_movimiento_cantidad_cafe = @tipo
                             WHERE id_cantidad_cafe = @idCantidadCafe";
 
                 conexion.CrearComando(consulta);
@@ -375,6 +375,7 @@ namespace sistema_modular_cafe_majada.model.DAO
                 conexion.AgregarParametro("@cantidad", cantidad.CantidadCafe);
                 conexion.AgregarParametro("@cantidadSaco", cantidad.CantidadCafeSaco);
                 conexion.AgregarParametro("@idAlmacenSiloPiña", cantidad.IdAlmacenSiloPiña);
+                conexion.AgregarParametro("@tipo", cantidad.TipoMovimiento);
                 conexion.AgregarParametro("@idCantidadCafe", cantidad.IdCantidadCafe);
 
                 int filasAfectadas = conexion.EjecutarInstruccion();

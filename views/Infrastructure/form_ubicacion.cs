@@ -210,9 +210,11 @@ namespace sistema_modular_cafe_majada.views
             }
 
             cbx_bodega.Items.Clear();
+            cbx_bodega.SelectedIndex = -1;
             imagenClickeada = false;
             almacenSeleccionado = null;
 
+            CbxBodega();
             //coloca nueva mente el contador en el txb del cdigo
             AlmacenController ben = new AlmacenController();
             var count = ben.CountAlmacen();
@@ -449,7 +451,8 @@ namespace sistema_modular_cafe_majada.views
             }
 
             var lastId = subController.ObtenerUltimoId();
-            if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+            bool existe = subController.ExisteId(Convert.ToInt32(txb_id.Text));
+            if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
             {
                 if (!imagenClickeada)
                 {
@@ -518,6 +521,15 @@ namespace sistema_modular_cafe_majada.views
             }
             else
             {
+                //verifica si ya exite un nombre identico
+                var existeA = subController.ExisteAlmacen(txb_nombreAlmacen.Text, selectedValue);
+
+                if (existeA && Convert.ToInt32(txb_id.Text) != almacenSeleccionado.IdAlmacen)
+                {
+                    MessageBox.Show("Ya existe un Almacen con el mismo nombre en la Bodega ( " + selectedValueName + " ). Por favor, elija un nombre diferente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Código que se ejecutará si se ha hecho clic en la imagen update
                 bool exito = subController.ActualizarAlmacens(almacenSeleccionado.IdAlmacen, nameAlmacen, description, capacidad, ubicacion, selectedValue);
 
@@ -553,17 +565,17 @@ namespace sistema_modular_cafe_majada.views
 
         private void txb_nombreAlmacen_Enter(object sender, EventArgs e)
         {
-            CbxBodega();
+            //CbxBodega();
         }
 
         private void txb_descripcion_Enter(object sender, EventArgs e)
         {
-            CbxBodega();
+            //CbxBodega();
         }
 
         private void txb_capacidad_Enter(object sender, EventArgs e)
         {
-            CbxBodega();
+            //CbxBodega();
         }
 
         private void txb_capacidad_KeyPress(object sender, KeyPressEventArgs e)

@@ -1,6 +1,7 @@
 using Microsoft.Reporting.WinForms;
 using sistema_modular_cafe_majada.controller.InfrastructureController;
 using sistema_modular_cafe_majada.controller.OperationsController;
+using sistema_modular_cafe_majada.controller.ProductController;
 using sistema_modular_cafe_majada.controller.SecurityData;
 using sistema_modular_cafe_majada.controller.UserDataController;
 using sistema_modular_cafe_majada.model.Acces;
@@ -39,6 +40,7 @@ namespace sistema_modular_cafe_majada.views
         public double cantidaSacoUpdate = 0.00;
         public double cantidaQQsActUpdate = 0.00;
         public double cantidaSacoActUpdate = 0.00;
+        private bool imgClickCalidad = false;
 
         private int iTraslado;
         private int isubProducto;
@@ -285,8 +287,16 @@ namespace sistema_modular_cafe_majada.views
         public void CbxSubProducto()
         {
             SubProductoController subPro = new SubProductoController();
-            List<SubProducto> datoSubPro = subPro.ObtenerSubProductos();
+            List<SubProducto> datoSubPro;
 
+            if (imgClickCalidad || CalidadSeleccionada.ICalidadSeleccionada != 0)
+            {
+                datoSubPro = subPro.ObtenerSubProductoPorIdCalidad(CalidadSeleccionada.ICalidadSeleccionada);
+            }
+            else
+            {
+                datoSubPro = subPro.ObtenerSubProductos();
+            }
             cbx_subProducto.Items.Clear();
 
             // Asignar los valores numéricos a los elementos del ComboBox
@@ -326,7 +336,10 @@ namespace sistema_modular_cafe_majada.views
             BodegaSeleccionada.NombreBodegaDestino = "";
             CalidadSeleccionada.ICalidadSeleccionada = 0;
             CalidadSeleccionada.NombreCalidadSeleccionada = "";
+            imgClickCalidad = false;
             iTraslado = 0;
+            iAlmacenDest = 0;
+            iAlmacenProce = 0;
 
             countTrl = new TrasladoController();
             var sald = countTrl.CountTraslado(CosechaActual.ICosechaActual);
@@ -418,31 +431,53 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_tAlmacenP_Click(object sender, EventArgs e)
         {
-            TablaSeleccionadaTraslado.ITable = 2;
-            form_opcTraslado opcTraslado = new form_opcTraslado();
-            if (opcTraslado.ShowDialog() == DialogResult.OK)
+            try
             {
-                iAlmacenProce = AlmacenSeleccionado.IAlmacen;
-                if (AlmacenSeleccionado.IAlmacenDestino == AlmacenSeleccionado.IAlmacen || iAlmacenDest == iAlmacenProce)
+                TablaSeleccionadaTraslado.ITable = 2;
+                form_opcTraslado opcTraslado = new form_opcTraslado();
+                if (opcTraslado.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("Error, no es permitido hacer un traslado al mismo Silo/Piña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    iAlmacenProce = 0;
-                    AlmacenSeleccionado.IAlmacen = 0;
-                    AlmacenSeleccionado.NombreAlmacen = "";
-                    return;
-                }
-                // Llamar al método para obtener los datos de la base de datos
-                AlmacenController almacenController = new AlmacenController();
-                Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
-                BodegaController bodegaController = new BodegaController();
-                Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+                    iAlmacenProce = AlmacenSeleccionado.IAlmacen;
+                    if (AlmacenSeleccionado.IAlmacenDestino == AlmacenSeleccionado.IAlmacen || iAlmacenDest == iAlmacenProce)
+                    {
+                        MessageBox.Show("Error, no es permitido hacer un traslado al mismo Silo/Piña.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        iAlmacenProce = 0;
+                        AlmacenSeleccionado.IAlmacen = 0;
+                        AlmacenSeleccionado.NombreAlmacen = "";
+                        return;
+                    }
+                    // Llamar al método para obtener los datos de la base de datos
+                    AlmacenController almacenController = new AlmacenController();
+                    Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
+                    BodegaController bodegaController = new BodegaController();
+                    Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);
+                    CCafeController ccafeC = new CCafeController();
+                    CalidadCafe ccafe = ccafeC.ObtenerIdCalidad((int)datoA.IdCalidadCafe);
+                    //datos para subproducto
+                    isubProducto = (int)datoA.IdSubProducto;
 
-                txb_bodegaPr.Text = datoB.NombreBodega;
-                iBodegaProce = datoB.IdBodega;
-                BodegaSeleccionada.IdBodega = iBodegaProce;
-                BodegaSeleccionada.NombreBodega = datoB.NombreBodega;
-                
-                txb_almacenPr.Text = AlmacenSeleccionado.NombreAlmacen;
+                    //cbx
+                    cbx_subProducto.Items.Clear();
+                    CbxSubProducto();
+                    int isP = isubProducto - 1;
+                    Console.WriteLine("Depurar - idSubpro: " + isP);
+
+                    cbx_subProducto.SelectedIndex = isP;
+                    txb_calidadCafe.Text = ccafe.NombreCalidad;
+                    CalidadSeleccionada.ICalidadSeleccionada = ccafe.IdCalidad;
+                    CalidadSeleccionada.NombreCalidadSeleccionada = ccafe.NombreCalidad;
+                    txb_bodegaPr.Text = datoB.NombreBodega;
+                    iBodegaProce = datoB.IdBodega;
+                    BodegaSeleccionada.IdBodega = iBodegaProce;
+                    BodegaSeleccionada.NombreBodega = datoB.NombreBodega;
+
+                    txb_almacenPr.Text = AlmacenSeleccionado.NombreAlmacen;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error de tipo " + ex.Message);
+                MessageBox.Show("Error de tipo " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -482,6 +517,8 @@ namespace sistema_modular_cafe_majada.views
             {
                 iCalidad = CalidadSeleccionada.ICalidadSeleccionada;
                 txb_calidadCafe.Text = CalidadSeleccionada.NombreCalidadSeleccionada;
+                imgClickCalidad = true;
+                CbxSubProducto();
             }
         }
 
@@ -702,14 +739,14 @@ namespace sistema_modular_cafe_majada.views
                     }
 
                     int icalidadDesName = Convert.ToInt32(almNCMDes.IdCalidadCafe == null ? 0 : almNCMDes.IdCalidadCafe);
-                    if (almNCM.IdCalidadCafe != icalidadDesName && icalidadDesName != 0)
+                    if (almNCM.IdCalidadCafe != icalidadDesName && (icalidadDesName != 0 && (actcantidadDes != 0 && actcantidadSacoDes != 0)))
                     {
                         MessageBox.Show("La Calidad Cafe que desea trasladar al Almacen de destino no es compatible, La calidad a trasladar es "+ almNCM.NombreCalidadCafe + " y el Almacen destino tiene la calidad actual " + almNCMDes.NombreCalidadCafe +".", 
                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    if ((almNCM.IdCalidadCafe != CalidadSeleccionada.ICalidadSeleccionada || icalidadDesName != CalidadSeleccionada.ICalidadSeleccionada) && icalidadDesName != 0)
+                    if ((almNCM.IdCalidadCafe != CalidadSeleccionada.ICalidadSeleccionada || icalidadDesName != CalidadSeleccionada.ICalidadSeleccionada) && (icalidadDesName != 0 && (actcantidadDes != 0 && actcantidadSacoDes != 0)))
                     {
                         MessageBox.Show("La Calidad Cafe que se a seleccionado en el formulario no es compatible, La calidad a trasladar es "+ almNCM.NombreCalidadCafe + " y el Almacen destino tiene la calidad actual " + almNCMDes.NombreCalidadCafe +" y a seleccionado la calidad "
                             + CalidadSeleccionada.NombreCalidadSeleccionada +".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -767,7 +804,7 @@ namespace sistema_modular_cafe_majada.views
 
                     if (exito)
                     {
-                        MessageBox.Show("Traslado de Cafe agregada correctamente.");
+                        MessageBox.Show("Traslado de Cafe agregada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         //Procedencia
                         double resultCaPr = actcantidadPr - pesoQQs;
@@ -795,7 +832,7 @@ namespace sistema_modular_cafe_majada.views
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar el Traslado de Cafe. Verifica los datos e intenta nuevamente.");
+                        MessageBox.Show("Error al agregar el Traslado de Cafe. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -836,29 +873,36 @@ namespace sistema_modular_cafe_majada.views
                 string searchDes = "Destino No.TrasladoCafe " + TrasladoSeleccionado.NumTraslado;
                 //Procedencia
                 var cantUpdPr = cantidadCafeC.BuscarCantidadSiloPiñaSub(searchPr);
+                AlmacenController almC = new AlmacenController();
+                var almProCant = almC.ObtenerCantidadCafeAlmacen(AlmacenSeleccionado.IAlmacen);
+                double cantActProc = almProCant.CantidadActualAlmacen;
+                double cantActSacoProc = almProCant.CantidadActualSacoAlmacen;
                 //Destino
                 var cantUpdDes = cantidadCafeC.BuscarCantidadSiloPiñaSub(searchDes);
+                var almDestCant = almC.ObtenerCantidadCafeAlmacen(AlmacenSeleccionado.IAlmacenDestino);
+                double cantRestDest = almDestCant.CapacidadAlmacen - almDestCant.CantidadActualAlmacen;
+                double cantRestSacoDest = almDestCant.CapacidadAlmacen - almDestCant.CantidadActualSacoAlmacen;
 
-                if (cantActPr < pesoQQs && cantRestDes < pesoQQs)
+                if (cantActProc < pesoQQs || cantRestDest < pesoQQs)
                 {
                     MessageBox.Show("Error, la cantidad QQs de cafe que desea Sacar en Procedencia del almacen excede sus limite. Desea Sacar la cantidad de " + pesoQQs + " en el contenido disponible " + cantActPr
                         + " O, la cantidad QQs de cafe que desea Agregar en Destino del almacen excede sus limite. Desea Agregar la cantidad de " + pesoQQs + " en el contenido disponible " + cantRestDes, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (cantRestDes < pesoQQs || cantActPr < 0)
+                if (cantRestDest < pesoQQs || cantActProc < 0)
                 {
                     MessageBox.Show("Error, la cantidad QQs de cafe que desea Agrega en Procedencia del almacen excede sus limite maximos. Desea Agregar la cantidad de " + pesoQQs + " en el contenido disponible " + cantRestDes
                         , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 
-                if (cantActSacoPr < pesoSaco && cantRestSacoDes < pesoSaco)
+                if (cantActSacoProc < pesoSaco || cantRestSacoDest < pesoSaco)
                 {
                     MessageBox.Show("Error, la cantidad en Saco de cafe que desea Sacar en Procedencia del almacen excede sus limite. Desea Sacar la cantidad de " + pesoSaco + " en el contenido disponible " + cantActSacoPr
                         + " O, la cantidad QQs de cafe que desea Agregar en Destino del almacen excede sus limite. Desea Agregar la cantidad de " + pesoQQs + " en el contenido disponible " + cantRestDes, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (cantRestSacoDes < pesoSaco || cantActSacoPr < 0)
+                if (cantRestSacoDest < pesoSaco || cantActSacoProc < 0)
                 {
                     MessageBox.Show("Error, la cantidad en Saco de cafe que desea Agrega en Procedencia del almacen excede sus limite maximos. Desea Agregar la cantidad de " + pesoSaco + " en el contenido disponible " + cantRestSacoDes
                         , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -899,7 +943,7 @@ namespace sistema_modular_cafe_majada.views
 
                 if (!exito)
                 {
-                    MessageBox.Show("Error al actualizar el Traslado de Cafe. Verifica los datos e intenta nuevamente.");
+                    MessageBox.Show("Error al actualizar el Traslado de Cafe. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -933,7 +977,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = AlmacenSeleccionado.IAlmacen
+                        IdAlmacenSiloPiña = AlmacenSeleccionado.IAlmacen,
+                        TipoMovimiento = "Traslado Cafe - Procedencia No.TrasladoCafe " + numTraslado
                     };
 
                     bool exitoUpdateCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidadUpd);
@@ -974,7 +1019,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = AlmacenSeleccionado.IAlmacenDestino
+                        IdAlmacenSiloPiña = AlmacenSeleccionado.IAlmacenDestino,
+                        TipoMovimiento = "Traslado Cafe - Destino No.TrasladoCafe " + numTraslado
                     };
 
                     bool exitoUpdateCantidad = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidadUpd);
@@ -998,7 +1044,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = cantUpdPr.IdAlmacenSiloPiña
+                        IdAlmacenSiloPiña = cantUpdPr.IdAlmacenSiloPiña,
+                        TipoMovimiento = "Traslado Cafe - Procedencia No.TrasladoCafe " + numTraslado
                     };
                     
                     //Destino
@@ -1013,7 +1060,8 @@ namespace sistema_modular_cafe_majada.views
                         IdCosechaCantidad = CosechaActual.ICosechaActual,
                         CantidadCafe = cantidaQQsActUpdate,
                         CantidadCafeSaco = cantidaSacoActUpdate,
-                        IdAlmacenSiloPiña = cantUpdDes.IdAlmacenSiloPiña
+                        IdAlmacenSiloPiña = cantUpdDes.IdAlmacenSiloPiña,
+                        TipoMovimiento = "Traslado Cafe - Destino No.TrasladoCafe " + numTraslado
                     };
 
                     bool exitoactualizarCantidadPr = cantidadCafeC.ActualizarCantidadCafeSiloPiña(cantidadPr);
@@ -1026,7 +1074,7 @@ namespace sistema_modular_cafe_majada.views
 
                 }
 
-                MessageBox.Show("Traslado de Cafe Actualizada correctamente.");
+                MessageBox.Show("Traslado de Cafe Actualizada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 try
                 {
                     //verificar el departamento
@@ -1124,7 +1172,7 @@ namespace sistema_modular_cafe_majada.views
                         //verificar el departamento del log
                         log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Traslado Cafe", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos del Traslado No: " + TrasladoSeleccionado.NumTraslado + " del ID en la BD: " + TrasladoSeleccionado.ITraslado + " en la base de datos");
 
-                        MessageBox.Show("Traslado de Cafe Eliminada correctamente.");
+                        MessageBox.Show("Traslado de Cafe Eliminada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         //se actualiza la tabla
                         ClearDataTxb();

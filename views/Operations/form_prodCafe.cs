@@ -433,7 +433,8 @@ namespace sistema_modular_cafe_majada.views
                 int selectedValueS = selectedStatusS.Key;
 
                 var lastId = proceController.ObtenerUltimoId();
-                if (lastId.LastId == Convert.ToInt32(txb_id.Text))
+                bool existe = proceController.ExisteId(Convert.ToInt32(txb_id.Text));
+                if (lastId.LastId == Convert.ToInt32(txb_id.Text) || existe)
                 {
                     if (!imagenClickeada)
                     {

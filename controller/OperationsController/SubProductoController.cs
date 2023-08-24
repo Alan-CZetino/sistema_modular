@@ -106,6 +106,21 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 return null;
             }
         }
+        
+        // Función para obtener un subproducto por su ID
+        public List<SubProducto> ObtenerSubProductoPorIdCalidad(int idCalidad)
+        {
+            try
+            {
+                // Llamada al método del DAO para obtener el subproducto por ID
+                return sproductoDAO.ObtenerSubProductoPorIdCalidad(idCalidad);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener el subproducto: " + ex.Message);
+                return new List<SubProducto>();
+            }
+        }
 
         // Función para obtener un subproducto por su nombre
         public SubProducto ObtenerSubProductoPorNombre(string nombreSubProducto)
@@ -165,6 +180,37 @@ namespace sistema_modular_cafe_majada.controller.OperationsController
                 Console.WriteLine("Error al eliminar el registro: " + ex.Message);
             }
         }
+
+        //
+        public bool ExisteSubProducto(string nombre, int idC)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return sproductoDAO.ExisteSubProducto(nombre, idC);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion del SubProducto en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
+
+        //
+        public bool ExisteId(int id)
+        {
+            try
+            {
+                // Llamada al método del DAO para insertar la Bodega
+                return sproductoDAO.ExisteId(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocurrió un error durante la verificacion del SubProducto en la base de datos: " + ex.Message);
+                return false;
+            }
+        }
+
     }
 
 }
