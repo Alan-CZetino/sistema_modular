@@ -56,7 +56,7 @@ namespace sistema_modular_cafe_majada.views
 
             //
             RolUser();
-
+            ClearDataTxb();
             // Configurar el temporizador para que se dispare cada cierto intervalo (por ejemplo, cada 5 segundos).
             refreshTimer = new System.Timers.Timer();
             refreshTimer.Interval = 5000; // Intervalo en milisegundos (5 segundos en este caso).
@@ -426,8 +426,13 @@ namespace sistema_modular_cafe_majada.views
                 {
                     // Llamar al método para obtener los datos de la base de datos
                     //datos para almacen
-                    AlmacenController almacenController = new AlmacenController();
+                    AlmacenController almacenController = new AlmacenController(); 
                     Almacen datoA = almacenController.ObtenerIdAlmacen(AlmacenSeleccionado.IAlmacen);
+                    if (datoA.IdCalidadCafe == 0)
+                    {
+                        MessageBox.Show("El almacen seleccionado está vacio, no puede ser utilizado para dar salida", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     //datos para bodega
                     BodegaController bodegaController = new BodegaController();
                     Bodega datoB = bodegaController.ObtenerIdBodega(datoA.IdBodegaUbicacion);

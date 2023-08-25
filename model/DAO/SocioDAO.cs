@@ -346,7 +346,7 @@ namespace sistema_modular_cafe_majada.model.DAO
         public Socio ObtenerSocioNombre(string nombre)
         {
             Socio socio = null;
-
+            Console.WriteLine("nombre: " + nombre);
             try
             {
                 //Se conecta con la base de datos
@@ -355,8 +355,8 @@ namespace sistema_modular_cafe_majada.model.DAO
                 // Crear la consulta SQL para obtener el rol
                 string consulta = @"SELECT s.*, p.nombres_persona, f.nombre_finca
                             FROM Socio s
-                            INNER JOIN Persona p ON s.id_persona_resp_socio = p.id_persona
-                            INNER JOIN Finca f ON s.id_finca_socio = f.id_finca
+                            LEFT JOIN Persona p ON s.id_persona_resp_socio = p.id_persona
+                            LEFT JOIN Finca f ON s.id_finca_socio = f.id_finca
                             WHERE s.nombre_socio = @nombreS";
 
                 conexion.CrearComando(consulta);

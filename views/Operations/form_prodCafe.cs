@@ -276,6 +276,7 @@ namespace sistema_modular_cafe_majada.views
                         var soc = socC.ObtenerSocioNombre(proceSeleccionado.NombreSocioProcedencia);
                         isocio = soc.IdSocio;
                         int iso = isocio - 1;
+                        
                         cbx_socio.SelectedIndex = iso;
                     }
                     if (!string.IsNullOrWhiteSpace(proceSeleccionado.NombreMaquinaria))
@@ -325,6 +326,7 @@ namespace sistema_modular_cafe_majada.views
                 proceSeleccionado.DescripcionProcedencia = filaSeleccionada.Cells["Descripcion"].Value.ToString();
                 proceSeleccionado.NombreBenficioUbicacion = filaSeleccionada.Cells["NombreBeneficio"].Value.ToString();
                 proceSeleccionado.NombreSocioProcedencia = filaSeleccionada.Cells["NombreSocio"].Value.ToString();
+                Console.WriteLine("nombre socio " + proceSeleccionado.NombreSocioProcedencia);
                 proceSeleccionado.NombreMaquinaria = filaSeleccionada.Cells["Maquinaria"].Value.ToString();
             }
             else

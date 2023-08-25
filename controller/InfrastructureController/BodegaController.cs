@@ -156,6 +156,11 @@ namespace sistema_modular_cafe_majada.controller.InfrastructureController
         //
         public bool ActualizarBodegas(int idBodega, string nombre, string descripcion, string ubicacion, int idBeneficio)
         {
+            Console.WriteLine(" " + idBodega);
+            Console.WriteLine(" " + nombre);
+            Console.WriteLine(" " + descripcion);
+            Console.WriteLine(" " + ubicacion);
+            Console.WriteLine(" " + idBeneficio);
             try
             {
                 // Llamada al método del DAO para actualizar la Bodegas

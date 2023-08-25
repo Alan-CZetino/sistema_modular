@@ -302,6 +302,7 @@ namespace sistema_modular_cafe_majada.views
                     BeneficioController benefC = new BeneficioController();
                     var name = benefC.ObtenerBeneficioNombre(BeneficioSeleccionado.NombreBeneficioSeleccionado);
                     ibenef = name.IdBeneficio;
+                    BeneficioSeleccionado.IdBeneficioSleccionado = ibenef;
 
                     txb_id.Text = Convert.ToString(bodegaSeleccionado.IdBodega);
                     txb_nombre.Text = bodegaSeleccionado.NombreBodega;
@@ -449,7 +450,8 @@ namespace sistema_modular_cafe_majada.views
                 }
 
                 // Código que se ejecutará si se ha hecho clic en la imagen update
-                bool exito = subController.ActualizarBodegas(bodegaSeleccionado.IdBodega, nameBodega, description, ubicacion, ibenef);
+                Console.WriteLine("id beneficio" + ibenef);
+                bool exito = subController.ActualizarBodegas(bodegaSeleccionado.IdBodega, nameBodega, description, ubicacion, BeneficioSeleccionado.IdBeneficioSleccionado);
 
                 if (exito)
                 {

@@ -241,7 +241,7 @@ namespace sistema_modular_cafe_majada.views
                     //verificar el departamento del log
                     log.RegistrarLog(usuario.IdUsuario, "Eliminacion de dato Usuario", ModuloActual.NombreModulo, "Eliminacion", "Elimino los datos del usuario " + usuarioSeleccionado.NombreUsuario + " en la base de datos");
 
-                    MessageBox.Show("Usuario Eliminada correctamente.");
+                    MessageBox.Show("Usuario Eliminada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //se actualiza la tabla
                     ShowUserGrid();
@@ -384,7 +384,7 @@ namespace sistema_modular_cafe_majada.views
                     if (pass != passConfirm)
                     {
                         // Las contraseñas no coinciden, mostrar un mensaje de error
-                        MessageBox.Show("Las contraseñas no coinciden. Por favor, verifique he inténtelo de nuevo.");
+                        MessageBox.Show("Las contraseñas no coinciden. Por favor, verifique he inténtelo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -415,11 +415,11 @@ namespace sistema_modular_cafe_majada.views
 
                     if (!exito)
                     {
-                        MessageBox.Show("Error al insertar el usuario. Verifica los datos e intenta nuevamente.");
+                        MessageBox.Show("Error al insertar el usuario. Verifica los datos e intenta nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    MessageBox.Show("Usuario agregada correctamente.");
+                    MessageBox.Show("Usuario agregada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //
                     try
@@ -502,7 +502,7 @@ namespace sistema_modular_cafe_majada.views
                         if (!verificEncrypt)
                         {
                             // Las contraseñas no coinciden, mostrar un mensaje de error
-                            MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
+                            MessageBox.Show("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             msjUpdatePass = true;
                             return;
                         }
@@ -517,7 +517,7 @@ namespace sistema_modular_cafe_majada.views
                         return;
                     }
 
-                    MessageBox.Show("Usuario actualizada correctamente.");
+                    MessageBox.Show("Usuario actualizada correctamente.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //
                     try
