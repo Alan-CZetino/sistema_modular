@@ -21,6 +21,7 @@ using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.Mapping.Reports;
 using sistema_modular_cafe_majada.model.UserData;
 using System.Timers;
+using sistema_modular_cafe_majada.Settings;
 
 namespace sistema_modular_cafe_majada.views
 {
@@ -28,16 +29,12 @@ namespace sistema_modular_cafe_majada.views
     public partial class form_reportes : Form
     {
         private string fechaActual;
-        private System.Timers.Timer refreshTimer;
+        Controlador_de_rutas Rutas = new Controlador_de_rutas();
         int id_Cosecha = CosechaActual.ICosechaActual;
         UserController userC = new UserController();
         string Nombre_cosecha = CosechaActual.NombreCosechaActual;
         private ReportesController reportesController = new ReportesController();
-        readonly string RutaReportSubpda = "../../views/Reports/repor_subpartida.rdlc";
-        readonly string RutaReportBodega = "../../views/Reports/repor_bodega.rdlc";
-        readonly string RutaReportCCalidad = "../../views/Reports/repor_ccalidad.rdlc";
-        readonly string RutaReportCafeBodega = "../../views/Reports/repor_cafebodega.rdlc";
-        readonly string RutaReportGraficas = "../../views/Reports/repor_grafico.rdlc";
+
 
         public form_reportes()
         {
@@ -89,7 +86,7 @@ namespace sistema_modular_cafe_majada.views
 
                 // Se crea un nuevo informe local (LocalReport) y se establece la ruta del archivo de definición del informe utilizando la variable RutaReportSubpda.
                 LocalReport reportSubpartida = new LocalReport();
-                reportSubpartida.ReportPath = RutaReportSubpda;
+                reportSubpartida.ReportPath = Rutas.Ruta_Reporte_Subpartida;
 
                 // Se agrega la fuente de datos al informe local.
                 reportSubpartida.DataSources.Add(reportDataSource);
@@ -119,7 +116,7 @@ namespace sistema_modular_cafe_majada.views
             }
             ReportDataSource reportDataSource = new ReportDataSource("repor_bodega", data);
             LocalReport reportBodega = new LocalReport();
-            reportBodega.ReportPath = RutaReportBodega;
+            reportBodega.ReportPath = Rutas.Ruta_Reporte_Bodega;
             reportBodega.DataSources.Add(reportDataSource);
             ShowReportInViewer(reportBodega, "repor_bodega");
         }
@@ -149,7 +146,7 @@ namespace sistema_modular_cafe_majada.views
 
             // Se crea un nuevo informe local (LocalReport) y se establece la ruta del archivo de definición del informe utilizando la variable RutaReportCCalidad
             LocalReport reportCCalidad = new LocalReport();
-            reportCCalidad.ReportPath = RutaReportCCalidad;
+            reportCCalidad.ReportPath = Rutas.Ruta_Reporte_Calidad;
 
             // Se agrega la fuente de datos al informe local
             reportCCalidad.DataSources.Add(reportDataSource);
@@ -173,7 +170,7 @@ namespace sistema_modular_cafe_majada.views
             }
             ReportDataSource reportDataSource = new ReportDataSource("repor_cafebodega", data);
             LocalReport reportCCalidad = new LocalReport();
-            reportCCalidad.ReportPath = RutaReportCafeBodega;
+            reportCCalidad.ReportPath = Rutas.Ruta_Reporte_CafeBodega;
             reportCCalidad.DataSources.Add(reportDataSource);
             ShowReportInViewer(reportCCalidad, "repor_cafebodega");
         }
@@ -193,7 +190,7 @@ namespace sistema_modular_cafe_majada.views
             }
             ReportDataSource reportDataSource = new ReportDataSource("repor_bodega", data);
             LocalReport reportGrafico = new LocalReport();
-            reportGrafico.ReportPath = RutaReportGraficas;
+            reportGrafico.ReportPath = Rutas.Ruta_Reporte_Grafico;
             reportGrafico.DataSources.Add(reportDataSource);
             ShowReportInViewer(reportGrafico, "repor_grafico");
         }

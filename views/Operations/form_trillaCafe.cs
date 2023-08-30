@@ -9,6 +9,7 @@ using sistema_modular_cafe_majada.model.Mapping.Harvest;
 using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
 using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.UserData;
+using sistema_modular_cafe_majada.Settings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +33,7 @@ namespace sistema_modular_cafe_majada.views
         private int icosechaCambio;
         TrillaController countTr = null;
         private TrillaController reportesController = new TrillaController();
+        Controlador_de_rutas Rutas = new Controlador_de_rutas();
         UserController userC = new UserController();
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
@@ -931,7 +933,7 @@ namespace sistema_modular_cafe_majada.views
             var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             if (TrillaSeleccionado.ITrilla != 0)
             {
-                string reportPath = "../../views/Reports/repor_trillado.rdlc";
+
                 List<ReportesTrilla> data = reportesController.ObtenerTrillasReports(TrillaSeleccionado.ITrilla);
                 foreach (ReportesTrilla reporte in data)
                 {
@@ -941,7 +943,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 ReportDataSource reportDataSource = new ReportDataSource("repor_trillado", data);
 
-                form_opcReportExistencias reportTrilla = new form_opcReportExistencias(reportPath, reportDataSource);
+                form_opcReportExistencias reportTrilla = new form_opcReportExistencias(Rutas.Ruta_Reporte_Trilla, reportDataSource);
                 reportTrilla.ShowDialog();
             }
             else

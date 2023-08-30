@@ -267,8 +267,8 @@
     <Compile Include="model\Mapping\Reports\Reportes.cs" />
     <Compile Include="model\Mapping\UserData\Persona.cs" />
     <Compile Include="model\Mapping\UserData\Usuario.cs" />
+    <Compile Include="Settings\Controlador de rutas.cs" />
     <Compile Include="Settings\EncryptionUtility.cs" />
-    <Compile Include="Settings\text.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="views\Main\form_administracion.cs">
       <SubType>Form</SubType>

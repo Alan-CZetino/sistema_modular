@@ -10,6 +10,7 @@ using sistema_modular_cafe_majada.model.Mapping.Harvest;
 using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
 using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.UserData;
+using sistema_modular_cafe_majada.Settings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,7 @@ namespace sistema_modular_cafe_majada.views
         private TrasladoController reportesController = new TrasladoController();
         private string fechaActual;
         UserController userC = new UserController();
+        Controlador_de_rutas Rutas = new Controlador_de_rutas();
         public string rbSelect;
         public double cantidaQQsUpdate = 0.00;
         public double cantidaSacoUpdate = 0.00;
@@ -1204,7 +1206,7 @@ namespace sistema_modular_cafe_majada.views
             if (TrasladoSeleccionado.ITraslado != 0)
             {
 
-                string reportPath = "../../views/Reports/repor_traslados.rdlc";
+
 
                 List<ReporteTraslado> data = reportesController.ObtenerTrasladosReports(TrasladoSeleccionado.ITraslado);
                 foreach (ReporteTraslado reporte in data)
@@ -1214,7 +1216,7 @@ namespace sistema_modular_cafe_majada.views
                 }
                 ReportDataSource reportDataSource = new ReportDataSource("repor_traslados", data);
 
-                form_opcReportExistencias reportTraslado = new form_opcReportExistencias(reportPath, reportDataSource);
+                form_opcReportExistencias reportTraslado = new form_opcReportExistencias(Rutas.Ruta_Reporte_Traslado, reportDataSource);
                 reportTraslado.ShowDialog();
             }
             else

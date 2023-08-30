@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using sistema_modular_cafe_majada.Settings;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,7 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using sistema_modular_cafe_majada.Settings;
+
+using System.Xml;
 
 namespace sistema_modular_cafe_majada.model.Connection
 {
@@ -18,17 +20,22 @@ namespace sistema_modular_cafe_majada.model.Connection
 
         public ConnectionDB()
         {
-            string key = "CooperativaAdmin"; 
-
-            text configuracion = new text(key);
+            Controlador_de_rutas Ruta = new Controlador_de_rutas();
 
             try
             {
-                // Descifrar los valores cifrados
-                string servidorDescifrado = EncryptionUtility.DecryptString(configuracion.servidorCifrado, key);
-                string usuarioDescifrado = EncryptionUtility.DecryptString(configuracion.usuarioCifrado, key);
-                string contrasenaDescifrada = EncryptionUtility.DecryptString(configuracion.contrasenaCifrada, key);
-                string baseDeDatosDescifrada = EncryptionUtility.DecryptString(configuracion.baseDeDatosCifrada, key);
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(Ruta.RutaXML); // Cambia esto a la ruta correcta de tu archivo XML
+
+                string servidorCifrado = xmlDoc.SelectSingleNode("/Cifrado/Servidor").InnerText;
+                string usuarioCifrado = xmlDoc.SelectSingleNode("/Cifrado/Usuario").InnerText;
+                string contrasenaCifrada = xmlDoc.SelectSingleNode("/Cifrado/Contrasena").InnerText;
+                string baseDeDatosCifrada = xmlDoc.SelectSingleNode("/Cifrado/BaseDeDatos").InnerText;
+
+                string servidorDescifrado = EncryptionUtility.DecryptString(servidorCifrado);
+                string usuarioDescifrado = EncryptionUtility.DecryptString(usuarioCifrado);
+                string contrasenaDescifrada = EncryptionUtility.DecryptString(contrasenaCifrada);
+                string baseDeDatosDescifrada = EncryptionUtility.DecryptString(baseDeDatosCifrada);
 
                 // Construir la cadena de conexión con los valores descifrados
                 string connectionString = $"Server={servidorDescifrado};Database={baseDeDatosDescifrada};User Id={usuarioDescifrado};Password={contrasenaDescifrada};";
@@ -37,10 +44,12 @@ namespace sistema_modular_cafe_majada.model.Connection
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al descifrar: " + ex.Message);
+                Console.WriteLine("Error al cargar y descifrar valores del XML: " + ex.Message);
                 // Manejar el error adecuadamente
             }
         }
+
+
 
         //private MySqlConnection connection;
         private string connectionString;

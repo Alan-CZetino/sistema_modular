@@ -5,48 +5,13 @@ using System.Text;
 
 public static class EncryptionUtility
 {
+    static string Clave = "1Bt14$J&9n98whpV";
 
-
-    public static string EncryptString(string plainText, string key)
+    public static string DecryptString(string cipherText)
     {
         using (Aes aesAlg = Aes.Create())
         {
-            aesAlg.Key = Encoding.UTF8.GetBytes(key);
-            aesAlg.IV = GenerateRandomIV();
-
-            aesAlg.Mode = CipherMode.CBC;
-            aesAlg.Padding = PaddingMode.PKCS7;
-
-            ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
-
-            using (MemoryStream msEncrypt = new MemoryStream())
-            {
-                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                {
-                    using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                    {
-                        swEncrypt.Write(plainText);
-                    }
-                }
-
-                // Obtener el texto cifrado (sin el IV)
-                byte[] cipherTextBytes = msEncrypt.ToArray();
-
-                // Concatenar el IV y el texto cifrado
-                byte[] ivAndCipherText = new byte[aesAlg.IV.Length + cipherTextBytes.Length];
-                Array.Copy(aesAlg.IV, ivAndCipherText, aesAlg.IV.Length);
-                Array.Copy(cipherTextBytes, 0, ivAndCipherText, aesAlg.IV.Length, cipherTextBytes.Length);
-
-                return Convert.ToBase64String(ivAndCipherText);
-            }
-        }
-    }
-
-    public static string DecryptString(string cipherText, string key)
-    {
-        using (Aes aesAlg = Aes.Create())
-        {
-            aesAlg.Key = Encoding.UTF8.GetBytes(key);
+            aesAlg.Key = Encoding.UTF8.GetBytes(Clave);
 
             aesAlg.Mode = CipherMode.CBC;
             aesAlg.Padding = PaddingMode.PKCS7;

@@ -9,6 +9,7 @@ using sistema_modular_cafe_majada.model.Mapping.Harvest;
 using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
 using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.UserData;
+using sistema_modular_cafe_majada.Settings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +33,7 @@ namespace sistema_modular_cafe_majada.views
         private bool imgClickCalidad = false;
         private bool imgClickBodega = false;
         SubPartidaController countSP = null;
+        Controlador_de_rutas Rutas = new Controlador_de_rutas();
         private SubPartidaController reportesController = new SubPartidaController();
         private string fechaActual;
         UserController userC = new UserController();
@@ -1364,7 +1366,7 @@ namespace sistema_modular_cafe_majada.views
             var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             if (SubPartidaSeleccionado.ISubPartida != 0)
             {
-            string reportPath = "../../views/Reports/report_numsubpartida.rdlc";
+
             List<ReportSubPartida> data = reportesController.ObtenerSubPartida(SubPartidaSeleccionado.ISubPartida);
                 foreach (ReportSubPartida reporte in data)
                 {
@@ -1372,7 +1374,7 @@ namespace sistema_modular_cafe_majada.views
 
                 }
                 ReportDataSource reportDataSource = new ReportDataSource("repor_numsubpartida", data);
-            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPath, reportDataSource);
+            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(Rutas.Ruta_Reporte_Numsubpartida, reportDataSource);
             reportSPartida.ShowDialog();
              }
             else

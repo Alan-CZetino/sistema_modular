@@ -10,6 +10,7 @@ using sistema_modular_cafe_majada.model.Mapping.Harvest;
 using sistema_modular_cafe_majada.model.Mapping.Infrastructure;
 using sistema_modular_cafe_majada.model.Mapping.Operations;
 using sistema_modular_cafe_majada.model.UserData;
+using sistema_modular_cafe_majada.Settings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,7 @@ namespace sistema_modular_cafe_majada.views
     {
         //variable para refrescar el formulario cad cierto tiempo
         private System.Timers.Timer refreshTimer;
-
+        Controlador_de_rutas Rutas = new Controlador_de_rutas();
         private List<TextBox> txbRestrict;
         private int icosechaCambio;
         SalidaController countSl = null;
@@ -966,7 +967,6 @@ namespace sistema_modular_cafe_majada.views
             var Nombre_Usuario = userC.ObtenerUsuariosNombresID(UsuarioActual.IUsuario);
             if (SalidaSeleccionado.ISalida != 0)
             {
-                string reportPR = "../../views/Reports/repor_salidas.rdlc";
                 List<ReportSalida> data = reportesController.ObtenerReporteSalida(SalidaSeleccionado.ISalida);
                 foreach (ReportSalida reporte in data)
                 {
@@ -974,7 +974,7 @@ namespace sistema_modular_cafe_majada.views
 
                 }
                 ReportDataSource reportDataSource = new ReportDataSource("repor_salidas", data);
-            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(reportPR, reportDataSource);
+            form_opcReportExistencias reportSPartida = new form_opcReportExistencias(Rutas.Ruta_Reporte_Salida, reportDataSource);
             reportSPartida.ShowDialog();
         }
             else

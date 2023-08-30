@@ -15,6 +15,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace sistema_modular_cafe_majada.views
 {
@@ -367,6 +368,7 @@ namespace sistema_modular_cafe_majada.views
 
         private void btn_backup_Click(object sender, EventArgs e)
         {
+            Controlador_de_rutas Rutas = new Controlador_de_rutas();
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 // Configurar el cuadro de diálogo para guardar el respaldo
@@ -380,21 +382,27 @@ namespace sistema_modular_cafe_majada.views
 
                     string key = "CooperativaAdmin"; 
 
-                    // Crear una instancia de la clase text para obtener los valores cifrados
-                    text configuracion = new text(key);
-
                     try
                     {
-                        // Descifrar los valores cifrados
-                        string servidorDescifrado = EncryptionUtility.DecryptString(configuracion.servidorCifrado, key);
-                        string usuarioDescifrado = EncryptionUtility.DecryptString(configuracion.usuarioCifrado, key);
-                        string contrasenaDescifrada = EncryptionUtility.DecryptString(configuracion.contrasenaCifrada, key);
-                        string baseDeDatosDescifrada = EncryptionUtility.DecryptString(configuracion.baseDeDatosCifrada, key);
+                        XmlDocument xmlDoc = new XmlDocument();
+                        xmlDoc.Load(Rutas.RutaXML); // Cambia esto a la ruta correcta de tu archivo XML
 
+                        string servidorCifrado = xmlDoc.SelectSingleNode("/Cifrado/Servidor").InnerText;
+                        string usuarioCifrado = xmlDoc.SelectSingleNode("/Cifrado/Usuario").InnerText;
+                        string contrasenaCifrada = xmlDoc.SelectSingleNode("/Cifrado/Contrasena").InnerText;
+                        string baseDeDatosCifrada = xmlDoc.SelectSingleNode("/Cifrado/BaseDeDatos").InnerText;
+
+                        string servidorDescifrado = EncryptionUtility.DecryptString(servidorCifrado);
+                        string usuarioDescifrado = EncryptionUtility.DecryptString(usuarioCifrado);
+                        string contrasenaDescifrada = EncryptionUtility.DecryptString(contrasenaCifrada);
+                        string baseDeDatosDescifrada = EncryptionUtility.DecryptString(baseDeDatosCifrada);
+                        Console.WriteLine(servidorCifrado);
+                        Console.WriteLine(usuarioCifrado);
+                        Console.WriteLine(contrasenaCifrada);
+                        Console.WriteLine(baseDeDatosCifrada);
                         // Generar el comando para realizar el respaldo utilizando los valores descifrados
                         string rutaRespaldos = saveFileDialog.FileName;
-                        string rutaMySqlDump = @"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump.exe";
-                        string comando = $"\"{rutaMySqlDump}\" --user={usuarioDescifrado} --password={contrasenaDescifrada} --host={servidorDescifrado} {baseDeDatosDescifrada} > \"{rutaRespaldos}\"";
+                        string comando = $"\"{Rutas.rutaMySqlDump}\" --user={usuarioDescifrado} --password={contrasenaDescifrada} --host={servidorDescifrado} {baseDeDatosDescifrada} > \"{rutaRespaldos}\"";
 
                         // Ejecutar el comando en el proceso de la línea de comandos
                         ProcessStartInfo psi = new ProcessStartInfo("cmd.exe")
