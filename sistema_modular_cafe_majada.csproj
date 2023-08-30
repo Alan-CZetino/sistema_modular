@@ -762,9 +762,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Settings\app.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="DataSets\repor_traslados.xsc">
       <DependentUpon>repor_traslados.xsd</DependentUpon>
     </None>

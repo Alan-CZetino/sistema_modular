@@ -8,7 +8,7 @@ namespace sistema_modular_cafe_majada.Settings
 {
     class Controlador_de_rutas
     {
-        public string RutaXML = "C:/Users/sifon/Music/sistema/sistema_modular/Settings/Cifrado.xml";
+        public string RutaXML = "../../Settings/Cifrado.xml";
         public string rutaMySqlDump = @"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump.exe";
         public string Ruta_Reporte_Calidad = "../../views/Reports/repor_ccalidad.rdlc";
         public string Ruta_Reporte_Bodega = "../../views/Reports/repor_bodega.rdlc";
